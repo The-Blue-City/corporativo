@@ -504,7 +504,7 @@
   /* ── INTRO PAGE ── */
   .intro-hero {
     min-height: 100vh;
-    background: #ffffff;
+    background: linear-gradient(to bottom, #295b9c, #90dba3);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -563,7 +563,7 @@
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--teal);
+    color: rgba(255,255,255,0.85);
     margin-bottom: 16px;
   }
 
@@ -571,7 +571,7 @@
     font-family: 'Montserrat', sans-serif;
     font-size: 44px;
     font-weight: 800;
-    color: var(--dark);
+    color: #ffffff;
     line-height: 1.15;
     margin-bottom: 18px;
     max-width: 680px;
@@ -579,13 +579,13 @@
 
   .intro-headline em {
     font-style: normal;
-    color: var(--teal);
+    color: #ffffff;
   }
 
   .intro-desc {
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
-    color: #1a2e3b;
+    color: rgba(255,255,255,0.9);
     max-width: 500px;
     line-height: 1.7;
     margin-bottom: 36px;
@@ -596,23 +596,22 @@
     align-items: center;
     gap: 10px;
     padding: 14px 32px;
-    background: var(--blue);
+    background: rgba(255,255,255,0.2);
     color: white;
-    border: none;
+    border: 2px solid rgba(255,255,255,0.5);
     border-radius: 8px;
     font-size: 14px;
     font-weight: 700;
     cursor: pointer;
     transition: all 0.2s;
     font-family: 'Montserrat', sans-serif;
-    box-shadow: 0 4px 16px rgba(40,88,160,0.25);
     letter-spacing: 0.3px;
   }
 
   .intro-start-btn:hover {
-    background: #1e4080;
+    background: rgba(255,255,255,0.35);
+    border-color: white;
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(40,88,160,0.3);
   }
 
   /* Video placeholder */
@@ -627,7 +626,7 @@
     font-weight: 700;
     letter-spacing: 1.2px;
     text-transform: uppercase;
-    color: var(--teal);
+    color: rgba(255,255,255,0.85);
     margin-bottom: 12px;
     text-align: left;
   }
@@ -688,9 +687,9 @@
   }
 
   .prev-chip {
-    background: var(--bg);
-    border: 1px solid rgba(40,88,160,0.12);
-    color: var(--muted);
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.9);
     font-size: 12px;
     font-weight: 600;
     padding: 6px 14px;
@@ -807,45 +806,45 @@
       <span class="nav-dot"></span> Visão Geral
       <span class="nav-number">00</span>
     </div>
-    <div class="nav-item" onclick="goTo(2)">
+    <div class="nav-item" onclick="goTo(1)">
       <span class="nav-dot"></span> Home
       <span class="nav-number">01</span>
     </div>
-    <div class="nav-item" onclick="goTo(3)">
+    <div class="nav-item" onclick="goTo(2)">
       <span class="nav-dot"></span> Jornadas
       <span class="nav-number">02</span>
     </div>
-    <div class="nav-item" onclick="goTo(4)">
+    <div class="nav-item" onclick="goTo(3)">
       <span class="nav-dot"></span> Minha Galeria
       <span class="nav-number">03</span>
     </div>
-    <div class="nav-item" onclick="goTo(5)">
+    <div class="nav-item" onclick="goTo(4)">
       <span class="nav-dot"></span> Galeria de Projetos
       <span class="nav-number">04</span>
     </div>
-    <div class="nav-item" onclick="goTo(6)">
+    <div class="nav-item" onclick="goTo(5)">
       <span class="nav-dot"></span> Galeria de Eventos
       <span class="nav-number">05</span>
     </div>
-    <div class="nav-item" onclick="goTo(7)">
+    <div class="nav-item" onclick="goTo(6)">
       <span class="nav-dot"></span> Performance dos Jogadores
       <span class="nav-number">06</span>
     </div>
 
   <div class="sidebar-label" style="margin-top:16px; border-top:1px solid rgba(255,255,255,0.08); padding-top:20px;">Áreas Administrativas</div>
 
-    <div class="nav-item" onclick="goTo(8)">
+    <div class="nav-item" onclick="goTo(7)">
       <span class="nav-dot"></span> Painel Master
       <span class="nav-number">07</span>
     </div>
-    <div class="nav-item" onclick="goTo(9)">
+    <div class="nav-item" onclick="goTo(8)">
       <span class="nav-dot"></span> Painel do Produtor / Gestor
       <span class="nav-number">08</span>
     </div>
 
   <div class="sidebar-label" style="margin-top:16px; border-top:1px solid rgba(255,255,255,0.08); padding-top:20px;">Como Funciona o Projeto</div>
 
-    <div class="nav-item" onclick="goTo(10)">
+    <div class="nav-item" onclick="goTo(9)">
       <span class="nav-dot"></span> Fluxo da Jornada
       <span class="nav-number">09</span>
     </div>
@@ -853,7 +852,7 @@
 
   <div class="sidebar-footer">
     Plataforma de Jornadas ESG Gamificadas<br>
-    © 2024 The Blue City
+    © The Blue City
   </div>
 </aside>
 
@@ -937,7 +936,7 @@
         <div class="intro-eyebrow">Apresentação da Plataforma</div>
         <h1 class="intro-headline">Aprenda. Jogue.<br><em>Transforme o mundo.</em></h1>
         <p class="intro-desc">Uma plataforma de jornadas ESG gamificadas que engaja colaboradores e comunidades na construção de um futuro mais sustentável.</p>
-        <button class="intro-start-btn" onclick="goTo(2)">
+        <button class="intro-start-btn" onclick="goTo(1)">
           ▶&nbsp; Iniciar Apresentação
         </button>
       </div>
@@ -969,246 +968,7 @@
   </section>
 
   
-  <!-- ══ PAGE 1: COMO FUNCIONA ══ -->
   <section class="page" id="page-1">
-    <div class="page-hero">
-      <div class="page-tag">01 · Visão do Projeto</div>
-      <h1 class="page-title">Como Funciona o Projeto</h1>
-      <p class="page-subtitle">A jornada The Blue City vai além da plataforma digital — conecta o aprendizado virtual a ações reais no mundo físico, unindo escolas, empresas, artistas e comunidade.</p>
-    </div>
-
-    <div class="page-body single" style="max-width:960px; margin:0 auto;">
-      <div>
-        <div style="margin-bottom:32px;">
-          <svg style="width:100%;height:auto;display:block;border-radius:12px;" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 198.4 158">
-  <defs>
-    <style>
-      .fl-cls-1 {
-        opacity: .2;
-      }
-
-      .fl-cls-1, .fl-cls-2, .fl-cls-3, .fl-cls-4, .fl-cls-5, .fl-cls-6, .fl-cls-7, .fl-cls-8, .fl-cls-9, .fl-cls-10, .fl-cls-11, .fl-cls-12, .fl-cls-13, .fl-cls-14, .fl-cls-15, .fl-cls-16, .fl-cls-17 {
-        isolation: isolate;
-      }
-
-      .fl-cls-1, .fl-cls-18, .fl-cls-6, .fl-cls-10, .fl-cls-19, .fl-cls-15, .fl-cls-16, .fl-cls-17 {
-        stroke-width: 0px;
-      }
-
-      .fl-cls-1, .fl-cls-7, .fl-cls-8, .fl-cls-10, .fl-cls-14, .fl-cls-15 {
-        fill: #1aad8a;
-      }
-
-      .fl-cls-2 {
-        font-size: 4.1px;
-      }
-
-      .fl-cls-2, .fl-cls-5, .fl-cls-13 {
-        fill: #fff;
-        font-family: Helvetica-Bold, Helvetica;
-        font-weight: 700;
-      }
-
-      .fl-cls-3, .fl-cls-18, .fl-cls-6, .fl-cls-9, .fl-cls-16 {
-        fill: none;
-      }
-
-      .fl-cls-3, .fl-cls-20, .fl-cls-9, .fl-cls-21, .fl-cls-22 {
-        stroke-miterlimit: 1.2;
-      }
-
-      .fl-cls-3, .fl-cls-9 {
-        stroke-width: .1px;
-      }
-
-      .fl-cls-3, .fl-cls-9, .fl-cls-21 {
-        stroke: #1aad8a;
-      }
-
-      .fl-cls-3, .fl-cls-10 {
-        opacity: .2;
-      }
-
-      .fl-cls-4 {
-        fill: #7ecfba;
-        font-size: 2.9px;
-      }
-
-      .fl-cls-4, .fl-cls-7, .fl-cls-8, .fl-cls-11, .fl-cls-12, .fl-cls-14 {
-        font-family: Helvetica, Helvetica;
-      }
-
-      .fl-cls-5, .fl-cls-14 {
-        font-size: 3.5px;
-      }
-
-      .fl-cls-6 {
-        opacity: .6;
-      }
-
-      .fl-cls-7, .fl-cls-8, .fl-cls-11, .fl-cls-12 {
-        font-size: 2.6px;
-      }
-
-      .fl-cls-7, .fl-cls-16 {
-        opacity: .7;
-      }
-
-      .fl-cls-8 {
-        opacity: .4;
-      }
-
-      .fl-cls-20 {
-        stroke-width: .6px;
-      }
-
-      .fl-cls-20, .fl-cls-22 {
-        fill: #062e26;
-        stroke: #22d3a5;
-      }
-
-      .fl-cls-9 {
-        opacity: .2;
-      }
-
-      .fl-cls-21 {
-        fill: #0a3d35;
-        stroke-width: .3px;
-      }
-
-      .fl-cls-19 {
-        fill: #0d2b2b;
-      }
-
-      .fl-cls-11 {
-        opacity: .8;
-      }
-
-      .fl-cls-11, .fl-cls-17 {
-        fill: #22d3a5;
-      }
-
-      .fl-cls-12 {
-        fill: #4a9a85;
-      }
-
-      .fl-cls-13 {
-        font-size: 5.8px;
-      }
-
-      .fl-cls-15 {
-        opacity: .3;
-      }
-
-      .fl-cls-22 {
-        stroke-width: .4px;
-      }
-
-      .fl-cls-17 {
-        opacity: .5;
-      }
-    </style>
-  </defs>
-  <rect class="fl-cls-19" x="0" y="-.2" width="198.4" height="157.6" rx="4.7" ry="4.7"/>
-  <circle class="fl-cls-15" cx="175.1" cy="8.5" r=".7"/>
-  <circle class="fl-cls-1" cx="183.8" cy="14.3" r=".6"/>
-  <circle class="fl-cls-10" cx="191.1" cy="10" r=".6"/>
-  <line class="fl-cls-3" x1="175.1" y1="8.5" x2="183.8" y2="14.3"/>
-  <line class="fl-cls-9" x1="183.8" y1="14.3" x2="191.1" y2="10"/>
-  <text class="fl-cls-14" transform="translate(10.5 9.7)"><tspan x="0" y="0">Como funciona</tspan></text>
-  <text class="fl-cls-13" transform="translate(10.5 16.7)"><tspan x="0" y="0">The Blue City</tspan></text>
-  <rect class="fl-cls-21" x="10.5" y="23.7" width="49.6" height="25.1" rx="2.9" ry="2.9"/>
-  <text class="fl-cls-7" transform="translate(11.7 27.5)"><tspan x="0" y="0">01</tspan></text>
-  <text class="fl-cls-5" transform="translate(24 30.7)"><tspan x="0" y="0">Jogo lançado</tspan></text>
-  <text class="fl-cls-4" transform="translate(19.1 35.4)"><tspan x="0" y="0">Plataforma The Blue City</tspan></text>
-  <text class="fl-cls-12" transform="translate(23.1 39.7)"><tspan x="0" y="0">ex: Termômetro Zero</tspan></text>
-  <text class="fl-cls-12" transform="translate(28.4 44.1)"><tspan x="0" y="0">Palmas, TO</tspan></text>
-  <path class="fl-cls-18" d=""/>
-  <path class="fl-cls-18" d="M67,35.4l1.3.8-1.3.8"/>
-  <path class="fl-cls-16" d="M68.3,36.2" marker-end="url(#arrow)"/>
-  <rect class="fl-cls-21" x="68.9" y="23.7" width="49.6" height="25.1" rx="2.9" ry="2.9"/>
-  <text class="fl-cls-7" transform="translate(70 27.5)"><tspan x="0" y="0">02</tspan></text>
-  <text class="fl-cls-5" transform="translate(82.1 30.7)"><tspan x="0" y="0">Alunos jogam</tspan></text>
-  <text class="fl-cls-4" transform="translate(84.1 35.4)"><tspan x="0" y="0">Durante 1 mês</tspan></text>
-  <text class="fl-cls-12" transform="translate(84 39.7)"><tspan x="0" y="0">escolas técnicas</tspan></text>
-  <text class="fl-cls-12" transform="translate(88.2 44.1)"><tspan x="0" y="0">da região</tspan></text>
-  <path class="fl-cls-18" d=""/>
-  <path class="fl-cls-18" d="M125.4,35.4l1.3.8-1.3.8"/>
-  <path class="fl-cls-16" d="M126.6,36.2" marker-end="url(#arrow)"/>
-  <rect class="fl-cls-21" x="127.2" y="23.7" width="49.6" height="25.1" rx="2.9" ry="2.9"/>
-  <text class="fl-cls-7" transform="translate(128.4 27.5)"><tspan x="0" y="0">03</tspan></text>
-  <text class="fl-cls-5" transform="translate(142 30.7)"><tspan x="0" y="0">Certificação</tspan></text>
-  <text class="fl-cls-4" transform="translate(139.5 35.4)"><tspan x="0" y="0">Badges + NFT final</tspan></text>
-  <text class="fl-cls-12" transform="translate(143.6 39.7)"><tspan x="0" y="0">em blockchain</tspan></text>
-  <text class="fl-cls-12" transform="translate(139.9 44.1)"><tspan x="0" y="0">vinculado à empresa</tspan></text>
-  <path class="fl-cls-18" d=""/>
-  <path class="fl-cls-18" d="M150.8,56.7l1.3.8-1.3.8"/>
-  <path class="fl-cls-6" d="M152,57.5" marker-end="url(#arrow)"/>
-  <rect class="fl-cls-22" x="108" y="58.1" width="68.9" height="25.1" rx="2.9" ry="2.9"/>
-  <text class="fl-cls-11" transform="translate(109.1 61.9)"><tspan x="0" y="0">04</tspan></text>
-  <text class="fl-cls-5" transform="translate(123.9 65.1)"><tspan x="0" y="0">Missão no mundo real</tspan></text>
-  <text class="fl-cls-4" transform="translate(128.6 69.8)"><tspan x="0" y="0">Alunos enviam ideias</tspan></text>
-  <text class="fl-cls-12" transform="translate(130.4 74.2)"><tspan x="0" y="0">endereçando o tema</tspan></text>
-  <text class="fl-cls-12" transform="translate(130.6 78.5)"><tspan x="0" y="0">ex: redução de GEE</tspan></text>
-  <path class="fl-cls-18" d=""/>
-  <path class="fl-cls-18" d="M83.4,69.8l1.3.8-1.3.8"/>
-  <path class="fl-cls-16" d="M84.6,70.7" marker-end="url(#arrow)"/>
-  <rect class="fl-cls-21" x="23.9" y="58.1" width="59.5" height="25.1" rx="2.9" ry="2.9"/>
-  <text class="fl-cls-7" transform="translate(25.1 61.9)"><tspan x="0" y="0">05</tspan></text>
-  <text class="fl-cls-5" transform="translate(42 65.1)"><tspan x="0" y="0">Artistas criam</tspan></text>
-  <text class="fl-cls-4" transform="translate(42.2 69.8)"><tspan x="0" y="0">a partir das ideias</tspan></text>
-  <text class="fl-cls-12" transform="translate(44.6 74.2)"><tspan x="0" y="0">peças artísticas</tspan></text>
-  <text class="fl-cls-12" transform="translate(44.8 78.5)"><tspan x="0" y="0">para exposição</tspan></text>
-  <path class="fl-cls-18" d=""/>
-  <path class="fl-cls-18" d="M52.4,91.1l1.3.8-1.3.8"/>
-  <path class="fl-cls-16" d="M53.7,92" marker-end="url(#arrow)"/>
-  <rect class="fl-cls-20" x="10.5" y="92.5" width="176.2" height="25.1" rx="3.5" ry="3.5"/>
-  <circle class="fl-cls-17" cx="18.7" cy="105.1" r=".9"/>
-  <circle class="fl-cls-17" cx="180.3" cy="105.1" r=".9"/>
-  <text class="fl-cls-11" transform="translate(11.7 96.6)"><tspan x="0" y="0">06</tspan></text>
-  <text class="fl-cls-2" transform="translate(67.3 102.5)"><tspan x="0" y="0">Exposição no entorno da escola</tspan></text>
-  <text class="fl-cls-4" transform="translate(69.8 107.7)"><tspan x="0" y="0">Arte + sustentabilidade numa mostra pública</tspan></text>
-  <text class="fl-cls-12" transform="translate(78.6 112.7)"><tspan x="0" y="0">ex: Centro Cultural de Palmas, TO</tspan></text>
-  <text class="fl-cls-8" transform="translate(10.5 150.9)"><tspan x="0" y="0"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c6aea3aaaaa986b2aea3a4aab3a3a5afb2bfe8a7b6b6">[email&#160;protected]</a></tspan></text>
-  <text class="fl-cls-8" transform="translate(164.2 150.9)"><tspan x="0" y="0">www.thebluecity.app</tspan></text>
-</svg>
-        </div>
-        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-top:8px;">
-          <div class="feature-card">
-            <div class="feature-card-header">
-              <div class="feature-icon fi-teal">🎮</div>
-              <h3>Mundo Virtual</h3>
-            </div>
-            <p>Alunos jogam na plataforma, acumulam pontos e conquistam certificações NFT vinculadas a desafios reais de sustentabilidade.</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-card-header">
-              <div class="feature-icon fi-green">🌍</div>
-              <h3>Mundo Real</h3>
-            </div>
-            <p>As ideias geradas no jogo se transformam em projetos e obras de arte expostos publicamente no entorno das escolas e empresas parceiras.</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-card-header">
-              <div class="feature-icon fi-blue">🤝</div>
-              <h3>Impacto Coletivo</h3>
-            </div>
-            <p>Empresas, escolas técnicas, artistas e comunidade convergem numa experiência de educação ambiental com impacto mensurável e verificável.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-    <div class="page-nav">
-      <button class="nav-btn" onclick="goTo(0)">← Visão Geral</button>
-      <span class="page-indicator">Página <strong>1</strong> de 8</span>
-      <button class="nav-btn next" onclick="goTo(2)">Home →</button>
-    </div>
-  </section>
-
-  <!-- ══ PAGE 2: HOME ══ -->
-  <section class="page" id="page-2">
     <div class="page-hero">
       <div class="page-tag">01 · Página Principal</div>
       <h1 class="page-title">Home</h1>
@@ -1278,12 +1038,12 @@
     <div class="page-nav">
       <button class="nav-btn" onclick="goTo(0)">← Visão Geral</button>
       <span class="page-indicator">Página <strong>1</strong> de 6</span>
-      <button class="nav-btn next" onclick="goTo(3)">Jornadas →</button>
+      <button class="nav-btn next" onclick="goTo(2)">Jornadas →</button>
     </div>
   </section>
 
   <!-- ══ PAGE 2: JORNADAS ══ -->
-  <section class="page" id="page-3">
+  <section class="page" id="page-2">
     <div class="page-hero">
       <div class="page-tag">02 · Jornadas</div>
       <h1 class="page-title">Jornadas</h1>
@@ -1342,14 +1102,14 @@
 
     <div class="divider"></div>
     <div class="page-nav">
-      <button class="nav-btn" onclick="goTo(2)">← Home</button>
+      <button class="nav-btn" onclick="goTo(1)">← Home</button>
       <span class="page-indicator">Página <strong>2</strong> de 6</span>
-      <button class="nav-btn next" onclick="goTo(4)">Minha Galeria →</button>
+      <button class="nav-btn next" onclick="goTo(3)">Minha Galeria →</button>
     </div>
   </section>
 
   <!-- ══ PAGE 3: MINHA GALERIA ══ -->
-  <section class="page" id="page-4">
+  <section class="page" id="page-3">
     <div class="page-hero">
       <div class="page-tag">03 · Minha Galeria</div>
       <h1 class="page-title">Minha Galeria</h1>
@@ -1395,14 +1155,14 @@
 
     <div class="divider"></div>
     <div class="page-nav">
-      <button class="nav-btn" onclick="goTo(3)">← Jornadas</button>
+      <button class="nav-btn" onclick="goTo(2)">← Jornadas</button>
       <span class="page-indicator">Página <strong>3</strong> de 6</span>
-      <button class="nav-btn next" onclick="goTo(5)">Galeria de Projetos →</button>
+      <button class="nav-btn next" onclick="goTo(4)">Galeria de Projetos →</button>
     </div>
   </section>
 
   <!-- ══ PAGE 4: GALERIA DE PROJETOS ══ -->
-  <section class="page" id="page-5">
+  <section class="page" id="page-4">
     <div class="page-hero">
       <div class="page-tag">04 · Galeria de Projetos</div>
       <h1 class="page-title">Galeria de Projetos</h1>
@@ -1470,14 +1230,14 @@
 
     <div class="divider"></div>
     <div class="page-nav">
-      <button class="nav-btn" onclick="goTo(4)">← Minha Galeria</button>
+      <button class="nav-btn" onclick="goTo(3)">← Minha Galeria</button>
       <span class="page-indicator">Página <strong>4</strong> de 6</span>
-      <button class="nav-btn next" onclick="goTo(6)">Galeria de Eventos →</button>
+      <button class="nav-btn next" onclick="goTo(5)">Galeria de Eventos →</button>
     </div>
   </section>
 
   <!-- ══ PAGE 5: GALERIA DE EVENTOS ══ -->
-  <section class="page" id="page-6">
+  <section class="page" id="page-5">
     <div class="page-hero">
       <div class="page-tag">05 · Galeria de Eventos</div>
       <h1 class="page-title">Galeria de Eventos</h1>
@@ -1525,14 +1285,14 @@
 
     <div class="divider"></div>
     <div class="page-nav">
-      <button class="nav-btn" onclick="goTo(5)">← Galeria de Projetos</button>
+      <button class="nav-btn" onclick="goTo(4)">← Galeria de Projetos</button>
       <span class="page-indicator">Página <strong>5</strong> de 6</span>
-      <button class="nav-btn next" onclick="goTo(7)">Performance dos Jogadores →</button>
+      <button class="nav-btn next" onclick="goTo(6)">Performance dos Jogadores →</button>
     </div>
   </section>
 
   <!-- ══ PAGE 6: PERFORMANCE DOS JOGADORES ══ -->
-  <section class="page" id="page-7">
+  <section class="page" id="page-6">
     <div class="page-hero">
       <div class="page-tag">06 · Performance dos Jogadores</div>
       <h1 class="page-title">Performance dos Jogadores</h1>
@@ -1578,7 +1338,7 @@
 
     <div class="divider"></div>
     <div class="page-nav">
-      <button class="nav-btn" onclick="goTo(6)">← Galeria de Eventos</button>
+      <button class="nav-btn" onclick="goTo(5)">← Galeria de Eventos</button>
       <span class="page-indicator">Página <strong>6</strong> de 6</span>
       <button class="nav-btn next" onclick="goTo(0)" style="background: var(--green); border-color: var(--green);">↺ Recomeçar</button>
     </div>
@@ -1586,7 +1346,7 @@
 
 
   <!-- ══ PAGE 7: PAINEL MASTER ══ -->
-  <section class="page" id="page-8">
+  <section class="page" id="page-7">
     <div class="page-hero">
       <div class="page-tag" style="background:rgba(40,88,160,0.1); border-color:rgba(40,88,160,0.3); color:var(--blue);">07 · Área Administrativa</div>
       <h1 class="page-title">Painel Master</h1>
@@ -1632,14 +1392,14 @@
 
     <div class="divider"></div>
     <div class="page-nav">
-      <button class="nav-btn" onclick="goTo(7)">← Performance dos Jogadores</button>
+      <button class="nav-btn" onclick="goTo(6)">← Performance dos Jogadores</button>
       <span class="page-indicator">Área Administrativa <strong>1</strong> de 2</span>
-      <button class="nav-btn next" onclick="goTo(9)">Painel do Produtor / Gestor →</button>
+      <button class="nav-btn next" onclick="goTo(8)">Painel do Produtor / Gestor →</button>
     </div>
   </section>
 
   <!-- ══ PAGE 8: PAINEL PRODUTOR / GESTOR ══ -->
-  <section class="page" id="page-9">
+  <section class="page" id="page-8">
     <div class="page-hero">
       <div class="page-tag" style="background:rgba(40,88,160,0.1); border-color:rgba(40,88,160,0.3); color:var(--blue);">08 · Área Administrativa</div>
       <h1 class="page-title">Painel do Produtor Cultural / Gestor Corporativo</h1>
@@ -1685,7 +1445,7 @@
 
     <div class="divider"></div>
     <div class="page-nav">
-      <button class="nav-btn" onclick="goTo(8)">← Painel Master</button>
+      <button class="nav-btn" onclick="goTo(7)">← Painel Master</button>
       <span class="page-indicator">Área Administrativa <strong>2</strong> de 2</span>
       <button class="nav-btn next" onclick="goTo(0)" style="background:var(--teal); border-color:var(--teal);">↺ Voltar ao Início</button>
     </div>
@@ -1693,7 +1453,7 @@
 
 
   <!-- ══ PAGE 10: FLUXO DA JORNADA ══ -->
-  <section class="page" id="page-10">
+  <section class="page" id="page-9">
     <div class="page-hero">
       <div class="page-tag">09 · Como Funciona o Projeto</div>
       <h1 class="page-title">Fluxo da Jornada</h1>
@@ -1703,197 +1463,119 @@
     <div class="page-body single" style="max-width:960px; margin:0 auto;">
       <div>
         <div style="margin-bottom:40px;">
-          <svg style="width:100%;height:auto;display:block;border-radius:12px;" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 198.4 158">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" style="width:100%;height:auto;display:block;font-family:'Montserrat',sans-serif;">
   <defs>
-    <style>
-      .fl-cls-1 {
-        opacity: .2;
-      }
-
-      .fl-cls-1, .fl-cls-2, .fl-cls-3, .fl-cls-4, .fl-cls-5, .fl-cls-6, .fl-cls-7, .fl-cls-8, .fl-cls-9, .fl-cls-10, .fl-cls-11, .fl-cls-12, .fl-cls-13, .fl-cls-14, .fl-cls-15, .fl-cls-16, .fl-cls-17 {
-        isolation: isolate;
-      }
-
-      .fl-cls-1, .fl-cls-18, .fl-cls-6, .fl-cls-10, .fl-cls-19, .fl-cls-15, .fl-cls-16, .fl-cls-17 {
-        stroke-width: 0px;
-      }
-
-      .fl-cls-1, .fl-cls-7, .fl-cls-8, .fl-cls-10, .fl-cls-14, .fl-cls-15 {
-        fill: #1aad8a;
-      }
-
-      .fl-cls-2 {
-        font-size: 4.1px;
-      }
-
-      .fl-cls-2, .fl-cls-5, .fl-cls-13 {
-        fill: #fff;
-        font-family: Helvetica-Bold, Helvetica;
-        font-weight: 700;
-      }
-
-      .fl-cls-3, .fl-cls-18, .fl-cls-6, .fl-cls-9, .fl-cls-16 {
-        fill: none;
-      }
-
-      .fl-cls-3, .fl-cls-20, .fl-cls-9, .fl-cls-21, .fl-cls-22 {
-        stroke-miterlimit: 1.2;
-      }
-
-      .fl-cls-3, .fl-cls-9 {
-        stroke-width: .1px;
-      }
-
-      .fl-cls-3, .fl-cls-9, .fl-cls-21 {
-        stroke: #1aad8a;
-      }
-
-      .fl-cls-3, .fl-cls-10 {
-        opacity: .2;
-      }
-
-      .fl-cls-4 {
-        fill: #7ecfba;
-        font-size: 2.9px;
-      }
-
-      .fl-cls-4, .fl-cls-7, .fl-cls-8, .fl-cls-11, .fl-cls-12, .fl-cls-14 {
-        font-family: Helvetica, Helvetica;
-      }
-
-      .fl-cls-5, .fl-cls-14 {
-        font-size: 3.5px;
-      }
-
-      .fl-cls-6 {
-        opacity: .6;
-      }
-
-      .fl-cls-7, .fl-cls-8, .fl-cls-11, .fl-cls-12 {
-        font-size: 2.6px;
-      }
-
-      .fl-cls-7, .fl-cls-16 {
-        opacity: .7;
-      }
-
-      .fl-cls-8 {
-        opacity: .4;
-      }
-
-      .fl-cls-20 {
-        stroke-width: .6px;
-      }
-
-      .fl-cls-20, .fl-cls-22 {
-        fill: #062e26;
-        stroke: #22d3a5;
-      }
-
-      .fl-cls-9 {
-        opacity: .2;
-      }
-
-      .fl-cls-21 {
-        fill: #0a3d35;
-        stroke-width: .3px;
-      }
-
-      .fl-cls-19 {
-        fill: #0d2b2b;
-      }
-
-      .fl-cls-11 {
-        opacity: .8;
-      }
-
-      .fl-cls-11, .fl-cls-17 {
-        fill: #22d3a5;
-      }
-
-      .fl-cls-12 {
-        fill: #4a9a85;
-      }
-
-      .fl-cls-13 {
-        font-size: 5.8px;
-      }
-
-      .fl-cls-15 {
-        opacity: .3;
-      }
-
-      .fl-cls-22 {
-        stroke-width: .4px;
-      }
-
-      .fl-cls-17 {
-        opacity: .5;
-      }
-    </style>
+    <marker id="arr-b" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#2858a0"/>
+    </marker>
+    <marker id="arr-t" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#468182"/>
+    </marker>
   </defs>
-  <rect class="fl-cls-19" x="0" y="-.2" width="198.4" height="157.6" rx="4.7" ry="4.7"/>
-  <circle class="fl-cls-15" cx="175.1" cy="8.5" r=".7"/>
-  <circle class="fl-cls-1" cx="183.8" cy="14.3" r=".6"/>
-  <circle class="fl-cls-10" cx="191.1" cy="10" r=".6"/>
-  <line class="fl-cls-3" x1="175.1" y1="8.5" x2="183.8" y2="14.3"/>
-  <line class="fl-cls-9" x1="183.8" y1="14.3" x2="191.1" y2="10"/>
-  <text class="fl-cls-14" transform="translate(10.5 9.7)"><tspan x="0" y="0">Como funciona</tspan></text>
-  <text class="fl-cls-13" transform="translate(10.5 16.7)"><tspan x="0" y="0">The Blue City</tspan></text>
-  <rect class="fl-cls-21" x="10.5" y="23.7" width="49.6" height="25.1" rx="2.9" ry="2.9"/>
-  <text class="fl-cls-7" transform="translate(11.7 27.5)"><tspan x="0" y="0">01</tspan></text>
-  <text class="fl-cls-5" transform="translate(24 30.7)"><tspan x="0" y="0">Jogo lançado</tspan></text>
-  <text class="fl-cls-4" transform="translate(19.1 35.4)"><tspan x="0" y="0">Plataforma The Blue City</tspan></text>
-  <text class="fl-cls-12" transform="translate(23.1 39.7)"><tspan x="0" y="0">ex: Termômetro Zero</tspan></text>
-  <text class="fl-cls-12" transform="translate(28.4 44.1)"><tspan x="0" y="0">Palmas, TO</tspan></text>
-  <path class="fl-cls-18" d=""/>
-  <path class="fl-cls-18" d="M67,35.4l1.3.8-1.3.8"/>
-  <path class="fl-cls-16" d="M68.3,36.2" marker-end="url(#arrow)"/>
-  <rect class="fl-cls-21" x="68.9" y="23.7" width="49.6" height="25.1" rx="2.9" ry="2.9"/>
-  <text class="fl-cls-7" transform="translate(70 27.5)"><tspan x="0" y="0">02</tspan></text>
-  <text class="fl-cls-5" transform="translate(82.1 30.7)"><tspan x="0" y="0">Alunos jogam</tspan></text>
-  <text class="fl-cls-4" transform="translate(84.1 35.4)"><tspan x="0" y="0">Durante 1 mês</tspan></text>
-  <text class="fl-cls-12" transform="translate(84 39.7)"><tspan x="0" y="0">escolas técnicas</tspan></text>
-  <text class="fl-cls-12" transform="translate(88.2 44.1)"><tspan x="0" y="0">da região</tspan></text>
-  <path class="fl-cls-18" d=""/>
-  <path class="fl-cls-18" d="M125.4,35.4l1.3.8-1.3.8"/>
-  <path class="fl-cls-16" d="M126.6,36.2" marker-end="url(#arrow)"/>
-  <rect class="fl-cls-21" x="127.2" y="23.7" width="49.6" height="25.1" rx="2.9" ry="2.9"/>
-  <text class="fl-cls-7" transform="translate(128.4 27.5)"><tspan x="0" y="0">03</tspan></text>
-  <text class="fl-cls-5" transform="translate(142 30.7)"><tspan x="0" y="0">Certificação</tspan></text>
-  <text class="fl-cls-4" transform="translate(139.5 35.4)"><tspan x="0" y="0">Badges + NFT final</tspan></text>
-  <text class="fl-cls-12" transform="translate(143.6 39.7)"><tspan x="0" y="0">em blockchain</tspan></text>
-  <text class="fl-cls-12" transform="translate(139.9 44.1)"><tspan x="0" y="0">vinculado à empresa</tspan></text>
-  <path class="fl-cls-18" d=""/>
-  <path class="fl-cls-18" d="M150.8,56.7l1.3.8-1.3.8"/>
-  <path class="fl-cls-6" d="M152,57.5" marker-end="url(#arrow)"/>
-  <rect class="fl-cls-22" x="108" y="58.1" width="68.9" height="25.1" rx="2.9" ry="2.9"/>
-  <text class="fl-cls-11" transform="translate(109.1 61.9)"><tspan x="0" y="0">04</tspan></text>
-  <text class="fl-cls-5" transform="translate(123.9 65.1)"><tspan x="0" y="0">Missão no mundo real</tspan></text>
-  <text class="fl-cls-4" transform="translate(128.6 69.8)"><tspan x="0" y="0">Alunos enviam ideias</tspan></text>
-  <text class="fl-cls-12" transform="translate(130.4 74.2)"><tspan x="0" y="0">endereçando o tema</tspan></text>
-  <text class="fl-cls-12" transform="translate(130.6 78.5)"><tspan x="0" y="0">ex: redução de GEE</tspan></text>
-  <path class="fl-cls-18" d=""/>
-  <path class="fl-cls-18" d="M83.4,69.8l1.3.8-1.3.8"/>
-  <path class="fl-cls-16" d="M84.6,70.7" marker-end="url(#arrow)"/>
-  <rect class="fl-cls-21" x="23.9" y="58.1" width="59.5" height="25.1" rx="2.9" ry="2.9"/>
-  <text class="fl-cls-7" transform="translate(25.1 61.9)"><tspan x="0" y="0">05</tspan></text>
-  <text class="fl-cls-5" transform="translate(42 65.1)"><tspan x="0" y="0">Artistas criam</tspan></text>
-  <text class="fl-cls-4" transform="translate(42.2 69.8)"><tspan x="0" y="0">a partir das ideias</tspan></text>
-  <text class="fl-cls-12" transform="translate(44.6 74.2)"><tspan x="0" y="0">peças artísticas</tspan></text>
-  <text class="fl-cls-12" transform="translate(44.8 78.5)"><tspan x="0" y="0">para exposição</tspan></text>
-  <path class="fl-cls-18" d=""/>
-  <path class="fl-cls-18" d="M52.4,91.1l1.3.8-1.3.8"/>
-  <path class="fl-cls-16" d="M53.7,92" marker-end="url(#arrow)"/>
-  <rect class="fl-cls-20" x="10.5" y="92.5" width="176.2" height="25.1" rx="3.5" ry="3.5"/>
-  <circle class="fl-cls-17" cx="18.7" cy="105.1" r=".9"/>
-  <circle class="fl-cls-17" cx="180.3" cy="105.1" r=".9"/>
-  <text class="fl-cls-11" transform="translate(11.7 96.6)"><tspan x="0" y="0">06</tspan></text>
-  <text class="fl-cls-2" transform="translate(67.3 102.5)"><tspan x="0" y="0">Exposição no entorno da escola</tspan></text>
-  <text class="fl-cls-4" transform="translate(69.8 107.7)"><tspan x="0" y="0">Arte + sustentabilidade numa mostra pública</tspan></text>
-  <text class="fl-cls-12" transform="translate(78.6 112.7)"><tspan x="0" y="0">ex: Centro Cultural de Palmas, TO</tspan></text>
-  <text class="fl-cls-8" transform="translate(10.5 150.9)"><tspan x="0" y="0">hello@thebluecity.app</tspan></text>
-  <text class="fl-cls-8" transform="translate(164.2 150.9)"><tspan x="0" y="0">www.thebluecity.app</tspan></text>
+
+  <!-- Background -->
+  <rect width="960" height="560" fill="#ffffff" rx="16"/>
+
+  <!-- Title -->
+  <text x="480" y="42" text-anchor="middle" font-size="18" font-weight="700" fill="#1a2e3b">Como Funciona a Jornada</text>
+  <line x1="340" y1="52" x2="620" y2="52" stroke="#5fb670" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- ══ ROW 1 ══ -->
+
+  <!-- 01 Jogo Lançado -->
+  <rect x="30" y="72" width="260" height="130" rx="10" fill="#f4f8fc" stroke="#2858a0" stroke-width="1.5"/>
+  <rect x="30" y="72" width="260" height="5" rx="5" fill="#2858a0"/>
+  <circle cx="62" cy="104" r="17" fill="#2858a0"/>
+  <text x="62" y="109" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">01</text>
+  <text x="90" y="100" font-size="12" font-weight="700" fill="#2858a0">Jogo Lançado</text>
+  <text x="90" y="116" font-size="10" font-weight="600" fill="#468182">Plataforma The Blue City</text>
+  <line x1="46" y1="130" x2="276" y2="130" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="46" y="148" font-size="9.5" fill="#6b7f95">Missão temática publicada com</text>
+  <text x="46" y="163" font-size="9.5" fill="#6b7f95">desafios e objetivos ESG definidos</text>
+  <text x="46" y="178" font-size="9.5" fill="#6b7f95">pela empresa ou escola parceira</text>
+
+  <!-- Arrow 01→02 -->
+  <line x1="294" y1="137" x2="336" y2="137" stroke="#2858a0" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-b)"/>
+
+  <!-- 02 Alunos Jogam -->
+  <rect x="340" y="72" width="260" height="130" rx="10" fill="#f4f8fc" stroke="#2858a0" stroke-width="1.5"/>
+  <rect x="340" y="72" width="260" height="5" rx="5" fill="#2858a0"/>
+  <circle cx="372" cy="104" r="17" fill="#2858a0"/>
+  <text x="372" y="109" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">02</text>
+  <text x="400" y="100" font-size="12" font-weight="700" fill="#2858a0">Alunos Jogam</text>
+  <text x="400" y="116" font-size="10" font-weight="600" fill="#468182">Durante 1 mês</text>
+  <line x1="356" y1="130" x2="586" y2="130" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="356" y="148" font-size="9.5" fill="#6b7f95">Escolas técnicas e empresas</text>
+  <text x="356" y="163" font-size="9.5" fill="#6b7f95">engajam colaboradores na</text>
+  <text x="356" y="178" font-size="9.5" fill="#6b7f95">plataforma The Blue City</text>
+
+  <!-- Arrow 02→03 -->
+  <line x1="604" y1="137" x2="646" y2="137" stroke="#2858a0" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-b)"/>
+
+  <!-- 03 Certificação -->
+  <rect x="650" y="72" width="280" height="130" rx="10" fill="#f4f8fc" stroke="#2858a0" stroke-width="1.5"/>
+  <rect x="650" y="72" width="280" height="5" rx="5" fill="#2858a0"/>
+  <circle cx="682" cy="104" r="17" fill="#2858a0"/>
+  <text x="682" y="109" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">03</text>
+  <text x="710" y="100" font-size="12" font-weight="700" fill="#2858a0">Certificação</text>
+  <text x="710" y="116" font-size="10" font-weight="600" fill="#468182">Badges + NFT em blockchain</text>
+  <line x1="666" y1="130" x2="916" y2="130" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="666" y="148" font-size="9.5" fill="#6b7f95">Certificado verificável e</text>
+  <text x="666" y="163" font-size="9.5" fill="#6b7f95">compartilhável no LinkedIn,</text>
+  <text x="666" y="178" font-size="9.5" fill="#6b7f95">vinculado à empresa parceira</text>
+
+  <!-- Arrow 03↓04 -->
+  <line x1="790" y1="206" x2="790" y2="248" stroke="#468182" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-t)"/>
+
+  <!-- ══ ROW 2 ══ -->
+
+  <!-- 04 Missão Mundo Real (highlighted) -->
+  <rect x="430" y="256" width="500" height="140" rx="10" fill="#eaf4ea" stroke="#5fb670" stroke-width="2"/>
+  <rect x="430" y="256" width="500" height="5" rx="5" fill="#5fb670"/>
+  <circle cx="464" cy="290" r="17" fill="#5fb670"/>
+  <text x="464" y="295" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">04</text>
+  <text x="492" y="286" font-size="12" font-weight="700" fill="#38a349">Missão no Mundo Real</text>
+  <text x="492" y="302" font-size="10" font-weight="600" fill="#468182">Alunos enviam ideias e projetos</text>
+  <line x1="446" y1="314" x2="916" y2="314" stroke="#c8e6c9" stroke-width="1"/>
+  <text x="446" y="332" font-size="9.5" fill="#6b7f95">Endereçando o tema da jornada</text>
+  <text x="446" y="347" font-size="9.5" fill="#6b7f95">ex: redução de gases de efeito estufa</text>
+  <text x="446" y="362" font-size="9.5" fill="#6b7f95">ex: mobilidade urbana sustentável</text>
+  <text x="446" y="380" font-size="9" font-weight="700" fill="#5fb670">★  Ponto de conexão: virtual → real</text>
+
+  <!-- Arrow 04←05 -->
+  <line x1="426" y1="326" x2="384" y2="326" stroke="#468182" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-t)"/>
+
+  <!-- 05 Artistas Criam -->
+  <rect x="30" y="256" width="350" height="140" rx="10" fill="#f4f8fc" stroke="#468182" stroke-width="1.5"/>
+  <rect x="30" y="256" width="350" height="5" rx="5" fill="#468182"/>
+  <circle cx="62" cy="290" r="17" fill="#468182"/>
+  <text x="62" y="295" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">05</text>
+  <text x="90" y="286" font-size="12" font-weight="700" fill="#468182">Artistas Criam</text>
+  <text x="90" y="302" font-size="10" font-weight="600" fill="#468182">A partir das ideias dos alunos</text>
+  <line x1="46" y1="314" x2="366" y2="314" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="46" y="332" font-size="9.5" fill="#6b7f95">Peças artísticas são produzidas</text>
+  <text x="46" y="347" font-size="9.5" fill="#6b7f95">para compor a exposição pública</text>
+  <text x="46" y="362" font-size="9.5" fill="#6b7f95">no entorno da escola ou empresa</text>
+
+  <!-- Arrow 05↓06 -->
+  <line x1="205" y1="400" x2="205" y2="432" stroke="#468182" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-t)"/>
+
+  <!-- ══ ROW 3 ══ -->
+
+  <!-- 06 Exposição Pública -->
+  <rect x="30" y="440" width="900" height="100" rx="10" fill="#1a2e3b" stroke="#2858a0" stroke-width="1.5"/>
+  <rect x="30" y="440" width="900" height="5" rx="5" fill="#2858a0"/>
+  <circle cx="70" cy="476" r="19" fill="#5fb670"/>
+  <text x="70" y="481" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">06</text>
+  <text x="102" y="471" font-size="13" font-weight="700" fill="#ffffff">Exposição Pública</text>
+  <text x="102" y="489" font-size="10" font-weight="600" fill="#5fb670">Arte + Sustentabilidade numa mostra no entorno da escola</text>
+  <line x1="46" y1="500" x2="914" y2="500" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <text x="46" y="518" font-size="9" fill="rgba(255,255,255,0.5)">ex: Centro Cultural de Palmas, TO — impacto comunitário mensurável e verificável em blockchain</text>
+
+  <!-- Decorative dots -->
+  <circle cx="898" cy="470" r="5" fill="#5fb670" opacity="0.5"/>
+  <circle cx="882" cy="470" r="3.5" fill="#5fb670" opacity="0.3"/>
+  <circle cx="869" cy="470" r="2" fill="#5fb670" opacity="0.15"/>
 </svg>
         </div>
         <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px;">
@@ -1924,7 +1606,7 @@
 
     <div class="divider"></div>
     <div class="page-nav">
-      <button class="nav-btn" onclick="goTo(9)">← Painel do Produtor / Gestor</button>
+      <button class="nav-btn" onclick="goTo(8)">← Painel do Produtor / Gestor</button>
       <span class="page-indicator">Como Funciona o Projeto</span>
       <button class="nav-btn next" onclick="goTo(0)" style="background:var(--teal); border-color:var(--teal);">↺ Voltar ao Início</button>
     </div>
@@ -1932,23 +1614,27 @@
 
 </main>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  const totalPages = 11;
+<script>
+  const totalPages = 10;
   let current = 0;
 
   function goTo(index) {
-    // hide all
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-
-    // show target
     document.getElementById('page-' + index).classList.add('active');
     document.querySelectorAll('.nav-item')[index].classList.add('active');
-
     current = index;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // keyboard navigation
   document.addEventListener('keydown', e => {
-    if (e.key === 'Arrow
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      if (current < totalPages - 1) goTo(current + 1);
+    }
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      if (current > 0) goTo(current - 1);
+    }
+  });
+</script>
+</body>
+</html>
