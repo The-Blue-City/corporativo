@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Blue City — Briefing da Equipe Criativa</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #2858a0;
+    --teal: #468182;
+    --green: #5fb670;
+    --blue-light: #d6e4f7;
+    --teal-light: #d0e8e8;
+    --green-light: #d4f0d9;
+    --dark: #1a2e3b;
+    --text: #2c3e50;
+    --muted: #6b7f95;
+    --bg: #f4f8fc;
+    --sidebar-w: 280px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    width: var(--sidebar-w);
+    min-height: 100vh;
+    background: #121e33;
+    position: fixed;
+    left: 0; top: 0;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    border-right: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .sidebar-logo {
+    padding: 28px 24px 22px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .sidebar-label {
+    padding: 20px 24px 10px;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .sidebar-label.section {
+    margin-top: 8px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 18px;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 24px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
+    color: rgba(255,255,255,0.55);
+    font-size: 12px;
+    font-weight: 500;
+    user-select: none;
+  }
+
+  .nav-item:hover {
+    background: rgba(255,255,255,0.05);
+    color: rgba(255,255,255,0.85);
+    border-left-color: rgba(95,182,112,0.4);
+  }
+
+  .nav-item.active {
+    background: rgba(0,0,0,0.2);
+    color: #ffffff;
+    border-left-color: var(--green);
+  }
+
+  .nav-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    flex-shrink: 0;
+    transition: background 0.2s;
+  }
+
+  .nav-item.active .nav-dot { background: var(--green); }
+
+  .nav-number {
+    margin-left: auto;
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .nav-item.active .nav-number { color: var(--green); }
+
+  .sidebar-footer {
+    margin-top: auto;
+    padding: 20px 24px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    font-size: 11px;
+    color: #ffffff;
+    line-height: 1.6;
+  }
+
+  /* ── MAIN ── */
+  .main { margin-left: var(--sidebar-w); flex: 1; min-height: 100vh; }
+
+  .page { display: none; min-height: 100vh; animation: fadeIn 0.35s ease; }
+  .page.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── INTRO ── */
+  .intro-hero {
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #295b9c, #90dba3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 64px 80px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .intro-hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--blue), var(--teal), var(--green));
+  }
+
+  .intro-top {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .intro-logo { margin-bottom: 36px; }
+
+  .intro-eyebrow {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(255,255,255,0.85); margin-bottom: 16px;
+  }
+
+  .intro-headline {
+    font-size: 40px; font-weight: 800;
+    color: #ffffff; line-height: 1.2;
+    margin-bottom: 16px; max-width: 680px;
+  }
+
+  .intro-desc {
+    font-size: 16px; color: rgba(255,255,255,0.9);
+    max-width: 520px; line-height: 1.7; margin-bottom: 36px;
+  }
+
+  .intro-start-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 32px;
+    background: rgba(255,255,255,0.2);
+    color: white; border: 2px solid rgba(255,255,255,0.5);
+    border-radius: 8px; font-size: 14px; font-weight: 700;
+    cursor: pointer; transition: all 0.2s;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .intro-start-btn:hover {
+    background: rgba(255,255,255,0.35);
+    border-color: white; transform: translateY(-2px);
+  }
+
+  .intro-chips {
+    display: flex; gap: 8px; flex-wrap: wrap;
+    justify-content: center; max-width: 860px; width: 100%;
+    margin-top: 48px;
+  }
+
+  .prev-chip {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.9);
+    font-size: 12px; font-weight: 600;
+    padding: 6px 14px; border-radius: 20px;
+  }
+
+  /* ── PAGE HERO ── */
+  .page-hero {
+    padding: 48px 60px 40px;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(40,88,160,0.08);
+    position: relative; overflow: hidden;
+  }
+
+  .page-hero::after {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 4px;
+  }
+
+  /* role color accents */
+  .page-hero.role-pesquisadora::after { background: linear-gradient(90deg, #2858a0, #468182); }
+  .page-hero.role-ilustrador::after   { background: linear-gradient(90deg, #468182, #5fb670); }
+  .page-hero.role-gamedesigner::after { background: linear-gradient(90deg, #5fb670, #2858a0); }
+  .page-hero.role-produtor::after     { background: linear-gradient(90deg, #2858a0, #90dba3); }
+
+  .page-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--green-light);
+    border: 1px solid rgba(95,182,112,0.3);
+    color: #38a349; font-size: 11px; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase;
+    padding: 5px 12px; border-radius: 20px; margin-bottom: 14px;
+  }
+
+  .role-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 14px; border-radius: 20px;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.5px; margin-bottom: 14px;
+  }
+
+  .rb-blue  { background: var(--blue-light); color: var(--blue); }
+  .rb-teal  { background: var(--teal-light); color: var(--teal); }
+  .rb-green { background: var(--green-light); color: #38a349; }
+
+  .page-title {
+    font-size: 32px; font-weight: 800;
+    color: var(--dark); line-height: 1.2; margin-bottom: 12px;
+  }
+
+  .page-subtitle {
+    font-size: 15px; color: #1a2e3b;
+    max-width: 640px; line-height: 1.65;
+  }
+
+  /* ── CONTENT ── */
+  .page-body {
+    padding: 44px 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px; align-items: start;
+  }
+
+  .page-body.single { grid-template-columns: 1fr; }
+
+  .content-section { display: flex; flex-direction: column; gap: 20px; }
+
+  .section-heading {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 1.2px; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  .section-heading::after {
+    content: ''; flex: 1; height: 1px;
+    background: rgba(70,129,130,0.2);
+  }
+
+  .feature-card {
+    background: white; border-radius: 12px;
+    padding: 20px 22px;
+    border: 1px solid rgba(40,88,160,0.08);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .feature-card:hover {
+    box-shadow: 0 6px 20px rgba(40,88,160,0.1);
+    transform: translateY(-2px);
+  }
+
+  .feature-card-header {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 10px;
+  }
+
+  .feature-icon {
+    width: 36px; height: 36px; border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; flex-shrink: 0;
+  }
+
+  .fi-blue  { background: var(--blue-light); }
+  .fi-teal  { background: var(--teal-light); }
+  .fi-green { background: var(--green-light); }
+
+  .feature-card h3 { font-size: 14px; font-weight: 700; color: var(--dark); }
+  .feature-card p  { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+  /* deliverable list */
+  .deliverable-list { display: flex; flex-direction: column; gap: 10px; }
+
+  .deliverable-item {
+    display: flex; align-items: flex-start; gap: 12px;
+    background: white; border-radius: 10px; padding: 14px 16px;
+    border: 1px solid rgba(40,88,160,0.08);
+    box-shadow: 0 1px 6px rgba(0,0,0,0.03);
+  }
+
+  .del-num {
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--blue); color: white;
+    font-size: 11px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 1px;
+  }
+
+  .del-num.teal  { background: var(--teal); }
+  .del-num.green { background: var(--green); }
+
+  .del-text strong { font-size: 13px; font-weight: 700; color: var(--dark); display: block; margin-bottom: 3px; }
+  .del-text span   { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+  /* placeholder screen */
+  .placeholder-screen {
+    background: linear-gradient(135deg, var(--blue-light) 0%, var(--teal-light) 100%);
+    border-radius: 14px; padding: 60px 40px; text-align: center;
+    border: 2px dashed rgba(40,88,160,0.2); min-height: 280px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 12px;
+  }
+
+  .placeholder-screen .ph-icon { font-size: 44px; opacity: 0.5; }
+  .placeholder-screen .ph-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--teal); }
+  .placeholder-screen p { font-size: 13px; color: var(--blue); opacity: 0.7; max-width: 220px; line-height: 1.6; }
+
+  /* nav footer */
+  .divider { height: 1px; background: rgba(40,88,160,0.07); margin: 0 60px; }
+
+  .page-nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 60px 36px;
+  }
+
+  .nav-btn {
+    display: flex; align-items: center; gap: 8px;
+    padding: 10px 20px; border-radius: 8px;
+    border: 1.5px solid rgba(40,88,160,0.15);
+    background: white; color: var(--blue);
+    font-size: 13px; font-weight: 600;
+    cursor: pointer; transition: all 0.2s;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .nav-btn:hover { background: var(--blue); color: white; border-color: var(--blue); }
+  .nav-btn:disabled { opacity: 0.3; pointer-events: none; }
+  .nav-btn.next { background: var(--blue); color: white; border-color: var(--blue); }
+  .nav-btn.next:hover { background: var(--dark); border-color: var(--dark); }
+
+  .page-indicator { font-size: 12px; color: var(--muted); font-weight: 500; }
+  .page-indicator strong { color: var(--blue); }
+
+  .img-note {
+    background: rgba(40,88,160,0.06);
+    border: 1.5px dashed rgba(40,88,160,0.2);
+    border-radius: 8px; padding: 10px 14px;
+    font-size: 12px; color: var(--blue);
+    text-align: center; margin-top: 8px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════ SIDEBAR ═══════ -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <svg style="height:32px;width:auto;display:block;" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 218.4 45.6">
+  <defs>
+    <style>
+      .gd-cls-1 {
+        fill: url(#gd-linear-gradient);
+      }
+
+      .gd-cls-1, .gd-cls-2, .gd-cls-3, .gd-cls-4, .gd-cls-5 {
+        stroke-width: 0px;
+      }
+
+      .gd-cls-2 {
+        fill: #000;
+      }
+
+      .gd-cls-3 {
+        fill: #001522;
+      }
+
+      .gd-cls-4 {
+        fill: #0c9ed9;
+      }
+
+      .gd-cls-5 {
+        fill: #fff;
+      }
+    </style>
+    <linearGradient id="gd-linear-gradient" x1="48.8" y1="25.1" x2="211.8" y2="25.1" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#006188"/>
+      <stop offset="1" stop-color="#95cfa0"/>
+    </linearGradient>
+  </defs>
+  <g>
+    <circle class="gd-cls-3" cx="26.1" cy="22.7" r="18.4"/>
+    <g>
+      <rect class="gd-cls-5" x="15.5" y="17.5" width="20.8" height="3.2"/>
+      <path class="gd-cls-4" d="M35,23l-.2.2c-1.3,1.1-2.4,2.1-4.1,2.1s-2.5-.4-4.1-1.3c-2.1-1.1-3.9-1.7-5.6-1.7-2.8,0-4.6,1.6-6,2.9l-.2.2,2,2.4.2-.2c1.3-1.1,2.4-2.1,4.1-2.1s2.5.4,4.1,1.3c2.1,1.1,3.9,1.7,5.6,1.7h0c2.7,0,4.5-1.6,5.9-2.9l.2-.2-2-2.4Z"/>
+    </g>
+  </g>
+  <g>
+    <g>
+      <path class="gd-cls-2" d="M64.5,16.8h-5.7v14.9h-4.3v-14.9h-5.7v-3.8h15.7v3.8Z"/>
+      <path class="gd-cls-2" d="M79.1,31.6h-4.2v-7.6c0-.9-.2-1.5-.6-1.9-.4-.4-.9-.6-1.4-.6s-.7,0-1.1.3c-.4.2-.8.5-1.1.8-.3.4-.6.8-.7,1.2v7.8h-4.2V12.5h4.2v7.9c.5-.8,1.2-1.5,2-1.9.8-.4,1.8-.6,2.8-.6s1.7.2,2.2.5c.6.3,1,.7,1.3,1.2.3.5.5,1,.6,1.7.1.6.2,1.2.2,1.8v8.7Z"/>
+      <path class="gd-cls-2" d="M87.9,31.9c-1.2,0-2.2-.2-3.1-.6s-1.7-.9-2.3-1.5c-.6-.6-1.1-1.4-1.5-2.2-.3-.8-.5-1.7-.5-2.6,0-1.3.3-2.5.9-3.6.6-1.1,1.4-1.9,2.5-2.6s2.4-1,4-1,2.9.3,4,1,1.9,1.5,2.5,2.6c.6,1.1.9,2.2.9,3.5s0,.5,0,.7,0,.4,0,.6h-10.2c0,.6.2,1.1.5,1.5.3.4.7.7,1.1.9.5.2.9.3,1.4.3s1.2-.1,1.8-.4c.6-.3.9-.7,1.1-1.2l3.6,1c-.4.7-.8,1.3-1.5,1.9-.6.5-1.4,1-2.2,1.3-.9.3-1.8.5-2.9.5ZM84.9,23.5h6c0-.6-.2-1-.5-1.5-.3-.4-.6-.7-1.1-1s-.9-.3-1.5-.3-1,.1-1.4.3c-.4.2-.8.5-1.1.9-.3.4-.4.9-.5,1.5Z"/>
+      <path class="gd-cls-2" d="M118,26.8c0,1.1-.3,2-.8,2.7-.6.7-1.3,1.2-2.3,1.6-1,.4-2,.5-3.2.5h-9.1V13h10.4c.9,0,1.6.2,2.3.7.6.5,1.1,1.1,1.5,1.8.3.7.5,1.5.5,2.3s-.2,1.7-.7,2.5c-.4.8-1.1,1.4-2,1.8,1.1.3,1.9.9,2.5,1.7.6.8.9,1.8.9,3.1ZM106.9,16.7v3.9h4.2c.3,0,.6,0,.9-.2.3-.1.5-.4.7-.6.2-.3.2-.6.2-1.1s0-.8-.2-1.1c-.1-.3-.3-.5-.6-.6-.2-.1-.5-.2-.9-.2h-4.4ZM113.7,26c0-.4,0-.7-.2-1.1-.2-.3-.4-.6-.6-.7s-.6-.3-.9-.3h-4.9v4.1h4.8c.4,0,.7,0,1-.3.3-.2.5-.4.7-.7.2-.3.2-.6.2-1Z"/>
+      <path class="gd-cls-2" d="M119.7,12.5h4.2v14.3c0,.6.1,1,.3,1.2.2.2.5.4.9.4s.5,0,.8-.1c.3,0,.5-.2.7-.3l.6,3.2c-.5.2-1.1.4-1.8.6-.7.2-1.3.2-1.9.2-1.2,0-2.1-.3-2.8-1-.6-.6-1-1.6-1-2.7v-15.7Z"/>
+      <path class="gd-cls-2" d="M127.9,26.8v-8.8h4.2v7.8c0,.8.2,1.4.5,1.9.3.4.8.7,1.4.7s.8,0,1.1-.2c.4-.1.7-.3,1-.6s.6-.7.9-1.1v-8.4h4.2v9c0,.4,0,.7.2.9.1.2.4.3.7.3v3.5c-.4,0-.7.1-1,.2s-.5,0-.8,0c-.7,0-1.3-.1-1.8-.4-.4-.3-.7-.7-.8-1.3v-.8c-.7.9-1.5,1.6-2.4,2-.9.4-2,.6-3.2.6s-2.5-.4-3.2-1.3c-.7-.9-1.1-2.2-1.1-3.8Z"/>
+      <path class="gd-cls-2" d="M150.6,31.9c-1.2,0-2.2-.2-3.1-.6-.9-.4-1.7-.9-2.3-1.5-.6-.6-1.1-1.4-1.5-2.2-.3-.8-.5-1.7-.5-2.6,0-1.3.3-2.5.9-3.6.6-1.1,1.4-1.9,2.5-2.6,1.1-.7,2.4-1,4-1s2.9.3,4,1c1.1.6,1.9,1.5,2.5,2.6.6,1.1.9,2.2.9,3.5s0,.5,0,.7,0,.4,0,.6h-10.2c0,.6.2,1.1.5,1.5s.7.7,1.1.9c.5.2.9.3,1.4.3s1.2-.1,1.8-.4c.6-.3.9-.7,1.1-1.2l3.6,1c-.4.7-.8,1.3-1.5,1.9-.6.5-1.4,1-2.2,1.3-.9.3-1.8.5-2.9.5ZM147.5,23.5h6c0-.6-.2-1-.5-1.5-.3-.4-.6-.7-1.1-1-.4-.2-.9-.3-1.5-.3s-1,.1-1.4.3c-.4.2-.8.5-1.1.9-.3.4-.4.9-.5,1.5Z"/>
+      <path class="gd-cls-2" d="M164.2,22.1c0-1.1.2-2.2.6-3.3.4-1.1,1-2.1,1.8-3,.8-.9,1.8-1.6,3-2.2,1.2-.5,2.5-.8,3.9-.8s3.3.4,4.6,1.1,2.3,1.7,2.9,2.9l-3.3,2.3c-.3-.7-.6-1.2-1.1-1.6-.5-.4-1-.6-1.5-.8-.6-.1-1.1-.2-1.6-.2-.8,0-1.5.2-2.1.5-.6.3-1.1.8-1.5,1.3-.4.5-.7,1.1-.9,1.8-.2.7-.3,1.3-.3,2s.1,1.5.4,2.2c.2.7.6,1.3,1,1.8.4.5.9.9,1.6,1.2.6.3,1.3.5,2,.5s1.1,0,1.6-.2c.5-.2,1-.4,1.5-.8.5-.4.8-.9,1.1-1.5l3.5,2.1c-.4.9-1,1.7-1.8,2.3-.8.6-1.8,1.1-2.8,1.5s-2.1.5-3.2.5-2.6-.3-3.7-.8c-1.1-.6-2.1-1.3-2.9-2.2-.8-.9-1.5-2-1.9-3.1-.4-1.1-.7-2.3-.7-3.5Z"/>
+      <path class="gd-cls-2" d="M182.5,16.3v-3.8h4.2v3.8h-4.2ZM182.5,31.6v-13.8h4.2v13.8h-4.2Z"/>
+      <path class="gd-cls-2" d="M198,30.9c-.4.2-.8.3-1.2.5-.5.2-.9.3-1.4.4-.5,0-1,.1-1.5.1s-1.3-.1-1.9-.3-1-.6-1.4-1.2-.5-1.2-.5-2.1v-7.1h-1.8v-3.2h1.8v-4.4h4.2v4.4h2.8v3.2h-2.8v5.6c0,.5.1.8.3,1,.2.2.5.3.9.3s.6,0,1-.2c.3-.1.6-.2.9-.3l.8,3.3Z"/>
+      <path class="gd-cls-2" d="M199.1,33.7c.4.1.7.2,1,.2.3,0,.6,0,.8,0,.4,0,.6,0,.9-.2s.4-.4.6-.8c.2-.4.3-.8.5-1.4l-5.2-13.7h4.3l3.2,9.4,2.7-9.4h3.9l-5.3,15.9c-.2.7-.6,1.4-1.1,2-.5.6-1.1,1-1.9,1.4-.7.3-1.5.5-2.4.5-.4,0-.7,0-1.1,0-.4,0-.7-.2-1.1-.3v-3.6Z"/>
+    </g>
+    <g>
+      <path class="gd-cls-1" d="M64.5,16.8h-5.7v14.9h-4.3v-14.9h-5.7v-3.8h15.7v3.8Z"/>
+      <path class="gd-cls-1" d="M79.1,31.6h-4.2v-7.6c0-.9-.2-1.5-.6-1.9-.4-.4-.9-.6-1.4-.6s-.7,0-1.1.3c-.4.2-.8.5-1.1.8-.3.4-.6.8-.7,1.2v7.8h-4.2V12.5h4.2v7.9c.5-.8,1.2-1.5,2-1.9.8-.4,1.8-.6,2.8-.6s1.7.2,2.2.5c.6.3,1,.7,1.3,1.2.3.5.5,1,.6,1.7.1.6.2,1.2.2,1.8v8.7Z"/>
+      <path class="gd-cls-1" d="M87.9,31.9c-1.2,0-2.2-.2-3.1-.6s-1.7-.9-2.3-1.5c-.6-.6-1.1-1.4-1.5-2.2-.3-.8-.5-1.7-.5-2.6,0-1.3.3-2.5.9-3.6.6-1.1,1.4-1.9,2.5-2.6s2.4-1,4-1,2.9.3,4,1,1.9,1.5,2.5,2.6c.6,1.1.9,2.2.9,3.5s0,.5,0,.7,0,.4,0,.6h-10.2c0,.6.2,1.1.5,1.5.3.4.7.7,1.1.9.5.2.9.3,1.4.3s1.2-.1,1.8-.4c.6-.3.9-.7,1.1-1.2l3.6,1c-.4.7-.8,1.3-1.5,1.9-.6.5-1.4,1-2.2,1.3-.9.3-1.8.5-2.9.5ZM84.9,23.5h6c0-.6-.2-1-.5-1.5-.3-.4-.6-.7-1.1-1s-.9-.3-1.5-.3-1,.1-1.4.3c-.4.2-.8.5-1.1.9-.3.4-.4.9-.5,1.5Z"/>
+      <path class="gd-cls-1" d="M118,26.8c0,1.1-.3,2-.8,2.7-.6.7-1.3,1.2-2.3,1.6-1,.4-2,.5-3.2.5h-9.1V13h10.4c.9,0,1.6.2,2.3.7.6.5,1.1,1.1,1.5,1.8.3.7.5,1.5.5,2.3s-.2,1.7-.7,2.5c-.4.8-1.1,1.4-2,1.8,1.1.3,1.9.9,2.5,1.7.6.8.9,1.8.9,3.1ZM106.9,16.7v3.9h4.2c.3,0,.6,0,.9-.2.3-.1.5-.4.7-.6.2-.3.2-.6.2-1.1s0-.8-.2-1.1c-.1-.3-.3-.5-.6-.6-.2-.1-.5-.2-.9-.2h-4.4ZM113.7,26c0-.4,0-.7-.2-1.1-.2-.3-.4-.6-.6-.7s-.6-.3-.9-.3h-4.9v4.1h4.8c.4,0,.7,0,1-.3.3-.2.5-.4.7-.7.2-.3.2-.6.2-1Z"/>
+      <path class="gd-cls-1" d="M119.7,12.5h4.2v14.3c0,.6.1,1,.3,1.2.2.2.5.4.9.4s.5,0,.8-.1c.3,0,.5-.2.7-.3l.6,3.2c-.5.2-1.1.4-1.8.6-.7.2-1.3.2-1.9.2-1.2,0-2.1-.3-2.8-1-.6-.6-1-1.6-1-2.7v-15.7Z"/>
+      <path class="gd-cls-1" d="M127.9,26.8v-8.8h4.2v7.8c0,.8.2,1.4.5,1.9.3.4.8.7,1.4.7s.8,0,1.1-.2c.4-.1.7-.3,1-.6s.6-.7.9-1.1v-8.4h4.2v9c0,.4,0,.7.2.9.1.2.4.3.7.3v3.5c-.4,0-.7.1-1,.2s-.5,0-.8,0c-.7,0-1.3-.1-1.8-.4-.4-.3-.7-.7-.8-1.3v-.8c-.7.9-1.5,1.6-2.4,2-.9.4-2,.6-3.2.6s-2.5-.4-3.2-1.3c-.7-.9-1.1-2.2-1.1-3.8Z"/>
+      <path class="gd-cls-1" d="M150.6,31.9c-1.2,0-2.2-.2-3.1-.6-.9-.4-1.7-.9-2.3-1.5-.6-.6-1.1-1.4-1.5-2.2-.3-.8-.5-1.7-.5-2.6,0-1.3.3-2.5.9-3.6.6-1.1,1.4-1.9,2.5-2.6,1.1-.7,2.4-1,4-1s2.9.3,4,1c1.1.6,1.9,1.5,2.5,2.6.6,1.1.9,2.2.9,3.5s0,.5,0,.7,0,.4,0,.6h-10.2c0,.6.2,1.1.5,1.5s.7.7,1.1.9c.5.2.9.3,1.4.3s1.2-.1,1.8-.4c.6-.3.9-.7,1.1-1.2l3.6,1c-.4.7-.8,1.3-1.5,1.9-.6.5-1.4,1-2.2,1.3-.9.3-1.8.5-2.9.5ZM147.5,23.5h6c0-.6-.2-1-.5-1.5-.3-.4-.6-.7-1.1-1-.4-.2-.9-.3-1.5-.3s-1,.1-1.4.3c-.4.2-.8.5-1.1.9-.3.4-.4.9-.5,1.5Z"/>
+      <path class="gd-cls-1" d="M164.2,22.1c0-1.1.2-2.2.6-3.3.4-1.1,1-2.1,1.8-3,.8-.9,1.8-1.6,3-2.2,1.2-.5,2.5-.8,3.9-.8s3.3.4,4.6,1.1,2.3,1.7,2.9,2.9l-3.3,2.3c-.3-.7-.6-1.2-1.1-1.6-.5-.4-1-.6-1.5-.8-.6-.1-1.1-.2-1.6-.2-.8,0-1.5.2-2.1.5-.6.3-1.1.8-1.5,1.3-.4.5-.7,1.1-.9,1.8-.2.7-.3,1.3-.3,2s.1,1.5.4,2.2c.2.7.6,1.3,1,1.8.4.5.9.9,1.6,1.2.6.3,1.3.5,2,.5s1.1,0,1.6-.2c.5-.2,1-.4,1.5-.8.5-.4.8-.9,1.1-1.5l3.5,2.1c-.4.9-1,1.7-1.8,2.3-.8.6-1.8,1.1-2.8,1.5s-2.1.5-3.2.5-2.6-.3-3.7-.8c-1.1-.6-2.1-1.3-2.9-2.2-.8-.9-1.5-2-1.9-3.1-.4-1.1-.7-2.3-.7-3.5Z"/>
+      <path class="gd-cls-1" d="M182.5,16.3v-3.8h4.2v3.8h-4.2ZM182.5,31.6v-13.8h4.2v13.8h-4.2Z"/>
+      <path class="gd-cls-1" d="M198,30.9c-.4.2-.8.3-1.2.5-.5.2-.9.3-1.4.4-.5,0-1,.1-1.5.1s-1.3-.1-1.9-.3-1-.6-1.4-1.2-.5-1.2-.5-2.1v-7.1h-1.8v-3.2h1.8v-4.4h4.2v4.4h2.8v3.2h-2.8v5.6c0,.5.1.8.3,1,.2.2.5.3.9.3s.6,0,1-.2c.3-.1.6-.2.9-.3l.8,3.3Z"/>
+      <path class="gd-cls-1" d="M199.1,33.7c.4.1.7.2,1,.2.3,0,.6,0,.8,0,.4,0,.6,0,.9-.2s.4-.4.6-.8c.2-.4.3-.8.5-1.4l-5.2-13.7h4.3l3.2,9.4,2.7-9.4h3.9l-5.3,15.9c-.2.7-.6,1.4-1.1,2-.5.6-1.1,1-1.9,1.4-.7.3-1.5.5-2.4.5-.4,0-.7,0-1.1,0-.4,0-.7-.2-1.1-.3v-3.6Z"/>
+    </g>
+  </g>
+</svg>
+  </div>
+
+  <div class="sidebar-label">Visão Geral</div>
+  <div class="nav-item active" onclick="goTo(0)">
+    <span class="nav-dot"></span> Apresentação
+    <span class="nav-number">00</span>
+  </div>
+
+  <div class="sidebar-label section">Equipe Criativa</div>
+  <div class="nav-item" onclick="goTo(1)">
+    <span class="nav-dot"></span> Pesquisadora Cultural
+    <span class="nav-number">01</span>
+  </div>
+  <div class="nav-item" onclick="goTo(2)">
+    <span class="nav-dot"></span> Ilustrador
+    <span class="nav-number">02</span>
+  </div>
+  <div class="nav-item" onclick="goTo(3)">
+    <span class="nav-dot"></span> Game Designer
+    <span class="nav-number">03</span>
+  </div>
+  <div class="nav-item" onclick="goTo(4)">
+    <span class="nav-dot"></span> Produtor Cultural
+    <span class="nav-number">04</span>
+  </div>
+  <div class="nav-item" onclick="goTo(5)">
+    <span class="nav-dot"></span> Mapa Expográfico
+    <span class="nav-number">05</span>
+  </div>
+
+  <div class="sidebar-footer">
+    Briefing da Equipe Criativa<br>
+    © The Blue City
+  </div>
+</aside>
+
+<!-- ═══════ MAIN ═══════ -->
+<main class="main">
+
+  <!-- ══ PAGE 0: INTRO ══ -->
+  <section class="page active" id="page-0">
+    <div class="intro-hero">
+      <div class="intro-top">
+        <div class="intro-logo">
+          <svg style="height:48px;width:auto;display:block;" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 218.4 45.6">
+  <defs>
+    <style>
+      .sb-cls-1 {
+        fill: #000;
+      }
+
+      .sb-cls-1, .sb-cls-2, .sb-cls-3, .sb-cls-4 {
+        stroke-width: 0px;
+      }
+
+      .sb-cls-2 {
+        fill: #001522;
+      }
+
+      .sb-cls-3 {
+        fill: #0c9ed9;
+      }
+
+      .sb-cls-4 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g>
+    <circle class="sb-cls-2" cx="26.1" cy="22.7" r="18.4"/>
+    <g>
+      <rect class="sb-cls-4" x="15.5" y="17.5" width="20.8" height="3.2"/>
+      <path class="sb-cls-3" d="M35,23l-.2.2c-1.3,1.1-2.4,2.1-4.1,2.1s-2.5-.4-4.1-1.3c-2.1-1.1-3.9-1.7-5.6-1.7-2.8,0-4.6,1.6-6,2.9l-.2.2,2,2.4.2-.2c1.3-1.1,2.4-2.1,4.1-2.1s2.5.4,4.1,1.3c2.1,1.1,3.9,1.7,5.6,1.7h0c2.7,0,4.5-1.6,5.9-2.9l.2-.2-2-2.4Z"/>
+    </g>
+  </g>
+  <g>
+    <g>
+      <path class="sb-cls-1" d="M64.5,16.8h-5.7v14.9h-4.3v-14.9h-5.7v-3.8h15.7v3.8Z"/>
+      <path class="sb-cls-1" d="M79.1,31.6h-4.2v-7.6c0-.9-.2-1.5-.6-1.9-.4-.4-.9-.6-1.4-.6s-.7,0-1.1.3c-.4.2-.8.5-1.1.8-.3.4-.6.8-.7,1.2v7.8h-4.2V12.5h4.2v7.9c.5-.8,1.2-1.5,2-1.9.8-.4,1.8-.6,2.8-.6s1.7.2,2.2.5c.6.3,1,.7,1.3,1.2.3.5.5,1,.6,1.7.1.6.2,1.2.2,1.8v8.7Z"/>
+      <path class="sb-cls-1" d="M87.9,31.9c-1.2,0-2.2-.2-3.1-.6s-1.7-.9-2.3-1.5c-.6-.6-1.1-1.4-1.5-2.2-.3-.8-.5-1.7-.5-2.6,0-1.3.3-2.5.9-3.6.6-1.1,1.4-1.9,2.5-2.6s2.4-1,4-1,2.9.3,4,1,1.9,1.5,2.5,2.6c.6,1.1.9,2.2.9,3.5s0,.5,0,.7,0,.4,0,.6h-10.2c0,.6.2,1.1.5,1.5.3.4.7.7,1.1.9.5.2.9.3,1.4.3s1.2-.1,1.8-.4c.6-.3.9-.7,1.1-1.2l3.6,1c-.4.7-.8,1.3-1.5,1.9-.6.5-1.4,1-2.2,1.3-.9.3-1.8.5-2.9.5ZM84.9,23.5h6c0-.6-.2-1-.5-1.5-.3-.4-.6-.7-1.1-1s-.9-.3-1.5-.3-1,.1-1.4.3c-.4.2-.8.5-1.1.9-.3.4-.4.9-.5,1.5Z"/>
+      <path class="sb-cls-1" d="M118,26.8c0,1.1-.3,2-.8,2.7-.6.7-1.3,1.2-2.3,1.6-1,.4-2,.5-3.2.5h-9.1V13h10.4c.9,0,1.6.2,2.3.7.6.5,1.1,1.1,1.5,1.8.3.7.5,1.5.5,2.3s-.2,1.7-.7,2.5c-.4.8-1.1,1.4-2,1.8,1.1.3,1.9.9,2.5,1.7.6.8.9,1.8.9,3.1ZM106.9,16.7v3.9h4.2c.3,0,.6,0,.9-.2.3-.1.5-.4.7-.6.2-.3.2-.6.2-1.1s0-.8-.2-1.1c-.1-.3-.3-.5-.6-.6-.2-.1-.5-.2-.9-.2h-4.4ZM113.7,26c0-.4,0-.7-.2-1.1-.2-.3-.4-.6-.6-.7s-.6-.3-.9-.3h-4.9v4.1h4.8c.4,0,.7,0,1-.3.3-.2.5-.4.7-.7.2-.3.2-.6.2-1Z"/>
+      <path class="sb-cls-1" d="M119.7,12.5h4.2v14.3c0,.6.1,1,.3,1.2.2.2.5.4.9.4s.5,0,.8-.1c.3,0,.5-.2.7-.3l.6,3.2c-.5.2-1.1.4-1.8.6-.7.2-1.3.2-1.9.2-1.2,0-2.1-.3-2.8-1-.6-.6-1-1.6-1-2.7v-15.7Z"/>
+      <path class="sb-cls-1" d="M127.9,26.8v-8.8h4.2v7.8c0,.8.2,1.4.5,1.9.3.4.8.7,1.4.7s.8,0,1.1-.2c.4-.1.7-.3,1-.6s.6-.7.9-1.1v-8.4h4.2v9c0,.4,0,.7.2.9.1.2.4.3.7.3v3.5c-.4,0-.7.1-1,.2s-.5,0-.8,0c-.7,0-1.3-.1-1.8-.4-.4-.3-.7-.7-.8-1.3v-.8c-.7.9-1.5,1.6-2.4,2-.9.4-2,.6-3.2.6s-2.5-.4-3.2-1.3c-.7-.9-1.1-2.2-1.1-3.8Z"/>
+      <path class="sb-cls-1" d="M150.6,31.9c-1.2,0-2.2-.2-3.1-.6-.9-.4-1.7-.9-2.3-1.5-.6-.6-1.1-1.4-1.5-2.2-.3-.8-.5-1.7-.5-2.6,0-1.3.3-2.5.9-3.6.6-1.1,1.4-1.9,2.5-2.6,1.1-.7,2.4-1,4-1s2.9.3,4,1c1.1.6,1.9,1.5,2.5,2.6.6,1.1.9,2.2.9,3.5s0,.5,0,.7,0,.4,0,.6h-10.2c0,.6.2,1.1.5,1.5s.7.7,1.1.9c.5.2.9.3,1.4.3s1.2-.1,1.8-.4c.6-.3.9-.7,1.1-1.2l3.6,1c-.4.7-.8,1.3-1.5,1.9-.6.5-1.4,1-2.2,1.3-.9.3-1.8.5-2.9.5ZM147.5,23.5h6c0-.6-.2-1-.5-1.5-.3-.4-.6-.7-1.1-1-.4-.2-.9-.3-1.5-.3s-1,.1-1.4.3c-.4.2-.8.5-1.1.9-.3.4-.4.9-.5,1.5Z"/>
+      <path class="sb-cls-1" d="M164.2,22.1c0-1.1.2-2.2.6-3.3.4-1.1,1-2.1,1.8-3,.8-.9,1.8-1.6,3-2.2,1.2-.5,2.5-.8,3.9-.8s3.3.4,4.6,1.1,2.3,1.7,2.9,2.9l-3.3,2.3c-.3-.7-.6-1.2-1.1-1.6-.5-.4-1-.6-1.5-.8-.6-.1-1.1-.2-1.6-.2-.8,0-1.5.2-2.1.5-.6.3-1.1.8-1.5,1.3-.4.5-.7,1.1-.9,1.8-.2.7-.3,1.3-.3,2s.1,1.5.4,2.2c.2.7.6,1.3,1,1.8.4.5.9.9,1.6,1.2.6.3,1.3.5,2,.5s1.1,0,1.6-.2c.5-.2,1-.4,1.5-.8.5-.4.8-.9,1.1-1.5l3.5,2.1c-.4.9-1,1.7-1.8,2.3-.8.6-1.8,1.1-2.8,1.5s-2.1.5-3.2.5-2.6-.3-3.7-.8c-1.1-.6-2.1-1.3-2.9-2.2-.8-.9-1.5-2-1.9-3.1-.4-1.1-.7-2.3-.7-3.5Z"/>
+      <path class="sb-cls-1" d="M182.5,16.3v-3.8h4.2v3.8h-4.2ZM182.5,31.6v-13.8h4.2v13.8h-4.2Z"/>
+      <path class="sb-cls-1" d="M198,30.9c-.4.2-.8.3-1.2.5-.5.2-.9.3-1.4.4-.5,0-1,.1-1.5.1s-1.3-.1-1.9-.3-1-.6-1.4-1.2-.5-1.2-.5-2.1v-7.1h-1.8v-3.2h1.8v-4.4h4.2v4.4h2.8v3.2h-2.8v5.6c0,.5.1.8.3,1,.2.2.5.3.9.3s.6,0,1-.2c.3-.1.6-.2.9-.3l.8,3.3Z"/>
+      <path class="sb-cls-1" d="M199.1,33.7c.4.1.7.2,1,.2.3,0,.6,0,.8,0,.4,0,.6,0,.9-.2s.4-.4.6-.8c.2-.4.3-.8.5-1.4l-5.2-13.7h4.3l3.2,9.4,2.7-9.4h3.9l-5.3,15.9c-.2.7-.6,1.4-1.1,2-.5.6-1.1,1-1.9,1.4-.7.3-1.5.5-2.4.5-.4,0-.7,0-1.1,0-.4,0-.7-.2-1.1-.3v-3.6Z"/>
+    </g>
+    <g>
+      <path class="sb-cls-4" d="M64.5,16.8h-5.7v14.9h-4.3v-14.9h-5.7v-3.8h15.7v3.8Z"/>
+      <path class="sb-cls-4" d="M79.1,31.6h-4.2v-7.6c0-.9-.2-1.5-.6-1.9-.4-.4-.9-.6-1.4-.6s-.7,0-1.1.3c-.4.2-.8.5-1.1.8-.3.4-.6.8-.7,1.2v7.8h-4.2V12.5h4.2v7.9c.5-.8,1.2-1.5,2-1.9.8-.4,1.8-.6,2.8-.6s1.7.2,2.2.5c.6.3,1,.7,1.3,1.2.3.5.5,1,.6,1.7.1.6.2,1.2.2,1.8v8.7Z"/>
+      <path class="sb-cls-4" d="M87.9,31.9c-1.2,0-2.2-.2-3.1-.6s-1.7-.9-2.3-1.5c-.6-.6-1.1-1.4-1.5-2.2-.3-.8-.5-1.7-.5-2.6,0-1.3.3-2.5.9-3.6.6-1.1,1.4-1.9,2.5-2.6s2.4-1,4-1,2.9.3,4,1,1.9,1.5,2.5,2.6c.6,1.1.9,2.2.9,3.5s0,.5,0,.7,0,.4,0,.6h-10.2c0,.6.2,1.1.5,1.5.3.4.7.7,1.1.9.5.2.9.3,1.4.3s1.2-.1,1.8-.4c.6-.3.9-.7,1.1-1.2l3.6,1c-.4.7-.8,1.3-1.5,1.9-.6.5-1.4,1-2.2,1.3-.9.3-1.8.5-2.9.5ZM84.9,23.5h6c0-.6-.2-1-.5-1.5-.3-.4-.6-.7-1.1-1s-.9-.3-1.5-.3-1,.1-1.4.3c-.4.2-.8.5-1.1.9-.3.4-.4.9-.5,1.5Z"/>
+      <path class="sb-cls-4" d="M118,26.8c0,1.1-.3,2-.8,2.7-.6.7-1.3,1.2-2.3,1.6-1,.4-2,.5-3.2.5h-9.1V13h10.4c.9,0,1.6.2,2.3.7.6.5,1.1,1.1,1.5,1.8.3.7.5,1.5.5,2.3s-.2,1.7-.7,2.5c-.4.8-1.1,1.4-2,1.8,1.1.3,1.9.9,2.5,1.7.6.8.9,1.8.9,3.1ZM106.9,16.7v3.9h4.2c.3,0,.6,0,.9-.2.3-.1.5-.4.7-.6.2-.3.2-.6.2-1.1s0-.8-.2-1.1c-.1-.3-.3-.5-.6-.6-.2-.1-.5-.2-.9-.2h-4.4ZM113.7,26c0-.4,0-.7-.2-1.1-.2-.3-.4-.6-.6-.7s-.6-.3-.9-.3h-4.9v4.1h4.8c.4,0,.7,0,1-.3.3-.2.5-.4.7-.7.2-.3.2-.6.2-1Z"/>
+      <path class="sb-cls-4" d="M119.7,12.5h4.2v14.3c0,.6.1,1,.3,1.2.2.2.5.4.9.4s.5,0,.8-.1c.3,0,.5-.2.7-.3l.6,3.2c-.5.2-1.1.4-1.8.6-.7.2-1.3.2-1.9.2-1.2,0-2.1-.3-2.8-1-.6-.6-1-1.6-1-2.7v-15.7Z"/>
+      <path class="sb-cls-4" d="M127.9,26.8v-8.8h4.2v7.8c0,.8.2,1.4.5,1.9.3.4.8.7,1.4.7s.8,0,1.1-.2c.4-.1.7-.3,1-.6s.6-.7.9-1.1v-8.4h4.2v9c0,.4,0,.7.2.9.1.2.4.3.7.3v3.5c-.4,0-.7.1-1,.2s-.5,0-.8,0c-.7,0-1.3-.1-1.8-.4-.4-.3-.7-.7-.8-1.3v-.8c-.7.9-1.5,1.6-2.4,2-.9.4-2,.6-3.2.6s-2.5-.4-3.2-1.3c-.7-.9-1.1-2.2-1.1-3.8Z"/>
+      <path class="sb-cls-4" d="M150.6,31.9c-1.2,0-2.2-.2-3.1-.6-.9-.4-1.7-.9-2.3-1.5-.6-.6-1.1-1.4-1.5-2.2-.3-.8-.5-1.7-.5-2.6,0-1.3.3-2.5.9-3.6.6-1.1,1.4-1.9,2.5-2.6,1.1-.7,2.4-1,4-1s2.9.3,4,1c1.1.6,1.9,1.5,2.5,2.6.6,1.1.9,2.2.9,3.5s0,.5,0,.7,0,.4,0,.6h-10.2c0,.6.2,1.1.5,1.5s.7.7,1.1.9c.5.2.9.3,1.4.3s1.2-.1,1.8-.4c.6-.3.9-.7,1.1-1.2l3.6,1c-.4.7-.8,1.3-1.5,1.9-.6.5-1.4,1-2.2,1.3-.9.3-1.8.5-2.9.5ZM147.5,23.5h6c0-.6-.2-1-.5-1.5-.3-.4-.6-.7-1.1-1-.4-.2-.9-.3-1.5-.3s-1,.1-1.4.3c-.4.2-.8.5-1.1.9-.3.4-.4.9-.5,1.5Z"/>
+      <path class="sb-cls-4" d="M164.2,22.1c0-1.1.2-2.2.6-3.3.4-1.1,1-2.1,1.8-3,.8-.9,1.8-1.6,3-2.2,1.2-.5,2.5-.8,3.9-.8s3.3.4,4.6,1.1,2.3,1.7,2.9,2.9l-3.3,2.3c-.3-.7-.6-1.2-1.1-1.6-.5-.4-1-.6-1.5-.8-.6-.1-1.1-.2-1.6-.2-.8,0-1.5.2-2.1.5-.6.3-1.1.8-1.5,1.3-.4.5-.7,1.1-.9,1.8-.2.7-.3,1.3-.3,2s.1,1.5.4,2.2c.2.7.6,1.3,1,1.8.4.5.9.9,1.6,1.2.6.3,1.3.5,2,.5s1.1,0,1.6-.2c.5-.2,1-.4,1.5-.8.5-.4.8-.9,1.1-1.5l3.5,2.1c-.4.9-1,1.7-1.8,2.3-.8.6-1.8,1.1-2.8,1.5s-2.1.5-3.2.5-2.6-.3-3.7-.8c-1.1-.6-2.1-1.3-2.9-2.2-.8-.9-1.5-2-1.9-3.1-.4-1.1-.7-2.3-.7-3.5Z"/>
+      <path class="sb-cls-4" d="M182.5,16.3v-3.8h4.2v3.8h-4.2ZM182.5,31.6v-13.8h4.2v13.8h-4.2Z"/>
+      <path class="sb-cls-4" d="M198,30.9c-.4.2-.8.3-1.2.5-.5.2-.9.3-1.4.4-.5,0-1,.1-1.5.1s-1.3-.1-1.9-.3-1-.6-1.4-1.2-.5-1.2-.5-2.1v-7.1h-1.8v-3.2h1.8v-4.4h4.2v4.4h2.8v3.2h-2.8v5.6c0,.5.1.8.3,1,.2.2.5.3.9.3s.6,0,1-.2c.3-.1.6-.2.9-.3l.8,3.3Z"/>
+      <path class="sb-cls-4" d="M199.1,33.7c.4.1.7.2,1,.2.3,0,.6,0,.8,0,.4,0,.6,0,.9-.2s.4-.4.6-.8c.2-.4.3-.8.5-1.4l-5.2-13.7h4.3l3.2,9.4,2.7-9.4h3.9l-5.3,15.9c-.2.7-.6,1.4-1.1,2-.5.6-1.1,1-1.9,1.4-.7.3-1.5.5-2.4.5-.4,0-.7,0-1.1,0-.4,0-.7-.2-1.1-.3v-3.6Z"/>
+    </g>
+  </g>
+</svg>
+        </div>
+        <div class="intro-eyebrow">Briefing da Equipe Criativa</div>
+        <h1 class="intro-headline">O que cada profissional precisa desenvolver</h1>
+        <p class="intro-desc">Este documento apresenta, para cada membro da equipe criativa, suas responsabilidades, entregáveis e como seu trabalho se conecta com os demais.</p>
+        <button class="intro-start-btn" onclick="goTo(1)">▶&nbsp; Ver Briefings</button>
+      </div>
+      <div class="intro-chips">
+        <span class="prev-chip">01 · Pesquisadora Cultural</span>
+        <span class="prev-chip">02 · Ilustrador</span>
+        <span class="prev-chip">03 · Game Designer</span>
+        <span class="prev-chip">04 · Produtor Cultural</span>
+        <span class="prev-chip">05 · Mapa Expográfico</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PAGE 1: PESQUISADORA CULTURAL ══ -->
+  <section class="page" id="page-1">
+    <div class="page-hero role-pesquisadora">
+      <div class="role-badge rb-blue">🔍 Pesquisadora Cultural</div>
+      <h1 class="page-title">Pesquisa e Desenvolvimento de Personagens</h1>
+      <p class="page-subtitle">[Insira aqui uma descrição geral do papel da pesquisadora no projeto e como sua pesquisa alimenta o trabalho do ilustrador e do game designer.]</p>
+    </div>
+
+    <div class="page-body">
+      <div class="content-section">
+        <div class="section-heading">Entregáveis</div>
+        <div class="deliverable-list">
+          <div class="deliverable-item">
+            <div class="del-num">1</div>
+            <div class="del-text">
+              <strong>[Nome do Personagem 1]</strong>
+              <span>[Insira aqui a descrição do personagem, sua origem cultural, características e referências a pesquisar]</span>
+            </div>
+          </div>
+          <div class="deliverable-item">
+            <div class="del-num">2</div>
+            <div class="del-text">
+              <strong>[Nome do Personagem 2]</strong>
+              <span>[Insira aqui a descrição do personagem, sua origem cultural, características e referências a pesquisar]</span>
+            </div>
+          </div>
+          <div class="deliverable-item">
+            <div class="del-num">3</div>
+            <div class="del-text">
+              <strong>Dossiê de Referências Visuais</strong>
+              <span>[Insira aqui o que se espera neste dossiê: moodboard, referências iconográficas, paleta de cores sugerida, etc.]</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <div class="section-heading">Como funciona</div>
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <div class="feature-icon fi-blue">📚</div>
+            <h3>Pesquisa Aprofundada</h3>
+          </div>
+          <p>[Insira aqui como a pesquisa deve ser conduzida — fontes, metodologia, profundidade esperada]</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <div class="feature-icon fi-teal">🔗</div>
+            <h3>Conexão com o Ilustrador</h3>
+          </div>
+          <p>[Insira aqui como o material produzido será entregue ao ilustrador e quais formatos são esperados]</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <div class="feature-icon fi-green">📅</div>
+            <h3>Prazo e Formato de Entrega</h3>
+          </div>
+          <p>[Insira aqui prazos, formato do documento final e canal de entrega]</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="page-nav">
+      <button class="nav-btn" onclick="goTo(0)">← Apresentação</button>
+      <span class="page-indicator">Equipe Criativa <strong>1</strong> de 4</span>
+      <button class="nav-btn next" onclick="goTo(2)">Ilustrador →</button>
+    </div>
+  </section>
+
+  <!-- ══ PAGE 2: ILUSTRADOR ══ -->
+  <section class="page" id="page-2">
+    <div class="page-hero role-ilustrador">
+      <div class="role-badge rb-teal">🎨 Ilustrador</div>
+      <h1 class="page-title">Desenvolvimento Visual dos Personagens</h1>
+      <p class="page-subtitle">[Insira aqui uma descrição do papel do ilustrador — o que recebe da pesquisadora e o que entrega ao game designer.]</p>
+    </div>
+
+    <div class="page-body">
+      <div class="content-section">
+        <div class="section-heading">O que você recebe</div>
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <div class="feature-icon fi-blue">📄</div>
+            <h3>Dossiê da Pesquisadora Cultural</h3>
+          </div>
+          <p>[Insira aqui o que estará no dossiê entregue pela pesquisadora: descrições, referências visuais, moodboard, paleta sugerida]</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <div class="feature-icon fi-teal">🗂️</div>
+            <h3>Briefing Técnico</h3>
+          </div>
+          <p>[Insira aqui os requisitos técnicos: tamanho, formato de arquivo, resoluções, estilo gráfico esperado]</p>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <div class="section-heading">Entregáveis</div>
+        <div class="deliverable-list">
+          <div class="deliverable-item">
+            <div class="del-num teal">1</div>
+            <div class="del-text">
+              <strong>[Personagem 1] — Concept Art</strong>
+              <span>[Insira aqui especificações: poses, expressões, variações de figurino, etc.]</span>
+            </div>
+          </div>
+          <div class="deliverable-item">
+            <div class="del-num teal">2</div>
+            <div class="del-text">
+              <strong>[Personagem 2] — Concept Art</strong>
+              <span>[Insira aqui especificações: poses, expressões, variações de figurino, etc.]</span>
+            </div>
+          </div>
+          <div class="deliverable-item">
+            <div class="del-num teal">3</div>
+            <div class="del-text">
+              <strong>Assets para o Jogo</strong>
+              <span>[Insira aqui quais assets são necessários além do concept art: sprites, ícones, cenários, etc.]</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="page-nav">
+      <button class="nav-btn" onclick="goTo(1)">← Pesquisadora Cultural</button>
+      <span class="page-indicator">Equipe Criativa <strong>2</strong> de 4</span>
+      <button class="nav-btn next" onclick="goTo(3)">Game Designer →</button>
+    </div>
+  </section>
+
+  <!-- ══ PAGE 3: GAME DESIGNER ══ -->
+  <section class="page" id="page-3">
+    <div class="page-hero role-gamedesigner">
+      <div class="role-badge rb-green">🎮 Game Designer</div>
+      <h1 class="page-title">Design e Desenvolvimento do Jogo</h1>
+      <p class="page-subtitle">[Insira aqui uma descrição do papel do game designer — o que recebe e como integra personagens e GDD no desenvolvimento do jogo.]</p>
+    </div>
+
+    <div class="page-body">
+      <div class="content-section">
+        <div class="section-heading">O que você recebe</div>
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <div class="feature-icon fi-blue">📋</div>
+            <h3>GDD — Game Design Document</h3>
+          </div>
+          <p>[Insira aqui o que estará no GDD entregue: mecânicas, narrativa, objetivos educacionais, estrutura de fases]</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <div class="feature-icon fi-teal">🎨</div>
+            <h3>Assets do Ilustrador</h3>
+          </div>
+          <p>[Insira aqui como os personagens e assets visuais serão recebidos e integrados ao jogo]</p>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <div class="section-heading">Entregáveis</div>
+        <div class="deliverable-list">
+          <div class="deliverable-item">
+            <div class="del-num green">1</div>
+            <div class="del-text">
+              <strong>Protótipo Jogável</strong>
+              <span>[Insira aqui o que se espera do protótipo: plataforma, fases mínimas, mecânicas obrigatórias]</span>
+            </div>
+          </div>
+          <div class="deliverable-item">
+            <div class="del-num green">2</div>
+            <div class="del-text">
+              <strong>Jogo Finalizado</strong>
+              <span>[Insira aqui os requisitos do jogo completo: compatibilidade, integrações com a plataforma, testes]</span>
+            </div>
+          </div>
+          <div class="deliverable-item">
+            <div class="del-num green">3</div>
+            <div class="del-text">
+              <strong>Documentação Técnica</strong>
+              <span>[Insira aqui o que deve ser documentado para manutenção futura do jogo]</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="page-nav">
+      <button class="nav-btn" onclick="goTo(2)">← Ilustrador</button>
+      <span class="page-indicator">Equipe Criativa <strong>3</strong> de 4</span>
+      <button class="nav-btn next" onclick="goTo(4)">Produtor Cultural →</button>
+    </div>
+  </section>
+
+  <!-- ══ PAGE 4: PRODUTOR CULTURAL ══ -->
+  <section class="page" id="page-4">
+    <div class="page-hero role-produtor">
+      <div class="role-badge rb-blue">🎭 Produtor Cultural</div>
+      <h1 class="page-title">Produção da Exposição Pública</h1>
+      <p class="page-subtitle">[Insira aqui uma descrição do papel do produtor cultural — como transforma os trabalhos enviados pelos alunos numa exposição física no entorno da escola.]</p>
+    </div>
+
+    <div class="page-body">
+      <div class="content-section">
+        <div class="section-heading">O que você recebe</div>
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <div class="feature-icon fi-blue">📥</div>
+            <h3>Trabalhos dos Alunos</h3>
+          </div>
+          <p>[Insira aqui como chegam os trabalhos dos alunos — formato, plataforma, curadoria prévia — e quais critérios definem o que vai para a exposição]</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <div class="feature-icon fi-teal">🎨</div>
+            <h3>Obras dos Artistas</h3>
+          </div>
+          <p>[Insira aqui como as peças produzidas pelos artistas a partir das ideias dos alunos chegam ao produtor e como se integram à exposição]</p>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <div class="section-heading">Entregáveis</div>
+        <div class="deliverable-list">
+          <div class="deliverable-item">
+            <div class="del-num">1</div>
+            <div class="del-text">
+              <strong>Curadoria da Exposição</strong>
+              <span>[Insira aqui o que envolve a curadoria: seleção de obras, narrativa expositiva, ordem e disposição]</span>
+            </div>
+          </div>
+          <div class="deliverable-item">
+            <div class="del-num">2</div>
+            <div class="del-text">
+              <strong>Produção do Espaço</strong>
+              <span>[Insira aqui o que envolve a produção física: local, montagem, materiais, sinalização, identidade visual da mostra]</span>
+            </div>
+          </div>
+          <div class="deliverable-item">
+            <div class="del-num">3</div>
+            <div class="del-text">
+              <strong>Abertura e Registro</strong>
+              <span>[Insira aqui o que envolve o evento de abertura e o registro fotográfico/audiovisual da exposição]</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="page-nav">
+      <button class="nav-btn" onclick="goTo(3)">← Game Designer</button>
+      <span class="page-indicator">Equipe Criativa <strong>4</strong> de 4</span>
+      <button class="nav-btn next" onclick="goTo(5)">Mapa Expográfico →</button>
+    </div>
+  </section>
+
+
+  <!-- ══ PAGE 5: MAPA EXPOGRÁFICO ══ -->
+  <section class="page" id="page-5">
+    <div class="page-hero role-produtor">
+      <div class="role-badge rb-teal">🗺️ Mapa Expográfico</div>
+      <h1 class="page-title">Mapa Expográfico</h1>
+      <p class="page-subtitle">[Insira aqui uma descrição do mapa expográfico — o que é, como é construído e qual seu papel na organização da exposição pública.]</p>
+    </div>
+
+    <div class="page-body single">
+      <!-- Mapa em largura total -->
+      <div style="margin-bottom:40px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 800" style="width:100%;height:auto;display:block;font-family:'Montserrat',sans-serif;">
+
+  <!-- Background -->
+  <rect width="960" height="800" fill="#ffffff" rx="0"/>
+
+  <!-- ══════════════════════════════════════
+       MAPA — parte superior
+  ══════════════════════════════════════ -->
+
+  <!-- Área do mapa -->
+  <rect x="0" y="0" width="960" height="520" fill="#f4f8fc" rx="0"/>
+
+  <!-- Título do mapa -->
+  <text x="48" y="42" font-size="20" font-weight="800" fill="#1a2e3b">Mapa Expográfico</text>
+  <text x="48" y="62" font-size="11" fill="#6b7f95" font-weight="500">Vista esquemática do quarteirão + espaço interno</text>
+  <line x1="48" y1="72" x2="320" y2="72" stroke="#5fb670" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- ── Ruas ── -->
+  <!-- Rua topo -->
+  <rect x="60" y="85" width="720" height="42" fill="#cbd5e0"/>
+  <line x1="60" y1="106" x2="780" y2="106" stroke="white" stroke-width="2" stroke-dasharray="18,10"/>
+  <!-- Rua base -->
+  <rect x="60" y="450" width="720" height="42" fill="#cbd5e0"/>
+  <line x1="60" y1="471" x2="780" y2="471" stroke="white" stroke-width="2" stroke-dasharray="18,10"/>
+  <!-- Rua esquerda -->
+  <rect x="60" y="85" width="42" height="407" fill="#cbd5e0"/>
+  <line x1="81" y1="85" x2="81" y2="492" stroke="white" stroke-width="2" stroke-dasharray="18,10"/>
+  <!-- Rua direita -->
+  <rect x="738" y="85" width="42" height="407" fill="#cbd5e0"/>
+  <line x1="759" y1="85" x2="759" y2="492" stroke="white" stroke-width="2" stroke-dasharray="18,10"/>
+
+  <!-- ── Calçada / Quarteirão ── -->
+  <rect x="102" y="127" width="636" height="323" rx="6" fill="#e8ecf0" stroke="#c0c8d4" stroke-width="1"/>
+  <!-- Faixa verde interna -->
+  <rect x="114" y="139" width="612" height="299" rx="5" fill="#e2f0e2" stroke="#b8d8b8" stroke-width="1"/>
+  <!-- Pátio central -->
+  <rect x="136" y="158" width="568" height="260" rx="8" fill="#eef2f7" stroke="#d0d8e4" stroke-width="1.5"/>
+
+  <!-- Árvores -->
+  <circle cx="122" cy="147" r="9" fill="#5fb670" opacity="0.55"/>
+  <circle cx="720" cy="147" r="9" fill="#5fb670" opacity="0.55"/>
+  <circle cx="122" cy="428" r="9" fill="#5fb670" opacity="0.55"/>
+  <circle cx="720" cy="428" r="9" fill="#5fb670" opacity="0.55"/>
+  <circle cx="420" cy="147" r="7" fill="#5fb670" opacity="0.35"/>
+  <circle cx="420" cy="428" r="7" fill="#5fb670" opacity="0.35"/>
+
+  <!-- ── Trilha QR externa (linha pontilhada laranja) ── -->
+  <rect x="118" y="141" width="604" height="295" rx="6" fill="none" stroke="#f5a623" stroke-width="2.5" stroke-dasharray="10,6"/>
+
+  <!-- QR pontos na trilha -->
+  <!-- topo -->
+  <circle cx="200" cy="141" r="10" fill="#f5a623"/><text x="200" y="145" text-anchor="middle" font-size="8" font-weight="800" fill="white">QR</text>
+  <circle cx="350" cy="141" r="10" fill="#f5a623"/><text x="350" y="145" text-anchor="middle" font-size="8" font-weight="800" fill="white">QR</text>
+  <circle cx="500" cy="141" r="10" fill="#f5a623"/><text x="500" y="145" text-anchor="middle" font-size="8" font-weight="800" fill="white">QR</text>
+  <circle cx="650" cy="141" r="10" fill="#f5a623"/><text x="650" y="145" text-anchor="middle" font-size="8" font-weight="800" fill="white">QR</text>
+  <!-- direita -->
+  <circle cx="722" cy="240" r="10" fill="#f5a623"/><text x="722" y="244" text-anchor="middle" font-size="8" font-weight="800" fill="white">QR</text>
+  <circle cx="722" cy="360" r="10" fill="#f5a623"/><text x="722" y="364" text-anchor="middle" font-size="8" font-weight="800" fill="white">QR</text>
+  <!-- base -->
+  <circle cx="560" cy="436" r="10" fill="#f5a623"/><text x="560" y="440" text-anchor="middle" font-size="8" font-weight="800" fill="white">QR</text>
+  <circle cx="280" cy="436" r="10" fill="#f5a623"/><text x="280" y="440" text-anchor="middle" font-size="8" font-weight="800" fill="white">QR</text>
+  <!-- esquerda -->
+  <circle cx="118" cy="240" r="10" fill="#f5a623"/><text x="118" y="244" text-anchor="middle" font-size="8" font-weight="800" fill="white">QR</text>
+  <circle cx="118" cy="360" r="10" fill="#f5a623"/><text x="118" y="364" text-anchor="middle" font-size="8" font-weight="800" fill="white">QR</text>
+
+  <!-- ── ESPAÇO INTERNO ── -->
+  <rect x="200" y="188" width="330" height="200" rx="10" fill="#d0e8e8" stroke="#468182" stroke-width="2.5"/>
+  <rect x="200" y="188" width="330" height="30" rx="10" fill="#468182"/>
+  <rect x="200" y="208" width="330" height="10" fill="#468182"/>
+  <text x="365" y="208" text-anchor="middle" font-size="11" font-weight="700" fill="white">ESPAÇO INTERNO</text>
+  <text x="365" y="232" text-anchor="middle" font-size="9" fill="#2c7070">Módulos temáticos por personagem</text>
+
+  <!-- Módulos dentro -->
+  <rect x="216" y="244" width="88" height="54" rx="6" fill="white" stroke="#468182" stroke-width="1.5"/>
+  <text x="260" y="265" text-anchor="middle" font-size="8" font-weight="700" fill="#468182">Módulo</text>
+  <text x="260" y="278" text-anchor="middle" font-size="7.5" fill="#6b7f95">Personagem 1</text>
+  <text x="260" y="290" text-anchor="middle" font-size="7" fill="#6b7f95">[tema]</text>
+
+  <rect x="316" y="244" width="88" height="54" rx="6" fill="white" stroke="#468182" stroke-width="1.5"/>
+  <text x="360" y="265" text-anchor="middle" font-size="8" font-weight="700" fill="#468182">Módulo</text>
+  <text x="360" y="278" text-anchor="middle" font-size="7.5" fill="#6b7f95">Personagem 2</text>
+  <text x="360" y="290" text-anchor="middle" font-size="7" fill="#6b7f95">[tema]</text>
+
+  <rect x="416" y="244" width="88" height="54" rx="6" fill="white" stroke="#468182" stroke-width="1.5"/>
+  <text x="460" y="265" text-anchor="middle" font-size="8" font-weight="700" fill="#468182">Módulo</text>
+  <text x="460" y="278" text-anchor="middle" font-size="7.5" fill="#6b7f95">Personagem N</text>
+  <text x="460" y="290" text-anchor="middle" font-size="7" fill="#6b7f95">[tema]</text>
+
+  <!-- Tela projeção -->
+  <rect x="228" y="310" width="256" height="62" rx="6" fill="#1a2e3b" stroke="#2858a0" stroke-width="1.5"/>
+  <text x="356" y="337" text-anchor="middle" font-size="9" fill="white" font-weight="600">Projeção / Vídeo Introdutório</text>
+  <text x="356" y="352" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.55)">Personagens digitais 3D</text>
+
+  <!-- Entrada espaço interno -->
+  <rect x="334" y="386" width="62" height="8" rx="3" fill="#468182"/>
+  <text x="365" y="405" text-anchor="middle" font-size="8" font-weight="600" fill="#468182">↑ entrada interna</text>
+
+  <!-- ── LEGENDA (direita) ── -->
+  <rect x="570" y="188" width="178" height="180" rx="10" fill="white" stroke="rgba(40,88,160,0.12)" stroke-width="1.5"/>
+  <text x="584" y="210" font-size="10" font-weight="700" fill="#1a2e3b" letter-spacing="0.5">LEGENDA</text>
+  <line x1="584" y1="217" x2="732" y2="217" stroke="#e0e8f0" stroke-width="1"/>
+
+  <rect x="584" y="226" width="12" height="12" rx="3" fill="#2858a0"/>
+  <text x="602" y="236" font-size="9" fill="#2c3e50">Painel / Personagem + QR</text>
+
+  <rect x="584" y="246" width="12" height="12" rx="3" fill="#468182"/>
+  <text x="602" y="256" font-size="9" fill="#2c3e50">Espaço interno</text>
+
+  <rect x="584" y="266" width="12" height="12" rx="3" fill="#f5a623"/>
+  <text x="602" y="276" font-size="9" fill="#2c3e50">Trilha QR externa</text>
+
+  <rect x="584" y="286" width="12" height="12" rx="3" fill="#5fb670" opacity="0.6"/>
+  <text x="602" y="296" font-size="9" fill="#2c3e50">Árvores / área verde</text>
+
+  <rect x="584" y="306" width="12" height="12" rx="3" fill="#cbd5e0"/>
+  <text x="602" y="316" font-size="9" fill="#2c3e50">Ruas</text>
+
+  <circle cx="590" cy="346" r="8" fill="none" stroke="#468182" stroke-width="2"/>
+  <text x="590" y="350" text-anchor="middle" font-size="8" font-weight="700" fill="#468182">E</text>
+  <text x="602" y="350" font-size="9" fill="#2c3e50">Entrada do visitante</text>
+
+  <!-- ── PAINÉIS (placeholders posicionados no quarteirão) ── -->
+  <!-- Painel 1 — topo esq -->
+  <rect x="162" y="152" width="56" height="72" rx="5" fill="#2858a0" stroke="#1a3a70" stroke-width="1.5"/>
+  <rect x="166" y="156" width="48" height="30" rx="3" fill="#d6e4f7"/>
+  <text x="190" y="167" text-anchor="middle" font-size="7" fill="#2858a0" font-weight="700">Tema 1</text>
+  <text x="190" y="178" text-anchor="middle" font-size="6" fill="#468182">[personagem]</text>
+  <rect x="170" y="190" width="40" height="28" rx="3" fill="white" stroke="#2858a0" stroke-width="1"/>
+  <text x="190" y="202" text-anchor="middle" font-size="7" fill="#6b7f95">▦ QR</text>
+  <text x="190" y="213" text-anchor="middle" font-size="6" fill="#468182">Escaneie</text>
+
+  <!-- Painel 2 — topo centro -->
+  <rect x="392" y="152" width="56" height="72" rx="5" fill="#2858a0" stroke="#1a3a70" stroke-width="1.5"/>
+  <rect x="396" y="156" width="48" height="30" rx="3" fill="#d6e4f7"/>
+  <text x="420" y="167" text-anchor="middle" font-size="7" fill="#2858a0" font-weight="700">Tema 2</text>
+  <text x="420" y="178" text-anchor="middle" font-size="6" fill="#468182">[personagem]</text>
+  <rect x="400" y="190" width="40" height="28" rx="3" fill="white" stroke="#2858a0" stroke-width="1"/>
+  <text x="420" y="202" text-anchor="middle" font-size="7" fill="#6b7f95">▦ QR</text>
+  <text x="420" y="213" text-anchor="middle" font-size="6" fill="#468182">Escaneie</text>
+
+  <!-- Painel 3 — topo dir -->
+  <rect x="612" y="152" width="56" height="72" rx="5" fill="#2858a0" stroke="#1a3a70" stroke-width="1.5"/>
+  <rect x="616" y="156" width="48" height="30" rx="3" fill="#d6e4f7"/>
+  <text x="640" y="167" text-anchor="middle" font-size="7" fill="#2858a0" font-weight="700">Tema 3</text>
+  <text x="640" y="178" text-anchor="middle" font-size="6" fill="#468182">[personagem]</text>
+  <rect x="620" y="190" width="40" height="28" rx="3" fill="white" stroke="#2858a0" stroke-width="1"/>
+  <text x="640" y="202" text-anchor="middle" font-size="7" fill="#6b7f95">▦ QR</text>
+  <text x="640" y="213" text-anchor="middle" font-size="6" fill="#468182">Escaneie</text>
+
+  <!-- Painel 4 — lateral dir topo -->
+  <rect x="652" y="252" width="56" height="72" rx="5" fill="#2858a0" stroke="#1a3a70" stroke-width="1.5"/>
+  <rect x="656" y="256" width="48" height="30" rx="3" fill="#d6e4f7"/>
+  <text x="680" y="267" text-anchor="middle" font-size="7" fill="#2858a0" font-weight="700">Tema 4</text>
+  <text x="680" y="278" text-anchor="middle" font-size="6" fill="#468182">[personagem]</text>
+  <rect x="660" y="300" width="40" height="18" rx="3" fill="white" stroke="#2858a0" stroke-width="1"/>
+  <text x="680" y="312" text-anchor="middle" font-size="7" fill="#6b7f95">▦ QR</text>
+
+  <!-- Painel 5 — lateral dir baixo -->
+  <rect x="652" y="360" width="56" height="72" rx="5" fill="#2858a0" stroke="#1a3a70" stroke-width="1.5"/>
+  <rect x="656" y="364" width="48" height="30" rx="3" fill="#d6e4f7"/>
+  <text x="680" y="375" text-anchor="middle" font-size="7" fill="#2858a0" font-weight="700">Tema 5</text>
+  <text x="680" y="386" text-anchor="middle" font-size="6" fill="#468182">[personagem]</text>
+  <rect x="660" y="408" width="40" height="18" rx="3" fill="white" stroke="#2858a0" stroke-width="1"/>
+  <text x="680" y="420" text-anchor="middle" font-size="7" fill="#6b7f95">▦ QR</text>
+
+  <!-- Painel 6 — base -->
+  <rect x="392" y="418" width="56" height="56" rx="5" fill="#2858a0" stroke="#1a3a70" stroke-width="1.5"/>
+  <rect x="396" y="422" width="48" height="24" rx="3" fill="#d6e4f7"/>
+  <text x="420" y="433" text-anchor="middle" font-size="7" fill="#2858a0" font-weight="700">Tema 6</text>
+  <text x="420" y="444" text-anchor="middle" font-size="6" fill="#468182">[personagem]</text>
+  <rect x="400" y="450" width="40" height="18" rx="3" fill="white" stroke="#2858a0" stroke-width="1"/>
+  <text x="420" y="462" text-anchor="middle" font-size="7" fill="#6b7f95">▦ QR</text>
+
+  <!-- Entrada principal visitante -->
+  <rect x="356" y="456" width="90" height="14" rx="5" fill="#468182"/>
+  <text x="401" y="467" text-anchor="middle" font-size="8" font-weight="700" fill="white">↓ ENTRADA PRINCIPAL</text>
+  <circle cx="401" cy="492" r="12" fill="none" stroke="#468182" stroke-width="2.5"/>
+  <text x="401" y="496" text-anchor="middle" font-size="10" font-weight="700" fill="#468182">E</text>
+
+  <!-- Nota rodapé do mapa -->
+  <text x="480" y="514" text-anchor="middle" font-size="8.5" fill="#6b7f95" font-style="italic">Posições dos painéis a confirmar conforme espaço físico disponível</text>
+
+  <!-- ══════════════════════════════════════
+       CARDS DOS TEMAS — parte inferior
+  ══════════════════════════════════════ -->
+
+  <!-- Separador -->
+  <line x1="48" y1="530" x2="912" y2="530" stroke="#e0e8f0" stroke-width="1.5"/>
+  <text x="48" y="554" font-size="13" font-weight="700" fill="#1a2e3b">Temas da Exposição</text>
+  <text x="48" y="570" font-size="10" fill="#6b7f95">Cada painel apresenta um ser encantado e seu mundo temático</text>
+
+  <!-- Card T1 -->
+  <rect x="48" y="582" width="128" height="100" rx="8" fill="white" stroke="rgba(40,88,160,0.12)" stroke-width="1.5"/>
+  <rect x="48" y="582" width="128" height="4" rx="4" fill="#2858a0"/>
+  <text x="62" y="602" font-size="9" font-weight="700" fill="#2858a0">Tema 1</text>
+  <text x="62" y="617" font-size="8" font-weight="600" fill="#1a2e3b">[Nome do Personagem]</text>
+  <text x="62" y="632" font-size="8" fill="#6b7f95">[Mundo temático]</text>
+  <text x="62" y="647" font-size="7.5" fill="#468182">[Divindade / referência]</text>
+  <text x="62" y="672" font-size="7" fill="#6b7f95">📍 Posição: [local no quarteirão]</text>
+
+  <!-- Card T2 -->
+  <rect x="188" y="582" width="128" height="100" rx="8" fill="white" stroke="rgba(40,88,160,0.12)" stroke-width="1.5"/>
+  <rect x="188" y="582" width="128" height="4" rx="4" fill="#2858a0"/>
+  <text x="202" y="602" font-size="9" font-weight="700" fill="#2858a0">Tema 2</text>
+  <text x="202" y="617" font-size="8" font-weight="600" fill="#1a2e3b">[Nome do Personagem]</text>
+  <text x="202" y="632" font-size="8" fill="#6b7f95">[Mundo temático]</text>
+  <text x="202" y="647" font-size="7.5" fill="#468182">[Divindade / referência]</text>
+  <text x="202" y="672" font-size="7" fill="#6b7f95">📍 Posição: [local no quarteirão]</text>
+
+  <!-- Card T3 -->
+  <rect x="328" y="582" width="128" height="100" rx="8" fill="white" stroke="rgba(40,88,160,0.12)" stroke-width="1.5"/>
+  <rect x="328" y="582" width="128" height="4" rx="4" fill="#2858a0"/>
+  <text x="342" y="602" font-size="9" font-weight="700" fill="#2858a0">Tema 3</text>
+  <text x="342" y="617" font-size="8" font-weight="600" fill="#1a2e3b">[Nome do Personagem]</text>
+  <text x="342" y="632" font-size="8" fill="#6b7f95">[Mundo temático]</text>
+  <text x="342" y="647" font-size="7.5" fill="#468182">[Divindade / referência]</text>
+  <text x="342" y="672" font-size="7" fill="#6b7f95">📍 Posição: [local no quarteirão]</text>
+
+  <!-- Card T4 -->
+  <rect x="468" y="582" width="128" height="100" rx="8" fill="white" stroke="rgba(40,88,160,0.12)" stroke-width="1.5"/>
+  <rect x="468" y="582" width="128" height="4" rx="4" fill="#468182"/>
+  <text x="482" y="602" font-size="9" font-weight="700" fill="#468182">Tema 4</text>
+  <text x="482" y="617" font-size="8" font-weight="600" fill="#1a2e3b">[Nome do Personagem]</text>
+  <text x="482" y="632" font-size="8" fill="#6b7f95">[Mundo temático]</text>
+  <text x="482" y="647" font-size="7.5" fill="#468182">[Divindade / referência]</text>
+  <text x="482" y="672" font-size="7" fill="#6b7f95">📍 Posição: [local no quarteirão]</text>
+
+  <!-- Card T5 -->
+  <rect x="608" y="582" width="128" height="100" rx="8" fill="white" stroke="rgba(40,88,160,0.12)" stroke-width="1.5"/>
+  <rect x="608" y="582" width="128" height="4" rx="4" fill="#468182"/>
+  <text x="622" y="602" font-size="9" font-weight="700" fill="#468182">Tema 5</text>
+  <text x="622" y="617" font-size="8" font-weight="600" fill="#1a2e3b">[Nome do Personagem]</text>
+  <text x="622" y="632" font-size="8" fill="#6b7f95">[Mundo temático]</text>
+  <text x="622" y="647" font-size="7.5" fill="#468182">[Divindade / referência]</text>
+  <text x="622" y="672" font-size="7" fill="#6b7f95">📍 Posição: [local no quarteirão]</text>
+
+  <!-- Card T6 -->
+  <rect x="748" y="582" width="164" height="100" rx="8" fill="white" stroke="rgba(40,88,160,0.12)" stroke-width="1.5"/>
+  <rect x="748" y="582" width="164" height="4" rx="4" fill="#5fb670"/>
+  <text x="762" y="602" font-size="9" font-weight="700" fill="#38a349">Tema 6</text>
+  <text x="762" y="617" font-size="8" font-weight="600" fill="#1a2e3b">[Nome do Personagem]</text>
+  <text x="762" y="632" font-size="8" fill="#6b7f95">[Mundo temático]</text>
+  <text x="762" y="647" font-size="7.5" fill="#468182">[Divindade / referência]</text>
+  <text x="762" y="672" font-size="7" fill="#6b7f95">📍 Posição: [local no quarteirão]</text>
+
+</svg>
+      </div>
+
+      <!-- Cards de features em 3 colunas -->
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px;">
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <div class="feature-icon fi-blue">🗺️</div>
+            <h3>Trilha Externa</h3>
+          </div>
+          <p>Visitante percorre o quarteirão escaneando QR codes nos painéis com personagens, descobrindo as lendas e mundos temáticos.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <div class="feature-icon fi-teal">🏛️</div>
+            <h3>Espaço Interno</h3>
+          </div>
+          <p>A trilha conduz o visitante para dentro da exposição, onde módulos temáticos combinam cenografia física, projeções e vídeos em 3D.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <div class="feature-icon fi-green">✨</div>
+            <h3>Imersão sem VR</h3>
+          </div>
+          <p>Imersão narrativa completa sem equipamentos de realidade virtual — cenografia, ambientação sonora e iluminação compõem a experiência.</p>
+        </div>
+      </div>
+
+      <!-- Entregáveis -->
+      <div style="margin-top:32px;">
+        <div class="section-heading">Entregáveis</div>
+        <div class="deliverable-list">
+          <div class="deliverable-item">
+            <div class="del-num teal">1</div>
+            <div class="del-text">
+              <strong>Planta Expográfica</strong>
+              <span>[Insira aqui o que deve constar na planta: escala, legenda, pontos de energia, iluminação, circulação]</span>
+            </div>
+          </div>
+          <div class="deliverable-item">
+            <div class="del-num teal">2</div>
+            <div class="del-text">
+              <strong>Roteiro de Montagem</strong>
+              <span>[Insira aqui o que o roteiro deve descrever: ordem de instalação, responsáveis, materiais por ponto]</span>
+            </div>
+          </div>
+          <div class="deliverable-item">
+            <div class="del-num teal">3</div>
+            <div class="del-text">
+              <strong>Guia do Visitante</strong>
+              <span>[Insira aqui como o percurso da exposição será comunicado ao público — mapa impresso, QR code, sinalização]</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="page-nav">
+      <button class="nav-btn" onclick="goTo(4)">← Produtor Cultural</button>
+      <span class="page-indicator">Equipe Criativa <strong>5</strong> de 5</span>
+      <button class="nav-btn next" onclick="goTo(0)" style="background:var(--teal); border-color:var(--teal);">↺ Voltar ao Início</button>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  const totalPages = 6;
+  let current = 0;
+
+  function goTo(index) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.getElementById('page-' + index).classList.add('active');
+    document.querySelectorAll('.nav-item')[index].classList.add('active');
+    current = index;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      if (current < totalPages - 1) goTo(current + 1);
+    }
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      if (current > 0) goTo(current - 1);
+    }
+  });
+</script>
+</body>
+</html>
