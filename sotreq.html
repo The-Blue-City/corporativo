@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Blue City — Apresentação Sotreq</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #2858a0;
+    --teal: #468182;
+    --green: #5fb670;
+    --blue-light: #d6e4f7;
+    --teal-light: #d0e8e8;
+    --green-light: #d4f0d9;
+    --dark: #1a2e3b;
+    --text: #2c3e50;
+    --muted: #6b7f95;
+    --bg: #f4f8fc;
+    --sidebar-w: 280px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Montserrat',sans-serif; background:var(--bg); color:var(--text); display:flex; min-height:100vh; }
+
+  .sidebar { width:var(--sidebar-w); min-height:100vh; background:#121e33; position:fixed; left:0; top:0; display:flex; flex-direction:column; z-index:100; border-right:1px solid rgba(255,255,255,0.06); }
+  .sidebar-logo { padding:28px 24px 22px; border-bottom:1px solid rgba(255,255,255,0.08); }
+  .sidebar-label { padding:18px 24px 8px; font-size:9px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.85); }
+  .sidebar-label.section { margin-top:8px; border-top:1px solid rgba(255,255,255,0.08); padding-top:16px; }
+  .nav-item { display:flex; align-items:center; gap:12px; padding:11px 24px; cursor:pointer; transition:all 0.2s; border-left:3px solid transparent; color:rgba(255,255,255,0.55); font-size:12px; font-weight:500; user-select:none; }
+  .nav-item:hover { background:rgba(255,255,255,0.05); color:rgba(255,255,255,0.85); border-left-color:rgba(95,182,112,0.4); }
+  .nav-item.active { background:rgba(0,0,0,0.2); color:#fff; border-left-color:var(--green); }
+  .nav-dot { width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,0.2); flex-shrink:0; transition:background 0.2s; }
+  .nav-item.active .nav-dot { background:var(--green); }
+  .nav-number { margin-left:auto; font-size:10px; font-weight:600; color:rgba(255,255,255,0.5); }
+  .nav-item.active .nav-number { color:var(--green); }
+  .sidebar-footer { margin-top:auto; padding:20px 24px; border-top:1px solid rgba(255,255,255,0.07); font-size:11px; color:#fff; line-height:1.6; }
+
+  .main { margin-left:var(--sidebar-w); flex:1; min-height:100vh; }
+  .page { display:none; min-height:100vh; animation:fadeIn 0.35s ease; }
+  .page.active { display:block; }
+  @keyframes fadeIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+
+  /* INTRO */
+  .intro-hero { min-height:100vh; background:linear-gradient(to bottom,#295b9c,#90dba3); display:flex; flex-direction:column; align-items:center; padding:64px 80px 60px; position:relative; overflow:hidden; }
+  .intro-hero::before { content:''; position:absolute; top:0; left:0; right:0; height:5px; background:linear-gradient(90deg,var(--blue),var(--teal),var(--green)); }
+  .intro-top { width:100%; max-width:900px; display:flex; flex-direction:column; align-items:center; text-align:center; margin-bottom:48px; }
+  .intro-logo { margin-bottom:32px; }
+  .client-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.2); border:1px solid rgba(255,255,255,0.4); color:white; font-size:12px; font-weight:700; padding:7px 18px; border-radius:20px; margin-bottom:18px; letter-spacing:0.5px; }
+  .intro-eyebrow { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.85); margin-bottom:14px; }
+  .intro-headline { font-size:40px; font-weight:800; color:#fff; line-height:1.2; margin-bottom:16px; max-width:700px; }
+  .intro-desc { font-size:15px; color:rgba(255,255,255,0.9); max-width:540px; line-height:1.7; margin-bottom:36px; }
+  .intro-start-btn { display:inline-flex; align-items:center; gap:10px; padding:14px 32px; background:rgba(255,255,255,0.2); color:white; border:2px solid rgba(255,255,255,0.5); border-radius:8px; font-size:14px; font-weight:700; cursor:pointer; transition:all 0.2s; font-family:'Montserrat',sans-serif; }
+  .intro-start-btn:hover { background:rgba(255,255,255,0.35); border-color:white; transform:translateY(-2px); }
+  .intro-chips { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; max-width:860px; width:100%; margin-top:48px; }
+  .prev-chip { background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); color:rgba(255,255,255,0.9); font-size:12px; font-weight:600; padding:6px 14px; border-radius:20px; }
+
+  /* PAGE HERO */
+  .page-hero { padding:48px 60px 40px; background:#fff; border-bottom:1px solid rgba(40,88,160,0.08); position:relative; overflow:hidden; }
+  .page-hero::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg,var(--blue),var(--teal),var(--green)); }
+  .page-tag { display:inline-flex; align-items:center; gap:6px; background:var(--green-light); border:1px solid rgba(95,182,112,0.3); color:#38a349; font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:5px 12px; border-radius:20px; margin-bottom:14px; }
+  .page-title { font-size:32px; font-weight:800; color:var(--dark); line-height:1.2; margin-bottom:10px; }
+  .page-subtitle { font-size:15px; color:#1a2e3b; max-width:640px; line-height:1.65; }
+
+  /* CONTENT */
+  .page-body { padding:44px 60px; display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start; }
+  .page-body.single { grid-template-columns:1fr; }
+  .content-section { display:flex; flex-direction:column; gap:18px; }
+  .section-heading { font-size:11px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:var(--teal); margin-bottom:12px; display:flex; align-items:center; gap:8px; }
+  .section-heading::after { content:''; flex:1; height:1px; background:rgba(70,129,130,0.2); }
+
+  .feature-card { background:white; border-radius:12px; padding:20px 22px; border:1px solid rgba(40,88,160,0.08); box-shadow:0 2px 10px rgba(0,0,0,0.04); transition:box-shadow 0.2s,transform 0.2s; }
+  .feature-card:hover { box-shadow:0 6px 20px rgba(40,88,160,0.1); transform:translateY(-2px); }
+  .feature-card-header { display:flex; align-items:center; gap:12px; margin-bottom:10px; }
+  .feature-icon { width:36px; height:36px; border-radius:9px; display:flex; align-items:center; justify-content:center; font-size:17px; flex-shrink:0; }
+  .fi-blue { background:var(--blue-light); } .fi-teal { background:var(--teal-light); } .fi-green { background:var(--green-light); }
+  .feature-card h3 { font-size:14px; font-weight:700; color:var(--dark); }
+  .feature-card p { font-size:13px; color:var(--muted); line-height:1.65; }
+
+  /* INFO CARD (destaque) */
+  .info-card { background:var(--blue); border-radius:12px; padding:24px 28px; color:white; }
+  .info-card h3 { font-size:16px; font-weight:800; margin-bottom:6px; }
+  .info-card p { font-size:13px; color:rgba(255,255,255,0.85); line-height:1.6; }
+  .info-card.teal { background:var(--teal); }
+  .info-card.green { background:#38a349; }
+
+  /* STATS */
+  .stats-row { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+  .stat-card { background:white; border-radius:10px; padding:18px 16px; text-align:center; border:1px solid rgba(40,88,160,0.08); box-shadow:0 2px 8px rgba(0,0,0,0.03); }
+  .stat-value { font-size:26px; font-weight:800; color:var(--blue); line-height:1; margin-bottom:6px; }
+  .stat-value.teal { color:var(--teal); } .stat-value.green { color:var(--green); }
+  .stat-label { font-size:11px; color:var(--muted); font-weight:500; line-height:1.4; }
+
+  /* link card */
+  .link-card { background:white; border-radius:12px; padding:22px 24px; border:2px solid rgba(40,88,160,0.15); display:flex; align-items:center; gap:16px; transition:all 0.2s; cursor:pointer; text-decoration:none; }
+  .link-card:hover { border-color:var(--blue); box-shadow:0 4px 16px rgba(40,88,160,0.12); transform:translateY(-2px); }
+  .link-icon { width:48px; height:48px; background:var(--blue-light); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+  .link-card-text strong { font-size:14px; font-weight:700; color:var(--dark); display:block; margin-bottom:4px; }
+  .link-card-text span { font-size:12px; color:var(--muted); }
+
+  /* NAV */
+  .divider { height:1px; background:rgba(40,88,160,0.07); margin:0 60px; }
+  .page-nav { display:flex; align-items:center; justify-content:space-between; padding:22px 60px 36px; }
+  .nav-btn { display:flex; align-items:center; gap:8px; padding:10px 20px; border-radius:8px; border:1.5px solid rgba(40,88,160,0.15); background:white; color:var(--blue); font-size:13px; font-weight:600; cursor:pointer; transition:all 0.2s; font-family:'Montserrat',sans-serif; }
+  .nav-btn:hover { background:var(--blue); color:white; border-color:var(--blue); }
+  .nav-btn.next { background:var(--blue); color:white; border-color:var(--blue); }
+  .nav-btn.next:hover { background:var(--dark); border-color:var(--dark); }
+  .page-indicator { font-size:12px; color:var(--muted); font-weight:500; }
+  .page-indicator strong { color:var(--blue); }
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="sidebar-logo"><svg style="height:32px;width:auto;display:block;" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 218.4 45.6">
+  <defs>
+    <style>
+      .gds-cls-1 {
+        fill: url(#gds-linear-gradient);
+      }
+
+      .gds-cls-1, .gds-cls-2, .gds-cls-3, .gds-cls-4, .gds-cls-5 {
+        stroke-width: 0px;
+      }
+
+      .gds-cls-2 {
+        fill: #000;
+      }
+
+      .gds-cls-3 {
+        fill: #001522;
+      }
+
+      .gds-cls-4 {
+        fill: #0c9ed9;
+      }
+
+      .gds-cls-5 {
+        fill: #fff;
+      }
+    </style>
+    <linearGradient id="gds-linear-gradient" x1="48.8" y1="25.1" x2="211.8" y2="25.1" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#006188"/>
+      <stop offset="1" stop-color="#95cfa0"/>
+    </linearGradient>
+  </defs>
+  <g>
+    <circle class="gds-cls-3" cx="26.1" cy="22.7" r="18.4"/>
+    <g>
+      <rect class="gds-cls-5" x="15.5" y="17.5" width="20.8" height="3.2"/>
+      <path class="gds-cls-4" d="M35,23l-.2.2c-1.3,1.1-2.4,2.1-4.1,2.1s-2.5-.4-4.1-1.3c-2.1-1.1-3.9-1.7-5.6-1.7-2.8,0-4.6,1.6-6,2.9l-.2.2,2,2.4.2-.2c1.3-1.1,2.4-2.1,4.1-2.1s2.5.4,4.1,1.3c2.1,1.1,3.9,1.7,5.6,1.7h0c2.7,0,4.5-1.6,5.9-2.9l.2-.2-2-2.4Z"/>
+    </g>
+  </g>
+  <g>
+    <g>
+      <path class="gds-cls-2" d="M64.5,16.8h-5.7v14.9h-4.3v-14.9h-5.7v-3.8h15.7v3.8Z"/>
+      <path class="gds-cls-2" d="M79.1,31.6h-4.2v-7.6c0-.9-.2-1.5-.6-1.9-.4-.4-.9-.6-1.4-.6s-.7,0-1.1.3c-.4.2-.8.5-1.1.8-.3.4-.6.8-.7,1.2v7.8h-4.2V12.5h4.2v7.9c.5-.8,1.2-1.5,2-1.9.8-.4,1.8-.6,2.8-.6s1.7.2,2.2.5c.6.3,1,.7,1.3,1.2.3.5.5,1,.6,1.7.1.6.2,1.2.2,1.8v8.7Z"/>
+      <path class="gds-cls-2" d="M87.9,31.9c-1.2,0-2.2-.2-3.1-.6s-1.7-.9-2.3-1.5c-.6-.6-1.1-1.4-1.5-2.2-.3-.8-.5-1.7-.5-2.6,0-1.3.3-2.5.9-3.6.6-1.1,1.4-1.9,2.5-2.6s2.4-1,4-1,2.9.3,4,1,1.9,1.5,2.5,2.6c.6,1.1.9,2.2.9,3.5s0,.5,0,.7,0,.4,0,.6h-10.2c0,.6.2,1.1.5,1.5.3.4.7.7,1.1.9.5.2.9.3,1.4.3s1.2-.1,1.8-.4c.6-.3.9-.7,1.1-1.2l3.6,1c-.4.7-.8,1.3-1.5,1.9-.6.5-1.4,1-2.2,1.3-.9.3-1.8.5-2.9.5ZM84.9,23.5h6c0-.6-.2-1-.5-1.5-.3-.4-.6-.7-1.1-1s-.9-.3-1.5-.3-1,.1-1.4.3c-.4.2-.8.5-1.1.9-.3.4-.4.9-.5,1.5Z"/>
+      <path class="gds-cls-2" d="M118,26.8c0,1.1-.3,2-.8,2.7-.6.7-1.3,1.2-2.3,1.6-1,.4-2,.5-3.2.5h-9.1V13h10.4c.9,0,1.6.2,2.3.7.6.5,1.1,1.1,1.5,1.8.3.7.5,1.5.5,2.3s-.2,1.7-.7,2.5c-.4.8-1.1,1.4-2,1.8,1.1.3,1.9.9,2.5,1.7.6.8.9,1.8.9,3.1ZM106.9,16.7v3.9h4.2c.3,0,.6,0,.9-.2.3-.1.5-.4.7-.6.2-.3.2-.6.2-1.1s0-.8-.2-1.1c-.1-.3-.3-.5-.6-.6-.2-.1-.5-.2-.9-.2h-4.4ZM113.7,26c0-.4,0-.7-.2-1.1-.2-.3-.4-.6-.6-.7s-.6-.3-.9-.3h-4.9v4.1h4.8c.4,0,.7,0,1-.3.3-.2.5-.4.7-.7.2-.3.2-.6.2-1Z"/>
+      <path class="gds-cls-2" d="M119.7,12.5h4.2v14.3c0,.6.1,1,.3,1.2.2.2.5.4.9.4s.5,0,.8-.1c.3,0,.5-.2.7-.3l.6,3.2c-.5.2-1.1.4-1.8.6-.7.2-1.3.2-1.9.2-1.2,0-2.1-.3-2.8-1-.6-.6-1-1.6-1-2.7v-15.7Z"/>
+      <path class="gds-cls-2" d="M127.9,26.8v-8.8h4.2v7.8c0,.8.2,1.4.5,1.9.3.4.8.7,1.4.7s.8,0,1.1-.2c.4-.1.7-.3,1-.6s.6-.7.9-1.1v-8.4h4.2v9c0,.4,0,.7.2.9.1.2.4.3.7.3v3.5c-.4,0-.7.1-1,.2s-.5,0-.8,0c-.7,0-1.3-.1-1.8-.4-.4-.3-.7-.7-.8-1.3v-.8c-.7.9-1.5,1.6-2.4,2-.9.4-2,.6-3.2.6s-2.5-.4-3.2-1.3c-.7-.9-1.1-2.2-1.1-3.8Z"/>
+      <path class="gds-cls-2" d="M150.6,31.9c-1.2,0-2.2-.2-3.1-.6-.9-.4-1.7-.9-2.3-1.5-.6-.6-1.1-1.4-1.5-2.2-.3-.8-.5-1.7-.5-2.6,0-1.3.3-2.5.9-3.6.6-1.1,1.4-1.9,2.5-2.6,1.1-.7,2.4-1,4-1s2.9.3,4,1c1.1.6,1.9,1.5,2.5,2.6.6,1.1.9,2.2.9,3.5s0,.5,0,.7,0,.4,0,.6h-10.2c0,.6.2,1.1.5,1.5s.7.7,1.1.9c.5.2.9.3,1.4.3s1.2-.1,1.8-.4c.6-.3.9-.7,1.1-1.2l3.6,1c-.4.7-.8,1.3-1.5,1.9-.6.5-1.4,1-2.2,1.3-.9.3-1.8.5-2.9.5ZM147.5,23.5h6c0-.6-.2-1-.5-1.5-.3-.4-.6-.7-1.1-1-.4-.2-.9-.3-1.5-.3s-1,.1-1.4.3c-.4.2-.8.5-1.1.9-.3.4-.4.9-.5,1.5Z"/>
+      <path class="gds-cls-2" d="M164.2,22.1c0-1.1.2-2.2.6-3.3.4-1.1,1-2.1,1.8-3,.8-.9,1.8-1.6,3-2.2,1.2-.5,2.5-.8,3.9-.8s3.3.4,4.6,1.1,2.3,1.7,2.9,2.9l-3.3,2.3c-.3-.7-.6-1.2-1.1-1.6-.5-.4-1-.6-1.5-.8-.6-.1-1.1-.2-1.6-.2-.8,0-1.5.2-2.1.5-.6.3-1.1.8-1.5,1.3-.4.5-.7,1.1-.9,1.8-.2.7-.3,1.3-.3,2s.1,1.5.4,2.2c.2.7.6,1.3,1,1.8.4.5.9.9,1.6,1.2.6.3,1.3.5,2,.5s1.1,0,1.6-.2c.5-.2,1-.4,1.5-.8.5-.4.8-.9,1.1-1.5l3.5,2.1c-.4.9-1,1.7-1.8,2.3-.8.6-1.8,1.1-2.8,1.5s-2.1.5-3.2.5-2.6-.3-3.7-.8c-1.1-.6-2.1-1.3-2.9-2.2-.8-.9-1.5-2-1.9-3.1-.4-1.1-.7-2.3-.7-3.5Z"/>
+      <path class="gds-cls-2" d="M182.5,16.3v-3.8h4.2v3.8h-4.2ZM182.5,31.6v-13.8h4.2v13.8h-4.2Z"/>
+      <path class="gds-cls-2" d="M198,30.9c-.4.2-.8.3-1.2.5-.5.2-.9.3-1.4.4-.5,0-1,.1-1.5.1s-1.3-.1-1.9-.3-1-.6-1.4-1.2-.5-1.2-.5-2.1v-7.1h-1.8v-3.2h1.8v-4.4h4.2v4.4h2.8v3.2h-2.8v5.6c0,.5.1.8.3,1,.2.2.5.3.9.3s.6,0,1-.2c.3-.1.6-.2.9-.3l.8,3.3Z"/>
+      <path class="gds-cls-2" d="M199.1,33.7c.4.1.7.2,1,.2.3,0,.6,0,.8,0,.4,0,.6,0,.9-.2s.4-.4.6-.8c.2-.4.3-.8.5-1.4l-5.2-13.7h4.3l3.2,9.4,2.7-9.4h3.9l-5.3,15.9c-.2.7-.6,1.4-1.1,2-.5.6-1.1,1-1.9,1.4-.7.3-1.5.5-2.4.5-.4,0-.7,0-1.1,0-.4,0-.7-.2-1.1-.3v-3.6Z"/>
+    </g>
+    <g>
+      <path class="gds-cls-1" d="M64.5,16.8h-5.7v14.9h-4.3v-14.9h-5.7v-3.8h15.7v3.8Z"/>
+      <path class="gds-cls-1" d="M79.1,31.6h-4.2v-7.6c0-.9-.2-1.5-.6-1.9-.4-.4-.9-.6-1.4-.6s-.7,0-1.1.3c-.4.2-.8.5-1.1.8-.3.4-.6.8-.7,1.2v7.8h-4.2V12.5h4.2v7.9c.5-.8,1.2-1.5,2-1.9.8-.4,1.8-.6,2.8-.6s1.7.2,2.2.5c.6.3,1,.7,1.3,1.2.3.5.5,1,.6,1.7.1.6.2,1.2.2,1.8v8.7Z"/>
+      <path class="gds-cls-1" d="M87.9,31.9c-1.2,0-2.2-.2-3.1-.6s-1.7-.9-2.3-1.5c-.6-.6-1.1-1.4-1.5-2.2-.3-.8-.5-1.7-.5-2.6,0-1.3.3-2.5.9-3.6.6-1.1,1.4-1.9,2.5-2.6s2.4-1,4-1,2.9.3,4,1,1.9,1.5,2.5,2.6c.6,1.1.9,2.2.9,3.5s0,.5,0,.7,0,.4,0,.6h-10.2c0,.6.2,1.1.5,1.5.3.4.7.7,1.1.9.5.2.9.3,1.4.3s1.2-.1,1.8-.4c.6-.3.9-.7,1.1-1.2l3.6,1c-.4.7-.8,1.3-1.5,1.9-.6.5-1.4,1-2.2,1.3-.9.3-1.8.5-2.9.5ZM84.9,23.5h6c0-.6-.2-1-.5-1.5-.3-.4-.6-.7-1.1-1s-.9-.3-1.5-.3-1,.1-1.4.3c-.4.2-.8.5-1.1.9-.3.4-.4.9-.5,1.5Z"/>
+      <path class="gds-cls-1" d="M118,26.8c0,1.1-.3,2-.8,2.7-.6.7-1.3,1.2-2.3,1.6-1,.4-2,.5-3.2.5h-9.1V13h10.4c.9,0,1.6.2,2.3.7.6.5,1.1,1.1,1.5,1.8.3.7.5,1.5.5,2.3s-.2,1.7-.7,2.5c-.4.8-1.1,1.4-2,1.8,1.1.3,1.9.9,2.5,1.7.6.8.9,1.8.9,3.1ZM106.9,16.7v3.9h4.2c.3,0,.6,0,.9-.2.3-.1.5-.4.7-.6.2-.3.2-.6.2-1.1s0-.8-.2-1.1c-.1-.3-.3-.5-.6-.6-.2-.1-.5-.2-.9-.2h-4.4ZM113.7,26c0-.4,0-.7-.2-1.1-.2-.3-.4-.6-.6-.7s-.6-.3-.9-.3h-4.9v4.1h4.8c.4,0,.7,0,1-.3.3-.2.5-.4.7-.7.2-.3.2-.6.2-1Z"/>
+      <path class="gds-cls-1" d="M119.7,12.5h4.2v14.3c0,.6.1,1,.3,1.2.2.2.5.4.9.4s.5,0,.8-.1c.3,0,.5-.2.7-.3l.6,3.2c-.5.2-1.1.4-1.8.6-.7.2-1.3.2-1.9.2-1.2,0-2.1-.3-2.8-1-.6-.6-1-1.6-1-2.7v-15.7Z"/>
+      <path class="gds-cls-1" d="M127.9,26.8v-8.8h4.2v7.8c0,.8.2,1.4.5,1.9.3.4.8.7,1.4.7s.8,0,1.1-.2c.4-.1.7-.3,1-.6s.6-.7.9-1.1v-8.4h4.2v9c0,.4,0,.7.2.9.1.2.4.3.7.3v3.5c-.4,0-.7.1-1,.2s-.5,0-.8,0c-.7,0-1.3-.1-1.8-.4-.4-.3-.7-.7-.8-1.3v-.8c-.7.9-1.5,1.6-2.4,2-.9.4-2,.6-3.2.6s-2.5-.4-3.2-1.3c-.7-.9-1.1-2.2-1.1-3.8Z"/>
+      <path class="gds-cls-1" d="M150.6,31.9c-1.2,0-2.2-.2-3.1-.6-.9-.4-1.7-.9-2.3-1.5-.6-.6-1.1-1.4-1.5-2.2-.3-.8-.5-1.7-.5-2.6,0-1.3.3-2.5.9-3.6.6-1.1,1.4-1.9,2.5-2.6,1.1-.7,2.4-1,4-1s2.9.3,4,1c1.1.6,1.9,1.5,2.5,2.6.6,1.1.9,2.2.9,3.5s0,.5,0,.7,0,.4,0,.6h-10.2c0,.6.2,1.1.5,1.5s.7.7,1.1.9c.5.2.9.3,1.4.3s1.2-.1,1.8-.4c.6-.3.9-.7,1.1-1.2l3.6,1c-.4.7-.8,1.3-1.5,1.9-.6.5-1.4,1-2.2,1.3-.9.3-1.8.5-2.9.5ZM147.5,23.5h6c0-.6-.2-1-.5-1.5-.3-.4-.6-.7-1.1-1-.4-.2-.9-.3-1.5-.3s-1,.1-1.4.3c-.4.2-.8.5-1.1.9-.3.4-.4.9-.5,1.5Z"/>
+      <path class="gds-cls-1" d="M164.2,22.1c0-1.1.2-2.2.6-3.3.4-1.1,1-2.1,1.8-3,.8-.9,1.8-1.6,3-2.2,1.2-.5,2.5-.8,3.9-.8s3.3.4,4.6,1.1,2.3,1.7,2.9,2.9l-3.3,2.3c-.3-.7-.6-1.2-1.1-1.6-.5-.4-1-.6-1.5-.8-.6-.1-1.1-.2-1.6-.2-.8,0-1.5.2-2.1.5-.6.3-1.1.8-1.5,1.3-.4.5-.7,1.1-.9,1.8-.2.7-.3,1.3-.3,2s.1,1.5.4,2.2c.2.7.6,1.3,1,1.8.4.5.9.9,1.6,1.2.6.3,1.3.5,2,.5s1.1,0,1.6-.2c.5-.2,1-.4,1.5-.8.5-.4.8-.9,1.1-1.5l3.5,2.1c-.4.9-1,1.7-1.8,2.3-.8.6-1.8,1.1-2.8,1.5s-2.1.5-3.2.5-2.6-.3-3.7-.8c-1.1-.6-2.1-1.3-2.9-2.2-.8-.9-1.5-2-1.9-3.1-.4-1.1-.7-2.3-.7-3.5Z"/>
+      <path class="gds-cls-1" d="M182.5,16.3v-3.8h4.2v3.8h-4.2ZM182.5,31.6v-13.8h4.2v13.8h-4.2Z"/>
+      <path class="gds-cls-1" d="M198,30.9c-.4.2-.8.3-1.2.5-.5.2-.9.3-1.4.4-.5,0-1,.1-1.5.1s-1.3-.1-1.9-.3-1-.6-1.4-1.2-.5-1.2-.5-2.1v-7.1h-1.8v-3.2h1.8v-4.4h4.2v4.4h2.8v3.2h-2.8v5.6c0,.5.1.8.3,1,.2.2.5.3.9.3s.6,0,1-.2c.3-.1.6-.2.9-.3l.8,3.3Z"/>
+      <path class="gds-cls-1" d="M199.1,33.7c.4.1.7.2,1,.2.3,0,.6,0,.8,0,.4,0,.6,0,.9-.2s.4-.4.6-.8c.2-.4.3-.8.5-1.4l-5.2-13.7h4.3l3.2,9.4,2.7-9.4h3.9l-5.3,15.9c-.2.7-.6,1.4-1.1,2-.5.6-1.1,1-1.9,1.4-.7.3-1.5.5-2.4.5-.4,0-.7,0-1.1,0-.4,0-.7-.2-1.1-.3v-3.6Z"/>
+    </g>
+  </g>
+</svg></div>
+
+  <div class="sidebar-label">Visão Geral</div>
+  <div class="nav-item active" onclick="goTo(0)"><span class="nav-dot"></span> Apresentação<span class="nav-number">00</span></div>
+
+  <div class="sidebar-label section">O Projeto</div>
+  <div class="nav-item" onclick="goTo(1)"><span class="nav-dot"></span> A Plataforma<span class="nav-number">01</span></div>
+  <div class="nav-item" onclick="goTo(2)"><span class="nav-dot"></span> O Jogo<span class="nav-number">02</span></div>
+  <div class="nav-item" onclick="goTo(3)"><span class="nav-dot"></span> Onde Será Lançado<span class="nav-number">03</span></div>
+
+  <div class="sidebar-label section">A Jornada</div>
+  <div class="nav-item" onclick="goTo(4)"><span class="nav-dot"></span> Jornada Cultural<span class="nav-number">04</span></div>
+  <div class="nav-item" onclick="goTo(5)"><span class="nav-dot"></span> Mapa Expográfico<span class="nav-number">05</span></div>
+
+  <div class="sidebar-label section">Planejamento</div>
+  <div class="nav-item" onclick="goTo(6)"><span class="nav-dot"></span> Cronograma<span class="nav-number">06</span></div>
+
+  <div class="sidebar-footer">Apresentação Sotreq<br>© The Blue City</div>
+</aside>
+
+<main class="main">
+
+  <!-- 0: INTRO -->
+  <section class="page active" id="page-0">
+    <div class="intro-hero">
+      <div class="intro-top">
+        <div class="intro-logo"><svg style="height:48px;width:auto;display:block;" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 218.4 45.6">
+  <defs>
+    <style>
+      .sbs-cls-1 {
+        fill: #000;
+      }
+
+      .sbs-cls-1, .sbs-cls-2, .sbs-cls-3, .sbs-cls-4 {
+        stroke-width: 0px;
+      }
+
+      .sbs-cls-2 {
+        fill: #001522;
+      }
+
+      .sbs-cls-3 {
+        fill: #0c9ed9;
+      }
+
+      .sbs-cls-4 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g>
+    <circle class="sbs-cls-2" cx="26.1" cy="22.7" r="18.4"/>
+    <g>
+      <rect class="sbs-cls-4" x="15.5" y="17.5" width="20.8" height="3.2"/>
+      <path class="sbs-cls-3" d="M35,23l-.2.2c-1.3,1.1-2.4,2.1-4.1,2.1s-2.5-.4-4.1-1.3c-2.1-1.1-3.9-1.7-5.6-1.7-2.8,0-4.6,1.6-6,2.9l-.2.2,2,2.4.2-.2c1.3-1.1,2.4-2.1,4.1-2.1s2.5.4,4.1,1.3c2.1,1.1,3.9,1.7,5.6,1.7h0c2.7,0,4.5-1.6,5.9-2.9l.2-.2-2-2.4Z"/>
+    </g>
+  </g>
+  <g>
+    <g>
+      <path class="sbs-cls-1" d="M64.5,16.8h-5.7v14.9h-4.3v-14.9h-5.7v-3.8h15.7v3.8Z"/>
+      <path class="sbs-cls-1" d="M79.1,31.6h-4.2v-7.6c0-.9-.2-1.5-.6-1.9-.4-.4-.9-.6-1.4-.6s-.7,0-1.1.3c-.4.2-.8.5-1.1.8-.3.4-.6.8-.7,1.2v7.8h-4.2V12.5h4.2v7.9c.5-.8,1.2-1.5,2-1.9.8-.4,1.8-.6,2.8-.6s1.7.2,2.2.5c.6.3,1,.7,1.3,1.2.3.5.5,1,.6,1.7.1.6.2,1.2.2,1.8v8.7Z"/>
+      <path class="sbs-cls-1" d="M87.9,31.9c-1.2,0-2.2-.2-3.1-.6s-1.7-.9-2.3-1.5c-.6-.6-1.1-1.4-1.5-2.2-.3-.8-.5-1.7-.5-2.6,0-1.3.3-2.5.9-3.6.6-1.1,1.4-1.9,2.5-2.6s2.4-1,4-1,2.9.3,4,1,1.9,1.5,2.5,2.6c.6,1.1.9,2.2.9,3.5s0,.5,0,.7,0,.4,0,.6h-10.2c0,.6.2,1.1.5,1.5.3.4.7.7,1.1.9.5.2.9.3,1.4.3s1.2-.1,1.8-.4c.6-.3.9-.7,1.1-1.2l3.6,1c-.4.7-.8,1.3-1.5,1.9-.6.5-1.4,1-2.2,1.3-.9.3-1.8.5-2.9.5ZM84.9,23.5h6c0-.6-.2-1-.5-1.5-.3-.4-.6-.7-1.1-1s-.9-.3-1.5-.3-1,.1-1.4.3c-.4.2-.8.5-1.1.9-.3.4-.4.9-.5,1.5Z"/>
+      <path class="sbs-cls-1" d="M118,26.8c0,1.1-.3,2-.8,2.7-.6.7-1.3,1.2-2.3,1.6-1,.4-2,.5-3.2.5h-9.1V13h10.4c.9,0,1.6.2,2.3.7.6.5,1.1,1.1,1.5,1.8.3.7.5,1.5.5,2.3s-.2,1.7-.7,2.5c-.4.8-1.1,1.4-2,1.8,1.1.3,1.9.9,2.5,1.7.6.8.9,1.8.9,3.1ZM106.9,16.7v3.9h4.2c.3,0,.6,0,.9-.2.3-.1.5-.4.7-.6.2-.3.2-.6.2-1.1s0-.8-.2-1.1c-.1-.3-.3-.5-.6-.6-.2-.1-.5-.2-.9-.2h-4.4ZM113.7,26c0-.4,0-.7-.2-1.1-.2-.3-.4-.6-.6-.7s-.6-.3-.9-.3h-4.9v4.1h4.8c.4,0,.7,0,1-.3.3-.2.5-.4.7-.7.2-.3.2-.6.2-1Z"/>
+      <path class="sbs-cls-1" d="M119.7,12.5h4.2v14.3c0,.6.1,1,.3,1.2.2.2.5.4.9.4s.5,0,.8-.1c.3,0,.5-.2.7-.3l.6,3.2c-.5.2-1.1.4-1.8.6-.7.2-1.3.2-1.9.2-1.2,0-2.1-.3-2.8-1-.6-.6-1-1.6-1-2.7v-15.7Z"/>
+      <path class="sbs-cls-1" d="M127.9,26.8v-8.8h4.2v7.8c0,.8.2,1.4.5,1.9.3.4.8.7,1.4.7s.8,0,1.1-.2c.4-.1.7-.3,1-.6s.6-.7.9-1.1v-8.4h4.2v9c0,.4,0,.7.2.9.1.2.4.3.7.3v3.5c-.4,0-.7.1-1,.2s-.5,0-.8,0c-.7,0-1.3-.1-1.8-.4-.4-.3-.7-.7-.8-1.3v-.8c-.7.9-1.5,1.6-2.4,2-.9.4-2,.6-3.2.6s-2.5-.4-3.2-1.3c-.7-.9-1.1-2.2-1.1-3.8Z"/>
+      <path class="sbs-cls-1" d="M150.6,31.9c-1.2,0-2.2-.2-3.1-.6-.9-.4-1.7-.9-2.3-1.5-.6-.6-1.1-1.4-1.5-2.2-.3-.8-.5-1.7-.5-2.6,0-1.3.3-2.5.9-3.6.6-1.1,1.4-1.9,2.5-2.6,1.1-.7,2.4-1,4-1s2.9.3,4,1c1.1.6,1.9,1.5,2.5,2.6.6,1.1.9,2.2.9,3.5s0,.5,0,.7,0,.4,0,.6h-10.2c0,.6.2,1.1.5,1.5s.7.7,1.1.9c.5.2.9.3,1.4.3s1.2-.1,1.8-.4c.6-.3.9-.7,1.1-1.2l3.6,1c-.4.7-.8,1.3-1.5,1.9-.6.5-1.4,1-2.2,1.3-.9.3-1.8.5-2.9.5ZM147.5,23.5h6c0-.6-.2-1-.5-1.5-.3-.4-.6-.7-1.1-1-.4-.2-.9-.3-1.5-.3s-1,.1-1.4.3c-.4.2-.8.5-1.1.9-.3.4-.4.9-.5,1.5Z"/>
+      <path class="sbs-cls-1" d="M164.2,22.1c0-1.1.2-2.2.6-3.3.4-1.1,1-2.1,1.8-3,.8-.9,1.8-1.6,3-2.2,1.2-.5,2.5-.8,3.9-.8s3.3.4,4.6,1.1,2.3,1.7,2.9,2.9l-3.3,2.3c-.3-.7-.6-1.2-1.1-1.6-.5-.4-1-.6-1.5-.8-.6-.1-1.1-.2-1.6-.2-.8,0-1.5.2-2.1.5-.6.3-1.1.8-1.5,1.3-.4.5-.7,1.1-.9,1.8-.2.7-.3,1.3-.3,2s.1,1.5.4,2.2c.2.7.6,1.3,1,1.8.4.5.9.9,1.6,1.2.6.3,1.3.5,2,.5s1.1,0,1.6-.2c.5-.2,1-.4,1.5-.8.5-.4.8-.9,1.1-1.5l3.5,2.1c-.4.9-1,1.7-1.8,2.3-.8.6-1.8,1.1-2.8,1.5s-2.1.5-3.2.5-2.6-.3-3.7-.8c-1.1-.6-2.1-1.3-2.9-2.2-.8-.9-1.5-2-1.9-3.1-.4-1.1-.7-2.3-.7-3.5Z"/>
+      <path class="sbs-cls-1" d="M182.5,16.3v-3.8h4.2v3.8h-4.2ZM182.5,31.6v-13.8h4.2v13.8h-4.2Z"/>
+      <path class="sbs-cls-1" d="M198,30.9c-.4.2-.8.3-1.2.5-.5.2-.9.3-1.4.4-.5,0-1,.1-1.5.1s-1.3-.1-1.9-.3-1-.6-1.4-1.2-.5-1.2-.5-2.1v-7.1h-1.8v-3.2h1.8v-4.4h4.2v4.4h2.8v3.2h-2.8v5.6c0,.5.1.8.3,1,.2.2.5.3.9.3s.6,0,1-.2c.3-.1.6-.2.9-.3l.8,3.3Z"/>
+      <path class="sbs-cls-1" d="M199.1,33.7c.4.1.7.2,1,.2.3,0,.6,0,.8,0,.4,0,.6,0,.9-.2s.4-.4.6-.8c.2-.4.3-.8.5-1.4l-5.2-13.7h4.3l3.2,9.4,2.7-9.4h3.9l-5.3,15.9c-.2.7-.6,1.4-1.1,2-.5.6-1.1,1-1.9,1.4-.7.3-1.5.5-2.4.5-.4,0-.7,0-1.1,0-.4,0-.7-.2-1.1-.3v-3.6Z"/>
+    </g>
+    <g>
+      <path class="sbs-cls-4" d="M64.5,16.8h-5.7v14.9h-4.3v-14.9h-5.7v-3.8h15.7v3.8Z"/>
+      <path class="sbs-cls-4" d="M79.1,31.6h-4.2v-7.6c0-.9-.2-1.5-.6-1.9-.4-.4-.9-.6-1.4-.6s-.7,0-1.1.3c-.4.2-.8.5-1.1.8-.3.4-.6.8-.7,1.2v7.8h-4.2V12.5h4.2v7.9c.5-.8,1.2-1.5,2-1.9.8-.4,1.8-.6,2.8-.6s1.7.2,2.2.5c.6.3,1,.7,1.3,1.2.3.5.5,1,.6,1.7.1.6.2,1.2.2,1.8v8.7Z"/>
+      <path class="sbs-cls-4" d="M87.9,31.9c-1.2,0-2.2-.2-3.1-.6s-1.7-.9-2.3-1.5c-.6-.6-1.1-1.4-1.5-2.2-.3-.8-.5-1.7-.5-2.6,0-1.3.3-2.5.9-3.6.6-1.1,1.4-1.9,2.5-2.6s2.4-1,4-1,2.9.3,4,1,1.9,1.5,2.5,2.6c.6,1.1.9,2.2.9,3.5s0,.5,0,.7,0,.4,0,.6h-10.2c0,.6.2,1.1.5,1.5.3.4.7.7,1.1.9.5.2.9.3,1.4.3s1.2-.1,1.8-.4c.6-.3.9-.7,1.1-1.2l3.6,1c-.4.7-.8,1.3-1.5,1.9-.6.5-1.4,1-2.2,1.3-.9.3-1.8.5-2.9.5ZM84.9,23.5h6c0-.6-.2-1-.5-1.5-.3-.4-.6-.7-1.1-1s-.9-.3-1.5-.3-1,.1-1.4.3c-.4.2-.8.5-1.1.9-.3.4-.4.9-.5,1.5Z"/>
+      <path class="sbs-cls-4" d="M118,26.8c0,1.1-.3,2-.8,2.7-.6.7-1.3,1.2-2.3,1.6-1,.4-2,.5-3.2.5h-9.1V13h10.4c.9,0,1.6.2,2.3.7.6.5,1.1,1.1,1.5,1.8.3.7.5,1.5.5,2.3s-.2,1.7-.7,2.5c-.4.8-1.1,1.4-2,1.8,1.1.3,1.9.9,2.5,1.7.6.8.9,1.8.9,3.1ZM106.9,16.7v3.9h4.2c.3,0,.6,0,.9-.2.3-.1.5-.4.7-.6.2-.3.2-.6.2-1.1s0-.8-.2-1.1c-.1-.3-.3-.5-.6-.6-.2-.1-.5-.2-.9-.2h-4.4ZM113.7,26c0-.4,0-.7-.2-1.1-.2-.3-.4-.6-.6-.7s-.6-.3-.9-.3h-4.9v4.1h4.8c.4,0,.7,0,1-.3.3-.2.5-.4.7-.7.2-.3.2-.6.2-1Z"/>
+      <path class="sbs-cls-4" d="M119.7,12.5h4.2v14.3c0,.6.1,1,.3,1.2.2.2.5.4.9.4s.5,0,.8-.1c.3,0,.5-.2.7-.3l.6,3.2c-.5.2-1.1.4-1.8.6-.7.2-1.3.2-1.9.2-1.2,0-2.1-.3-2.8-1-.6-.6-1-1.6-1-2.7v-15.7Z"/>
+      <path class="sbs-cls-4" d="M127.9,26.8v-8.8h4.2v7.8c0,.8.2,1.4.5,1.9.3.4.8.7,1.4.7s.8,0,1.1-.2c.4-.1.7-.3,1-.6s.6-.7.9-1.1v-8.4h4.2v9c0,.4,0,.7.2.9.1.2.4.3.7.3v3.5c-.4,0-.7.1-1,.2s-.5,0-.8,0c-.7,0-1.3-.1-1.8-.4-.4-.3-.7-.7-.8-1.3v-.8c-.7.9-1.5,1.6-2.4,2-.9.4-2,.6-3.2.6s-2.5-.4-3.2-1.3c-.7-.9-1.1-2.2-1.1-3.8Z"/>
+      <path class="sbs-cls-4" d="M150.6,31.9c-1.2,0-2.2-.2-3.1-.6-.9-.4-1.7-.9-2.3-1.5-.6-.6-1.1-1.4-1.5-2.2-.3-.8-.5-1.7-.5-2.6,0-1.3.3-2.5.9-3.6.6-1.1,1.4-1.9,2.5-2.6,1.1-.7,2.4-1,4-1s2.9.3,4,1c1.1.6,1.9,1.5,2.5,2.6.6,1.1.9,2.2.9,3.5s0,.5,0,.7,0,.4,0,.6h-10.2c0,.6.2,1.1.5,1.5s.7.7,1.1.9c.5.2.9.3,1.4.3s1.2-.1,1.8-.4c.6-.3.9-.7,1.1-1.2l3.6,1c-.4.7-.8,1.3-1.5,1.9-.6.5-1.4,1-2.2,1.3-.9.3-1.8.5-2.9.5ZM147.5,23.5h6c0-.6-.2-1-.5-1.5-.3-.4-.6-.7-1.1-1-.4-.2-.9-.3-1.5-.3s-1,.1-1.4.3c-.4.2-.8.5-1.1.9-.3.4-.4.9-.5,1.5Z"/>
+      <path class="sbs-cls-4" d="M164.2,22.1c0-1.1.2-2.2.6-3.3.4-1.1,1-2.1,1.8-3,.8-.9,1.8-1.6,3-2.2,1.2-.5,2.5-.8,3.9-.8s3.3.4,4.6,1.1,2.3,1.7,2.9,2.9l-3.3,2.3c-.3-.7-.6-1.2-1.1-1.6-.5-.4-1-.6-1.5-.8-.6-.1-1.1-.2-1.6-.2-.8,0-1.5.2-2.1.5-.6.3-1.1.8-1.5,1.3-.4.5-.7,1.1-.9,1.8-.2.7-.3,1.3-.3,2s.1,1.5.4,2.2c.2.7.6,1.3,1,1.8.4.5.9.9,1.6,1.2.6.3,1.3.5,2,.5s1.1,0,1.6-.2c.5-.2,1-.4,1.5-.8.5-.4.8-.9,1.1-1.5l3.5,2.1c-.4.9-1,1.7-1.8,2.3-.8.6-1.8,1.1-2.8,1.5s-2.1.5-3.2.5-2.6-.3-3.7-.8c-1.1-.6-2.1-1.3-2.9-2.2-.8-.9-1.5-2-1.9-3.1-.4-1.1-.7-2.3-.7-3.5Z"/>
+      <path class="sbs-cls-4" d="M182.5,16.3v-3.8h4.2v3.8h-4.2ZM182.5,31.6v-13.8h4.2v13.8h-4.2Z"/>
+      <path class="sbs-cls-4" d="M198,30.9c-.4.2-.8.3-1.2.5-.5.2-.9.3-1.4.4-.5,0-1,.1-1.5.1s-1.3-.1-1.9-.3-1-.6-1.4-1.2-.5-1.2-.5-2.1v-7.1h-1.8v-3.2h1.8v-4.4h4.2v4.4h2.8v3.2h-2.8v5.6c0,.5.1.8.3,1,.2.2.5.3.9.3s.6,0,1-.2c.3-.1.6-.2.9-.3l.8,3.3Z"/>
+      <path class="sbs-cls-4" d="M199.1,33.7c.4.1.7.2,1,.2.3,0,.6,0,.8,0,.4,0,.6,0,.9-.2s.4-.4.6-.8c.2-.4.3-.8.5-1.4l-5.2-13.7h4.3l3.2,9.4,2.7-9.4h3.9l-5.3,15.9c-.2.7-.6,1.4-1.1,2-.5.6-1.1,1-1.9,1.4-.7.3-1.5.5-2.4.5-.4,0-.7,0-1.1,0-.4,0-.7-.2-1.1-.3v-3.6Z"/>
+    </g>
+  </g>
+</svg></div>
+        <div class="client-badge">🤝 Apresentação para Sotreq</div>
+        <div class="intro-eyebrow">Projeto Termômetro Zero</div>
+        <h1 class="intro-headline">Educação ambiental que conecta o digital ao mundo real</h1>
+        <p class="intro-desc">Uma jornada ESG gamificada desenvolvida especialmente para a Sotreq, com lançamento nas escolas técnicas de Palmas, Tocantins.</p>
+        <button class="intro-start-btn" onclick="goTo(1)">▶&nbsp; Ver Apresentação</button>
+      </div>
+      <div class="intro-chips">
+        <span class="prev-chip">01 · A Plataforma</span>
+        <span class="prev-chip">02 · O Jogo</span>
+        <span class="prev-chip">03 · Onde Será Lançado</span>
+        <span class="prev-chip">04 · Jornada Cultural</span>
+        <span class="prev-chip">05 · Mapa Expográfico</span>
+        <span class="prev-chip">06 · Cronograma</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1: A PLATAFORMA -->
+  <section class="page" id="page-1">
+    <div class="page-hero">
+      <div class="page-tag">01 · O Projeto</div>
+      <h1 class="page-title">A Plataforma The Blue City</h1>
+      <p class="page-subtitle">The Blue City é uma plataforma de jornadas ESG gamificadas que engaja colaboradores e estudantes na construção de um futuro mais sustentável — unindo o mundo virtual ao mundo real.</p>
+    </div>
+    <div class="page-body">
+      <div class="content-section">
+        <div class="section-heading">O que é</div>
+        <div class="feature-card">
+          <div class="feature-card-header"><div class="feature-icon fi-blue">🎮</div><h3>Jornadas ESG Gamificadas</h3></div>
+          <p>[Insira aqui a descrição das jornadas — missões temáticas, desafios reais, certificação NFT e como a plataforma funciona para o usuário final]</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header"><div class="feature-icon fi-teal">🏆</div><h3>Certificação Blockchain</h3></div>
+          <p>[Insira aqui como funciona o sistema de certificação — Open Badge 3.0, Europass, compartilhamento no LinkedIn, verificação pública]</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header"><div class="feature-icon fi-green">🌍</div><h3>Impacto no Mundo Real</h3></div>
+          <p>[Insira aqui como a plataforma conecta o jogo a ações reais — projetos, exposições, missões de mundo real]</p>
+        </div>
+        <a class="link-card" href="index.html" target="_blank">
+          <div class="link-icon">🔗</div>
+          <div class="link-card-text">
+            <strong>Ver apresentação completa da plataforma</strong>
+            <span>Acesse o guia detalhado de todas as funcionalidades</span>
+          </div>
+        </a>
+      </div>
+      <div class="content-section">
+        <div class="section-heading">Números da plataforma</div>
+        <div class="stats-row">
+          <div class="stat-card"><div class="stat-value">2.450</div><div class="stat-label">Jogadores Ativos</div></div>
+          <div class="stat-card"><div class="stat-value teal">89%</div><div class="stat-label">Taxa de Conclusão</div></div>
+          <div class="stat-card"><div class="stat-value green">1.247</div><div class="stat-label">NFTs Emitidos</div></div>
+        </div>
+        <div class="info-card" style="margin-top:8px;">
+          <h3>Por que a Sotreq?</h3>
+          <p>[Insira aqui o contexto da parceria — por que a Sotreq foi escolhida, qual o alinhamento com os objetivos ESG da empresa, o que torna esse projeto estratégico]</p>
+        </div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="page-nav">
+      <button class="nav-btn" onclick="goTo(0)">← Apresentação</button>
+      <span class="page-indicator">O Projeto <strong>1</strong> de 3</span>
+      <button class="nav-btn next" onclick="goTo(2)">O Jogo →</button>
+    </div>
+  </section>
+
+  <!-- 2: O JOGO -->
+  <section class="page" id="page-2">
+    <div class="page-hero">
+      <div class="page-tag">02 · O Projeto</div>
+      <h1 class="page-title">Termômetro Zero</h1>
+      <p class="page-subtitle">[Insira aqui uma descrição do jogo Termômetro Zero — tema, narrativa, objetivo educacional e como se conecta ao contexto da Sotreq e às escolas técnicas de Palmas.]</p>
+    </div>
+    <div class="page-body">
+      <div class="content-section">
+        <div class="section-heading">Sobre o jogo</div>
+        <div class="feature-card">
+          <div class="feature-card-header"><div class="feature-icon fi-blue">🌡️</div><h3>Tema: Gases de Efeito Estufa (GEE)</h3></div>
+          <p>[Insira aqui como o tema GEE é abordado no jogo — mecânicas, desafios, narrativa educacional]</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header"><div class="feature-icon fi-teal">🎭</div><h3>Personagens</h3></div>
+          <p>[Insira aqui os personagens do jogo — seres encantados, referências culturais, mundos temáticos que cada um representa]</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header"><div class="feature-icon fi-green">📋</div><h3>Mecânicas e Fases</h3></div>
+          <p>[Insira aqui como o jogo é jogado — fases, missões, pontuação, badges, progressão do jogador]</p>
+        </div>
+      </div>
+      <div class="content-section">
+        <div class="section-heading">Formato da jornada</div>
+        <div class="info-card">
+          <h3>🗓 Duração</h3>
+          <p>[Insira aqui a duração total da jornada — semanas, carga horária estimada, ritmo de jogo]</p>
+        </div>
+        <div class="info-card teal" style="margin-top:0;">
+          <h3>🎓 Público-alvo</h3>
+          <p>[Insira aqui o perfil dos participantes — alunos das escolas técnicas, faixa etária, turmas envolvidas]</p>
+        </div>
+        <div class="info-card green" style="margin-top:0;">
+          <h3>🏅 Certificação</h3>
+          <p>[Insira aqui o que o aluno recebe ao concluir — badge, NFT, certificado verificável, vínculo com a Sotreq]</p>
+        </div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="page-nav">
+      <button class="nav-btn" onclick="goTo(1)">← A Plataforma</button>
+      <span class="page-indicator">O Projeto <strong>2</strong> de 3</span>
+      <button class="nav-btn next" onclick="goTo(3)">Onde Será Lançado →</button>
+    </div>
+  </section>
+
+  <!-- 3: ONDE SERÁ LANÇADO -->
+  <section class="page" id="page-3">
+    <div class="page-hero">
+      <div class="page-tag">03 · O Projeto</div>
+      <h1 class="page-title">Onde Será Lançado</h1>
+      <p class="page-subtitle">O Termômetro Zero será lançado em escolas técnicas de Palmas, Tocantins — cidade com perfil ideal para a proposta de educação ambiental e inovação do projeto.</p>
+    </div>
+    <div class="page-body">
+      <div class="content-section">
+        <div class="section-heading">Localização</div>
+        <div class="info-card">
+          <h3>📍 Palmas, Tocantins</h3>
+          <p>[Insira aqui informações sobre a cidade — contexto, perfil educacional, relevância para o tema GEE, relação com a Sotreq]</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header"><div class="feature-icon fi-blue">🏫</div><h3>Escolas Participantes</h3></div>
+          <p>[Insira aqui os nomes das escolas técnicas participantes, número de alunos previstos e turmas envolvidas]</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header"><div class="feature-icon fi-teal">🤝</div><h3>Parceria com a Sotreq</h3></div>
+          <p>[Insira aqui como a Sotreq se posiciona nessa parceria — patrocínio, co-criação, visibilidade de marca, impacto ESG]</p>
+        </div>
+      </div>
+      <div class="content-section">
+        <div class="section-heading">Impacto esperado</div>
+        <div class="stats-row">
+          <div class="stat-card"><div class="stat-value">[N]</div><div class="stat-label">Escolas participantes</div></div>
+          <div class="stat-card"><div class="stat-value teal">[N]</div><div class="stat-label">Alunos engajados</div></div>
+          <div class="stat-card"><div class="stat-value green">[N]</div><div class="stat-label">Certificações emitidas</div></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header"><div class="feature-icon fi-green">🌱</div><h3>Legado do Projeto</h3></div>
+          <p>[Insira aqui o que fica depois do projeto — exposição permanente, certificações, repositório de projetos dos alunos, visibilidade para a Sotreq]</p>
+        </div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="page-nav">
+      <button class="nav-btn" onclick="goTo(2)">← O Jogo</button>
+      <span class="page-indicator">O Projeto <strong>3</strong> de 3</span>
+      <button class="nav-btn next" onclick="goTo(4)">Jornada Cultural →</button>
+    </div>
+  </section>
+
+  <!-- 4: JORNADA CULTURAL -->
+  <section class="page" id="page-4">
+    <div class="page-hero">
+      <div class="page-tag">04 · A Jornada</div>
+      <h1 class="page-title">Jornada Cultural</h1>
+      <p class="page-subtitle">A jornada vai além da plataforma digital — conecta o aprendizado virtual a ações reais no mundo físico, unindo escolas, a Sotreq, artistas e a comunidade de Palmas.</p>
+    </div>
+    <div class="page-body single">
+      <div style="margin-bottom:36px;"><svg style="width:100%;height:auto;display:block;border-radius:12px;" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 198.4 158">
+  <defs>
+    <style>
+      .fls-cls-1 {
+        opacity: .2;
+      }
+
+      .fls-cls-1, .fls-cls-2, .fls-cls-3, .fls-cls-4, .fls-cls-5, .fls-cls-6, .fls-cls-7, .fls-cls-8, .fls-cls-9, .fls-cls-10, .fls-cls-11, .fls-cls-12, .fls-cls-13, .fls-cls-14, .fls-cls-15, .fls-cls-16, .fls-cls-17 {
+        isolation: isolate;
+      }
+
+      .fls-cls-1, .fls-cls-18, .fls-cls-6, .fls-cls-10, .fls-cls-19, .fls-cls-15, .fls-cls-16, .fls-cls-17 {
+        stroke-width: 0px;
+      }
+
+      .fls-cls-1, .fls-cls-7, .fls-cls-8, .fls-cls-10, .fls-cls-14, .fls-cls-15 {
+        fill: #1aad8a;
+      }
+
+      .fls-cls-2 {
+        font-size: 4.1px;
+      }
+
+      .fls-cls-2, .fls-cls-5, .fls-cls-13 {
+        fill: #fff;
+        font-family: Helvetica-Bold, Helvetica;
+        font-weight: 700;
+      }
+
+      .fls-cls-3, .fls-cls-18, .fls-cls-6, .fls-cls-9, .fls-cls-16 {
+        fill: none;
+      }
+
+      .fls-cls-3, .fls-cls-20, .fls-cls-9, .fls-cls-21, .fls-cls-22 {
+        stroke-miterlimit: 1.2;
+      }
+
+      .fls-cls-3, .fls-cls-9 {
+        stroke-width: .1px;
+      }
+
+      .fls-cls-3, .fls-cls-9, .fls-cls-21 {
+        stroke: #1aad8a;
+      }
+
+      .fls-cls-3, .fls-cls-10 {
+        opacity: .2;
+      }
+
+      .fls-cls-4 {
+        fill: #7ecfba;
+        font-size: 2.9px;
+      }
+
+      .fls-cls-4, .fls-cls-7, .fls-cls-8, .fls-cls-11, .fls-cls-12, .fls-cls-14 {
+        font-family: Helvetica, Helvetica;
+      }
+
+      .fls-cls-5, .fls-cls-14 {
+        font-size: 3.5px;
+      }
+
+      .fls-cls-6 {
+        opacity: .6;
+      }
+
+      .fls-cls-7, .fls-cls-8, .fls-cls-11, .fls-cls-12 {
+        font-size: 2.6px;
+      }
+
+      .fls-cls-7, .fls-cls-16 {
+        opacity: .7;
+      }
+
+      .fls-cls-8 {
+        opacity: .4;
+      }
+
+      .fls-cls-20 {
+        stroke-width: .6px;
+      }
+
+      .fls-cls-20, .fls-cls-22 {
+        fill: #062e26;
+        stroke: #22d3a5;
+      }
+
+      .fls-cls-9 {
+        opacity: .2;
+      }
+
+      .fls-cls-21 {
+        fill: #0a3d35;
+        stroke-width: .3px;
+      }
+
+      .fls-cls-19 {
+        fill: #0d2b2b;
+      }
+
+      .fls-cls-11 {
+        opacity: .8;
+      }
+
+      .fls-cls-11, .fls-cls-17 {
+        fill: #22d3a5;
+      }
+
+      .fls-cls-12 {
+        fill: #4a9a85;
+      }
+
+      .fls-cls-13 {
+        font-size: 5.8px;
+      }
+
+      .fls-cls-15 {
+        opacity: .3;
+      }
+
+      .fls-cls-22 {
+        stroke-width: .4px;
+      }
+
+      .fls-cls-17 {
+        opacity: .5;
+      }
+    </style>
+  </defs>
+  <rect class="fls-cls-19" x="0" y="-.2" width="198.4" height="157.6" rx="4.7" ry="4.7"/>
+  <circle class="fls-cls-15" cx="175.1" cy="8.5" r=".7"/>
+  <circle class="fls-cls-1" cx="183.8" cy="14.3" r=".6"/>
+  <circle class="fls-cls-10" cx="191.1" cy="10" r=".6"/>
+  <line class="fls-cls-3" x1="175.1" y1="8.5" x2="183.8" y2="14.3"/>
+  <line class="fls-cls-9" x1="183.8" y1="14.3" x2="191.1" y2="10"/>
+  <text class="fls-cls-14" transform="translate(10.5 9.7)"><tspan x="0" y="0">Como funciona</tspan></text>
+  <text class="fls-cls-13" transform="translate(10.5 16.7)"><tspan x="0" y="0">The Blue City</tspan></text>
+  <rect class="fls-cls-21" x="10.5" y="23.7" width="49.6" height="25.1" rx="2.9" ry="2.9"/>
+  <text class="fls-cls-7" transform="translate(11.7 27.5)"><tspan x="0" y="0">01</tspan></text>
+  <text class="fls-cls-5" transform="translate(24 30.7)"><tspan x="0" y="0">Jogo lançado</tspan></text>
+  <text class="fls-cls-4" transform="translate(19.1 35.4)"><tspan x="0" y="0">Plataforma The Blue City</tspan></text>
+  <text class="fls-cls-12" transform="translate(23.1 39.7)"><tspan x="0" y="0">ex: Termômetro Zero</tspan></text>
+  <text class="fls-cls-12" transform="translate(28.4 44.1)"><tspan x="0" y="0">Palmas, TO</tspan></text>
+  <path class="fls-cls-18" d=""/>
+  <path class="fls-cls-18" d="M67,35.4l1.3.8-1.3.8"/>
+  <path class="fls-cls-16" d="M68.3,36.2" marker-end="url(#arrow)"/>
+  <rect class="fls-cls-21" x="68.9" y="23.7" width="49.6" height="25.1" rx="2.9" ry="2.9"/>
+  <text class="fls-cls-7" transform="translate(70 27.5)"><tspan x="0" y="0">02</tspan></text>
+  <text class="fls-cls-5" transform="translate(82.1 30.7)"><tspan x="0" y="0">Alunos jogam</tspan></text>
+  <text class="fls-cls-4" transform="translate(84.1 35.4)"><tspan x="0" y="0">Durante 1 mês</tspan></text>
+  <text class="fls-cls-12" transform="translate(84 39.7)"><tspan x="0" y="0">escolas técnicas</tspan></text>
+  <text class="fls-cls-12" transform="translate(88.2 44.1)"><tspan x="0" y="0">da região</tspan></text>
+  <path class="fls-cls-18" d=""/>
+  <path class="fls-cls-18" d="M125.4,35.4l1.3.8-1.3.8"/>
+  <path class="fls-cls-16" d="M126.6,36.2" marker-end="url(#arrow)"/>
+  <rect class="fls-cls-21" x="127.2" y="23.7" width="49.6" height="25.1" rx="2.9" ry="2.9"/>
+  <text class="fls-cls-7" transform="translate(128.4 27.5)"><tspan x="0" y="0">03</tspan></text>
+  <text class="fls-cls-5" transform="translate(142 30.7)"><tspan x="0" y="0">Certificação</tspan></text>
+  <text class="fls-cls-4" transform="translate(139.5 35.4)"><tspan x="0" y="0">Badges + NFT final</tspan></text>
+  <text class="fls-cls-12" transform="translate(143.6 39.7)"><tspan x="0" y="0">em blockchain</tspan></text>
+  <text class="fls-cls-12" transform="translate(139.9 44.1)"><tspan x="0" y="0">vinculado à empresa</tspan></text>
+  <path class="fls-cls-18" d=""/>
+  <path class="fls-cls-18" d="M150.8,56.7l1.3.8-1.3.8"/>
+  <path class="fls-cls-6" d="M152,57.5" marker-end="url(#arrow)"/>
+  <rect class="fls-cls-22" x="108" y="58.1" width="68.9" height="25.1" rx="2.9" ry="2.9"/>
+  <text class="fls-cls-11" transform="translate(109.1 61.9)"><tspan x="0" y="0">04</tspan></text>
+  <text class="fls-cls-5" transform="translate(123.9 65.1)"><tspan x="0" y="0">Missão no mundo real</tspan></text>
+  <text class="fls-cls-4" transform="translate(128.6 69.8)"><tspan x="0" y="0">Alunos enviam ideias</tspan></text>
+  <text class="fls-cls-12" transform="translate(130.4 74.2)"><tspan x="0" y="0">endereçando o tema</tspan></text>
+  <text class="fls-cls-12" transform="translate(130.6 78.5)"><tspan x="0" y="0">ex: redução de GEE</tspan></text>
+  <path class="fls-cls-18" d=""/>
+  <path class="fls-cls-18" d="M83.4,69.8l1.3.8-1.3.8"/>
+  <path class="fls-cls-16" d="M84.6,70.7" marker-end="url(#arrow)"/>
+  <rect class="fls-cls-21" x="23.9" y="58.1" width="59.5" height="25.1" rx="2.9" ry="2.9"/>
+  <text class="fls-cls-7" transform="translate(25.1 61.9)"><tspan x="0" y="0">05</tspan></text>
+  <text class="fls-cls-5" transform="translate(42 65.1)"><tspan x="0" y="0">Artistas criam</tspan></text>
+  <text class="fls-cls-4" transform="translate(42.2 69.8)"><tspan x="0" y="0">a partir das ideias</tspan></text>
+  <text class="fls-cls-12" transform="translate(44.6 74.2)"><tspan x="0" y="0">peças artísticas</tspan></text>
+  <text class="fls-cls-12" transform="translate(44.8 78.5)"><tspan x="0" y="0">para exposição</tspan></text>
+  <path class="fls-cls-18" d=""/>
+  <path class="fls-cls-18" d="M52.4,91.1l1.3.8-1.3.8"/>
+  <path class="fls-cls-16" d="M53.7,92" marker-end="url(#arrow)"/>
+  <rect class="fls-cls-20" x="10.5" y="92.5" width="176.2" height="25.1" rx="3.5" ry="3.5"/>
+  <circle class="fls-cls-17" cx="18.7" cy="105.1" r=".9"/>
+  <circle class="fls-cls-17" cx="180.3" cy="105.1" r=".9"/>
+  <text class="fls-cls-11" transform="translate(11.7 96.6)"><tspan x="0" y="0">06</tspan></text>
+  <text class="fls-cls-2" transform="translate(67.3 102.5)"><tspan x="0" y="0">Exposição no entorno da escola</tspan></text>
+  <text class="fls-cls-4" transform="translate(69.8 107.7)"><tspan x="0" y="0">Arte + sustentabilidade numa mostra pública</tspan></text>
+  <text class="fls-cls-12" transform="translate(78.6 112.7)"><tspan x="0" y="0">ex: Centro Cultural de Palmas, TO</tspan></text>
+  <text class="fls-cls-8" transform="translate(10.5 150.9)"><tspan x="0" y="0">hello@thebluecity.app</tspan></text>
+  <text class="fls-cls-8" transform="translate(164.2 150.9)"><tspan x="0" y="0">www.thebluecity.app</tspan></text>
+</svg></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;">
+        <div class="feature-card">
+          <div class="feature-card-header"><div class="feature-icon fi-teal">🎮</div><h3>Mundo Virtual</h3></div>
+          <p>Alunos jogam o Termômetro Zero, acumulam pontos e conquistam certificações NFT vinculadas a desafios reais de GEE.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header"><div class="feature-icon fi-green">🌍</div><h3>Mundo Real</h3></div>
+          <p>As ideias geradas no jogo se transformam em projetos e obras de arte expostos publicamente no entorno das escolas de Palmas.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header"><div class="feature-icon fi-blue">🤝</div><h3>Impacto Coletivo</h3></div>
+          <p>Sotreq, escolas técnicas, artistas e comunidade convergem numa experiência de educação ambiental com impacto mensurável.</p>
+        </div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="page-nav">
+      <button class="nav-btn" onclick="goTo(3)">← Onde Será Lançado</button>
+      <span class="page-indicator">A Jornada <strong>1</strong> de 2</span>
+      <button class="nav-btn next" onclick="goTo(5)">Mapa Expográfico →</button>
+    </div>
+  </section>
+
+  <!-- 5: MAPA EXPOGRÁFICO -->
+  <section class="page" id="page-5">
+    <div class="page-hero">
+      <div class="page-tag">05 · A Jornada</div>
+      <h1 class="page-title">Mapa Expográfico</h1>
+      <p class="page-subtitle">A exposição ocupa o quarteirão da escola e seu entorno — painéis com personagens do lado de fora, trilha de QR codes pelas calçadas e espaço interno com módulos imersivos.</p>
+    </div>
+    <div class="page-body single">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 800" style="width:100%;height:auto;display:block;font-family:'Montserrat',sans-serif;">
+  <rect width="960" height="520" fill="#f4f8fc"/>
+  <text x="48" y="42" font-size="18" font-weight="800" fill="#1a2e3b">Mapa Expográfico</text>
+  <text x="48" y="60" font-size="11" fill="#6b7f95">Vista esquemática do quarteirão + espaço interno</text>
+  <line x1="48" y1="70" x2="300" y2="70" stroke="#5fb670" stroke-width="2" stroke-linecap="round"/>
+  <rect x="60" y="82" width="720" height="40" fill="#cbd5e0"/>
+  <line x1="60" y1="102" x2="780" y2="102" stroke="white" stroke-width="2" stroke-dasharray="18,10"/>
+  <rect x="60" y="444" width="720" height="40" fill="#cbd5e0"/>
+  <line x1="60" y1="464" x2="780" y2="464" stroke="white" stroke-width="2" stroke-dasharray="18,10"/>
+  <rect x="60" y="82" width="40" height="402" fill="#cbd5e0"/>
+  <line x1="80" y1="82" x2="80" y2="484" stroke="white" stroke-width="2" stroke-dasharray="18,10"/>
+  <rect x="740" y="82" width="40" height="402" fill="#cbd5e0"/>
+  <line x1="760" y1="82" x2="760" y2="484" stroke="white" stroke-width="2" stroke-dasharray="18,10"/>
+  <rect x="100" y="122" width="640" height="322" rx="6" fill="#e8ecf0" stroke="#c0c8d4" stroke-width="1"/>
+  <rect x="112" y="134" width="616" height="298" rx="5" fill="#e2f0e2"/>
+  <rect x="132" y="152" width="576" height="260" rx="8" fill="#eef2f7" stroke="#d0d8e4" stroke-width="1.5"/>
+  <circle cx="116" cy="140" r="8" fill="#5fb670" opacity="0.5"/>
+  <circle cx="724" cy="140" r="8" fill="#5fb670" opacity="0.5"/>
+  <circle cx="116" cy="424" r="8" fill="#5fb670" opacity="0.5"/>
+  <circle cx="724" cy="424" r="8" fill="#5fb670" opacity="0.5"/>
+  <rect x="112" y="134" width="616" height="298" rx="5" fill="none" stroke="#f5a623" stroke-width="2.5" stroke-dasharray="10,6"/>
+  <circle cx="196" cy="134" r="9" fill="#f5a623"/><text x="196" y="138" text-anchor="middle" font-size="7" font-weight="800" fill="white">QR</text>
+  <circle cx="340" cy="134" r="9" fill="#f5a623"/><text x="340" y="138" text-anchor="middle" font-size="7" font-weight="800" fill="white">QR</text>
+  <circle cx="490" cy="134" r="9" fill="#f5a623"/><text x="490" y="138" text-anchor="middle" font-size="7" font-weight="800" fill="white">QR</text>
+  <circle cx="640" cy="134" r="9" fill="#f5a623"/><text x="640" y="138" text-anchor="middle" font-size="7" font-weight="800" fill="white">QR</text>
+  <circle cx="728" cy="240" r="9" fill="#f5a623"/><text x="728" y="244" text-anchor="middle" font-size="7" font-weight="800" fill="white">QR</text>
+  <circle cx="728" cy="360" r="9" fill="#f5a623"/><text x="728" y="364" text-anchor="middle" font-size="7" font-weight="800" fill="white">QR</text>
+  <circle cx="490" cy="432" r="9" fill="#f5a623"/><text x="490" y="436" text-anchor="middle" font-size="7" font-weight="800" fill="white">QR</text>
+  <circle cx="280" cy="432" r="9" fill="#f5a623"/><text x="280" y="436" text-anchor="middle" font-size="7" font-weight="800" fill="white">QR</text>
+  <circle cx="112" cy="240" r="9" fill="#f5a623"/><text x="112" y="244" text-anchor="middle" font-size="7" font-weight="800" fill="white">QR</text>
+  <circle cx="112" cy="360" r="9" fill="#f5a623"/><text x="112" y="364" text-anchor="middle" font-size="7" font-weight="800" fill="white">QR</text>
+  <rect x="196" y="182" width="310" height="192" rx="10" fill="#d0e8e8" stroke="#468182" stroke-width="2.5"/>
+  <rect x="196" y="182" width="310" height="28" rx="10" fill="#468182"/>
+  <rect x="196" y="200" width="310" height="10" fill="#468182"/>
+  <text x="351" y="202" text-anchor="middle" font-size="10" font-weight="700" fill="white">ESPAÇO INTERNO</text>
+  <text x="351" y="224" text-anchor="middle" font-size="8.5" fill="#2c7070">Módulos temáticos por personagem</text>
+  <rect x="210" y="236" width="82" height="50" rx="6" fill="white" stroke="#468182" stroke-width="1.5"/>
+  <text x="251" y="255" text-anchor="middle" font-size="7.5" font-weight="700" fill="#468182">Módulo 1</text>
+  <text x="251" y="268" text-anchor="middle" font-size="7" fill="#6b7f95">[Personagem]</text>
+  <rect x="303" y="236" width="82" height="50" rx="6" fill="white" stroke="#468182" stroke-width="1.5"/>
+  <text x="344" y="255" text-anchor="middle" font-size="7.5" font-weight="700" fill="#468182">Módulo 2</text>
+  <text x="344" y="268" text-anchor="middle" font-size="7" fill="#6b7f95">[Personagem]</text>
+  <rect x="396" y="236" width="82" height="50" rx="6" fill="white" stroke="#468182" stroke-width="1.5"/>
+  <text x="437" y="255" text-anchor="middle" font-size="7.5" font-weight="700" fill="#468182">Módulo N</text>
+  <text x="437" y="268" text-anchor="middle" font-size="7" fill="#6b7f95">[Personagem]</text>
+  <rect x="222" y="298" width="246" height="58" rx="6" fill="#1a2e3b" stroke="#2858a0" stroke-width="1.5"/>
+  <text x="345" y="324" text-anchor="middle" font-size="9" fill="white" font-weight="600">Projeção / Vídeo Introdutório</text>
+  <text x="345" y="340" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.55)">Personagens digitais 3D</text>
+  <rect x="330" y="372" width="60" height="8" rx="3" fill="#468182"/>
+  <text x="360" y="392" text-anchor="middle" font-size="8" font-weight="600" fill="#468182">↑ entrada interna</text>
+  <rect x="156" y="144" width="52" height="68" rx="5" fill="#2858a0" stroke="#1a3a70" stroke-width="1.5"/>
+  <rect x="160" y="148" width="44" height="28" rx="3" fill="#d6e4f7"/>
+  <text x="182" y="159" text-anchor="middle" font-size="7" fill="#2858a0" font-weight="700">Tema 1</text>
+  <text x="182" y="170" text-anchor="middle" font-size="6" fill="#468182">[personagem]</text>
+  <rect x="164" y="180" width="36" height="26" rx="3" fill="white" stroke="#2858a0" stroke-width="1"/>
+  <text x="182" y="191" text-anchor="middle" font-size="6.5" fill="#6b7f95">▦ QR</text>
+  <text x="182" y="202" text-anchor="middle" font-size="5.5" fill="#468182">Escaneie</text>
+  <rect x="380" y="144" width="52" height="68" rx="5" fill="#2858a0" stroke="#1a3a70" stroke-width="1.5"/>
+  <rect x="384" y="148" width="44" height="28" rx="3" fill="#d6e4f7"/>
+  <text x="406" y="159" text-anchor="middle" font-size="7" fill="#2858a0" font-weight="700">Tema 2</text>
+  <text x="406" y="170" text-anchor="middle" font-size="6" fill="#468182">[personagem]</text>
+  <rect x="388" y="180" width="36" height="26" rx="3" fill="white" stroke="#2858a0" stroke-width="1"/>
+  <text x="406" y="191" text-anchor="middle" font-size="6.5" fill="#6b7f95">▦ QR</text>
+  <text x="406" y="202" text-anchor="middle" font-size="5.5" fill="#468182">Escaneie</text>
+  <rect x="600" y="144" width="52" height="68" rx="5" fill="#2858a0" stroke="#1a3a70" stroke-width="1.5"/>
+  <rect x="604" y="148" width="44" height="28" rx="3" fill="#d6e4f7"/>
+  <text x="626" y="159" text-anchor="middle" font-size="7" fill="#2858a0" font-weight="700">Tema 3</text>
+  <text x="626" y="170" text-anchor="middle" font-size="6" fill="#468182">[personagem]</text>
+  <rect x="608" y="180" width="36" height="26" rx="3" fill="white" stroke="#2858a0" stroke-width="1"/>
+  <text x="626" y="191" text-anchor="middle" font-size="6.5" fill="#6b7f95">▦ QR</text>
+  <text x="626" y="202" text-anchor="middle" font-size="5.5" fill="#468182">Escaneie</text>
+  <rect x="644" y="248" width="52" height="68" rx="5" fill="#2858a0" stroke="#1a3a70" stroke-width="1.5"/>
+  <rect x="648" y="252" width="44" height="28" rx="3" fill="#d6e4f7"/>
+  <text x="670" y="263" text-anchor="middle" font-size="7" fill="#2858a0" font-weight="700">Tema 4</text>
+  <text x="670" y="274" text-anchor="middle" font-size="6" fill="#468182">[personagem]</text>
+  <rect x="652" y="284" width="36" height="26" rx="3" fill="white" stroke="#2858a0" stroke-width="1"/>
+  <text x="670" y="295" text-anchor="middle" font-size="6.5" fill="#6b7f95">▦ QR</text>
+  <rect x="644" y="356" width="52" height="68" rx="5" fill="#2858a0" stroke="#1a3a70" stroke-width="1.5"/>
+  <rect x="648" y="360" width="44" height="28" rx="3" fill="#d6e4f7"/>
+  <text x="670" y="371" text-anchor="middle" font-size="7" fill="#2858a0" font-weight="700">Tema 5</text>
+  <text x="670" y="382" text-anchor="middle" font-size="6" fill="#468182">[personagem]</text>
+  <rect x="652" y="392" width="36" height="26" rx="3" fill="white" stroke="#2858a0" stroke-width="1"/>
+  <text x="670" y="403" text-anchor="middle" font-size="6.5" fill="#6b7f95">▦ QR</text>
+  <rect x="390" y="412" width="52" height="52" rx="5" fill="#2858a0" stroke="#1a3a70" stroke-width="1.5"/>
+  <rect x="394" y="416" width="44" height="22" rx="3" fill="#d6e4f7"/>
+  <text x="416" y="427" text-anchor="middle" font-size="7" fill="#2858a0" font-weight="700">Tema 6</text>
+  <text x="416" y="438" text-anchor="middle" font-size="6" fill="#468182">[personagem]</text>
+  <rect x="398" y="442" width="36" height="16" rx="3" fill="white" stroke="#2858a0" stroke-width="1"/>
+  <text x="416" y="453" text-anchor="middle" font-size="6.5" fill="#6b7f95">▦ QR</text>
+  <rect x="350" y="450" width="90" height="12" rx="5" fill="#468182"/>
+  <text x="395" y="460" text-anchor="middle" font-size="8" font-weight="700" fill="white">↓ ENTRADA PRINCIPAL</text>
+  <circle cx="395" cy="480" r="11" fill="none" stroke="#468182" stroke-width="2.5"/>
+  <text x="395" y="484" text-anchor="middle" font-size="9" font-weight="700" fill="#468182">E</text>
+  <text x="395" y="504" text-anchor="middle" font-size="8" fill="#468182" font-weight="600">Entrada do visitante</text>
+  <text x="480" y="516" text-anchor="middle" font-size="8" fill="#6b7f95" font-style="italic">Posições dos painéis a confirmar conforme espaço físico disponível</text>
+  <line x1="48" y1="526" x2="912" y2="526" stroke="#e0e8f0" stroke-width="1.5"/>
+  <text x="48" y="548" font-size="12" font-weight="700" fill="#1a2e3b">Temas da Exposição</text>
+  <text x="48" y="564" font-size="10" fill="#6b7f95">Cada painel apresenta um ser encantado e seu mundo temático</text>
+  <rect x="48" y="576" width="136" height="96" rx="8" fill="white" stroke="rgba(40,88,160,0.12)" stroke-width="1.5"/>
+  <rect x="48" y="576" width="136" height="4" rx="4" fill="#2858a0"/>
+  <text x="62" y="596" font-size="9" font-weight="700" fill="#2858a0">Tema 1</text>
+  <text x="62" y="611" font-size="8" font-weight="600" fill="#1a2e3b">[Nome do Personagem]</text>
+  <text x="62" y="625" font-size="8" fill="#6b7f95">[Mundo temático]</text>
+  <text x="62" y="639" font-size="7.5" fill="#468182">[Referência cultural]</text>
+  <text x="62" y="663" font-size="7" fill="#6b7f95">📍 [local no quarteirão]</text>
+  <rect x="196" y="576" width="136" height="96" rx="8" fill="white" stroke="rgba(40,88,160,0.12)" stroke-width="1.5"/>
+  <rect x="196" y="576" width="136" height="4" rx="4" fill="#2858a0"/>
+  <text x="210" y="596" font-size="9" font-weight="700" fill="#2858a0">Tema 2</text>
+  <text x="210" y="611" font-size="8" font-weight="600" fill="#1a2e3b">[Nome do Personagem]</text>
+  <text x="210" y="625" font-size="8" fill="#6b7f95">[Mundo temático]</text>
+  <text x="210" y="639" font-size="7.5" fill="#468182">[Referência cultural]</text>
+  <text x="210" y="663" font-size="7" fill="#6b7f95">📍 [local no quarteirão]</text>
+  <rect x="344" y="576" width="136" height="96" rx="8" fill="white" stroke="rgba(40,88,160,0.12)" stroke-width="1.5"/>
+  <rect x="344" y="576" width="136" height="4" rx="4" fill="#2858a0"/>
+  <text x="358" y="596" font-size="9" font-weight="700" fill="#2858a0">Tema 3</text>
+  <text x="358" y="611" font-size="8" font-weight="600" fill="#1a2e3b">[Nome do Personagem]</text>
+  <text x="358" y="625" font-size="8" fill="#6b7f95">[Mundo temático]</text>
+  <text x="358" y="639" font-size="7.5" fill="#468182">[Referência cultural]</text>
+  <text x="358" y="663" font-size="7" fill="#6b7f95">📍 [local no quarteirão]</text>
+  <rect x="492" y="576" width="136" height="96" rx="8" fill="white" stroke="rgba(40,88,160,0.12)" stroke-width="1.5"/>
+  <rect x="492" y="576" width="136" height="4" rx="4" fill="#468182"/>
+  <text x="506" y="596" font-size="9" font-weight="700" fill="#468182">Tema 4</text>
+  <text x="506" y="611" font-size="8" font-weight="600" fill="#1a2e3b">[Nome do Personagem]</text>
+  <text x="506" y="625" font-size="8" fill="#6b7f95">[Mundo temático]</text>
+  <text x="506" y="639" font-size="7.5" fill="#468182">[Referência cultural]</text>
+  <text x="506" y="663" font-size="7" fill="#6b7f95">📍 [local no quarteirão]</text>
+  <rect x="640" y="576" width="136" height="96" rx="8" fill="white" stroke="rgba(40,88,160,0.12)" stroke-width="1.5"/>
+  <rect x="640" y="576" width="136" height="4" rx="4" fill="#468182"/>
+  <text x="654" y="596" font-size="9" font-weight="700" fill="#468182">Tema 5</text>
+  <text x="654" y="611" font-size="8" font-weight="600" fill="#1a2e3b">[Nome do Personagem]</text>
+  <text x="654" y="625" font-size="8" fill="#6b7f95">[Mundo temático]</text>
+  <text x="654" y="639" font-size="7.5" fill="#468182">[Referência cultural]</text>
+  <text x="654" y="663" font-size="7" fill="#6b7f95">📍 [local no quarteirão]</text>
+  <rect x="788" y="576" width="124" height="96" rx="8" fill="white" stroke="rgba(40,88,160,0.12)" stroke-width="1.5"/>
+  <rect x="788" y="576" width="124" height="4" rx="4" fill="#5fb670"/>
+  <text x="802" y="596" font-size="9" font-weight="700" fill="#38a349">Tema 6</text>
+  <text x="802" y="611" font-size="8" font-weight="600" fill="#1a2e3b">[Nome do Personagem]</text>
+  <text x="802" y="625" font-size="8" fill="#6b7f95">[Mundo temático]</text>
+  <text x="802" y="639" font-size="7.5" fill="#468182">[Referência cultural]</text>
+  <text x="802" y="663" font-size="7" fill="#6b7f95">📍 [local no quarteirão]</text>
+</svg>
+    </div>
+    <div class="divider"></div>
+    <div class="page-nav">
+      <button class="nav-btn" onclick="goTo(4)">← Jornada Cultural</button>
+      <span class="page-indicator">A Jornada <strong>2</strong> de 2</span>
+      <button class="nav-btn next" onclick="goTo(6)">Cronograma →</button>
+    </div>
+  </section>
+
+  <!-- 6: CRONOGRAMA -->
+  <section class="page" id="page-6">
+    <div class="page-hero">
+      <div class="page-tag">06 · Planejamento</div>
+      <h1 class="page-title">Cronograma</h1>
+      <p class="page-subtitle">[Insira aqui as datas reais quando confirmadas. O cronograma abaixo é indicativo e mostra a sequência das etapas do projeto.]</p>
+    </div>
+    <div class="page-body single">
+      <div style="margin-bottom:36px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" style="width:100%;height:auto;display:block;font-family:'Montserrat',sans-serif;">
+  <rect width="900" height="420" fill="#ffffff" rx="12"/>
+
+  <!-- Linha do tempo -->
+  <line x1="60" y1="180" x2="860" y2="180" stroke="#e0e8f0" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Fase 1 -->
+  <circle cx="120" cy="180" r="16" fill="#2858a0"/>
+  <text x="120" y="185" text-anchor="middle" font-size="10" font-weight="700" fill="white">1</text>
+  <rect x="60" y="100" width="120" height="64" rx="8" fill="#2858a0"/>
+  <text x="120" y="122" text-anchor="middle" font-size="9" font-weight="700" fill="white">Pesquisa e</text>
+  <text x="120" y="135" text-anchor="middle" font-size="9" font-weight="700" fill="white">Desenvolvimento</text>
+  <text x="120" y="152" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.8)">Personagens + GDD</text>
+  <line x1="120" y1="164" x2="120" y2="180" stroke="#2858a0" stroke-width="2"/>
+  <text x="120" y="210" text-anchor="middle" font-size="8" fill="#6b7f95" font-weight="600">[Mês 1–2]</text>
+
+  <!-- Fase 2 -->
+  <circle cx="260" cy="180" r="16" fill="#2858a0"/>
+  <text x="260" y="185" text-anchor="middle" font-size="10" font-weight="700" fill="white">2</text>
+  <rect x="200" y="220" width="120" height="64" rx="8" fill="#2858a0"/>
+  <text x="260" y="242" text-anchor="middle" font-size="9" font-weight="700" fill="white">Ilustração</text>
+  <text x="260" y="256" text-anchor="middle" font-size="9" font-weight="700" fill="white">dos Personagens</text>
+  <text x="260" y="272" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.8)">Concept art + assets</text>
+  <line x1="260" y1="180" x2="260" y2="220" stroke="#2858a0" stroke-width="2"/>
+  <text x="260" y="302" text-anchor="middle" font-size="8" fill="#6b7f95" font-weight="600">[Mês 2–3]</text>
+
+  <!-- Fase 3 -->
+  <circle cx="400" cy="180" r="16" fill="#468182"/>
+  <text x="400" y="185" text-anchor="middle" font-size="10" font-weight="700" fill="white">3</text>
+  <rect x="340" y="100" width="120" height="64" rx="8" fill="#468182"/>
+  <text x="400" y="122" text-anchor="middle" font-size="9" font-weight="700" fill="white">Desenvolvimento</text>
+  <text x="400" y="135" text-anchor="middle" font-size="9" font-weight="700" fill="white">do Jogo</text>
+  <text x="400" y="152" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.8)">Termômetro Zero</text>
+  <line x1="400" y1="164" x2="400" y2="180" stroke="#468182" stroke-width="2"/>
+  <text x="400" y="210" text-anchor="middle" font-size="8" fill="#6b7f95" font-weight="600">[Mês 3–5]</text>
+
+  <!-- Fase 4 -->
+  <circle cx="540" cy="180" r="16" fill="#468182"/>
+  <text x="540" y="185" text-anchor="middle" font-size="10" font-weight="700" fill="white">4</text>
+  <rect x="480" y="220" width="120" height="64" rx="8" fill="#468182"/>
+  <text x="540" y="242" text-anchor="middle" font-size="9" font-weight="700" fill="white">Lançamento</text>
+  <text x="540" y="256" text-anchor="middle" font-size="9" font-weight="700" fill="white">nas Escolas</text>
+  <text x="540" y="272" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.8)">Palmas, TO</text>
+  <line x1="540" y1="180" x2="540" y2="220" stroke="#468182" stroke-width="2"/>
+  <text x="540" y="302" text-anchor="middle" font-size="8" fill="#6b7f95" font-weight="600">[Mês 5]</text>
+
+  <!-- Fase 5 -->
+  <circle cx="680" cy="180" r="16" fill="#5fb670"/>
+  <text x="680" y="185" text-anchor="middle" font-size="10" font-weight="700" fill="white">5</text>
+  <rect x="620" y="100" width="120" height="64" rx="8" fill="#5fb670"/>
+  <text x="680" y="122" text-anchor="middle" font-size="9" font-weight="700" fill="white">Alunos Jogam</text>
+  <text x="680" y="136" text-anchor="middle" font-size="9" font-weight="700" fill="white">+ Missão Real</text>
+  <text x="680" y="152" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.8)">1 mês de jornada</text>
+  <line x1="680" y1="164" x2="680" y2="180" stroke="#5fb670" stroke-width="2"/>
+  <text x="680" y="210" text-anchor="middle" font-size="8" fill="#6b7f95" font-weight="600">[Mês 5–6]</text>
+
+  <!-- Fase 6 -->
+  <circle cx="820" cy="180" r="16" fill="#5fb670"/>
+  <text x="820" y="185" text-anchor="middle" font-size="10" font-weight="700" fill="white">6</text>
+  <rect x="760" y="220" width="120" height="64" rx="8" fill="#5fb670"/>
+  <text x="820" y="242" text-anchor="middle" font-size="9" font-weight="700" fill="white">Exposição</text>
+  <text x="820" y="256" text-anchor="middle" font-size="9" font-weight="700" fill="white">Pública</text>
+  <text x="820" y="272" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.8)">Arte + Sustentabilidade</text>
+  <line x1="820" y1="180" x2="820" y2="220" stroke="#5fb670" stroke-width="2"/>
+  <text x="820" y="302" text-anchor="middle" font-size="8" fill="#6b7f95" font-weight="600">[Mês 6–7]</text>
+
+  <!-- Legenda cores -->
+  <rect x="60" y="340" width="12" height="12" rx="3" fill="#2858a0"/>
+  <text x="78" y="351" font-size="9" fill="#6b7f95">Produção criativa</text>
+  <rect x="210" y="340" width="12" height="12" rx="3" fill="#468182"/>
+  <text x="228" y="351" font-size="9" fill="#6b7f95">Plataforma + lançamento</text>
+  <rect x="400" y="340" width="12" height="12" rx="3" fill="#5fb670"/>
+  <text x="418" y="351" font-size="9" fill="#6b7f95">Jornada + exposição</text>
+
+  <text x="450" y="395" text-anchor="middle" font-size="8" fill="#6b7f95" font-style="italic">Cronograma indicativo — datas a confirmar com a equipe do projeto</text>
+</svg></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;">
+        <div class="feature-card">
+          <div class="feature-card-header"><div class="feature-icon fi-blue">🎨</div><h3>Produção Criativa</h3></div>
+          <p>[Insira aqui o que acontece nas fases de pesquisa, ilustração e desenvolvimento do jogo — responsáveis, entregas esperadas]</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header"><div class="feature-icon fi-teal">🚀</div><h3>Lançamento e Jornada</h3></div>
+          <p>[Insira aqui como será o lançamento nas escolas, o período de jogo e as missões de mundo real com os alunos]</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header"><div class="feature-icon fi-green">🎭</div><h3>Exposição Pública</h3></div>
+          <p>[Insira aqui quando e onde acontece a exposição, quem são os artistas, como a Sotreq se envolve no evento de abertura]</p>
+        </div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="page-nav">
+      <button class="nav-btn" onclick="goTo(5)">← Mapa Expográfico</button>
+      <span class="page-indicator">Planejamento</span>
+      <button class="nav-btn next" onclick="goTo(0)" style="background:var(--teal);border-color:var(--teal);">↺ Voltar ao Início</button>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  const totalPages = 7;
+  let current = 0;
+  function goTo(index) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.getElementById('page-' + index).classList.add('active');
+    document.querySelectorAll('.nav-item')[index].classList.add('active');
+    current = index;
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key==='ArrowRight'||e.key==='ArrowDown') { if(current<totalPages-1) goTo(current+1); }
+    if (e.key==='ArrowLeft'||e.key==='ArrowUp') { if(current>0) goTo(current-1); }
+  });
+</script>
+</body>
+</html>
