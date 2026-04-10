@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Termômetro Zero — Galeria de Projetos</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Montserrat', sans-serif; background: #f4f8fc; color: #1a2e3b; }
+
+  /* TOPBAR */
+  .topbar {
+    background: #ffffff;
+    border-bottom: 1px solid #e0e8f0;
+    padding: 14px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .topbar-logo { display: flex; align-items: center; gap: 10px; }
+  .topbar-logo span { font-size: 15px; font-weight: 800; color: #1a2e3b; }
+  .topbar-logo span em { font-style: normal; color: #5fb670; }
+  .topbar-nav { display: flex; gap: 28px; }
+  .topbar-nav a { font-size: 13px; color: #6b7f95; text-decoration: none; font-weight: 500; }
+  .topbar-nav a.active { color: #2858a0; font-weight: 700; }
+  .topbar-user { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #2858a0; font-weight: 600; }
+
+  /* BREADCRUMB */
+  .breadcrumb-bar {
+    background: #fff;
+    padding: 10px 40px;
+    border-bottom: 1px solid #e0e8f0;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .breadcrumb-bar a { font-size: 12px; color: #2858a0; font-weight: 600; text-decoration: none; }
+  .breadcrumb-bar a:hover { text-decoration: underline; }
+  .breadcrumb-bar span { color: #c0c8d4; font-size: 12px; }
+  .breadcrumb-bar strong { font-size: 12px; color: #1a2e3b; }
+
+  /* HERO — light gradient like the platform */
+  .hero {
+    background: linear-gradient(135deg, #e8f0f8 0%, #e2f0e2 100%);
+    padding: 36px 40px 28px;
+    text-align: center;
+  }
+  .hero-tags { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 14px; }
+  .tag { font-size: 11px; font-weight: 600; padding: 4px 14px; border-radius: 20px; }
+  .tag-blue  { background: #d6e4f7; color: #2858a0; }
+  .tag-green { background: #d4f0d9; color: #2a7a3a; }
+  .tag-active { background: #d4f0d9; color: #2a7a3a; }
+  .hero-loc { display: flex; align-items: center; gap: 5px; font-size: 12px; color: #6b7f95; }
+  .hero h1 { font-size: 26px; font-weight: 800; color: #2858a0; margin-bottom: 4px; }
+  .hero h1 em { font-style: normal; color: #5fb670; }
+  .hero-sub { font-size: 13px; color: #6b7f95; margin-bottom: 24px; }
+
+  /* STATS ROW */
+  .stats-row {
+    display: flex; justify-content: center; gap: 14px;
+    flex-wrap: wrap; margin-top: 4px;
+  }
+  .stat-box {
+    background: #ffffff;
+    border: 1px solid #e0e8f0;
+    border-radius: 10px;
+    padding: 14px 28px;
+    text-align: center;
+    min-width: 120px;
+  }
+  .stat-box .val { font-size: 22px; font-weight: 800; line-height: 1; margin-bottom: 4px; }
+  .val-blue   { color: #2858a0; }
+  .val-teal   { color: #468182; }
+  .val-green  { color: #5fb670; }
+  .val-purple { color: #7c5cbf; }
+  .stat-box .lbl { font-size: 11px; color: #6b7f95; font-weight: 500; }
+
+  /* CONTENT */
+  .content { padding: 28px 40px 48px; }
+  .content-header {
+    display: flex; align-items: center;
+    justify-content: space-between; margin-bottom: 20px;
+  }
+  .content-header h2 { font-size: 16px; font-weight: 700; color: #1a2e3b; margin-bottom: 2px; }
+  .content-header p { font-size: 12px; color: #6b7f95; }
+  .content-header select {
+    font-size: 12px; padding: 7px 14px;
+    border-radius: 8px; border: 1px solid #e0e8f0;
+    background: #fff; color: #1a2e3b;
+    font-family: 'Montserrat', sans-serif; cursor: pointer;
+  }
+
+  /* GRID */
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #e0e8f0;
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+    cursor: pointer;
+  }
+  .card:hover { box-shadow: 0 6px 20px rgba(40,88,160,0.1); transform: translateY(-2px); }
+
+  .card-thumb {
+    height: 120px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .thumb-teal  { background: #d0e8e8; }
+  .thumb-blue  { background: #d6e4f7; }
+  .thumb-green { background: #d4f0d9; }
+
+  .card-body { padding: 14px; }
+  .card-title { font-size: 13px; font-weight: 700; color: #1a2e3b; margin-bottom: 3px; line-height: 1.4; }
+  .card-author { font-size: 11px; color: #6b7f95; margin-bottom: 10px; }
+  .card-footer {
+    border-top: 1px solid #f0f4f8;
+    padding-top: 8px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .card-footer span {
+    display: flex; align-items: center; gap: 4px;
+    font-size: 11px; color: #6b7f95;
+  }
+
+  .share-btn {
+    display: flex; align-items: center; gap: 6px;
+    background: #fff; border: 1px solid #e0e8f0;
+    border-radius: 20px; padding: 6px 14px;
+    font-size: 12px; color: #6b7f95; font-weight: 500;
+    cursor: pointer; font-family: 'Montserrat', sans-serif;
+    margin-left: auto;
+  }
+
+  .footer-note {
+    font-size: 12px; color: #6b7f95;
+    text-align: center; margin-top: 28px;
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<nav class="topbar">
+  <div class="topbar-logo">
+    <svg width="32" height="32" viewBox="0 0 45.6 45.6" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="22.8" cy="22.8" r="18.4" fill="#001522"/>
+      <rect x="12.2" y="17.5" width="20.8" height="3.2" fill="#fff"/>
+      <path d="M31.7 23l-.2.2c-1.3 1.1-2.4 2.1-4.1 2.1s-2.5-.4-4.1-1.3c-2.1-1.1-3.9-1.7-5.6-1.7-2.8 0-4.6 1.6-6 2.9l-.2.2 2 2.4.2-.2c1.3-1.1 2.4-2.1 4.1-2.1s2.5.4 4.1 1.3c2.1 1.1 3.9 1.7 5.6 1.7 2.7 0 4.5-1.6 5.9-2.9l.2-.2-2-2.4z" fill="#0c9ed9"/>
+    </svg>
+    <span>The Blue <em>City</em></span>
+  </div>
+  <div class="topbar-nav">
+    <a href="#">Jornadas</a>
+    <a href="#" class="active">Galeria de Projetos</a>
+    <a href="#">Performance dos Jogadores</a>
+  </div>
+  <div class="topbar-user">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2858a0" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    João Silva
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb-bar">
+  <a href="#">Galeria de Projetos</a>
+  <span>/</span>
+  <strong>Termômetro Zero</strong>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tags">
+    <span class="tag tag-green">Clima</span>
+    <span class="tag tag-active">Ativo</span>
+    <div class="hero-loc">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#6b7f95" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Palmas, TO
+    </div>
+  </div>
+  <h1>Termômetro <em>Zero</em></h1>
+  <p class="hero-sub">Redução de Gases de Efeito Estufa &nbsp;·&nbsp; Sotreq &nbsp;·&nbsp; 2025</p>
+  <div class="stats-row">
+    <div class="stat-box"><div class="val val-blue">923</div><div class="lbl">Participantes</div></div>
+    <div class="stat-box"><div class="val val-green">247</div><div class="lbl">Projetos enviados</div></div>
+    <div class="stat-box"><div class="val val-teal">89%</div><div class="lbl">Taxa de conclusão</div></div>
+    <div class="stat-box"><div class="val val-purple">1.247</div><div class="lbl">NFTs emitidos</div></div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+  <div class="content-header">
+    <div>
+      <h2>Projetos da comunidade</h2>
+      <p>247 entregas recebidas</p>
+    </div>
+    <select>
+      <option>Mais recentes</option>
+      <option>Mais curtidos</option>
+      <option>Mais visualizados</option>
+    </select>
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="card-thumb thumb-teal">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#468182" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+      </div>
+      <div class="card-body">
+        <p class="card-title">Plantio de mudas nativas</p>
+        <p class="card-author">João Silva · Palmas, TO</p>
+        <div class="card-footer">
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> 58</span>
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 210</span>
+          <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Compartilhar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-thumb thumb-blue">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#2858a0" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      </div>
+      <div class="card-body">
+        <p class="card-title">Plano de redução de emissões</p>
+        <p class="card-author">Maria Oliveira · Palmas, TO</p>
+        <div class="card-footer">
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> 34</span>
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 128</span>
+          <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Compartilhar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-thumb thumb-green">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#5fb670" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+      </div>
+      <div class="card-body">
+        <p class="card-title">Horta comunitária escolar</p>
+        <p class="card-author">Carlos Mendes · Palmas, TO</p>
+        <div class="card-footer">
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> 21</span>
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 95</span>
+          <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Compartilhar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-thumb thumb-teal">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#468182" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+      </div>
+      <div class="card-body">
+        <p class="card-title">Compostagem em condomínio</p>
+        <p class="card-author">Ana Ferreira · Palmas, TO</p>
+        <div class="card-footer">
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> 44</span>
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 176</span>
+          <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Compartilhar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-thumb thumb-blue">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#2858a0" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      </div>
+      <div class="card-body">
+        <p class="card-title">Auditoria energética do escritório</p>
+        <p class="card-author">Pedro Costa · Palmas, TO</p>
+        <div class="card-footer">
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> 29</span>
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 112</span>
+          <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Compartilhar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-thumb thumb-green">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#5fb670" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+      </div>
+      <div class="card-body">
+        <p class="card-title">Trilha de ciclismo sustentável</p>
+        <p class="card-author">Luana Ramos · Palmas, TO</p>
+        <div class="card-footer">
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> 67</span>
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 243</span>
+          <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Compartilhar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-thumb thumb-teal">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#468182" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+      </div>
+      <div class="card-body">
+        <p class="card-title">Reflorestamento do córrego</p>
+        <p class="card-author">Marcos Lima · Palmas, TO</p>
+        <div class="card-footer">
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> 81</span>
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 320</span>
+          <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Compartilhar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-thumb thumb-blue">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#2858a0" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      </div>
+      <div class="card-body">
+        <p class="card-title">Captação de água da chuva</p>
+        <p class="card-author">Sofia Nunes · Palmas, TO</p>
+        <div class="card-footer">
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> 15</span>
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 67</span>
+          <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Compartilhar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-thumb thumb-green">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#5fb670" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+      </div>
+      <div class="card-body">
+        <p class="card-title">Mapeamento de emissões locais</p>
+        <p class="card-author">Rafael Torres · Palmas, TO</p>
+        <div class="card-footer">
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> 38</span>
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 149</span>
+          <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Compartilhar</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <p class="footer-note">Exibindo 9 de 247 projetos &nbsp;·&nbsp; * Dados fictícios, demonstrativos</p>
+</div>
+
+</body>
+</html>

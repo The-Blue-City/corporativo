@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galeria de Eventos — The Blue City</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Montserrat', sans-serif; background: #f4f8fc; color: #1a2e3b; }
+
+  /* TOPBAR */
+  .topbar {
+    background: #ffffff;
+    border-bottom: 1px solid #e0e8f0;
+    padding: 14px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .topbar-logo { display: flex; align-items: center; gap: 10px; }
+  .topbar-logo span { font-size: 15px; font-weight: 800; color: #1a2e3b; }
+  .topbar-logo span em { font-style: normal; color: #5fb670; }
+  .topbar-nav { display: flex; gap: 28px; }
+  .topbar-nav a { font-size: 13px; color: #6b7f95; text-decoration: none; font-weight: 500; }
+  .topbar-nav a.active { color: #2858a0; font-weight: 700; }
+  .topbar-user { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #2858a0; font-weight: 600; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #e8f0f8 0%, #e2f0e2 100%);
+    padding: 40px 40px 32px;
+    text-align: center;
+  }
+  .hero h1 { font-size: 26px; font-weight: 800; color: #2858a0; margin-bottom: 10px; }
+  .hero h1 em { font-style: normal; color: #5fb670; }
+  .hero p { font-size: 13px; color: #6b7f95; max-width: 560px; margin: 0 auto 28px; line-height: 1.7; }
+
+  .stats-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+  .stat-box {
+    background: #ffffff; border: 1px solid #e0e8f0;
+    border-radius: 10px; padding: 14px 28px; text-align: center; min-width: 130px;
+  }
+  .stat-box .val { font-size: 22px; font-weight: 800; line-height: 1; margin-bottom: 4px; }
+  .val-blue   { color: #2858a0; }
+  .val-teal   { color: #468182; }
+  .val-green  { color: #5fb670; }
+  .val-purple { color: #7c5cbf; }
+  .stat-box .lbl { font-size: 11px; color: #6b7f95; font-weight: 500; }
+
+  /* CONTENT */
+  .content { padding: 28px 40px 48px; }
+  .content-header {
+    display: flex; align-items: center;
+    justify-content: space-between; margin-bottom: 20px;
+  }
+  .content-header h2 { font-size: 16px; font-weight: 700; color: #1a2e3b; margin-bottom: 2px; }
+  .content-header p { font-size: 12px; color: #6b7f95; }
+  .filters { display: flex; gap: 10px; }
+  .filters select {
+    font-size: 12px; padding: 7px 14px;
+    border-radius: 8px; border: 1px solid #e0e8f0;
+    background: #fff; color: #1a2e3b;
+    font-family: 'Montserrat', sans-serif; cursor: pointer;
+  }
+
+  /* SECTION LABEL */
+  .section-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 1.2px;
+    text-transform: uppercase; color: #468182;
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 16px; margin-top: 8px;
+  }
+  .section-label::after {
+    content: ''; flex: 1; height: 1px; background: rgba(70,129,130,0.2);
+  }
+
+  /* GRID */
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 32px; }
+
+  /* CARD — realizado */
+  .card {
+    background: #fff; border-radius: 12px;
+    border: 1px solid #e0e8f0; overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s; cursor: pointer;
+  }
+  .card:hover { box-shadow: 0 6px 20px rgba(40,88,160,0.1); transform: translateY(-2px); }
+
+  .card-thumb {
+    height: 140px; position: relative;
+    display: flex; align-items: flex-end; padding: 10px 12px;
+  }
+  .thumb-cultural  { background: linear-gradient(135deg, #2858a0 0%, #468182 100%); }
+  .thumb-corporate { background: linear-gradient(135deg, #468182 0%, #5fb670 100%); }
+
+  .card-type {
+    font-size: 10px; font-weight: 700; padding: 4px 10px;
+    border-radius: 20px; letter-spacing: 0.5px;
+  }
+  .type-cultural  { background: rgba(255,255,255,0.2); color: white; }
+  .type-corporate { background: rgba(255,255,255,0.2); color: white; }
+
+  .card-body { padding: 14px; }
+  .card-title { font-size: 13px; font-weight: 700; color: #1a2e3b; margin-bottom: 4px; line-height: 1.4; }
+  .card-meta  { font-size: 11px; color: #6b7f95; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+
+  .card-stats {
+    display: flex; gap: 14px;
+    border-top: 1px solid #f0f4f8; padding-top: 10px;
+  }
+  .card-stats span {
+    display: flex; align-items: center; gap: 4px;
+    font-size: 11px; color: #6b7f95;
+  }
+  .card-stats strong { color: #1a2e3b; font-weight: 700; }
+
+  /* CARD — agendado (muted, não clicável) */
+  .card-scheduled {
+    background: #f9fafb; border-radius: 12px;
+    border: 1px dashed #c8d4e0; overflow: hidden;
+    opacity: 0.6; cursor: default; pointer-events: none;
+  }
+  .card-scheduled .card-thumb { filter: grayscale(40%); }
+  .scheduled-badge {
+    position: absolute; top: 10px; right: 10px;
+    background: rgba(255,255,255,0.85); color: #6b7f95;
+    font-size: 10px; font-weight: 700; padding: 3px 10px;
+    border-radius: 20px; letter-spacing: 0.5px;
+  }
+
+  .footer-note {
+    font-size: 12px; color: #6b7f95;
+    text-align: center; margin-top: 8px; font-style: italic;
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<nav class="topbar">
+  <div class="topbar-logo">
+    <svg width="32" height="32" viewBox="0 0 45.6 45.6" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="22.8" cy="22.8" r="18.4" fill="#001522"/>
+      <rect x="12.2" y="17.5" width="20.8" height="3.2" fill="#fff"/>
+      <path d="M31.7 23l-.2.2c-1.3 1.1-2.4 2.1-4.1 2.1s-2.5-.4-4.1-1.3c-2.1-1.1-3.9-1.7-5.6-1.7-2.8 0-4.6 1.6-6 2.9l-.2.2 2 2.4.2-.2c1.3-1.1 2.4-2.1 4.1-2.1s2.5.4 4.1 1.3c2.1 1.1 3.9 1.7 5.6 1.7 2.7 0 4.5-1.6 5.9-2.9l.2-.2-2-2.4z" fill="#0c9ed9"/>
+    </svg>
+    <span>The Blue <em>City</em></span>
+  </div>
+  <div class="topbar-nav">
+    <a href="#">Jornadas</a>
+    <a href="#">Galeria de Projetos</a>
+    <a href="#" class="active">Galeria de Eventos</a>
+    <a href="#">Performance dos Jogadores</a>
+  </div>
+  <div class="topbar-user">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2858a0" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    João Silva
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Galeria de <em>Eventos</em></h1>
+  <p>Onde os projetos individuais se transformam em algo coletivo. Exposições artísticas e eventos corporativos que nascem das entregas da comunidade.</p>
+  <div class="stats-row">
+    <div class="stat-box"><div class="val val-blue">12</div><div class="lbl">Eventos realizados</div></div>
+    <div class="stat-box"><div class="val val-green">4</div><div class="lbl">Agendados</div></div>
+    <div class="stat-box"><div class="val val-teal">8.340</div><div class="lbl">Visitantes</div></div>
+    <div class="stat-box"><div class="val val-purple">247</div><div class="lbl">Obras expostas</div></div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <div class="content-header">
+    <div>
+      <h2>Todos os eventos</h2>
+      <p>12 realizados · 4 agendados</p>
+    </div>
+    <div class="filters">
+      <select>
+        <option>Todos os tipos</option>
+        <option>Jornada Cultural</option>
+        <option>Jornada Corporativa</option>
+      </select>
+      <select>
+        <option>Mais recentes</option>
+        <option>Mais visitados</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- REALIZADOS -->
+  <div class="section-label">Eventos Realizados</div>
+  <div class="grid">
+
+    <div class="card">
+      <div class="card-thumb thumb-cultural">
+        <span class="card-type type-cultural">Jornada Cultural</span>
+      </div>
+      <div class="card-body">
+        <p class="card-title">Termômetro Zero — Exposição</p>
+        <div class="card-meta">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Palmas, TO &nbsp;·&nbsp; março 2025
+        </div>
+        <div class="card-stats">
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> <strong>923</strong> participantes</span>
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> <strong>1.240</strong> visitantes</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-thumb thumb-corporate">
+        <span class="card-type type-corporate">Jornada Corporativa</span>
+      </div>
+      <div class="card-body">
+        <p class="card-title">Energia Renovável — Evento Sotreq</p>
+        <div class="card-meta">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          São Paulo, SP &nbsp;·&nbsp; fevereiro 2025
+        </div>
+        <div class="card-stats">
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> <strong>456</strong> participantes</span>
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> <strong>820</strong> visitantes</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-thumb thumb-cultural">
+        <span class="card-type type-cultural">Jornada Cultural</span>
+      </div>
+      <div class="card-body">
+        <p class="card-title">Amazônia Viva — Exposição</p>
+        <div class="card-meta">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Belém, PA &nbsp;·&nbsp; janeiro 2025
+        </div>
+        <div class="card-stats">
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> <strong>312</strong> participantes</span>
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> <strong>980</strong> visitantes</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-thumb thumb-corporate">
+        <span class="card-type type-corporate">Jornada Corporativa</span>
+      </div>
+      <div class="card-body">
+        <p class="card-title">Mobilidade Verde — Evento Interno</p>
+        <div class="card-meta">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Curitiba, PR &nbsp;·&nbsp; dezembro 2024
+        </div>
+        <div class="card-stats">
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> <strong>280</strong> participantes</span>
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> <strong>540</strong> visitantes</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-thumb thumb-cultural">
+        <span class="card-type type-cultural">Jornada Cultural</span>
+      </div>
+      <div class="card-body">
+        <p class="card-title">Água Viva — Exposição</p>
+        <div class="card-meta">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Recife, PE &nbsp;·&nbsp; novembro 2024
+        </div>
+        <div class="card-stats">
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> <strong>198</strong> participantes</span>
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> <strong>760</strong> visitantes</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-thumb thumb-corporate">
+        <span class="card-type type-corporate">Jornada Corporativa</span>
+      </div>
+      <div class="card-body">
+        <p class="card-title">GEE Zero — Semana de Sustentabilidade</p>
+        <div class="card-meta">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Goiânia, GO &nbsp;·&nbsp; outubro 2024
+        </div>
+        <div class="card-stats">
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> <strong>340</strong> participantes</span>
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> <strong>1.100</strong> visitantes</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- AGENDADOS -->
+  <div class="section-label">Próximos Eventos</div>
+  <div class="grid">
+
+    <div class="card-scheduled">
+      <div class="card-thumb thumb-cultural">
+        <span class="scheduled-badge">Em breve</span>
+        <span class="card-type type-cultural">Jornada Cultural</span>
+      </div>
+      <div class="card-body">
+        <p class="card-title">Florestas Urbanas — Exposição</p>
+        <div class="card-meta">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Manaus, AM &nbsp;·&nbsp; maio 2025
+        </div>
+        <div class="card-stats">
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> <strong>210</strong> inscritos</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-scheduled">
+      <div class="card-thumb thumb-corporate">
+        <span class="scheduled-badge">Em breve</span>
+        <span class="card-type type-corporate">Jornada Corporativa</span>
+      </div>
+      <div class="card-body">
+        <p class="card-title">Energia Solar — Evento Corporativo</p>
+        <div class="card-meta">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Porto Alegre, RS &nbsp;·&nbsp; junho 2025
+        </div>
+        <div class="card-stats">
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> <strong>380</strong> inscritos</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-scheduled">
+      <div class="card-thumb thumb-cultural">
+        <span class="scheduled-badge">Em breve</span>
+        <span class="card-type type-cultural">Jornada Cultural</span>
+      </div>
+      <div class="card-body">
+        <p class="card-title">Solo Vivo — Exposição</p>
+        <div class="card-meta">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Florianópolis, SC &nbsp;·&nbsp; julho 2025
+        </div>
+        <div class="card-stats">
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4"/><circle cx="9" cy="7" r="4"/></svg> <strong>156</strong> inscritos</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="footer-note">* Dados fictícios, demonstrativos</p>
+</div>
+
+</body>
+</html>
