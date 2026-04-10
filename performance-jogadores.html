@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Performance dos Jogadores — The Blue City</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Montserrat', sans-serif; background: #f4f8fc; color: #1a2e3b; }
+
+  /* TOPBAR */
+  .topbar {
+    background: #fff; border-bottom: 1px solid #e0e8f0;
+    padding: 14px 40px; display: flex;
+    align-items: center; justify-content: space-between;
+  }
+  .topbar-logo { display: flex; align-items: center; gap: 10px; }
+  .topbar-logo span { font-size: 15px; font-weight: 800; color: #1a2e3b; }
+  .topbar-logo span em { font-style: normal; color: #5fb670; }
+  .topbar-nav { display: flex; gap: 28px; }
+  .topbar-nav a { font-size: 13px; color: #6b7f95; text-decoration: none; font-weight: 500; }
+  .topbar-nav a.active { color: #2858a0; font-weight: 700; }
+  .topbar-user { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #2858a0; font-weight: 600; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #e8f0f8 0%, #e2f0e2 100%);
+    padding: 36px 40px 28px; text-align: center;
+  }
+  .hero h1 { font-size: 26px; font-weight: 800; color: #2858a0; margin-bottom: 8px; }
+  .hero h1 em { font-style: normal; color: #5fb670; }
+  .hero p { font-size: 13px; color: #6b7f95; max-width: 560px; margin: 0 auto; line-height: 1.7; }
+
+  /* FILTERS */
+  .filters-bar {
+    background: #fff; border-bottom: 1px solid #e0e8f0;
+    padding: 14px 40px; display: flex;
+    align-items: center; gap: 12px; flex-wrap: wrap;
+  }
+  .filters-bar label { font-size: 11px; font-weight: 700; color: #6b7f95; letter-spacing: 0.5px; }
+  .filters-bar select {
+    font-size: 12px; padding: 7px 14px;
+    border-radius: 8px; border: 1px solid #e0e8f0;
+    background: #fff; color: #1a2e3b;
+    font-family: 'Montserrat', sans-serif; cursor: pointer;
+  }
+  .filter-divider { width: 1px; height: 24px; background: #e0e8f0; margin: 0 4px; }
+
+  /* CONTENT */
+  .content { padding: 28px 40px 56px; display: flex; flex-direction: column; gap: 20px; }
+
+  /* SECTION HEADING */
+  .section-heading {
+    font-size: 11px; font-weight: 700; letter-spacing: 1.2px;
+    text-transform: uppercase; color: #468182;
+    display: flex; align-items: center; gap: 8px; margin-bottom: 16px;
+  }
+  .section-heading::after { content: ''; flex: 1; height: 1px; background: rgba(70,129,130,0.2); }
+
+  /* BOX */
+  .box {
+    background: #fff; border-radius: 14px;
+    border: 1px solid #e0e8f0; padding: 24px 28px;
+  }
+  .box-title { font-size: 13px; font-weight: 700; color: #1a2e3b; margin-bottom: 4px; }
+  .box-sub   { font-size: 11px; color: #6b7f95; margin-bottom: 20px; }
+
+  /* METRICS ROW */
+  .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .metric-card {
+    background: #f4f8fc; border-radius: 10px;
+    padding: 16px; text-align: center;
+  }
+  .metric-val { font-size: 26px; font-weight: 800; line-height: 1; margin-bottom: 4px; }
+  .metric-change { font-size: 10px; font-weight: 600; margin-bottom: 6px; }
+  .metric-lbl { font-size: 11px; color: #6b7f95; font-weight: 500; }
+  .val-blue   { color: #2858a0; } .val-teal { color: #468182; }
+  .val-green  { color: #5fb670; } .val-purple { color: #7c5cbf; }
+  .change-up { color: #5fb670; } .change-neutral { color: #6b7f95; }
+
+  /* RETENTION BARS */
+  .retention-row { display: flex; flex-direction: column; gap: 12px; }
+  .ret-item { display: flex; align-items: center; gap: 14px; }
+  .ret-label { font-size: 12px; color: #6b7f95; font-weight: 500; min-width: 44px; }
+  .ret-track { flex: 1; height: 10px; background: #f0f4f8; border-radius: 5px; overflow: hidden; display: flex; gap: 3px; }
+  .ret-bar-blue  { height: 100%; background: #2858a0; border-radius: 5px; transition: width 0.6s; }
+  .ret-bar-green { height: 100%; background: #5fb670; border-radius: 5px; transition: width 0.6s; }
+  .ret-pct { font-size: 12px; font-weight: 700; color: #1a2e3b; min-width: 36px; text-align: right; }
+  .ret-legend { display: flex; gap: 20px; margin-bottom: 16px; }
+  .ret-legend span { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #6b7f95; }
+  .leg-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+  /* 2 COL GRID */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+
+  /* DEPARTAMENTO */
+  .dept-row { display: flex; flex-direction: column; gap: 10px; }
+  .dept-item { display: flex; align-items: center; gap: 10px; }
+  .dept-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .dept-name { font-size: 12px; color: #1a2e3b; font-weight: 500; flex: 1; }
+  .dept-track { width: 140px; height: 8px; background: #f0f4f8; border-radius: 4px; overflow: hidden; }
+  .dept-bar { height: 100%; border-radius: 4px; }
+  .dept-pct { font-size: 12px; font-weight: 700; color: #1a2e3b; min-width: 36px; text-align: right; }
+
+  /* TAXA DE ADESAO */
+  .adesao-wrap { display: flex; align-items: center; justify-content: center; gap: 40px; }
+  .adesao-circle {
+    width: 120px; height: 120px; border-radius: 50%;
+    border: 8px solid #f0f4f8; position: relative;
+    display: flex; align-items: center; justify-content: center; flex-direction: column;
+    background: conic-gradient(#5fb670 0% 76%, #f0f4f8 76% 100%);
+  }
+  .adesao-inner {
+    width: 90px; height: 90px; border-radius: 50%;
+    background: #fff; display: flex; align-items: center;
+    justify-content: center; flex-direction: column; gap: 2px;
+  }
+  .adesao-val { font-size: 22px; font-weight: 800; color: #5fb670; }
+  .adesao-lbl { font-size: 10px; color: #6b7f95; font-weight: 500; }
+  .adesao-details { display: flex; flex-direction: column; gap: 10px; }
+  .adesao-row { display: flex; align-items: center; gap: 10px; }
+  .adesao-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .adesao-text { font-size: 12px; color: #6b7f95; }
+  .adesao-text strong { color: #1a2e3b; font-weight: 700; }
+
+  /* TEMAS */
+  .temas-row { display: flex; flex-direction: column; gap: 12px; }
+  .tema-item { display: flex; align-items: center; gap: 12px; }
+  .tema-badge {
+    font-size: 10px; font-weight: 600; padding: 3px 10px;
+    border-radius: 20px; white-space: nowrap; min-width: 130px; text-align: center;
+  }
+  .tema-track { flex: 1; height: 8px; background: #f0f4f8; border-radius: 4px; overflow: hidden; }
+  .tema-bar { height: 100%; border-radius: 4px; }
+  .tema-count { font-size: 12px; font-weight: 700; color: #1a2e3b; min-width: 40px; text-align: right; }
+
+  /* LINKEDIN */
+  .linkedin-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .li-card { background: #f4f8fc; border-radius: 10px; padding: 16px; text-align: center; }
+  .li-val { font-size: 22px; font-weight: 800; color: #2858a0; margin-bottom: 4px; }
+  .li-lbl { font-size: 11px; color: #6b7f95; font-weight: 500; }
+
+  /* NPS */
+  .nps-wrap { display: flex; align-items: center; gap: 40px; }
+  .nps-score { text-align: center; }
+  .nps-num { font-size: 56px; font-weight: 800; color: #5fb670; line-height: 1; }
+  .nps-label { font-size: 11px; color: #6b7f95; font-weight: 500; margin-top: 4px; }
+  .nps-bar-wrap { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+  .nps-row { display: flex; align-items: center; gap: 10px; }
+  .nps-tag { font-size: 11px; font-weight: 600; min-width: 80px; }
+  .nps-track { flex: 1; height: 8px; background: #f0f4f8; border-radius: 4px; overflow: hidden; }
+  .nps-bar-green  { height: 100%; background: #5fb670; border-radius: 4px; }
+  .nps-bar-teal   { height: 100%; background: #468182; border-radius: 4px; }
+  .nps-bar-gray   { height: 100%; background: #c0c8d4; border-radius: 4px; }
+  .nps-pct { font-size: 11px; font-weight: 700; color: #1a2e3b; min-width: 36px; text-align: right; }
+
+  .footer-note {
+    font-size: 12px; color: #6b7f95;
+    text-align: center; margin-top: 8px; font-style: italic;
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<nav class="topbar">
+  <div class="topbar-logo">
+    <svg width="32" height="32" viewBox="0 0 45.6 45.6" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="22.8" cy="22.8" r="18.4" fill="#001522"/>
+      <rect x="12.2" y="17.5" width="20.8" height="3.2" fill="#fff"/>
+      <path d="M31.7 23l-.2.2c-1.3 1.1-2.4 2.1-4.1 2.1s-2.5-.4-4.1-1.3c-2.1-1.1-3.9-1.7-5.6-1.7-2.8 0-4.6 1.6-6 2.9l-.2.2 2 2.4.2-.2c1.3-1.1 2.4-2.1 4.1-2.1s2.5.4 4.1 1.3c2.1 1.1 3.9 1.7 5.6 1.7 2.7 0 4.5-1.6 5.9-2.9l.2-.2-2-2.4z" fill="#0c9ed9"/>
+    </svg>
+    <span>The Blue <em>City</em></span>
+  </div>
+  <div class="topbar-nav">
+    <a href="#">Jornadas</a>
+    <a href="#">Galeria de Projetos</a>
+    <a href="#">Galeria de Eventos</a>
+    <a href="#" class="active">Performance dos Jogadores</a>
+  </div>
+  <div class="topbar-user">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2858a0" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    João Silva
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Performance dos <em>Jogadores</em></h1>
+  <p>Acompanhe em tempo real a performance dos jogadores. Dados que transformam engajamento em insights estratégicos para o seu programa de sustentabilidade.</p>
+</div>
+
+<!-- FILTERS -->
+<div class="filters-bar">
+  <label>Filtrar por</label>
+  <select><option>Todos os temas</option><option>Clima</option><option>Energia</option><option>Biodiversidade</option><option>Mobilidade</option></select>
+  <select><option>Todos os jogos</option><option>Termômetro Zero</option><option>Amazônia Viva</option><option>Água Viva</option></select>
+  <div class="filter-divider"></div>
+  <select><option>Todas as cidades</option><option>Palmas, TO</option><option>Belém, PA</option><option>São Paulo, SP</option></select>
+  <select><option>Todas as escolas</option><option>ETAP Palmas</option><option>CETEM</option><option>Escola Técnica Central</option></select>
+  <div class="filter-divider"></div>
+  <select><option>Todo o período</option><option>Último mês</option><option>Últimos 3 meses</option><option>Último ano</option></select>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- MÉTRICAS DE ENGAJAMENTO -->
+  <div class="box">
+    <p class="box-title">Métricas de Engajamento</p>
+    <p class="box-sub">Visão geral do engajamento dos jogadores na plataforma</p>
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-val val-blue">2.450</div>
+        <div class="metric-change change-up">↑ +12,5% vs mês anterior</div>
+        <div class="metric-lbl">Jogadores Ativos</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val val-teal">89%</div>
+        <div class="metric-change change-up">↑ +8,2% vs mês anterior</div>
+        <div class="metric-lbl">Taxa de Conclusão</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val val-green">1.247</div>
+        <div class="metric-change change-up">↑ +15,3% vs mês anterior</div>
+        <div class="metric-lbl">NFTs Emitidos</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val val-purple">76%</div>
+        <div class="metric-change change-up">↑ +5,7% vs mês anterior</div>
+        <div class="metric-lbl">Taxa de Compartilhamento</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CURVA DE RETENÇÃO -->
+  <div class="box">
+    <p class="box-title">Curva de Retenção</p>
+    <p class="box-sub">Percentual de jogadores que continuam ativos ao longo do tempo</p>
+    <div class="ret-legend">
+      <span><div class="leg-dot" style="background:#2858a0;"></div>Jornada atual</span>
+      <span><div class="leg-dot" style="background:#5fb670;"></div>Média histórica</span>
+    </div>
+    <div class="retention-row">
+      <div class="ret-item">
+        <span class="ret-label">Dia 1</span>
+        <div class="ret-track">
+          <div class="ret-bar-blue" style="width:80%;"></div>
+          <div class="ret-bar-green" style="width:75%;"></div>
+        </div>
+        <span class="ret-pct">80%</span>
+      </div>
+      <div class="ret-item">
+        <span class="ret-label">Dia 7</span>
+        <div class="ret-track">
+          <div class="ret-bar-blue" style="width:60%;"></div>
+          <div class="ret-bar-green" style="width:55%;"></div>
+        </div>
+        <span class="ret-pct">60%</span>
+      </div>
+      <div class="ret-item">
+        <span class="ret-label">Dia 14</span>
+        <div class="ret-track">
+          <div class="ret-bar-blue" style="width:45%;"></div>
+          <div class="ret-bar-green" style="width:40%;"></div>
+        </div>
+        <span class="ret-pct">45%</span>
+      </div>
+      <div class="ret-item">
+        <span class="ret-label">Dia 30</span>
+        <div class="ret-track">
+          <div class="ret-bar-blue" style="width:25%;"></div>
+          <div class="ret-bar-green" style="width:30%;"></div>
+        </div>
+        <span class="ret-pct">25%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- USO DEPARTAMENTAL + TAXA DE ADESÃO -->
+  <div class="two-col">
+
+    <div class="box">
+      <p class="box-title">Uso Departamental</p>
+      <p class="box-sub">Distribuição de jogadores por área da empresa</p>
+      <div class="dept-row">
+        <div class="dept-item">
+          <div class="dept-dot" style="background:#5fb670;"></div>
+          <span class="dept-name">Sustentabilidade</span>
+          <div class="dept-track"><div class="dept-bar" style="width:35%; background:#5fb670;"></div></div>
+          <span class="dept-pct">35%</span>
+        </div>
+        <div class="dept-item">
+          <div class="dept-dot" style="background:#2858a0;"></div>
+          <span class="dept-name">RH</span>
+          <div class="dept-track"><div class="dept-bar" style="width:28%; background:#2858a0;"></div></div>
+          <span class="dept-pct">28%</span>
+        </div>
+        <div class="dept-item">
+          <div class="dept-dot" style="background:#468182;"></div>
+          <span class="dept-name">Marketing</span>
+          <div class="dept-track"><div class="dept-bar" style="width:18%; background:#468182;"></div></div>
+          <span class="dept-pct">18%</span>
+        </div>
+        <div class="dept-item">
+          <div class="dept-dot" style="background:#7c5cbf;"></div>
+          <span class="dept-name">TI</span>
+          <div class="dept-track"><div class="dept-bar" style="width:12%; background:#7c5cbf;"></div></div>
+          <span class="dept-pct">12%</span>
+        </div>
+        <div class="dept-item">
+          <div class="dept-dot" style="background:#c0c8d4;"></div>
+          <span class="dept-name">Outros</span>
+          <div class="dept-track"><div class="dept-bar" style="width:7%; background:#c0c8d4;"></div></div>
+          <span class="dept-pct">7%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="box">
+      <p class="box-title">Taxa de Adesão</p>
+      <p class="box-sub">Percentual de convidados que efetivamente jogaram</p>
+      <div class="adesao-wrap">
+        <div class="adesao-circle">
+          <div class="adesao-inner">
+            <span class="adesao-val">76%</span>
+            <span class="adesao-lbl">adesão</span>
+          </div>
+        </div>
+        <div class="adesao-details">
+          <div class="adesao-row">
+            <div class="adesao-dot" style="background:#5fb670;"></div>
+            <span class="adesao-text"><strong>1.862</strong> jogadores ativos</span>
+          </div>
+          <div class="adesao-row">
+            <div class="adesao-dot" style="background:#f0f4f8;border:1px solid #c0c8d4;"></div>
+            <span class="adesao-text"><strong>588</strong> ainda não jogaram</span>
+          </div>
+          <div class="adesao-row">
+            <div class="adesao-dot" style="background:#2858a0;"></div>
+            <span class="adesao-text"><strong>2.450</strong> total convidados</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PROJETOS POR TEMA + LINKEDIN -->
+  <div class="two-col">
+
+    <div class="box">
+      <p class="box-title">Projetos Enviados por Tema</p>
+      <p class="box-sub">Total de entregas recebidas por jornada</p>
+      <div class="temas-row">
+        <div class="tema-item">
+          <span class="tema-badge" style="background:#d6e4f7; color:#2858a0;">Redução de GEE</span>
+          <div class="tema-track"><div class="tema-bar" style="width:81%; background:#2858a0;"></div></div>
+          <span class="tema-count">200</span>
+        </div>
+        <div class="tema-item">
+          <span class="tema-badge" style="background:#d4f0d9; color:#2a7a3a;">Reflorestamento</span>
+          <div class="tema-track"><div class="tema-bar" style="width:40%; background:#5fb670;"></div></div>
+          <span class="tema-count">100</span>
+        </div>
+        <div class="tema-item">
+          <span class="tema-badge" style="background:#d0e8e8; color:#468182;">Energia Renovável</span>
+          <div class="tema-track"><div class="tema-bar" style="width:60%; background:#468182;"></div></div>
+          <span class="tema-count">148</span>
+        </div>
+        <div class="tema-item">
+          <span class="tema-badge" style="background:#e8e4f8; color:#7c5cbf;">Biodiversidade</span>
+          <div class="tema-track"><div class="tema-bar" style="width:32%; background:#7c5cbf;"></div></div>
+          <span class="tema-count">80</span>
+        </div>
+        <div class="tema-item">
+          <span class="tema-badge" style="background:#f0f4f8; color:#6b7f95;">Outros temas</span>
+          <div class="tema-track"><div class="tema-bar" style="width:20%; background:#c0c8d4;"></div></div>
+          <span class="tema-count">48</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="box">
+      <p class="box-title">LinkedIn Share</p>
+      <p class="box-sub">Alcance gerado pelo compartilhamento dos certificados</p>
+      <div class="linkedin-grid">
+        <div class="li-card">
+          <div class="li-val">1.856</div>
+          <div class="li-lbl">Compartilhamentos</div>
+        </div>
+        <div class="li-card">
+          <div class="li-val">45.732</div>
+          <div class="li-lbl">Impressões</div>
+        </div>
+        <div class="li-card">
+          <div class="li-val">12,3%</div>
+          <div class="li-lbl">Engajamento</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- NPS -->
+  <div class="box">
+    <p class="box-title">NPS e Satisfação</p>
+    <p class="box-sub">Nota média de satisfação dos colaboradores com a plataforma</p>
+    <div class="nps-wrap">
+      <div class="nps-score">
+        <div class="nps-num">8.7</div>
+        <div class="nps-label">nota média</div>
+      </div>
+      <div class="nps-bar-wrap">
+        <div class="nps-row">
+          <span class="nps-tag" style="color:#5fb670;">Promotores</span>
+          <div class="nps-track"><div class="nps-bar-green" style="width:72%;"></div></div>
+          <span class="nps-pct">72%</span>
+        </div>
+        <div class="nps-row">
+          <span class="nps-tag" style="color:#468182;">Neutros</span>
+          <div class="nps-track"><div class="nps-bar-teal" style="width:20%;"></div></div>
+          <span class="nps-pct">20%</span>
+        </div>
+        <div class="nps-row">
+          <span class="nps-tag" style="color:#c0c8d4;">Detratores</span>
+          <div class="nps-track"><div class="nps-bar-gray" style="width:8%;"></div></div>
+          <span class="nps-pct">8%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="footer-note">* Dados fictícios, demonstrativos</p>
+
+</div>
+</body>
+</html>
