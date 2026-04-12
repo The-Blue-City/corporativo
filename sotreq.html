@@ -1086,63 +1086,104 @@
 
       <!-- Fluxo visual neutro -->
       <div style="margin-bottom:32px;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 190" style="width:100%;height:auto;display:block;font-family:'Montserrat',sans-serif;">
-          <rect width="860" height="190" fill="#ffffff" rx="12"/>
-          <line x1="40" y1="95" x2="820" y2="95" stroke="#e0e8f0" stroke-width="2" stroke-linecap="round"/>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 280" style="width:100%;height:auto;display:block;font-family:'Montserrat',sans-serif;">
+          <rect width="900" height="280" fill="#ffffff" rx="12"/>
 
-          <!-- Fase 1 — topo -->
-          <circle cx="80" cy="95" r="13" fill="#2858a0"/>
-          <text x="80" y="100" text-anchor="middle" font-size="9" font-weight="700" fill="white">1</text>
-          <rect x="22" y="22" width="116" height="56" rx="8" fill="#f4f8fc" stroke="#d0d8e4" stroke-width="1.5"/>
-          <text x="80" y="42" text-anchor="middle" font-size="8" font-weight="700" fill="#1a2e3b">Produção</text>
-          <text x="80" y="54" text-anchor="middle" font-size="8" font-weight="700" fill="#1a2e3b">Virtual</text>
-          <text x="80" y="70" text-anchor="middle" font-size="7" fill="#6b7f95">Março 2026</text>
-          <line x1="80" y1="78" x2="80" y2="95" stroke="#d0d8e4" stroke-width="1.5"/>
+          <!-- Título -->
+          <text x="450" y="28" text-anchor="middle" font-size="13" font-weight="800" fill="#1a2e3b">Calendário do Projeto · 2026</text>
+          <line x1="160" y1="36" x2="740" y2="36" stroke="#5fb670" stroke-width="1.5" stroke-linecap="round"/>
 
-          <!-- Fase 2 — baixo -->
-          <circle cx="220" cy="95" r="13" fill="#468182"/>
-          <text x="220" y="100" text-anchor="middle" font-size="9" font-weight="700" fill="white">2</text>
-          <rect x="162" y="112" width="116" height="56" rx="8" fill="#f4f8fc" stroke="#d0d8e4" stroke-width="1.5"/>
-          <text x="220" y="132" text-anchor="middle" font-size="8" font-weight="700" fill="#1a2e3b">Articulação</text>
-          <text x="220" y="144" text-anchor="middle" font-size="8" font-weight="700" fill="#1a2e3b">Territorial</text>
-          <text x="220" y="158" text-anchor="middle" font-size="7" fill="#6b7f95">Abril 2026</text>
-          <line x1="220" y1="95" x2="220" y2="112" stroke="#d0d8e4" stroke-width="1.5"/>
+          <!-- Linha central do tempo -->
+          <line x1="45" y1="130" x2="875" y2="130" stroke="#e0e8f0" stroke-width="2.5" stroke-linecap="round"/>
 
-          <!-- Fase 3 — topo -->
-          <circle cx="360" cy="95" r="13" fill="#2858a0"/>
-          <text x="360" y="100" text-anchor="middle" font-size="9" font-weight="700" fill="white">3</text>
-          <rect x="302" y="22" width="116" height="56" rx="8" fill="#f4f8fc" stroke="#d0d8e4" stroke-width="1.5"/>
-          <text x="360" y="42" text-anchor="middle" font-size="8" font-weight="700" fill="#1a2e3b">Aplicação</text>
-          <text x="360" y="54" text-anchor="middle" font-size="8" font-weight="700" fill="#1a2e3b">do Jogo</text>
-          <text x="360" y="70" text-anchor="middle" font-size="7" fill="#6b7f95">Ago–Nov 2026</text>
-          <line x1="360" y1="78" x2="360" y2="95" stroke="#d0d8e4" stroke-width="1.5"/>
+          <!-- Meses: Mar Abr Mai Jun Jul Ago Set Out Nov Dez -->
+          <!-- Posições x: 45 + (i * 83) para 10 meses -->
 
-          <!-- Fase 4 — baixo -->
-          <circle cx="500" cy="95" r="13" fill="#468182"/>
-          <text x="500" y="100" text-anchor="middle" font-size="9" font-weight="700" fill="white">4</text>
-          <rect x="442" y="112" width="116" height="56" rx="8" fill="#f4f8fc" stroke="#d0d8e4" stroke-width="1.5"/>
-          <text x="500" y="132" text-anchor="middle" font-size="8" font-weight="700" fill="#1a2e3b">Exposição</text>
-          <text x="500" y="144" text-anchor="middle" font-size="8" font-weight="700" fill="#1a2e3b">Interativa</text>
-          <text x="500" y="158" text-anchor="middle" font-size="7" fill="#6b7f95">Ago–Nov 2026</text>
-          <line x1="500" y1="95" x2="500" y2="112" stroke="#d0d8e4" stroke-width="1.5"/>
+          <!-- MAR -->
+          <text x="87" y="115" text-anchor="middle" font-size="8" font-weight="800" fill="#2858a0" letter-spacing="0.5">MAR</text>
+          <line x1="87" y1="120" x2="87" y2="140" stroke="#2858a0" stroke-width="1.5"/>
+          <circle cx="87" cy="130" r="5" fill="#2858a0"/>
 
-          <!-- Fase 5 — topo -->
-          <circle cx="640" cy="95" r="13" fill="#2858a0"/>
-          <text x="640" y="100" text-anchor="middle" font-size="9" font-weight="700" fill="white">5</text>
-          <rect x="582" y="22" width="116" height="56" rx="8" fill="#f4f8fc" stroke="#d0d8e4" stroke-width="1.5"/>
-          <text x="640" y="42" text-anchor="middle" font-size="8" font-weight="700" fill="#1a2e3b">Oficina</text>
-          <text x="640" y="54" text-anchor="middle" font-size="8" font-weight="700" fill="#1a2e3b">Formativa</text>
-          <text x="640" y="70" text-anchor="middle" font-size="7" fill="#6b7f95">Ago–Nov 2026</text>
-          <line x1="640" y1="78" x2="640" y2="95" stroke="#d0d8e4" stroke-width="1.5"/>
+          <!-- ABR -->
+          <text x="170" y="115" text-anchor="middle" font-size="8" font-weight="800" fill="#468182" letter-spacing="0.5">ABR</text>
+          <line x1="170" y1="120" x2="170" y2="140" stroke="#468182" stroke-width="1.5"/>
+          <circle cx="170" cy="130" r="5" fill="#468182"/>
 
-          <!-- Fase 6 — baixo -->
-          <circle cx="780" cy="95" r="13" fill="#5fb670"/>
-          <text x="780" y="100" text-anchor="middle" font-size="9" font-weight="700" fill="white">6</text>
-          <rect x="722" y="112" width="116" height="56" rx="8" fill="#f4f8fc" stroke="#d0d8e4" stroke-width="1.5"/>
-          <text x="780" y="132" text-anchor="middle" font-size="8" font-weight="700" fill="#1a2e3b">Encerramento</text>
-          <text x="780" y="144" text-anchor="middle" font-size="8" font-weight="700" fill="#1a2e3b">e Sistematiz.</text>
-          <text x="780" y="158" text-anchor="middle" font-size="7" fill="#6b7f95">Após exposição</text>
-          <line x1="780" y1="95" x2="780" y2="112" stroke="#d0d8e4" stroke-width="1.5"/>
+          <!-- MAI -->
+          <text x="253" y="115" text-anchor="middle" font-size="8" font-weight="600" fill="#9aabb8" letter-spacing="0.5">MAI</text>
+          <circle cx="253" cy="130" r="4" fill="#e0e8f0"/>
+
+          <!-- JUN -->
+          <text x="336" y="115" text-anchor="middle" font-size="8" font-weight="600" fill="#9aabb8" letter-spacing="0.5">JUN</text>
+          <circle cx="336" cy="130" r="4" fill="#e0e8f0"/>
+
+          <!-- JUL -->
+          <text x="419" y="115" text-anchor="middle" font-size="8" font-weight="600" fill="#9aabb8" letter-spacing="0.5">JUL</text>
+          <circle cx="419" cy="130" r="4" fill="#e0e8f0"/>
+
+          <!-- AGO -->
+          <text x="502" y="115" text-anchor="middle" font-size="8" font-weight="800" fill="#5fb670" letter-spacing="0.5">AGO</text>
+          <line x1="502" y1="120" x2="502" y2="140" stroke="#5fb670" stroke-width="1.5"/>
+          <circle cx="502" cy="130" r="5" fill="#5fb670"/>
+
+          <!-- SET -->
+          <text x="585" y="115" text-anchor="middle" font-size="8" font-weight="600" fill="#5fb670" letter-spacing="0.5">SET</text>
+          <circle cx="585" cy="130" r="4" fill="#5fb670" opacity="0.5"/>
+
+          <!-- OUT -->
+          <text x="668" y="115" text-anchor="middle" font-size="8" font-weight="600" fill="#5fb670" letter-spacing="0.5">OUT</text>
+          <circle cx="668" cy="130" r="4" fill="#5fb670" opacity="0.5"/>
+
+          <!-- NOV -->
+          <text x="751" y="115" text-anchor="middle" font-size="8" font-weight="800" fill="#5fb670" letter-spacing="0.5">NOV</text>
+          <line x1="751" y1="120" x2="751" y2="140" stroke="#5fb670" stroke-width="1.5"/>
+          <circle cx="751" cy="130" r="5" fill="#5fb670"/>
+
+          <!-- DEZ -->
+          <text x="834" y="115" text-anchor="middle" font-size="8" font-weight="800" fill="#1a2e3b" letter-spacing="0.5">DEZ</text>
+          <line x1="834" y1="120" x2="834" y2="140" stroke="#d0d8e4" stroke-width="1.5"/>
+          <circle cx="834" cy="130" r="5" fill="#1a2e3b"/>
+
+          <!-- ETAPAS: barras coloridas abaixo da linha -->
+
+          <!-- Etapa 1: Produção Virtual — Março -->
+          <rect x="66" y="145" width="83" height="28" rx="6" fill="#2858a0"/>
+          <text x="107" y="163" text-anchor="middle" font-size="7.5" font-weight="700" fill="white">Produção Virtual</text>
+
+          <!-- Etapa 2: Articulação — Abril -->
+          <rect x="149" y="145" width="83" height="28" rx="6" fill="#468182"/>
+          <text x="190" y="163" text-anchor="middle" font-size="7.5" font-weight="700" fill="white">Articulação</text>
+
+          <!-- Faixa vazia Mai–Jul (aguardando) -->
+          <rect x="232" y="145" width="249" height="28" rx="6" fill="#f4f8fc" stroke="#e0e8f0" stroke-width="1"/>
+          <text x="356" y="163" text-anchor="middle" font-size="7" fill="#9aabb8">datas a confirmar</text>
+
+          <!-- Etapa 3+4+5: Jogo + Exposição + Oficina — Ago a Nov -->
+          <rect x="481" y="145" width="289" height="28" rx="6" fill="#5fb670"/>
+          <text x="576" y="160" text-anchor="middle" font-size="7.5" font-weight="700" fill="white">Jogo</text>
+          <line x1="624" y1="147" x2="624" y2="171" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+          <text x="672" y="160" text-anchor="middle" font-size="7.5" font-weight="700" fill="white">Exposição</text>
+          <line x1="720" y1="147" x2="720" y2="171" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+          <text x="746" y="160" text-anchor="middle" font-size="6.5" font-weight="700" fill="white">Oficina</text>
+
+          <!-- Etapa 6: Encerramento — Dez -->
+          <rect x="813" y="145" width="62" height="28" rx="6" fill="#1a2e3b"/>
+          <text x="844" y="157" text-anchor="middle" font-size="6.5" font-weight="700" fill="white">Encer-</text>
+          <text x="844" y="168" text-anchor="middle" font-size="6.5" font-weight="700" fill="white">ramento</text>
+
+          <!-- Legenda -->
+          <rect x="45" y="198" width="10" height="10" rx="2" fill="#2858a0"/>
+          <text x="60" y="207" font-size="8" fill="#6b7f95">Produção</text>
+          <rect x="135" y="198" width="10" height="10" rx="2" fill="#468182"/>
+          <text x="150" y="207" font-size="8" fill="#6b7f95">Articulação</text>
+          <rect x="225" y="198" width="10" height="10" rx="2" fill="#5fb670"/>
+          <text x="240" y="207" font-size="8" fill="#6b7f95">Jogo · Exposição · Oficina</text>
+          <rect x="390" y="198" width="10" height="10" rx="2" fill="#1a2e3b"/>
+          <text x="405" y="207" font-size="8" fill="#6b7f95">Encerramento</text>
+          <rect x="495" y="198" width="10" height="10" rx="2" fill="#f4f8fc" stroke="#e0e8f0" stroke-width="1"/>
+          <text x="510" y="207" font-size="8" fill="#9aabb8">Datas a confirmar com escola parceira</text>
+
+          <text x="450" y="250" text-anchor="middle" font-size="7.5" fill="#9aabb8" font-style="italic">As datas de agosto a novembro serão definidas em conjunto com a escola participante.</text>
         </svg>
       </div>
 
