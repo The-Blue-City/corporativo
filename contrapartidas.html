@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Blue City — Contrapartidas de Patrocínio</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #2858a0; --teal: #468182; --green: #5fb670;
+    --blue-light: #d6e4f7; --teal-light: #d0e8e8; --green-light: #d4f0d9;
+    --dark: #1a2e3b; --text: #2c3e50; --muted: #6b7f95; --bg: #f4f8fc;
+    --sidebar-w: 280px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Montserrat',sans-serif; background:var(--bg); color:var(--text); display:flex; min-height:100vh; }
+  .sidebar { width:var(--sidebar-w); min-height:100vh; background:#121e33; position:fixed; left:0; top:0; display:flex; flex-direction:column; z-index:100; border-right:1px solid rgba(255,255,255,0.06); }
+  .sidebar-logo { padding:28px 24px 22px; border-bottom:1px solid rgba(255,255,255,0.08); font-size:13px; font-weight:700; color:white; }
+  .sidebar-label { padding:18px 24px 8px; font-size:9px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.85); }
+  .sidebar-label.section { margin-top:8px; border-top:1px solid rgba(255,255,255,0.08); padding-top:16px; }
+  .nav-item { display:flex; align-items:center; gap:12px; padding:11px 24px; cursor:pointer; transition:all 0.2s; border-left:3px solid transparent; color:rgba(255,255,255,0.55); font-size:12px; font-weight:500; user-select:none; }
+  .nav-item:hover { background:rgba(255,255,255,0.05); color:rgba(255,255,255,0.85); border-left-color:rgba(95,182,112,0.4); }
+  .nav-item.active { background:rgba(0,0,0,0.2); color:#fff; border-left-color:var(--green); }
+  .nav-dot { width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,0.2); flex-shrink:0; }
+  .nav-item.active .nav-dot { background:var(--green); }
+  .nav-badge { margin-left:auto; font-size:9px; font-weight:800; padding:2px 7px; border-radius:10px; }
+  .sidebar-footer { margin-top:auto; padding:20px 24px; border-top:1px solid rgba(255,255,255,0.07); font-size:11px; color:#fff; }
+  .main { margin-left:var(--sidebar-w); flex:1; }
+  .page { display:none; min-height:100vh; animation:fadeIn 0.3s ease; }
+  .page.active { display:block; }
+  @keyframes fadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+
+  .page-hero { padding:44px 60px 36px; background:#fff; border-bottom:1px solid rgba(40,88,160,0.08); position:relative; overflow:hidden; }
+  .page-hero::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg,var(--blue),var(--teal),var(--green)); }
+  .cota-tag { display:inline-flex; align-items:center; gap:8px; padding:5px 16px; border-radius:20px; font-size:12px; font-weight:800; letter-spacing:0.5px; margin-bottom:14px; }
+  .page-title { font-size:30px; font-weight:800; color:var(--dark); margin-bottom:6px; }
+  .page-meta { font-size:14px; color:var(--muted); font-weight:500; }
+  .page-value { font-size:28px; font-weight:800; color:var(--blue); margin-top:4px; }
+
+  .page-body { padding:36px 60px 40px; }
+  .section-title { font-size:10px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:var(--teal); margin-bottom:14px; padding-bottom:8px; border-bottom:1px solid rgba(70,129,130,0.15); }
+  .contrapartida-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:28px; }
+  .c-item { background:white; border-radius:10px; padding:16px 18px; border:1px solid rgba(40,88,160,0.08); box-shadow:0 2px 8px rgba(0,0,0,0.03); display:flex; gap:12px; align-items:flex-start; }
+  .c-icon { font-size:18px; flex-shrink:0; margin-top:1px; }
+  .c-item h4 { font-size:12px; font-weight:700; color:var(--dark); margin-bottom:3px; }
+  .c-item p { font-size:11px; color:var(--muted); line-height:1.55; }
+  .highlight-box { border-radius:12px; padding:20px 24px; margin-bottom:28px; }
+  .highlight-box h3 { font-size:14px; font-weight:800; margin-bottom:6px; }
+  .highlight-box p { font-size:12px; line-height:1.6; opacity:0.88; }
+
+  .divider { height:1px; background:rgba(40,88,160,0.07); margin:0 60px; }
+  .page-nav { display:flex; align-items:center; justify-content:space-between; padding:20px 60px 32px; }
+  .nav-btn { display:flex; align-items:center; gap:8px; padding:10px 20px; border-radius:8px; border:1.5px solid rgba(40,88,160,0.15); background:white; color:var(--blue); font-size:13px; font-weight:600; cursor:pointer; transition:all 0.2s; font-family:'Montserrat',sans-serif; text-decoration:none; }
+  .nav-btn:hover { background:var(--blue); color:white; border-color:var(--blue); }
+  .nav-btn.next { background:var(--blue); color:white; border-color:var(--blue); }
+  .nav-btn.next:hover { background:var(--dark); border-color:var(--dark); }
+  .page-indicator { font-size:12px; color:var(--muted); font-weight:500; }
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="sidebar-logo">The Blue City<br><span style="font-size:10px;font-weight:400;opacity:0.6;">Contrapartidas · LIC IR Rouanet</span></div>
+  <div class="sidebar-label">Cotas de Patrocínio</div>
+  <div class="nav-item active" onclick="goTo(0)"><span class="nav-dot"></span> Bronze<span class="nav-badge" style="background:#fff3e8;color:#b87333;">R$190k</span></div>
+  <div class="nav-item" onclick="goTo(1)"><span class="nav-dot"></span> Prata<span class="nav-badge" style="background:#f5f5f5;color:#7a7a7a;">R$340k</span></div>
+  <div class="nav-item" onclick="goTo(2)"><span class="nav-dot"></span> Ouro<span class="nav-badge" style="background:#fffbe6;color:#c8a000;">R$485k</span></div>
+  <div class="nav-item" onclick="goTo(3)"><span class="nav-dot"></span> Safira<span class="nav-badge" style="background:#e8f0fb;color:#0057a8;">R$620k</span></div>
+  <div class="nav-item" onclick="goTo(4)"><span class="nav-dot"></span> Master<span class="nav-badge" style="background:#d0e8e8;color:#468182;">R$780k</span></div>
+  <div class="nav-item" onclick="goTo(5)"><span class="nav-dot"></span> Premium<span class="nav-badge" style="background:#d4f0d9;color:#38a349;">R$943k</span></div>
+  <div class="sidebar-footer">PRONAC 237809<br>© The Blue City</div>
+</aside>
+
+<main class="main">
+
+  <!-- BRONZE -->
+  <section class="page active" id="page-0">
+    <div class="page-hero">
+      <div class="cota-tag" style="background:#fff3e8;color:#b87333;border:1px solid #f0c898;">🥉 Cota Bronze</div>
+      <h1 class="page-title">Contrapartidas Bronze</h1>
+      <div class="page-meta">1 cidade · até 2.000 pessoas · Amazônia Legal</div>
+      <div class="page-value">R$ 190.000</div>
+    </div>
+    <div class="page-body">
+      <div class="highlight-box" style="background:var(--blue);color:white;">
+        <h3>📍 Alcance</h3>
+        <p>Até 2.000 estudantes da rede pública em uma capital da Amazônia Legal — com 30 dias de jogo educativo e 30 dias de exposição cultural no espaço público próximo à escola.</p>
+      </div>
+      <div class="section-title">Visibilidade e Ativação de Marca</div>
+      <div class="contrapartida-grid">
+        <div class="c-item"><div class="c-icon">🏷️</div><div><h4>Chancela "Patrocínio Bronze"</h4><p>Logotipo sob chancela oficial em todos os materiais da exposição: painéis, banners, certificados e posts digitais.</p></div></div>
+        <div class="c-item"><div class="c-icon">🌐</div><div><h4>Presença no Site Oficial</h4><p>Logotipo no site do projeto com link direcionado ao patrocinador durante toda a vigência.</p></div></div>
+        <div class="c-item"><div class="c-icon">🎬</div><div><h4>Crédito nos Vídeos</h4><p>Inserção da marca nos créditos dos vídeos introdutórios exibidos na exposição.</p></div></div>
+        <div class="c-item"><div class="c-icon">📰</div><div><h4>1 Menção Institucional em Imprensa</h4><p>Citação do patrocinador em release e/ou matéria jornalística sobre o projeto na cidade.</p></div></div>
+        <div class="c-item"><div class="c-icon">📱</div><div><h4>4 Posts Exclusivos nas Redes Sociais</h4><p>Publicações exclusivas sobre a parceria nas redes sociais do projeto durante a jornada.</p></div></div>
+      </div>
+      <div class="section-title">Relacionamento</div>
+      <div class="contrapartida-grid">
+        <div class="c-item"><div class="c-icon">🏅</div><div><h4>Certificado NFT</h4><p>Certificado NFT institucional "Amiga do Meio Ambiente" emitido para a empresa patrocinadora.</p></div></div>
+        <div class="c-item"><div class="c-icon">🎥</div><div><h4>Vídeo de Resultados</h4><p>Um vídeo de resultados destacando a participação do patrocinador e o impacto gerado na cidade.</p></div></div>
+        <div class="c-item"><div class="c-icon">📊</div><div><h4>Relatório de Impacto</h4><p>Inserção em relatórios públicos de impacto com dados sobre alcance, engajamento e certificações emitidas.</p></div></div>
+        <div class="c-item"><div class="c-icon">🌿</div><div><h4>Valorização Cultural</h4><p>Apoio direto à valorização da cultura afro-brasileira e indígena em uma capital da Amazônia Legal.</p></div></div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="page-nav">
+      <a class="nav-btn" href="sotreq.html">← Voltar à Apresentação</a>
+      <span class="page-indicator">Cota <strong>1</strong> de 6</span>
+      <button class="nav-btn next" onclick="goTo(1)">Prata →</button>
+    </div>
+  </section>
+
+  <!-- PRATA -->
+  <section class="page" id="page-1">
+    <div class="page-hero">
+      <div class="cota-tag" style="background:#f5f5f5;color:#7a7a7a;border:1px solid #ddd;">🥈 Cota Prata</div>
+      <h1 class="page-title">Contrapartidas Prata</h1>
+      <div class="page-meta">2 cidades · até 4.000 pessoas · Amazônia Legal</div>
+      <div class="page-value">R$ 340.000</div>
+    </div>
+    <div class="page-body">
+      <div class="highlight-box" style="background:var(--blue);color:white;">
+        <h3>📍 Alcance</h3>
+        <p>Até 4.000 estudantes da rede pública em duas capitais da Amazônia Legal — com 30 dias de jogo e 30 dias de exposição em cada cidade.</p>
+      </div>
+      <div class="section-title">Visibilidade e Ativação de Marca</div>
+      <div class="contrapartida-grid">
+        <div class="c-item"><div class="c-icon">🏷️</div><div><h4>Chancela "Patrocínio Prata"</h4><p>Logotipo sob chancela oficial em todos os materiais das duas exposições: painéis, banners, certificados e posts digitais.</p></div></div>
+        <div class="c-item"><div class="c-icon">🌐</div><div><h4>Destaque no Site e Galeria Virtual</h4><p>Logotipo em posição de destaque no site oficial e na galeria virtual do projeto, com link ao patrocinador.</p></div></div>
+        <div class="c-item"><div class="c-icon">🎬</div><div><h4>Crédito em Todos os Vídeos</h4><p>Inserção da marca nos créditos de todos os vídeos introdutórios das duas cidades.</p></div></div>
+        <div class="c-item"><div class="c-icon">📰</div><div><h4>2 Menções Institucionais em Imprensa</h4><p>Citações do patrocinador em releases e/ou matérias jornalísticas nas duas cidades do projeto.</p></div></div>
+        <div class="c-item"><div class="c-icon">📱</div><div><h4>4 Posts Exclusivos nas Redes Sociais</h4><p>Publicações exclusivas sobre a parceria nas redes sociais do projeto ao longo da jornada.</p></div></div>
+        <div class="c-item"><div class="c-icon">🎞️</div><div><h4>1 Vídeo Exclusivo da Parceria</h4><p>Vídeo exclusivo produzido sobre a parceria e publicado nas redes sociais do projeto.</p></div></div>
+      </div>
+      <div class="section-title">Relacionamento</div>
+      <div class="contrapartida-grid">
+        <div class="c-item"><div class="c-icon">🏅</div><div><h4>Certificado NFT</h4><p>Certificado NFT institucional "Amiga do Meio Ambiente" emitido para a empresa patrocinadora.</p></div></div>
+        <div class="c-item"><div class="c-icon">🎥</div><div><h4>Vídeo de Resultados</h4><p>Um vídeo de resultados com impacto destacado nas duas capitais apoiadas.</p></div></div>
+        <div class="c-item"><div class="c-icon">📊</div><div><h4>Citação em Relatórios Técnicos</h4><p>Citação especial em relatórios técnicos e públicos de impacto distribuídos a escolas e parceiros.</p></div></div>
+        <div class="c-item"><div class="c-icon">🌿</div><div><h4>Valorização Cultural em 2 Capitais</h4><p>Apoio direto à valorização da cultura afro-brasileira e indígena em duas capitais da Amazônia Legal.</p></div></div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="page-nav">
+      <button class="nav-btn" onclick="goTo(0)">← Bronze</button>
+      <span class="page-indicator">Cota <strong>2</strong> de 6</span>
+      <button class="nav-btn next" onclick="goTo(2)">Ouro →</button>
+    </div>
+  </section>
+
+  <!-- OURO -->
+  <section class="page" id="page-2">
+    <div class="page-hero">
+      <div class="cota-tag" style="background:#fffbe6;color:#c8a000;border:1px solid #ffe066;">🥇 Cota Ouro</div>
+      <h1 class="page-title">Contrapartidas Ouro</h1>
+      <div class="page-meta">3 cidades · até 6.000 pessoas · Amazônia Legal</div>
+      <div class="page-value">R$ 485.000</div>
+    </div>
+    <div class="page-body">
+      <div class="highlight-box" style="background:var(--blue);color:white;">
+        <h3>📍 Alcance</h3>
+        <p>Até 6.000 estudantes da rede pública em três capitais da Amazônia Legal — com 30 dias de jogo e 30 dias de exposição em cada cidade.</p>
+      </div>
+      <div class="section-title">Visibilidade e Ativação de Marca</div>
+      <div class="contrapartida-grid">
+        <div class="c-item"><div class="c-icon">🏷️</div><div><h4>Chancela "Patrocínio Ouro"</h4><p>Logotipo sob chancela oficial em todos os materiais das três exposições.</p></div></div>
+        <div class="c-item"><div class="c-icon">🌐</div><div><h4>Destaque no Site e Galeria Virtual</h4><p>Logotipo em posição de destaque no site oficial e na galeria virtual, com link ao patrocinador.</p></div></div>
+        <div class="c-item"><div class="c-icon">🎬</div><div><h4>Crédito nos 12 Mundos Temáticos</h4><p>Inserção da marca nos créditos dos vídeos de todos os 12 mundos temáticos do projeto.</p></div></div>
+        <div class="c-item"><div class="c-icon">📰</div><div><h4>3 Menções Institucionais em Imprensa</h4><p>Citações do patrocinador em releases e matérias jornalísticas nas três cidades.</p></div></div>
+        <div class="c-item"><div class="c-icon">📱</div><div><h4>8 Posts Exclusivos nas Redes Sociais</h4><p>Publicações exclusivas sobre a parceria ao longo das três jornadas nas redes do projeto.</p></div></div>
+        <div class="c-item"><div class="c-icon">🎞️</div><div><h4>1 Vídeo Exclusivo da Parceria</h4><p>Vídeo exclusivo produzido sobre a parceria publicado nas redes sociais do projeto.</p></div></div>
+      </div>
+      <div class="section-title">Relacionamento</div>
+      <div class="contrapartida-grid">
+        <div class="c-item"><div class="c-icon">🏅</div><div><h4>Certificado NFT</h4><p>Certificado NFT institucional "Amiga do Meio Ambiente" emitido para a empresa patrocinadora.</p></div></div>
+        <div class="c-item"><div class="c-icon">🎁</div><div><h4>Kits Institucionais</h4><p>Kits institucionais do projeto entregues ao patrocinador.</p></div></div>
+        <div class="c-item"><div class="c-icon">🎥</div><div><h4>Vídeo de Resultados</h4><p>Um vídeo de resultados com destaque para as três capitais apoiadas.</p></div></div>
+        <div class="c-item"><div class="c-icon">🌿</div><div><h4>Valorização Cultural em 3 Capitais</h4><p>Apoio direto à valorização da cultura afro-brasileira e indígena em três capitais, com presença em relatórios públicos de ampla circulação.</p></div></div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="page-nav">
+      <button class="nav-btn" onclick="goTo(1)">← Prata</button>
+      <span class="page-indicator">Cota <strong>3</strong> de 6</span>
+      <button class="nav-btn next" onclick="goTo(3)">Safira →</button>
+    </div>
+  </section>
+
+  <!-- SAFIRA -->
+  <section class="page" id="page-3">
+    <div class="page-hero">
+      <div class="cota-tag" style="background:#e8f0fb;color:#0057a8;border:1px solid #a8c4f0;">💎 Cota Safira</div>
+      <h1 class="page-title">Contrapartidas Safira</h1>
+      <div class="page-meta">4 cidades · até 8.000 pessoas · Amazônia Legal</div>
+      <div class="page-value">R$ 620.000</div>
+    </div>
+    <div class="page-body">
+      <div class="highlight-box" style="background:var(--blue);color:white;">
+        <h3>📍 Alcance</h3>
+        <p>Até 8.000 estudantes da rede pública em quatro capitais da Amazônia Legal — com 30 dias de jogo e 30 dias de exposição em cada cidade.</p>
+      </div>
+      <div class="section-title">Visibilidade e Ativação de Marca</div>
+      <div class="contrapartida-grid">
+        <div class="c-item"><div class="c-icon">🏷️</div><div><h4>Chancela "Patrocínio Safira"</h4><p>Logotipo sob chancela oficial em todos os materiais das quatro exposições.</p></div></div>
+        <div class="c-item"><div class="c-icon">🌐</div><div><h4>Destaque no Site e Galeria Virtual</h4><p>Logotipo em posição de destaque no site oficial e na galeria virtual, com link ao patrocinador.</p></div></div>
+        <div class="c-item"><div class="c-icon">🎬</div><div><h4>Crédito nos 12 Mundos Temáticos</h4><p>Inserção da marca nos créditos dos vídeos de todos os 12 mundos temáticos do projeto.</p></div></div>
+        <div class="c-item"><div class="c-icon">📰</div><div><h4>4 Menções Institucionais em Imprensa</h4><p>Citações do patrocinador em releases e matérias jornalísticas nas quatro cidades.</p></div></div>
+        <div class="c-item"><div class="c-icon">📱</div><div><h4>8 Posts Exclusivos nas Redes Sociais</h4><p>Publicações exclusivas sobre a parceria ao longo das quatro jornadas.</p></div></div>
+        <div class="c-item"><div class="c-icon">🎞️</div><div><h4>1 Vídeo Exclusivo da Parceria</h4><p>Vídeo exclusivo produzido sobre a parceria publicado nas redes sociais do projeto.</p></div></div>
+      </div>
+      <div class="section-title">Relacionamento</div>
+      <div class="contrapartida-grid">
+        <div class="c-item"><div class="c-icon">🏅</div><div><h4>Certificado NFT</h4><p>Certificado NFT institucional "Amiga do Meio Ambiente" emitido para a empresa patrocinadora.</p></div></div>
+        <div class="c-item"><div class="c-icon">🎁</div><div><h4>Kits Personalizados</h4><p>Kits personalizados com a identidade do projeto entregues ao patrocinador.</p></div></div>
+        <div class="c-item"><div class="c-icon">🎥</div><div><h4>Vídeo de Resultados</h4><p>Um vídeo de resultados com destaque para as quatro capitais apoiadas.</p></div></div>
+        <div class="c-item"><div class="c-icon">🌿</div><div><h4>Valorização Cultural em 4 Capitais</h4><p>Apoio direto à valorização da cultura afro-brasileira e indígena em quatro capitais, com presença em relatórios públicos de impacto.</p></div></div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="page-nav">
+      <button class="nav-btn" onclick="goTo(2)">← Ouro</button>
+      <span class="page-indicator">Cota <strong>4</strong> de 6</span>
+      <button class="nav-btn next" onclick="goTo(4)">Master →</button>
+    </div>
+  </section>
+
+  <!-- MASTER -->
+  <section class="page" id="page-4">
+    <div class="page-hero">
+      <div class="cota-tag" style="background:#d0e8e8;color:#468182;border:1px solid #90c4c4;">⭐ Cota Master</div>
+      <h1 class="page-title">Contrapartidas Master</h1>
+      <div class="page-meta">5 cidades · até 10.000 pessoas · Amazônia Legal</div>
+      <div class="page-value">R$ 780.000</div>
+    </div>
+    <div class="page-body">
+      <div class="highlight-box" style="background:var(--blue);color:white;">
+        <h3>📍 Alcance</h3>
+        <p>Até 10.000 estudantes da rede pública em cinco capitais da Amazônia Legal — com 30 dias de jogo e 30 dias de exposição em cada cidade.</p>
+      </div>
+      <div class="section-title">Visibilidade e Ativação de Marca</div>
+      <div class="contrapartida-grid">
+        <div class="c-item"><div class="c-icon">🏷️</div><div><h4>Chancela "Patrocínio Master"</h4><p>Logotipo sob chancela oficial em todos os materiais das cinco exposições.</p></div></div>
+        <div class="c-item"><div class="c-icon">🌐</div><div><h4>Maior Destaque no Site e Galeria Virtual</h4><p>Logotipo em posição de maior destaque no site oficial e na galeria virtual, com link ao patrocinador.</p></div></div>
+        <div class="c-item"><div class="c-icon">🎬</div><div><h4>Crédito em Todos os Vídeos dos 12 Mundos</h4><p>Inserção da marca em todos os vídeos dos 12 mundos temáticos em todas as cinco cidades.</p></div></div>
+        <div class="c-item"><div class="c-icon">📰</div><div><h4>6 Menções Institucionais em Imprensa</h4><p>Citações do patrocinador em releases e matérias jornalísticas ao longo do projeto.</p></div></div>
+        <div class="c-item"><div class="c-icon">📱</div><div><h4>16 Posts Exclusivos nas Redes Sociais</h4><p>Publicações exclusivas sobre a parceria ao longo das cinco jornadas nas redes do projeto.</p></div></div>
+        <div class="c-item"><div class="c-icon">🎞️</div><div><h4>2 Vídeos Exclusivos da Parceria</h4><p>Dois vídeos exclusivos produzidos sobre a parceria e publicados nas redes sociais do projeto.</p></div></div>
+        <div class="c-item"><div class="c-icon">🤝</div><div><h4>Ativação Digital Cocriada</h4><p>Direito de cocriar uma ativação digital junto ao projeto — ação especial desenvolvida em parceria com a marca.</p></div></div>
+      </div>
+      <div class="section-title">Relacionamento</div>
+      <div class="contrapartida-grid">
+        <div class="c-item"><div class="c-icon">🏅</div><div><h4>Certificado NFT</h4><p>Certificado NFT institucional "Amiga do Meio Ambiente" emitido para a empresa patrocinadora.</p></div></div>
+        <div class="c-item"><div class="c-icon">🎁</div><div><h4>Kits Personalizados</h4><p>Kits personalizados com a identidade do projeto entregues ao patrocinador.</p></div></div>
+        <div class="c-item"><div class="c-icon">🎥</div><div><h4>Vídeo de Resultados</h4><p>Um vídeo de resultados com destaque para as cinco capitais apoiadas.</p></div></div>
+        <div class="c-item"><div class="c-icon">🌿</div><div><h4>Coparceira Estratégica</h4><p>Reconhecimento como coparceira estratégica nos relatórios públicos de impacto em cinco capitais.</p></div></div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="page-nav">
+      <button class="nav-btn" onclick="goTo(3)">← Safira</button>
+      <span class="page-indicator">Cota <strong>5</strong> de 6</span>
+      <button class="nav-btn next" onclick="goTo(5)">Premium →</button>
+    </div>
+  </section>
+
+  <!-- PREMIUM -->
+  <section class="page" id="page-5">
+    <div class="page-hero">
+      <div class="cota-tag" style="background:#d4f0d9;color:#38a349;border:1px solid #90c4a0;">🏆 Cota Premium</div>
+      <h1 class="page-title">Contrapartidas Premium</h1>
+      <div class="page-meta">Cobertura integral · 5 cidades · até 12.000 pessoas · Amazônia Legal</div>
+      <div class="page-value">R$ 943.554</div>
+    </div>
+    <div class="page-body">
+      <div class="highlight-box" style="background:#1a2e3b;color:white;">
+        <h3>📍 Alcance Integral</h3>
+        <p>Cobertura total do projeto em todas as cinco capitais da Amazônia Legal — até 12.000 estudantes da rede pública, com 30 dias de jogo e 30 dias de exposição em cada cidade. Patrocinador reconhecido oficialmente como parceiro integral do projeto.</p>
+      </div>
+      <div class="section-title">Visibilidade e Ativação de Marca</div>
+      <div class="contrapartida-grid">
+        <div class="c-item"><div class="c-icon">🏷️</div><div><h4>Chancela "Patrocínio Premium" — Destaque Máximo</h4><p>Logotipo com destaque máximo em todos os materiais de todas as cinco exposições.</p></div></div>
+        <div class="c-item"><div class="c-icon">🌐</div><div><h4>Inclusão Prioritária no Site e Galeria Virtual</h4><p>Presença prioritária no site oficial e galeria virtual como patrocinador principal, com link ao patrocinador.</p></div></div>
+        <div class="c-item"><div class="c-icon">🎬</div><div><h4>Crédito em Todos os Vídeos — 12 Mundos</h4><p>Inserção da marca em todos os vídeos de todos os 12 mundos temáticos em todas as cidades.</p></div></div>
+        <div class="c-item"><div class="c-icon">📰</div><div><h4>6 Menções Institucionais em Imprensa</h4><p>Citações do patrocinador em releases e matérias jornalísticas ao longo do projeto.</p></div></div>
+        <div class="c-item"><div class="c-icon">📱</div><div><h4>20 Posts Exclusivos nas Redes Sociais</h4><p>Publicações exclusivas sobre a parceria ao longo de todas as jornadas nas redes do projeto.</p></div></div>
+        <div class="c-item"><div class="c-icon">🎞️</div><div><h4>3 Vídeos Exclusivos da Parceria</h4><p>Três vídeos exclusivos produzidos sobre a parceria e publicados nas redes sociais do projeto.</p></div></div>
+        <div class="c-item"><div class="c-icon">🤝</div><div><h4>Ativação Digital Cocriada</h4><p>Direito de cocriar uma ativação digital especial junto ao projeto em parceria com a marca.</p></div></div>
+        <div class="c-item"><div class="c-icon">🌟</div><div><h4>Parceira Estratégica Principal</h4><p>Reconhecimento oficial como parceira estratégica principal em todas as apresentações institucionais do projeto.</p></div></div>
+      </div>
+      <div class="section-title">Relacionamento</div>
+      <div class="contrapartida-grid">
+        <div class="c-item"><div class="c-icon">🏅</div><div><h4>Certificado NFT</h4><p>Certificado NFT institucional "Amiga do Meio Ambiente" emitido para a empresa patrocinadora.</p></div></div>
+        <div class="c-item"><div class="c-icon">🎁</div><div><h4>Kits Exclusivos Cocriados</h4><p>Kits exclusivos cocriados com a marca, entregues a escolas, parceiros e ao patrocinador.</p></div></div>
+        <div class="c-item"><div class="c-icon">🎥</div><div><h4>Marca em Todos os Vídeos de Resultados</h4><p>Presença com destaque integral em todos os vídeos de resultados das cinco cidades.</p></div></div>
+        <div class="c-item"><div class="c-icon">📋</div><div><h4>Relatórios Nacionais e Internacionais</h4><p>Visibilidade ampliada em relatórios de impacto com circulação nacional e internacional.</p></div></div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="page-nav">
+      <button class="nav-btn" onclick="goTo(4)">← Master</button>
+      <span class="page-indicator">Cota <strong>6</strong> de 6</span>
+      <a class="nav-btn next" href="sotreq.html">↺ Voltar à Apresentação</a>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  let current = 0;
+  const total = 6;
+  function goTo(i) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.getElementById('page-' + i).classList.add('active');
+    document.querySelectorAll('.nav-item')[i].classList.add('active');
+    current = i;
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' && current < total-1) goTo(current+1);
+    if (e.key === 'ArrowLeft' && current > 0) goTo(current-1);
+  });
+</script>
+</body>
+</html>
