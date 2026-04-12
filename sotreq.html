@@ -1115,9 +1115,9 @@
 function initMapCidade() {
   const mc = L.map('map-cidade', { zoomControl: true, scrollWheelZoom: false })
     .setView([-10.2308063, -48.3105964], 14);
-  L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png', {
-    attribution: '© Stadia Maps © OpenStreetMap contributors',
-    maxZoom: 20
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors',
+    maxZoom: 19
   }).addTo(mc);
   const sotreqIcon = L.divIcon({
     className: '',
@@ -1133,9 +1133,9 @@ function initMapCidade() {
 function initMapEscolas() {
   const me = L.map('map-escolas', { zoomControl: true, scrollWheelZoom: false })
     .setView([-10.230, -48.318], 12);
-  L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png', {
-    attribution: '© Stadia Maps © OpenStreetMap contributors',
-    maxZoom: 20
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors',
+    maxZoom: 19
   }).addTo(me);
   const schools = [
     { lat: -10.1992652, lng: -48.3123871, name: 'IFTO – Campus Palmas', note: 'Preferencial · Plano Diretor Sul', preferred: true },
