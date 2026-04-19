@@ -1087,111 +1087,109 @@
 
       <!-- Fluxo mensal visual -->
       <div style="margin-bottom:32px;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 260" style="width:100%;height:auto;display:block;font-family:'Montserrat',sans-serif;">
-          <rect width="900" height="260" fill="#ffffff" rx="12"/>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 260" style="width:100%;height:auto;display:block;font-family:'Montserrat',sans-serif;">
+          <rect width="1060" height="260" fill="#ffffff" rx="12"/>
 
           <!-- Título -->
-          <text x="450" y="26" text-anchor="middle" font-size="12" font-weight="800" fill="#1a2e3b">Calendário do Projeto · 2026</text>
-          <line x1="180" y1="33" x2="720" y2="33" stroke="#5fb670" stroke-width="1.5" stroke-linecap="round"/>
+          <text x="530" y="26" text-anchor="middle" font-size="12" font-weight="800" fill="#1a2e3b">Calendário do Projeto · 2026</text>
+          <line x1="230" y1="33" x2="830" y2="33" stroke="#5fb670" stroke-width="1.5" stroke-linecap="round"/>
 
-          <!-- Linha do tempo -->
-          <line x1="40" y1="110" x2="875" y2="110" stroke="#e0e8f0" stroke-width="2.5" stroke-linecap="round"/>
+          <!-- Linha do tempo — 10 meses: x=60 a x=1000, step=104 -->
+          <line x1="30" y1="110" x2="1030" y2="110" stroke="#e0e8f0" stroke-width="2.5" stroke-linecap="round"/>
 
-          <!-- 10 meses: Mar→Dez, espaço = 93px, início x=87 -->
+          <!-- MAR x=60 -->
+          <circle cx="60"  cy="110" r="6" fill="#2858a0"/>
+          <text x="60"  y="98"  text-anchor="middle" font-size="8" font-weight="800" fill="#2858a0">MAR</text>
+          <rect x="22"  y="125" width="76" height="36" rx="6" fill="#2858a0"/>
+          <text x="60"  y="140" text-anchor="middle" font-size="7" font-weight="700" fill="white">Pré-produção</text>
+          <text x="60"  y="152" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.85)">Plataforma</text>
+          <line x1="60" y1="110" x2="60" y2="125" stroke="#2858a0" stroke-width="1.5"/>
 
-          <!-- MAR — pré-produção (azul) -->
-          <circle cx="87"  cy="110" r="6" fill="#2858a0"/>
-          <text x="87"  y="98"  text-anchor="middle" font-size="8" font-weight="800" fill="#2858a0">MAR</text>
-          <rect x="49"  y="125" width="76" height="36" rx="6" fill="#2858a0"/>
-          <text x="87"  y="140" text-anchor="middle" font-size="7" font-weight="700" fill="white">Pré-produção</text>
-          <text x="87"  y="152" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.85)">Plataforma</text>
-          <line x1="87" y1="110" x2="87" y2="125" stroke="#2858a0" stroke-width="1.5"/>
+          <!-- ABR x=164 -->
+          <circle cx="164" cy="110" r="6" fill="#2858a0"/>
+          <text x="164" y="98"  text-anchor="middle" font-size="8" font-weight="800" fill="#2858a0">ABR</text>
+          <rect x="126" y="125" width="76" height="36" rx="6" fill="#2858a0"/>
+          <text x="164" y="140" text-anchor="middle" font-size="7" font-weight="700" fill="white">Pré-produção</text>
+          <text x="164" y="152" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.85)">Jogo + Personagens</text>
+          <line x1="164" y1="110" x2="164" y2="125" stroke="#2858a0" stroke-width="1.5"/>
 
-          <!-- ABR — pré-produção (azul) -->
-          <circle cx="180" cy="110" r="6" fill="#2858a0"/>
-          <text x="180" y="98"  text-anchor="middle" font-size="8" font-weight="800" fill="#2858a0">ABR</text>
-          <rect x="142" y="125" width="76" height="36" rx="6" fill="#2858a0"/>
-          <text x="180" y="140" text-anchor="middle" font-size="7" font-weight="700" fill="white">Pré-produção</text>
-          <text x="180" y="152" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.85)">Jogo + Personagens</text>
-          <line x1="180" y1="110" x2="180" y2="125" stroke="#2858a0" stroke-width="1.5"/>
+          <!-- MAI x=268 -->
+          <circle cx="268" cy="110" r="6" fill="#468182"/>
+          <text x="268" y="98"  text-anchor="middle" font-size="8" font-weight="800" fill="#468182">MAI</text>
+          <rect x="230" y="125" width="76" height="36" rx="6" fill="#468182"/>
+          <text x="268" y="140" text-anchor="middle" font-size="7" font-weight="700" fill="white">Produção</text>
+          <text x="268" y="152" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.85)">Conteúdo</text>
+          <line x1="268" y1="110" x2="268" y2="125" stroke="#468182" stroke-width="1.5"/>
 
-          <!-- MAI — produção (teal) -->
-          <circle cx="273" cy="110" r="6" fill="#468182"/>
-          <text x="273" y="98"  text-anchor="middle" font-size="8" font-weight="800" fill="#468182">MAI</text>
-          <rect x="235" y="125" width="76" height="36" rx="6" fill="#468182"/>
-          <text x="273" y="140" text-anchor="middle" font-size="7" font-weight="700" fill="white">Produção</text>
-          <text x="273" y="152" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.85)">Conteúdo</text>
-          <line x1="273" y1="110" x2="273" y2="125" stroke="#468182" stroke-width="1.5"/>
+          <!-- JUN x=372 -->
+          <circle cx="372" cy="110" r="6" fill="#468182"/>
+          <text x="372" y="98"  text-anchor="middle" font-size="8" font-weight="800" fill="#468182">JUN</text>
+          <rect x="334" y="125" width="76" height="36" rx="6" fill="#468182"/>
+          <text x="372" y="140" text-anchor="middle" font-size="7" font-weight="700" fill="white">Produção</text>
+          <text x="372" y="152" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.85)">Finalização</text>
+          <line x1="372" y1="110" x2="372" y2="125" stroke="#468182" stroke-width="1.5"/>
 
-          <!-- JUN — produção (teal) -->
-          <circle cx="366" cy="110" r="6" fill="#468182"/>
-          <text x="366" y="98"  text-anchor="middle" font-size="8" font-weight="800" fill="#468182">JUN</text>
-          <rect x="328" y="125" width="76" height="36" rx="6" fill="#468182"/>
-          <text x="366" y="140" text-anchor="middle" font-size="7" font-weight="700" fill="white">Produção</text>
-          <text x="366" y="152" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.85)">Finalização</text>
-          <line x1="366" y1="110" x2="366" y2="125" stroke="#468182" stroke-width="1.5"/>
+          <!-- JUL x=476 -->
+          <circle cx="476" cy="110" r="6" fill="#468182"/>
+          <text x="476" y="98"  text-anchor="middle" font-size="8" font-weight="800" fill="#468182">JUL</text>
+          <rect x="438" y="125" width="76" height="36" rx="6" fill="#468182"/>
+          <text x="476" y="140" text-anchor="middle" font-size="7" font-weight="700" fill="white">Produção</text>
+          <text x="476" y="152" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.85)">Material Gráfico</text>
+          <line x1="476" y1="110" x2="476" y2="125" stroke="#468182" stroke-width="1.5"/>
 
-          <!-- JUL — gráfico (teal claro) -->
-          <circle cx="459" cy="110" r="6" fill="#468182"/>
-          <text x="459" y="98"  text-anchor="middle" font-size="8" font-weight="800" fill="#468182">JUL</text>
-          <rect x="421" y="125" width="76" height="36" rx="6" fill="#468182"/>
-          <text x="459" y="140" text-anchor="middle" font-size="7" font-weight="700" fill="white">Produção</text>
-          <text x="459" y="152" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.85)">Material Gráfico</text>
-          <line x1="459" y1="110" x2="459" y2="125" stroke="#468182" stroke-width="1.5"/>
+          <!-- AGO x=580 -->
+          <circle cx="580" cy="110" r="6" fill="#5fb670"/>
+          <text x="580" y="98"  text-anchor="middle" font-size="8" font-weight="800" fill="#5fb670">AGO</text>
+          <rect x="542" y="125" width="76" height="36" rx="6" fill="#5fb670"/>
+          <text x="580" y="140" text-anchor="middle" font-size="7" font-weight="700" fill="white">Produção</text>
+          <text x="580" y="152" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.85)">Divulgação</text>
+          <line x1="580" y1="110" x2="580" y2="125" stroke="#5fb670" stroke-width="1.5"/>
 
-          <!-- AGO — divulgação (verde) -->
-          <circle cx="552" cy="110" r="6" fill="#5fb670"/>
-          <text x="552" y="98"  text-anchor="middle" font-size="8" font-weight="800" fill="#5fb670">AGO</text>
-          <rect x="514" y="125" width="76" height="36" rx="6" fill="#5fb670"/>
-          <text x="552" y="140" text-anchor="middle" font-size="7" font-weight="700" fill="white">Produção</text>
-          <text x="552" y="152" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.85)">Divulgação</text>
-          <line x1="552" y1="110" x2="552" y2="125" stroke="#5fb670" stroke-width="1.5"/>
+          <!-- SET x=684 -->
+          <circle cx="684" cy="110" r="6" fill="#5fb670"/>
+          <text x="684" y="98"  text-anchor="middle" font-size="8" font-weight="800" fill="#5fb670">SET</text>
+          <rect x="646" y="125" width="76" height="36" rx="6" fill="#5fb670"/>
+          <text x="684" y="140" text-anchor="middle" font-size="7" font-weight="700" fill="white">Jogo em Ação</text>
+          <text x="684" y="152" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.85)">+ Peças Artísticas</text>
+          <line x1="684" y1="110" x2="684" y2="125" stroke="#5fb670" stroke-width="1.5"/>
 
-          <!-- SET — jogo (verde) -->
-          <circle cx="645" cy="110" r="6" fill="#5fb670"/>
-          <text x="645" y="98"  text-anchor="middle" font-size="8" font-weight="800" fill="#5fb670">SET</text>
-          <rect x="607" y="125" width="76" height="36" rx="6" fill="#5fb670"/>
-          <text x="645" y="140" text-anchor="middle" font-size="7" font-weight="700" fill="white">Jogo em Ação</text>
-          <text x="645" y="152" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.85)">+ Peças Artísticas</text>
-          <line x1="645" y1="110" x2="645" y2="125" stroke="#5fb670" stroke-width="1.5"/>
+          <!-- OUT x=788 -->
+          <circle cx="788" cy="110" r="6" fill="#5fb670"/>
+          <text x="788" y="98"  text-anchor="middle" font-size="8" font-weight="800" fill="#5fb670">OUT</text>
+          <rect x="750" y="125" width="76" height="36" rx="6" fill="#5fb670"/>
+          <text x="788" y="140" text-anchor="middle" font-size="7" font-weight="700" fill="white">Jogo em Ação</text>
+          <text x="788" y="152" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.85)">+ Prod. Exposição</text>
+          <line x1="788" y1="110" x2="788" y2="125" stroke="#5fb670" stroke-width="1.5"/>
 
-          <!-- OUT — jogo + exposição (verde) -->
-          <circle cx="738" cy="110" r="6" fill="#5fb670"/>
-          <text x="738" y="98"  text-anchor="middle" font-size="8" font-weight="800" fill="#5fb670">OUT</text>
-          <rect x="700" y="125" width="76" height="36" rx="6" fill="#5fb670"/>
-          <text x="738" y="140" text-anchor="middle" font-size="7" font-weight="700" fill="white">Jogo em Ação</text>
-          <text x="738" y="152" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.85)">+ Prod. Exposição</text>
-          <line x1="738" y1="110" x2="738" y2="125" stroke="#5fb670" stroke-width="1.5"/>
+          <!-- NOV x=892 -->
+          <circle cx="892" cy="110" r="6" fill="#38a349"/>
+          <text x="892" y="98"  text-anchor="middle" font-size="8" font-weight="800" fill="#38a349">NOV</text>
+          <rect x="854" y="125" width="76" height="36" rx="6" fill="#38a349"/>
+          <text x="892" y="140" text-anchor="middle" font-size="7" font-weight="700" fill="white">Exposição</text>
+          <text x="892" y="152" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.85)">Lançamento</text>
+          <line x1="892" y1="110" x2="892" y2="125" stroke="#38a349" stroke-width="1.5"/>
 
-          <!-- NOV — exposição (verde escuro) -->
-          <circle cx="820" cy="110" r="6" fill="#38a349"/>
-          <text x="820" y="98"  text-anchor="middle" font-size="8" font-weight="800" fill="#38a349">NOV</text>
-          <rect x="782" y="125" width="76" height="36" rx="6" fill="#38a349"/>
-          <text x="820" y="140" text-anchor="middle" font-size="7" font-weight="700" fill="white">Exposição</text>
-          <text x="820" y="152" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.85)">Lançamento</text>
-          <line x1="820" y1="110" x2="820" y2="125" stroke="#38a349" stroke-width="1.5"/>
-
-          <!-- DEZ — pós (escuro) — fora da linha, nota à parte -->
-          <text x="875" y="98"  text-anchor="middle" font-size="8" font-weight="800" fill="#1a2e3b">DEZ</text>
-          <circle cx="875" cy="110" r="6" fill="#1a2e3b"/>
-          <rect x="837" y="125" width="76" height="36" rx="6" fill="#1a2e3b"/>
-          <text x="875" y="140" text-anchor="middle" font-size="7" font-weight="700" fill="white">Pós-produção</text>
-          <text x="875" y="152" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.75)">Encerramento</text>
-          <line x1="875" y1="110" x2="875" y2="125" stroke="#1a2e3b" stroke-width="1.5"/>
+          <!-- DEZ x=996 -->
+          <circle cx="996" cy="110" r="6" fill="#1a2e3b"/>
+          <text x="996" y="98"  text-anchor="middle" font-size="8" font-weight="800" fill="#1a2e3b">DEZ</text>
+          <rect x="958" y="125" width="76" height="36" rx="6" fill="#1a2e3b"/>
+          <text x="996" y="140" text-anchor="middle" font-size="7" font-weight="700" fill="white">Pós-produção</text>
+          <text x="996" y="152" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.75)">Encerramento</text>
+          <line x1="996" y1="110" x2="996" y2="125" stroke="#1a2e3b" stroke-width="1.5"/>
 
           <!-- Legenda -->
           <rect x="40"  y="200" width="10" height="10" rx="2" fill="#2858a0"/>
           <text x="55"  y="209" font-size="8" fill="#6b7f95">Pré-produção</text>
-          <rect x="145" y="200" width="10" height="10" rx="2" fill="#468182"/>
-          <text x="160" y="209" font-size="8" fill="#6b7f95">Produção</text>
-          <rect x="235" y="200" width="10" height="10" rx="2" fill="#5fb670"/>
-          <text x="250" y="209" font-size="8" fill="#6b7f95">Jogo + Exposição</text>
-          <rect x="365" y="200" width="10" height="10" rx="2" fill="#38a349"/>
-          <text x="380" y="209" font-size="8" fill="#6b7f95">Lançamento</text>
-          <rect x="455" y="200" width="10" height="10" rx="2" fill="#1a2e3b"/>
-          <text x="470" y="209" font-size="8" fill="#6b7f95">Pós-produção</text>
+          <rect x="165" y="200" width="10" height="10" rx="2" fill="#468182"/>
+          <text x="180" y="209" font-size="8" fill="#6b7f95">Produção</text>
+          <rect x="280" y="200" width="10" height="10" rx="2" fill="#5fb670"/>
+          <text x="295" y="209" font-size="8" fill="#6b7f95">Jogo + Exposição</text>
+          <rect x="435" y="200" width="10" height="10" rx="2" fill="#38a349"/>
+          <text x="450" y="209" font-size="8" fill="#6b7f95">Lançamento</text>
+          <rect x="545" y="200" width="10" height="10" rx="2" fill="#1a2e3b"/>
+          <text x="560" y="209" font-size="8" fill="#6b7f95">Pós-produção</text>
 
-          <text x="450" y="240" text-anchor="middle" font-size="7.5" fill="#9aabb8" font-style="italic">Datas de setembro a novembro a confirmar com a escola participante.</text>
+          <text x="530" y="240" text-anchor="middle" font-size="7.5" fill="#9aabb8" font-style="italic">Datas de setembro a novembro a confirmar com a escola participante.</text>
         </svg>
       </div>
 
