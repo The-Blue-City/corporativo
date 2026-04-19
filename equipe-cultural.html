@@ -484,6 +484,10 @@
     <span class="nav-dot"></span> Mapa Expográfico
     <span class="nav-number">05</span>
   </div>
+  <div class="nav-item" onclick="goTo(6)">
+    <span class="nav-dot"></span> Cronograma
+    <span class="nav-number">06</span>
+  </div>
 
   <div class="sidebar-footer">
     Briefing da Equipe Criativa<br>
@@ -645,7 +649,7 @@
             <div class="feature-icon fi-green">📅</div>
             <h3>Prazo e Formato de Entrega</h3>
           </div>
-          <p>[Insira aqui o prazo de entrega e o formato esperado — documento PDF, apresentação, pasta de referências etc.]</p>
+          <p>Data final de entrega: <strong>19 de maio</strong>. Formato esperado: documento PDF ou Google Docs, seguindo o template de entrega disponibilizado.</p>
         </div>
 
       </div>
@@ -1191,10 +1195,32 @@
     </div>
   </section>
 
+  <!-- ══ PAGE 6: CRONOGRAMA ══ -->
+  <section class="page" id="page-6">
+    <div class="page-hero">
+      <div class="role-badge rb-blue">📅 Cronograma</div>
+      <h1 class="page-title">Cronograma</h1>
+      <p class="page-subtitle">[Insira aqui o cronograma de entregas da equipe criativa.]</p>
+    </div>
+    <div class="page-body single" style="max-width:100%; padding:36px 60px;">
+      <div class="placeholder-screen">
+        <div class="ph-icon">📅</div>
+        <div class="ph-label">Cronograma</div>
+        <p>Insira aqui o cronograma de entregas</p>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="page-nav">
+      <button class="nav-btn" onclick="goTo(5)">← Mapa Expográfico</button>
+      <span class="page-indicator">Cronograma</span>
+      <button class="nav-btn next" onclick="goTo(0)" style="background:var(--teal); border-color:var(--teal);">↺ Voltar ao Início</button>
+    </div>
+  </section>
+
 </main>
 
 <script>
-  const totalPages = 6;
+  const totalPages = 7;
   let current = 0;
 
   function goTo(index) {
