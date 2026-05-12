@@ -1515,6 +1515,9 @@
   let current = 0;
 
   function goTo(index) {
+    if (window.innerWidth <= 640) {
+      document.querySelector('.sidebar').classList.remove('open');
+    }
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
     document.getElementById('page-' + index).classList.add('active');
