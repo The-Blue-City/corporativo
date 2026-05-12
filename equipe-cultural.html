@@ -383,6 +383,11 @@
 </style>
 </head>
 <body style="overflow-x:hidden;">
+<button id="mobile-topbar" onclick="document.querySelector('.sidebar').classList.toggle('open')" style="display:none; position:fixed; top:14px; left:14px; z-index:200; background:#121e33; border:none; cursor:pointer; padding:8px 10px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.4);">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
+    <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+  </svg>
+</button>
 
 <!-- ═══════ SIDEBAR ═══════ -->
 <aside class="sidebar">
@@ -580,7 +585,6 @@
     .main {
       margin-left: 0 !important;
       width: 100% !important;
-      padding-top: 48px !important;
     }
 
     .page-hero { padding: 20px 16px !important; }
