@@ -120,7 +120,8 @@
   /* ── MAIN ── */
   .main { margin-left: var(--sidebar-w); flex: 1; min-height: 100vh; }
 
-  .page { display: none; min-height: 100vh; animation: fadeIn 0.35s ease; }
+  .page {
+    overflow-x: hidden; display: none; min-height: 100vh; animation: fadeIn 0.35s ease; }
   .page.active { display: block; }
 
   @keyframes fadeIn {
@@ -383,7 +384,8 @@
 </style>
 </head>
 <body style="overflow-x:hidden;">
-<button id="mobile-topbar" onclick="document.querySelector('.sidebar').classList.toggle('open')" style="display:none; position:fixed; top:14px; left:14px; z-index:200; background:#121e33; border:none; cursor:pointer; padding:8px 10px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.4);">
+<div id="sidebar-overlay" onclick="document.querySelector('.sidebar').classList.remove('open'); this.style.display='none';" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:149;"></div>
+<button id="mobile-topbar" onclick="document.querySelector('.sidebar').classList.toggle('open'); var o=document.getElementById('sidebar-overlay'); o.style.display=o.style.display==='flex'?'none':'block';" style="display:none; position:fixed; top:14px; left:14px; z-index:200; background:#121e33; border:none; cursor:pointer; padding:8px 10px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.4);">
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
     <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
   </svg>
@@ -995,7 +997,7 @@
           </div>
           <p>Documento completo com a estrutura do jogo: mecânicas, fluxo de jornada, etapas, badges, missões, narrativa e requisitos de integração com a plataforma The Blue City.</p>
           <div style="margin-top:14px;">
-            <a href="#" style="display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:700; color:#2858a0; text-decoration:none; background:#d6e4f7; border-radius:8px; padding:8px 14px;">
+            <a href="https://the-blue-city.github.io/fabulus/03-fabulus_gdd_apresentacao_termometro.html" target="_blank" style="display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:700; color:#2858a0; text-decoration:none; background:#d6e4f7; border-radius:8px; padding:8px 14px;">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
               Ver game design document
             </a>
@@ -1517,6 +1519,7 @@
   function goTo(index) {
     if (window.innerWidth <= 640) {
       document.querySelector('.sidebar').classList.remove('open');
+      var o=document.getElementById('sidebar-overlay'); if(o) o.style.display='none';
     }
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
