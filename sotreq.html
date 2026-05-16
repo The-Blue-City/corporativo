@@ -203,9 +203,16 @@
     .nav-btn { font-size:12px; padding:8px 14px; }
     .page-indicator { font-size:11px; order:3; width:100%; text-align:center; }
 
-    /* Tabela de cronograma: scroll horizontal */
-    .schedule-table { overflow-x:auto; -webkit-overflow-scrolling:touch; }
-    .schedule-table > div { min-width:560px; }
+    /* Tabela de cronograma: scroll horizontal em mobile (preserva grid 90px/200px/1fr) */
+    .schedule-table-wrapper { overflow-x:auto; -webkit-overflow-scrolling:touch; border-radius:12px; }
+    .schedule-table-wrapper .schedule-table-inner { min-width:560px; }
+    .schedule-table-wrapper .schedule-table-inner > div[style*="grid-template-columns:90px 200px 1fr"] {
+      grid-template-columns:90px 200px 1fr !important;
+    }
+
+    /* Timeline do cronograma: SVG escala mas mantém largura mínima para legibilidade */
+    .cronograma-timeline { overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:8px; }
+    .cronograma-timeline svg { min-width:900px; }
 
     /* Sidebar mais estreita em mobile */
     .sidebar { width:260px; }
@@ -938,101 +945,165 @@
     <div class="page-body single">
 
       <!-- Fluxo mensal visual -->
-      <div style="margin-bottom:32px;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 260" style="width:100%;height:auto;display:block;font-family:'Montserrat',sans-serif;">
-          <rect width="1060" height="260" fill="#ffffff" rx="12"/>
+      <div class="cronograma-timeline" style="margin-bottom:32px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 360" style="width:100%;height:auto;display:block;font-family:'Montserrat',sans-serif;">
+          <rect width="1060" height="360" fill="#ffffff" rx="12"/>
           <text x="530" y="26" text-anchor="middle" font-size="12" font-weight="800" fill="#1a2e3b">Calendário do Projeto · 2026</text>
-          <line x1="230" y1="33" x2="830" y2="33" stroke="#5fb670" stroke-width="1.5" stroke-linecap="round"/>
           <line x1="30" y1="110" x2="1030" y2="110" stroke="#e0e8f0" stroke-width="2.5" stroke-linecap="round"/>
 
+          <!-- MAR · Pré-produção -->
           <circle cx="60" cy="110" r="6" fill="#2858a0"/>
           <text x="60" y="98" text-anchor="middle" font-size="8" font-weight="800" fill="#2858a0">MAR</text>
-          <rect x="22" y="125" width="76" height="36" rx="6" fill="#2858a0"/>
-          <text x="60" y="140" text-anchor="middle" font-size="7" font-weight="700" fill="white">Pré-produção</text>
-          <text x="60" y="152" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.85)">Plataforma</text>
+          <rect x="14" y="125" width="92" height="130" rx="6" fill="#2858a0"/>
+          <text x="60" y="142" text-anchor="middle" font-size="7.5" font-weight="800" fill="white">Pré-produção</text>
+          <line x1="24" y1="150" x2="96" y2="150" stroke="rgba(255,255,255,0.25)" stroke-width="0.5"/>
+          <text x="60" y="166" text-anchor="middle" font-size="6.5" font-weight="700" fill="rgba(255,255,255,0.95)">Plataforma</text>
+          <text x="60" y="178" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.8)">arquitetura</text>
+          <text x="60" y="188" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.8)">+ infraestrutura</text>
           <line x1="60" y1="110" x2="60" y2="125" stroke="#2858a0" stroke-width="1.5"/>
 
+          <!-- ABR · Pré-produção -->
           <circle cx="164" cy="110" r="6" fill="#2858a0"/>
           <text x="164" y="98" text-anchor="middle" font-size="8" font-weight="800" fill="#2858a0">ABR</text>
-          <rect x="126" y="125" width="76" height="36" rx="6" fill="#2858a0"/>
-          <text x="164" y="140" text-anchor="middle" font-size="7" font-weight="700" fill="white">Pré-produção</text>
-          <text x="164" y="152" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.85)">Jogo + Personagens</text>
+          <rect x="118" y="125" width="92" height="130" rx="6" fill="#2858a0"/>
+          <text x="164" y="142" text-anchor="middle" font-size="7.5" font-weight="800" fill="white">Pré-produção</text>
+          <line x1="128" y1="150" x2="200" y2="150" stroke="rgba(255,255,255,0.25)" stroke-width="0.5"/>
+          <text x="164" y="166" text-anchor="middle" font-size="6.5" font-weight="700" fill="rgba(255,255,255,0.95)">Conteúdo</text>
+          <text x="164" y="178" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.8)">game design doc</text>
+          <text x="164" y="195" text-anchor="middle" font-size="6.5" font-weight="700" fill="rgba(255,255,255,0.95)">Plataforma</text>
+          <text x="164" y="207" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.8)">estrutura base</text>
           <line x1="164" y1="110" x2="164" y2="125" stroke="#2858a0" stroke-width="1.5"/>
 
-          <circle cx="268" cy="110" r="6" fill="#468182"/>
-          <text x="268" y="98" text-anchor="middle" font-size="8" font-weight="800" fill="#468182">MAI</text>
-          <rect x="230" y="125" width="76" height="36" rx="6" fill="#468182"/>
-          <text x="268" y="140" text-anchor="middle" font-size="7" font-weight="700" fill="white">Produção</text>
-          <text x="268" y="152" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.85)">Conteúdo</text>
-          <line x1="268" y1="110" x2="268" y2="125" stroke="#468182" stroke-width="1.5"/>
+          <!-- MAI · Produção -->
+          <circle cx="268" cy="110" r="6" fill="#5fb670"/>
+          <text x="268" y="98" text-anchor="middle" font-size="8" font-weight="800" fill="#5fb670">MAI</text>
+          <rect x="222" y="125" width="92" height="130" rx="6" fill="#5fb670"/>
+          <text x="268" y="142" text-anchor="middle" font-size="7.5" font-weight="800" fill="white">Produção</text>
+          <line x1="232" y1="150" x2="304" y2="150" stroke="rgba(255,255,255,0.3)" stroke-width="0.5"/>
+          <text x="268" y="164" text-anchor="middle" font-size="6.5" font-weight="700" fill="white">Conteúdo</text>
+          <text x="268" y="174" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.85)">personagens + jogo</text>
+          <text x="268" y="190" text-anchor="middle" font-size="6.5" font-weight="700" fill="white">Ativação</text>
+          <text x="268" y="200" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.85)">contato produtora</text>
+          <text x="268" y="216" text-anchor="middle" font-size="6.5" font-weight="700" fill="white">Plataforma</text>
+          <text x="268" y="226" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.85)">jornada + missões</text>
+          <line x1="268" y1="110" x2="268" y2="125" stroke="#5fb670" stroke-width="1.5"/>
 
-          <circle cx="372" cy="110" r="6" fill="#468182"/>
-          <text x="372" y="98" text-anchor="middle" font-size="8" font-weight="800" fill="#468182">JUN</text>
-          <rect x="334" y="125" width="76" height="36" rx="6" fill="#468182"/>
-          <text x="372" y="140" text-anchor="middle" font-size="7" font-weight="700" fill="white">Produção</text>
-          <text x="372" y="152" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.85)">Finalização</text>
-          <line x1="372" y1="110" x2="372" y2="125" stroke="#468182" stroke-width="1.5"/>
+          <!-- JUN · Produção -->
+          <circle cx="372" cy="110" r="6" fill="#5fb670"/>
+          <text x="372" y="98" text-anchor="middle" font-size="8" font-weight="800" fill="#5fb670">JUN</text>
+          <rect x="326" y="125" width="92" height="130" rx="6" fill="#5fb670"/>
+          <text x="372" y="142" text-anchor="middle" font-size="7.5" font-weight="800" fill="white">Produção</text>
+          <line x1="336" y1="150" x2="408" y2="150" stroke="rgba(255,255,255,0.3)" stroke-width="0.5"/>
+          <text x="372" y="164" text-anchor="middle" font-size="6.5" font-weight="700" fill="white">Conteúdo</text>
+          <text x="372" y="174" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.85)">jogo</text>
+          <text x="372" y="190" text-anchor="middle" font-size="6.5" font-weight="700" fill="white">Ativação</text>
+          <text x="372" y="200" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.85)">contato escolas</text>
+          <text x="372" y="216" text-anchor="middle" font-size="6.5" font-weight="700" fill="white">Plataforma</text>
+          <text x="372" y="226" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.85)">painéis de gestão</text>
+          <line x1="372" y1="110" x2="372" y2="125" stroke="#5fb670" stroke-width="1.5"/>
 
-          <circle cx="476" cy="110" r="6" fill="#468182"/>
-          <text x="476" y="98" text-anchor="middle" font-size="8" font-weight="800" fill="#468182">JUL</text>
-          <rect x="438" y="125" width="76" height="36" rx="6" fill="#468182"/>
-          <text x="476" y="140" text-anchor="middle" font-size="7" font-weight="700" fill="white">Produção</text>
-          <text x="476" y="152" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.85)">Material Gráfico</text>
-          <line x1="476" y1="110" x2="476" y2="125" stroke="#468182" stroke-width="1.5"/>
+          <!-- JUL · Produção -->
+          <circle cx="476" cy="110" r="6" fill="#5fb670"/>
+          <text x="476" y="98" text-anchor="middle" font-size="8" font-weight="800" fill="#5fb670">JUL</text>
+          <rect x="430" y="125" width="92" height="130" rx="6" fill="#5fb670"/>
+          <text x="476" y="142" text-anchor="middle" font-size="7.5" font-weight="800" fill="white">Produção</text>
+          <line x1="440" y1="150" x2="512" y2="150" stroke="rgba(255,255,255,0.3)" stroke-width="0.5"/>
+          <text x="476" y="164" text-anchor="middle" font-size="6.5" font-weight="700" fill="white">Conteúdo</text>
+          <text x="476" y="174" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.85)">material divulgação</text>
+          <text x="476" y="190" text-anchor="middle" font-size="6.5" font-weight="700" fill="white">Ativação</text>
+          <text x="476" y="200" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.85)">treinam. produtores</text>
+          <text x="476" y="216" text-anchor="middle" font-size="6.5" font-weight="700" fill="white">Plataforma</text>
+          <text x="476" y="226" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.85)">camadas públicas</text>
+          <line x1="476" y1="110" x2="476" y2="125" stroke="#5fb670" stroke-width="1.5"/>
 
+          <!-- AGO · Produção -->
           <circle cx="580" cy="110" r="6" fill="#5fb670"/>
           <text x="580" y="98" text-anchor="middle" font-size="8" font-weight="800" fill="#5fb670">AGO</text>
-          <rect x="542" y="125" width="76" height="36" rx="6" fill="#5fb670"/>
-          <text x="580" y="140" text-anchor="middle" font-size="7" font-weight="700" fill="white">Produção</text>
-          <text x="580" y="152" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.85)">Divulgação</text>
+          <rect x="534" y="125" width="92" height="130" rx="6" fill="#5fb670"/>
+          <text x="580" y="142" text-anchor="middle" font-size="7.5" font-weight="800" fill="white">Produção</text>
+          <line x1="544" y1="150" x2="616" y2="150" stroke="rgba(255,255,255,0.3)" stroke-width="0.5"/>
+          <text x="580" y="164" text-anchor="middle" font-size="6.5" font-weight="700" fill="white">Conteúdo</text>
+          <text x="580" y="174" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.85)">assessoria imprensa</text>
+          <text x="580" y="190" text-anchor="middle" font-size="6.5" font-weight="700" fill="white">Ativação</text>
+          <text x="580" y="200" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.85)">lançamento jogo</text>
+          <text x="580" y="216" text-anchor="middle" font-size="6.5" font-weight="700" fill="white">Plataforma</text>
+          <text x="580" y="226" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.85)">suporte</text>
           <line x1="580" y1="110" x2="580" y2="125" stroke="#5fb670" stroke-width="1.5"/>
 
+          <!-- SET · Produção -->
           <circle cx="684" cy="110" r="6" fill="#5fb670"/>
           <text x="684" y="98" text-anchor="middle" font-size="8" font-weight="800" fill="#5fb670">SET</text>
-          <rect x="646" y="125" width="76" height="36" rx="6" fill="#5fb670"/>
-          <text x="684" y="140" text-anchor="middle" font-size="7" font-weight="700" fill="white">Jogo em Ação</text>
-          <text x="684" y="152" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.85)">+ Peças Artísticas</text>
+          <rect x="638" y="125" width="92" height="130" rx="6" fill="#5fb670"/>
+          <text x="684" y="142" text-anchor="middle" font-size="7.5" font-weight="800" fill="white">Produção</text>
+          <line x1="648" y1="150" x2="720" y2="150" stroke="rgba(255,255,255,0.3)" stroke-width="0.5"/>
+          <text x="684" y="164" text-anchor="middle" font-size="6.5" font-weight="700" fill="white">Conteúdo</text>
+          <text x="684" y="174" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.85)">pré-prod. exposição</text>
+          <text x="684" y="190" text-anchor="middle" font-size="6.5" font-weight="700" fill="white">Ativação</text>
+          <text x="684" y="200" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.85)">lançamento jogo</text>
+          <text x="684" y="216" text-anchor="middle" font-size="6.5" font-weight="700" fill="white">Plataforma</text>
+          <text x="684" y="226" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.85)">suporte</text>
           <line x1="684" y1="110" x2="684" y2="125" stroke="#5fb670" stroke-width="1.5"/>
 
+          <!-- OUT · Produção -->
           <circle cx="788" cy="110" r="6" fill="#5fb670"/>
           <text x="788" y="98" text-anchor="middle" font-size="8" font-weight="800" fill="#5fb670">OUT</text>
-          <rect x="750" y="125" width="76" height="36" rx="6" fill="#5fb670"/>
-          <text x="788" y="140" text-anchor="middle" font-size="7" font-weight="700" fill="white">Jogo em Ação</text>
-          <text x="788" y="152" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.85)">+ Prod. Exposição</text>
+          <rect x="742" y="125" width="92" height="130" rx="6" fill="#5fb670"/>
+          <text x="788" y="142" text-anchor="middle" font-size="7.5" font-weight="800" fill="white">Produção</text>
+          <line x1="752" y1="150" x2="824" y2="150" stroke="rgba(255,255,255,0.3)" stroke-width="0.5"/>
+          <text x="788" y="164" text-anchor="middle" font-size="6.5" font-weight="700" fill="white">Conteúdo</text>
+          <text x="788" y="174" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.85)">produção exposição</text>
+          <text x="788" y="190" text-anchor="middle" font-size="6.5" font-weight="700" fill="white">Ativação</text>
+          <text x="788" y="200" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.85)">recebe trabalhos</text>
+          <text x="788" y="216" text-anchor="middle" font-size="6.5" font-weight="700" fill="white">Plataforma</text>
+          <text x="788" y="226" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.85)">suporte</text>
           <line x1="788" y1="110" x2="788" y2="125" stroke="#5fb670" stroke-width="1.5"/>
 
+          <!-- NOV · Produção (lançamento) -->
           <circle cx="892" cy="110" r="6" fill="#38a349"/>
           <text x="892" y="98" text-anchor="middle" font-size="8" font-weight="800" fill="#38a349">NOV</text>
-          <rect x="854" y="125" width="76" height="36" rx="6" fill="#38a349"/>
-          <text x="892" y="140" text-anchor="middle" font-size="7" font-weight="700" fill="white">Exposição</text>
-          <text x="892" y="152" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.85)">Lançamento</text>
+          <rect x="846" y="125" width="92" height="130" rx="6" fill="#38a349"/>
+          <text x="892" y="142" text-anchor="middle" font-size="7.5" font-weight="800" fill="white">Produção</text>
+          <line x1="856" y1="150" x2="928" y2="150" stroke="rgba(255,255,255,0.3)" stroke-width="0.5"/>
+          <text x="892" y="164" text-anchor="middle" font-size="6.5" font-weight="700" fill="white">Conteúdo</text>
+          <text x="892" y="174" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.85)">lança exposição</text>
+          <text x="892" y="190" text-anchor="middle" font-size="6.5" font-weight="700" fill="white">Ativação</text>
+          <text x="892" y="200" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.85)">fechamento jogo</text>
+          <text x="892" y="216" text-anchor="middle" font-size="6.5" font-weight="700" fill="white">Plataforma</text>
+          <text x="892" y="226" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.85)">escala + otimização</text>
           <line x1="892" y1="110" x2="892" y2="125" stroke="#38a349" stroke-width="1.5"/>
 
+          <!-- DEZ · Pós-produção -->
           <circle cx="996" cy="110" r="6" fill="#1a2e3b"/>
           <text x="996" y="98" text-anchor="middle" font-size="8" font-weight="800" fill="#1a2e3b">DEZ</text>
-          <rect x="958" y="125" width="76" height="36" rx="6" fill="#1a2e3b"/>
-          <text x="996" y="140" text-anchor="middle" font-size="7" font-weight="700" fill="white">Pós-produção</text>
-          <text x="996" y="152" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.75)">Encerramento</text>
+          <rect x="950" y="125" width="92" height="130" rx="6" fill="#1a2e3b"/>
+          <text x="996" y="142" text-anchor="middle" font-size="7.5" font-weight="800" fill="white">Pós-produção</text>
+          <line x1="960" y1="150" x2="1032" y2="150" stroke="rgba(255,255,255,0.3)" stroke-width="0.5"/>
+          <text x="996" y="164" text-anchor="middle" font-size="6.5" font-weight="700" fill="white">Conteúdo</text>
+          <text x="996" y="174" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.85)">imprensa + fotos</text>
+          <text x="996" y="190" text-anchor="middle" font-size="6.5" font-weight="700" fill="white">Ativação</text>
+          <text x="996" y="200" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.85)">desmonta exposição</text>
+          <text x="996" y="216" text-anchor="middle" font-size="6.5" font-weight="700" fill="white">Plataforma</text>
+          <text x="996" y="226" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.85)">estabilização</text>
           <line x1="996" y1="110" x2="996" y2="125" stroke="#1a2e3b" stroke-width="1.5"/>
 
-          <rect x="40" y="200" width="10" height="10" rx="2" fill="#2858a0"/>
-          <text x="55" y="209" font-size="8" fill="#6b7f95">Pré-produção</text>
-          <rect x="165" y="200" width="10" height="10" rx="2" fill="#468182"/>
-          <text x="180" y="209" font-size="8" fill="#6b7f95">Produção</text>
-          <rect x="280" y="200" width="10" height="10" rx="2" fill="#5fb670"/>
-          <text x="295" y="209" font-size="8" fill="#6b7f95">Jogo + Exposição</text>
-          <rect x="435" y="200" width="10" height="10" rx="2" fill="#38a349"/>
-          <text x="450" y="209" font-size="8" fill="#6b7f95">Lançamento</text>
-          <rect x="545" y="200" width="10" height="10" rx="2" fill="#1a2e3b"/>
-          <text x="560" y="209" font-size="8" fill="#6b7f95">Pós-produção</text>
+          <!-- Legenda simplificada -->
+          <rect x="160" y="295" width="10" height="10" rx="2" fill="#2858a0"/>
+          <text x="175" y="304" font-size="8" fill="#6b7f95">Pré-produção (mar–abr)</text>
+          <rect x="320" y="295" width="10" height="10" rx="2" fill="#5fb670"/>
+          <text x="335" y="304" font-size="8" fill="#6b7f95">Produção (mai–out)</text>
+          <rect x="460" y="295" width="10" height="10" rx="2" fill="#38a349"/>
+          <text x="475" y="304" font-size="8" fill="#6b7f95">Lançamento da Exposição (nov)</text>
+          <rect x="650" y="295" width="10" height="10" rx="2" fill="#1a2e3b"/>
+          <text x="665" y="304" font-size="8" fill="#6b7f95">Pós-produção (dez)</text>
 
-          <text x="530" y="240" text-anchor="middle" font-size="7.5" fill="#9aabb8" font-style="italic">Datas de setembro a novembro a confirmar com a escola participante.</text>
+          <text x="530" y="335" text-anchor="middle" font-size="7.5" fill="#9aabb8" font-style="italic">Datas de setembro a novembro a confirmar com a escola participante.</text>
         </svg>
       </div>
 
       <!-- Tabela detalhada -->
       <div class="section-heading" style="margin-bottom:16px;">Detalhamento por Etapa</div>
-      <div style="display:flex;flex-direction:column;gap:0;border:1px solid rgba(40,88,160,0.1);border-radius:12px;overflow:hidden;">
+      <div class="schedule-table-wrapper">
+        <div class="schedule-table-inner" style="display:flex;flex-direction:column;gap:0;border:1px solid rgba(40,88,160,0.1);border-radius:12px;overflow:hidden;">
 
         <div style="display:grid;grid-template-columns:90px 200px 1fr;background:#1a2e3b;padding:12px 20px;gap:16px;">
           <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.7);">Período</div>
@@ -1042,64 +1113,65 @@
 
         <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:white;border-bottom:1px solid rgba(40,88,160,0.07);">
           <div style="font-size:12px;font-weight:700;color:#2858a0;">Março</div>
-          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Pré-Produção:<br>adequação de plataforma</div>
-          <div style="font-size:11px;color:#6b7f95;line-height:1.65;">Início da adequação e customização da plataforma digital existente para o novo projeto.</div>
+          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Pré-produção</div>
+          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Plataforma:</strong> arquitetura + infraestrutura.</div>
         </div>
 
         <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:#f9fbfd;border-bottom:1px solid rgba(40,88,160,0.07);">
           <div style="font-size:12px;font-weight:700;color:#2858a0;">Abril</div>
-          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Pré-Produção:<br>articulação territorial</div>
-          <div style="font-size:11px;color:#6b7f95;line-height:1.75;"><ul style="margin:0;padding-left:16px;"><li>Continuação da adequação da plataforma.</li><li>Início do desenvolvimento do jogo educativo sobre redução de GEE (game design document).</li><li>Início do desenvolvimento de personagens.</li><li>Início da articulação com a escola pública participante em Palmas, TO.</li></ul></div>
+          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Pré-produção</div>
+          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Conteúdo:</strong> game design document.<br><strong>Plataforma:</strong> estrutura base.</div>
         </div>
 
         <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:white;border-bottom:1px solid rgba(40,88,160,0.07);">
           <div style="font-size:12px;font-weight:700;color:#468182;">Maio</div>
-          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção:<br>desenvolvimento de conteúdo</div>
-          <div style="font-size:11px;color:#6b7f95;line-height:1.75;"><ul style="margin:0;padding-left:16px;"><li>Continuação da adequação da plataforma e articulação com a escola.</li><li>Continuação do desenvolvimento do jogo (programação) e dos personagens.</li></ul></div>
+          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção</div>
+          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Conteúdo:</strong> personagens + desenvolvimento jogo.<br><strong>Ativação:</strong> contato com produtora.<br><strong>Plataforma:</strong> jornada + missões.</div>
         </div>
 
         <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:#f9fbfd;border-bottom:1px solid rgba(40,88,160,0.07);">
           <div style="font-size:12px;font-weight:700;color:#468182;">Junho</div>
-          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção:<br>desenvolvimento de conteúdo</div>
-          <div style="font-size:11px;color:#6b7f95;line-height:1.75;"><ul style="margin:0;padding-left:16px;"><li>Continuação da adequação da plataforma.</li><li>Finalização do jogo educativo sobre redução de GEE.</li><li>Finalização da articulação com a escola em Palmas, TO.</li><li>Finalização do desenvolvimento dos personagens.</li></ul></div>
+          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção</div>
+          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Conteúdo:</strong> desenvolvimento jogo.<br><strong>Ativação:</strong> contato com escolas.<br><strong>Plataforma:</strong> painéis de gestão.</div>
         </div>
 
         <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:white;border-bottom:1px solid rgba(40,88,160,0.07);">
           <div style="font-size:12px;font-weight:700;color:#468182;">Julho</div>
-          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção:<br>material gráfico</div>
-          <div style="font-size:11px;color:#6b7f95;line-height:1.75;"><ul style="margin:0;padding-left:16px;"><li>Continuação da adequação da plataforma.</li><li>Início da produção de material gráfico para divulgação do projeto.</li><li>Articulação de espaço para a exposição cultural.</li></ul></div>
+          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção</div>
+          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Conteúdo:</strong> material de divulgação.<br><strong>Ativação:</strong> treinamento de produtores.<br><strong>Plataforma:</strong> camadas públicas.</div>
         </div>
 
         <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:#f9fbfd;border-bottom:1px solid rgba(40,88,160,0.07);">
           <div style="font-size:12px;font-weight:700;color:#5fb670;">Agosto</div>
-          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção:<br>divulgação</div>
-          <div style="font-size:11px;color:#6b7f95;line-height:1.75;"><ul style="margin:0;padding-left:16px;"><li>Finalização da adequação da plataforma digital.</li><li>Início da divulgação do jogo na escola.</li></ul></div>
+          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção</div>
+          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Conteúdo:</strong> contato com assessoria de imprensa.<br><strong>Ativação:</strong> lançamento do jogo.<br><strong>Plataforma:</strong> suporte.</div>
         </div>
 
         <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:white;border-bottom:1px solid rgba(40,88,160,0.07);">
           <div style="font-size:12px;font-weight:700;color:#5fb670;">Setembro</div>
-          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção:<br>jogo em ação</div>
-          <div style="font-size:11px;color:#6b7f95;line-height:1.75;"><ul style="margin:0;padding-left:16px;"><li>Acompanhamento do jogo na escola.</li><li>Início da produção de peças artísticas para a exposição.</li></ul></div>
+          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção</div>
+          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Conteúdo:</strong> pré-produção da exposição.<br><strong>Ativação:</strong> ativação do jogo.<br><strong>Plataforma:</strong> suporte.</div>
         </div>
 
         <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:#f9fbfd;border-bottom:1px solid rgba(40,88,160,0.07);">
           <div style="font-size:12px;font-weight:700;color:#5fb670;">Outubro</div>
-          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção:<br>jogo em ação</div>
-          <div style="font-size:11px;color:#6b7f95;line-height:1.75;"><ul style="margin:0;padding-left:16px;"><li>Finalização do jogo na escola.</li><li>Finalização da produção de peças para a exposição.</li><li>Produção da exposição cultural.</li></ul></div>
+          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção</div>
+          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Conteúdo:</strong> produção da exposição.<br><strong>Ativação:</strong> recebimento de trabalhos.<br><strong>Plataforma:</strong> suporte.</div>
         </div>
 
         <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:white;border-bottom:1px solid rgba(40,88,160,0.07);">
           <div style="font-size:12px;font-weight:700;color:#38a349;">Novembro</div>
-          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção:<br>exposição cultural</div>
-          <div style="font-size:11px;color:#6b7f95;line-height:1.65;">Lançamento da exposição cultural.</div>
+          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção</div>
+          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Conteúdo:</strong> lançamento da exposição + assessoria de imprensa.<br><strong>Ativação:</strong> fechamento do jogo.<br><strong>Plataforma:</strong> escala + otimização.</div>
         </div>
 
         <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:#f9fbfd;">
           <div style="font-size:12px;font-weight:700;color:#1a2e3b;">Dezembro</div>
           <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Pós-produção</div>
-          <div style="font-size:11px;color:#6b7f95;line-height:1.75;"><ul style="margin:0;padding-left:16px;"><li>Fechamento da exposição cultural.</li><li>Registro das atividades, organização de documentação, consolidação de resultados e materiais para avaliação e prestação de contas.</li></ul></div>
+          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Conteúdo:</strong> organização do material.<br><strong>Ativação:</strong> desmontagem da exposição.<br><strong>Plataforma:</strong> estabilização + consolidação.</div>
         </div>
 
+        </div>
       </div>
     </div>
     <div class="divider"></div>

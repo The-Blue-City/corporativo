@@ -630,6 +630,37 @@
       max-width: 200px !important;
     }
   }
+
+  /* ── CRONOGRAMA RESPONSIVO ── */
+  .schedule-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .schedule-table-inner {
+    min-width: 500px;
+  }
+
+  @media (max-width: 640px) {
+    .cronograma-timeline {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .cronograma-timeline svg {
+      min-width: 700px;
+    }
+
+    .schedule-table-inner {
+      min-width: 480px;
+    }
+
+    .schedule-table-inner > div {
+      grid-template-columns: 70px 130px 1fr !important;
+      padding: 10px 12px !important;
+      gap: 10px !important;
+    }
+  }
 </style>
   </defs>
   <g>
@@ -1491,26 +1522,201 @@
   <!-- ══ PAGE 6: CRONOGRAMA ══ -->
   <section class="page" id="page-6">
     <div class="page-hero">
-      <div class="role-badge rb-blue">📅 Cronograma</div>
-      <h1 class="page-title">Fluxo e Cronograma</h1>
-      <p class="page-subtitle">[Insira aqui o fluxo de trabalho e o cronograma de entregas da equipe criativa.]</p>
+      <div class="role-badge rb-blue">📅 Fluxo e Cronograma</div>
+      <h1 class="page-title">Cronograma 2026</h1>
+      <p class="page-subtitle">O projeto acontece de maio a dezembro de 2026 – da produção ao encerramento, com as ações com o público concentradas no segundo semestre em Palmas, TO.</p>
     </div>
-    <div class="page-body single" style="max-width:100%; padding:36px 60px;">
-      <div class="placeholder-screen">
-        <div class="ph-icon">📅</div>
-        <div class="ph-label">Cronograma</div>
-        <p>Insira aqui o cronograma de entregas</p>
+
+    <div class="page-body single">
+
+      <!-- Fluxo mensal visual -->
+      <div class="cronograma-timeline" style="margin-bottom:32px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1132 419" style="width:100%;height:auto;display:block;font-family:'Montserrat',sans-serif;">
+  <rect width="1132" height="419" fill="#ffffff" rx="12"/>
+  <text x="566" y="28" text-anchor="middle" font-size="12" font-weight="800" fill="#1a2e3b">Calendário do Projeto · 2026</text>
+  <line x1="20" y1="110" x2="1112" y2="110" stroke="#e0e8f0" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- MAI -->
+  <line x1="65" y1="110" x2="65" y2="125" stroke="#2a2a2a" stroke-width="1.5"/>
+  <circle cx="65" cy="110" r="7" fill="#2a2a2a" stroke="white" stroke-width="2"/>
+  <text x="65" y="94" text-anchor="middle" font-size="8" font-weight="800" fill="#2a2a2a">MAI</text>
+  <rect x="19" y="125" width="92" height="22" rx="4" fill="#2a2a2a"/>
+  <text x="65" y="140" text-anchor="middle" font-size="7" font-weight="800" fill="white">Produção</text>
+  <rect x="19" y="153" width="92" height="56" rx="5" fill="#e07b20"/>
+  <text x="65" y="166" text-anchor="middle" font-size="6.5" font-weight="800" fill="white">Pesquisadora</text>
+  <text x="65" y="179" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">Conceituação</text>
+  <text x="65" y="189" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">dos personagens</text>
+  <rect x="19" y="215" width="92" height="56" rx="5" fill="#2858a0"/>
+  <text x="65" y="228" text-anchor="middle" font-size="6.5" font-weight="800" fill="white">Game Designer</text>
+  <text x="65" y="241" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">Início da</text>
+  <text x="65" y="251" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">produção do</text>
+  <text x="65" y="261" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">jogo</text>
+  <!-- JUN -->
+  <line x1="195" y1="110" x2="195" y2="125" stroke="#2a2a2a" stroke-width="1.5"/>
+  <circle cx="195" cy="110" r="7" fill="#2a2a2a" stroke="white" stroke-width="2"/>
+  <text x="195" y="94" text-anchor="middle" font-size="8" font-weight="800" fill="#2a2a2a">JUN</text>
+  <rect x="149" y="125" width="92" height="22" rx="4" fill="#2a2a2a"/>
+  <text x="195" y="140" text-anchor="middle" font-size="7" font-weight="800" fill="white">Produção</text>
+  <rect x="149" y="153" width="92" height="56" rx="5" fill="#e0c520"/>
+  <text x="195" y="166" text-anchor="middle" font-size="6.5" font-weight="800" fill="white">Ilustrador</text>
+  <text x="195" y="179" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">Ilustração dos</text>
+  <text x="195" y="189" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">personagens</text>
+  <rect x="149" y="215" width="92" height="56" rx="5" fill="#2858a0"/>
+  <text x="195" y="228" text-anchor="middle" font-size="6.5" font-weight="800" fill="white">Game Designer</text>
+  <text x="195" y="241" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">Finalização do</text>
+  <text x="195" y="251" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">jogo</text>
+  <rect x="149" y="277" width="92" height="56" rx="5" fill="#38a349"/>
+  <text x="195" y="290" text-anchor="middle" font-size="6.5" font-weight="800" fill="white">Produtor Cultural</text>
+  <text x="195" y="303" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">Contato com</text>
+  <text x="195" y="313" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">escolas e</text>
+  <text x="195" y="323" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">secretarias</text>
+  <!-- JUL -->
+  <line x1="325" y1="110" x2="325" y2="125" stroke="#2a2a2a" stroke-width="1.5"/>
+  <circle cx="325" cy="110" r="7" fill="#2a2a2a" stroke="white" stroke-width="2"/>
+  <text x="325" y="94" text-anchor="middle" font-size="8" font-weight="800" fill="#2a2a2a">JUL</text>
+  <rect x="279" y="125" width="92" height="22" rx="4" fill="#2a2a2a"/>
+  <text x="325" y="140" text-anchor="middle" font-size="7" font-weight="800" fill="white">Produção</text>
+  <rect x="279" y="153" width="92" height="56" rx="5" fill="#2858a0"/>
+  <text x="325" y="166" text-anchor="middle" font-size="6.5" font-weight="800" fill="white">Game Designer</text>
+  <text x="325" y="179" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">Testes do jogo</text>
+  <rect x="279" y="215" width="92" height="56" rx="5" fill="#38a349"/>
+  <text x="325" y="228" text-anchor="middle" font-size="6.5" font-weight="800" fill="white">Produtor Cultural</text>
+  <text x="325" y="241" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">Treinamento na</text>
+  <text x="325" y="251" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">plataforma</text>
+  <!-- AGO -->
+  <line x1="455" y1="110" x2="455" y2="125" stroke="#2a2a2a" stroke-width="1.5"/>
+  <circle cx="455" cy="110" r="7" fill="#2a2a2a" stroke="white" stroke-width="2"/>
+  <text x="455" y="94" text-anchor="middle" font-size="8" font-weight="800" fill="#2a2a2a">AGO</text>
+  <rect x="409" y="125" width="92" height="22" rx="4" fill="#2a2a2a"/>
+  <text x="455" y="140" text-anchor="middle" font-size="7" font-weight="800" fill="white">Produção</text>
+  <rect x="409" y="153" width="92" height="56" rx="5" fill="#38a349"/>
+  <text x="455" y="166" text-anchor="middle" font-size="6.5" font-weight="800" fill="white">Produtor Cultural</text>
+  <text x="455" y="179" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">Assessoria de</text>
+  <text x="455" y="189" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">imprensa</text>
+  <!-- SET -->
+  <line x1="585" y1="110" x2="585" y2="125" stroke="#2a2a2a" stroke-width="1.5"/>
+  <circle cx="585" cy="110" r="7" fill="#2a2a2a" stroke="white" stroke-width="2"/>
+  <text x="585" y="94" text-anchor="middle" font-size="8" font-weight="800" fill="#2a2a2a">SET</text>
+  <rect x="539" y="125" width="92" height="22" rx="4" fill="#2a2a2a"/>
+  <text x="585" y="140" text-anchor="middle" font-size="7" font-weight="800" fill="white">Produção</text>
+  <rect x="539" y="153" width="92" height="56" rx="5" fill="#38a349"/>
+  <text x="585" y="166" text-anchor="middle" font-size="6.5" font-weight="800" fill="white">Produtor Cultural</text>
+  <text x="585" y="179" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">Pré-produção da</text>
+  <text x="585" y="189" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">exposição</text>
+  <!-- OUT -->
+  <line x1="715" y1="110" x2="715" y2="125" stroke="#2a2a2a" stroke-width="1.5"/>
+  <circle cx="715" cy="110" r="7" fill="#2a2a2a" stroke="white" stroke-width="2"/>
+  <text x="715" y="94" text-anchor="middle" font-size="8" font-weight="800" fill="#2a2a2a">OUT</text>
+  <rect x="669" y="125" width="92" height="22" rx="4" fill="#2a2a2a"/>
+  <text x="715" y="140" text-anchor="middle" font-size="7" font-weight="800" fill="white">Produção</text>
+  <rect x="669" y="153" width="92" height="56" rx="5" fill="#38a349"/>
+  <text x="715" y="166" text-anchor="middle" font-size="6.5" font-weight="800" fill="white">Produtor Cultural</text>
+  <text x="715" y="179" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">Recebimento de</text>
+  <text x="715" y="189" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">trabalhos dos</text>
+  <text x="715" y="199" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">alunos</text>
+  <!-- NOV -->
+  <line x1="845" y1="110" x2="845" y2="125" stroke="#2a2a2a" stroke-width="1.5"/>
+  <circle cx="845" cy="110" r="7" fill="#2a2a2a" stroke="white" stroke-width="2"/>
+  <text x="845" y="94" text-anchor="middle" font-size="8" font-weight="800" fill="#2a2a2a">NOV</text>
+  <rect x="799" y="125" width="92" height="22" rx="4" fill="#2a2a2a"/>
+  <text x="845" y="140" text-anchor="middle" font-size="7" font-weight="800" fill="white">Produção</text>
+  <rect x="799" y="153" width="92" height="56" rx="5" fill="#38a349"/>
+  <text x="845" y="166" text-anchor="middle" font-size="6.5" font-weight="800" fill="white">Produtor Cultural</text>
+  <text x="845" y="179" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">Lançamento da</text>
+  <text x="845" y="189" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">exposição +</text>
+  <text x="845" y="199" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">assessoria de</text>
+  <!-- DEZ -->
+  <line x1="975" y1="110" x2="975" y2="125" stroke="#2a2a2a" stroke-width="1.5"/>
+  <circle cx="975" cy="110" r="7" fill="#2a2a2a" stroke="white" stroke-width="2"/>
+  <text x="975" y="94" text-anchor="middle" font-size="8" font-weight="800" fill="#2a2a2a">DEZ</text>
+  <rect x="929" y="125" width="92" height="22" rx="4" fill="#2a2a2a"/>
+  <text x="975" y="140" text-anchor="middle" font-size="7" font-weight="800" fill="white">Pós-produção</text>
+  <rect x="929" y="153" width="92" height="56" rx="5" fill="#38a349"/>
+  <text x="975" y="166" text-anchor="middle" font-size="6.5" font-weight="800" fill="white">Produtor Cultural</text>
+  <text x="975" y="179" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">Desmontagem da</text>
+  <text x="975" y="189" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">exposição +</text>
+  <text x="975" y="199" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">organização de</text>
+  <rect x="929" y="215" width="92" height="56" rx="5" fill="#38a349"/>
+  <text x="975" y="228" text-anchor="middle" font-size="6.5" font-weight="800" fill="white">Produtor Cultural</text>
+  <text x="975" y="241" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">Contato com</text>
+  <text x="975" y="251" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">assessoria de</text>
+  <text x="975" y="261" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">imprensa</text>
+  <rect x="100" y="371" width="10" height="10" rx="2" fill="#e07b20"/>
+  <text x="115" y="380" font-size="8" fill="#6b7f95">Pesquisadora Cultural</text>
+  <rect x="310" y="371" width="10" height="10" rx="2" fill="#e0c520"/>
+  <text x="325" y="380" font-size="8" fill="#6b7f95">Ilustrador</text>
+  <rect x="430" y="371" width="10" height="10" rx="2" fill="#2858a0"/>
+  <text x="445" y="380" font-size="8" fill="#6b7f95">Game Designer</text>
+  <rect x="580" y="371" width="10" height="10" rx="2" fill="#38a349"/>
+  <text x="595" y="380" font-size="8" fill="#6b7f95">Produtor Cultural</text>
+  <text x="566" y="409" text-anchor="middle" font-size="7.5" fill="#9aabb8" font-style="italic">Datas de setembro a novembro a confirmar com a escola participante.</text>
+</svg>
+      </div>
+
+      <!-- Tabela detalhada -->
+      <div class="section-heading" style="margin-bottom:16px;">Detalhamento por Etapa</div>
+      <div class="schedule-table-wrapper">
+        <div class="schedule-table-inner" style="display:flex;flex-direction:column;gap:0;border:1px solid rgba(40,88,160,0.1);border-radius:12px;overflow:hidden;">
+
+        <div style="display:grid;grid-template-columns:90px 200px 1fr;background:#1a2e3b;padding:12px 20px;gap:16px;">
+          <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.7);">Período</div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.7);">Etapa</div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.7);">Atividades principais</div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:white;border-bottom:1px solid rgba(40,88,160,0.07);">
+          <div style="font-size:12px;font-weight:700;color:#468182;">Maio</div>
+          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção</div>
+          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Pesquisadora Cultural:</strong> conceituação dos personagens.<br><strong>Game Designer:</strong> início da produção do jogo.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:#f9fbfd;border-bottom:1px solid rgba(40,88,160,0.07);">
+          <div style="font-size:12px;font-weight:700;color:#468182;">Junho</div>
+          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção</div>
+          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Ilustrador:</strong> ilustração dos personagens.<br><strong>Game Designer:</strong> finalização da produção do jogo.<br><strong>Produtor Cultural:</strong> contato com escolas e secretarias.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:white;border-bottom:1px solid rgba(40,88,160,0.07);">
+          <div style="font-size:12px;font-weight:700;color:#468182;">Julho</div>
+          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção</div>
+          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Game Designer:</strong> testes do jogo.<br><strong>Produtor Cultural:</strong> recebe treinamento da plataforma.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:#f9fbfd;border-bottom:1px solid rgba(40,88,160,0.07);">
+          <div style="font-size:12px;font-weight:700;color:#5fb670;">Agosto</div>
+          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção</div>
+          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Produtor Cultural:</strong> contato com assessoria de imprensa.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:white;border-bottom:1px solid rgba(40,88,160,0.07);">
+          <div style="font-size:12px;font-weight:700;color:#5fb670;">Setembro</div>
+          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção</div>
+          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Produtor Cultural:</strong> pré-produção da exposição.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:#f9fbfd;border-bottom:1px solid rgba(40,88,160,0.07);">
+          <div style="font-size:12px;font-weight:700;color:#5fb670;">Outubro</div>
+          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção</div>
+          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Produtor Cultural:</strong> recebimento de trabalhos de alunos.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:white;border-bottom:1px solid rgba(40,88,160,0.07);">
+          <div style="font-size:12px;font-weight:700;color:#38a349;">Novembro</div>
+          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção</div>
+          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Produtor Cultural:</strong> lançamento da exposição + assessoria de imprensa.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:#f9fbfd;">
+          <div style="font-size:12px;font-weight:700;color:#1a2e3b;">Dezembro</div>
+          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Pós-produção</div>
+          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Produtor Cultural:</strong> desmontagem da exposição + organização de material.<br><strong>Produtor Cultural:</strong> contato com assessoria de imprensa.</div>
+        </div>
+        </div>
       </div>
     </div>
+
     <div class="divider"></div>
     <div class="page-nav">
-      <button class="nav-btn" onclick="goTo(5)">← Mapa Expográfico</button>
-      <span class="page-indicator">Cronograma</span>
+      <button class="nav-btn" onclick="goTo(5)">← Exposição</button>
+      <span class="page-indicator">Fluxo e Cronograma</span>
       <button class="nav-btn next" onclick="goTo(0)" style="background:var(--teal); border-color:var(--teal);">↺ Voltar ao Início</button>
     </div>
   </section>
 
-</main>
+  </main>
 
 <script>
   const totalPages = 7;
