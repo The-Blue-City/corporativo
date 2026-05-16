@@ -637,6 +637,20 @@
       width: 100% !important;
       max-width: 200px !important;
     }
+
+    /* Cards de personagem (U'acü, Yapu) — empilha imagem/placeholder e texto */
+    div[style*="gap:24px; align-items:flex-start"] {
+      flex-direction: column !important;
+      align-items: stretch !important;
+      gap: 16px !important;
+    }
+
+    /* Placeholder de imagem do U'acü (div, não img) */
+    div[style*="width:160px; height:200px"] {
+      width: 100% !important;
+      max-width: 200px !important;
+      margin: 0 auto !important;
+    }
   }
 
   /* ── CRONOGRAMA RESPONSIVO ── */
