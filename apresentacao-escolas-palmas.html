@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Missão Termômetro Zero · Convite às escolas de Palmas · 2026 | The Blue City</title>
+<meta name="description" content="Convite às escolas técnicas e de ensino médio de Palmas para receberem a Missão Termômetro Zero em 2026 – jornada educativa, tecnológica e cultural sobre redução de emissões de gases de efeito estufa, com certificações verificáveis em blockchain e exposição cultural pública.">
+<meta name="author" content="The Blue City">
+
+<!-- Open Graph (WhatsApp, Facebook, LinkedIn) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Missão Termômetro Zero · Convite às escolas de Palmas em 2026">
+<meta property="og:description" content="Jornada educativa, tecnológica e cultural com tema redução de emissões de GEE. Escolas técnicas e de ensino médio de Palmas convidadas a serem parceiras institucionais da experiência – sem custo.">
+<meta property="og:site_name" content="The Blue City">
+<meta property="og:locale" content="pt_BR">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Missão Termômetro Zero · Convite às escolas de Palmas em 2026">
+<meta name="twitter:description" content="Jornada educativa, tecnológica e cultural com tema redução de emissões de GEE. Escolas técnicas e de ensino médio de Palmas convidadas a serem parceiras institucionais da experiência – sem custo.">
+
+<!-- Theme color (mobile browsers) -->
+<meta name="theme-color" content="#1d4789">
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #2858a0;
+    --teal: #468182;
+    --green: #5fb670;
+    --blue-light: #d6e4f7;
+    --teal-light: #d0e8e8;
+    --green-light: #d4f0d9;
+    --dark: #1a2e3b;
+    --text: #2c3e50;
+    --muted: #6b7f95;
+    --bg: #f4f8fc;
+    --bg-alt: #ffffff;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Montserrat',sans-serif; background:var(--bg-alt); color:var(--text); line-height:1.5; }
+
+  /* ── TOPBAR ── */
+  .topbar { position:sticky; top:0; z-index:100; background:rgba(18,30,51,0.96); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid rgba(255,255,255,0.08); }
+  .topbar-inner { position:relative; max-width:1180px; margin:0 auto; padding:14px 40px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+  .topbar-brand { display:flex; align-items:center; gap:14px; color:white; }
+  .topbar-logo { height:24px; width:auto; display:block; }
+  .topbar-brand-sub { font-size:10px; font-weight:600; color:rgba(255,255,255,0.55); letter-spacing:0.8px; text-transform:uppercase; padding-left:14px; border-left:1px solid rgba(255,255,255,0.15); }
+  .topbar-nav { display:flex; gap:6px; flex-wrap:wrap; }
+  .topbar-nav a { font-size:11px; font-weight:600; color:rgba(255,255,255,0.6); text-decoration:none; padding:6px 10px; border-radius:6px; transition:all 0.2s; letter-spacing:0.3px; }
+  .topbar-nav a:hover { background:rgba(255,255,255,0.08); color:white; }
+  .topbar-nav a.active { color:var(--green); background:rgba(95,182,112,0.12); }
+  .topbar-burger { display:none; width:38px; height:38px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:8px; cursor:pointer; padding:0; flex-direction:column; align-items:center; justify-content:center; gap:5px; transition:all 0.2s; }
+  .topbar-burger:hover { background:rgba(255,255,255,0.08); }
+  .topbar-burger span { display:block; width:18px; height:2px; background:white; border-radius:2px; transition:all 0.25s; }
+  .topbar-burger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+  .topbar-burger.open span:nth-child(2) { opacity:0; }
+  .topbar-burger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+  /* ── SECTIONS BASE ── */
+  section { padding:72px 40px; position:relative; }
+  section#contato { padding-top:24px; }
+  section.tight { padding:56px 40px; }
+  .container { max-width:1180px; margin:0 auto; }
+  .container-narrow { max-width:920px; margin:0 auto; }
+  .section-alt { background:var(--bg); }
+  .section-dark { background:var(--dark); color:white; }
+
+  .eyebrow { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--teal); margin-bottom:18px; display:inline-flex; align-items:center; gap:10px; }
+  .eyebrow::before { content:''; width:24px; height:1.5px; background:var(--teal); }
+
+  h2.section-title { font-size:42px; font-weight:800; color:var(--dark); line-height:1.15; margin-bottom:18px; letter-spacing:-0.5px; }
+  h2.section-title.section-title-sm { font-size:32px; line-height:1.2; letter-spacing:-0.3px; }
+  .section-lead { font-size:17px; color:var(--text); line-height:1.65; max-width:760px; margin-bottom:36px; }
+
+  /* ── HERO ── */
+  .hero { background:linear-gradient(to bottom right,#1d4789 0%,#295b9c 35%,#468182 70%,#7fc596 100%); color:white; padding:120px 40px 100px; position:relative; overflow:hidden; }
+  .hero::before { content:''; position:absolute; top:0; left:0; right:0; height:5px; background:linear-gradient(90deg,var(--blue),var(--teal),var(--green)); }
+  .hero::after { content:''; position:absolute; bottom:-60px; right:-60px; width:380px; height:380px; border-radius:50%; background:radial-gradient(circle,rgba(255,255,255,0.08) 0%,transparent 70%); pointer-events:none; }
+  .hero-inner { max-width:1180px; margin:0 auto; position:relative; }
+  .hero-eyebrow { font-size:11px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:rgba(255,255,255,0.8); margin-bottom:24px; display:inline-flex; align-items:center; gap:12px; }
+  .hero-eyebrow::before { content:''; width:32px; height:1.5px; background:rgba(255,255,255,0.6); }
+  .hero-title { font-size:46px; font-weight:800; line-height:1.1; max-width:680px; margin-bottom:28px; letter-spacing:-1px; }
+  .hero-desc { font-size:16px; color:rgba(255,255,255,0.9); max-width:680px; line-height:1.7; margin-bottom:36px; }
+
+  /* Hero split layout */
+  .hero-split { display:grid; grid-template-columns:1.15fr 1fr; gap:48px; align-items:center; margin-bottom:56px; }
+  .hero-text { display:flex; flex-direction:column; }
+  .hero-map { display:flex; align-items:center; justify-content:center; position:relative; }
+  .hero-map svg { width:100%; max-width:520px; height:auto; display:block; }
+
+  /* Globo – oceano + continentes + ponto Palmas pulsando */
+  .globe-ocean path {
+    fill:rgba(255,255,255,0.05);
+    stroke:rgba(255,255,255,0.25);
+    stroke-width:1;
+  }
+  .globe-land path {
+    fill:rgba(255,255,255,0.18);
+    stroke:rgba(255,255,255,0.4);
+    stroke-width:0.5;
+    stroke-linejoin:round;
+    stroke-linecap:round;
+  }
+  .map-points circle { fill:rgba(255,255,255,0.98); }
+  .map-point circle:first-child { filter:drop-shadow(0 0 10px rgba(255,255,255,0.7)); }
+  .map-point .pulse {
+    fill:rgba(255,255,255,0.6);
+    transform-origin:center;
+    transform-box:fill-box;
+    animation:mapPulse 3s ease-out infinite;
+  }
+  @keyframes mapPulse {
+    0%   { transform:scale(1);   opacity:0.7; }
+    70%  { transform:scale(3.8); opacity:0; }
+    100% { transform:scale(3.8); opacity:0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .map-point .pulse { animation:none; opacity:0.3; }
+  }
+  .map-label {
+    font-family:'Montserrat',sans-serif;
+    font-size:54px;
+    font-weight:800;
+    fill:#ffffff;
+    letter-spacing:1px;
+  }
+  .map-label-sub {
+    font-family:'Montserrat',sans-serif;
+    font-size:30px;
+    font-weight:700;
+    fill:rgba(255,255,255,0.7);
+    letter-spacing:3px;
+    text-transform:uppercase;
+  }
+  .map-label-line {
+    stroke:rgba(255,255,255,0.55);
+    stroke-width:2;
+    stroke-linecap:round;
+  }
+
+  .hero-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:0; }
+  .hero-stat-box { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:14px; padding:22px 24px; backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); transition:all 0.25s; }
+  .hero-stat-box:hover { background:rgba(255,255,255,0.12); border-color:rgba(255,255,255,0.25); transform:translateY(-2px); }
+  .hero-stat-icon { font-size:28px; line-height:1; margin-bottom:14px; }
+  .hero-stat-title { font-size:14px; font-weight:700; color:white; letter-spacing:0.3px; margin-bottom:8px; line-height:1.2; }
+  .hero-stat-desc { font-size:12px; color:rgba(255,255,255,0.78); line-height:1.55; }
+
+  /* ── CARDS ── */
+  .feature-card { background:white; border-radius:14px; padding:24px 26px; border:1px solid rgba(40,88,160,0.08); box-shadow:0 2px 12px rgba(0,0,0,0.04); transition:transform 0.25s,box-shadow 0.25s; }
+  .feature-card:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(40,88,160,0.1); }
+  .feature-card-header { display:flex; align-items:center; gap:14px; margin-bottom:12px; }
+  .feature-icon { width:42px; height:42px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
+  .fi-blue { background:var(--blue-light); } .fi-teal { background:var(--teal-light); } .fi-green { background:var(--green-light); }
+  .feature-card h3 { font-size:16px; font-weight:800; color:var(--dark); }
+  .feature-card p { font-size:13.5px; color:var(--muted); line-height:1.7; }
+
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+  .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+
+  /* ── PIPELINE (como funciona / compromisso) ── */
+  .pipeline-grid { display:grid; grid-template-columns:repeat(6,1fr); gap:14px; margin-bottom:32px; }
+  .pipeline-grid-4 { grid-template-columns:repeat(4,1fr); }
+  .pipeline-card { background:white; border-radius:12px; border:1px solid rgba(40,88,160,0.08); box-shadow:0 2px 12px rgba(0,0,0,0.04); padding:22px 18px; text-align:center; display:flex; flex-direction:column; gap:10px; transition:all 0.25s; }
+  .pipeline-card:hover { transform:translateY(-2px); box-shadow:0 8px 20px rgba(40,88,160,0.1); }
+  .pipeline-num { width:38px; height:38px; border-radius:50%; color:white; font-size:14px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto; }
+  .pipeline-num-blue { background:var(--blue); }
+  .pipeline-num-teal { background:var(--teal); }
+  .pipeline-num-green { background:var(--green); }
+  .pipeline-num-dark { background:var(--dark); }
+  .pipeline-card h4 { font-size:12.5px; font-weight:800; color:var(--dark); line-height:1.3; }
+  .pipeline-card p { font-size:11px; color:var(--muted); line-height:1.55; }
+  .pipeline-card-bridge { background:linear-gradient(180deg,#fff 0%,rgba(95,182,112,0.05) 100%); border-color:rgba(95,182,112,0.25); }
+  .pipeline-pill { display:inline-block; font-size:10px; font-weight:700; color:var(--teal); background:var(--teal-light); padding:5px 9px; border-radius:10px; letter-spacing:0.3px; margin-top:auto; align-self:center; }
+
+  /* ── BENEFÍCIO (escola ganha) ── */
+  .benefit-grid-top { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-bottom:16px; align-items:stretch; }
+  .benefit-grid-bottom { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+  /* Layout interno do card de cima: texto à esquerda + imagem à direita */
+  .benefit-card.benefit-card-with-image { flex-direction:row; gap:20px; align-items:flex-start; }
+  .benefit-card.benefit-card-with-image .benefit-card-body { order:1; }
+  .benefit-card.benefit-card-with-image .benefit-image-slot { order:2; align-self:flex-start; background:white; }
+  /* Box 1 — Reconhecimento (azul) */
+  .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(1) { background:var(--blue-light); border:1px solid rgba(40,88,160,0.25); border-left:6px solid var(--blue); }
+  .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(1) .benefit-icon { background:rgba(40,88,160,0.18); }
+  .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(1) .benefit-image-slot { border-color:rgba(40,88,160,0.3); }
+  .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(1) .benefit-image-slot-label { color:var(--blue); }
+  .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(1) .benefit-tag { background:rgba(40,88,160,0.15); color:var(--blue); }
+  /* Box 2 — Estudantes (verde) */
+  .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(2) { background:var(--green-light); border:1px solid rgba(95,182,112,0.3); border-left:6px solid var(--green); }
+  .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(2) .benefit-icon { background:rgba(95,182,112,0.25); }
+  .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(2) .benefit-image-slot { border-color:rgba(95,182,112,0.4); }
+  .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(2) .benefit-image-slot-label { color:#2d7a3e; }
+  .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(2) .benefit-tag { background:rgba(95,182,112,0.2); color:#2d7a3e; }
+  .benefit-image-slot { flex-shrink:0; width:120px; height:120px; background:linear-gradient(135deg,rgba(40,88,160,0.05),rgba(95,182,112,0.05)); border:2px dashed rgba(40,88,160,0.2); border-radius:12px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; text-align:center; padding:8px; transition:all 0.25s; overflow:hidden; }
+  .benefit-image-slot:hover { border-color:rgba(40,88,160,0.35); background:linear-gradient(135deg,rgba(40,88,160,0.07),rgba(95,182,112,0.07)); }
+  .benefit-image-slot-icon { font-size:28px; opacity:0.6; line-height:1; }
+  .benefit-image-slot-label { font-size:9px; font-weight:700; color:var(--blue); letter-spacing:0.6px; text-transform:uppercase; line-height:1.2; }
+  .benefit-image-slot img { width:100%; height:100%; object-fit:contain; display:block; }
+  .benefit-card-body { display:flex; flex-direction:column; gap:10px; flex:1; min-width:0; }
+  .benefit-card { background:white; border-radius:14px; padding:22px 22px; border:1px solid rgba(40,88,160,0.08); box-shadow:0 2px 12px rgba(0,0,0,0.04); display:flex; flex-direction:column; gap:12px; transition:all 0.25s; border-left:4px solid var(--green); }
+  .benefit-card:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(40,88,160,0.1); }
+  .benefit-card-head { display:flex; align-items:center; gap:12px; }
+  .benefit-icon { width:42px; height:42px; border-radius:10px; background:var(--green-light); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
+  .benefit-card h3 { font-size:15px; font-weight:800; color:var(--dark); line-height:1.25; }
+  .benefit-card p { font-size:12.5px; color:var(--muted); line-height:1.65; }
+  .benefit-tag { font-size:10.5px; font-weight:700; color:var(--blue); background:var(--blue-light); padding:5px 10px; border-radius:6px; align-self:flex-start; letter-spacing:0.3px; }
+  /* Cards de baixo (4 colunas) — tipografia mais compacta */
+  .benefit-grid-bottom .benefit-card { padding:20px 18px; gap:10px; }
+  .benefit-grid-bottom .benefit-icon { width:38px; height:38px; font-size:18px; }
+  .benefit-grid-bottom .benefit-card h3 { font-size:13.5px; }
+  .benefit-grid-bottom .benefit-card p { font-size:12px; line-height:1.6; }
+  .benefit-grid-bottom .benefit-tag { font-size:10px; padding:4px 8px; }
+
+  /* ── COMPROMISSO (o que a escola precisa fazer) ── */
+  .compromisso-pill { display:inline-block; font-size:10.5px; font-weight:700; color:var(--teal); background:var(--teal-light); padding:4px 9px; border-radius:10px; margin-top:8px; letter-spacing:0.3px; }
+
+  /* ── CONTEXTO (credibilidade: já aprovado, já com patrocinador) ── */
+  .context-block { background:var(--dark); border-radius:16px; padding:36px 40px; color:white; }
+  .context-eyebrow { font-size:11px; font-weight:700; color:var(--green); letter-spacing:1.2px; text-transform:uppercase; margin-bottom:14px; }
+  .context-title { font-size:24px; font-weight:800; line-height:1.25; margin-bottom:16px; color:white; }
+  .context-desc { font-size:14.5px; color:rgba(255,255,255,0.85); line-height:1.7; margin-bottom:24px; }
+  .context-meta { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+  .context-meta-item { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.08); border-radius:10px; padding:18px 20px; }
+  .context-meta-label { font-size:10.5px; font-weight:700; color:var(--green); letter-spacing:0.8px; text-transform:uppercase; margin-bottom:6px; }
+  .context-meta-value { font-size:16px; font-weight:800; color:white; line-height:1.3; }
+
+  /* ── GALERIA / LEGADO ── */
+  .legacy-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; align-items:stretch; }
+  .legacy-card { background:white; border-radius:16px; border:1px solid rgba(40,88,160,0.1); box-shadow:0 2px 12px rgba(0,0,0,0.04); overflow:hidden; display:flex; flex-direction:column; }
+  .legacy-head { padding:22px 24px; display:flex; align-items:center; gap:14px; color:white; }
+  .legacy-head-blue { background:var(--blue); }
+  .legacy-head-teal { background:var(--teal); }
+  .legacy-head-green { background:#38a349; }
+  .legacy-icon { width:44px; height:44px; background:rgba(255,255,255,0.18); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:21px; flex-shrink:0; }
+  .legacy-title { font-size:15px; font-weight:800; color:white; margin-bottom:3px; line-height:1.25; }
+  .legacy-sub { font-size:11.5px; color:rgba(255,255,255,0.78); line-height:1.4; }
+  .legacy-body { padding:22px 24px; display:flex; flex-direction:column; flex:1; }
+  .legacy-body p { font-size:13px; color:var(--muted); line-height:1.7; flex:1; }
+  .legacy-note { padding:13px 16px; background:var(--bg); border-radius:10px; margin-top:16px; }
+  .legacy-note-label { font-size:10.5px; font-weight:700; margin-bottom:5px; text-transform:uppercase; letter-spacing:0.5px; }
+  .legacy-note-text { font-size:12px; color:var(--muted); line-height:1.6; }
+
+  /* ── INFO/HIGHLIGHT BOX ── */
+  .info-card { background:var(--dark); border-radius:14px; padding:32px 36px; color:white; border-left:4px solid var(--green); }
+  .info-card-eyebrow { font-size:11px; font-weight:700; color:var(--green); letter-spacing:1.2px; text-transform:uppercase; margin-bottom:14px; }
+  .info-card p { font-size:15px; color:rgba(255,255,255,0.92); line-height:1.7; font-weight:400; }
+
+  /* ── CTA FINAL ── */
+  .cta-block { background:linear-gradient(135deg,#1d4789 0%,#295b9c 50%,#468182 100%); border-radius:20px; padding:48px 44px; color:white; position:relative; overflow:hidden; }
+  .cta-block::before { content:''; position:absolute; top:-40px; right:-40px; width:260px; height:260px; border-radius:50%; background:radial-gradient(circle,rgba(95,182,112,0.15) 0%,transparent 70%); pointer-events:none; }
+  .cta-eyebrow { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.75); margin-bottom:14px; display:inline-flex; align-items:center; gap:10px; position:relative; }
+  .cta-eyebrow::before { content:''; width:24px; height:1.5px; background:rgba(255,255,255,0.5); }
+  .cta-title { font-size:32px; font-weight:800; line-height:1.2; margin-bottom:14px; max-width:720px; letter-spacing:-0.5px; position:relative; }
+  .cta-desc { font-size:15px; color:rgba(255,255,255,0.88); line-height:1.7; max-width:720px; margin-bottom:28px; position:relative; }
+  .cta-contact { display:flex; flex-wrap:wrap; gap:14px; position:relative; }
+  .cta-contact-item { display:flex; align-items:center; gap:12px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); border-radius:10px; padding:14px 20px; transition:all 0.25s; }
+  .cta-contact-item:hover { background:rgba(255,255,255,0.16); border-color:rgba(255,255,255,0.35); }
+  .cta-contact-icon { font-size:20px; line-height:1; }
+  .cta-contact-label { font-size:10.5px; font-weight:700; color:rgba(255,255,255,0.6); letter-spacing:0.8px; text-transform:uppercase; margin-bottom:2px; }
+  .cta-contact-value { font-size:14px; font-weight:700; color:white; }
+  .cta-contact-value a { color:white; text-decoration:none; }
+  .cta-contact-value a:hover { color:var(--blue-light); }
+
+  /* ── FOOTER ── */
+  footer { background:var(--dark); color:white; padding:48px 40px 28px; }
+  .footer-inner { max-width:1180px; margin:0 auto; }
+  .footer-top { display:grid; grid-template-columns:1fr 1fr; gap:40px; padding-bottom:32px; border-bottom:1px solid rgba(255,255,255,0.1); }
+  .footer-brand { font-size:18px; font-weight:800; color:white; margin-bottom:8px; }
+  .footer-tagline { font-size:12px; color:rgba(255,255,255,0.6); margin-bottom:14px; }
+  .footer-contact { font-size:13px; color:#7fb3f0; text-decoration:none; }
+  .footer-contact:hover { text-decoration:underline; }
+  .footer-realiz { font-size:11px; font-weight:700; color:rgba(255,255,255,0.5); letter-spacing:1.2px; text-transform:uppercase; margin-bottom:10px; }
+  .footer-partners { display:flex; flex-direction:column; gap:6px; font-size:13px; color:rgba(255,255,255,0.85); }
+  .footer-bottom { padding-top:22px; display:flex; justify-content:space-between; align-items:center; font-size:11.5px; color:rgba(255,255,255,0.5); }
+
+  /* ── TO TOP ── */
+  .to-top { position:fixed; bottom:24px; right:24px; width:44px; height:44px; border-radius:50%; background:var(--dark); color:white; border:none; cursor:pointer; font-size:18px; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:all 0.3s; box-shadow:0 4px 12px rgba(0,0,0,0.2); z-index:50; }
+  .to-top.show { opacity:1; pointer-events:auto; }
+  .to-top:hover { background:var(--blue); }
+
+  @media (max-width:1100px) and (min-width:881px) {
+    .pipeline-grid { grid-template-columns:repeat(3,1fr); }
+    .pipeline-grid-4 { grid-template-columns:repeat(2,1fr); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width:880px) {
+    .br-desktop { display:none; }
+    .hero { padding:80px 24px 64px; }
+    .hero-split { grid-template-columns:1fr; gap:32px; margin-bottom:32px; }
+    .hero-map svg { max-width:360px; }
+    .hero-title { font-size:32px; }
+    .hero-desc { font-size:14.5px; }
+    .hero-stats { grid-template-columns:1fr 1fr; gap:12px; }
+    .hero-stat-box { padding:18px 18px; }
+    section { padding:48px 22px; }
+    h2.section-title { font-size:28px; }
+    h2.section-title.section-title-sm { font-size:24px; }
+    .section-lead { font-size:15px; margin-bottom:32px; }
+    .grid-2, .grid-3, .grid-4, .benefit-grid-top, .benefit-grid-bottom, .legacy-grid { grid-template-columns:1fr; gap:14px; }
+    .benefit-grid-top { margin-bottom:14px; }
+    .benefit-card.benefit-card-with-image { flex-direction:column; align-items:stretch; gap:14px; }
+    .benefit-image-slot { width:100%; height:140px; }
+    .pipeline-grid { grid-template-columns:repeat(2,1fr); gap:12px; }
+    .pipeline-card { padding:18px 14px; }
+    .context-block { padding:28px 24px; }
+    .context-title { font-size:20px; }
+    .context-meta { grid-template-columns:1fr; gap:10px; }
+    .cta-block { padding:32px 26px; }
+    .cta-title { font-size:24px; }
+    .compromisso-item { grid-template-columns:1fr; padding:18px 20px; gap:12px; }
+    .topbar-inner { padding:12px 20px; gap:12px; }
+    .topbar-brand-sub { display:none; }
+    .topbar-burger { display:flex; }
+    .topbar-nav { display:none; position:absolute; top:100%; left:0; right:0; flex-direction:column; align-items:stretch; gap:0; padding:8px; background:rgba(18,30,51,0.98); border-top:1px solid rgba(255,255,255,0.08); border-bottom:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); }
+    .topbar-nav.open { display:flex; }
+    .topbar-nav a { font-size:14px; padding:12px 16px; border-radius:6px; }
+    .footer-top { grid-template-columns:1fr; gap:28px; }
+    .cta-contact { flex-direction:column; gap:10px; }
+    .cta-contact-item { width:100%; }
+  }
+
+  @media print {
+    .topbar, .to-top { display:none; }
+    section { padding:32px 24px; page-break-inside:avoid; }
+    .hero { padding:48px 24px; }
+    .feature-card, .benefit-card, .legacy-card, .compromisso-item { box-shadow:none; border:1px solid #ddd; break-inside:avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════ TOPBAR ════════════════════ -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-brand">
+      <svg class="topbar-logo" viewBox="0 0 218.4 45.6" xmlns="http://www.w3.org/2000/svg" aria-label="The Blue City">
+        <defs>
+          <linearGradient id="tbc-grad" x1="48.8" y1="25.7" x2="211.8" y2="25.7" gradientTransform="translate(0 48) scale(1 -1)" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#006188"/>
+            <stop offset="1" stop-color="#95cfa0"/>
+          </linearGradient>
+        </defs>
+        <circle cx="26.1" cy="22.7" r="18.4" fill="#001522"/>
+        <rect x="15.5" y="17.5" width="20.8" height="3.2" fill="#fff"/>
+        <path fill="#0c9ed9" d="M35,23l-.2.2c-1.3,1.1-2.4,2.1-4.1,2.1s-2.5-.4-4.1-1.3c-2.1-1.1-3.9-1.7-5.6-1.7-2.8,0-4.6,1.6-6,2.9l-.2.2,2,2.4.2-.2c1.3-1.1,2.4-2.1,4.1-2.1s2.5.4,4.1,1.3c2.1,1.1,3.9,1.7,5.6,1.7h0c2.7,0,4.5-1.6,5.9-2.9l.2-.2-2-2.4h0Z"/>
+        <g fill="url(#tbc-grad)">
+          <path d="M64.5,16.8h-5.7v14.9h-4.3v-14.9h-5.7v-3.8h15.7v3.8Z"/>
+          <path d="M79.1,31.6h-4.2v-7.6c0-.9-.2-1.5-.6-1.9s-.9-.6-1.4-.6-.7,0-1.1.3c-.4.2-.8.5-1.1.8-.3.4-.6.8-.7,1.2v7.8h-4.2V12.5h4.2v7.9c.5-.8,1.2-1.5,2-1.9s1.8-.6,2.8-.6,1.7.2,2.2.5c.6.3,1,.7,1.3,1.2s.5,1,.6,1.7c0,.6.2,1.2.2,1.8v8.7-.2Z"/>
+          <path d="M87.9,31.9c-1.2,0-2.2-.2-3.1-.6s-1.7-.9-2.3-1.5c-.6-.6-1.1-1.4-1.5-2.2-.3-.8-.5-1.7-.5-2.6,0-1.3.3-2.5.9-3.6s1.4-1.9,2.5-2.6,2.4-1,4-1,2.9.3,4,1,1.9,1.5,2.5,2.6.9,2.2.9,3.5,0,.5,0,.7v.6h-10.2c0,.6.2,1.1.5,1.5s.7.7,1.1.9c.5.2.9.3,1.4.3s1.2-.1,1.8-.4c.6-.3.9-.7,1.1-1.2l3.6,1c-.4.7-.8,1.3-1.5,1.9-.6.5-1.4,1-2.2,1.3-.9.3-1.8.5-2.9.5h-.1ZM84.9,23.5h6c0-.6-.2-1-.5-1.5-.3-.4-.6-.7-1.1-1s-.9-.3-1.5-.3-1,.1-1.4.3c-.4.2-.8.5-1.1.9-.3.4-.4.9-.5,1.5h0Z"/>
+          <path d="M118,26.8c0,1.1-.3,2-.8,2.7-.6.7-1.3,1.2-2.3,1.6s-2,.5-3.2.5h-9.1V13h10.4c.9,0,1.6.2,2.3.7.6.5,1.1,1.1,1.5,1.8.3.7.5,1.5.5,2.3s-.2,1.7-.7,2.5c-.4.8-1.1,1.4-2,1.8,1.1.3,1.9.9,2.5,1.7.6.8.9,1.8.9,3.1h0ZM106.9,16.7v3.9h4.2c.3,0,.6,0,.9-.2.3-.1.5-.4.7-.6.2-.3.2-.6.2-1.1s0-.8-.2-1.1c0-.3-.3-.5-.6-.6-.2-.1-.5-.2-.9-.2h-4.4.1ZM113.7,26c0-.4,0-.7-.2-1.1-.2-.3-.4-.6-.6-.7s-.6-.3-.9-.3h-4.9v4.1h4.8c.4,0,.7,0,1-.3.3-.2.5-.4.7-.7.2-.3.2-.6.2-1h0Z"/>
+          <path d="M119.7,12.5h4.2v14.3c0,.6,0,1,.3,1.2.2.2.5.4.9.4s.5,0,.8-.1c.3,0,.5-.2.7-.3l.6,3.2c-.5.2-1.1.4-1.8.6-.7.2-1.3.2-1.9.2-1.2,0-2.1-.3-2.8-1-.6-.6-1-1.6-1-2.7v-15.7h0Z"/>
+          <path d="M127.9,26.8v-8.8h4.2v7.8c0,.8.2,1.4.5,1.9.3.4.8.7,1.4.7s.8,0,1.1-.2c.4-.1.7-.3,1-.6s.6-.7.9-1.1v-8.4h4.2v9c0,.4,0,.7.2.9.1.2.4.3.7.3v3.5c-.4,0-.7.1-1,.2s-.5,0-.8,0c-.7,0-1.3-.1-1.8-.4-.4-.3-.7-.7-.8-1.3v-.8c-.7.9-1.5,1.6-2.4,2s-2,.6-3.2.6-2.5-.4-3.2-1.3-1.1-2.2-1.1-3.8v-.2Z"/>
+          <path d="M150.6,31.9c-1.2,0-2.2-.2-3.1-.6-.9-.4-1.7-.9-2.3-1.5s-1.1-1.4-1.5-2.2c-.3-.8-.5-1.7-.5-2.6,0-1.3.3-2.5.9-3.6.6-1.1,1.4-1.9,2.5-2.6s2.4-1,4-1,2.9.3,4,1c1.1.6,1.9,1.5,2.5,2.6s.9,2.2.9,3.5,0,.5,0,.7v.6h-10.2c0,.6.2,1.1.5,1.5s.7.7,1.1.9c.5.2.9.3,1.4.3s1.2-.1,1.8-.4.9-.7,1.1-1.2l3.6,1c-.4.7-.8,1.3-1.5,1.9-.6.5-1.4,1-2.2,1.3-.9.3-1.8.5-2.9.5h-.1ZM147.5,23.5h6c0-.6-.2-1-.5-1.5-.3-.4-.6-.7-1.1-1-.4-.2-.9-.3-1.5-.3s-1,.1-1.4.3c-.4.2-.8.5-1.1.9s-.4.9-.5,1.5h.1Z"/>
+          <path d="M164.2,22.1c0-1.1.2-2.2.6-3.3.4-1.1,1-2.1,1.8-3s1.8-1.6,3-2.2c1.2-.5,2.5-.8,3.9-.8s3.3.4,4.6,1.1,2.3,1.7,2.9,2.9l-3.3,2.3c-.3-.7-.6-1.2-1.1-1.6s-1-.6-1.5-.8c-.6-.1-1.1-.2-1.6-.2-.8,0-1.5.2-2.1.5s-1.1.8-1.5,1.3-.7,1.1-.9,1.8c-.2.7-.3,1.3-.3,2s.1,1.5.4,2.2c.2.7.6,1.3,1,1.8s.9.9,1.6,1.2c.6.3,1.3.5,2,.5s1.1,0,1.6-.2,1-.4,1.5-.8.8-.9,1.1-1.5l3.5,2.1c-.4.9-1,1.7-1.8,2.3-.8.6-1.8,1.1-2.8,1.5s-2.1.5-3.2.5-2.6-.3-3.7-.8c-1.1-.6-2.1-1.3-2.9-2.2-.8-.9-1.5-2-1.9-3.1s-.7-2.3-.7-3.5h-.2Z"/>
+          <path d="M182.5,16.3v-3.8h4.2v3.8h-4.2ZM182.5,31.6v-13.8h4.2v13.8s-4.2,0-4.2,0Z"/>
+          <path d="M198,30.9c-.4.2-.8.3-1.2.5-.5.2-.9.3-1.4.4-.5,0-1,.1-1.5.1s-1.3-.1-1.9-.3-1-.6-1.4-1.2-.5-1.2-.5-2.1v-7.1h-1.8v-3.2h1.8v-4.4h4.2v4.4h2.8v3.2h-2.8v5.6c0,.5.1.8.3,1s.5.3.9.3.6,0,1-.2c.3-.1.6-.2.9-.3l.8,3.3h-.2Z"/>
+          <path d="M199.1,33.7c.4,0,.7.2,1,.2h.8c.4,0,.6,0,.9-.2s.4-.4.6-.8c.2-.4.3-.8.5-1.4l-5.2-13.7h4.3l3.2,9.4,2.7-9.4h3.9l-5.3,15.9c-.2.7-.6,1.4-1.1,2s-1.1,1-1.9,1.4c-.7.3-1.5.5-2.4.5h-1.1c-.4,0-.7-.2-1.1-.3v-3.6h.2Z"/>
+        </g>
+      </svg>
+      <div class="topbar-brand-sub">Convite às Escolas</div>
+    </div>
+    <nav class="topbar-nav" id="topbar-nav">
+      <a href="#projeto">O projeto</a>
+      <a href="#palmas">Convite à escola</a>
+      <a href="#funciona">Como funciona</a>
+      <a href="#fazer">O que a escola faz</a>
+      <a href="#legado">Legado</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <button class="topbar-burger" id="topbar-burger" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</div>
+
+<!-- ════════════════════ HERO ════════════════════ -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-split">
+      <div class="hero-text">
+        <div class="hero-eyebrow">Convite institucional · Missão Termômetro Zero</div>
+        <h1 class="hero-title">Educação ambiental, <br class="br-desktop">tecnologia e cultura <br class="br-desktop">chegam às escolas <br class="br-desktop">de Palmas em 2026</h1>
+        <p class="hero-desc">A Missão Termômetro Zero é uma jornada educativa, tecnológica e cultural que conecta seus estudantes a desafios reais de sustentabilidade – através de um jogo digital, certificações verificáveis em blockchain e uma exposição cultural aberta à comunidade. Sem custo para a escola.</p>
+      </div>
+      <div class="hero-map">
+        <svg viewBox="0 0 1911.1 1854.6" xmlns="http://www.w3.org/2000/svg" aria-label="Globo terrestre destacando Palmas, Tocantins">
+          <g class="globe-ocean">
+            <path d="M1853.3,772.6c-45.5-270.7-210.5-518.4-463-650.5-22.5-11.8-45.7-22.7-69.5-32.5-6.6-2.7-13.2-5.4-19.8-7.9-2.2-.8-4.4-1.6-6.5-2.4-4.5-1.7-8.9-3.4-13.4-5-2.6-.9-5.2-1.8-7.8-2.7-4.1-1.4-8.2-2.9-12.2-4.2-2.8-.9-5.5-1.8-8.3-2.7-4-1.3-7.9-2.6-11.9-3.8-2.8-.9-5.7-1.7-8.5-2.6-3.9-1.2-7.9-2.3-11.8-3.5-2.8-.8-5.7-1.6-8.5-2.4-4-1.1-8-2.2-11.9-3.2-2.8-.7-5.6-1.5-8.5-2.2-4.1-1-8.1-2-12.2-3-2.7-.6-5.5-1.3-8.2-1.9-4.2-1-8.4-1.9-12.6-2.8-2.6-.6-5.2-1.1-7.8-1.6-4.5-.9-8.9-1.8-13.4-2.6-2.4-.4-4.7-.9-7.1-1.3-5-.9-9.9-1.7-14.9-2.5-1.9-.3-3.8-.6-5.7-.9-6.2-1-12.3-1.9-18.5-2.7-.7,0-1.4-.2-2.1-.3-14.2-1.9-28.3-3.5-42.5-4.7h-1c-6.6-.6-13.2-1.1-19.9-1.5-1.2,0-2.4-.1-3.6-.2-5.8-.4-11.5-.7-17.3-.9-1.5,0-3-.1-4.6-.2-5.5-.2-11-.4-16.4-.5h-4.9c-5.4,0-10.8-.1-16.2-.1h-4.9c-5.4,0-10.8.1-16.3.2-1.5,0-3.1,0-4.6.1-5.6.2-11.2.4-16.7.6-1.4,0-2.7.1-4.1.2-5.9.3-11.8.6-17.6,1-1,0-2,.1-3.1.2-6.4.5-12.8,1-19.3,1.6-.5,0-.9,0-1.4.1-27.5,2.6-54.9,6.3-82,11.2-21.6,3.9-43.1,8.6-64.4,14.1-.2,0-.4,0-.6.2-6.6,1.7-13.1,3.4-19.7,5.2-.4,0-.8.2-1.1.3-6.4,1.8-12.8,3.6-19.2,5.6-.4,0-.8.2-1.2.4-6.4,2-12.8,4-19.2,6.1-.3,0-.6.2-.8.3-3.3,1.1-6.5,2.1-9.8,3.3-3.3,1.1-6.7,2.3-10,3.5h0c-45.6,16.1-90,35.6-132.6,58.6-126.7,68.2-238.3,166.2-322.3,291.3-44.4,66.1-79.6,138.1-105,213.5-4.8,14.2-9.2,28.6-13.3,43.1-20.1,70.9-31.6,144.3-33.9,218,0,4,0,8-.2,12h0v.2c0,6.8,0,13.7,0,20.5v.6c0,6.8.3,13.5.5,20.3v.8c.3,6.7.6,13.3,1.1,20v1.1c.4,6.5,1,13.1,1.6,19.6,0,.5,0,.9,0,1.4.6,6.4,1.3,12.8,2.1,19.2,0,.6.2,1.2.2,1.8.8,6.3,1.6,12.5,2.5,18.7,0,.7.2,1.5.3,2.2.9,6.1,1.9,12.1,3,18.2.2.9.3,1.8.5,2.8,1.1,5.9,2.2,11.7,3.3,17.6.2,1.1.5,2.2.7,3.3,1.2,5.6,2.4,11.3,3.7,16.9.3,1.3.6,2.6.9,4,1.3,5.4,2.6,10.8,4,16.2.4,1.6.8,3.1,1.2,4.7,1.4,5.1,2.7,10.3,4.2,15.4.5,1.8,1.1,3.6,1.6,5.5,1.4,4.8,2.8,9.6,4.3,14.4.7,2.2,1.4,4.3,2.1,6.5,1.4,4.5,2.9,8.9,4.4,13.4.9,2.6,1.8,5.1,2.7,7.7,1.4,4,2.8,8,4.2,12,1.2,3.3,2.5,6.6,3.7,9.8,1.2,3.2,2.4,6.5,3.7,9.7,2.6,6.5,5.2,13,7.9,19.4h0c2.7,6.3,5.4,12.6,8.2,18.8,0,0,0,.2,0,.2,2.8,6.2,5.7,12.4,8.6,18.5,0,0,0,.2.2.3,2.9,6.1,5.9,12.2,9,18.2,0,.2.2.3.3.5,3,6,6.2,11.9,9.4,17.9.1.2.2.4.3.6,3.2,5.9,6.4,11.7,9.7,17.5.2.3.3.5.5.8,3.3,5.7,6.6,11.4,10,17.1.2.3.4.7.6,1,3.4,5.6,6.8,11.2,10.3,16.7.2.4.5.8.7,1.2,3.4,5.5,7,10.9,10.5,16.3.3.4.6.9.9,1.3,3.5,5.3,7.1,10.6,10.8,15.9.4.5.7,1,1.1,1.5,3.6,5.2,7.3,10.3,11,15.5.4.6.8,1.1,1.2,1.7,3.7,5,7.4,10.1,11.2,15,.5.6,1,1.2,1.4,1.9,3.7,4.9,7.5,9.8,11.3,14.6.5.7,1.1,1.4,1.6,2,3.8,4.7,7.6,9.5,11.5,14.1.6.7,1.2,1.5,1.9,2.2,3.8,4.6,7.7,9.2,11.6,13.7.7.8,1.4,1.6,2.1,2.4,3.9,4.4,7.8,8.9,11.7,13.2.8.9,1.6,1.7,2.3,2.6,3.9,4.3,7.8,8.6,11.8,12.8.9.9,1.7,1.8,2.6,2.7,3.9,4.1,7.9,8.2,11.9,12.3,1,1,1.9,1.9,2.9,2.9,3.9,4,7.9,7.9,11.9,11.9s2.1,2,3.2,3c4,3.8,7.9,7.6,12,11.4,1.1,1.1,2.3,2.1,3.4,3.2,4,3.7,8,7.3,12,10.9,1.2,1.1,2.5,2.2,3.7,3.3l12,10.5c1.3,1.1,2.7,2.3,4,3.4,4,3.4,7.9,6.7,12,10,1.4,1.2,2.9,2.3,4.3,3.5,4,3.2,7.9,6.4,11.9,9.6,1.5,1.2,3.1,2.4,4.7,3.6,3.9,3.1,7.9,6.1,11.9,9.1,1.7,1.2,3.3,2.5,5,3.7,3.9,2.9,7.9,5.8,11.8,8.7,1.8,1.3,3.5,2.5,5.3,3.8,3.9,2.8,7.8,5.5,11.8,8.3,1.9,1.3,3.8,2.6,5.7,3.8,3.9,2.6,7.8,5.3,11.7,7.8,2,1.3,4,2.6,6,3.8,3.9,2.5,7.7,5,11.6,7.4,2.1,1.3,4.2,2.6,6.3,3.9,3.8,2.4,7.7,4.7,11.5,7,2.2,1.3,4.4,2.6,6.6,3.9,3.8,2.2,7.6,4.4,11.4,6.6,2.3,1.3,4.6,2.6,7,3.9,3.8,2.1,7.5,4.2,11.3,6.2,2.4,1.3,4.9,2.6,7.3,3.8,3.7,2,7.4,3.9,11.2,5.8,2.5,1.3,5.1,2.5,7.6,3.8,3.7,1.8,7.3,3.7,11,5.4,2.6,1.3,5.3,2.5,7.9,3.7,3.6,1.7,7.3,3.4,10.9,5.1,2.7,1.2,5.5,2.4,8.2,3.6,3.6,1.6,7.2,3.2,10.8,4.7,2.8,1.2,5.7,2.4,8.5,3.5,3.6,1.5,7.1,3,10.7,4.4,2.9,1.2,5.9,2.3,8.8,3.4,3.5,1.4,7,2.7,10.5,4.1,0,0,.2,0,.3,0,2.9,1.1,5.9,2.1,8.8,3.2,3.5,1.2,6.9,2.5,10.4,3.7,3.1,1.1,6.3,2.1,9.4,3.1,3.4,1.1,6.8,2.3,10.2,3.4,3.2,1,6.5,2,9.7,3,3.4,1,6.7,2.1,10.1,3.1,3.3,1,6.6,1.9,10,2.8,3.3.9,6.7,1.9,10,2.8.3,0,.5,0,.8.2,3.2.8,6.3,1.6,9.5,2.4,3.3.8,6.5,1.7,9.8,2.5,3.5.8,7.1,1.6,10.6,2.4,3.2.7,6.4,1.5,9.6,2.2,3.7.8,7.4,1.5,11,2.2,3.1.6,6.2,1.3,9.3,1.9,3.9.7,7.7,1.4,11.6,2,2.9.5,5.9,1.1,8.8,1.5,4.1.7,8.2,1.2,12.3,1.8,2.7.4,5.5.8,8.2,1.2,4.6.6,9.1,1.1,13.7,1.7,2.3.3,4.6.6,6.9.8,6.9.7,13.8,1.4,20.6,2,370.2,30.2,751.8-155.1,913.5-497.8,79.9-169.5,100.8-354.7,71.3-530.4l.3-.5Z"/>
+          </g>
+          <g class="globe-land">
+            <path d="M923,111.9c-6.7,1.9-12.8,6.3-19.7,6.1-8-.2-14.2-6.4-20.8-10.9-3.8-2.5-7.8-4.5-12-6.2-11.7-4.7-24.6-6.7-36.8-10.1-16.6-4.7-34-14-39-30.5-2.1-6.9-1.7-14.3-1.8-21.6,0-1.5,0-3-.2-4.5h0c-21.6,3.9-43.1,8.6-64.4,14.1-.2,0-.4,0-.6.2-6.6,1.7-13.1,3.4-19.7,5.2-.4,0-.8.2-1.1.3-6.4,1.8-12.8,3.6-19.2,5.6-.4,0-.8.2-1.2.4-6.4,2-12.8,4-19.2,6.1-.3,0-.6.2-.8.3-3.3,1.1-6.5,2.1-9.8,3.3h0c0,0,0,.2-.2.3-11.4,23.9-36.1,44-31.5,69.5,0,.3,0,.6,0,.8,4.2,20.5,27,32.2,47.8,33.2,20.9,1,41.4-5.5,62.2-7.2,5.6-.5,11.5-.5,16.5,2.1,9.1,4.7,12.1,16.1,13.5,26.2,1.3,9.3,2.1,18.7,2.5,28,1,25.4-1.4,50.9-7.4,75.5-4.4,18.2-9.2,40.9,4.2,53.2.5.5,1,1,1.6,1.4,3.1,2.4,6.5,3.9,10.1,4.8,14.5,3.8,32.6-1.3,46.2,6.2,4.8,2.6,8.9,6.8,14.1,8.4,16.6,5,28.3-17.7,26.5-35s-9.3-35.8-1-51c8.8-16.1,29.9-19.2,46.5-26.9,10.4-4.8,19.4-11.9,26.9-20.4,13.5-15.2,22.7-35,27.8-55,4.2-16.2,6.2-33.8-.3-49.2-6.5-15.4-23.8-27.2-39.8-22.6h0Z"/>
+            <path d="M856.9,1155.5c-21.8-14.8-51.8.5-77.6-5.1-41.1-9-56.6-66.1-97.3-76.8-27.8-7.3-59.6,9.8-84.8-3.9-10.3-5.6-18-15.9-29.1-19.7-32.3-11.2-56.2,36.2-90.1,40.6-4.4-23.9-8.7-47.9-13.1-71.8-20.7,12.4-37.7,31-48.2,52.8-5-15.2-10.1-30.5-15.1-45.7-6.7,16.3-32.7.8-35.1-16.7-2.3-17.5,2.7-38.4-10.2-50.4-15.2-14.2-39.6-2-56.3,10.3-11.1-33-22.1-66-33.2-99-2.6-7.7-5.2-15.5-5.6-23.6-1.1-20.6,11.6-39.1,23.8-55.7,15.7-21.5,36.8-45.5,63.2-42.1,2.3.3,4.5.8,6.7,1.4,16.4,4.8,31.1,18,48.2,16.2,25.2-2.7,34.7-33.6,39.5-58.5s18.5-55.5,43.7-53.5c24.7,2,39.6,36,64.2,33.3,25.3-2.8,28.6-38.3,24.1-63.4-4.5-25.1-3.1-60.2,22-64.9,20.2-3.8,35.6,17.7,43.1,36.9s15.8,42.1,35.8,47.2c34.6-12,45.7-58.9,31.8-92.8-13.9-33.9-44.7-57.4-74.1-79.3-14.3-10.7-30.7-21.9-48.4-19.5-12.2,1.6-24.1,9.7-35.9,6.3-7.7-2.3-13.4-9-21-11.6-16.1-5.3-31.2,9.9-40.2,24.2-14.9,23.5-26.2,49.3-33.6,76.1-39.1,2.6-82.4-16.2-96.1-52.9-1.8-4.9-2.8-9.9-3.1-15.1-1.7-28.9,18.9-59.6,45.9-63.8,4.5-.7,9.1-.7,13.9.2,7.8,1.4,15.5,4.9,23.4,3.9,9.7-1.2,17.2-8.8,23.8-15.9,21.1-22.5,42.2-45.1,63.4-67.6,9.6-10.2,19.2-20.5,28.8-30.7,8.5,3.6,14.4,10.6,17.8,18.9,6.9,17,2.8,39.4-13.4,49,0,27.6,35.6,43.6,61.9,35,24.9-8.1,65.1-44.4,70.6-71.4.8-3.9,1.2-7.3,1.4-10.4,1.7-31.9-29.8-19.6-54.9-30.1-16.1-6.8-30.9-21.2-44.6-39.2-18.9-24.7-36-56.1-52.2-83.9-9.1-15.5-17.9-29.9-26.6-41.2-126.7,68.2-238.3,166.2-322.3,291.3-44.4,66.1-79.6,138.1-105,213.5-4.8,14.2-9.2,28.6-13.3,43.1,10,25.7,2.4,57.3,3.4,86.1,1.3,34.4,17.1,67.9,42.2,91.5,6.1,5.7,12.6,10.8,19.7,15.2,6.5-21.3,13-42.7,19.5-64,25.2,36.9,28.2,85.2,51.6,123.4,8.8,14.4,20.1,26.6,32.6,37.5,41.3,35.9,97.4,58.1,133.1,100.7,16.8,20,28.8,46.8,21.9,72-3.5,12.8-11.5,23.8-16.3,36.2-.3.7-.5,1.4-.7,2.2-9.5,26.8-2.7,58.9,17.2,79.3,18.3,18.9,46.1,28.2,59.9,50.6,10.5,17,10.7,38.2,16.1,57.5,10.2,36.6,38.9,66,57.5,98.9,7.9,14.1,14,28.7,16,44.9,2.6,21.1-2.3,42.3-2.4,63.5,0,21.2,6.4,44.7,24.6,55.6,12.2,7.3,27.4,7.5,40.2,13.5,22.1,10.3,31.8,33.9,35.6,58.9,1.5,10.1,2.1,20.5,2,30.3v17.8c2.9,1.1,5.9,2.1,8.8,3.2,3.5,1.2,6.9,2.5,10.4,3.7,3.1,1.1,6.3,2.1,9.4,3.1,3.4,1.1,6.8,2.3,10.2,3.4,3.2,1,6.5,2,9.7,3,3.4,1,6.7,2.1,10.1,3.1,3.3,1,6.6,1.9,10,2.8,3.3.9,6.7,1.9,10,2.8.3,0,.5,0,.8.2,6.5-16.1,10.6-32.5,9.9-48-.6-13.2-4.8-25.7-14-36.6-8.1-9.5-19.4-16.3-25.9-27-8.6-14.2-7.2-32-5.4-48.5,3.1-28.7,7.5-59.5,17.8-86.4,9.5-24.9,23.9-46.4,46.9-59.8,20.5-11.9,46.6-16.4,60.6-35.5,17.3-23.6,6.9-53.3-.3-83.3-4-16.6-7-33.4-3.7-49.2,5.7-27.6,29.2-47.3,45.3-70.5s22.4-60-.9-75.8v-.3Z"/>
+            <path d="M1390.3,122.2c-7.2,7.6-13.7,15.4-19.5,23.2-26.6,36-36.1,72.6-4.5,97.6,17.7,14,44.1,16.5,57.1,34.9,13.1,18.4,3.3,48.3-18.1,55.5-.6.2-1.2.3-1.8.5-21,5.6-45.4-11.9-46-33.9,0-3.8.4-7.7.9-11.6,1.2-8.8,2.8-17.6-1.4-25.2-6.9-12.6-22.7-12.4-37.4-7.9-5.2,1.6-10.3,3.6-14.8,5.9-28.4,14.1-57.7,29.2-77.1,54.3-19.4,25.1-25.9,63.2-6.2,88,20.1,25.4,64.4,25.3,84.5-.1-9.9,17.1-19.6,39.5-7.5,55,7.5,9.7,20.6,12.4,31.9,17.2,11.3,4.8,22.7,15.5,19.6,27.3-3,11.4-18.1,15.4-29.2,11.5-11.1-3.8-19.6-12.7-28.9-19.9-4.6-3.6-9.6-6.7-14.8-9.4-19.2-9.9-41.7-13.4-62-6.4-25.7,8.8-45,36.8-39.5,63.4,5.6,26.6,39.4,44.6,62.8,30.7-12.6,23.6-18.4,50.8-16.5,77.5,19.3-5.8,39.2-11.6,59.2-9.2,20,2.3,40.2,15,44.9,34.6,4.1-13.1,10.5-25.5,18.7-36.6,7.2-9.6,15.7-18.1,25.4-25.2-3.2,22.1,19.7,41.6,42.1,41.6s42.4-14.2,57.4-30.8c-.7,34.4,42.2,61.3,72.9,45.6,2.2,9.1,4.5,18.1,6.7,27.2-20.1,15.1-48.3,2.5-70.4-9.6-22-12-52.1-22.3-69.8-4.5-17.6,17.7-7.3,47.5,3.9,69.8-15.8-4.9-32.3-7.1-48.8-7-46.4.2-92.8,19.3-124.6,53.2-26.3,28.1-51.1,69.1-89.4,65.6-14.2-1.3-27.1-9.1-41.1-11.9-43.2-8.6-84.5,44.8-65.2,84.4,32.6,67,154.6,32.1,192.3,96.4,18.4,31.4,6.3,70.9-3.5,106-2.1,7.4-3.9,15.1-5.3,22.9-5.2,29.4-3.9,60.5,17.4,79.8,15.8,14.4,39.5,18.5,53.7,34.4,26,29.1,5.8,74.5,7.4,113.5,0,3.5.5,6.9,1,10.3,3.9,27.7,18.2,53.4,28.7,79.7,11.8,29.5,18.6,64.8,1.6,91.6,14.9,7.2,31.6-5.2,42.2-17.8,45.3-53.7,64.9-128.3,120.1-171.8,44.2-34.9,108.8-47.6,135.7-97.1,31.8-58.6-7.3-138,26.7-195.3,13.1-22.1,35.3-37.2,50.6-57.9,15.3-20.6,21.6-52.9,2.5-70-14.1-12.7-35.3-11.3-54.2-13.2-18.9-1.8-41.1-12.2-41.5-31.1-.8-37.9,78.4-35.1,76.8-73-.3-7.9-4.7-15-9-21.7-12.3-19.3-24.5-38.6-36.8-57.8,31.8,3.3,61.7,22.5,77.8,50.1,4.1,7,8.2,15.3,16,17.7,6.7,2.1,13.8-.9,20.1-4,9.8-4.8,19.4-10,28.9-15.4,21.1-12.1,41.4-25.9,60.5-41-45.5-270.7-210.5-518.4-463-650.5h-.2Z"/>
+          </g>
+          <g class="map-points">
+            <g class="map-point"><circle cx="621" cy="1240" r="14"/><circle class="pulse" cx="621" cy="1240" r="14"/></g>
+          </g>
+          <g>
+            <line class="map-label-line" x1="635" y1="1240" x2="820" y2="1240"/>
+            <text class="map-label" x="840" y="1229">Palmas</text>
+            <text class="map-label-sub" x="840" y="1279">Tocantins · Brasil</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat-box">
+        <div class="hero-stat-icon">🎮</div>
+        <div class="hero-stat-title">Jogo digital</div>
+        <div class="hero-stat-desc">Missões temáticas jogadas pelos estudantes na plataforma</div>
+      </div>
+      <div class="hero-stat-box">
+        <div class="hero-stat-icon">🎓</div>
+        <div class="hero-stat-title">Certificação verificável</div>
+        <div class="hero-stat-desc">Badges e NFTs em blockchain que somam como experiência</div>
+      </div>
+      <div class="hero-stat-box">
+        <div class="hero-stat-icon">🎨</div>
+        <div class="hero-stat-title">Exposição cultural</div>
+        <div class="hero-stat-desc">Ideias dos estudantes traduzidas em obras por artistas locais</div>
+      </div>
+      <div class="hero-stat-box">
+        <div class="hero-stat-icon">🌱</div>
+        <div class="hero-stat-title">Legado público</div>
+        <div class="hero-stat-desc">Galeria permanente que registra cada jornada na plataforma</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ════════════════════ 01 · O PROJETO ════════════════════ -->
+<section id="projeto">
+  <div class="container">
+    <div class="eyebrow">01 · O Projeto</div>
+    <h2 class="section-title">Missão Cidade Azul</h2>
+    <p class="section-lead">Uma jornada educativa, tecnológica e cultural que conecta educação ambiental, narrativa, tecnologia e arte – transformando o tempo extracurricular do estudante em laboratório de regeneração do planeta.</p>
+
+    <div class="grid-3" style="margin-bottom:32px;">
+      <div class="feature-card">
+        <div class="feature-card-header"><div class="feature-icon fi-blue">🌆</div><h3>Uma Nova Aldeia</h3></div>
+        <p>A narrativa propõe a cidade como espaço de convivência equilibrada entre desenvolvimento urbano, cultura e meio ambiente. Os estudantes são engajados em reflexões e práticas sobre a crise climática e seu papel na regeneração do planeta.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card-header"><div class="feature-icon fi-teal">🎮</div><h3>Experiência Híbrida</h3></div>
+        <p>A iniciativa combina um jogo educativo digital que impulsiona a trajetória profissional do estudante com uma exposição cultural guiada por personagens simbólicos inspirados em culturas afro-brasileiras e indígenas.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card-header"><div class="feature-icon fi-green">🎨</div><h3>Cultura local em primeiro plano</h3></div>
+        <p>Cada jornada é ancorada numa pesquisa cultural – tradições afro-brasileiras, cosmologias indígenas e referências visuais do território são traduzidas em personagens, missões e curadoria artística que conversam com a cidade onde o projeto acontece.</p>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <div class="info-card-eyebrow">Por que esse modelo importa</div>
+      <p>A Missão Cidade Azul conecta educação ambiental, gamificação e cultura visual de origem afro-indígena num formato verificável e mensurável – pensado para ser realizado em territórios urbanos reais, com escolas, artistas e comunidades locais como protagonistas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ 02 · EM PALMAS ════════════════════ -->
+<section id="palmas" class="section-alt">
+  <div class="container">
+    <div class="eyebrow">02 · Convite à escola</div>
+    <h2 class="section-title section-title-sm">A Missão Termômetro Zero acontece em Palmas em 2026 – e sua escola pode fazer parte</h2>
+    <p class="section-lead">Convidamos sua escola a receber a Missão Termômetro Zero – jornada que acontece em Palmas ao longo de 2026, com o tema <strong style="color:var(--dark);">Redução de Emissões de Gases de Efeito Estufa</strong>. Sua escola entra como território parceiro da experiência, ao lado dos estudantes, dos artistas locais e da comunidade de Palmas.</p>
+
+    <div class="benefit-grid-top">
+
+      <div class="benefit-card benefit-card-with-image">
+        <div class="benefit-card-body">
+          <div class="benefit-card-head">
+            <div class="benefit-icon">🏫</div>
+            <h3>Reconhecimento como escola parceira</h3>
+          </div>
+          <p>O nome da escola fica registrado como parceira institucional da jornada – na plataforma, nos materiais públicos do projeto, na cobertura de imprensa e nos créditos da exposição cultural.</p>
+          <span class="benefit-tag">Selo institucional permanente</span>
+        </div>
+        <div class="benefit-image-slot">
+          <!-- Substituir por: <img src="caminho/selo-escola-parceira.png" alt="Selo de escola parceira"> -->
+          <div class="benefit-image-slot-icon">🏅</div>
+          <div class="benefit-image-slot-label">Imagem do selo</div>
+        </div>
+      </div>
+
+      <div class="benefit-card benefit-card-with-image">
+        <div class="benefit-card-body">
+          <div class="benefit-card-head">
+            <div class="benefit-icon">🎓</div>
+            <h3>Estudantes com certificações verificáveis</h3>
+          </div>
+          <p>Cada estudante que participa recebe badges e certificados em blockchain – válidos como experiência comprovável em currículos, processos seletivos e LinkedIn. A escola entrega ao seu aluno uma diferenciação real na transição para o mercado e o ensino superior.</p>
+          <span class="benefit-tag">Educação ambiental + trajetória profissional</span>
+        </div>
+        <div class="benefit-image-slot">
+          <!-- Substituir por: <img src="caminho/certificado-exemplo.png" alt="Exemplo de certificado"> -->
+          <div class="benefit-image-slot-icon">🎓</div>
+          <div class="benefit-image-slot-label">Imagem do certificado</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="benefit-grid-bottom">
+
+      <div class="benefit-card">
+        <div class="benefit-card-head">
+          <div class="benefit-icon">🎨</div>
+          <h3>Exposição cultural aberta à comunidade</h3>
+        </div>
+        <p>A exposição cultural é gratuita e aberta a toda a comunidade da escola – estudantes, famílias, professores, vizinhança. As ideias dos seus alunos viram obras de arte assinadas por artistas da própria Palmas.</p>
+        <span class="benefit-tag">Cultura + acessibilidade universal</span>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-card-head">
+          <div class="benefit-icon">📚</div>
+          <h3>Alinhamento com BNCC e competências do século XXI</h3>
+        </div>
+        <p>O projeto trabalha educação ambiental, pensamento crítico, letramento digital e expressão cultural – competências centrais da BNCC e dos referenciais ESG. Soma-se ao currículo da escola sem competir com ele.</p>
+        <span class="benefit-tag">Atividade extracurricular</span>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-card-head">
+          <div class="benefit-icon">🌱</div>
+          <h3>Legado permanente na plataforma</h3>
+        </div>
+        <p>Tudo o que os estudantes produzem fica registrado em galerias públicas na plataforma The Blue City – um acervo vivo que documenta o engajamento, os projetos e a exposição final. A escola continua acessível como parte do programa mesmo após o evento.</p>
+        <span class="benefit-tag">Visibilidade contínua</span>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-card-head">
+          <div class="benefit-icon">💸</div>
+          <h3>100% gratuito · zero custo operacional</h3>
+        </div>
+        <p>A escola não paga pelo projeto, não contrata equipe e não capta recursos – toda a produção da jornada é viabilizada externamente. A escola entra como parceira institucional do território.</p>
+        <span class="benefit-tag">Sem ônus pedagógico ou financeiro</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ 03 · COMO FUNCIONA ════════════════════ -->
+<section id="funciona">
+  <div class="container">
+    <div class="eyebrow">03 · Como funciona</div>
+    <h2 class="section-title section-title-sm">Do jogo digital à exposição na cidade</h2>
+    <p class="section-lead">A Jornada Cultural se desenrola em seis etapas encadeadas – do lançamento do jogo na plataforma até a exposição cultural aberta à comunidade. O estudante joga em casa ou em horário livre; a escola é parceira institucional do território.</p>
+
+    <div class="pipeline-grid">
+      <div class="pipeline-card">
+        <div class="pipeline-num pipeline-num-blue">1</div>
+        <h4>Jogo lançado na plataforma</h4>
+        <p>A Missão Termômetro Zero é publicada na plataforma com seus desafios e objetivos – pronta para os estudantes acessarem.</p>
+      </div>
+      <div class="pipeline-card">
+        <div class="pipeline-num pipeline-num-teal">2</div>
+        <h4>Estudantes jogam</h4>
+        <p>Atividade extracurricular. Estudantes acessam em casa ou horário livre – sem ocupar tempo de aula.</p>
+      </div>
+      <div class="pipeline-card">
+        <div class="pipeline-num pipeline-num-teal">3</div>
+        <h4>Certificação verificável</h4>
+        <p>A cada etapa, o estudante recebe badges e certificados em blockchain – válidos no LinkedIn e em currículos.</p>
+      </div>
+      <div class="pipeline-card pipeline-card-bridge">
+        <div class="pipeline-num pipeline-num-green">4</div>
+        <h4>Missão no mundo real</h4>
+        <p>Cada estudante envia uma proposta sobre o tema – ponto de conexão entre o jogo e a ação no território.</p>
+      </div>
+      <div class="pipeline-card">
+        <div class="pipeline-num pipeline-num-teal">5</div>
+        <h4>Artistas locais traduzem em arte</h4>
+        <p>Artistas de Palmas recebem as ideias dos estudantes e as transformam em obras para a exposição cultural.</p>
+      </div>
+      <div class="pipeline-card">
+        <div class="pipeline-num pipeline-num-dark">6</div>
+        <h4>Exposição cultural pública</h4>
+        <p>A jornada encerra com uma mostra aberta à comunidade – estudantes, famílias, professores e moradores.</p>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <div class="info-card-eyebrow">A travessia em uma frase</div>
+      <p>Estudantes jogam, criam projetos sobre o tema ambiental, e essas ideias viram arte numa exposição cultural pública na cidade.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ 03 · O QUE A ESCOLA FAZ ════════════════════ -->
+<section id="fazer" class="section-alt">
+  <div class="container">
+    <div class="eyebrow">04 · Compromisso da escola</div>
+    <h2 class="section-title section-title-sm">O que a escola precisa fazer</h2>
+    <p class="section-lead">O compromisso da escola é leve e institucional – não há sobrecarga pedagógica, alteração de calendário ou contrapartida financeira. A jornada acontece no tempo extracurricular do estudante; a escola atua como ponte e parceira do território.</p>
+
+    <div class="pipeline-grid pipeline-grid-4">
+      <div class="pipeline-card">
+        <div class="pipeline-num pipeline-num-blue">1</div>
+        <h4>Autorizar a apresentação do projeto</h4>
+        <p>A produção da jornada apresenta o projeto à direção, à coordenação pedagógica e aos estudantes elegíveis. A escola autoriza essa apresentação.</p>
+        <span class="pipeline-pill">Reunião institucional</span>
+      </div>
+      <div class="pipeline-card">
+        <div class="pipeline-num pipeline-num-teal">2</div>
+        <h4>Comunicar aos estudantes elegíveis</h4>
+        <p>A escola apoia a divulgação por canais internos – mural, grupos de turma, comunicação aos pais ou apresentação coletiva.</p>
+        <span class="pipeline-pill">Divulgação interna · canais existentes</span>
+      </div>
+      <div class="pipeline-card">
+        <div class="pipeline-num pipeline-num-teal">3</div>
+        <h4>Ficar registrada como escola parceira</h4>
+        <p>O nome da escola é incluído na plataforma e nos materiais do projeto como parceira institucional – via carta de parceria simples.</p>
+        <span class="pipeline-pill">Carta de parceria institucional</span>
+      </div>
+      <div class="pipeline-card">
+        <div class="pipeline-num pipeline-num-dark">4</div>
+        <h4>Acolher a exposição na sua comunidade</h4>
+        <p>Na etapa final, a escola divulga a exposição cultural à sua comunidade e mobiliza a presença de estudantes e famílias no evento.</p>
+        <span class="pipeline-pill">Convite à comunidade escolar</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ 06 · LEGADO ════════════════════ -->
+<section id="legado">
+  <div class="container">
+    <div class="eyebrow">05 · Registro</div>
+    <h2 class="section-title section-title-sm">Tudo fica registrado na plataforma</h2>
+    <p class="section-lead">Cada jornada deixa um rastro público e permanente na plataforma The Blue City – <br class="br-desktop">organizado em três espaços que registram o engajamento dos estudantes, os projetos enviados e o resultado artístico final. <br class="br-desktop">A escola tem acesso a tudo isso como parte da parceria.</p>
+
+    <div class="legacy-grid">
+
+      <div class="legacy-card">
+        <div class="legacy-head legacy-head-blue">
+          <div class="legacy-icon">🏅</div>
+          <div>
+            <div class="legacy-title">Performance dos Jogadores</div>
+            <div class="legacy-sub">Métricas de engajamento da jornada</div>
+          </div>
+        </div>
+        <div class="legacy-body">
+          <p>Registra o engajamento individual e coletivo dos estudantes ao longo da jornada – do primeiro acesso ao envio do projeto final. Os dados são organizados por jornada e por escola, e ficam disponíveis após o encerramento.</p>
+          <div class="legacy-note" style="border-left:3px solid var(--blue);">
+            <div class="legacy-note-label" style="color:var(--blue);">O que o painel registra</div>
+            <div class="legacy-note-text">Jogadores ativos · Taxa de adesão · Missões completadas · Badges · Projetos enviados</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="legacy-card">
+        <div class="legacy-head legacy-head-teal">
+          <div class="legacy-icon">🗂️</div>
+          <div>
+            <div class="legacy-title">Galeria de Projetos</div>
+            <div class="legacy-sub">Projetos dos estudantes · acervo vivo</div>
+          </div>
+        </div>
+        <div class="legacy-body">
+          <p>Repositório público das entregas dos jogadores – vídeos, documentos, registros fotográficos e relatos de ações reais relacionados ao tema da jornada. É o acervo vivo da produção estudantil gerada pelo projeto.</p>
+          <div class="legacy-note" style="border-left:3px solid var(--teal);">
+            <div class="legacy-note-label" style="color:var(--teal);">Diferencial</div>
+            <div class="legacy-note-text">Exibe as propostas dos estudantes – como eles imaginaram endereçar o tema da jornada na sua cidade.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="legacy-card">
+        <div class="legacy-head legacy-head-green">
+          <div class="legacy-icon">🎭</div>
+          <div>
+            <div class="legacy-title">Galeria de Eventos</div>
+            <div class="legacy-sub">Exposição cultural · resultado final</div>
+          </div>
+        </div>
+        <div class="legacy-body">
+          <p>Documenta a exposição cultural da jornada – o resultado final transformado em arte. Reúne fotos e registros das obras expostas, dos personagens no espaço físico e da mediação cultural com a comunidade visitante.</p>
+          <div class="legacy-note" style="border-left:3px solid #38a349;">
+            <div class="legacy-note-label" style="color:#38a349;">Legado permanente</div>
+            <div class="legacy-note-text">A galeria é permanente na plataforma – a exposição continua acessível online após o evento físico.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ 07 · CONTATO ════════════════════ -->
+<section id="contato">
+  <div class="container">
+    <div class="cta-block">
+      <div class="cta-eyebrow">Próximo passo</div>
+      <h2 class="cta-title">Seja uma das escolas parceiras <br class="br-desktop">da Missão Termômetro Zero em Palmas</h2>
+      <p class="cta-desc">Estamos convidando escolas técnicas e de ensino médio de Palmas. Se a sua escola tem interesse em receber a jornada em 2026, mande um e-mail que nosso time agendará uma reunião institucional para apresentar o projeto com profundidade e responder dúvidas.</p>
+      <div class="cta-contact">
+        <div class="cta-contact-item">
+          <div class="cta-contact-icon">✉️</div>
+          <div>
+            <div class="cta-contact-label">E-mail</div>
+            <div class="cta-contact-value"><a href="mailto:contato@thebluecity.app">contato@thebluecity.app</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ FOOTER ════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-col">
+        <div class="footer-brand">Missão Termômetro Zero</div>
+        <div class="footer-tagline">Realização The Blue City · Palmas · 2026</div>
+        <a href="mailto:hello@thebluecity.app" class="footer-contact">hello@thebluecity.app</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© The Blue City · Missão Cidade Azul</div>
+      <div>Convite institucional · escolas e secretarias de Palmas</div>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Voltar ao topo">↑</button>
+
+<script>
+  const toTop = document.getElementById('toTop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 600) toTop.classList.add('show');
+    else toTop.classList.remove('show');
+  });
+  toTop.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+
+  const navLinks = document.querySelectorAll('.topbar-nav a');
+  const sections = Array.from(navLinks).map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+
+  function setActive() {
+    const scrollY = window.scrollY + 120;
+    let activeIndex = 0;
+    sections.forEach((s, i) => {
+      if (s.offsetTop <= scrollY) activeIndex = i;
+    });
+    navLinks.forEach((l, i) => {
+      l.classList.toggle('active', i === activeIndex);
+    });
+  }
+  window.addEventListener('scroll', setActive);
+  setActive();
+
+  // Menu hambúrguer (mobile)
+  const burger = document.getElementById('topbar-burger');
+  const nav = document.getElementById('topbar-nav');
+  if (burger && nav) {
+    burger.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      burger.classList.toggle('open', open);
+      burger.setAttribute('aria-expanded', open);
+    });
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      nav.classList.remove('open');
+      burger.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    }));
+  }
+</script>
+</body>
+</html>
