@@ -274,6 +274,11 @@
   .footer-contact:hover { text-decoration:underline; }
   .footer-realiz { font-size:11px; font-weight:700; color:rgba(255,255,255,0.5); letter-spacing:1.2px; text-transform:uppercase; margin-bottom:10px; }
   .footer-partners { display:flex; flex-direction:column; gap:6px; font-size:13px; color:rgba(255,255,255,0.85); }
+  .footer-col-sponsor { display:flex; justify-content:flex-end; align-items:flex-start; }
+  .footer-sponsor-card { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-left:3px solid var(--green); border-radius:12px; padding:18px 22px; min-width:240px; }
+  .footer-sponsor-label { font-size:10px; font-weight:700; color:var(--green); letter-spacing:1.4px; text-transform:uppercase; margin-bottom:6px; }
+  .footer-sponsor-name { font-size:22px; font-weight:800; color:white; line-height:1.1; margin-bottom:10px; letter-spacing:-0.3px; }
+  .footer-sponsor-note { font-size:11.5px; color:rgba(255,255,255,0.65); line-height:1.55; }
   .footer-bottom { padding-top:22px; display:flex; justify-content:space-between; align-items:center; font-size:11.5px; color:rgba(255,255,255,0.5); }
 
   /* ── TO TOP ── */
@@ -319,6 +324,8 @@
     .topbar-nav.open { display:flex; }
     .topbar-nav a { font-size:14px; padding:12px 16px; border-radius:6px; }
     .footer-top { grid-template-columns:1fr; gap:28px; }
+    .footer-col-sponsor { justify-content:flex-start; }
+    .footer-sponsor-card { min-width:0; width:100%; }
     .cta-contact { flex-direction:column; gap:10px; }
     .cta-contact-item { width:100%; }
   }
@@ -721,6 +728,13 @@
         <div class="footer-brand">Missão Termômetro Zero</div>
         <div class="footer-tagline">Realização The Blue City · Palmas · 2026</div>
         <a href="mailto:hello@thebluecity.app" class="footer-contact">hello@thebluecity.app</a>
+      </div>
+      <div class="footer-col footer-col-sponsor">
+        <div class="footer-sponsor-card">
+          <div class="footer-sponsor-label">Patrocínio</div>
+          <div class="footer-sponsor-name">Sotreq</div>
+          <div class="footer-sponsor-note">Realização viabilizada pela Sotreq –<br>parceira da Missão Termômetro Zero em Palmas.</div>
+        </div>
       </div>
     </div>
     <div class="footer-bottom">
