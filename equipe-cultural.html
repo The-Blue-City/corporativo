@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Blue City – Briefing da Equipe Criativa</title>
+<title>Missão Cidade Azul – Briefing da Equipe Criativa</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -226,6 +226,7 @@
   .page-hero.role-ilustrador::after   { background: linear-gradient(90deg, #468182, #5fb670); }
   .page-hero.role-gamedesigner::after { background: linear-gradient(90deg, #5fb670, #2858a0); }
   .page-hero.role-produtor::after     { background: linear-gradient(90deg, #2858a0, #90dba3); }
+  .page-hero.role-articulador::after  { background: linear-gradient(90deg, #5fb670, #2858a0); }
 
   .page-tag {
     display: inline-flex; align-items: center; gap: 6px;
@@ -384,12 +385,12 @@
 </style>
 
   <!-- Preview social / WhatsApp -->
-  <meta property="og:title" content="The Blue City – Briefing da Equipe Criativa">
+  <meta property="og:title" content="Missão Cidade Azul – Briefing da Equipe Criativa">
   <meta property="og:description" content="O que cada profissional precisa desenvolver para a Missão Termômetro Zero.">
-  <meta property="og:image" content="https://the-blue-city.github.io/content/TBC_equipecultural.jpg">
+  <meta property="og:image" content="https://the-blue-city.github.io/content/TBC_OGEquipeCultural.jpg">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://the-blue-city.github.io/content/TBC_equipecultural.jpg">
+  <meta name="twitter:image" content="https://the-blue-city.github.io/content/TBC_OGEquipeCultural.jpg">
 </head>
 <body style="overflow-x:hidden;">
 <div id="sidebar-overlay" onclick="document.querySelector('.sidebar').classList.remove('open'); this.style.display='none';" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:149;"></div>
@@ -492,16 +493,20 @@
     <span class="nav-number">03</span>
   </div>
   <div class="nav-item" onclick="goTo(4)">
-    <span class="nav-dot"></span> Produtor Cultural
+    <span class="nav-dot"></span> Articulador Educacional
     <span class="nav-number">04</span>
   </div>
   <div class="nav-item" onclick="goTo(5)">
-    <span class="nav-dot"></span> Exposição
+    <span class="nav-dot"></span> Produtor Cultural
     <span class="nav-number">05</span>
   </div>
   <div class="nav-item" onclick="goTo(6)">
-    <span class="nav-dot"></span> Fluxo e Cronograma
+    <span class="nav-dot"></span> Exposição
     <span class="nav-number">06</span>
+  </div>
+  <div class="nav-item" onclick="goTo(7)">
+    <span class="nav-dot"></span> Fluxo e Cronograma
+    <span class="nav-number">07</span>
   </div>
 
   <div class="sidebar-footer">
@@ -682,6 +687,14 @@
       padding: 10px 12px !important;
       gap: 10px !important;
     }
+
+    .organograma-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .organograma-wrapper svg {
+      min-width: 800px;
+    }
   }
 </style>
   </defs>
@@ -851,7 +864,7 @@
     <div class="divider"></div>
     <div class="page-nav">
       <button class="nav-btn" onclick="goTo(0)">← Apresentação</button>
-      <span class="page-indicator">Equipe Criativa <strong>1</strong> de 4</span>
+      <span class="page-indicator">Equipe Criativa <strong>1</strong> de 7</span>
       <button class="nav-btn next" onclick="goTo(2)">Ilustrador →</button>
     </div>
   </section>
@@ -1049,7 +1062,7 @@
     <div class="divider"></div>
     <div class="page-nav">
       <button class="nav-btn" onclick="goTo(1)">← Pesquisadora Cultural</button>
-      <span class="page-indicator">Equipe Criativa <strong>2</strong> de 4</span>
+      <span class="page-indicator">Equipe Criativa <strong>2</strong> de 7</span>
       <button class="nav-btn next" onclick="goTo(3)">Game Designer →</button>
     </div>
   </section>
@@ -1238,24 +1251,24 @@
     <div class="divider"></div>
     <div class="page-nav">
       <button class="nav-btn" onclick="goTo(2)">← Ilustrador</button>
-      <span class="page-indicator">Equipe Criativa <strong>3</strong> de 4</span>
-      <button class="nav-btn next" onclick="goTo(4)">Produtor Cultural →</button>
+      <span class="page-indicator">Equipe Criativa <strong>3</strong> de 7</span>
+      <button class="nav-btn next" onclick="goTo(4)">Articulador Educacional →</button>
     </div>
   </section>
 
-  <!-- ══ PAGE 4: PRODUTOR CULTURAL ══ -->
+  <!-- ══ PAGE 4: ARTICULADOR EDUCACIONAL ══ -->
   <section class="page" id="page-4">
-    <div class="page-hero role-produtor">
+    <div class="page-hero role-articulador">
       <div style="display:flex; align-items:center; gap:24px; margin-bottom:16px;">
-        <div style="width:80px; height:80px; border-radius:50%; background:#d6e4f7; display:flex; align-items:center; justify-content:center; font-size:28px; flex-shrink:0;">🎭</div>
+        <div style="width:80px; height:80px; border-radius:50%; background:#d4f0d9; display:flex; align-items:center; justify-content:center; font-size:28px; flex-shrink:0;">🏫</div>
         <div>
-          <div class="role-badge rb-blue" style="margin-bottom:8px;">🎭 Produtor Cultural</div>
-          <p style="font-size:18px; font-weight:800; color:var(--dark); margin-bottom:2px;">[Nome do Produtor Cultural]</p>
-          <p style="font-size:12px; color:var(--muted);">Articulação Territorial · Gestão da Campanha · Curadoria · Exposição</p>
+          <div class="role-badge rb-green" style="margin-bottom:8px;">🏫 Articulador Educacional</div>
+          <p style="font-size:18px; font-weight:800; color:var(--dark); margin-bottom:2px;">[Nome do Articulador Educacional]</p>
+          <p style="font-size:12px; color:var(--muted);">Ponte com as Escolas · Mobilização de Estudantes · Adesão à Jornada</p>
         </div>
       </div>
-      <h1 class="page-title">Produção e Gestão da Jornada</h1>
-      <p class="page-subtitle">O Produtor Cultural é a figura central da implementação territorial da The Blue City. Articula, executa e consolida todas as etapas do projeto – da estruturação da campanha ao registro da exposição física no território. Todas essas operações são realizadas diretamente na plataforma, através do <strong>Painel do Produtor Cultural</strong>.</p>
+      <h1 class="page-title">Articulação com as Escolas</h1>
+      <p class="page-subtitle">O Articulador Educacional é a ponte com as escolas parceiras – apresenta o projeto à direção e à coordenação pedagógica e é responsável por envolver os estudantes na jornada, mobilizando a adesão ao jogo como atividade extracurricular.</p>
     </div>
 
     <div class="page-body single" style="max-width:100%; padding:36px 60px 0;">
@@ -1264,29 +1277,17 @@
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:32px;">
         <div class="feature-card">
           <div class="feature-card-header">
-            <div class="feature-icon fi-blue">🎮</div>
-            <h3>Acesso à Plataforma The Blue City</h3>
+            <div class="feature-icon fi-blue">📋</div>
+            <h3>Material de Apresentação</h3>
           </div>
-          <p>A plataforma é onde estão os jogos disponíveis para as jornadas – o ambiente digital que os alunos e professores acessam para jogar, progredir nas missões e enviar seus projetos.</p>
-          <div style="margin-top:14px;">
-            <a href="#" style="display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:700; color:#2858a0; text-decoration:none; background:#d6e4f7; border-radius:8px; padding:8px 14px;">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              Acessar a plataforma
-            </a>
-          </div>
+          <p>Kit de apresentação institucional do projeto – com deck para reunião com direção e materiais de divulgação para estudantes.</p>
         </div>
         <div class="feature-card">
           <div class="feature-card-header">
-            <div class="feature-icon fi-blue">🎛️</div>
-            <h3>Acesso ao Painel do Produtor Cultural</h3>
+            <div class="feature-icon fi-teal">🎛️</div>
+            <h3>Painel Administrativo</h3>
           </div>
-          <p>Área exclusiva da plataforma onde o Produtor Cultural opera – estrutura campanhas, cadastra escolas, ativa jornadas, faz a curadoria dos projetos enviados e registra os desdobramentos presenciais.</p>
-          <div style="margin-top:14px;">
-            <a href="#" style="display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:700; color:#468182; text-decoration:none; background:#d0e8e8; border-radius:8px; padding:8px 14px;">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              Acessar o Painel do Produtor Cultural
-            </a>
-          </div>
+          <p>Acesso ao Painel Administrativo da plataforma para gerenciar a entrada e o engajamento dos estudantes ao longo de toda a jornada.</p>
         </div>
       </div>
 
@@ -1294,24 +1295,24 @@
       <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-bottom:32px;">
         <div class="feature-card">
           <div class="feature-card-header">
-            <div class="feature-icon fi-blue">🏫</div>
-            <h3>Mobilização Territorial</h3>
+            <div class="feature-icon fi-blue">🤝</div>
+            <h3>Apresentação Institucional</h3>
           </div>
-          <p>O produtor encontra a escola, faz o relacionamento com a secretaria municipal e o coordenador, e seleciona 10 professores com 50 alunos cada – alcançando 510 pessoas no total.</p>
+          <p>Apresenta o projeto Missão Cidade Azul à direção e à coordenação pedagógica das escolas parceiras, apresentando o formato da jornada e os benefícios para a comunidade escolar.</p>
         </div>
         <div class="feature-card">
           <div class="feature-card-header">
-            <div class="feature-icon fi-teal">🔗</div>
-            <h3>Conexão com a Plataforma</h3>
+            <div class="feature-icon fi-teal">👥</div>
+            <h3>Mobilização de Estudantes</h3>
           </div>
-          <p>Todas as operações – estruturação, ativação, monitoramento, curadoria e registro – são realizadas diretamente no Painel do Produtor dentro da plataforma The Blue City.</p>
+          <p>Envolve os estudantes na jornada – constrói desejo de participação, esclarece dúvidas sobre o jogo, badges e certificados, e mobiliza a adesão como atividade extracurricular significativa.</p>
         </div>
         <div class="feature-card">
           <div class="feature-card-header">
-            <div class="feature-icon fi-green">📅</div>
-            <h3>Prazo e Formato de Entrega</h3>
+            <div class="feature-icon fi-green">🎯</div>
+            <h3>Garantia de Adesão</h3>
           </div>
-          <p>[Insira aqui os prazos de cada etapa – estruturação, ativação, curadoria e realização da exposição ou evento presencial.]</p>
+          <p>Responsável pela conversão da apresentação em participação efetiva – acompanha o processo até que turmas estejam formadas e prontas para iniciar a jornada na plataforma.</p>
         </div>
       </div>
 
@@ -1320,116 +1321,97 @@
 
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:20px;">
           <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
-            <div style="width:32px; height:32px; border-radius:50%; background:#35569b; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0;">1</div>
-            <p style="font-size:13px; font-weight:700; color:#1a2e3b;">Encontrar a escola</p>
+            <div style="width:32px; height:32px; border-radius:50%; background:#2858a0; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0;">1</div>
+            <p style="font-size:13px; font-weight:700; color:#1a2e3b;">Articular com secretaria e escolas</p>
           </div>
           <div class="deliverable-list" style="gap:8px;">
-            <div class="deliverable-item"><div class="del-num" style="background:#7f94bf;">1.1</div><div class="del-text"><span>Fazer relacionamento com a secretaria municipal</span></div></div>
-            <div class="deliverable-item"><div class="del-num" style="background:#7f94bf;">1.2</div><div class="del-text"><span>Fazer relacionamento com o coordenador da escola</span></div></div>
-            <div class="deliverable-item"><div class="del-num" style="background:#7f94bf;">1.3</div><div class="del-text"><span>Cadastrar a escola na plataforma</span></div></div>
-            <div class="deliverable-item"><div class="del-num" style="background:#7f94bf;">1.4</div><div class="del-text"><span>Definir o modelo de implementação</span></div></div>
+            <div class="deliverable-item"><div class="del-num" style="background:#7fa3bf;">1.1</div><div class="del-text"><span>Articulação com a secretaria municipal de educação</span></div></div>
+            <div class="deliverable-item"><div class="del-num" style="background:#7fa3bf;">1.2</div><div class="del-text"><span>Reunião com a direção e a coordenação pedagógica da escola</span></div></div>
+            <div class="deliverable-item"><div class="del-num" style="background:#7fa3bf;">1.3</div><div class="del-text"><span>Comunicar os benefícios institucionais: badges e certificados para a escola e os alunos</span></div></div>
           </div>
         </div>
 
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:20px;">
           <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
-            <div style="width:32px; height:32px; border-radius:50%; background:#356e9b; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0;">2</div>
-            <p style="font-size:13px; font-weight:700; color:#1a2e3b;">Montar as turmas</p>
+            <div style="width:32px; height:32px; border-radius:50%; background:#5fb670; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0;">2</div>
+            <p style="font-size:13px; font-weight:700; color:#1a2e3b;">Mobilizar estudantes para a adesão</p>
           </div>
           <div class="deliverable-list" style="gap:8px;">
-            <div class="deliverable-item"><div class="del-num" style="background:#7fa3bf;">2.1</div><div class="del-text"><span>Escolher 10 professores com 50 alunos cada</span></div></div>
-            <div class="deliverable-item"><div class="del-num" style="background:#7fa3bf;">2.2</div><div class="del-text"><span>Cadastrar professores e turmas na plataforma</span></div></div>
-            <div class="deliverable-item"><div class="del-num" style="background:#7fa3bf;">2.3</div><div class="del-text"><span>Gerar e distribuir QR Codes e links de acesso</span></div></div>
-            <div class="deliverable-item"><div class="del-num" style="background:#7fa3bf;">2.4</div><div class="del-text"><span>Definir período de início e término da jornada</span></div></div>
+            <div class="deliverable-item"><div class="del-num" style="background:#80bf7f;">2.1</div><div class="del-text"><span>Apresentar a jornada aos estudantes em sala ou auditório</span></div></div>
+            <div class="deliverable-item"><div class="del-num" style="background:#80bf7f;">2.2</div><div class="del-text"><span>Explicar o sistema de badges, certificados e exposição final</span></div></div>
+            <div class="deliverable-item"><div class="del-num" style="background:#80bf7f;">2.3</div><div class="del-text"><span>Posicionar o jogo como atividade extracurricular significativa</span></div></div>
           </div>
         </div>
 
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:20px;">
           <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
-            <div style="width:32px; height:32px; border-radius:50%; background:#358c9b; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0;">3</div>
-            <p style="font-size:13px; font-weight:700; color:#1a2e3b;">Aplicar a jornada</p>
+            <div style="width:32px; height:32px; border-radius:50%; background:#468182; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0;">3</div>
+            <p style="font-size:13px; font-weight:700; color:#1a2e3b;">Acompanhar e fazer a ponte</p>
           </div>
           <div class="deliverable-list" style="gap:8px;">
-            <div class="deliverable-item"><div class="del-num" style="background:#7fb6bf;">3.1</div><div class="del-text"><span>Ativar a campanha na plataforma</span></div></div>
-            <div class="deliverable-item"><div class="del-num" style="background:#7fb6bf;">3.2</div><div class="del-text"><span>Acompanhar professores e alunos durante a jornada</span></div></div>
-            <div class="deliverable-item"><div class="del-num" style="background:#7fb6bf;">3.3</div><div class="del-text"><span>Monitorar etapas virtuais e emissão de badges e certificados</span></div></div>
-            <div class="deliverable-item"><div class="del-num" style="background:#7fb6bf;">3.4</div><div class="del-text"><span>Estimular e acompanhar o envio das missões</span></div></div>
-          </div>
-        </div>
-
-        <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:20px;">
-          <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
-            <div style="width:32px; height:32px; border-radius:50%; background:#359b77; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0;">4</div>
-            <p style="font-size:13px; font-weight:700; color:#1a2e3b;">Curadoria dos projetos</p>
-          </div>
-          <div class="deliverable-list" style="gap:8px;">
-            <div class="deliverable-item"><div class="del-num" style="background:#7fbfa8;">4.1</div><div class="del-text"><span>Visualizar e organizar as missões enviadas</span></div></div>
-            <div class="deliverable-item"><div class="del-num" style="background:#7fbfa8;">4.2</div><div class="del-text"><span>Analisar e aprovar projetos para a Galeria de Projetos</span></div></div>
-            <div class="deliverable-item"><div class="del-num" style="background:#7fbfa8;">4.3</div><div class="del-text"><span>Classificar projetos conforme finalidade cultural ou institucional</span></div></div>
-            <div class="deliverable-item"><div class="del-num" style="background:#7fbfa8;">4.4</div><div class="del-text"><span>Coordenar artistas para interpretação das missões</span></div></div>
-          </div>
-        </div>
-
-        <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:20px;">
-          <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
-            <div style="width:32px; height:32px; border-radius:50%; background:#7fbfa8; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0;">5</div>
-            <p style="font-size:13px; font-weight:700; color:#1a2e3b;">Realizar a exposição</p>
-          </div>
-          <div class="deliverable-list" style="gap:8px;">
-            <div class="deliverable-item"><div class="del-num" style="background:#80bf7f;">5.1</div><div class="del-text"><span>Encontrar o local da exposição no território</span></div></div>
-            <div class="deliverable-item"><div class="del-num" style="background:#80bf7f;">5.2</div><div class="del-text"><span>Acompanhar a produção das obras derivadas pelos artistas</span></div></div>
-            <div class="deliverable-item"><div class="del-num" style="background:#80bf7f;">5.3</div><div class="del-text"><span>Organizar a montagem e realização da exposição</span></div></div>
-            <div class="deliverable-item"><div class="del-num" style="background:#80bf7f;">5.4</div><div class="del-text"><span>Estruturar processos de seleção ou premiação, quando aplicável</span></div></div>
-          </div>
-        </div>
-
-        <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:20px;">
-          <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
-            <div style="width:32px; height:32px; border-radius:50%; background:#729b35; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0;">6</div>
-            <p style="font-size:13px; font-weight:700; color:#1a2e3b;">Documentação</p>
-          </div>
-          <div class="deliverable-list" style="gap:8px;">
-            <div class="deliverable-item"><div class="del-num" style="background:#a6bf7f;">6.1</div><div class="del-text"><span>Registrar fotos, entrevistas e materiais de imprensa</span></div></div>
-            <div class="deliverable-item"><div class="del-num" style="background:#a6bf7f;">6.2</div><div class="del-text"><span>Publicar registros na Memória Institucional da plataforma</span></div></div>
-            <div class="deliverable-item"><div class="del-num" style="background:#a6bf7f;">6.3</div><div class="del-text"><span>Associar cada evento ao território correspondente</span></div></div>
-            <div class="deliverable-item"><div class="del-num" style="background:#a6bf7f;">6.4</div><div class="del-text"><span>Consolidar a documentação que comprova a realização e os impactos</span></div></div>
+            <div class="deliverable-item"><div class="del-num" style="background:#7fb6bf;">3.1</div><div class="del-text"><span>Usar os painéis da plataforma para gerenciar a entrada dos estudantes no jogo</span></div></div>
+            <div class="deliverable-item"><div class="del-num" style="background:#7fb6bf;">3.2</div><div class="del-text"><span>Acompanhar o engajamento e o progresso na jornada</span></div></div>
+            <div class="deliverable-item"><div class="del-num" style="background:#7fb6bf;">3.3</div><div class="del-text"><span>Coletar os projetos entregues pelos estudantes ao fim da jornada</span></div></div>
           </div>
         </div>
 
       </div>
 
-            <div class="section-heading">Passo a passo no território</div>
-      <div style="display:grid; grid-template-columns:repeat(6,1fr); gap:14px; margin-bottom:40px;">
+      <div class="section-heading">Pipeline da articulação</div>
+      <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-bottom:32px;">
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:16px; text-align:center;">
-          <div style="width:36px; height:36px; border-radius:50%; background:#35569b; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">1</div>
-          <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Encontrar a escola</p>
-          <p style="font-size:10px; color:#6b7f95; line-height:1.5;">Relacionamento com secretaria municipal e coordenador da escola</p>
+          <div style="width:36px; height:36px; border-radius:50%; background:#2858a0; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">1</div>
+          <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Articulação territorial</p>
+          <p style="font-size:10px; color:#6b7f95; line-height:1.5;">Secretaria municipal de educação, direção e coordenação pedagógica das escolas</p>
         </div>
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:16px; text-align:center;">
-          <div style="width:36px; height:36px; border-radius:50%; background:#356e9b; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">2</div>
-          <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Montar as turmas</p>
-          <p style="font-size:10px; color:#6b7f95; line-height:1.5;">10 professores × 50 alunos = 510 pessoas alcançadas</p>
+          <div style="width:36px; height:36px; border-radius:50%; background:#468182; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">2</div>
+          <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Mobilização dos estudantes</p>
+          <p style="font-size:10px; color:#6b7f95; line-height:1.5;">Apresentação da jornada às turmas, adesão e cadastro na plataforma</p>
         </div>
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:16px; text-align:center;">
-          <div style="width:36px; height:36px; border-radius:50%; background:#358c9b; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">3</div>
-          <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Aplicar a jornada</p>
-          <p style="font-size:10px; color:#6b7f95; line-height:1.5;">Escola ou casa, 3 badges intermediários + certificado final</p>
+          <div style="width:36px; height:36px; border-radius:50%; background:#468182; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">3</div>
+          <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Acompanhamento na plataforma</p>
+          <p style="font-size:10px; color:#6b7f95; line-height:1.5;">Uso dos painéis para gerenciar a entrada dos estudantes e o engajamento na jornada</p>
         </div>
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:16px; text-align:center;">
-          <div style="width:36px; height:36px; border-radius:50%; background:#359b77; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">4</div>
-          <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Curadoria dos projetos</p>
-          <p style="font-size:10px; color:#6b7f95; line-height:1.5;">Analisar e aprovar os projetos enviados pelos jogadores</p>
+          <div style="width:36px; height:36px; border-radius:50%; background:#468182; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">4</div>
+          <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Recebimento dos projetos</p>
+          <p style="font-size:10px; color:#6b7f95; line-height:1.5;">Coleta e curadoria preliminar das entregas dos estudantes ao final da jornada</p>
         </div>
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:16px; text-align:center;">
-          <div style="width:36px; height:36px; border-radius:50%; background:#7fbfa8; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">5</div>
-          <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Realizar a exposição</p>
-          <p style="font-size:10px; color:#6b7f95; line-height:1.5;">Encontrar local, organizar e registrar o evento no território</p>
+          <div style="width:36px; height:36px; border-radius:50%; background:#5fb670; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">5</div>
+          <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Ponte com Produtor Cultural</p>
+          <p style="font-size:10px; color:#6b7f95; line-height:1.5;">Entrega dos projetos como inspiração para os artistas locais e a exposição</p>
         </div>
-        <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:16px; text-align:center;">
-          <div style="width:36px; height:36px; border-radius:50%; background:#729b35; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">6</div>
-          <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Documentação</p>
-          <p style="font-size:10px; color:#6b7f95; line-height:1.5;">Registrar fotos, entrevistas e publicar na Memória Institucional da plataforma</p>
+      </div>
+
+      <div class="section-heading">Prazo e formato de entrega</div>
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:24px;">
+        <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:18px; text-align:center;">
+          <p style="font-size:10px; font-weight:700; color:#2858a0; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;">Marco 1</p>
+          <p style="font-size:15px; font-weight:800; color:#1a2e3b; margin-bottom:8px;">15 de agosto</p>
+          <p style="font-size:11px; color:#6b7f95; line-height:1.5;">Prazo final da mobilização inicial: escolas autorizam e alunos se inscrevem no jogo.</p>
         </div>
+        <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:18px; text-align:center;">
+          <p style="font-size:10px; font-weight:700; color:#468182; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;">Marco 2</p>
+          <p style="font-size:15px; font-weight:800; color:#1a2e3b; margin-bottom:8px;">1º de setembro</p>
+          <p style="font-size:11px; color:#6b7f95; line-height:1.5;">Lançamento do jogo. Início do acompanhamento do engajamento via painéis da plataforma.</p>
+        </div>
+        <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:18px; text-align:center;">
+          <p style="font-size:10px; font-weight:700; color:#468182; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;">Marco 3</p>
+          <p style="font-size:15px; font-weight:800; color:#1a2e3b; margin-bottom:8px;">30 de setembro</p>
+          <p style="font-size:11px; color:#6b7f95; line-height:1.5;">Encerramento da jornada na plataforma. Recebimento e organização dos projetos dos alunos.</p>
+        </div>
+        <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:18px; text-align:center;">
+          <p style="font-size:10px; font-weight:700; color:#5fb670; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;">Marco 4</p>
+          <p style="font-size:15px; font-weight:800; color:#1a2e3b; margin-bottom:8px;">1º de outubro</p>
+          <p style="font-size:11px; color:#6b7f95; line-height:1.5;">Entrega dos projetos ao Produtor Cultural, que gerencia a conexão com os artistas locais.</p>
+        </div>
+      </div>
+      <div style="background:#1a2e3b; border-radius:10px; padding:14px 18px; margin-bottom:40px; display:flex; align-items:center; gap:12px;">
+        <div style="font-size:20px;">🎯</div>
+        <p style="font-size:12px; color:white; line-height:1.6;"><strong>Indicador de entrega:</strong> meta de mobilização de <strong>2.000 alunos</strong> inscritos no jogo até 15 de agosto, com acompanhamento contínuo até a entrega dos projetos em 1º de outubro.</p>
       </div>
 
     </div>
@@ -1437,12 +1419,192 @@
     <div class="divider"></div>
     <div class="page-nav">
       <button class="nav-btn" onclick="goTo(3)">← Game Designer</button>
-      <span class="page-indicator">Equipe Criativa <strong>4</strong> de 4</span>
-      <button class="nav-btn next" onclick="goTo(5)">Mapa Expográfico →</button>
+      <span class="page-indicator">Equipe Criativa <strong>4</strong> de 7</span>
+      <button class="nav-btn next" onclick="goTo(5)">Produtor Cultural →</button>
     </div>
   </section>
 
-    <section class="page" id="page-5">
+  <!-- ══ PAGE 5: PRODUTOR CULTURAL ══ -->
+  <section class="page" id="page-5">
+    <div class="page-hero role-produtor">
+      <div style="display:flex; align-items:center; gap:24px; margin-bottom:16px;">
+        <div style="width:80px; height:80px; border-radius:50%; background:#d6e4f7; display:flex; align-items:center; justify-content:center; font-size:28px; flex-shrink:0;">🎭</div>
+        <div>
+          <div class="role-badge rb-blue" style="margin-bottom:8px;">🎭 Produtor Cultural</div>
+          <p style="font-size:18px; font-weight:800; color:var(--dark); margin-bottom:2px;">[Nome do Produtor Cultural]</p>
+          <p style="font-size:12px; color:var(--muted);">Preparação Territorial · Curadoria · Conexão com Artistas · Exposição</p>
+        </div>
+      </div>
+      <h1 class="page-title">Curadoria, Artistas e Exposição</h1>
+      <p class="page-subtitle">Conduz a produção cultural do projeto – da preparação do território à realização da exposição. Trabalha em paralelo ao Articulador Educacional e, a partir de 1º de outubro, recebe os projetos dos estudantes para curadoria e produção das obras.</p>
+    </div>
+
+    <div class="page-body single" style="max-width:100%; padding:36px 60px 0;">
+
+      <div class="section-heading">O que você recebe</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:32px;">
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <div class="feature-icon fi-blue">📋</div>
+            <h3>Material de Apresentação</h3>
+          </div>
+          <p>Kit de apresentação institucional do projeto – com deck para reunião com direção e materiais de divulgação para estudantes.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <div class="feature-icon fi-teal">🎛️</div>
+            <h3>Painel Administrativo</h3>
+          </div>
+          <p>Acesso ao Painel Administrativo da plataforma para gerenciar a entrada e o engajamento dos estudantes ao longo de toda a jornada.</p>
+        </div>
+      </div>
+
+      <div class="section-heading">Como funciona</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-bottom:32px;">
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <div class="feature-icon fi-blue">🗺️</div>
+            <h3>Preparação Territorial</h3>
+          </div>
+          <p>Em paralelo ao trabalho do Articulador Educacional nas escolas, o Produtor Cultural prepara o território da exposição – mapeia espaços culturais disponíveis, identifica artistas locais e estrutura a logística de produção.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <div class="feature-icon fi-teal">🎨</div>
+            <h3>Curadoria e Produção</h3>
+          </div>
+          <p>Recebe os projetos entregues pelos estudantes. Pode fazer a curadoria direta das próprias entregas para a exposição, ou conectar artistas locais para produzir obras derivadas inspiradas nos projetos.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <div class="feature-icon fi-green">🏛️</div>
+            <h3>Exposição e Documentação</h3>
+          </div>
+          <p>Organiza a montagem da exposição no território, realiza o evento aberto à comunidade escolar e ao público, registra fotograficamente e publica a documentação na Memória Institucional da plataforma.</p>
+        </div>
+      </div>
+
+      <div class="section-heading">Responsabilidades</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-bottom:12px;">
+
+        <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:20px;">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+            <div style="width:32px; height:32px; border-radius:50%; background:#2858a0; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0;">1</div>
+            <p style="font-size:13px; font-weight:700; color:#1a2e3b;">Preparar o território</p>
+          </div>
+          <div class="deliverable-list" style="gap:8px;">
+            <div class="deliverable-item"><div class="del-num" style="background:#7fa3bf;">1.1</div><div class="del-text"><span>Mapear espaços culturais disponíveis para a exposição</span></div></div>
+            <div class="deliverable-item"><div class="del-num" style="background:#7fa3bf;">1.2</div><div class="del-text"><span>Identificar artistas locais com perfil para o projeto</span></div></div>
+            <div class="deliverable-item"><div class="del-num" style="background:#7fa3bf;">1.3</div><div class="del-text"><span>Dimensionar a montagem expográfica e o cronograma de produção</span></div></div>
+          </div>
+        </div>
+
+        <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:20px;">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+            <div style="width:32px; height:32px; border-radius:50%; background:#5fb670; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0;">2</div>
+            <p style="font-size:13px; font-weight:700; color:#1a2e3b;">Curadoria e conexão com artistas</p>
+          </div>
+          <div class="deliverable-list" style="gap:8px;">
+            <div class="deliverable-item"><div class="del-num" style="background:#80bf7f;">2.1</div><div class="del-text"><span>Acessar e selecionar os projetos enviados pelos estudantes na Galeria de Projetos</span></div></div>
+            <div class="deliverable-item"><div class="del-num" style="background:#80bf7f;">2.2</div><div class="del-text"><span>Convidar e briefar artistas locais para interpretar os projetos selecionados</span></div></div>
+            <div class="deliverable-item"><div class="del-num" style="background:#80bf7f;">2.3</div><div class="del-text"><span>Acompanhar a produção das obras derivadas</span></div></div>
+          </div>
+        </div>
+
+        <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:20px;">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+            <div style="width:32px; height:32px; border-radius:50%; background:#468182; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0;">3</div>
+            <p style="font-size:13px; font-weight:700; color:#1a2e3b;">Realizar a exposição</p>
+          </div>
+          <div class="deliverable-list" style="gap:8px;">
+            <div class="deliverable-item"><div class="del-num" style="background:#7fb6bf;">3.1</div><div class="del-text"><span>Confirmar e preparar o local da exposição</span></div></div>
+            <div class="deliverable-item"><div class="del-num" style="background:#7fb6bf;">3.2</div><div class="del-text"><span>Organizar a montagem expográfica</span></div></div>
+            <div class="deliverable-item"><div class="del-num" style="background:#7fb6bf;">3.3</div><div class="del-text"><span>Realizar o evento de abertura e o período expositivo</span></div></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:20px; margin-bottom:32px;">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+          <div style="width:32px; height:32px; border-radius:50%; background:#2858a0; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0;">4</div>
+          <p style="font-size:13px; font-weight:700; color:#1a2e3b;">Documentar e registrar</p>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px;">
+          <div class="deliverable-item"><div class="del-num" style="background:#7fa3bf;">4.1</div><div class="del-text"><span>Registrar fotos, vídeos e entrevistas da exposição</span></div></div>
+          <div class="deliverable-item"><div class="del-num" style="background:#7fa3bf;">4.2</div><div class="del-text"><span>Publicar registros na Memória Institucional da plataforma</span></div></div>
+          <div class="deliverable-item"><div class="del-num" style="background:#7fa3bf;">4.3</div><div class="del-text"><span>Consolidar a documentação que comprova realização e impactos</span></div></div>
+        </div>
+      </div>
+
+            <div class="section-heading">Pipeline da produção cultural</div>
+      <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-bottom:40px;">
+        <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:16px; text-align:center;">
+          <div style="width:36px; height:36px; border-radius:50%; background:#2858a0; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">1</div>
+          <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Preparar o território</p>
+          <p style="font-size:10px; color:#6b7f95; line-height:1.5;">Mapeamento de espaços, identificação de artistas e estruturação logística</p>
+        </div>
+        <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:16px; text-align:center;">
+          <div style="width:36px; height:36px; border-radius:50%; background:#468182; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">2</div>
+          <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Receber e selecionar</p>
+          <p style="font-size:10px; color:#6b7f95; line-height:1.5;">Recebe os projetos do Articulador e faz a curadoria</p>
+        </div>
+        <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:16px; text-align:center;">
+          <div style="width:36px; height:36px; border-radius:50%; background:#468182; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">3</div>
+          <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Conectar artistas</p>
+          <p style="font-size:10px; color:#6b7f95; line-height:1.5;">Articulação com artistas locais para produção de obras derivadas</p>
+        </div>
+        <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:16px; text-align:center;">
+          <div style="width:36px; height:36px; border-radius:50%; background:#5fb670; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">4</div>
+          <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Realizar exposição</p>
+          <p style="font-size:10px; color:#6b7f95; line-height:1.5;">Montagem expográfica e evento aberto à comunidade no território</p>
+        </div>
+        <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:16px; text-align:center;">
+          <div style="width:36px; height:36px; border-radius:50%; background:#729b35; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">5</div>
+          <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Documentar</p>
+          <p style="font-size:10px; color:#6b7f95; line-height:1.5;">Registros publicados na Memória Institucional da plataforma</p>
+        </div>
+      </div>
+
+      <div class="section-heading">Prazo e formato de entrega</div>
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:24px;">
+        <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:18px; text-align:center;">
+          <p style="font-size:10px; font-weight:700; color:#2858a0; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;">Marco 1</p>
+          <p style="font-size:15px; font-weight:800; color:#1a2e3b; margin-bottom:8px;">Junho a Setembro</p>
+          <p style="font-size:11px; color:#6b7f95; line-height:1.5;">Preparação territorial em paralelo ao trabalho do Articulador: mapeamento de espaços, artistas e logística.</p>
+        </div>
+        <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:18px; text-align:center;">
+          <p style="font-size:10px; font-weight:700; color:#468182; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;">Marco 2</p>
+          <p style="font-size:15px; font-weight:800; color:#1a2e3b; margin-bottom:8px;">1º de outubro</p>
+          <p style="font-size:11px; color:#6b7f95; line-height:1.5;">Recebimento dos projetos do Articulador. Início da curadoria e da articulação com artistas locais.</p>
+        </div>
+        <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:18px; text-align:center;">
+          <p style="font-size:10px; font-weight:700; color:#468182; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;">Marco 3</p>
+          <p style="font-size:15px; font-weight:800; color:#1a2e3b; margin-bottom:8px;">Outubro</p>
+          <p style="font-size:11px; color:#6b7f95; line-height:1.5;">Produção das obras derivadas pelos artistas e montagem da exposição no território.</p>
+        </div>
+        <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:18px; text-align:center;">
+          <p style="font-size:10px; font-weight:700; color:#5fb670; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;">Marco 4</p>
+          <p style="font-size:15px; font-weight:800; color:#1a2e3b; margin-bottom:8px;">Novembro</p>
+          <p style="font-size:11px; color:#6b7f95; line-height:1.5;">Realização da exposição, registro fotográfico e publicação na Memória Institucional.</p>
+        </div>
+      </div>
+      <div style="background:#1a2e3b; border-radius:10px; padding:14px 18px; margin-bottom:40px; display:flex; align-items:center; gap:12px;">
+        <div style="font-size:20px;">🎯</div>
+        <p style="font-size:12px; color:white; line-height:1.6;"><strong>Indicador de entrega:</strong> exposição realizada no território com obras derivadas dos projetos dos alunos, registro fotográfico publicado e documentação consolidada na plataforma.</p>
+      </div>
+
+    </div>
+
+    <div class="divider"></div>
+    <div class="page-nav">
+      <button class="nav-btn" onclick="goTo(4)">← Articulador Educacional</button>
+      <span class="page-indicator">Equipe Criativa <strong>5</strong> de 7</span>
+      <button class="nav-btn next" onclick="goTo(6)">Mapa Expográfico →</button>
+    </div>
+  </section>
+
+    <section class="page" id="page-6">
     <div class="page-hero role-produtor">
       <div class="role-badge rb-teal">🏛️ Exposição</div>
       <h1 class="page-title">Exposição Cultural Termômetro Zero</h1>
@@ -1465,7 +1627,7 @@
             <div class="feature-icon fi-teal">🎨</div>
             <h3>Imersão Narrativa</h3>
           </div>
-          <p>O visitante percorre fisicamente os módulos temáticos da exposição, cada um associado a um personagem digital inspirado em referências afro-brasileiras e indígenas. A integração digital via QR codes, projeções e vídeos cria imersão sem necessidade de equipamentos de realidade virtual sofisticados.</p>
+          <p>O visitante percorre fisicamente os módulos temáticos da exposição, cada um associado a um personagem digital inspirado em referências afro-brasileiras e indígenas.</p>
         </div>
         <div class="feature-card">
           <div class="feature-card-header">
@@ -1565,143 +1727,321 @@
 
     <div class="divider"></div>
     <div class="page-nav">
-      <button class="nav-btn" onclick="goTo(4)">← Produtor Cultural</button>
-      <span class="page-indicator">Equipe Criativa <strong>5</strong> de 5</span>
-      <button class="nav-btn next" onclick="goTo(0)" style="background:var(--teal); border-color:var(--teal);">↺ Voltar ao Início</button>
+      <button class="nav-btn" onclick="goTo(5)">← Produtor Cultural</button>
+      <span class="page-indicator">Equipe Criativa <strong>6</strong> de 7</span>
+      <button class="nav-btn next" onclick="goTo(7)" style="background:var(--teal); border-color:var(--teal);">Fluxo e Cronograma →</button>
     </div>
   </section>
 
-  <!-- ══ PAGE 6: CRONOGRAMA ══ -->
-  <section class="page" id="page-6">
+  <!-- ══ PAGE 7: CRONOGRAMA ══ -->
+  <section class="page" id="page-7">
     <div class="page-hero">
       <div class="role-badge rb-blue">📅 Fluxo e Cronograma</div>
       <h1 class="page-title">Cronograma 2026</h1>
       <p class="page-subtitle">O projeto acontece de maio a dezembro de 2026 – da produção ao encerramento, com as ações com o público concentradas no segundo semestre em Palmas, TO.</p>
     </div>
 
-    <div class="page-body single">
+    <div class="page-body single" style="max-width:100%; padding:36px 40px 0;">
+
+      <div class="section-heading">Como a equipe se relaciona</div>
+
+      <!-- Diagrama hierárquico da equipe -->
+      <div class="organograma-wrapper" style="background:white; border-radius:12px; border:1px solid #e8eef4; padding:24px 20px; margin-bottom:32px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" style="width:100%;height:auto;display:block;font-family:'Montserrat',sans-serif;">
+
+          <!-- COORDENADORA -->
+          <rect x="450" y="20" width="300" height="70" rx="10" fill="white" stroke="#c4c4c4" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <text x="608" y="44" text-anchor="middle" font-size="11" font-weight="700" fill="#6b7f95" letter-spacing="1.5">COORDENAÇÃO</text>
+          <text x="600" y="64" text-anchor="middle" font-size="16" font-weight="800" fill="#1a2e3b">Coordenadora do Projeto</text>
+          <text x="600" y="80" text-anchor="middle" font-size="11" fill="#6b7f95">Articulação geral · virtual + físico</text>
+
+          <!-- Conectores Coordenadora -> Pilares -->
+          <line x1="600" y1="90" x2="600" y2="115" stroke="#d4dde6" stroke-width="1.5"/>
+          <line x1="300" y1="115" x2="900" y2="115" stroke="#d4dde6" stroke-width="1.5"/>
+          <line x1="300" y1="115" x2="300" y2="140" stroke="#d4dde6" stroke-width="1.5"/>
+          <line x1="900" y1="115" x2="900" y2="140" stroke="#d4dde6" stroke-width="1.5"/>
+
+          <!-- PILAR VIRTUAL -->
+          <rect x="60" y="140" width="480" height="70" rx="10" fill="white" stroke="#c4c4c4" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <text x="312" y="164" text-anchor="middle" font-size="11" font-weight="700" fill="#6b7f95" letter-spacing="1.5">VIRTUAL</text>
+          <text x="300" y="184" text-anchor="middle" font-size="16" font-weight="800" fill="#1a2e3b">Construção do jogo</text>
+          <text x="300" y="200" text-anchor="middle" font-size="11" fill="#6b7f95">do conceito cultural à build jogável</text>
+
+          <!-- PILAR FÍSICO -->
+          <rect x="660" y="140" width="480" height="70" rx="10" fill="white" stroke="#c4c4c4" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <text x="912" y="164" text-anchor="middle" font-size="11" font-weight="700" fill="#6b7f95" letter-spacing="1.5">FÍSICO</text>
+          <text x="900" y="184" text-anchor="middle" font-size="16" font-weight="800" fill="#1a2e3b">Ativação no território</text>
+          <text x="900" y="200" text-anchor="middle" font-size="11" fill="#6b7f95">da chegada à escola à exposição cultural</text>
+
+          <!-- Conector Físico -> Produtora -->
+          <line x1="900" y1="210" x2="900" y2="250" stroke="#d4dde6" stroke-width="1.5"/>
+
+          <!-- PRODUTORA CULTURAL (empresa) -->
+          <rect x="720" y="250" width="360" height="64" rx="10" fill="white" stroke="#c4c4c4" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <text x="912" y="272" text-anchor="middle" font-size="10" font-weight="700" fill="#6b7f95" letter-spacing="1.5">EMPRESA</text>
+          <text x="900" y="290" text-anchor="middle" font-size="14" font-weight="800" fill="#1a2e3b">Produtora Cultural</text>
+          <text x="900" y="306" text-anchor="middle" font-size="10" fill="#6b7f95">contrata e coordena os profissionais de campo</text>
+
+          <!-- Conectores Virtual -> 3 profissionais -->
+          <line x1="300" y1="210" x2="300" y2="340" stroke="#d4dde6" stroke-width="1.5"/>
+          <line x1="140" y1="340" x2="460" y2="340" stroke="#d4dde6" stroke-width="1.5"/>
+          <line x1="140" y1="340" x2="140" y2="360" stroke="#d4dde6" stroke-width="1.5"/>
+          <line x1="300" y1="340" x2="300" y2="360" stroke="#d4dde6" stroke-width="1.5"/>
+          <line x1="460" y1="340" x2="460" y2="360" stroke="#d4dde6" stroke-width="1.5"/>
+
+          <!-- Conectores Produtora -> 3 profissionais -->
+          <line x1="900" y1="314" x2="900" y2="340" stroke="#d4dde6" stroke-width="1.5"/>
+          <line x1="740" y1="340" x2="1060" y2="340" stroke="#d4dde6" stroke-width="1.5"/>
+          <line x1="740" y1="340" x2="740" y2="360" stroke="#d4dde6" stroke-width="1.5"/>
+          <line x1="900" y1="340" x2="900" y2="360" stroke="#d4dde6" stroke-width="1.5"/>
+          <line x1="1060" y1="340" x2="1060" y2="360" stroke="#d4dde6" stroke-width="1.5"/>
+
+          <!-- 6 profissionais -->
+          <!-- Pesquisadora -->
+          <rect x="80" y="360" width="120" height="90" rx="8" fill="white" stroke="#c4c4c4" stroke-width="1.5" stroke-dasharray="4 3" cursor="pointer" onclick="goTo(1)"/>
+          <text x="140" y="392" text-anchor="middle" font-size="22" cursor="pointer" onclick="goTo(1)">🔍</text>
+          <text x="140" y="418" text-anchor="middle" font-size="11" font-weight="700" fill="#1a2e3b" cursor="pointer" onclick="goTo(1)">Pesquisadora</text>
+          <text x="140" y="432" text-anchor="middle" font-size="11" font-weight="700" fill="#1a2e3b" cursor="pointer" onclick="goTo(1)">Cultural</text>
+          <!-- Ilustrador -->
+          <rect x="240" y="360" width="120" height="90" rx="8" fill="white" stroke="#c4c4c4" stroke-width="1.5" stroke-dasharray="4 3" cursor="pointer" onclick="goTo(2)"/>
+          <text x="300" y="392" text-anchor="middle" font-size="22" cursor="pointer" onclick="goTo(2)">🎨</text>
+          <text x="300" y="418" text-anchor="middle" font-size="11" font-weight="700" fill="#1a2e3b" cursor="pointer" onclick="goTo(2)">Ilustrador /</text>
+          <text x="300" y="432" text-anchor="middle" font-size="11" font-weight="700" fill="#1a2e3b" cursor="pointer" onclick="goTo(2)">Modelador 3D</text>
+          <!-- Game Designer -->
+          <rect x="400" y="360" width="120" height="90" rx="8" fill="white" stroke="#c4c4c4" stroke-width="1.5" stroke-dasharray="4 3" cursor="pointer" onclick="goTo(3)"/>
+          <text x="460" y="392" text-anchor="middle" font-size="22" cursor="pointer" onclick="goTo(3)">🎮</text>
+          <text x="460" y="418" text-anchor="middle" font-size="11" font-weight="700" fill="#1a2e3b" cursor="pointer" onclick="goTo(3)">Game</text>
+          <text x="460" y="432" text-anchor="middle" font-size="11" font-weight="700" fill="#1a2e3b" cursor="pointer" onclick="goTo(3)">Designer</text>
+          <!-- Articulador -->
+          <rect x="680" y="360" width="120" height="90" rx="8" fill="white" stroke="#c4c4c4" stroke-width="1.5" stroke-dasharray="4 3" cursor="pointer" onclick="goTo(4)"/>
+          <text x="740" y="392" text-anchor="middle" font-size="22" cursor="pointer" onclick="goTo(4)">🏫</text>
+          <text x="740" y="418" text-anchor="middle" font-size="11" font-weight="700" fill="#1a2e3b" cursor="pointer" onclick="goTo(4)">Articulador</text>
+          <text x="740" y="432" text-anchor="middle" font-size="11" font-weight="700" fill="#1a2e3b" cursor="pointer" onclick="goTo(4)">Educacional</text>
+          <!-- Produtor -->
+          <rect x="840" y="360" width="120" height="90" rx="8" fill="white" stroke="#c4c4c4" stroke-width="1.5" stroke-dasharray="4 3" cursor="pointer" onclick="goTo(5)"/>
+          <text x="900" y="392" text-anchor="middle" font-size="22" cursor="pointer" onclick="goTo(5)">🎭</text>
+          <text x="900" y="418" text-anchor="middle" font-size="11" font-weight="700" fill="#1a2e3b" cursor="pointer" onclick="goTo(5)">Produtor</text>
+          <text x="900" y="432" text-anchor="middle" font-size="11" font-weight="700" fill="#1a2e3b" cursor="pointer" onclick="goTo(5)">Cultural</text>
+          <!-- Assessoria de Imprensa (tracejado) -->
+          <rect x="1000" y="360" width="120" height="90" rx="8" fill="white" stroke="#c4c4c4" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <text x="1060" y="392" text-anchor="middle" font-size="22">📰</text>
+          <text x="1060" y="418" text-anchor="middle" font-size="11" font-weight="700" fill="#1a2e3b">Assessoria</text>
+          <text x="1060" y="432" text-anchor="middle" font-size="11" font-weight="700" fill="#1a2e3b">de Imprensa</text>
+
+          <!-- Conectores 6 profissionais -> Encontro -->
+          <line x1="140" y1="450" x2="140" y2="470" stroke="#d4dde6" stroke-width="1.5"/>
+          <line x1="300" y1="450" x2="300" y2="470" stroke="#d4dde6" stroke-width="1.5"/>
+          <line x1="460" y1="450" x2="460" y2="470" stroke="#d4dde6" stroke-width="1.5"/>
+          <line x1="740" y1="450" x2="740" y2="470" stroke="#d4dde6" stroke-width="1.5"/>
+          <line x1="900" y1="450" x2="900" y2="470" stroke="#d4dde6" stroke-width="1.5"/>
+          <line x1="1060" y1="450" x2="1060" y2="470" stroke="#d4dde6" stroke-width="1.5"/>
+          <line x1="140" y1="470" x2="1060" y2="470" stroke="#d4dde6" stroke-width="1.5"/>
+          <line x1="600" y1="470" x2="600" y2="510" stroke="#d4dde6" stroke-width="1.5"/>
+
+          <!-- ENCONTRO DOS PILARES (escuro) -->
+          <rect x="420" y="510" width="360" height="70" rx="10" fill="#1a2e3b" cursor="pointer" onclick="goTo(6)"/>
+          <text x="612" y="534" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff" fill-opacity="0.7" letter-spacing="1.5" cursor="pointer" onclick="goTo(6)">ENCONTRO DOS PILARES</text>
+          <text x="600" y="560" text-anchor="middle" font-size="15" font-weight="800" fill="white" cursor="pointer" onclick="goTo(6)">Exposição Cultural Termômetro Zero</text>
+        </svg>
+      </div>
 
       <!-- Fluxo mensal visual -->
       <div class="cronograma-timeline" style="margin-bottom:32px;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1132 419" style="width:100%;height:auto;display:block;font-family:'Montserrat',sans-serif;">
-  <rect width="1132" height="419" fill="#ffffff" rx="12"/>
-  <text x="566" y="28" text-anchor="middle" font-size="12" font-weight="800" fill="#1a2e3b">Calendário do Projeto · 2026</text>
-  <line x1="20" y1="110" x2="1112" y2="110" stroke="#e0e8f0" stroke-width="2.5" stroke-linecap="round"/>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1132 555" style="width:100%;height:auto;display:block;font-family:'Montserrat',sans-serif;">
+  <rect width="1132" height="555" fill="#ffffff" rx="12"/>
+  <text x="566" y="32" text-anchor="middle" font-size="13" font-weight="800" fill="#1a2e3b">Calendário do Projeto · 2026</text>
+  <line x1="30" y1="110" x2="1102" y2="110" stroke="#e0e8f0" stroke-width="2" stroke-linecap="round"/>
 
-  <!-- MAI -->
-  <line x1="65" y1="110" x2="65" y2="125" stroke="#2a2a2a" stroke-width="1.5"/>
-  <circle cx="65" cy="110" r="7" fill="#2a2a2a" stroke="white" stroke-width="2"/>
-  <text x="65" y="94" text-anchor="middle" font-size="8" font-weight="800" fill="#2a2a2a">MAI</text>
-  <rect x="19" y="125" width="92" height="22" rx="4" fill="#2a2a2a"/>
-  <text x="65" y="140" text-anchor="middle" font-size="7" font-weight="800" fill="white">Produção</text>
-  <rect x="19" y="153" width="92" height="56" rx="5" fill="#e07b20"/>
-  <text x="65" y="166" text-anchor="middle" font-size="6.5" font-weight="800" fill="white">Pesquisadora</text>
-  <text x="65" y="179" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">Conceituação</text>
-  <text x="65" y="189" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">dos personagens</text>
-  <rect x="19" y="215" width="92" height="56" rx="5" fill="#2858a0"/>
-  <text x="65" y="228" text-anchor="middle" font-size="6.5" font-weight="800" fill="white">Game Designer</text>
-  <text x="65" y="241" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">Início da</text>
-  <text x="65" y="251" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">produção do</text>
-  <text x="65" y="261" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">jogo</text>
-  <!-- JUN -->
-  <line x1="195" y1="110" x2="195" y2="125" stroke="#2a2a2a" stroke-width="1.5"/>
-  <circle cx="195" cy="110" r="7" fill="#2a2a2a" stroke="white" stroke-width="2"/>
-  <text x="195" y="94" text-anchor="middle" font-size="8" font-weight="800" fill="#2a2a2a">JUN</text>
-  <rect x="149" y="125" width="92" height="22" rx="4" fill="#2a2a2a"/>
-  <text x="195" y="140" text-anchor="middle" font-size="7" font-weight="800" fill="white">Produção</text>
-  <rect x="149" y="153" width="92" height="56" rx="5" fill="#e0c520"/>
-  <text x="195" y="166" text-anchor="middle" font-size="6.5" font-weight="800" fill="white">Ilustrador</text>
-  <text x="195" y="179" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">Ilustração dos</text>
-  <text x="195" y="189" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">personagens</text>
-  <rect x="149" y="215" width="92" height="56" rx="5" fill="#2858a0"/>
-  <text x="195" y="228" text-anchor="middle" font-size="6.5" font-weight="800" fill="white">Game Designer</text>
-  <text x="195" y="241" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">Finalização do</text>
-  <text x="195" y="251" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">jogo</text>
-  <rect x="149" y="277" width="92" height="56" rx="5" fill="#38a349"/>
-  <text x="195" y="290" text-anchor="middle" font-size="6.5" font-weight="800" fill="white">Produtor Cultural</text>
-  <text x="195" y="303" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">Contato com</text>
-  <text x="195" y="313" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">escolas e</text>
-  <text x="195" y="323" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">secretarias</text>
-  <!-- JUL -->
-  <line x1="325" y1="110" x2="325" y2="125" stroke="#2a2a2a" stroke-width="1.5"/>
-  <circle cx="325" cy="110" r="7" fill="#2a2a2a" stroke="white" stroke-width="2"/>
-  <text x="325" y="94" text-anchor="middle" font-size="8" font-weight="800" fill="#2a2a2a">JUL</text>
-  <rect x="279" y="125" width="92" height="22" rx="4" fill="#2a2a2a"/>
-  <text x="325" y="140" text-anchor="middle" font-size="7" font-weight="800" fill="white">Produção</text>
-  <rect x="279" y="153" width="92" height="56" rx="5" fill="#2858a0"/>
-  <text x="325" y="166" text-anchor="middle" font-size="6.5" font-weight="800" fill="white">Game Designer</text>
-  <text x="325" y="179" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">Testes do jogo</text>
-  <rect x="279" y="215" width="92" height="56" rx="5" fill="#38a349"/>
-  <text x="325" y="228" text-anchor="middle" font-size="6.5" font-weight="800" fill="white">Produtor Cultural</text>
-  <text x="325" y="241" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">Treinamento na</text>
-  <text x="325" y="251" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">plataforma</text>
-  <!-- AGO -->
-  <line x1="455" y1="110" x2="455" y2="125" stroke="#2a2a2a" stroke-width="1.5"/>
-  <circle cx="455" cy="110" r="7" fill="#2a2a2a" stroke="white" stroke-width="2"/>
-  <text x="455" y="94" text-anchor="middle" font-size="8" font-weight="800" fill="#2a2a2a">AGO</text>
-  <rect x="409" y="125" width="92" height="22" rx="4" fill="#2a2a2a"/>
-  <text x="455" y="140" text-anchor="middle" font-size="7" font-weight="800" fill="white">Produção</text>
-  <rect x="409" y="153" width="92" height="56" rx="5" fill="#38a349"/>
-  <text x="455" y="166" text-anchor="middle" font-size="6.5" font-weight="800" fill="white">Produtor Cultural</text>
-  <text x="455" y="179" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">Assessoria de</text>
-  <text x="455" y="189" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">imprensa</text>
-  <!-- SET -->
-  <line x1="585" y1="110" x2="585" y2="125" stroke="#2a2a2a" stroke-width="1.5"/>
-  <circle cx="585" cy="110" r="7" fill="#2a2a2a" stroke="white" stroke-width="2"/>
-  <text x="585" y="94" text-anchor="middle" font-size="8" font-weight="800" fill="#2a2a2a">SET</text>
-  <rect x="539" y="125" width="92" height="22" rx="4" fill="#2a2a2a"/>
-  <text x="585" y="140" text-anchor="middle" font-size="7" font-weight="800" fill="white">Produção</text>
-  <rect x="539" y="153" width="92" height="56" rx="5" fill="#38a349"/>
-  <text x="585" y="166" text-anchor="middle" font-size="6.5" font-weight="800" fill="white">Produtor Cultural</text>
-  <text x="585" y="179" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">Pré-produção da</text>
-  <text x="585" y="189" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">exposição</text>
-  <!-- OUT -->
-  <line x1="715" y1="110" x2="715" y2="125" stroke="#2a2a2a" stroke-width="1.5"/>
-  <circle cx="715" cy="110" r="7" fill="#2a2a2a" stroke="white" stroke-width="2"/>
-  <text x="715" y="94" text-anchor="middle" font-size="8" font-weight="800" fill="#2a2a2a">OUT</text>
-  <rect x="669" y="125" width="92" height="22" rx="4" fill="#2a2a2a"/>
-  <text x="715" y="140" text-anchor="middle" font-size="7" font-weight="800" fill="white">Produção</text>
-  <rect x="669" y="153" width="92" height="56" rx="5" fill="#38a349"/>
-  <text x="715" y="166" text-anchor="middle" font-size="6.5" font-weight="800" fill="white">Produtor Cultural</text>
-  <text x="715" y="179" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">Recebimento de</text>
-  <text x="715" y="189" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">trabalhos dos</text>
-  <text x="715" y="199" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">alunos</text>
-  <!-- NOV -->
-  <line x1="845" y1="110" x2="845" y2="125" stroke="#2a2a2a" stroke-width="1.5"/>
-  <circle cx="845" cy="110" r="7" fill="#2a2a2a" stroke="white" stroke-width="2"/>
-  <text x="845" y="94" text-anchor="middle" font-size="8" font-weight="800" fill="#2a2a2a">NOV</text>
-  <rect x="799" y="125" width="92" height="22" rx="4" fill="#2a2a2a"/>
-  <text x="845" y="140" text-anchor="middle" font-size="7" font-weight="800" fill="white">Produção</text>
-  <rect x="799" y="153" width="92" height="56" rx="5" fill="#38a349"/>
-  <text x="845" y="166" text-anchor="middle" font-size="6.5" font-weight="800" fill="white">Produtor Cultural</text>
-  <text x="845" y="179" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">Lançamento da</text>
-  <text x="845" y="189" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">exposição +</text>
-  <text x="845" y="199" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">assessoria de</text>
-  <!-- DEZ -->
-  <line x1="975" y1="110" x2="975" y2="125" stroke="#2a2a2a" stroke-width="1.5"/>
-  <circle cx="975" cy="110" r="7" fill="#2a2a2a" stroke="white" stroke-width="2"/>
-  <text x="975" y="94" text-anchor="middle" font-size="8" font-weight="800" fill="#2a2a2a">DEZ</text>
-  <rect x="929" y="125" width="92" height="22" rx="4" fill="#2a2a2a"/>
-  <text x="975" y="140" text-anchor="middle" font-size="7" font-weight="800" fill="white">Pós-produção</text>
-  <rect x="929" y="153" width="92" height="56" rx="5" fill="#38a349"/>
-  <text x="975" y="166" text-anchor="middle" font-size="6.5" font-weight="800" fill="white">Produtor Cultural</text>
-  <text x="975" y="179" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">Desmontagem da</text>
-  <text x="975" y="189" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">exposição +</text>
-  <text x="975" y="199" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">organização de</text>
-  <rect x="929" y="215" width="92" height="56" rx="5" fill="#38a349"/>
-  <text x="975" y="228" text-anchor="middle" font-size="6.5" font-weight="800" fill="white">Produtor Cultural</text>
-  <text x="975" y="241" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">Contato com</text>
-  <text x="975" y="251" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">assessoria de</text>
-  <text x="975" y="261" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.92)">imprensa</text>
-  <rect x="100" y="371" width="10" height="10" rx="2" fill="#e07b20"/>
-  <text x="115" y="380" font-size="8" fill="#6b7f95">Pesquisadora Cultural</text>
-  <rect x="310" y="371" width="10" height="10" rx="2" fill="#e0c520"/>
-  <text x="325" y="380" font-size="8" fill="#6b7f95">Ilustrador</text>
-  <rect x="430" y="371" width="10" height="10" rx="2" fill="#2858a0"/>
-  <text x="445" y="380" font-size="8" fill="#6b7f95">Game Designer</text>
-  <rect x="580" y="371" width="10" height="10" rx="2" fill="#38a349"/>
-  <text x="595" y="380" font-size="8" fill="#6b7f95">Produtor Cultural</text>
-  <text x="566" y="409" text-anchor="middle" font-size="7.5" fill="#9aabb8" font-style="italic">Datas de setembro a novembro a confirmar com a escola participante.</text>
+  <!-- ============ MAI ============ -->
+  <line x1="85" y1="110" x2="85" y2="125" stroke="#6b7f95" stroke-width="1"/>
+  <circle cx="85" cy="110" r="5" fill="#1a2e3b" stroke="white" stroke-width="2"/>
+  <text x="85" y="96" text-anchor="middle" font-size="9" font-weight="800" fill="#1a2e3b">MAI</text>
+  <rect x="35" y="125" width="100" height="20" rx="4" fill="#2858a0"/>
+  <text x="85" y="139" text-anchor="middle" font-size="8" font-weight="800" fill="white">Produção</text>
+  <!-- Pesquisadora -->
+  <rect x="35" y="153" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="85" y="175" text-anchor="middle" font-size="16">🔍</text>
+  <text x="85" y="199" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Pesquisadora</text>
+  <text x="85" y="215" text-anchor="middle" font-size="7" fill="#6b7f95">Conceituação</text>
+  <text x="85" y="227" text-anchor="middle" font-size="7" fill="#6b7f95">dos personagens</text>
+  <!-- Game Designer -->
+  <rect x="35" y="261" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="85" y="283" text-anchor="middle" font-size="16">🎮</text>
+  <text x="85" y="307" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Game Designer</text>
+  <text x="85" y="323" text-anchor="middle" font-size="7" fill="#6b7f95">Início da</text>
+  <text x="85" y="335" text-anchor="middle" font-size="7" fill="#6b7f95">produção do jogo</text>
+
+  <!-- ============ JUN ============ -->
+  <line x1="221" y1="110" x2="221" y2="125" stroke="#6b7f95" stroke-width="1"/>
+  <circle cx="221" cy="110" r="5" fill="#1a2e3b" stroke="white" stroke-width="2"/>
+  <text x="221" y="96" text-anchor="middle" font-size="9" font-weight="800" fill="#1a2e3b">JUN</text>
+  <rect x="171" y="125" width="100" height="20" rx="4" fill="#2858a0"/>
+  <text x="221" y="139" text-anchor="middle" font-size="8" font-weight="800" fill="white">Produção</text>
+  <!-- Ilustrador -->
+  <rect x="171" y="153" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="221" y="175" text-anchor="middle" font-size="16">🎨</text>
+  <text x="221" y="199" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Ilustrador</text>
+  <text x="221" y="215" text-anchor="middle" font-size="7" fill="#6b7f95">Ilustração dos</text>
+  <text x="221" y="227" text-anchor="middle" font-size="7" fill="#6b7f95">personagens</text>
+  <!-- Game Designer -->
+  <rect x="171" y="261" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="221" y="283" text-anchor="middle" font-size="16">🎮</text>
+  <text x="221" y="307" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Game Designer</text>
+  <text x="221" y="323" text-anchor="middle" font-size="7" fill="#6b7f95">Finalização</text>
+  <text x="221" y="335" text-anchor="middle" font-size="7" fill="#6b7f95">do jogo</text>
+  <!-- Articulador Educacional -->
+  <rect x="171" y="369" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="221" y="391" text-anchor="middle" font-size="16">🏫</text>
+  <text x="221" y="415" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Articulador Educ.</text>
+  <text x="221" y="431" text-anchor="middle" font-size="7" fill="#6b7f95">Contato com</text>
+  <text x="221" y="443" text-anchor="middle" font-size="7" fill="#6b7f95">secretarias e escolas</text>
+
+  <!-- ============ JUL ============ -->
+  <line x1="357" y1="110" x2="357" y2="125" stroke="#6b7f95" stroke-width="1"/>
+  <circle cx="357" cy="110" r="5" fill="#1a2e3b" stroke="white" stroke-width="2"/>
+  <text x="357" y="96" text-anchor="middle" font-size="9" font-weight="800" fill="#1a2e3b">JUL</text>
+  <rect x="307" y="125" width="100" height="20" rx="4" fill="#2858a0"/>
+  <text x="357" y="139" text-anchor="middle" font-size="8" font-weight="800" fill="white">Produção</text>
+  <!-- Game Designer -->
+  <rect x="307" y="153" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="357" y="175" text-anchor="middle" font-size="16">🎮</text>
+  <text x="357" y="199" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Game Designer</text>
+  <text x="357" y="215" text-anchor="middle" font-size="7" fill="#6b7f95">Testes do jogo</text>
+  <!-- Articulador Educacional -->
+  <rect x="307" y="261" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="357" y="283" text-anchor="middle" font-size="16">🏫</text>
+  <text x="357" y="307" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Articulador Educ.</text>
+  <text x="357" y="323" text-anchor="middle" font-size="7" fill="#6b7f95">Treinamento</text>
+  <text x="357" y="335" text-anchor="middle" font-size="7" fill="#6b7f95">na plataforma</text>
+  <!-- Produtor Cultural -->
+  <rect x="307" y="369" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="357" y="391" text-anchor="middle" font-size="16">🎭</text>
+  <text x="357" y="415" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Produtor Cultural</text>
+  <text x="357" y="431" text-anchor="middle" font-size="7" fill="#6b7f95">Treinamento</text>
+  <text x="357" y="443" text-anchor="middle" font-size="7" fill="#6b7f95">na plataforma</text>
+
+  <!-- ============ AGO ============ -->
+  <line x1="493" y1="110" x2="493" y2="125" stroke="#6b7f95" stroke-width="1"/>
+  <circle cx="493" cy="110" r="5" fill="#1a2e3b" stroke="white" stroke-width="2"/>
+  <text x="493" y="96" text-anchor="middle" font-size="9" font-weight="800" fill="#1a2e3b">AGO</text>
+  <rect x="443" y="125" width="100" height="20" rx="4" fill="#2858a0"/>
+  <text x="493" y="139" text-anchor="middle" font-size="8" font-weight="800" fill="white">Mobilização</text>
+  <!-- Articulador Educacional - Apresentação -->
+  <rect x="443" y="153" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="493" y="175" text-anchor="middle" font-size="16">🏫</text>
+  <text x="493" y="199" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Articulador Educ.</text>
+  <text x="493" y="215" text-anchor="middle" font-size="7" fill="#6b7f95">Apresentação às</text>
+  <text x="493" y="227" text-anchor="middle" font-size="7" fill="#6b7f95">escolas e turmas</text>
+  <!-- Articulador Educacional - Mobilização -->
+  <rect x="443" y="261" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="493" y="283" text-anchor="middle" font-size="16">🏫</text>
+  <text x="493" y="307" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Articulador Educ.</text>
+  <text x="493" y="323" text-anchor="middle" font-size="7" fill="#6b7f95">Fechamento da</text>
+  <text x="493" y="335" text-anchor="middle" font-size="7" fill="#6b7f95">mobilização</text>
+
+  <!-- ============ SET ============ -->
+  <line x1="629" y1="110" x2="629" y2="125" stroke="#6b7f95" stroke-width="1"/>
+  <circle cx="629" cy="110" r="5" fill="#1a2e3b" stroke="white" stroke-width="2"/>
+  <text x="629" y="96" text-anchor="middle" font-size="9" font-weight="800" fill="#1a2e3b">SET</text>
+  <rect x="579" y="125" width="100" height="20" rx="4" fill="#2858a0"/>
+  <text x="629" y="139" text-anchor="middle" font-size="8" font-weight="800" fill="white">Jornada</text>
+  <!-- Articulador Educacional -->
+  <rect x="579" y="153" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="629" y="175" text-anchor="middle" font-size="16">🏫</text>
+  <text x="629" y="199" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Articulador Educ.</text>
+  <text x="629" y="215" text-anchor="middle" font-size="7" fill="#6b7f95">Acompanhamento</text>
+  <text x="629" y="227" text-anchor="middle" font-size="7" fill="#6b7f95">da jornada</text>
+  <!-- Produtor Cultural -->
+  <rect x="579" y="261" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="629" y="283" text-anchor="middle" font-size="16">🎭</text>
+  <text x="629" y="307" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Produtor Cultural</text>
+  <text x="629" y="323" text-anchor="middle" font-size="7" fill="#6b7f95">Preparação</text>
+  <text x="629" y="335" text-anchor="middle" font-size="7" fill="#6b7f95">territorial</text>
+
+  <!-- ============ OUT ============ -->
+  <line x1="765" y1="110" x2="765" y2="125" stroke="#6b7f95" stroke-width="1"/>
+  <circle cx="765" cy="110" r="5" fill="#1a2e3b" stroke="white" stroke-width="2"/>
+  <text x="765" y="96" text-anchor="middle" font-size="9" font-weight="800" fill="#1a2e3b">OUT</text>
+  <rect x="715" y="125" width="100" height="20" rx="4" fill="#2858a0"/>
+  <text x="765" y="139" text-anchor="middle" font-size="8" font-weight="800" fill="white">Curadoria</text>
+  <!-- Articulador Educacional -->
+  <rect x="715" y="153" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="765" y="175" text-anchor="middle" font-size="16">🏫</text>
+  <text x="765" y="199" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Articulador Educ.</text>
+  <text x="765" y="215" text-anchor="middle" font-size="7" fill="#6b7f95">Coleta dos</text>
+  <text x="765" y="227" text-anchor="middle" font-size="7" fill="#6b7f95">projetos</text>
+  <!-- Produtor Cultural -->
+  <rect x="715" y="261" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="765" y="283" text-anchor="middle" font-size="16">🎭</text>
+  <text x="765" y="307" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Produtor Cultural</text>
+  <text x="765" y="323" text-anchor="middle" font-size="7" fill="#6b7f95">Curadoria e</text>
+  <text x="765" y="335" text-anchor="middle" font-size="7" fill="#6b7f95">conexão com artistas</text>
+  <!-- Assessoria de Imprensa -->
+  <rect x="715" y="369" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="765" y="391" text-anchor="middle" font-size="16">📰</text>
+  <text x="765" y="415" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Assessoria Impr.</text>
+  <text x="765" y="431" text-anchor="middle" font-size="7" fill="#6b7f95">Pré-divulgação</text>
+  <text x="765" y="443" text-anchor="middle" font-size="7" fill="#6b7f95">da exposição</text>
+
+  <!-- ============ NOV ============ -->
+  <line x1="901" y1="110" x2="901" y2="125" stroke="#6b7f95" stroke-width="1"/>
+  <circle cx="901" cy="110" r="5" fill="#1a2e3b" stroke="white" stroke-width="2"/>
+  <text x="901" y="96" text-anchor="middle" font-size="9" font-weight="800" fill="#1a2e3b">NOV</text>
+  <rect x="851" y="125" width="100" height="20" rx="4" fill="#2858a0"/>
+  <text x="901" y="139" text-anchor="middle" font-size="8" font-weight="800" fill="white">Exposição</text>
+  <!-- Articulador Educacional -->
+  <rect x="851" y="153" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="901" y="175" text-anchor="middle" font-size="16">🏫</text>
+  <text x="901" y="199" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Articulador Educ.</text>
+  <text x="901" y="215" text-anchor="middle" font-size="7" fill="#6b7f95">Encerramento da</text>
+  <text x="901" y="227" text-anchor="middle" font-size="7" fill="#6b7f95">articulação</text>
+  <!-- Produtor Cultural -->
+  <rect x="851" y="261" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="901" y="283" text-anchor="middle" font-size="16">🎭</text>
+  <text x="901" y="307" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Produtor Cultural</text>
+  <text x="901" y="323" text-anchor="middle" font-size="7" fill="#6b7f95">Realização da</text>
+  <text x="901" y="335" text-anchor="middle" font-size="7" fill="#6b7f95">exposição</text>
+  <!-- Assessoria de Imprensa -->
+  <rect x="851" y="369" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="901" y="391" text-anchor="middle" font-size="16">📰</text>
+  <text x="901" y="415" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Assessoria Impr.</text>
+  <text x="901" y="431" text-anchor="middle" font-size="7" fill="#6b7f95">Lançamento</text>
+  <text x="901" y="443" text-anchor="middle" font-size="7" fill="#6b7f95">da exposição</text>
+
+  <!-- ============ DEZ ============ -->
+  <line x1="1037" y1="110" x2="1037" y2="125" stroke="#6b7f95" stroke-width="1"/>
+  <circle cx="1037" cy="110" r="5" fill="#1a2e3b" stroke="white" stroke-width="2"/>
+  <text x="1037" y="96" text-anchor="middle" font-size="9" font-weight="800" fill="#1a2e3b">DEZ</text>
+  <rect x="987" y="125" width="100" height="20" rx="4" fill="#2858a0"/>
+  <text x="1037" y="139" text-anchor="middle" font-size="8" font-weight="800" fill="white">Pós-produção</text>
+  <!-- Produtor Cultural -->
+  <rect x="987" y="153" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="1037" y="175" text-anchor="middle" font-size="16">🎭</text>
+  <text x="1037" y="199" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Produtor Cultural</text>
+  <text x="1037" y="215" text-anchor="middle" font-size="7" fill="#6b7f95">Desmontagem e</text>
+  <text x="1037" y="227" text-anchor="middle" font-size="7" fill="#6b7f95">documentação</text>
+  <!-- Assessoria de Imprensa -->
+  <rect x="987" y="261" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="1037" y="283" text-anchor="middle" font-size="16">📰</text>
+  <text x="1037" y="307" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Assessoria Impr.</text>
+  <text x="1037" y="323" text-anchor="middle" font-size="7" fill="#6b7f95">Cobertura</text>
+  <text x="1037" y="335" text-anchor="middle" font-size="7" fill="#6b7f95">pós-evento</text>
+
+  <!-- ============ LEGENDA ============ -->
+  <line x1="100" y1="500" x2="1032" y2="500" stroke="#e8eef4" stroke-width="1"/>
+  <text x="155" y="530" text-anchor="middle" font-size="11">🔍</text>
+  <text x="175" y="534" font-size="9" fill="#6b7f95">Pesquisadora Cultural</text>
+  <text x="345" y="530" text-anchor="middle" font-size="11">🎨</text>
+  <text x="365" y="534" font-size="9" fill="#6b7f95">Ilustrador</text>
+  <text x="475" y="530" text-anchor="middle" font-size="11">🎮</text>
+  <text x="495" y="534" font-size="9" fill="#6b7f95">Game Designer</text>
+  <text x="620" y="530" text-anchor="middle" font-size="11">🏫</text>
+  <text x="640" y="534" font-size="9" fill="#6b7f95">Articulador Educacional</text>
+  <text x="800" y="530" text-anchor="middle" font-size="11">🎭</text>
+  <text x="820" y="534" font-size="9" fill="#6b7f95">Produtor Cultural</text>
+  <text x="945" y="530" text-anchor="middle" font-size="11">📰</text>
+  <text x="965" y="534" font-size="9" fill="#6b7f95">Assessoria de Imprensa</text>
+  <text x="566" y="565" text-anchor="middle" font-size="8.5" fill="#9aabb8" font-style="italic"></text>
 </svg>
       </div>
 
@@ -1724,37 +2064,37 @@
         <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:#f9fbfd;border-bottom:1px solid rgba(40,88,160,0.07);">
           <div style="font-size:12px;font-weight:700;color:#468182;">Junho</div>
           <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção</div>
-          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Ilustrador:</strong> ilustração dos personagens.<br><strong>Game Designer:</strong> finalização da produção do jogo.<br><strong>Produtor Cultural:</strong> contato com escolas e secretarias.</div>
+          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Ilustrador:</strong> ilustração dos personagens.<br><strong>Game Designer:</strong> finalização do jogo.<br><strong>Articulador Educacional:</strong> contato com secretarias e escolas.</div>
         </div>
         <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:white;border-bottom:1px solid rgba(40,88,160,0.07);">
           <div style="font-size:12px;font-weight:700;color:#468182;">Julho</div>
           <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção</div>
-          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Game Designer:</strong> testes do jogo.<br><strong>Produtor Cultural:</strong> recebe treinamento da plataforma.</div>
+          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Game Designer:</strong> testes do jogo.<br><strong>Articulador Educacional:</strong> treinamento na plataforma.<br><strong>Produtor Cultural:</strong> treinamento na plataforma.</div>
         </div>
         <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:#f9fbfd;border-bottom:1px solid rgba(40,88,160,0.07);">
           <div style="font-size:12px;font-weight:700;color:#5fb670;">Agosto</div>
-          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção</div>
-          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Produtor Cultural:</strong> contato com assessoria de imprensa.</div>
+          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Mobilização</div>
+          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Articulador Educacional:</strong> apresentação às escolas e turmas.<br><strong>Articulador Educacional:</strong> fechamento da mobilização.</div>
         </div>
         <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:white;border-bottom:1px solid rgba(40,88,160,0.07);">
           <div style="font-size:12px;font-weight:700;color:#5fb670;">Setembro</div>
-          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção</div>
-          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Produtor Cultural:</strong> pré-produção da exposição.</div>
+          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Jornada</div>
+          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Articulador Educacional:</strong> acompanhamento da jornada.<br><strong>Produtor Cultural:</strong> preparação territorial.</div>
         </div>
         <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:#f9fbfd;border-bottom:1px solid rgba(40,88,160,0.07);">
           <div style="font-size:12px;font-weight:700;color:#5fb670;">Outubro</div>
-          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção</div>
-          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Produtor Cultural:</strong> recebimento de trabalhos de alunos.</div>
+          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Curadoria</div>
+          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Articulador Educacional:</strong> coleta dos projetos.<br><strong>Produtor Cultural:</strong> curadoria e conexão com artistas.<br><strong>Assessoria de Imprensa:</strong> pré-divulgação da exposição.</div>
         </div>
         <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:white;border-bottom:1px solid rgba(40,88,160,0.07);">
           <div style="font-size:12px;font-weight:700;color:#38a349;">Novembro</div>
-          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção</div>
-          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Produtor Cultural:</strong> lançamento da exposição + assessoria de imprensa.</div>
+          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Exposição</div>
+          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Articulador Educacional:</strong> encerramento da articulação.<br><strong>Produtor Cultural:</strong> realização da exposição.<br><strong>Assessoria de Imprensa:</strong> lançamento da exposição.</div>
         </div>
         <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:#f9fbfd;">
           <div style="font-size:12px;font-weight:700;color:#1a2e3b;">Dezembro</div>
           <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Pós-produção</div>
-          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Produtor Cultural:</strong> desmontagem da exposição + organização de material.<br><strong>Produtor Cultural:</strong> contato com assessoria de imprensa.</div>
+          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Produtor Cultural:</strong> desmontagem da exposição e documentação.<br><strong>Assessoria de Imprensa:</strong> cobertura pós-evento.</div>
         </div>
         </div>
       </div>
@@ -1762,7 +2102,7 @@
 
     <div class="divider"></div>
     <div class="page-nav">
-      <button class="nav-btn" onclick="goTo(5)">← Exposição</button>
+      <button class="nav-btn" onclick="goTo(6)">← Exposição</button>
       <span class="page-indicator">Fluxo e Cronograma</span>
       <button class="nav-btn next" onclick="goTo(0)" style="background:var(--teal); border-color:var(--teal);">↺ Voltar ao Início</button>
     </div>
@@ -1771,7 +2111,7 @@
   </main>
 
 <script>
-  const totalPages = 7;
+  const totalPages = 8;
   let current = 0;
 
   function goTo(index) {
