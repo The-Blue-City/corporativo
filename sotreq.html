@@ -1600,6 +1600,19 @@
       .addTo(me)
       .bindPopup('<b style="font-family:Montserrat,sans-serif;">Sotreq Palmas</b>');
   }
+
+  // Abertura direta de página via URL: ?page=6 ou #page-6
+  (function openFromURL() {
+    const params = new URLSearchParams(window.location.search);
+    const queryPage = params.get('page');
+    const hashMatch = window.location.hash.match(/^#page-(\d+)$/);
+    const target = queryPage !== null ? parseInt(queryPage, 10)
+                   : hashMatch ? parseInt(hashMatch[1], 10)
+                   : null;
+    if (target !== null && target >= 0 && target < totalPages) {
+      goTo(target);
+    }
+  })();
 </script>
 </body>
 </html>
