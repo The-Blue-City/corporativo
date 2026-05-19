@@ -183,23 +183,17 @@
   /* Layout interno do card de cima: texto à esquerda + imagem à direita */
   .benefit-card.benefit-card-with-image { flex-direction:row; gap:20px; align-items:flex-start; }
   .benefit-card.benefit-card-with-image .benefit-card-body { order:1; }
-  .benefit-card.benefit-card-with-image .benefit-image-slot { order:2; align-self:flex-start; background:white; }
+  .benefit-card.benefit-card-with-image .benefit-image-slot { order:2; align-self:flex-start; }
   /* Box 1 — Reconhecimento (azul) */
   .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(1) { background:var(--blue-light); border:1px solid rgba(40,88,160,0.25); border-left:6px solid var(--blue); }
   .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(1) .benefit-icon { background:rgba(40,88,160,0.18); }
-  .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(1) .benefit-image-slot { border-color:rgba(40,88,160,0.3); }
-  .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(1) .benefit-image-slot-label { color:var(--blue); }
   .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(1) .benefit-tag { background:rgba(40,88,160,0.15); color:var(--blue); }
   /* Box 2 — Estudantes (verde) */
   .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(2) { background:var(--green-light); border:1px solid rgba(95,182,112,0.3); border-left:6px solid var(--green); }
   .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(2) .benefit-icon { background:rgba(95,182,112,0.25); }
-  .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(2) .benefit-image-slot { border-color:rgba(95,182,112,0.4); }
-  .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(2) .benefit-image-slot-label { color:#2d7a3e; }
   .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(2) .benefit-tag { background:rgba(95,182,112,0.2); color:#2d7a3e; }
-  .benefit-image-slot { flex-shrink:0; width:120px; height:120px; background:linear-gradient(135deg,rgba(40,88,160,0.05),rgba(95,182,112,0.05)); border:2px dashed rgba(40,88,160,0.2); border-radius:12px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; text-align:center; padding:8px; transition:all 0.25s; overflow:hidden; }
-  .benefit-image-slot:hover { border-color:rgba(40,88,160,0.35); background:linear-gradient(135deg,rgba(40,88,160,0.07),rgba(95,182,112,0.07)); }
-  .benefit-image-slot-icon { font-size:28px; opacity:0.6; line-height:1; }
-  .benefit-image-slot-label { font-size:9px; font-weight:700; color:var(--blue); letter-spacing:0.6px; text-transform:uppercase; line-height:1.2; }
+  .benefit-image-slot { flex-shrink:0; width:200px; height:200px; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+  .benefit-image-slot svg { width:100%; height:100%; display:block; }
   .benefit-image-slot img { width:100%; height:100%; object-fit:contain; display:block; }
   .benefit-card-body { display:flex; flex-direction:column; gap:10px; flex:1; min-width:0; }
   .benefit-card { background:white; border-radius:14px; padding:22px 22px; border:1px solid rgba(40,88,160,0.08); box-shadow:0 2px 12px rgba(0,0,0,0.04); display:flex; flex-direction:column; gap:12px; transition:all 0.25s; border-left:4px solid var(--green); }
@@ -291,6 +285,7 @@
   @media (max-width:1100px) and (min-width:881px) {
     .pipeline-grid { grid-template-columns:repeat(3,1fr); }
     .pipeline-grid-4 { grid-template-columns:repeat(2,1fr); }
+    .benefit-image-slot { width:160px; height:160px; }
   }
 
   /* ── RESPONSIVE ── */
@@ -310,7 +305,7 @@
     .grid-2, .grid-3, .grid-4, .benefit-grid-top, .benefit-grid-bottom, .legacy-grid { grid-template-columns:1fr; gap:14px; }
     .benefit-grid-top { margin-bottom:14px; }
     .benefit-card.benefit-card-with-image { flex-direction:column; align-items:stretch; gap:14px; }
-    .benefit-image-slot { width:100%; height:140px; }
+    .benefit-image-slot { width:100%; height:220px; }
     .pipeline-grid { grid-template-columns:repeat(2,1fr); gap:12px; }
     .pipeline-card { padding:18px 14px; }
     .context-block { padding:28px 24px; }
@@ -489,9 +484,36 @@
           <span class="benefit-tag">Selo institucional permanente</span>
         </div>
         <div class="benefit-image-slot">
-          <!-- Substituir por: <img src="caminho/selo-escola-parceira.png" alt="Selo de escola parceira"> -->
-          <div class="benefit-image-slot-icon">🏅</div>
-          <div class="benefit-image-slot-label">Imagem do selo</div>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" role="img" aria-label="Selo de Escola Parceira — Missão Termômetro Zero, Palmas, Tocantins, 2026">
+            <title>Selo de Escola Parceira</title>
+            <defs>
+              <path id="seloTopArc" d="M 75,250 A 175,175 0 0 1 425,250" fill="none"/>
+              <path id="seloBottomArc" d="M 65,250 A 185,185 0 0 0 435,250" fill="none"/>
+            </defs>
+            <circle cx="250" cy="250" r="240" fill="#1a2e3b"/>
+            <circle cx="250" cy="250" r="232" fill="none" stroke="#5fb670" stroke-width="1.5" stroke-dasharray="2 6"/>
+            <circle cx="250" cy="250" r="222" fill="none" stroke="#2858a0" stroke-width="2.5"/>
+            <circle cx="250" cy="250" r="214" fill="none" stroke="#468182" stroke-width="0.6" opacity="0.5"/>
+            <g fill="#5fb670">
+              <circle cx="250" cy="40" r="3.5"/>
+              <circle cx="250" cy="460" r="3.5"/>
+              <circle cx="40" cy="250" r="3.5"/>
+              <circle cx="460" cy="250" r="3.5"/>
+            </g>
+            <text font-family="Montserrat, sans-serif" font-size="17" font-weight="700" fill="#5fb670" letter-spacing="5">
+              <textPath href="#seloTopArc" startOffset="50%" text-anchor="middle">ESCOLA PARCEIRA · 2026</textPath>
+            </text>
+            <text font-family="Montserrat, sans-serif" font-size="11" font-weight="600" fill="#468182" letter-spacing="3.5">
+              <textPath href="#seloBottomArc" startOffset="50%" text-anchor="middle">VERIFICADO EM BLOCKCHAIN</textPath>
+            </text>
+            <line x1="200" y1="175" x2="300" y2="175" stroke="#468182" stroke-width="0.8"/>
+            <text x="250" y="220" font-family="Montserrat, sans-serif" font-size="30" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="-0.3">MISSÃO</text>
+            <text x="250" y="252" font-family="Montserrat, sans-serif" font-size="30" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="-0.3">TERMÔMETRO</text>
+            <text x="250" y="289" font-family="Montserrat, sans-serif" font-size="34" font-weight="800" fill="#5fb670" text-anchor="middle" letter-spacing="-0.3">ZERO</text>
+            <line x1="195" y1="315" x2="305" y2="315" stroke="#468182" stroke-width="0.8"/>
+            <text x="250" y="338" font-family="Montserrat, sans-serif" font-size="10.5" font-weight="700" fill="#468182" text-anchor="middle" letter-spacing="2.5">PALMAS · TOCANTINS · BRASIL</text>
+            <text x="250" y="368" font-family="Montserrat, sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="2.5">THE BLUE CITY</text>
+          </svg>
         </div>
       </div>
 
@@ -505,9 +527,29 @@
           <span class="benefit-tag">Educação ambiental + trajetória profissional</span>
         </div>
         <div class="benefit-image-slot">
-          <!-- Substituir por: <img src="caminho/certificado-exemplo.png" alt="Exemplo de certificado"> -->
-          <div class="benefit-image-slot-icon">🎓</div>
-          <div class="benefit-image-slot-label">Imagem do certificado</div>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 30 600 600" role="img" aria-label="Badge do Estudante — Missão Termômetro Zero, Palmas, Tocantins, 2026">
+            <title>Badge do Estudante</title>
+            <polygon points="300,30 568,180 568,480 300,630 32,480 32,180" fill="#f5d976"/>
+            <polygon points="300,55 546,193 546,467 300,605 54,467 54,193" fill="none" stroke="#b8801f" stroke-width="2.5"/>
+            <polygon points="300,80 524,206 524,454 300,580 76,454 76,206" fill="none" stroke="#b8801f" stroke-width="0.8" stroke-dasharray="3 5" opacity="0.55"/>
+            <g fill="#b8801f">
+              <circle cx="300" cy="30" r="5"/>
+              <circle cx="568" cy="180" r="5"/>
+              <circle cx="568" cy="480" r="5"/>
+              <circle cx="300" cy="630" r="5"/>
+              <circle cx="32" cy="480" r="5"/>
+              <circle cx="32" cy="180" r="5"/>
+            </g>
+            <text x="300" y="155" font-family="Montserrat, sans-serif" font-size="13" font-weight="700" fill="#7a5510" text-anchor="middle" letter-spacing="5">CONQUISTA · 2026</text>
+            <line x1="240" y1="175" x2="360" y2="175" stroke="#b8801f" stroke-width="1"/>
+            <text x="300" y="265" font-family="Montserrat, sans-serif" font-size="38" font-weight="800" fill="#1a2e3b" text-anchor="middle" letter-spacing="-0.3">MISSÃO</text>
+            <text x="300" y="308" font-family="Montserrat, sans-serif" font-size="38" font-weight="800" fill="#1a2e3b" text-anchor="middle" letter-spacing="-0.3">TERMÔMETRO</text>
+            <text x="300" y="355" font-family="Montserrat, sans-serif" font-size="42" font-weight="800" fill="#2d7a3e" text-anchor="middle" letter-spacing="-0.3">ZERO</text>
+            <line x1="220" y1="400" x2="380" y2="400" stroke="#b8801f" stroke-width="1"/>
+            <text x="300" y="430" font-family="Montserrat, sans-serif" font-size="12" font-weight="700" fill="#1a2e3b" text-anchor="middle" letter-spacing="2.8">PALMAS · TOCANTINS · BRASIL</text>
+            <text x="300" y="465" font-family="Montserrat, sans-serif" font-size="11" font-weight="700" fill="#7a5510" text-anchor="middle" letter-spacing="3.5">VERIFICADO EM BLOCKCHAIN</text>
+            <text x="300" y="500" font-family="Montserrat, sans-serif" font-size="11" font-weight="700" fill="#1a2e3b" text-anchor="middle" letter-spacing="2.8">THE BLUE CITY</text>
+          </svg>
         </div>
       </div>
 
