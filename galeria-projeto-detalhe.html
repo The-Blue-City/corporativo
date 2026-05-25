@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plantio de mudas nativas — Projeto · Galeria de Projetos</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Montserrat', sans-serif; background: #f4f8fc; color: #1a2e3b; }
+
+  /* TOPBAR */
+  .topbar {
+    background: #fff; border-bottom: 1px solid #e0e8f0;
+    padding: 14px 40px; display: flex;
+    align-items: center; justify-content: space-between;
+  }
+  .topbar-logo { display: flex; align-items: center; gap: 10px; }
+  .topbar-logo span { font-size: 15px; font-weight: 800; color: #1a2e3b; }
+  .topbar-logo span em { font-style: normal; color: #5fb670; }
+  .topbar-nav { display: flex; gap: 28px; }
+  .topbar-nav a { font-size: 13px; color: #6b7f95; text-decoration: none; font-weight: 500; }
+  .topbar-nav a.active { color: #2858a0; font-weight: 700; }
+  .topbar-user { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #2858a0; font-weight: 600; }
+
+  /* BREADCRUMB */
+  .breadcrumb-bar {
+    background: #fff; padding: 10px 40px;
+    border-bottom: 1px solid #e0e8f0;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .breadcrumb-bar a { font-size: 12px; color: #2858a0; font-weight: 600; text-decoration: none; }
+  .breadcrumb-bar a:hover { text-decoration: underline; }
+  .breadcrumb-bar span { color: #c0c8d4; font-size: 12px; }
+  .breadcrumb-bar strong { font-size: 12px; color: #1a2e3b; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #e8f0f8 0%, #e2f0e2 100%);
+    padding: 40px 40px 32px; text-align: center;
+  }
+  .hero-tags { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 14px; }
+  .tag { font-size: 11px; font-weight: 600; padding: 4px 14px; border-radius: 20px; }
+  .tag-theme   { background: #d4f0d9; color: #2a7a3a; }
+  .tag-done    { background: #d6e4f7; color: #2858a0; }
+  .hero-meta { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 12px; color: #6b7f95; margin-bottom: 14px; flex-wrap: wrap; }
+  .hero h1 { font-size: 26px; font-weight: 800; color: #2858a0; margin-bottom: 6px; }
+  .hero h1 em { font-style: normal; color: #5fb670; }
+  .hero-desc { font-size: 13px; color: #6b7f95; max-width: 580px; margin: 0 auto 28px; line-height: 1.7; }
+
+  .stats-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+  .stat-box {
+    background: #fff; border: 1px solid #e0e8f0;
+    border-radius: 10px; padding: 14px 28px; text-align: center; min-width: 120px;
+  }
+  .stat-box .val { font-size: 22px; font-weight: 800; line-height: 1; margin-bottom: 4px; }
+  .val-blue   { color: #2858a0; }
+  .val-teal   { color: #468182; }
+  .val-green  { color: #5fb670; }
+  .val-purple { color: #7c5cbf; }
+  .stat-box .lbl { font-size: 11px; color: #6b7f95; font-weight: 500; }
+
+  /* CONTENT */
+  .content { max-width: 900px; margin: 0 auto; padding: 36px 40px 56px; }
+
+  /* SECTION HEADING */
+  .section-heading {
+    font-size: 11px; font-weight: 700; letter-spacing: 1.2px;
+    text-transform: uppercase; color: #468182;
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 16px;
+  }
+  .section-heading::after {
+    content: ''; flex: 1; height: 1px; background: rgba(70,129,130,0.2);
+  }
+
+  /* AUTOR */
+  .author-block { margin-bottom: 40px; }
+  .author-card {
+    background: #fff; border: 1px solid #e0e8f0; border-radius: 14px;
+    padding: 22px 24px; display: flex; align-items: center; gap: 18px;
+  }
+  .author-avatar {
+    width: 60px; height: 60px; border-radius: 50%;
+    background: #d0e8e8; color: #468182;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 19px; font-weight: 800; flex-shrink: 0;
+  }
+  .author-info { flex: 1; }
+  .author-name { font-size: 15px; font-weight: 700; color: #1a2e3b; }
+  .author-meta { font-size: 12px; color: #6b7f95; margin-top: 2px; }
+  .author-journey {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 11px; color: #468182; font-weight: 600; margin-top: 8px;
+  }
+
+  /* ENTREGA */
+  .entrega-block { margin-bottom: 40px; }
+  .media-wrap {
+    width: 100%; aspect-ratio: 16/9;
+    background: #1a2e3b;
+    border-radius: 14px; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 14px;
+    border: 1px solid #e0e8f0;
+  }
+  .media-wrap iframe { width: 100%; height: 100%; border: none; }
+  .media-icon {
+    width: 60px; height: 60px; border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .media-wrap p { font-size: 13px; color: rgba(255,255,255,0.5); font-weight: 500; }
+  .media-wrap small { font-size: 11px; color: rgba(255,255,255,0.3); }
+  .entrega-meta {
+    display: flex; align-items: center; gap: 8px;
+    margin-top: 12px; font-size: 11px; color: #6b7f95;
+  }
+  .file-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: #fff; border: 1px solid #e0e8f0; border-radius: 20px;
+    padding: 5px 12px; font-size: 11px; color: #468182; font-weight: 600;
+  }
+
+  /* DESCRIÇÃO */
+  .desc-block { margin-bottom: 40px; }
+  .desc-card {
+    background: #fff; border: 1px solid #e0e8f0; border-radius: 12px;
+    padding: 22px 24px; font-size: 13px; color: #2c3e50; line-height: 1.8;
+  }
+
+  /* SHARE */
+  .share-block {
+    background: linear-gradient(135deg, #e8f0f8, #e2f0e2);
+    border-radius: 14px; padding: 28px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 16px;
+  }
+  .share-block h3 { font-size: 15px; font-weight: 700; color: #1a2e3b; margin-bottom: 4px; }
+  .share-block p { font-size: 12px; color: #6b7f95; }
+  .share-btn {
+    display: flex; align-items: center; gap: 7px;
+    background: #2858a0; color: white;
+    border: none; border-radius: 8px; padding: 10px 20px;
+    font-size: 13px; font-weight: 600; cursor: pointer;
+    font-family: 'Montserrat', sans-serif; transition: background 0.2s;
+  }
+  .share-btn:hover { background: #1a3a70; }
+
+  /* RELACIONADOS */
+  .related-block { margin-bottom: 16px; }
+  .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .rel-card {
+    background: #fff; border: 1px solid #e0e8f0; border-radius: 12px;
+    overflow: hidden; cursor: pointer; transition: box-shadow 0.2s, transform 0.2s;
+    text-decoration: none;
+  }
+  .rel-card:hover { box-shadow: 0 6px 20px rgba(40,88,160,0.1); transform: translateY(-2px); }
+  .rel-thumb { height: 90px; display: flex; align-items: center; justify-content: center; }
+  .thumb-teal  { background: #d0e8e8; }
+  .thumb-blue  { background: #d6e4f7; }
+  .thumb-green { background: #d4f0d9; }
+  .rel-body { padding: 12px 14px; }
+  .rel-title { font-size: 12px; font-weight: 700; color: #1a2e3b; line-height: 1.4; }
+  .rel-author { font-size: 11px; color: #6b7f95; margin-top: 3px; }
+
+  .footer-note {
+    font-size: 12px; color: #6b7f95;
+    text-align: center; margin-top: 28px; font-style: italic;
+  }
+
+  @media (max-width: 720px) {
+    .topbar-nav { display: none; }
+    .related-grid { grid-template-columns: 1fr; }
+    .author-card { flex-direction: column; text-align: center; align-items: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<nav class="topbar">
+  <div class="topbar-logo">
+    <svg width="32" height="32" viewBox="0 0 45.6 45.6" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="22.8" cy="22.8" r="18.4" fill="#001522"/>
+      <rect x="12.2" y="17.5" width="20.8" height="3.2" fill="#fff"/>
+      <path d="M31.7 23l-.2.2c-1.3 1.1-2.4 2.1-4.1 2.1s-2.5-.4-4.1-1.3c-2.1-1.1-3.9-1.7-5.6-1.7-2.8 0-4.6 1.6-6 2.9l-.2.2 2 2.4.2-.2c1.3-1.1 2.4-2.1 4.1-2.1s2.5.4 4.1 1.3c2.1 1.1 3.9 1.7 5.6 1.7 2.7 0 4.5-1.6 5.9-2.9l.2-.2-2-2.4z" fill="#0c9ed9"/>
+    </svg>
+    <span>The Blue <em>City</em></span>
+  </div>
+  <div class="topbar-nav">
+    <a href="#">Jornadas</a>
+    <a href="galeria-projetos.html" class="active">Galeria de Projetos</a>
+    <a href="#">Galeria de Eventos</a>
+    <a href="#">Performance dos Jogadores</a>
+  </div>
+  <div class="topbar-user">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2858a0" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    João Silva
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb-bar">
+  <a href="galeria-projetos.html">Galeria de Projetos</a>
+  <span>/</span>
+  <strong>Plantio de mudas nativas</strong>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tags">
+    <span class="tag tag-theme">Clima</span>
+    <span class="tag tag-done">Jornada concluída</span>
+  </div>
+  <div class="hero-meta">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#6b7f95" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Palmas, TO
+    <span style="color:#c0c8d4;">·</span>
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#6b7f95" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    março 2025
+    <span style="color:#c0c8d4;">·</span>
+    Termômetro Zero
+  </div>
+  <h1>Plantio de mudas <em>nativas</em></h1>
+  <p class="hero-desc">Projeto enviado na missão do mundo real da jornada Termômetro Zero — uma ação concreta de plantio de espécies nativas no entorno da escola, contribuindo para a redução de gases de efeito estufa na comunidade de Palmas.</p>
+  <div class="stats-row">
+    <div class="stat-box"><div class="val val-green">58</div><div class="lbl">Curtidas</div></div>
+    <div class="stat-box"><div class="val val-blue">210</div><div class="lbl">Visualizações</div></div>
+    <div class="stat-box"><div class="val val-teal">32</div><div class="lbl">Participantes</div></div>
+    <div class="stat-box"><div class="val val-purple">18/03</div><div class="lbl">Data da ação</div></div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- AUTOR -->
+  <div class="author-block">
+    <div class="section-heading">Autor do Projeto</div>
+    <div class="author-card">
+      <div class="author-avatar">JS</div>
+      <div class="author-info">
+        <p class="author-name">João Silva</p>
+        <p class="author-meta">Palmas, TO · Escola Técnica Estadual de Palmas</p>
+        <p class="author-journey">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#468182" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Jornada Termômetro Zero concluída · 3 de 3 etapas
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ENTREGA -->
+  <div class="entrega-block">
+    <div class="section-heading">Entrega da Missão</div>
+    <div class="media-wrap">
+      <div class="media-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.5"><polygon points="5,3 19,12 5,21"/></svg>
+      </div>
+      <p>Insira aqui o vídeo ou imagem do projeto enviado</p>
+      <small>Vídeo de até 2 MB ou arquivo PDF, PNG ou JPG</small>
+    </div>
+    <div class="entrega-meta">
+      <span class="file-pill">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        plantio-mudas-nativas.mp4
+      </span>
+      <span>Enviado em 18 de março de 2025</span>
+    </div>
+  </div>
+
+  <!-- DESCRIÇÃO -->
+  <div class="desc-block">
+    <div class="section-heading">Sobre o Projeto</div>
+    <div class="desc-card">
+      Após concluir as três etapas da jornada virtual Termômetro Zero, organizei com a minha turma um mutirão de plantio de mudas nativas no terreno ao lado da escola. Escolhemos espécies do cerrado adaptadas ao clima de Palmas, que ajudam a capturar carbono e a recuperar a vegetação local. A ação envolveu 32 alunos e foi acompanhada por um agrônomo voluntário, que orientou sobre o preparo do solo e o espaçamento das mudas. Nosso objetivo é transformar a área em um pequeno bosque-escola para as próximas turmas.
+    </div>
+  </div>
+
+  <!-- COMPARTILHAR -->
+  <div class="share-block">
+    <div>
+      <h3>Gostou deste projeto?</h3>
+      <p>Compartilhe e mostre o impacto real da comunidade.</p>
+    </div>
+    <button class="share-btn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      Compartilhar este projeto
+    </button>
+  </div>
+
+  <!-- RELACIONADOS -->
+  <div class="related-block" style="margin-top:40px;">
+    <div class="section-heading">Outros projetos da jornada</div>
+    <div class="related-grid">
+      <a href="galeria-projeto-detalhe.html" class="rel-card">
+        <div class="rel-thumb thumb-blue">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2858a0" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <div class="rel-body">
+          <p class="rel-title">Plano de redução de emissões</p>
+          <p class="rel-author">Maria Oliveira · Palmas, TO</p>
+        </div>
+      </a>
+      <a href="galeria-projeto-detalhe.html" class="rel-card">
+        <div class="rel-thumb thumb-green">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#5fb670" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+        </div>
+        <div class="rel-body">
+          <p class="rel-title">Horta comunitária escolar</p>
+          <p class="rel-author">Carlos Mendes · Palmas, TO</p>
+        </div>
+      </a>
+      <a href="galeria-projeto-detalhe.html" class="rel-card">
+        <div class="rel-thumb thumb-teal">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#468182" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+        </div>
+        <div class="rel-body">
+          <p class="rel-title">Compostagem em condomínio</p>
+          <p class="rel-author">Ana Ferreira · Palmas, TO</p>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <p class="footer-note">* Dados fictícios, demonstrativos</p>
+</div>
+
+</body>
+</html>
