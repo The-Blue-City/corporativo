@@ -1,0 +1,1975 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-i18n="page.title">The Blue City – Jornada Cultural</title>
+<meta name="description" content="Modelo cultural escalável que une jogos digitais, blockchain e expressão artística para transformar territórios urbanos.">
+
+<!-- Open Graph (Facebook, LinkedIn, WhatsApp, Slack) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Missão Cidade Azul – The Blue City">
+<meta property="og:description" content="Modelo cultural escalável que une jogos digitais, blockchain e expressão artística para transformar territórios urbanos.">
+<meta property="og:image" content="https://the-blue-city.github.io/content/TBC_OGApresentacao.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Missão Cidade Azul · The Blue City">
+<meta property="og:url" content="https://the-blue-city.github.io/corporativo/apresentacao-jornada-cultural.html">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:locale:alternate" content="en_US">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Missão Cidade Azul – The Blue City">
+<meta name="twitter:description" content="Modelo cultural escalável que une jogos digitais, blockchain e expressão artística para transformar territórios urbanos.">
+<meta name="twitter:image" content="https://the-blue-city.github.io/content/TBC_OGApresentacao.png">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #2858a0;
+    --teal: #468182;
+    --green: #5fb670;
+    --blue-light: #d6e4f7;
+    --teal-light: #d0e8e8;
+    --green-light: #d4f0d9;
+    --dark: #1a2e3b;
+    --text: #2c3e50;
+    --muted: #6b7f95;
+    --bg: #f4f8fc;
+    --bg-alt: #ffffff;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Montserrat',sans-serif; background:var(--bg-alt); color:var(--text); line-height:1.5; }
+
+  /* ── TOPBAR ── */
+  .topbar { position:sticky; top:0; z-index:100; background:rgba(18,30,51,0.96); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid rgba(255,255,255,0.08); }
+  .topbar-inner { position:relative; max-width:1180px; margin:0 auto; padding:14px 40px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+  .topbar-brand { display:flex; align-items:center; gap:14px; color:white; }
+  .topbar-logo { height:24px; width:auto; display:block; }
+  .topbar-brand-sub { font-size:10px; font-weight:600; color:rgba(255,255,255,0.55); letter-spacing:0.8px; text-transform:uppercase; padding-left:14px; border-left:1px solid rgba(255,255,255,0.15); }
+  .topbar-nav { display:flex; gap:6px; flex-wrap:wrap; }
+  .topbar-nav a { font-size:11px; font-weight:600; color:rgba(255,255,255,0.6); text-decoration:none; padding:6px 10px; border-radius:6px; transition:all 0.2s; letter-spacing:0.3px; }
+  .topbar-nav a:hover { background:rgba(255,255,255,0.08); color:white; }
+  .topbar-nav a.active { color:var(--green); background:rgba(95,182,112,0.12); }
+  .topbar-burger { display:none; width:38px; height:38px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:8px; cursor:pointer; padding:0; flex-direction:column; align-items:center; justify-content:center; gap:5px; transition:all 0.2s; }
+  .topbar-burger:hover { background:rgba(255,255,255,0.08); }
+  .topbar-burger span { display:block; width:18px; height:2px; background:white; border-radius:2px; transition:all 0.25s; }
+  .topbar-burger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+  .topbar-burger.open span:nth-child(2) { opacity:0; }
+  .topbar-burger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+  .lang-switcher { display:flex; gap:2px; padding:3px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:7px; }
+  .lang-btn { font-family:inherit; background:transparent; border:none; color:rgba(255,255,255,0.55); font-size:11px; font-weight:700; letter-spacing:0.5px; padding:5px 9px; border-radius:5px; cursor:pointer; transition:all 0.2s; }
+  .lang-btn:hover { color:white; background:rgba(255,255,255,0.06); }
+  .lang-btn.active { color:var(--dark); background:white; }
+
+  /* ── SECTIONS BASE ── */
+  section { padding:72px 40px; position:relative; }
+  section.tight { padding:56px 40px; }
+  .container { max-width:1180px; margin:0 auto; }
+  .container-narrow { max-width:920px; margin:0 auto; }
+  .section-alt { background:var(--bg); }
+  .section-dark { background:var(--dark); color:white; }
+
+  .eyebrow { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--teal); margin-bottom:18px; display:inline-flex; align-items:center; gap:10px; }
+  .eyebrow::before { content:''; width:24px; height:1.5px; background:var(--teal); }
+  .section-dark .eyebrow { color:var(--green); }
+  .section-dark .eyebrow::before { background:var(--green); }
+
+  h2.section-title { font-size:42px; font-weight:800; color:var(--dark); line-height:1.15; margin-bottom:18px; letter-spacing:-0.5px; }
+  .section-dark h2.section-title { color:white; }
+  .section-lead { font-size:17px; color:var(--muted); line-height:1.65; max-width:760px; margin-bottom:36px; }
+  .section-dark .section-lead { color:rgba(255,255,255,0.75); }
+
+  /* ── HERO (capa) ── */
+  .hero { background:linear-gradient(to bottom right,#1d4789 0%,#295b9c 35%,#468182 70%,#7fc596 100%); color:white; padding:120px 40px 100px; position:relative; overflow:hidden; }
+  .hero::before { content:''; position:absolute; top:0; left:0; right:0; height:5px; background:linear-gradient(90deg,var(--blue),var(--teal),var(--green)); }
+  .hero::after { content:''; position:absolute; bottom:-60px; right:-60px; width:380px; height:380px; border-radius:50%; background:radial-gradient(circle,rgba(255,255,255,0.08) 0%,transparent 70%); pointer-events:none; }
+  .hero-inner { max-width:1180px; margin:0 auto; position:relative; }
+  .hero-eyebrow { font-size:11px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:rgba(255,255,255,0.8); margin-bottom:24px; display:inline-flex; align-items:center; gap:12px; }
+  .hero-eyebrow::before { content:''; width:32px; height:1.5px; background:rgba(255,255,255,0.6); }
+  .hero-brand { font-size:22px; font-weight:800; letter-spacing:0.5px; margin-bottom:28px; }
+  .hero-title { font-size:46px; font-weight:800; line-height:1.1; max-width:600px; margin-bottom:28px; letter-spacing:-1px; }
+  .hero-desc { font-size:16px; color:rgba(255,255,255,0.9); max-width:640px; line-height:1.7; margin-bottom:0; }
+
+  /* Hero split layout */
+  .hero-split { display:grid; grid-template-columns:1.15fr 1fr; gap:48px; align-items:center; margin-bottom:56px; }
+  .hero-text { display:flex; flex-direction:column; }
+  .hero-map { display:flex; align-items:center; justify-content:center; position:relative; }
+  .hero-map svg { width:100%; max-width:520px; height:auto; display:block; }
+
+  /* Globo – oceano + continentes + pontos pulsando */
+  .globe-ocean path {
+    fill:rgba(255,255,255,0.05);
+    stroke:rgba(255,255,255,0.25);
+    stroke-width:1;
+  }
+  .globe-land path {
+    fill:rgba(255,255,255,0.18);
+    stroke:rgba(255,255,255,0.4);
+    stroke-width:0.5;
+    stroke-linejoin:round;
+    stroke-linecap:round;
+  }
+  .map-points circle { fill:rgba(255,255,255,0.95); }
+  .map-point circle:first-child { filter:drop-shadow(0 0 8px rgba(255,255,255,0.6)); }
+  .map-point-minor circle:first-child { fill:rgba(255,255,255,0.7); filter:drop-shadow(0 0 5px rgba(255,255,255,0.35)); }
+  .map-point-minor .pulse { fill:rgba(255,255,255,0.4); }
+  .map-point .pulse {
+    fill:rgba(255,255,255,0.6);
+    transform-origin:center;
+    transform-box:fill-box;
+    animation:mapPulse 3s ease-out infinite;
+    animation-delay:var(--delay,0s);
+  }
+  @keyframes mapPulse {
+    0%   { transform:scale(1);   opacity:0.7; }
+    70%  { transform:scale(3.5); opacity:0; }
+    100% { transform:scale(3.5); opacity:0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .map-point .pulse { animation:none; opacity:0.3; }
+  }
+  .hero-meta { display:inline-flex; align-items:center; gap:14px; padding:10px 18px; background:rgba(0,0,0,0.18); border:1px solid rgba(255,255,255,0.15); border-radius:24px; font-size:12px; font-weight:600; letter-spacing:0.5px; }
+  .hero-meta-dot { width:8px; height:8px; border-radius:50%; background:var(--green); }
+  .hero-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:0; }
+  .hero-stat-box { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:14px; padding:22px 24px; backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); transition:all 0.25s; }
+  .hero-stat-box:hover { background:rgba(255,255,255,0.12); border-color:rgba(255,255,255,0.25); transform:translateY(-2px); }
+  .hero-stat-value { font-size:38px; font-weight:800; color:white; line-height:1; margin-bottom:8px; }
+  .hero-stat-label { font-size:11px; font-weight:600; color:rgba(255,255,255,0.75); letter-spacing:0.8px; text-transform:uppercase; }
+  .hero-stat-icon { font-size:28px; line-height:1; margin-bottom:14px; }
+  .hero-stat-title { font-size:14px; font-weight:700; color:white; letter-spacing:0.3px; margin-bottom:8px; line-height:1.2; }
+  .hero-stat-desc { font-size:12px; color:rgba(255,255,255,0.78); line-height:1.55; }
+
+  /* ── CARDS ── */
+  .feature-card { background:white; border-radius:14px; padding:24px 26px; border:1px solid rgba(40,88,160,0.08); box-shadow:0 2px 12px rgba(0,0,0,0.04); transition:transform 0.25s,box-shadow 0.25s; }
+  .feature-card:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(40,88,160,0.1); }
+  .feature-card-header { display:flex; align-items:center; gap:14px; margin-bottom:12px; }
+  .feature-icon { width:42px; height:42px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
+  .fi-blue { background:var(--blue-light); } .fi-teal { background:var(--teal-light); } .fi-green { background:var(--green-light); }
+  .feature-card h3 { font-size:16px; font-weight:800; color:var(--dark); }
+  .feature-card p { font-size:13.5px; color:var(--muted); line-height:1.7; }
+
+  .info-card { background:var(--blue); border-radius:14px; padding:28px 32px; color:white; }
+  .info-card h3 { font-size:17px; font-weight:800; margin-bottom:10px; }
+  .info-card p { font-size:14px; color:rgba(255,255,255,0.88); line-height:1.7; }
+  .info-card.teal { background:var(--teal); }
+  .info-card.dark { background:var(--dark); }
+
+  /* ── ACTOR CARD ── */
+  .actors-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; align-items:stretch; }
+  .actor-card-wide { grid-column:1 / -1; }
+  .legacy-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; align-items:stretch; }
+  .actor-card { background:white; border-radius:16px; padding:24px 22px; border:1px solid rgba(40,88,160,0.1); box-shadow:0 2px 12px rgba(0,0,0,0.04); display:flex; flex-direction:column; gap:14px; transition:all 0.25s; }
+  .actor-card:hover { box-shadow:0 8px 24px rgba(40,88,160,0.12); transform:translateY(-3px); }
+  .actor-emoji { width:52px; height:52px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:26px; flex-shrink:0; }
+  .actor-body { display:flex; flex-direction:column; flex:1; }
+  .actor-body h3 { font-size:15px; font-weight:800; color:var(--dark); margin-bottom:4px; line-height:1.25; }
+  .actor-role { font-size:10.5px; font-weight:700; color:var(--teal); text-transform:uppercase; letter-spacing:0.8px; margin-bottom:12px; }
+  .actor-body p { font-size:13px; color:var(--muted); line-height:1.65; margin-bottom:14px; flex:1; }
+  .actor-deliv { font-size:11px; color:var(--blue); background:var(--blue-light); padding:8px 12px; border-radius:6px; font-weight:600; display:block; line-height:1.45; }
+  .actor-card.actor-card-dark { background:var(--dark); border:1px solid rgba(255,255,255,0.08); box-shadow:0 4px 18px rgba(0,0,0,0.18); padding:20px 22px; gap:10px; }
+  .actor-card.actor-card-dark:hover { box-shadow:0 10px 28px rgba(0,0,0,0.28); }
+  .actor-card.actor-card-dark .actor-body h3 { color:white; }
+  .actor-card.actor-card-dark .actor-role { color:var(--green); margin-bottom:8px; }
+  .actor-card.actor-card-dark .actor-body p { color:rgba(255,255,255,0.82); flex:none; margin-bottom:0; }
+  .actor-card.actor-card-dark .actor-extra-body { font-size:13px; color:rgba(255,255,255,0.78); line-height:1.6; margin-top:8px; }
+
+  /* ── FLUXO (desktop / mobile alternados) ── */
+  .fluxo-desktop { display:block; }
+  .fluxo-mobile { display:none; list-style:none; padding:0; margin:0 0 32px; counter-reset:fluxo; }
+  .fluxo-step { display:grid; grid-template-columns:46px 1fr; gap:14px; padding:18px 18px 18px 0; border-bottom:1px solid rgba(40,88,160,0.1); position:relative; }
+  .fluxo-step:last-child { border-bottom:none; }
+  .fluxo-num { width:36px; height:36px; border-radius:50%; background:var(--blue); color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .fluxo-step-bridge .fluxo-num { background:var(--green); }
+  .fluxo-step-final .fluxo-num { background:var(--dark); }
+  .fluxo-body h4 { font-size:14px; font-weight:800; color:var(--dark); margin-bottom:2px; line-height:1.25; }
+  .fluxo-sub { font-size:11px; font-weight:600; color:var(--teal); margin-bottom:6px; }
+  .fluxo-body p { font-size:12.5px; color:var(--muted); line-height:1.6; }
+  .fluxo-flag { display:inline-block; margin-top:8px; font-size:10.5px; font-weight:700; color:#2d7a3e; background:var(--green-light); padding:4px 9px; border-radius:12px; }
+
+  /* ── STATS ROW (apoio) ── */
+  .stats-row { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+  .stat-card { background:white; border-radius:10px; padding:22px 18px; text-align:center; border:1px solid rgba(40,88,160,0.08); box-shadow:0 2px 8px rgba(0,0,0,0.03); }
+  .stat-value { font-size:30px; font-weight:800; color:var(--blue); line-height:1; margin-bottom:8px; }
+  .stat-value.teal { color:var(--teal); }
+  .stat-value.green { color:var(--green); }
+  .stat-label { font-size:11.5px; color:var(--muted); font-weight:500; line-height:1.4; }
+
+  /* ── COTAS (apoio) ── */
+  .cotas-heading { font-size:11px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:var(--teal); margin-bottom:14px; display:flex; align-items:center; gap:10px; }
+  .cotas-heading::after { content:''; flex:1; height:1px; background:rgba(70,129,130,0.2); }
+  .cotas-list { display:flex; flex-direction:column; gap:10px; }
+  .cota-row { display:grid; grid-template-columns:100px 1fr auto; align-items:center; gap:20px; background:white; border-radius:10px; padding:16px 20px; border:1px solid rgba(40,88,160,0.1); box-shadow:0 2px 8px rgba(0,0,0,0.03); }
+  .cota-row-premium { background:var(--dark); border-color:var(--blue); }
+  .cota-tier { font-size:11px; font-weight:800; padding:5px 10px; border-radius:20px; text-align:center; letter-spacing:0.5px; }
+  .cota-bronze { color:#b87333; background:#fff3e8; border:1px solid #f0c898; }
+  .cota-prata { color:#7a7a7a; background:#f5f5f5; border:1px solid #ddd; }
+  .cota-ouro { color:#c8a000; background:#fffbe6; border:1px solid #ffe066; }
+  .cota-safira { color:#0057a8; background:#e8f0fb; border:1px solid #a8c4f0; }
+  .cota-premium { color:#1a2e3b; background:#5fb670; border:1px solid #38a349; }
+  .cota-info .cota-title { font-size:13px; font-weight:700; color:var(--dark); margin-bottom:3px; }
+  .cota-info .cota-desc { font-size:11.5px; color:var(--muted); line-height:1.5; }
+  .cota-row-premium .cota-info .cota-title { color:white; }
+  .cota-row-premium .cota-info .cota-desc { color:rgba(255,255,255,0.65); }
+  .cota-link { font-size:11px; font-weight:700; color:var(--blue); text-decoration:none; white-space:nowrap; padding:6px 14px; border:1.5px solid rgba(40,88,160,0.2); border-radius:6px; transition:all 0.2s; }
+  .cota-link:hover { background:rgba(40,88,160,0.06); border-color:rgba(40,88,160,0.4); }
+  .cota-row-premium .cota-link { color:var(--green); border-color:rgba(95,182,112,0.4); }
+  .cota-row-premium .cota-link:hover { background:rgba(95,182,112,0.1); border-color:rgba(95,182,112,0.7); }
+  .cota-bonus-title-accent { color:var(--green); font-weight:700; }
+  .cota-bonus { display:flex; align-items:flex-start; gap:12px; background:linear-gradient(135deg,rgba(95,182,112,0.08),rgba(95,182,112,0.03)); border:1px solid rgba(95,182,112,0.3); border-left:3px solid var(--green); border-radius:8px; padding:14px 18px; margin-top:6px; }
+  .cota-bonus-icon { font-size:18px; line-height:1; flex-shrink:0; }
+  .cota-bonus-label { font-size:11px; font-weight:800; color:#38a349; letter-spacing:0.5px; text-transform:uppercase; margin-bottom:4px; }
+  .cota-bonus-text { font-size:12.5px; color:var(--dark); line-height:1.55; }
+
+  /* ── CONFIG CARD ── */
+  .config-card { background:white; border-radius:16px; padding:30px 32px; border:1px solid rgba(40,88,160,0.1); box-shadow:0 2px 12px rgba(0,0,0,0.04); }
+  .config-card-title { font-size:11px; font-weight:700; color:var(--teal); text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; }
+  .config-card h3 { font-size:22px; font-weight:800; color:var(--dark); margin-bottom:14px; }
+  .config-card > p { font-size:14px; color:var(--muted); line-height:1.7; margin-bottom:20px; }
+  .config-examples { display:flex; flex-wrap:wrap; gap:7px; }
+  .config-chip { font-size:11.5px; font-weight:600; padding:6px 13px; border-radius:14px; background:var(--green-light); color:#2d7a3e; }
+
+  /* ── CASE CARD ── */
+  .case-card { background:white; border-radius:16px; overflow:hidden; border:1px solid rgba(40,88,160,0.1); box-shadow:0 2px 12px rgba(0,0,0,0.04); margin-bottom:22px; transition:all 0.25s; }
+  .case-card:hover { box-shadow:0 8px 24px rgba(40,88,160,0.1); transform:translateY(-2px); }
+  .case-card-head { padding:24px 30px; display:flex; align-items:center; gap:20px; }
+  .case-card-head.live { background:var(--blue); color:white; }
+  .case-card-head.next { background:var(--teal); color:white; }
+  .case-card-head.future { background:linear-gradient(135deg,#e8eef5 0%,#dde6f0 100%); color:var(--dark); border-bottom:2px dashed rgba(40,88,160,0.25); }
+  .case-status { display:inline-flex; align-items:center; gap:6px; padding:5px 12px; border-radius:14px; font-size:10.5px; font-weight:700; letter-spacing:0.8px; text-transform:uppercase; }
+  .case-status.live { background:rgba(255,255,255,0.2); color:white; }
+  .case-status.next { background:rgba(255,255,255,0.2); color:white; }
+  .case-status.future { background:rgba(40,88,160,0.1); color:var(--blue); }
+  .case-card-body { padding:26px 30px; }
+  .case-stat { display:flex; flex-direction:column; gap:3px; }
+  .case-stat-value { font-size:19px; font-weight:800; color:var(--dark); }
+  .case-stat-label { font-size:10.5px; color:var(--muted); font-weight:700; letter-spacing:0.5px; text-transform:uppercase; }
+
+  /* ── TEAM CARD ── */
+  .team-card { background:white; border-radius:14px; padding:22px 24px; border:1px solid rgba(40,88,160,0.08); box-shadow:0 2px 10px rgba(0,0,0,0.04); transition:all 0.25s; }
+  .team-card:hover { box-shadow:0 8px 22px rgba(40,88,160,0.1); transform:translateY(-2px); }
+  .team-card h4 { font-size:15px; font-weight:800; color:var(--dark); margin-bottom:4px; }
+  .team-card .team-role { font-size:10.5px; font-weight:700; color:var(--teal); letter-spacing:0.8px; text-transform:uppercase; margin-bottom:10px; }
+  .team-card p { font-size:13px; color:var(--muted); line-height:1.65; }
+
+  /* ── COORDENADORA (destaque) ── */
+  .team-coord { background:white; border-radius:16px; padding:28px 32px; margin-bottom:28px; border:1px solid rgba(40,88,160,0.1); box-shadow:0 2px 12px rgba(0,0,0,0.04); display:grid; grid-template-columns:auto 1fr; gap:24px; align-items:center; }
+  .team-coord h4 { font-size:20px; font-weight:800; color:var(--dark); margin-bottom:6px; line-height:1.2; }
+  .team-coord .team-coord-role { font-size:11px; font-weight:700; color:var(--teal); letter-spacing:0.8px; text-transform:uppercase; margin-bottom:10px; }
+  .team-coord p { font-size:13.5px; color:var(--muted); line-height:1.65; max-width:680px; }
+  .team-coord-icon { width:64px; height:64px; background:var(--blue-light); border:1px solid rgba(40,88,160,0.15); border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:30px; flex-shrink:0; }
+
+  /* ── PILLARS (virtual / físico) ── */
+  .pillar-block { margin-bottom:24px; }
+  .pillar-header { display:flex; align-items:baseline; gap:14px; margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid rgba(40,88,160,0.12); }
+  .pillar-tag { font-size:10px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; padding:4px 10px; border-radius:14px; }
+  .pillar-tag-virtual { color:var(--blue); background:var(--blue-light); }
+  .pillar-tag-fisico { color:#2d7a3e; background:var(--green-light); }
+  .pillar-title { font-size:16px; font-weight:800; color:var(--dark); }
+  .pillar-desc { font-size:12.5px; color:var(--muted); margin-left:auto; }
+
+  /* ── GRIDS ── */
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+  .grid-2-uneven { display:grid; grid-template-columns:1.2fr 1fr; gap:36px; align-items:start; }
+
+  /* ── FOOTER ── */
+  footer { background:#0d1626; color:rgba(255,255,255,0.65); padding:60px 40px 40px; }
+  .footer-inner { max-width:1180px; margin:0 auto; }
+  .footer-top { display:grid; grid-template-columns:1fr; gap:48px; margin-bottom:40px; }
+  .footer-brand { font-size:18px; font-weight:800; color:white; margin-bottom:10px; }
+  .footer-tagline { font-size:13px; line-height:1.7; color:rgba(255,255,255,0.55); max-width:340px; }
+  .footer-contact { display:inline-block; margin-top:12px; font-size:13px; font-weight:600; color:#7fb8e8; text-decoration:none; border-bottom:1px solid rgba(127,184,232,0.3); padding-bottom:1px; transition:color 0.2s; }
+  .footer-contact:hover { color:#a8cdf0; border-bottom-color:rgba(168,205,240,0.6); }
+  .footer-col-title { font-size:11px; font-weight:700; color:var(--green); letter-spacing:1.2px; text-transform:uppercase; margin-bottom:14px; }
+  .footer-col p { font-size:13px; line-height:1.7; color:rgba(255,255,255,0.65); }
+  .footer-bottom { padding-top:28px; border-top:1px solid rgba(255,255,255,0.08); display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap; font-size:11px; color:rgba(255,255,255,0.4); }
+
+  /* ── BACK TO TOP ── */
+  .to-top { position:fixed; bottom:24px; right:24px; width:44px; height:44px; border-radius:50%; background:var(--blue); color:white; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 4px 16px rgba(40,88,160,0.3); border:none; font-size:18px; transition:all 0.2s; opacity:0; pointer-events:none; z-index:90; }
+  .to-top.show { opacity:1; pointer-events:auto; }
+  .to-top:hover { background:var(--dark); transform:translateY(-2px); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    section { padding:56px 32px; }
+    .hero { padding:96px 32px 80px; }
+    .hero-title { font-size:46px; }
+    h2.section-title { font-size:34px; }
+    .hero-split { grid-template-columns:1fr; gap:36px; margin-bottom:40px; }
+    .hero-map svg { max-width:360px; margin:0 auto; }
+    .hero-stats { grid-template-columns:repeat(2,1fr); gap:14px; }
+    .hero-stat-value { font-size:32px; }
+    .grid-3 { grid-template-columns:1fr 1fr; }
+    .grid-4 { grid-template-columns:1fr 1fr; }
+    .actors-grid { grid-template-columns:1fr 1fr; gap:14px; }
+    .legacy-grid { grid-template-columns:1fr; gap:16px; }
+    .grid-2-uneven { grid-template-columns:1fr; gap:32px; }
+    .topbar-inner { padding:14px 32px; }
+    .footer-top { grid-template-columns:1fr 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    section { padding:44px 24px; }
+    .hero { padding:72px 24px 60px; }
+    .hero-brand { font-size:18px; }
+    .hero-title { font-size:32px; line-height:1.15; }
+    .hero-desc { font-size:15px; }
+    .hero-split { gap:28px; margin-bottom:32px; }
+    .hero-map svg { max-width:280px; }
+    .hero-stats { grid-template-columns:1fr 1fr; gap:12px; }
+    .hero-stat-box { padding:16px 18px; }
+    .hero-stat-value { font-size:26px; }
+    .hero-stat-icon { font-size:24px; margin-bottom:10px; }
+    .hero-stat-title { font-size:13px; margin-bottom:6px; }
+    .hero-stat-desc { font-size:11.5px; line-height:1.45; }
+    h2.section-title { font-size:26px; }
+    .section-lead { font-size:15px; margin-bottom:32px; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns:1fr; gap:16px; }
+    .actor-card { padding:20px 22px; }
+    .actor-emoji { width:48px; height:48px; font-size:24px; }
+    .actors-grid { grid-template-columns:1fr; gap:14px; }
+    .case-card-head { padding:20px 22px; gap:14px; flex-wrap:wrap; }
+    .case-card-body { padding:22px; }
+    .config-card { padding:24px; }
+    .config-card h3 { font-size:19px; }
+    .topbar-inner { padding:12px 20px; gap:12px; }
+    .topbar-brand-sub { display:none; }
+    .topbar-burger { display:flex; }
+    .lang-switcher { padding:2px; }
+    .lang-btn { padding:4px 7px; font-size:10px; }
+    .topbar-nav { display:none; position:absolute; top:100%; left:0; right:0; flex-direction:column; align-items:stretch; gap:0; padding:8px; background:rgba(18,30,51,0.98); border-top:1px solid rgba(255,255,255,0.08); border-bottom:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); }
+    .topbar-nav.open { display:flex; }
+    .topbar-nav a { font-size:14px; padding:12px 16px; border-radius:6px; }
+    .footer-top { grid-template-columns:1fr; gap:32px; }
+    .footer-bottom { flex-direction:column; align-items:flex-start; }
+    .stats-row { grid-template-columns:1fr; gap:10px; }
+    .stat-card { padding:16px 14px; }
+    .stat-value { font-size:24px; }
+    .cota-row { grid-template-columns:1fr; gap:10px; padding:14px 16px; }
+    .cota-tier { justify-self:start; }
+    .cota-link { justify-self:start; }
+    .team-coord { grid-template-columns:1fr; gap:14px; padding:22px 24px; text-align:left; }
+    .team-coord-icon { width:52px; height:52px; font-size:24px; }
+    .team-coord h4 { font-size:18px; }
+    .pillar-header { flex-direction:column; align-items:flex-start; gap:6px; }
+    .pillar-desc { margin-left:0; }
+    .fluxo-desktop { display:none; }
+    .fluxo-mobile { display:block; }
+  }
+
+  @media print {
+    .topbar, .to-top { display:none; }
+    section { padding:32px 24px; page-break-inside:avoid; }
+    .hero { padding:48px 24px; }
+    .feature-card, .actor-card, .team-card, .case-card, .config-card { box-shadow:none; border:1px solid #ddd; break-inside:avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════ TOPBAR ════════════════════ -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-brand">
+      <svg class="topbar-logo" viewBox="0 0 218.4 45.6" xmlns="http://www.w3.org/2000/svg" aria-label="The Blue City">
+        <defs>
+          <linearGradient id="tbc-grad" x1="48.8" y1="25.7" x2="211.8" y2="25.7" gradientTransform="translate(0 48) scale(1 -1)" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#006188"/>
+            <stop offset="1" stop-color="#95cfa0"/>
+          </linearGradient>
+        </defs>
+        <circle cx="26.1" cy="22.7" r="18.4" fill="#001522"/>
+        <rect x="15.5" y="17.5" width="20.8" height="3.2" fill="#fff"/>
+        <path fill="#0c9ed9" d="M35,23l-.2.2c-1.3,1.1-2.4,2.1-4.1,2.1s-2.5-.4-4.1-1.3c-2.1-1.1-3.9-1.7-5.6-1.7-2.8,0-4.6,1.6-6,2.9l-.2.2,2,2.4.2-.2c1.3-1.1,2.4-2.1,4.1-2.1s2.5.4,4.1,1.3c2.1,1.1,3.9,1.7,5.6,1.7h0c2.7,0,4.5-1.6,5.9-2.9l.2-.2-2-2.4h0Z"/>
+        <g fill="url(#tbc-grad)">
+          <path d="M64.5,16.8h-5.7v14.9h-4.3v-14.9h-5.7v-3.8h15.7v3.8Z"/>
+          <path d="M79.1,31.6h-4.2v-7.6c0-.9-.2-1.5-.6-1.9s-.9-.6-1.4-.6-.7,0-1.1.3c-.4.2-.8.5-1.1.8-.3.4-.6.8-.7,1.2v7.8h-4.2V12.5h4.2v7.9c.5-.8,1.2-1.5,2-1.9s1.8-.6,2.8-.6,1.7.2,2.2.5c.6.3,1,.7,1.3,1.2s.5,1,.6,1.7c0,.6.2,1.2.2,1.8v8.7-.2Z"/>
+          <path d="M87.9,31.9c-1.2,0-2.2-.2-3.1-.6s-1.7-.9-2.3-1.5c-.6-.6-1.1-1.4-1.5-2.2-.3-.8-.5-1.7-.5-2.6,0-1.3.3-2.5.9-3.6s1.4-1.9,2.5-2.6,2.4-1,4-1,2.9.3,4,1,1.9,1.5,2.5,2.6.9,2.2.9,3.5,0,.5,0,.7v.6h-10.2c0,.6.2,1.1.5,1.5s.7.7,1.1.9c.5.2.9.3,1.4.3s1.2-.1,1.8-.4c.6-.3.9-.7,1.1-1.2l3.6,1c-.4.7-.8,1.3-1.5,1.9-.6.5-1.4,1-2.2,1.3-.9.3-1.8.5-2.9.5h-.1ZM84.9,23.5h6c0-.6-.2-1-.5-1.5-.3-.4-.6-.7-1.1-1s-.9-.3-1.5-.3-1,.1-1.4.3c-.4.2-.8.5-1.1.9-.3.4-.4.9-.5,1.5h0Z"/>
+          <path d="M118,26.8c0,1.1-.3,2-.8,2.7-.6.7-1.3,1.2-2.3,1.6s-2,.5-3.2.5h-9.1V13h10.4c.9,0,1.6.2,2.3.7.6.5,1.1,1.1,1.5,1.8.3.7.5,1.5.5,2.3s-.2,1.7-.7,2.5c-.4.8-1.1,1.4-2,1.8,1.1.3,1.9.9,2.5,1.7.6.8.9,1.8.9,3.1h0ZM106.9,16.7v3.9h4.2c.3,0,.6,0,.9-.2.3-.1.5-.4.7-.6.2-.3.2-.6.2-1.1s0-.8-.2-1.1c0-.3-.3-.5-.6-.6-.2-.1-.5-.2-.9-.2h-4.4.1ZM113.7,26c0-.4,0-.7-.2-1.1-.2-.3-.4-.6-.6-.7s-.6-.3-.9-.3h-4.9v4.1h4.8c.4,0,.7,0,1-.3.3-.2.5-.4.7-.7.2-.3.2-.6.2-1h0Z"/>
+          <path d="M119.7,12.5h4.2v14.3c0,.6,0,1,.3,1.2.2.2.5.4.9.4s.5,0,.8-.1c.3,0,.5-.2.7-.3l.6,3.2c-.5.2-1.1.4-1.8.6-.7.2-1.3.2-1.9.2-1.2,0-2.1-.3-2.8-1-.6-.6-1-1.6-1-2.7v-15.7h0Z"/>
+          <path d="M127.9,26.8v-8.8h4.2v7.8c0,.8.2,1.4.5,1.9.3.4.8.7,1.4.7s.8,0,1.1-.2c.4-.1.7-.3,1-.6s.6-.7.9-1.1v-8.4h4.2v9c0,.4,0,.7.2.9.1.2.4.3.7.3v3.5c-.4,0-.7.1-1,.2s-.5,0-.8,0c-.7,0-1.3-.1-1.8-.4-.4-.3-.7-.7-.8-1.3v-.8c-.7.9-1.5,1.6-2.4,2s-2,.6-3.2.6-2.5-.4-3.2-1.3-1.1-2.2-1.1-3.8v-.2Z"/>
+          <path d="M150.6,31.9c-1.2,0-2.2-.2-3.1-.6-.9-.4-1.7-.9-2.3-1.5s-1.1-1.4-1.5-2.2c-.3-.8-.5-1.7-.5-2.6,0-1.3.3-2.5.9-3.6.6-1.1,1.4-1.9,2.5-2.6s2.4-1,4-1,2.9.3,4,1c1.1.6,1.9,1.5,2.5,2.6s.9,2.2.9,3.5,0,.5,0,.7v.6h-10.2c0,.6.2,1.1.5,1.5s.7.7,1.1.9c.5.2.9.3,1.4.3s1.2-.1,1.8-.4.9-.7,1.1-1.2l3.6,1c-.4.7-.8,1.3-1.5,1.9-.6.5-1.4,1-2.2,1.3-.9.3-1.8.5-2.9.5h-.1ZM147.5,23.5h6c0-.6-.2-1-.5-1.5-.3-.4-.6-.7-1.1-1-.4-.2-.9-.3-1.5-.3s-1,.1-1.4.3c-.4.2-.8.5-1.1.9s-.4.9-.5,1.5h.1Z"/>
+          <path d="M164.2,22.1c0-1.1.2-2.2.6-3.3.4-1.1,1-2.1,1.8-3s1.8-1.6,3-2.2c1.2-.5,2.5-.8,3.9-.8s3.3.4,4.6,1.1,2.3,1.7,2.9,2.9l-3.3,2.3c-.3-.7-.6-1.2-1.1-1.6s-1-.6-1.5-.8c-.6-.1-1.1-.2-1.6-.2-.8,0-1.5.2-2.1.5s-1.1.8-1.5,1.3-.7,1.1-.9,1.8c-.2.7-.3,1.3-.3,2s.1,1.5.4,2.2c.2.7.6,1.3,1,1.8s.9.9,1.6,1.2c.6.3,1.3.5,2,.5s1.1,0,1.6-.2,1-.4,1.5-.8.8-.9,1.1-1.5l3.5,2.1c-.4.9-1,1.7-1.8,2.3-.8.6-1.8,1.1-2.8,1.5s-2.1.5-3.2.5-2.6-.3-3.7-.8c-1.1-.6-2.1-1.3-2.9-2.2-.8-.9-1.5-2-1.9-3.1s-.7-2.3-.7-3.5h-.2Z"/>
+          <path d="M182.5,16.3v-3.8h4.2v3.8h-4.2ZM182.5,31.6v-13.8h4.2v13.8s-4.2,0-4.2,0Z"/>
+          <path d="M198,30.9c-.4.2-.8.3-1.2.5-.5.2-.9.3-1.4.4-.5,0-1,.1-1.5.1s-1.3-.1-1.9-.3-1-.6-1.4-1.2-.5-1.2-.5-2.1v-7.1h-1.8v-3.2h1.8v-4.4h4.2v4.4h2.8v3.2h-2.8v5.6c0,.5.1.8.3,1s.5.3.9.3.6,0,1-.2c.3-.1.6-.2.9-.3l.8,3.3h-.2Z"/>
+          <path d="M199.1,33.7c.4,0,.7.2,1,.2h.8c.4,0,.6,0,.9-.2s.4-.4.6-.8c.2-.4.3-.8.5-1.4l-5.2-13.7h4.3l3.2,9.4,2.7-9.4h3.9l-5.3,15.9c-.2.7-.6,1.4-1.1,2s-1.1,1-1.9,1.4c-.7.3-1.5.5-2.4.5h-1.1c-.4,0-.7-.2-1.1-.3v-3.6h.2Z"/>
+        </g>
+      </svg>
+      <div class="topbar-brand-sub" data-i18n="topbar.sub">Jornada Cultural</div>
+    </div>
+    <nav class="topbar-nav" id="topbar-nav">
+      <a href="#sobre" data-i18n="nav.sobre">Sobre</a>
+      <a href="#jornada" data-i18n="nav.jornada">Jornada</a>
+      <a href="#fluxo" data-i18n="nav.fluxo">Fluxo</a>
+      <a href="#atores" data-i18n="nav.atores">Atores</a>
+      <a href="#modelo" data-i18n="nav.modelo">Modelo</a>
+      <a href="#legado" data-i18n="nav.legado">Legado</a>
+      <a href="#casos" data-i18n="nav.casos">Casos</a>
+      <a href="#apoio" data-i18n="nav.apoio">Apoio</a>
+      <a href="#equipe" data-i18n="nav.equipe">Equipe</a>
+    </nav>
+    <div class="lang-switcher" role="group" aria-label="Idioma">
+      <button class="lang-btn active" data-lang="pt">PT</button>
+      <button class="lang-btn" data-lang="es">ES</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+    <button class="topbar-burger" id="topbar-burger" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</div>
+
+<!-- ════════════════════ HERO ════════════════════ -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-split">
+      <div class="hero-text">
+        <div class="hero-eyebrow" data-i18n="hero.eyebrow">Apresentação Institucional · The Blue City</div>
+        <h1 class="hero-title" data-i18n-html="hero.title">Arte, cultura e<br>tecnologia pela<br>regeneração do planeta</h1>
+        <p class="hero-desc" data-i18n="hero.desc">Um modelo de exposição cultural híbrida – jogo educativo digital e exposição cultural – desenhado para ser realizado em diferentes cidades, conectando escolas, artistas, comunidades e a luta pela regeneração.</p>
+      </div>
+      <div class="hero-map">
+        <svg viewBox="0 0 1911.1 1854.6" xmlns="http://www.w3.org/2000/svg" aria-label="Globo terrestre com pontos representando cidades brasileiras">
+          <g class="globe-ocean">
+            <path d="M1853.3,772.6c-45.5-270.7-210.5-518.4-463-650.5-22.5-11.8-45.7-22.7-69.5-32.5-6.6-2.7-13.2-5.4-19.8-7.9-2.2-.8-4.4-1.6-6.5-2.4-4.5-1.7-8.9-3.4-13.4-5-2.6-.9-5.2-1.8-7.8-2.7-4.1-1.4-8.2-2.9-12.2-4.2-2.8-.9-5.5-1.8-8.3-2.7-4-1.3-7.9-2.6-11.9-3.8-2.8-.9-5.7-1.7-8.5-2.6-3.9-1.2-7.9-2.3-11.8-3.5-2.8-.8-5.7-1.6-8.5-2.4-4-1.1-8-2.2-11.9-3.2-2.8-.7-5.6-1.5-8.5-2.2-4.1-1-8.1-2-12.2-3-2.7-.6-5.5-1.3-8.2-1.9-4.2-1-8.4-1.9-12.6-2.8-2.6-.6-5.2-1.1-7.8-1.6-4.5-.9-8.9-1.8-13.4-2.6-2.4-.4-4.7-.9-7.1-1.3-5-.9-9.9-1.7-14.9-2.5-1.9-.3-3.8-.6-5.7-.9-6.2-1-12.3-1.9-18.5-2.7-.7,0-1.4-.2-2.1-.3-14.2-1.9-28.3-3.5-42.5-4.7h-1c-6.6-.6-13.2-1.1-19.9-1.5-1.2,0-2.4-.1-3.6-.2-5.8-.4-11.5-.7-17.3-.9-1.5,0-3-.1-4.6-.2-5.5-.2-11-.4-16.4-.5h-4.9c-5.4,0-10.8-.1-16.2-.1h-4.9c-5.4,0-10.8.1-16.3.2-1.5,0-3.1,0-4.6.1-5.6.2-11.2.4-16.7.6-1.4,0-2.7.1-4.1.2-5.9.3-11.8.6-17.6,1-1,0-2,.1-3.1.2-6.4.5-12.8,1-19.3,1.6-.5,0-.9,0-1.4.1-27.5,2.6-54.9,6.3-82,11.2-21.6,3.9-43.1,8.6-64.4,14.1-.2,0-.4,0-.6.2-6.6,1.7-13.1,3.4-19.7,5.2-.4,0-.8.2-1.1.3-6.4,1.8-12.8,3.6-19.2,5.6-.4,0-.8.2-1.2.4-6.4,2-12.8,4-19.2,6.1-.3,0-.6.2-.8.3-3.3,1.1-6.5,2.1-9.8,3.3-3.3,1.1-6.7,2.3-10,3.5h0c-45.6,16.1-90,35.6-132.6,58.6-126.7,68.2-238.3,166.2-322.3,291.3-44.4,66.1-79.6,138.1-105,213.5-4.8,14.2-9.2,28.6-13.3,43.1-20.1,70.9-31.6,144.3-33.9,218,0,4,0,8-.2,12h0v.2c0,6.8,0,13.7,0,20.5v.6c0,6.8.3,13.5.5,20.3v.8c.3,6.7.6,13.3,1.1,20v1.1c.4,6.5,1,13.1,1.6,19.6,0,.5,0,.9,0,1.4.6,6.4,1.3,12.8,2.1,19.2,0,.6.2,1.2.2,1.8.8,6.3,1.6,12.5,2.5,18.7,0,.7.2,1.5.3,2.2.9,6.1,1.9,12.1,3,18.2.2.9.3,1.8.5,2.8,1.1,5.9,2.2,11.7,3.3,17.6.2,1.1.5,2.2.7,3.3,1.2,5.6,2.4,11.3,3.7,16.9.3,1.3.6,2.6.9,4,1.3,5.4,2.6,10.8,4,16.2.4,1.6.8,3.1,1.2,4.7,1.4,5.1,2.7,10.3,4.2,15.4.5,1.8,1.1,3.6,1.6,5.5,1.4,4.8,2.8,9.6,4.3,14.4.7,2.2,1.4,4.3,2.1,6.5,1.4,4.5,2.9,8.9,4.4,13.4.9,2.6,1.8,5.1,2.7,7.7,1.4,4,2.8,8,4.2,12,1.2,3.3,2.5,6.6,3.7,9.8,1.2,3.2,2.4,6.5,3.7,9.7,2.6,6.5,5.2,13,7.9,19.4h0c2.7,6.3,5.4,12.6,8.2,18.8,0,0,0,.2,0,.2,2.8,6.2,5.7,12.4,8.6,18.5,0,0,0,.2.2.3,2.9,6.1,5.9,12.2,9,18.2,0,.2.2.3.3.5,3,6,6.2,11.9,9.4,17.9.1.2.2.4.3.6,3.2,5.9,6.4,11.7,9.7,17.5.2.3.3.5.5.8,3.3,5.7,6.6,11.4,10,17.1.2.3.4.7.6,1,3.4,5.6,6.8,11.2,10.3,16.7.2.4.5.8.7,1.2,3.4,5.5,7,10.9,10.5,16.3.3.4.6.9.9,1.3,3.5,5.3,7.1,10.6,10.8,15.9.4.5.7,1,1.1,1.5,3.6,5.2,7.3,10.3,11,15.5.4.6.8,1.1,1.2,1.7,3.7,5,7.4,10.1,11.2,15,.5.6,1,1.2,1.4,1.9,3.7,4.9,7.5,9.8,11.3,14.6.5.7,1.1,1.4,1.6,2,3.8,4.7,7.6,9.5,11.5,14.1.6.7,1.2,1.5,1.9,2.2,3.8,4.6,7.7,9.2,11.6,13.7.7.8,1.4,1.6,2.1,2.4,3.9,4.4,7.8,8.9,11.7,13.2.8.9,1.6,1.7,2.3,2.6,3.9,4.3,7.8,8.6,11.8,12.8.9.9,1.7,1.8,2.6,2.7,3.9,4.1,7.9,8.2,11.9,12.3,1,1,1.9,1.9,2.9,2.9,3.9,4,7.9,7.9,11.9,11.9s2.1,2,3.2,3c4,3.8,7.9,7.6,12,11.4,1.1,1.1,2.3,2.1,3.4,3.2,4,3.7,8,7.3,12,10.9,1.2,1.1,2.5,2.2,3.7,3.3l12,10.5c1.3,1.1,2.7,2.3,4,3.4,4,3.4,7.9,6.7,12,10,1.4,1.2,2.9,2.3,4.3,3.5,4,3.2,7.9,6.4,11.9,9.6,1.5,1.2,3.1,2.4,4.7,3.6,3.9,3.1,7.9,6.1,11.9,9.1,1.7,1.2,3.3,2.5,5,3.7,3.9,2.9,7.9,5.8,11.8,8.7,1.8,1.3,3.5,2.5,5.3,3.8,3.9,2.8,7.8,5.5,11.8,8.3,1.9,1.3,3.8,2.6,5.7,3.8,3.9,2.6,7.8,5.3,11.7,7.8,2,1.3,4,2.6,6,3.8,3.9,2.5,7.7,5,11.6,7.4,2.1,1.3,4.2,2.6,6.3,3.9,3.8,2.4,7.7,4.7,11.5,7,2.2,1.3,4.4,2.6,6.6,3.9,3.8,2.2,7.6,4.4,11.4,6.6,2.3,1.3,4.6,2.6,7,3.9,3.8,2.1,7.5,4.2,11.3,6.2,2.4,1.3,4.9,2.6,7.3,3.8,3.7,2,7.4,3.9,11.2,5.8,2.5,1.3,5.1,2.5,7.6,3.8,3.7,1.8,7.3,3.7,11,5.4,2.6,1.3,5.3,2.5,7.9,3.7,3.6,1.7,7.3,3.4,10.9,5.1,2.7,1.2,5.5,2.4,8.2,3.6,3.6,1.6,7.2,3.2,10.8,4.7,2.8,1.2,5.7,2.4,8.5,3.5,3.6,1.5,7.1,3,10.7,4.4,2.9,1.2,5.9,2.3,8.8,3.4,3.5,1.4,7,2.7,10.5,4.1,0,0,.2,0,.3,0,2.9,1.1,5.9,2.1,8.8,3.2,3.5,1.2,6.9,2.5,10.4,3.7,3.1,1.1,6.3,2.1,9.4,3.1,3.4,1.1,6.8,2.3,10.2,3.4,3.2,1,6.5,2,9.7,3,3.4,1,6.7,2.1,10.1,3.1,3.3,1,6.6,1.9,10,2.8,3.3.9,6.7,1.9,10,2.8.3,0,.5,0,.8.2,3.2.8,6.3,1.6,9.5,2.4,3.3.8,6.5,1.7,9.8,2.5,3.5.8,7.1,1.6,10.6,2.4,3.2.7,6.4,1.5,9.6,2.2,3.7.8,7.4,1.5,11,2.2,3.1.6,6.2,1.3,9.3,1.9,3.9.7,7.7,1.4,11.6,2,2.9.5,5.9,1.1,8.8,1.5,4.1.7,8.2,1.2,12.3,1.8,2.7.4,5.5.8,8.2,1.2,4.6.6,9.1,1.1,13.7,1.7,2.3.3,4.6.6,6.9.8,6.9.7,13.8,1.4,20.6,2,370.2,30.2,751.8-155.1,913.5-497.8,79.9-169.5,100.8-354.7,71.3-530.4l.3-.5Z"/>
+          </g>
+          <g class="globe-land">
+            <path d="M923,111.9c-6.7,1.9-12.8,6.3-19.7,6.1-8-.2-14.2-6.4-20.8-10.9-3.8-2.5-7.8-4.5-12-6.2-11.7-4.7-24.6-6.7-36.8-10.1-16.6-4.7-34-14-39-30.5-2.1-6.9-1.7-14.3-1.8-21.6,0-1.5,0-3-.2-4.5h0c-21.6,3.9-43.1,8.6-64.4,14.1-.2,0-.4,0-.6.2-6.6,1.7-13.1,3.4-19.7,5.2-.4,0-.8.2-1.1.3-6.4,1.8-12.8,3.6-19.2,5.6-.4,0-.8.2-1.2.4-6.4,2-12.8,4-19.2,6.1-.3,0-.6.2-.8.3-3.3,1.1-6.5,2.1-9.8,3.3h0c0,0,0,.2-.2.3-11.4,23.9-36.1,44-31.5,69.5,0,.3,0,.6,0,.8,4.2,20.5,27,32.2,47.8,33.2,20.9,1,41.4-5.5,62.2-7.2,5.6-.5,11.5-.5,16.5,2.1,9.1,4.7,12.1,16.1,13.5,26.2,1.3,9.3,2.1,18.7,2.5,28,1,25.4-1.4,50.9-7.4,75.5-4.4,18.2-9.2,40.9,4.2,53.2.5.5,1,1,1.6,1.4,3.1,2.4,6.5,3.9,10.1,4.8,14.5,3.8,32.6-1.3,46.2,6.2,4.8,2.6,8.9,6.8,14.1,8.4,16.6,5,28.3-17.7,26.5-35s-9.3-35.8-1-51c8.8-16.1,29.9-19.2,46.5-26.9,10.4-4.8,19.4-11.9,26.9-20.4,13.5-15.2,22.7-35,27.8-55,4.2-16.2,6.2-33.8-.3-49.2-6.5-15.4-23.8-27.2-39.8-22.6h0Z"/>
+            <path d="M856.9,1155.5c-21.8-14.8-51.8.5-77.6-5.1-41.1-9-56.6-66.1-97.3-76.8-27.8-7.3-59.6,9.8-84.8-3.9-10.3-5.6-18-15.9-29.1-19.7-32.3-11.2-56.2,36.2-90.1,40.6-4.4-23.9-8.7-47.9-13.1-71.8-20.7,12.4-37.7,31-48.2,52.8-5-15.2-10.1-30.5-15.1-45.7-6.7,16.3-32.7.8-35.1-16.7-2.3-17.5,2.7-38.4-10.2-50.4-15.2-14.2-39.6-2-56.3,10.3-11.1-33-22.1-66-33.2-99-2.6-7.7-5.2-15.5-5.6-23.6-1.1-20.6,11.6-39.1,23.8-55.7,15.7-21.5,36.8-45.5,63.2-42.1,2.3.3,4.5.8,6.7,1.4,16.4,4.8,31.1,18,48.2,16.2,25.2-2.7,34.7-33.6,39.5-58.5s18.5-55.5,43.7-53.5c24.7,2,39.6,36,64.2,33.3,25.3-2.8,28.6-38.3,24.1-63.4-4.5-25.1-3.1-60.2,22-64.9,20.2-3.8,35.6,17.7,43.1,36.9s15.8,42.1,35.8,47.2c34.6-12,45.7-58.9,31.8-92.8-13.9-33.9-44.7-57.4-74.1-79.3-14.3-10.7-30.7-21.9-48.4-19.5-12.2,1.6-24.1,9.7-35.9,6.3-7.7-2.3-13.4-9-21-11.6-16.1-5.3-31.2,9.9-40.2,24.2-14.9,23.5-26.2,49.3-33.6,76.1-39.1,2.6-82.4-16.2-96.1-52.9-1.8-4.9-2.8-9.9-3.1-15.1-1.7-28.9,18.9-59.6,45.9-63.8,4.5-.7,9.1-.7,13.9.2,7.8,1.4,15.5,4.9,23.4,3.9,9.7-1.2,17.2-8.8,23.8-15.9,21.1-22.5,42.2-45.1,63.4-67.6,9.6-10.2,19.2-20.5,28.8-30.7,8.5,3.6,14.4,10.6,17.8,18.9,6.9,17,2.8,39.4-13.4,49,0,27.6,35.6,43.6,61.9,35,24.9-8.1,65.1-44.4,70.6-71.4.8-3.9,1.2-7.3,1.4-10.4,1.7-31.9-29.8-19.6-54.9-30.1-16.1-6.8-30.9-21.2-44.6-39.2-18.9-24.7-36-56.1-52.2-83.9-9.1-15.5-17.9-29.9-26.6-41.2-126.7,68.2-238.3,166.2-322.3,291.3-44.4,66.1-79.6,138.1-105,213.5-4.8,14.2-9.2,28.6-13.3,43.1,10,25.7,2.4,57.3,3.4,86.1,1.3,34.4,17.1,67.9,42.2,91.5,6.1,5.7,12.6,10.8,19.7,15.2,6.5-21.3,13-42.7,19.5-64,25.2,36.9,28.2,85.2,51.6,123.4,8.8,14.4,20.1,26.6,32.6,37.5,41.3,35.9,97.4,58.1,133.1,100.7,16.8,20,28.8,46.8,21.9,72-3.5,12.8-11.5,23.8-16.3,36.2-.3.7-.5,1.4-.7,2.2-9.5,26.8-2.7,58.9,17.2,79.3,18.3,18.9,46.1,28.2,59.9,50.6,10.5,17,10.7,38.2,16.1,57.5,10.2,36.6,38.9,66,57.5,98.9,7.9,14.1,14,28.7,16,44.9,2.6,21.1-2.3,42.3-2.4,63.5,0,21.2,6.4,44.7,24.6,55.6,12.2,7.3,27.4,7.5,40.2,13.5,22.1,10.3,31.8,33.9,35.6,58.9,1.5,10.1,2.1,20.5,2,30.3v17.8c2.9,1.1,5.9,2.1,8.8,3.2,3.5,1.2,6.9,2.5,10.4,3.7,3.1,1.1,6.3,2.1,9.4,3.1,3.4,1.1,6.8,2.3,10.2,3.4,3.2,1,6.5,2,9.7,3,3.4,1,6.7,2.1,10.1,3.1,3.3,1,6.6,1.9,10,2.8,3.3.9,6.7,1.9,10,2.8.3,0,.5,0,.8.2,6.5-16.1,10.6-32.5,9.9-48-.6-13.2-4.8-25.7-14-36.6-8.1-9.5-19.4-16.3-25.9-27-8.6-14.2-7.2-32-5.4-48.5,3.1-28.7,7.5-59.5,17.8-86.4,9.5-24.9,23.9-46.4,46.9-59.8,20.5-11.9,46.6-16.4,60.6-35.5,17.3-23.6,6.9-53.3-.3-83.3-4-16.6-7-33.4-3.7-49.2,5.7-27.6,29.2-47.3,45.3-70.5s22.4-60-.9-75.8v-.3Z"/>
+            <path d="M1390.3,122.2c-7.2,7.6-13.7,15.4-19.5,23.2-26.6,36-36.1,72.6-4.5,97.6,17.7,14,44.1,16.5,57.1,34.9,13.1,18.4,3.3,48.3-18.1,55.5-.6.2-1.2.3-1.8.5-21,5.6-45.4-11.9-46-33.9,0-3.8.4-7.7.9-11.6,1.2-8.8,2.8-17.6-1.4-25.2-6.9-12.6-22.7-12.4-37.4-7.9-5.2,1.6-10.3,3.6-14.8,5.9-28.4,14.1-57.7,29.2-77.1,54.3-19.4,25.1-25.9,63.2-6.2,88,20.1,25.4,64.4,25.3,84.5-.1-9.9,17.1-19.6,39.5-7.5,55,7.5,9.7,20.6,12.4,31.9,17.2,11.3,4.8,22.7,15.5,19.6,27.3-3,11.4-18.1,15.4-29.2,11.5-11.1-3.8-19.6-12.7-28.9-19.9-4.6-3.6-9.6-6.7-14.8-9.4-19.2-9.9-41.7-13.4-62-6.4-25.7,8.8-45,36.8-39.5,63.4,5.6,26.6,39.4,44.6,62.8,30.7-12.6,23.6-18.4,50.8-16.5,77.5,19.3-5.8,39.2-11.6,59.2-9.2,20,2.3,40.2,15,44.9,34.6,4.1-13.1,10.5-25.5,18.7-36.6,7.2-9.6,15.7-18.1,25.4-25.2-3.2,22.1,19.7,41.6,42.1,41.6s42.4-14.2,57.4-30.8c-.7,34.4,42.2,61.3,72.9,45.6,2.2,9.1,4.5,18.1,6.7,27.2-20.1,15.1-48.3,2.5-70.4-9.6-22-12-52.1-22.3-69.8-4.5-17.6,17.7-7.3,47.5,3.9,69.8-15.8-4.9-32.3-7.1-48.8-7-46.4.2-92.8,19.3-124.6,53.2-26.3,28.1-51.1,69.1-89.4,65.6-14.2-1.3-27.1-9.1-41.1-11.9-43.2-8.6-84.5,44.8-65.2,84.4,32.6,67,154.6,32.1,192.3,96.4,18.4,31.4,6.3,70.9-3.5,106-2.1,7.4-3.9,15.1-5.3,22.9-5.2,29.4-3.9,60.5,17.4,79.8,15.8,14.4,39.5,18.5,53.7,34.4,26,29.1,5.8,74.5,7.4,113.5,0,3.5.5,6.9,1,10.3,3.9,27.7,18.2,53.4,28.7,79.7,11.8,29.5,18.6,64.8,1.6,91.6,14.9,7.2,31.6-5.2,42.2-17.8,45.3-53.7,64.9-128.3,120.1-171.8,44.2-34.9,108.8-47.6,135.7-97.1,31.8-58.6-7.3-138,26.7-195.3,13.1-22.1,35.3-37.2,50.6-57.9,15.3-20.6,21.6-52.9,2.5-70-14.1-12.7-35.3-11.3-54.2-13.2-18.9-1.8-41.1-12.2-41.5-31.1-.8-37.9,78.4-35.1,76.8-73-.3-7.9-4.7-15-9-21.7-12.3-19.3-24.5-38.6-36.8-57.8,31.8,3.3,61.7,22.5,77.8,50.1,4.1,7,8.2,15.3,16,17.7,6.7,2.1,13.8-.9,20.1-4,9.8-4.8,19.4-10,28.9-15.4,21.1-12.1,41.4-25.9,60.5-41-45.5-270.7-210.5-518.4-463-650.5h-.2Z"/>
+            <path d="M666.4,1757.9c-3.5-1.2-6.9-2.5-10.4-3.7,3.5,1.2,6.9,2.5,10.4,3.7Z"/>
+            <path d="M705.9,1770.5c-3.4-1-6.8-2.1-10.1-3.1,3.4,1,6.7,2.1,10.1,3.1Z"/>
+            <path d="M686.1,1764.4c-3.4-1.1-6.8-2.3-10.2-3.4,3.4,1.1,6.8,2.3,10.2,3.4Z"/>
+            <path d="M725.9,1776.1c-3.3-.9-6.7-1.9-10-2.8,3.3.9,6.7,1.9,10,2.8Z"/>
+            <path d="M687.6,59.6c6.4-1.9,12.8-3.8,19.2-5.6-6.4,1.8-12.8,3.6-19.2,5.6Z"/>
+            <path d="M666.4,66.3c-3.3,1.1-6.5,2.1-9.8,3.3h0c3.3-1.1,6.6-2.3,9.9-3.4h-.1Z"/>
+            <path d="M667.2,66c6.4-2.1,12.8-4.1,19.2-6.1-6.4,2-12.8,4-19.2,6.1Z"/>
+            <path d="M792.7,34.3c-21.6,3.9-43.1,8.6-64.4,14.1,21.3-5.4,42.8-10.1,64.4-14h0Z"/>
+            <path d="M708,53.7c6.5-1.8,13.1-3.6,19.7-5.2-6.6,1.7-13.1,3.4-19.7,5.2Z"/>
+            <path d="M765.9,352.7c3.1,2.4,6.5,3.9,10.1,4.8-3.8-2.2-7.7-4.2-11.7-6.2.5.5,1,1,1.6,1.4h0Z"/>
+          </g>
+          <g class="map-points">
+            <g class="map-point" style="--delay:0.0s"><circle cx="525" cy="1094" r="10"/><circle class="pulse" cx="525" cy="1094" r="10"/></g>
+            <g class="map-point" style="--delay:0.8s"><circle cx="453" cy="1199" r="10"/><circle class="pulse" cx="453" cy="1199" r="10"/></g>
+            <g class="map-point" style="--delay:1.4s"><circle cx="621" cy="1141" r="10"/><circle class="pulse" cx="621" cy="1141" r="10"/></g>
+            <g class="map-point" style="--delay:2.6s"><circle cx="704" cy="1103" r="10"/><circle class="pulse" cx="704" cy="1103" r="10"/></g>
+            <g class="map-point" style="--delay:2.0s"><circle cx="668" cy="1199" r="10"/><circle class="pulse" cx="668" cy="1199" r="10"/></g>
+            <g class="map-point" style="--delay:0.4s"><circle cx="776" cy="1165" r="10"/><circle class="pulse" cx="776" cy="1165" r="10"/></g>
+            <g class="map-point" style="--delay:1.8s"><circle cx="848" cy="1218" r="10"/><circle class="pulse" cx="848" cy="1218" r="10"/></g>
+            <g class="map-point" style="--delay:3.0s"><circle cx="788" cy="1325" r="10"/><circle class="pulse" cx="788" cy="1325" r="10"/></g>
+            <g class="map-point" style="--delay:1.2s"><circle cx="525" cy="1278" r="10"/><circle class="pulse" cx="525" cy="1278" r="10"/></g>
+            <g class="map-point" style="--delay:2.4s"><circle cx="621" cy="1218" r="10"/><circle class="pulse" cx="621" cy="1218" r="10"/></g>
+            <g class="map-point" style="--delay:0.6s"><circle cx="621" cy="1325" r="10"/><circle class="pulse" cx="621" cy="1325" r="10"/></g>
+            <g class="map-point" style="--delay:1.6s"><circle cx="752" cy="1385" r="10"/><circle class="pulse" cx="752" cy="1385" r="10"/></g>
+            <g class="map-point" style="--delay:2.2s"><circle cx="680" cy="1433" r="10"/><circle class="pulse" cx="680" cy="1433" r="10"/></g>
+            <g class="map-point" style="--delay:0.2s"><circle cx="616" cy="1469" r="10"/><circle class="pulse" cx="616" cy="1469" r="10"/></g>
+            <g class="map-point" style="--delay:2.8s"><circle cx="580" cy="1509" r="10"/><circle class="pulse" cx="580" cy="1509" r="10"/></g>
+            <g class="map-point map-point-minor" style="--delay:1.1s"><circle cx="301" cy="766" r="9"/><circle class="pulse" cx="301" cy="766" r="9"/></g>
+            <g class="map-point map-point-minor" style="--delay:0.3s"><circle cx="310" cy="668" r="9"/><circle class="pulse" cx="310" cy="668" r="9"/></g>
+            <g class="map-point map-point-minor" style="--delay:2.5s"><circle cx="480" cy="480" r="9"/><circle class="pulse" cx="480" cy="480" r="9"/></g>
+            <g class="map-point map-point-minor" style="--delay:1.9s"><circle cx="1225" cy="602" r="9"/><circle class="pulse" cx="1225" cy="602" r="9"/></g>
+            <g class="map-point map-point-minor" style="--delay:0.7s"><circle cx="1385" cy="430" r="9"/><circle class="pulse" cx="1385" cy="430" r="9"/></g>
+            <g class="map-point map-point-minor" style="--delay:2.9s"><circle cx="1075" cy="907" r="9"/><circle class="pulse" cx="1075" cy="907" r="9"/></g>
+            <g class="map-point map-point-minor" style="--delay:1.5s"><circle cx="1237" cy="1118" r="9"/><circle class="pulse" cx="1237" cy="1118" r="9"/></g>
+            <g class="map-point map-point-minor" style="--delay:0.5s"><circle cx="1282" cy="1263" r="9"/><circle class="pulse" cx="1282" cy="1263" r="9"/></g>
+            <g class="map-point map-point-minor" style="--delay:2.3s"><circle cx="1361" cy="955" r="9"/><circle class="pulse" cx="1361" cy="955" r="9"/></g>
+            <g class="map-point map-point-minor" style="--delay:1.3s"><circle cx="1528" cy="764" r="9"/><circle class="pulse" cx="1528" cy="764" r="9"/></g>
+            <g class="map-point map-point-minor" style="--delay:2.7s"><circle cx="1624" cy="1290" r="9"/><circle class="pulse" cx="1624" cy="1290" r="9"/></g>
+          </g>
+        </svg>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat-box">
+        <div class="hero-stat-icon">🎮</div>
+        <div class="hero-stat-title" data-i18n="hero.stat1.t">Jogo digital</div>
+        <div class="hero-stat-desc" data-i18n="hero.stat1.d">Missões temáticas jogadas pelos estudantes na plataforma</div>
+      </div>
+      <div class="hero-stat-box">
+        <div class="hero-stat-icon">🎓</div>
+        <div class="hero-stat-title" data-i18n="hero.stat2.t">Certificação verificável</div>
+        <div class="hero-stat-desc" data-i18n="hero.stat2.d">Badges e NFTs em blockchain que somam como experiência</div>
+      </div>
+      <div class="hero-stat-box">
+        <div class="hero-stat-icon">🎨</div>
+        <div class="hero-stat-title" data-i18n="hero.stat3.t">Exposição cultural</div>
+        <div class="hero-stat-desc" data-i18n="hero.stat3.d">Ideias dos estudantes traduzidas em obras por artistas locais</div>
+      </div>
+      <div class="hero-stat-box">
+        <div class="hero-stat-icon">🌱</div>
+        <div class="hero-stat-title" data-i18n="hero.stat4.t">Legado público</div>
+        <div class="hero-stat-desc" data-i18n="hero.stat4.d">Galeria permanente que registra cada jornada na plataforma</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ════════════════════ 01 · SOBRE ════════════════════ -->
+<section id="sobre">
+  <div class="container">
+    <div class="eyebrow" data-i18n="sobre.eyebrow">01 · O Projeto</div>
+    <h2 class="section-title" data-i18n="sobre.title">Missão Cidade Azul</h2>
+    <p class="section-lead" data-i18n="sobre.lead">Uma jornada educativa, tecnológica e cultural que conecta educação ambiental, narrativa, tecnologia e arte, transformando a sala de aula em laboratório de regeneração.</p>
+
+    <div class="grid-3" style="margin-bottom:32px;">
+      <div class="feature-card">
+        <div class="feature-card-header"><div class="feature-icon fi-blue">🌆</div><h3 data-i18n="sobre.f1.h">Uma Nova Aldeia</h3></div>
+        <p data-i18n="sobre.f1.p">A narrativa propõe a cidade como um espaço de convivência equilibrada entre desenvolvimento urbano, cultura e meio ambiente. O projeto engaja os estudantes em reflexões e práticas sobre a crise climática e seu papel na regeneração do planeta.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card-header"><div class="feature-icon fi-teal">🎮</div><h3 data-i18n="sobre.f2.h">Experiência Híbrida</h3></div>
+        <p data-i18n="sobre.f2.p">A iniciativa combina jogos educativos digitais que impulsionam a trajetória profissional do estudante e uma exposição cultural guiada por personagens simbólicos inspirados em culturas afro-brasileiras e indígenas, que atravessam a jornada do início ao fim.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card-header"><div class="feature-icon fi-green">🎨</div><h3 data-i18n="sobre.f3.h">Cultura local em primeiro plano</h3></div>
+        <p data-i18n="sobre.f3.p">Cada jornada é ancorada numa pesquisa cultural – tradições afro-brasileiras, cosmologias indígenas e referências visuais do território são traduzidas em personagens, missões e curadoria artística que conversam diretamente com a cidade onde o projeto acontece.</p>
+      </div>
+    </div>
+
+    <div style="padding:32px 36px;background:var(--dark);border-radius:14px;border-left:4px solid var(--green);box-shadow:0 2px 12px rgba(0,0,0,0.08);">
+      <div style="font-size:11px;font-weight:700;color:var(--green);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:14px;" data-i18n="sobre.box.label">Por que esse modelo importa</div>
+      <p style="font-size:15px;color:rgba(255,255,255,0.92);line-height:1.7;font-weight:400;" data-i18n="sobre.box.text">A Missão Cidade Azul conecta educação ambiental, gamificação e cultura visual de origem afro-indígena num formato verificável e mensurável – pensado para territórios urbanos reais.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ 02 · JORNADA ════════════════════ -->
+<section id="jornada" class="section-alt">
+  <div class="container">
+    <div class="eyebrow" data-i18n="jornada.eyebrow">02 · O Modelo</div>
+    <h2 class="section-title" data-i18n="jornada.title">A Jornada Cultural</h2>
+    <p class="section-lead" data-i18n="jornada.lead">A Jornada Cultural é uma travessia educativa que conecta o aprendizado virtual a ações reais no mundo físico, culminando em exposição cultural.</p>
+
+    <div class="grid-3" style="margin-bottom:32px;">
+      <div class="feature-card">
+        <div class="feature-card-header"><div class="feature-icon fi-teal">🎮</div><h3 data-i18n="jornada.f1.h">Mundo Virtual</h3></div>
+        <p data-i18n="jornada.f1.p">Estudantes jogam na plataforma The Blue City, acumulam pontos, conquistam badges e certificações vinculadas a desafios reais de sustentabilidade.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card-header"><div class="feature-icon fi-green">🌍</div><h3 data-i18n="jornada.f2.h">Mundo Real</h3></div>
+        <p data-i18n="jornada.f2.p">As ideias geradas no jogo são transformadas em obras de arte pelos artistas locais e apresentadas na exposição cultural da jornada aberta à comunidade.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card-header"><div class="feature-icon fi-blue">🤝</div><h3 data-i18n="jornada.f3.h">Impacto Coletivo</h3></div>
+        <p data-i18n="jornada.f3.p">Estudantes, artistas e comunidade convergem numa experiência de educação e cultura com impacto mensurável no território – registrada e verificável na plataforma.</p>
+      </div>
+    </div>
+
+    <div class="info-card dark" style="padding:32px 36px;">
+      <div style="font-size:11px;font-weight:700;color:var(--green);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:14px;" data-i18n="jornada.box.label">A travessia em uma frase</div>
+      <p style="font-size:15px;color:white;line-height:1.7;font-weight:400;" data-i18n="jornada.box.text">Estudantes jogam, criam projetos sobre um tema ambiental, e essas ideias viram arte na exposição cultural da jornada.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ 03 · FLUXO ════════════════════ -->
+<section id="fluxo">
+  <div class="container">
+    <div class="eyebrow" data-i18n="fluxo.eyebrow">03 · Como Funciona</div>
+    <h2 class="section-title" data-i18n="fluxo.title">Seis etapas, do jogo à rua</h2>
+    <p class="section-lead" data-i18n="fluxo.lead">A Jornada Cultural se desenrola em seis etapas encadeadas – do lançamento do jogo na plataforma à exposição cultural.</p>
+
+    <div class="fluxo-desktop" style="margin-bottom:32px;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" style="width:100%;height:auto;display:block;font-family:'Montserrat',sans-serif;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,0.04);">
+        <defs>
+          <marker id="arr-b" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L8,3 z" fill="#2858a0"/>
+          </marker>
+          <marker id="arr-t" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L8,3 z" fill="#468182"/>
+          </marker>
+        </defs>
+        <rect width="960" height="560" fill="#ffffff" rx="16"/>
+        <text x="480" y="42" text-anchor="middle" font-size="18" font-weight="700" fill="#1a2e3b" data-i18n="fluxo.svg.title">Como Funciona a Jornada</text>
+        <line x1="340" y1="52" x2="620" y2="52" stroke="#5fb670" stroke-width="2" stroke-linecap="round"/>
+        <rect x="30" y="72" width="260" height="130" rx="10" fill="#f4f8fc" stroke="#2858a0" stroke-width="1.5"/>
+        <rect x="30" y="72" width="260" height="5" rx="5" fill="#2858a0"/>
+        <circle cx="62" cy="104" r="17" fill="#2858a0"/>
+        <text x="62" y="109" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">01</text>
+        <text x="90" y="100" font-size="12" font-weight="700" fill="#2858a0" data-i18n="fluxo.s1.h">Jogo Lançado</text>
+        <text x="90" y="116" font-size="10" font-weight="600" fill="#468182" data-i18n="fluxo.s1.s">Plataforma The Blue City</text>
+        <line x1="46" y1="130" x2="276" y2="130" stroke="#e0e8f0" stroke-width="1"/>
+        <text x="46" y="148" font-size="9.5" fill="#6b7f95" data-i18n="fluxo.s1.desc1">Missão temática publicada com</text>
+        <text x="46" y="163" font-size="9.5" fill="#6b7f95" data-i18n="fluxo.s1.desc2">desafios e objetivos definidos</text>
+        <text x="46" y="178" font-size="9.5" fill="#6b7f95" data-i18n="fluxo.s1.desc3">pela escola e patrocinador</text>
+        <line x1="294" y1="137" x2="336" y2="137" stroke="#2858a0" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-b)"/>
+        <rect x="340" y="72" width="260" height="130" rx="10" fill="#f4f8fc" stroke="#2858a0" stroke-width="1.5"/>
+        <rect x="340" y="72" width="260" height="5" rx="5" fill="#2858a0"/>
+        <circle cx="372" cy="104" r="17" fill="#2858a0"/>
+        <text x="372" y="109" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">02</text>
+        <text x="400" y="100" font-size="12" font-weight="700" fill="#2858a0" data-i18n="fluxo.s2.h">Alunos Jogam</text>
+        <text x="400" y="116" font-size="10" font-weight="600" fill="#468182" data-i18n="fluxo.s2.s">Durante o período da jornada</text>
+        <line x1="356" y1="130" x2="586" y2="130" stroke="#e0e8f0" stroke-width="1"/>
+        <text x="356" y="148" font-size="9.5" fill="#6b7f95" data-i18n="fluxo.s2.desc1">Escola engaja alunos</text>
+        <text x="356" y="163" font-size="9.5" fill="#6b7f95" data-i18n="fluxo.s2.desc2">e professores na plataforma</text>
+        <text x="356" y="178" font-size="9.5" fill="#6b7f95" data-i18n="fluxo.s2.desc3">The Blue City</text>
+        <line x1="604" y1="137" x2="646" y2="137" stroke="#2858a0" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-b)"/>
+        <rect x="650" y="72" width="280" height="130" rx="10" fill="#f4f8fc" stroke="#2858a0" stroke-width="1.5"/>
+        <rect x="650" y="72" width="280" height="5" rx="5" fill="#2858a0"/>
+        <circle cx="682" cy="104" r="17" fill="#2858a0"/>
+        <text x="682" y="109" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">03</text>
+        <text x="710" y="100" font-size="12" font-weight="700" fill="#2858a0" data-i18n="fluxo.s3.h">Certificação</text>
+        <text x="710" y="116" font-size="10" font-weight="600" fill="#468182" data-i18n="fluxo.s3.s">Badges + NFT em blockchain</text>
+        <line x1="666" y1="130" x2="916" y2="130" stroke="#e0e8f0" stroke-width="1"/>
+        <text x="666" y="148" font-size="9.5" fill="#6b7f95" data-i18n="fluxo.s3.desc1">Certificado verificável e</text>
+        <text x="666" y="163" font-size="9.5" fill="#6b7f95" data-i18n="fluxo.s3.desc2">compartilhável no LinkedIn,</text>
+        <text x="666" y="178" font-size="9.5" fill="#6b7f95" data-i18n="fluxo.s3.desc3">vinculado ao patrocinador</text>
+        <line x1="790" y1="206" x2="790" y2="248" stroke="#468182" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-t)"/>
+        <rect x="430" y="256" width="500" height="140" rx="10" fill="#eaf4ea" stroke="#5fb670" stroke-width="2"/>
+        <rect x="430" y="256" width="500" height="5" rx="5" fill="#5fb670"/>
+        <circle cx="464" cy="290" r="17" fill="#5fb670"/>
+        <text x="464" y="295" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">04</text>
+        <text x="492" y="286" font-size="12" font-weight="700" fill="#38a349" data-i18n="fluxo.s4.h">Missão no Mundo Real</text>
+        <text x="492" y="302" font-size="10" font-weight="600" fill="#468182" data-i18n="fluxo.s4.s">Alunos enviam ideias e projetos</text>
+        <line x1="446" y1="314" x2="916" y2="314" stroke="#c8e6c9" stroke-width="1"/>
+        <text x="446" y="332" font-size="9.5" fill="#6b7f95" data-i18n="fluxo.s4.desc1">Endereçando o tema da jornada</text>
+        <text x="446" y="347" font-size="9.5" fill="#6b7f95" data-i18n="fluxo.s4.desc2">ex: redução de gases de efeito estufa</text>
+        <text x="446" y="362" font-size="9.5" fill="#6b7f95" data-i18n="fluxo.s4.desc3">ex: mobilidade urbana sustentável</text>
+        <text x="446" y="380" font-size="9" font-weight="700" fill="#5fb670" data-i18n="fluxo.s4.flag">★  Ponto de conexão: virtual → real</text>
+        <line x1="426" y1="326" x2="384" y2="326" stroke="#468182" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-t)"/>
+        <rect x="30" y="256" width="350" height="140" rx="10" fill="#f4f8fc" stroke="#468182" stroke-width="1.5"/>
+        <rect x="30" y="256" width="350" height="5" rx="5" fill="#468182"/>
+        <circle cx="62" cy="290" r="17" fill="#468182"/>
+        <text x="62" y="295" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">05</text>
+        <text x="90" y="286" font-size="12" font-weight="700" fill="#468182" data-i18n="fluxo.s5.h">Artistas Criam</text>
+        <text x="90" y="302" font-size="10" font-weight="600" fill="#468182" data-i18n="fluxo.s5.s">A partir das ideias dos alunos</text>
+        <line x1="46" y1="314" x2="366" y2="314" stroke="#e0e8f0" stroke-width="1"/>
+        <text x="46" y="332" font-size="9.5" fill="#6b7f95" data-i18n="fluxo.s5.desc1">Peças artísticas são produzidas</text>
+        <text x="46" y="347" font-size="9.5" fill="#6b7f95" data-i18n="fluxo.s5.desc2">para compor a exposição cultural</text>
+        <text x="46" y="362" font-size="9.5" fill="#6b7f95" data-i18n="fluxo.s5.desc3">como parte da jornada</text>
+        <line x1="205" y1="400" x2="205" y2="432" stroke="#468182" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-t)"/>
+        <rect x="30" y="440" width="900" height="100" rx="10" fill="#1a2e3b" stroke="#2858a0" stroke-width="1.5"/>
+        <rect x="30" y="440" width="900" height="5" rx="5" fill="#2858a0"/>
+        <circle cx="70" cy="476" r="19" fill="#5fb670"/>
+        <text x="70" y="481" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">06</text>
+        <text x="102" y="471" font-size="13" font-weight="700" fill="#ffffff" data-i18n="fluxo.s6.h">Exposição Cultural Pública</text>
+        <text x="102" y="489" font-size="10" font-weight="600" fill="#5fb670" data-i18n="fluxo.s6.s">Arte + Sustentabilidade numa mostra cultural</text>
+        <line x1="46" y1="500" x2="914" y2="500" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+        <text x="46" y="518" font-size="9" fill="rgba(255,255,255,0.5)" data-i18n="fluxo.s6.note">Aberta à comunidade</text>
+        <circle cx="898" cy="470" r="5" fill="#5fb670" opacity="0.5"/>
+        <circle cx="882" cy="470" r="3.5" fill="#5fb670" opacity="0.3"/>
+        <circle cx="869" cy="470" r="2" fill="#5fb670" opacity="0.15"/>
+      </svg>
+    </div>
+
+    <ol class="fluxo-mobile">
+      <li class="fluxo-step">
+        <div class="fluxo-num">01</div>
+        <div class="fluxo-body">
+          <h4 data-i18n="fluxo.s1.h">Jogo lançado</h4>
+          <div class="fluxo-sub" data-i18n="fluxo.s1.s">Plataforma The Blue City</div>
+          <p data-i18n="fluxo.s1.d">Missão temática publicada com desafios e objetivos definidos pela escola e patrocinador.</p>
+        </div>
+      </li>
+      <li class="fluxo-step">
+        <div class="fluxo-num">02</div>
+        <div class="fluxo-body">
+          <h4 data-i18n="fluxo.s2.h">Alunos jogam</h4>
+          <div class="fluxo-sub" data-i18n="fluxo.s2.s">Durante o período da jornada</div>
+          <p data-i18n="fluxo.s2.d">Escola engaja alunos e professores na plataforma The Blue City.</p>
+        </div>
+      </li>
+      <li class="fluxo-step">
+        <div class="fluxo-num">03</div>
+        <div class="fluxo-body">
+          <h4 data-i18n="fluxo.s3.h">Certificação</h4>
+          <div class="fluxo-sub" data-i18n="fluxo.s3.s">Badges + NFT em blockchain</div>
+          <p data-i18n="fluxo.s3.d">Certificado verificável e compartilhável no LinkedIn, vinculado ao patrocinador.</p>
+        </div>
+      </li>
+      <li class="fluxo-step fluxo-step-bridge">
+        <div class="fluxo-num">04</div>
+        <div class="fluxo-body">
+          <h4 data-i18n="fluxo.s4.h">Missão no mundo real</h4>
+          <div class="fluxo-sub" data-i18n="fluxo.s4.s">Alunos enviam ideias e projetos</div>
+          <p data-i18n="fluxo.s4.d">Endereçando o tema da jornada – ex: redução de gases de efeito estufa, mobilidade urbana sustentável.</p>
+          <span class="fluxo-flag" data-i18n="fluxo.s4.flag">★ Ponto de conexão: virtual → real</span>
+        </div>
+      </li>
+      <li class="fluxo-step">
+        <div class="fluxo-num">05</div>
+        <div class="fluxo-body">
+          <h4 data-i18n="fluxo.s5.h">Artistas criam</h4>
+          <div class="fluxo-sub" data-i18n="fluxo.s5.s">A partir das ideias dos alunos</div>
+          <p data-i18n="fluxo.s5.d">Peças artísticas são produzidas para compor a exposição cultural como parte da jornada.</p>
+        </div>
+      </li>
+      <li class="fluxo-step fluxo-step-final">
+        <div class="fluxo-num">06</div>
+        <div class="fluxo-body">
+          <h4 data-i18n="fluxo.s6.h">Exposição cultural pública</h4>
+          <div class="fluxo-sub" data-i18n="fluxo.s6.s">Arte + sustentabilidade numa mostra cultural</div>
+          <p data-i18n="fluxo.s6.note">Aberta à comunidade.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ════════════════════ 04 · ATORES ════════════════════ -->
+<section id="atores" class="section-alt">
+  <div class="container">
+    <div class="eyebrow" data-i18n="atores.eyebrow">04 · Quem participa</div>
+    <h2 class="section-title" data-i18n="atores.title">Os atores envolvidos</h2>
+    <p class="section-lead" data-i18n="atores.lead">A Missão Cidade Azul reúne sete atores que se encontram em torno da mesma jornada – cada um com seu papel, sua entrega e sua contrapartida. É essa convergência que dá ao projeto força de programa cultural.</p>
+
+    <div class="actors-grid">
+
+      <div class="actor-card">
+        <div class="actor-emoji" style="background:var(--blue-light);">🏫</div>
+        <div class="actor-body">
+          <h3 data-i18n="atores.a1.h">Escolas parceiras</h3>
+          <div class="actor-role" data-i18n="atores.a1.r">Território da jornada</div>
+          <p data-i18n="atores.a1.p">Escolas técnicas ou de ensino médio são convidadas a abrir suas portas para a jornada – o jogo é uma atividade extracurricular, jogada em casa ou em horário livre. A escola autoriza a apresentação do projeto aos estudantes e fica registrada como parceira na plataforma.</p>
+          <span class="actor-deliv" data-i18n="atores.a1.d">Recebe: reconhecimento como escola parceira · selo institucional na plataforma · exposição aberta à sua comunidade</span>
+        </div>
+      </div>
+
+      <div class="actor-card">
+        <div class="actor-emoji" style="background:var(--teal-light);">🎓</div>
+        <div class="actor-body">
+          <h3 data-i18n="atores.a2.h">Estudantes</h3>
+          <div class="actor-role" data-i18n="atores.a2.r">Protagonistas</div>
+          <p data-i18n="atores.a2.p">Estudantes entre 16 e 20 anos jogam, completam missões e enviam projetos sobre o tema ambiental. Cada participação gera badges e certificados verificáveis em blockchain, que somam como experiência profissional comprovável na sua jornada de educação.</p>
+          <span class="actor-deliv" data-i18n="atores.a2.d">Recebe: badges + NFT verificáveis · projeto exposto · LinkedIn-ready</span>
+        </div>
+      </div>
+
+      <div class="actor-card">
+        <div class="actor-emoji" style="background:var(--teal-light);">🤝</div>
+        <div class="actor-body">
+          <h3 data-i18n="atores.a3.h">Articulador Educacional</h3>
+          <div class="actor-role" data-i18n="atores.a3.r">Ponte com as escolas</div>
+          <p data-i18n="atores.a3.p">Faz a articulação com as escolas parceiras – apresenta o projeto à direção e à coordenação pedagógica e é responsável por envolver os estudantes na jornada, mobilizando a adesão ao jogo como atividade extracurricular.</p>
+          <span class="actor-deliv" data-i18n="atores.a3.d">Recebe: contratação remunerada · formação no método · rede educacional ampliada</span>
+        </div>
+      </div>
+
+      <div class="actor-card">
+        <div class="actor-emoji" style="background:var(--blue-light);">🎬</div>
+        <div class="actor-body">
+          <h3 data-i18n="atores.a4.h">Produtor Cultural</h3>
+          <div class="actor-role" data-i18n="atores.a4.r">Articulador da produção</div>
+          <p data-i18n="atores.a4.p">Conecta o projeto aos artistas e à produção cultural local – identifica talentos do território, coordena encomendas, fornecedores e logística da exposição.</p>
+          <span class="actor-deliv" data-i18n="atores.a4.d">Recebe: contratação remunerada · formação no método · rede cultural ampliada</span>
+        </div>
+      </div>
+
+      <div class="actor-card">
+        <div class="actor-emoji" style="background:var(--green-light);">🎨</div>
+        <div class="actor-body">
+          <h3 data-i18n="atores.a5.h">Artistas locais</h3>
+          <div class="actor-role" data-i18n="atores.a5.r">Tradutores</div>
+          <p data-i18n="atores.a5.p">Artistas da própria cidade – visuais, plásticos, audiovisuais – recebem as ideias dos estudantes e as transformam em obras para a exposição cultural.</p>
+          <span class="actor-deliv" data-i18n="atores.a5.d">Recebe: encomenda paga · exposição assinada · acervo permanente online</span>
+        </div>
+      </div>
+
+      <div class="actor-card">
+        <div class="actor-emoji" style="background:var(--blue-light);">👥</div>
+        <div class="actor-body">
+          <h3 data-i18n="atores.a6.h">Comunidade do entorno</h3>
+          <div class="actor-role" data-i18n="atores.a6.r">Audiência viva</div>
+          <p data-i18n="atores.a6.p">A comunidade circula pela exposição – moradores, famílias dos estudantes, professores de outras escolas, transeuntes.</p>
+          <span class="actor-deliv" data-i18n="atores.a6.d">Recebe: exposição cultural gratuita · acessibilidade universal</span>
+        </div>
+      </div>
+
+      <div class="actor-card actor-card-wide actor-card-dark">
+        <div class="actor-emoji" style="background:rgba(95,182,112,0.18);">🤝</div>
+        <div class="actor-body">
+          <h3 data-i18n="atores.a7.h">Patrocinador</h3>
+          <div class="actor-role" data-i18n="atores.a7.r">Viabilizador estratégico</div>
+          <p data-i18n="atores.a7.p">Marca pública ou privada que viabiliza a jornada via Lei Rouanet ou recursos diretos. O patrocinador define o eixo temático da jornada, pode sugerir a cidade-alvo, e tem sua marca presente nas certificações, na plataforma e na exposição física.</p>
+          <p class="actor-extra-body" data-i18n="atores.a7.extra">Toda interação – adesão da escola, jogadas dos alunos, envio de projetos, encomenda dos artistas, registro da exposição – passa por um mesmo ambiente digital, que documenta tudo de forma pública e acessível. É esse registro contínuo que dá ao patrocinador a prestação de contas, ao estudante os certificados verificáveis, e à comunidade o legado permanente.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ 05 · MODELO REPLICÁVEL ════════════════════ -->
+<section id="modelo">
+  <div class="container">
+    <div class="eyebrow" data-i18n="modelo.eyebrow">05 · Replicabilidade</div>
+    <h2 class="section-title" data-i18n="modelo.title">Um modelo replicável</h2>
+    <p class="section-lead" data-i18n="modelo.lead">Missão Cidade Azul é um modelo cultural pensado para ser realizado em diferentes cidades, com diferentes temas e diferentes parceiros. A cada jornada, duas variáveis se configuram: o eixo temático e o território.</p>
+
+    <div class="grid-2" style="margin-bottom:24px;">
+
+      <div class="config-card">
+        <div class="config-card-title" data-i18n="modelo.v1.label">Variável configurável 01</div>
+        <h3 data-i18n="modelo.v1.h">🎯 O eixo temático</h3>
+        <p data-i18n-html="modelo.v1.p">A cada nova jornada, o patrocinador define um <strong style="color:var(--dark);">tema-eixo</strong>. Esse tema atravessa toda a experiência: o jogo, as missões, os projetos dos estudantes e a curadoria artística da exposição.</p>
+        <div class="config-examples">
+          <span class="config-chip" data-i18n="modelo.tema1">Redução de emissões de GEE</span>
+          <span class="config-chip" data-i18n="modelo.tema2">Mobilidade urbana sustentável</span>
+          <span class="config-chip" data-i18n="modelo.tema3">Saneamento</span>
+          <span class="config-chip" data-i18n="modelo.tema4">Gestão de resíduos</span>
+          <span class="config-chip" data-i18n="modelo.tema5">Água e bacias urbanas</span>
+          <span class="config-chip" data-i18n="modelo.tema6">Energia renovável</span>
+          <span class="config-chip" data-i18n="modelo.tema7">Biodiversidade urbana</span>
+          <span class="config-chip" data-i18n="modelo.tema8">Economia circular</span>
+        </div>
+        <div style="margin-top:18px;padding:14px 16px;background:var(--bg);border-radius:8px;border-left:3px solid var(--blue);">
+          <div style="font-size:11px;font-weight:700;color:var(--blue);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.6px;" data-i18n="modelo.crit.label">Critério de seleção do tema</div>
+          <div style="font-size:12.5px;color:var(--muted);line-height:1.6;" data-i18n="modelo.crit.text">O tema precisa ser ao mesmo tempo relevante para o setor do patrocinador e materializável em projetos viáveis por estudantes do ensino médio – gerando saída cultural com densidade local.</div>
+        </div>
+      </div>
+
+      <div class="config-card">
+        <div class="config-card-title" data-i18n="modelo.v2.label">Variável configurável 02</div>
+        <h3 data-i18n="modelo.v2.h">📍 A cidade-território</h3>
+        <p data-i18n="modelo.v2.p">A cidade onde a jornada acontece é definida em parceria com o patrocinador. A escola parceira é então selecionada localmente segundo critérios de adesão, perfil etário e contexto urbano.</p>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="padding:11px 14px;background:var(--bg);border-radius:8px;border-left:3px solid var(--teal);">
+            <div style="font-size:12.5px;font-weight:700;color:var(--dark);margin-bottom:2px;" data-i18n="modelo.c1.label">Critério 1 · Ensino público</div>
+            <div style="font-size:11.5px;color:var(--muted);line-height:1.5;" data-i18n="modelo.c1.text">Cidades com rede consolidada de escolas técnicas ou de ensino médio público integral.</div>
+          </div>
+          <div style="padding:11px 14px;background:var(--bg);border-radius:8px;border-left:3px solid var(--teal);">
+            <div style="font-size:12.5px;font-weight:700;color:var(--dark);margin-bottom:2px;" data-i18n="modelo.c2.label">Critério 2 · Perfil etário</div>
+            <div style="font-size:11.5px;color:var(--muted);line-height:1.5;" data-i18n="modelo.c2.text">Disponibilidade de turmas com estudantes entre 16 e 20 anos – o público-alvo do jogo.</div>
+          </div>
+          <div style="padding:11px 14px;background:var(--bg);border-radius:8px;border-left:3px solid var(--teal);">
+            <div style="font-size:12.5px;font-weight:700;color:var(--dark);margin-bottom:2px;" data-i18n="modelo.c3.label">Critério 3 · Contexto urbano</div>
+            <div style="font-size:11.5px;color:var(--muted);line-height:1.5;" data-i18n="modelo.c3.text">Configuração urbana que permita a realização da exposição cultural da jornada.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="background:var(--dark);border-radius:16px;padding:32px 36px;color:white;">
+      <div class="grid-2-uneven" style="gap:36px;">
+        <div>
+          <div style="font-size:11px;font-weight:700;color:var(--green);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:12px;" data-i18n="modelo.box.label">Por que isso importa</div>
+          <h3 style="font-size:24px;font-weight:800;line-height:1.25;margin-bottom:12px;" data-i18n="modelo.box.title">O modelo se adapta – o método é o mesmo</h3>
+          <p style="font-size:14.5px;color:rgba(255,255,255,0.85);line-height:1.7;" data-i18n="modelo.box.text">A estrutura de seis etapas, a equipe criativa, a plataforma e os mecanismos de certificação são iguais em toda jornada. O que muda é o tema, a cidade e as histórias locais que entram na curadoria artística.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:16px 18px;display:flex;align-items:center;gap:14px;">
+            <div style="font-size:24px;">🔁</div>
+            <div>
+              <div style="font-size:13px;font-weight:700;color:white;" data-i18n="modelo.tag1.h">Estrutura constante</div>
+              <div style="font-size:11.5px;color:rgba(255,255,255,0.65);" data-i18n="modelo.tag1.d">6 etapas · equipe · plataforma · método</div>
+            </div>
+          </div>
+          <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:16px 18px;display:flex;align-items:center;gap:14px;">
+            <div style="font-size:24px;">🎨</div>
+            <div>
+              <div style="font-size:13px;font-weight:700;color:white;" data-i18n="modelo.tag2.h">Conteúdo local</div>
+              <div style="font-size:11.5px;color:rgba(255,255,255,0.65);" data-i18n="modelo.tag2.d">tema · cidade · escola · artistas · cultura</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ 06 · LEGADO ════════════════════ -->
+<section id="legado" class="section-alt">
+  <div class="container">
+    <div class="eyebrow" data-i18n="legado.eyebrow">06 · Registro</div>
+    <h2 class="section-title" data-i18n="legado.title">Registro e legado na plataforma</h2>
+    <p class="section-lead" data-i18n="legado.lead">Toda jornada deixa um rastro público e permanente na plataforma The Blue City – organizado em três espaços que registram o engajamento dos estudantes, os projetos enviados e o resultado artístico final.</p>
+
+    <div class="legacy-grid">
+    <div style="background:white;border-radius:16px;border:1px solid rgba(40,88,160,0.1);box-shadow:0 2px 12px rgba(0,0,0,0.04);overflow:hidden;display:flex;flex-direction:column;">
+      <div style="background:var(--blue);padding:22px 24px;display:flex;align-items:center;gap:14px;">
+        <div style="width:44px;height:44px;background:rgba(255,255,255,0.18);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:21px;flex-shrink:0;">🏅</div>
+        <div>
+          <div style="font-size:15px;font-weight:800;color:white;margin-bottom:3px;line-height:1.25;" data-i18n="legado.g1.h">Performance dos Jogadores</div>
+          <div style="font-size:11.5px;color:rgba(255,255,255,0.78);line-height:1.4;" data-i18n="legado.g1.s">Métricas de engajamento da jornada</div>
+        </div>
+      </div>
+      <div style="padding:22px 24px;display:flex;flex-direction:column;flex:1;">
+        <p style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:16px;flex:1;" data-i18n="legado.g1.p">Registra o engajamento individual e coletivo dos estudantes ao longo da jornada – do primeiro acesso ao envio do projeto final. Os dados são organizados por jornada, escola e turma, e ficam disponíveis após o encerramento.</p>
+        <div style="padding:13px 16px;background:var(--bg);border-radius:10px;border-left:3px solid var(--blue);">
+          <div style="font-size:10.5px;font-weight:700;color:var(--blue);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.5px;" data-i18n="legado.g1.label">O que o painel registra</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6;" data-i18n="legado.g1.metrics">Jogadores ativos · Taxa de adesão · Missões completadas · Badges · Projetos enviados</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:white;border-radius:16px;border:1px solid rgba(40,88,160,0.1);box-shadow:0 2px 12px rgba(0,0,0,0.04);overflow:hidden;display:flex;flex-direction:column;">
+      <div style="background:var(--teal);padding:22px 24px;display:flex;align-items:center;gap:14px;">
+        <div style="width:44px;height:44px;background:rgba(255,255,255,0.18);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:21px;flex-shrink:0;">🗂️</div>
+        <div>
+          <div style="font-size:15px;font-weight:800;color:white;margin-bottom:3px;line-height:1.25;" data-i18n="legado.g2.h">Galeria de Projetos</div>
+          <div style="font-size:11.5px;color:rgba(255,255,255,0.78);line-height:1.4;" data-i18n="legado.g2.s">Projetos dos estudantes · acervo vivo</div>
+        </div>
+      </div>
+      <div style="padding:22px 24px;display:flex;flex-direction:column;flex:1;">
+        <p style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:16px;flex:1;" data-i18n="legado.g2.p">Repositório público das entregas dos jogadores – vídeos, documentos, registros fotográficos e relatos de ações reais relacionados ao tema da jornada. É o acervo vivo da produção estudantil gerada pelo projeto.</p>
+        <div style="padding:13px 16px;background:var(--bg);border-radius:10px;border-left:3px solid var(--teal);">
+          <div style="font-size:10.5px;font-weight:700;color:var(--teal);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.5px;" data-i18n="legado.g2.label">Diferença importante</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6;" data-i18n="legado.g2.note">Exibe os projetos enviados pelos estudantes – as propostas de como endereçar o tema da jornada.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:white;border-radius:16px;border:1px solid rgba(40,88,160,0.1);box-shadow:0 2px 12px rgba(0,0,0,0.04);overflow:hidden;display:flex;flex-direction:column;">
+      <div style="background:#38a349;padding:22px 24px;display:flex;align-items:center;gap:14px;">
+        <div style="width:44px;height:44px;background:rgba(255,255,255,0.18);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:21px;flex-shrink:0;">🎭</div>
+        <div>
+          <div style="font-size:15px;font-weight:800;color:white;margin-bottom:3px;line-height:1.25;" data-i18n="legado.g3.h">Galeria de Eventos</div>
+          <div style="font-size:11.5px;color:rgba(255,255,255,0.78);line-height:1.4;" data-i18n="legado.g3.s">Resultado artístico final · exposição cultural</div>
+        </div>
+      </div>
+      <div style="padding:22px 24px;display:flex;flex-direction:column;flex:1;">
+        <p style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:16px;flex:1;" data-i18n="legado.g3.p">Documenta a exposição cultural da jornada – o resultado final transformado em arte. Reúne fotos e registros das obras expostas, dos personagens no espaço físico e da mediação cultural com a comunidade visitante.</p>
+        <div style="padding:13px 16px;background:var(--bg);border-radius:10px;border-left:3px solid #38a349;">
+          <div style="font-size:10.5px;font-weight:700;color:#38a349;margin-bottom:5px;text-transform:uppercase;letter-spacing:0.5px;" data-i18n="legado.g3.label">Legado permanente</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6;" data-i18n="legado.g3.note">A galeria é permanente na plataforma – a exposição continua acessível online após o evento físico.</div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ 07 · CASOS ════════════════════ -->
+<section id="casos">
+  <div class="container">
+    <div class="eyebrow" data-i18n="casos.eyebrow">07 · No território</div>
+    <h2 class="section-title" data-i18n="casos.title">Casos da Missão Cidade Azul</h2>
+    <p class="section-lead" data-i18n="casos.lead">O modelo já tem sua primeira realização concreta em Palmas, e está aberto a novas parcerias para expandir o programa a outros territórios brasileiros.</p>
+
+    <div class="case-card">
+      <div class="case-card-head live">
+        <div style="width:58px;height:58px;background:rgba(255,255,255,0.18);border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0;">🌳</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap;">
+            <div style="font-size:19px;font-weight:800;color:white;">Palmas, TO · 2026</div>
+            <span class="case-status live" data-i18n="casos.palmas.status">● Em produção</span>
+          </div>
+          <div style="font-size:12.5px;color:rgba(255,255,255,0.85);" data-i18n="casos.palmas.sub">Missão Termômetro Zero · Patrocínio Sotreq</div>
+        </div>
+      </div>
+      <div class="case-card-body">
+        <p style="font-size:13.5px;color:var(--muted);line-height:1.7;margin-bottom:20px;" data-i18n-html="casos.palmas.p">Primeira realização do modelo, em parceria com a Sotreq – distribuidora Caterpillar com operação consolidada na capital tocantinense. O tema-eixo escolhido foi a <strong style="color:var(--dark);">Redução de Emissões de Gases de Efeito Estufa</strong>.</p>
+
+        <div class="grid-4" style="margin-bottom:18px;">
+          <div class="case-stat">
+            <div class="case-stat-value" style="color:var(--blue);">Palmas</div>
+            <div class="case-stat-label" data-i18n="casos.palmas.l1">Cidade</div>
+          </div>
+          <div class="case-stat">
+            <div class="case-stat-value" style="color:var(--teal);">Sotreq</div>
+            <div class="case-stat-label" data-i18n="casos.palmas.l2">Patrocinador</div>
+          </div>
+          <div class="case-stat">
+            <div class="case-stat-value" style="color:var(--green);" data-i18n="casos.palmas.v3">GEE</div>
+            <div class="case-stat-label" data-i18n="casos.palmas.l3">Tema-eixo</div>
+          </div>
+          <div class="case-stat">
+            <div class="case-stat-value" style="color:var(--dark);" data-i18n="casos.palmas.v4">Mar-Dez</div>
+            <div class="case-stat-label">2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════ 08 · APOIO ════════════════════ -->
+<section id="apoio" class="section-alt">
+  <div class="container">
+    <div class="eyebrow" data-i18n="apoio.eyebrow">08 · Como apoiar</div>
+    <h2 class="section-title" data-i18n="apoio.title">Cotas de patrocínio</h2>
+    <p class="section-lead" data-i18n-html="apoio.lead">A primeira realização do modelo – <strong style="color:var(--dark);">Missão Cidade Azul na Região Norte</strong> – está aprovada na Lei de Incentivo à Cultura (PRONAC 237809) e cobre cinco cidades. A Sotreq já patrocinou uma das edições; as demais cotas seguem abertas a marcas, instituições e governos interessados em viabilizar a jornada em sua cidade-território.</p>
+
+    <div class="stats-row" style="margin-bottom:24px;">
+      <div class="stat-card">
+        <div class="stat-value">5</div>
+        <div class="stat-label" data-i18n="apoio.stat1">Cidades na Região Norte</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value teal">10.000</div>
+        <div class="stat-label" data-i18n="apoio.stat2">Pessoas engajadas</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value green">100%</div>
+        <div class="stat-label" data-i18n="apoio.stat3">Gratuito ao público</div>
+      </div>
+    </div>
+
+    <div class="cotas-heading" data-i18n="apoio.heading">Cotas · LIC IR Rouanet · PRONAC 237809</div>
+
+    <div class="cotas-list">
+
+      <div class="cota-row">
+        <span class="cota-tier cota-bronze">BRONZE</span>
+        <div class="cota-info">
+          <div class="cota-title" data-i18n="apoio.bronze.t">1 cidade · até 2.000 pessoas · R$ 190.000</div>
+          <div class="cota-desc" data-i18n="apoio.bronze.d">Logotipo em materiais, site e certificados · 1 menção em imprensa · 4 posts · vídeo de resultados · Certificado NFT</div>
+        </div>
+        <a href="contrapartidas.html#page-0" class="cota-link" data-i18n="apoio.link">Ver contrapartidas →</a>
+      </div>
+
+      <div class="cota-row">
+        <span class="cota-tier cota-prata" data-i18n="apoio.prata.tier">PRATA</span>
+        <div class="cota-info">
+          <div class="cota-title" data-i18n="apoio.prata.t">2 cidades · até 4.000 pessoas · R$ 380.000</div>
+          <div class="cota-desc" data-i18n="apoio.prata.d">Logotipo em destaque no site e galeria · 2 menções · 4 posts · 1 vídeo exclusivo · Certificado NFT</div>
+        </div>
+        <a href="contrapartidas.html#page-1" class="cota-link" data-i18n="apoio.link">Ver contrapartidas →</a>
+      </div>
+
+      <div class="cota-row">
+        <span class="cota-tier cota-ouro" data-i18n="apoio.ouro.tier">OURO</span>
+        <div class="cota-info">
+          <div class="cota-title" data-i18n="apoio.ouro.t">3 cidades · até 6.000 pessoas · R$ 570.000</div>
+          <div class="cota-desc" data-i18n="apoio.ouro.d">Logo nos créditos de todos os vídeos · 3 menções · 8 posts · 1 vídeo exclusivo · kits institucionais · Certificado NFT</div>
+        </div>
+        <a href="contrapartidas.html#page-2" class="cota-link" data-i18n="apoio.link">Ver contrapartidas →</a>
+      </div>
+
+      <div class="cota-row">
+        <span class="cota-tier cota-safira" data-i18n="apoio.safira.tier">SAFIRA</span>
+        <div class="cota-info">
+          <div class="cota-title" data-i18n="apoio.safira.t">4 cidades · até 8.000 pessoas · R$ 760.000</div>
+          <div class="cota-desc" data-i18n="apoio.safira.d">Logo em todos os materiais · 4 menções · 8 posts · 1 vídeo exclusivo · kits personalizados · Certificado NFT</div>
+        </div>
+        <a href="contrapartidas.html#page-3" class="cota-link" data-i18n="apoio.link">Ver contrapartidas →</a>
+      </div>
+
+      <div class="cota-row cota-row-premium">
+        <span class="cota-tier cota-premium">PREMIUM</span>
+        <div class="cota-info">
+          <div class="cota-title" data-i18n-html="apoio.premium.t">6 cidades · até 12.000 pessoas · R$ 943.554 <span class="cota-bonus-title-accent">("5 + 1 cidade bônus")</span></div>
+          <div class="cota-desc" data-i18n="apoio.premium.d">6 menções · 20 posts · 3 vídeos · ativação cocriada · kits exclusivos · destaque máximo em todos os materiais</div>
+        </div>
+        <a href="contrapartidas.html#page-4" class="cota-link" data-i18n="apoio.link">Ver contrapartidas →</a>
+      </div>
+
+    </div>
+
+    <div class="cota-bonus">
+      <div class="cota-bonus-icon">🎁</div>
+      <div>
+        <div class="cota-bonus-label" data-i18n="apoio.bonus.label">Bônus exclusivo Premium</div>
+        <div class="cota-bonus-text" data-i18n-html="apoio.bonus.text">Patrocinador único do projeto integral (R$ 943.554) ganha a <strong>6ª cidade como bônus</strong> – válido apenas quando uma única empresa cobre o valor total do PRONAC. Em combinações entre múltiplos patrocinadores, o cálculo segue a base de R$ 190.000 por cidade.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<section id="equipe">
+  <div class="container">
+    <div class="eyebrow" data-i18n="equipe.eyebrow">09 · Estrutura</div>
+    <h2 class="section-title" data-i18n="equipe.title">A equipe por trás</h2>
+    <p class="section-lead" data-i18n="equipe.lead">Cada jornada é conduzida por uma equipe estruturada em dois pilares articulados – a dimensão virtual, que constrói o jogo, e a dimensão física, que ativa o território. Tudo sob a coordenação central do projeto.</p>
+
+    <div class="team-coord">
+      <div class="team-coord-icon">🧭</div>
+      <div>
+        <h4 data-i18n="equipe.coord.h">Coordenadora do Projeto</h4>
+        <div class="team-coord-role" data-i18n="equipe.coord.r">Articulação geral · virtual + físico</div>
+        <p data-i18n="equipe.coord.p">Coordena toda a jornada de ponta a ponta – articula os dois pilares da equipe, garante o encaixe entre produção do jogo, ação no território e relacionamento com o patrocinador.</p>
+      </div>
+    </div>
+
+    <div class="pillar-block">
+      <div class="pillar-header">
+        <span class="pillar-tag pillar-tag-virtual" data-i18n="equipe.pilar1.tag">Virtual</span>
+        <div class="pillar-title" data-i18n="equipe.pilar1.t">Construção do jogo</div>
+        <div class="pillar-desc" data-i18n="equipe.pilar1.d">do conceito cultural à build jogável na plataforma</div>
+      </div>
+
+      <div class="grid-3" style="margin-bottom:8px;">
+
+        <div class="team-card">
+          <h4 data-i18n="equipe.m1.h">Pesquisadora Cultural</h4>
+          <div class="team-role" data-i18n="equipe.m1.r">Pesquisa de personagens</div>
+          <p data-i18n="equipe.m1.p">Conduz a pesquisa sobre cosmologias, figuras míticas e referências visuais que orientam os personagens da jornada – garantindo autenticidade cultural ao jogo e à exposição.</p>
+        </div>
+
+        <div class="team-card">
+          <h4 data-i18n="equipe.m2.h">Ilustrador / Modelador 3D</h4>
+          <div class="team-role" data-i18n="equipe.m2.r">Ilustração dos personagens</div>
+          <p data-i18n="equipe.m2.p">Recebe o dossiê da pesquisadora e dá vida visual aos personagens – da ilustração de referência ao modelo 3D low-poly pronto para Unity. Trabalha em duas fases: concept art (aprovado antes de avançar) e modelagem 3D.</p>
+        </div>
+
+        <div class="team-card">
+          <h4 data-i18n="equipe.m3.h">Game Designer</h4>
+          <div class="team-role" data-i18n="equipe.m3.r">Desenvolvimento do jogo</div>
+          <p data-i18n="equipe.m3.p">Recebe o Game Design Document e os personagens 3D, e desenvolve o jogo completo em Unity – entregando uma build WebGL integrada e funcional na plataforma The Blue City. Sua entrega é o jogo que os estudantes acessam.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="pillar-block">
+      <div class="pillar-header">
+        <span class="pillar-tag pillar-tag-fisico" data-i18n="equipe.pilar2.tag">Físico</span>
+        <div class="pillar-title" data-i18n="equipe.pilar2.t">Ativação no território</div>
+        <div class="pillar-desc" data-i18n="equipe.pilar2.d">da chegada à escola à exposição cultural</div>
+      </div>
+
+      <div class="grid-3" style="margin-bottom:8px;">
+
+        <div class="team-card">
+          <h4 data-i18n="equipe.m4.h">Articuladora Educacional</h4>
+          <div class="team-role" data-i18n="equipe.m4.r">Ponte com as escolas</div>
+          <p data-i18n="equipe.m4.p">Faz a articulação com as escolas parceiras – apresenta o projeto à direção e à coordenação pedagógica e é responsável por envolver os estudantes na jornada, mobilizando a adesão ao jogo como atividade extracurricular.</p>
+        </div>
+
+        <div class="team-card">
+          <h4 data-i18n="equipe.m5.h">Produtora Cultural</h4>
+          <div class="team-role" data-i18n="equipe.m5.r">Gestão da jornada</div>
+          <p data-i18n="equipe.m5.p">Figura central da implementação territorial. Articula, executa e consolida todas as etapas – da estruturação da campanha à exposição física no território. Opera diretamente o Painel do Produtor Cultural na plataforma.</p>
+        </div>
+
+        <div class="team-card">
+          <h4 data-i18n="equipe.m6.h">Assessoria de Imprensa</h4>
+          <div class="team-role" data-i18n="equipe.m6.r">Cobertura na cidade-jornada</div>
+          <p data-i18n="equipe.m6.p">Articula cobertura e divulgação da jornada na imprensa local da cidade onde a exposição acontece – garantindo visibilidade ao patrocinador e ressonância pública à experiência cultural no território.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="padding:24px 28px;background:var(--dark);border-radius:14px;color:white;">
+      <div style="font-size:11px;font-weight:700;color:var(--green);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;" data-i18n="equipe.box.label">Como a equipe se replica</div>
+      <p style="font-size:13.5px;color:rgba(255,255,255,0.85);line-height:1.7;" data-i18n="equipe.box.text">Cada nova jornada mantém esta estrutura de dois pilares sob uma coordenação central. O pilar virtual se reaplica sobre os novos personagens e o tema-eixo de cada edição; o pilar físico se reorganiza localmente com a escola, os artistas, a imprensa local e o patrocinador da cidade.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ FOOTER ════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-col">
+        <div class="footer-brand" data-i18n="footer.brand">Missão Cidade Azul</div>
+        <div class="footer-tagline" data-i18n="footer.tagline">Realização The Blue City</div>
+        <a href="mailto:hello@thebluecity.app" class="footer-contact">hello@thebluecity.app</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© The Blue City</div>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Voltar ao topo">↑</button>
+
+<script>
+  // ═══════════════════ I18N ═══════════════════
+  const I18N = {
+    pt: {
+      'page.title': 'The Blue City – Jornada Cultural',
+      'topbar.sub': 'Jornada Cultural',
+      'nav.sobre': 'Sobre',
+      'nav.jornada': 'Jornada',
+      'nav.fluxo': 'Fluxo',
+      'nav.atores': 'Atores',
+      'nav.modelo': 'Modelo',
+      'nav.legado': 'Legado',
+      'nav.casos': 'Casos',
+      'nav.apoio': 'Apoio',
+      'nav.equipe': 'Equipe',
+      'hero.eyebrow': 'Apresentação Institucional · The Blue City',
+      'hero.title': 'Arte, cultura e<br>tecnologia pela<br>regeneração do planeta',
+      'hero.desc': 'Um modelo de exposição cultural híbrida – jogo educativo digital e exposição cultural – desenhado para ser realizado em diferentes cidades, conectando escolas, artistas, comunidades e a luta pela regeneração.',
+      'hero.stat1.t': 'Jogo digital',
+      'hero.stat1.d': 'Missões temáticas jogadas pelos estudantes na plataforma',
+      'hero.stat2.t': 'Certificação verificável',
+      'hero.stat2.d': 'Badges e NFTs em blockchain que somam como experiência',
+      'hero.stat3.t': 'Exposição cultural',
+      'hero.stat3.d': 'Ideias dos estudantes traduzidas em obras por artistas locais',
+      'hero.stat4.t': 'Legado público',
+      'hero.stat4.d': 'Galeria permanente que registra cada jornada na plataforma',
+      // ── SOBRE
+      'sobre.eyebrow': '01 · O Projeto',
+      'sobre.title': 'Missão Cidade Azul',
+      'sobre.lead': 'Uma jornada educativa, tecnológica e cultural que conecta educação ambiental, narrativa, tecnologia e arte, transformando a sala de aula em laboratório de regeneração.',
+      'sobre.f1.h': 'Uma Nova Aldeia',
+      'sobre.f1.p': 'A narrativa propõe a cidade como um espaço de convivência equilibrada entre desenvolvimento urbano, cultura e meio ambiente. O projeto engaja os estudantes em reflexões e práticas sobre a crise climática e seu papel na regeneração do planeta.',
+      'sobre.f2.h': 'Experiência Híbrida',
+      'sobre.f2.p': 'A iniciativa combina jogos educativos digitais que impulsionam a trajetória profissional do estudante e uma exposição cultural guiada por personagens simbólicos inspirados em culturas afro-brasileiras e indígenas, que atravessam a jornada do início ao fim.',
+      'sobre.f3.h': 'Cultura local em primeiro plano',
+      'sobre.f3.p': 'Cada jornada é ancorada numa pesquisa cultural – tradições afro-brasileiras, cosmologias indígenas e referências visuais do território são traduzidas em personagens, missões e curadoria artística que conversam diretamente com a cidade onde o projeto acontece.',
+      'sobre.box.label': 'Por que esse modelo importa',
+      'sobre.box.text': 'A Missão Cidade Azul conecta educação ambiental, gamificação e cultura visual de origem afro-indígena num formato verificável e mensurável – pensado para territórios urbanos reais.',
+      // ── JORNADA
+      'jornada.eyebrow': '02 · O Modelo',
+      'jornada.title': 'A Jornada Cultural',
+      'jornada.lead': 'A Jornada Cultural é uma travessia educativa que conecta o aprendizado virtual a ações reais no mundo físico, culminando em exposição cultural.',
+      'jornada.f1.h': 'Mundo Virtual',
+      'jornada.f1.p': 'Estudantes jogam na plataforma The Blue City, acumulam pontos, conquistam badges e certificações vinculadas a desafios reais de sustentabilidade.',
+      'jornada.f2.h': 'Mundo Real',
+      'jornada.f2.p': 'As ideias geradas no jogo são transformadas em obras de arte pelos artistas locais e apresentadas na exposição cultural da jornada aberta à comunidade.',
+      'jornada.f3.h': 'Impacto Coletivo',
+      'jornada.f3.p': 'Estudantes, artistas e comunidade convergem numa experiência de educação e cultura com impacto mensurável no território – registrada e verificável na plataforma.',
+      'jornada.box.label': 'A travessia em uma frase',
+      'jornada.box.text': 'Estudantes jogam, criam projetos sobre um tema ambiental, e essas ideias viram arte na exposição cultural da jornada.',
+      // ── FLUXO
+      'fluxo.eyebrow': '03 · Como Funciona',
+      'fluxo.title': 'Seis etapas, do jogo à rua',
+      'fluxo.lead': 'A Jornada Cultural se desenrola em seis etapas encadeadas – do lançamento do jogo na plataforma à exposição cultural.',
+      'fluxo.svg.title': 'Como Funciona a Jornada',
+      'fluxo.s1.h': 'Jogo lançado',
+      'fluxo.s1.s': 'Plataforma The Blue City',
+      'fluxo.s1.d': 'Missão temática publicada com desafios e objetivos definidos pela escola e patrocinador.',
+      'fluxo.s2.h': 'Alunos jogam',
+      'fluxo.s2.s': 'Durante o período da jornada',
+      'fluxo.s2.d': 'Escola engaja alunos e professores na plataforma The Blue City.',
+      'fluxo.s3.h': 'Certificação',
+      'fluxo.s3.s': 'Badges + NFT em blockchain',
+      'fluxo.s3.d': 'Certificado verificável e compartilhável no LinkedIn, vinculado ao patrocinador.',
+      'fluxo.s4.h': 'Missão no mundo real',
+      'fluxo.s4.s': 'Alunos enviam ideias e projetos',
+      'fluxo.s4.d': 'Endereçando o tema da jornada – ex: redução de gases de efeito estufa, mobilidade urbana sustentável.',
+      'fluxo.s4.flag': '★ Ponto de conexão: virtual → real',
+      'fluxo.s5.h': 'Artistas criam',
+      'fluxo.s5.s': 'A partir das ideias dos alunos',
+      'fluxo.s5.d': 'Peças artísticas são produzidas para compor a exposição cultural como parte da jornada.',
+      'fluxo.s6.h': 'Exposição cultural pública',
+      'fluxo.s6.s': 'Arte + sustentabilidade numa mostra cultural',
+      'fluxo.s6.note': 'Aberta à comunidade.',
+      'fluxo.s1.desc1': 'Missão temática publicada com',
+      'fluxo.s1.desc2': 'desafios e objetivos definidos',
+      'fluxo.s1.desc3': 'pela escola e patrocinador',
+      'fluxo.s2.desc1': 'Escola engaja alunos',
+      'fluxo.s2.desc2': 'e professores na plataforma',
+      'fluxo.s2.desc3': 'The Blue City',
+      'fluxo.s3.desc1': 'Certificado verificável e',
+      'fluxo.s3.desc2': 'compartilhável no LinkedIn,',
+      'fluxo.s3.desc3': 'vinculado ao patrocinador',
+      'fluxo.s4.desc1': 'Endereçando o tema da jornada',
+      'fluxo.s4.desc2': 'ex: redução de gases de efeito estufa',
+      'fluxo.s4.desc3': 'ex: mobilidade urbana sustentável',
+      'fluxo.s5.desc1': 'Peças artísticas são produzidas',
+      'fluxo.s5.desc2': 'para compor a exposição cultural',
+      'fluxo.s5.desc3': 'como parte da jornada',
+      // ── ATORES
+      'atores.eyebrow': '04 · Quem participa',
+      'atores.title': 'Os atores envolvidos',
+      'atores.lead': 'A Missão Cidade Azul reúne sete atores que se encontram em torno da mesma jornada – cada um com seu papel, sua entrega e sua contrapartida. É essa convergência que dá ao projeto força de programa cultural.',
+      'atores.a1.h': 'Escolas parceiras',
+      'atores.a1.r': 'Território da jornada',
+      'atores.a1.p': 'Escolas técnicas ou de ensino médio são convidadas a abrir suas portas para a jornada – o jogo é uma atividade extracurricular, jogada em casa ou em horário livre. A escola autoriza a apresentação do projeto aos estudantes e fica registrada como parceira na plataforma.',
+      'atores.a1.d': 'Recebe: reconhecimento como escola parceira · selo institucional na plataforma · exposição aberta à sua comunidade',
+      'atores.a2.h': 'Estudantes',
+      'atores.a2.r': 'Protagonistas',
+      'atores.a2.p': 'Estudantes entre 16 e 20 anos jogam, completam missões e enviam projetos sobre o tema ambiental. Cada participação gera badges e certificados verificáveis em blockchain, que somam como experiência profissional comprovável na sua jornada de educação.',
+      'atores.a2.d': 'Recebe: badges + NFT verificáveis · projeto exposto · LinkedIn-ready',
+      'atores.a3.h': 'Articulador Educacional',
+      'atores.a3.r': 'Ponte com as escolas',
+      'atores.a3.p': 'Faz a articulação com as escolas parceiras – apresenta o projeto à direção e à coordenação pedagógica e é responsável por envolver os estudantes na jornada, mobilizando a adesão ao jogo como atividade extracurricular.',
+      'atores.a3.d': 'Recebe: contratação remunerada · formação no método · rede educacional ampliada',
+      'atores.a4.h': 'Produtor Cultural',
+      'atores.a4.r': 'Articulador da produção',
+      'atores.a4.p': 'Conecta o projeto aos artistas e à produção cultural local – identifica talentos do território, coordena encomendas, fornecedores e logística da exposição.',
+      'atores.a4.d': 'Recebe: contratação remunerada · formação no método · rede cultural ampliada',
+      'atores.a5.h': 'Artistas locais',
+      'atores.a5.r': 'Tradutores',
+      'atores.a5.p': 'Artistas da própria cidade – visuais, plásticos, audiovisuais – recebem as ideias dos estudantes e as transformam em obras para a exposição cultural.',
+      'atores.a5.d': 'Recebe: encomenda paga · exposição assinada · acervo permanente online',
+      'atores.a6.h': 'Comunidade do entorno',
+      'atores.a6.r': 'Audiência viva',
+      'atores.a6.p': 'A comunidade circula pela exposição – moradores, famílias dos estudantes, professores de outras escolas, transeuntes.',
+      'atores.a6.d': 'Recebe: exposição cultural gratuita · acessibilidade universal',
+      'atores.a7.h': 'Patrocinador',
+      'atores.a7.r': 'Viabilizador estratégico',
+      'atores.a7.p': 'Marca pública ou privada que viabiliza a jornada via Lei Rouanet ou recursos diretos. O patrocinador define o eixo temático da jornada, pode sugerir a cidade-alvo, e tem sua marca presente nas certificações, na plataforma e na exposição física.',
+      'atores.a7.extra': 'Toda interação – adesão da escola, jogadas dos alunos, envio de projetos, encomenda dos artistas, registro da exposição – passa por um mesmo ambiente digital, que documenta tudo de forma pública e acessível. É esse registro contínuo que dá ao patrocinador a prestação de contas, ao estudante os certificados verificáveis, e à comunidade o legado permanente.',
+      // ── MODELO
+      'modelo.eyebrow': '05 · Replicabilidade',
+      'modelo.title': 'Um modelo replicável',
+      'modelo.lead': 'Missão Cidade Azul é um modelo cultural pensado para ser realizado em diferentes cidades, com diferentes temas e diferentes parceiros. A cada jornada, duas variáveis se configuram: o eixo temático e o território.',
+      'modelo.v1.label': 'Variável configurável 01',
+      'modelo.v1.h': '🎯 O eixo temático',
+      'modelo.v1.p': 'A cada nova jornada, o patrocinador define um <strong style="color:var(--dark);">tema-eixo</strong>. Esse tema atravessa toda a experiência: o jogo, as missões, os projetos dos estudantes e a curadoria artística da exposição.',
+      'modelo.tema1': 'Redução de emissões de GEE',
+      'modelo.tema2': 'Mobilidade urbana sustentável',
+      'modelo.tema3': 'Saneamento',
+      'modelo.tema4': 'Gestão de resíduos',
+      'modelo.tema5': 'Água e bacias urbanas',
+      'modelo.tema6': 'Energia renovável',
+      'modelo.tema7': 'Biodiversidade urbana',
+      'modelo.tema8': 'Economia circular',
+      'modelo.crit.label': 'Critério de seleção do tema',
+      'modelo.crit.text': 'O tema precisa ser ao mesmo tempo relevante para o setor do patrocinador e materializável em projetos viáveis por estudantes do ensino médio – gerando saída cultural com densidade local.',
+      'modelo.v2.label': 'Variável configurável 02',
+      'modelo.v2.h': '📍 A cidade-território',
+      'modelo.v2.p': 'A cidade onde a jornada acontece é definida em parceria com o patrocinador. A escola parceira é então selecionada localmente segundo critérios de adesão, perfil etário e contexto urbano.',
+      'modelo.c1.label': 'Critério 1 · Ensino público',
+      'modelo.c1.text': 'Cidades com rede consolidada de escolas técnicas ou de ensino médio público integral.',
+      'modelo.c2.label': 'Critério 2 · Perfil etário',
+      'modelo.c2.text': 'Disponibilidade de turmas com estudantes entre 16 e 20 anos – o público-alvo do jogo.',
+      'modelo.c3.label': 'Critério 3 · Contexto urbano',
+      'modelo.c3.text': 'Configuração urbana que permita a realização da exposição cultural da jornada.',
+      'modelo.box.label': 'Por que isso importa',
+      'modelo.box.title': 'O modelo se adapta – o método é o mesmo',
+      'modelo.box.text': 'A estrutura de seis etapas, a equipe criativa, a plataforma e os mecanismos de certificação são iguais em toda jornada. O que muda é o tema, a cidade e as histórias locais que entram na curadoria artística.',
+      'modelo.tag1.h': 'Estrutura constante',
+      'modelo.tag1.d': '6 etapas · equipe · plataforma · método',
+      'modelo.tag2.h': 'Conteúdo local',
+      'modelo.tag2.d': 'tema · cidade · escola · artistas · cultura',
+      // ── LEGADO
+      'legado.eyebrow': '06 · Registro',
+      'legado.title': 'Registro e legado na plataforma',
+      'legado.lead': 'Toda jornada deixa um rastro público e permanente na plataforma The Blue City – organizado em três espaços que registram o engajamento dos estudantes, os projetos enviados e o resultado artístico final.',
+      'legado.g1.h': 'Performance dos Jogadores',
+      'legado.g1.s': 'Métricas de engajamento da jornada',
+      'legado.g1.p': 'Registra o engajamento individual e coletivo dos estudantes ao longo da jornada – do primeiro acesso ao envio do projeto final. Os dados são organizados por jornada, escola e turma, e ficam disponíveis após o encerramento.',
+      'legado.g1.label': 'O que o painel registra',
+      'legado.g1.metrics': 'Jogadores ativos · Taxa de adesão · Missões completadas · Badges · Projetos enviados',
+      'legado.g2.h': 'Galeria de Projetos',
+      'legado.g2.s': 'Projetos dos estudantes · acervo vivo',
+      'legado.g2.p': 'Repositório público das entregas dos jogadores – vídeos, documentos, registros fotográficos e relatos de ações reais relacionados ao tema da jornada. É o acervo vivo da produção estudantil gerada pelo projeto.',
+      'legado.g2.label': 'Diferença importante',
+      'legado.g2.note': 'Exibe os projetos enviados pelos estudantes – as propostas de como endereçar o tema da jornada.',
+      'legado.g3.h': 'Galeria de Eventos',
+      'legado.g3.s': 'Resultado artístico final · exposição cultural',
+      'legado.g3.p': 'Documenta a exposição cultural da jornada – o resultado final transformado em arte. Reúne fotos e registros das obras expostas, dos personagens no espaço físico e da mediação cultural com a comunidade visitante.',
+      'legado.g3.label': 'Legado permanente',
+      'legado.g3.note': 'A galeria é permanente na plataforma – a exposição continua acessível online após o evento físico.',
+      // ── CASOS
+      'casos.eyebrow': '07 · No território',
+      'casos.title': 'Casos da Missão Cidade Azul',
+      'casos.lead': 'O modelo já tem sua primeira realização concreta em Palmas, e está aberto a novas parcerias para expandir o programa a outros territórios brasileiros.',
+      'casos.palmas.status': '● Em produção',
+      'casos.palmas.sub': 'Missão Termômetro Zero · Patrocínio Sotreq',
+      'casos.palmas.p': 'Primeira realização do modelo, em parceria com a Sotreq – distribuidora Caterpillar com operação consolidada na capital tocantinense. O tema-eixo escolhido foi a <strong style="color:var(--dark);">Redução de Emissões de Gases de Efeito Estufa</strong>.',
+      'casos.palmas.l1': 'Cidade',
+      'casos.palmas.l2': 'Patrocinador',
+      'casos.palmas.v3': 'GEE',
+      'casos.palmas.l3': 'Tema-eixo',
+      'casos.palmas.v4': 'Mar-Dez',
+      // ── APOIO
+      'apoio.eyebrow': '08 · Como apoiar',
+      'apoio.title': 'Cotas de patrocínio',
+      'apoio.lead': 'A primeira realização do modelo – <strong style="color:var(--dark);">Missão Cidade Azul na Região Norte</strong> – está aprovada na Lei de Incentivo à Cultura (PRONAC 237809) e cobre cinco cidades. A Sotreq já patrocinou uma das edições; as demais cotas seguem abertas a marcas, instituições e governos interessados em viabilizar a jornada em sua cidade-território.',
+      'apoio.stat1': 'Cidades na Região Norte',
+      'apoio.stat2': 'Pessoas engajadas',
+      'apoio.stat3': 'Gratuito ao público',
+      'apoio.heading': 'Cotas · LIC IR Rouanet · PRONAC 237809',
+      'apoio.bronze.t': '1 cidade · até 2.000 pessoas · R$ 190.000',
+      'apoio.bronze.d': 'Logotipo em materiais, site e certificados · 1 menção em imprensa · 4 posts · vídeo de resultados · Certificado NFT',
+      'apoio.prata.tier': 'PRATA',
+      'apoio.prata.t': '2 cidades · até 4.000 pessoas · R$ 380.000',
+      'apoio.prata.d': 'Logotipo em destaque no site e galeria · 2 menções · 4 posts · 1 vídeo exclusivo · Certificado NFT',
+      'apoio.ouro.tier': 'OURO',
+      'apoio.ouro.t': '3 cidades · até 6.000 pessoas · R$ 570.000',
+      'apoio.ouro.d': 'Logo nos créditos de todos os vídeos · 3 menções · 8 posts · 1 vídeo exclusivo · kits institucionais · Certificado NFT',
+      'apoio.safira.tier': 'SAFIRA',
+      'apoio.safira.t': '4 cidades · até 8.000 pessoas · R$ 760.000',
+      'apoio.safira.d': 'Logo em todos os materiais · 4 menções · 8 posts · 1 vídeo exclusivo · kits personalizados · Certificado NFT',
+      'apoio.premium.t': '6 cidades · até 12.000 pessoas · R$ 943.554 <span class="cota-bonus-title-accent">("5 + 1 cidade bônus")</span>',
+      'apoio.premium.d': '6 menções · 20 posts · 3 vídeos · ativação cocriada · kits exclusivos · destaque máximo em todos os materiais',
+      'apoio.link': 'Ver contrapartidas →',
+      'apoio.bonus.label': 'Bônus exclusivo Premium',
+      'apoio.bonus.text': 'Patrocinador único do projeto integral (R$ 943.554) ganha a <strong>6ª cidade como bônus</strong> – válido apenas quando uma única empresa cobre o valor total do PRONAC. Em combinações entre múltiplos patrocinadores, o cálculo segue a base de R$ 190.000 por cidade.',
+      // ── EQUIPE
+      'equipe.eyebrow': '09 · Estrutura',
+      'equipe.title': 'A equipe por trás',
+      'equipe.lead': 'Cada jornada é conduzida por uma equipe estruturada em dois pilares articulados – a dimensão virtual, que constrói o jogo, e a dimensão física, que ativa o território. Tudo sob a coordenação central do projeto.',
+      'equipe.coord.h': 'Coordenadora do Projeto',
+      'equipe.coord.r': 'Articulação geral · virtual + físico',
+      'equipe.coord.p': 'Coordena toda a jornada de ponta a ponta – articula os dois pilares da equipe, garante o encaixe entre produção do jogo, ação no território e relacionamento com o patrocinador.',
+      'equipe.pilar1.tag': 'Virtual',
+      'equipe.pilar1.t': 'Construção do jogo',
+      'equipe.pilar1.d': 'do conceito cultural à build jogável na plataforma',
+      'equipe.m1.h': 'Pesquisadora Cultural',
+      'equipe.m1.r': 'Pesquisa de personagens',
+      'equipe.m1.p': 'Conduz a pesquisa sobre cosmologias, figuras míticas e referências visuais que orientam os personagens da jornada – garantindo autenticidade cultural ao jogo e à exposição.',
+      'equipe.m2.h': 'Ilustrador / Modelador 3D',
+      'equipe.m2.r': 'Ilustração dos personagens',
+      'equipe.m2.p': 'Recebe o dossiê da pesquisadora e dá vida visual aos personagens – da ilustração de referência ao modelo 3D low-poly pronto para Unity. Trabalha em duas fases: concept art (aprovado antes de avançar) e modelagem 3D.',
+      'equipe.m3.h': 'Game Designer',
+      'equipe.m3.r': 'Desenvolvimento do jogo',
+      'equipe.m3.p': 'Recebe o Game Design Document e os personagens 3D, e desenvolve o jogo completo em Unity – entregando uma build WebGL integrada e funcional na plataforma The Blue City. Sua entrega é o jogo que os estudantes acessam.',
+      'equipe.pilar2.tag': 'Físico',
+      'equipe.pilar2.t': 'Ativação no território',
+      'equipe.pilar2.d': 'da chegada à escola à exposição cultural',
+      'equipe.m4.h': 'Articuladora Educacional',
+      'equipe.m4.r': 'Ponte com as escolas',
+      'equipe.m4.p': 'Faz a articulação com as escolas parceiras – apresenta o projeto à direção e à coordenação pedagógica e é responsável por envolver os estudantes na jornada, mobilizando a adesão ao jogo como atividade extracurricular.',
+      'equipe.m5.h': 'Produtora Cultural',
+      'equipe.m5.r': 'Gestão da jornada',
+      'equipe.m5.p': 'Figura central da implementação territorial. Articula, executa e consolida todas as etapas – da estruturação da campanha à exposição física no território. Opera diretamente o Painel do Produtor Cultural na plataforma.',
+      'equipe.m6.h': 'Assessoria de Imprensa',
+      'equipe.m6.r': 'Cobertura na cidade-jornada',
+      'equipe.m6.p': 'Articula cobertura e divulgação da jornada na imprensa local da cidade onde a exposição acontece – garantindo visibilidade ao patrocinador e ressonância pública à experiência cultural no território.',
+      'equipe.box.label': 'Como a equipe se replica',
+      'equipe.box.text': 'Cada nova jornada mantém esta estrutura de dois pilares sob uma coordenação central. O pilar virtual se reaplica sobre os novos personagens e o tema-eixo de cada edição; o pilar físico se reorganiza localmente com a escola, os artistas, a imprensa local e o patrocinador da cidade.',
+      // ── FOOTER
+      'footer.brand': 'Missão Cidade Azul',
+      'footer.tagline': 'Realização The Blue City'
+    },
+    es: {
+      'page.title': 'The Blue City – Jornada Cultural',
+      'topbar.sub': 'Jornada Cultural',
+      'nav.sobre': 'Sobre',
+      'nav.jornada': 'Jornada',
+      'nav.fluxo': 'Flujo',
+      'nav.atores': 'Actores',
+      'nav.modelo': 'Modelo',
+      'nav.legado': 'Legado',
+      'nav.casos': 'Casos',
+      'nav.apoio': 'Apoyo',
+      'nav.equipe': 'Equipo',
+      'hero.eyebrow': 'Presentación Institucional · The Blue City',
+      'hero.title': 'Arte, cultura y<br>tecnología por la<br>regeneración del planeta',
+      'hero.desc': 'Un modelo de exposición cultural híbrida – juego educativo digital y exposición cultural – diseñado para ser realizado en distintas ciudades, conectando escuelas, artistas, comunidades y la lucha por la regeneración.',
+      'hero.stat1.t': 'Juego digital',
+      'hero.stat1.d': 'Misiones temáticas jugadas por los estudiantes en la plataforma',
+      'hero.stat2.t': 'Certificación verificable',
+      'hero.stat2.d': 'Badges y NFTs en blockchain que cuentan como experiencia',
+      'hero.stat3.t': 'Exposición cultural',
+      'hero.stat3.d': 'Ideas de los estudiantes traducidas en obras por artistas locales',
+      'hero.stat4.t': 'Legado público',
+      'hero.stat4.d': 'Galería permanente que registra cada jornada en la plataforma',
+      // ── SOBRE
+      'sobre.eyebrow': '01 · El Proyecto',
+      'sobre.title': 'Misión Ciudad Azul',
+      'sobre.lead': 'Una jornada educativa, tecnológica y cultural que conecta educación ambiental, narrativa, tecnología y arte, transformando el aula en un laboratorio de regeneración.',
+      'sobre.f1.h': 'Una Nueva Aldea',
+      'sobre.f1.p': 'La narrativa propone la ciudad como un espacio de convivencia equilibrada entre desarrollo urbano, cultura y medio ambiente. El proyecto involucra a los estudiantes en reflexiones y prácticas sobre la crisis climática y su papel en la regeneración del planeta.',
+      'sobre.f2.h': 'Experiencia Híbrida',
+      'sobre.f2.p': 'La iniciativa combina juegos educativos digitales que impulsan la trayectoria profesional del estudiante y una exposición cultural guiada por personajes simbólicos inspirados en culturas afrobrasileñas e indígenas, que atraviesan la jornada de principio a fin.',
+      'sobre.f3.h': 'Cultura local en primer plano',
+      'sobre.f3.p': 'Cada jornada está anclada en una investigación cultural – tradiciones afrobrasileñas, cosmologías indígenas y referencias visuales del territorio se traducen en personajes, misiones y curaduría artística que dialogan directamente con la ciudad donde ocurre el proyecto.',
+      'sobre.box.label': 'Por qué este modelo importa',
+      'sobre.box.text': 'Misión Ciudad Azul conecta educación ambiental, gamificación y cultura visual de origen afroindígena en un formato verificable y medible – pensado para territorios urbanos reales.',
+      // ── JORNADA
+      'jornada.eyebrow': '02 · El Modelo',
+      'jornada.title': 'La Jornada Cultural',
+      'jornada.lead': 'La Jornada Cultural es una travesía educativa que conecta el aprendizaje virtual con acciones reales en el mundo físico, culminando en una exposición cultural.',
+      'jornada.f1.h': 'Mundo Virtual',
+      'jornada.f1.p': 'Los estudiantes juegan en la plataforma The Blue City, acumulan puntos, conquistan badges y certificaciones vinculadas a desafíos reales de sostenibilidad.',
+      'jornada.f2.h': 'Mundo Real',
+      'jornada.f2.p': 'Las ideas generadas en el juego se transforman en obras de arte por artistas locales y se presentan en la exposición cultural de la jornada, abierta a la comunidad.',
+      'jornada.f3.h': 'Impacto Colectivo',
+      'jornada.f3.p': 'Estudiantes, artistas y comunidad convergen en una experiencia de educación y cultura con impacto medible en el territorio – registrada y verificable en la plataforma.',
+      'jornada.box.label': 'La travesía en una frase',
+      'jornada.box.text': 'Los estudiantes juegan, crean proyectos sobre un tema ambiental, y esas ideas se convierten en arte en la exposición cultural de la jornada.',
+      // ── FLUXO
+      'fluxo.eyebrow': '03 · Cómo Funciona',
+      'fluxo.title': 'Seis etapas, del juego a la calle',
+      'fluxo.lead': 'La Jornada Cultural se desarrolla en seis etapas encadenadas – desde el lanzamiento del juego en la plataforma hasta la exposición cultural.',
+      'fluxo.svg.title': 'Cómo Funciona la Jornada',
+      'fluxo.s1.h': 'Juego lanzado',
+      'fluxo.s1.s': 'Plataforma The Blue City',
+      'fluxo.s1.d': 'Misión temática publicada con desafíos y objetivos definidos por la escuela y el patrocinador.',
+      'fluxo.s2.h': 'Los alumnos juegan',
+      'fluxo.s2.s': 'Durante el período de la jornada',
+      'fluxo.s2.d': 'La escuela involucra a alumnos y profesores en la plataforma The Blue City.',
+      'fluxo.s3.h': 'Certificación',
+      'fluxo.s3.s': 'Badges + NFT en blockchain',
+      'fluxo.s3.d': 'Certificado verificable y compartible en LinkedIn, vinculado al patrocinador.',
+      'fluxo.s4.h': 'Misión en el mundo real',
+      'fluxo.s4.s': 'Los alumnos envían ideas y proyectos',
+      'fluxo.s4.d': 'Abordando el tema de la jornada – p. ej.: reducción de gases de efecto invernadero, movilidad urbana sostenible.',
+      'fluxo.s4.flag': '★ Punto de conexión: virtual → real',
+      'fluxo.s5.h': 'Los artistas crean',
+      'fluxo.s5.s': 'A partir de las ideas de los alumnos',
+      'fluxo.s5.d': 'Se producen piezas artísticas para componer la exposición cultural como parte de la jornada.',
+      'fluxo.s6.h': 'Exposición cultural pública',
+      'fluxo.s6.s': 'Arte + sostenibilidad en una muestra cultural',
+      'fluxo.s6.note': 'Abierta a la comunidad.',
+      'fluxo.s1.desc1': 'Misión temática publicada con',
+      'fluxo.s1.desc2': 'desafíos y objetivos definidos',
+      'fluxo.s1.desc3': 'por la escuela y el patrocinador',
+      'fluxo.s2.desc1': 'La escuela involucra a alumnos',
+      'fluxo.s2.desc2': 'y profesores en la plataforma',
+      'fluxo.s2.desc3': 'The Blue City',
+      'fluxo.s3.desc1': 'Certificado verificable y',
+      'fluxo.s3.desc2': 'compartible en LinkedIn,',
+      'fluxo.s3.desc3': 'vinculado al patrocinador',
+      'fluxo.s4.desc1': 'Abordando el tema de la jornada',
+      'fluxo.s4.desc2': 'p. ej.: reducción de gases de efecto invernadero',
+      'fluxo.s4.desc3': 'p. ej.: movilidad urbana sostenible',
+      'fluxo.s5.desc1': 'Se producen piezas artísticas',
+      'fluxo.s5.desc2': 'para componer la exposición cultural',
+      'fluxo.s5.desc3': 'como parte de la jornada',
+      // ── ATORES / ACTORES
+      'atores.eyebrow': '04 · Quiénes participan',
+      'atores.title': 'Los actores involucrados',
+      'atores.lead': 'Misión Ciudad Azul reúne siete actores que se encuentran en torno a una misma jornada – cada uno con su rol, su entrega y su contrapartida. Es esa convergencia la que da al proyecto fuerza de programa cultural.',
+      'atores.a1.h': 'Escuelas asociadas',
+      'atores.a1.r': 'Territorio de la jornada',
+      'atores.a1.p': 'Escuelas técnicas o de educación secundaria son invitadas a abrir sus puertas a la jornada – el juego es una actividad extracurricular, jugada en casa o en horario libre. La escuela autoriza la presentación del proyecto a los estudiantes y queda registrada como aliada en la plataforma.',
+      'atores.a1.d': 'Recibe: reconocimiento como escuela aliada · sello institucional en la plataforma · exposición abierta a su comunidad',
+      'atores.a2.h': 'Estudiantes',
+      'atores.a2.r': 'Protagonistas',
+      'atores.a2.p': 'Estudiantes entre 16 y 20 años juegan, completan misiones y envían proyectos sobre el tema ambiental. Cada participación genera badges y certificados verificables en blockchain, que cuentan como experiencia profesional comprobable en su trayectoria educativa.',
+      'atores.a2.d': 'Recibe: badges + NFT verificables · proyecto expuesto · LinkedIn-ready',
+      'atores.a3.h': 'Articulador Educativo',
+      'atores.a3.r': 'Puente con las escuelas',
+      'atores.a3.p': 'Realiza la articulación con las escuelas aliadas – presenta el proyecto a la dirección y a la coordinación pedagógica y es responsable de involucrar a los estudiantes en la jornada, movilizando la adhesión al juego como actividad extracurricular.',
+      'atores.a3.d': 'Recibe: contratación remunerada · formación en el método · red educativa ampliada',
+      'atores.a4.h': 'Productor Cultural',
+      'atores.a4.r': 'Articulador de la producción',
+      'atores.a4.p': 'Conecta el proyecto con los artistas y la producción cultural local – identifica talentos del territorio, coordina encargos, proveedores y logística de la exposición.',
+      'atores.a4.d': 'Recibe: contratación remunerada · formación en el método · red cultural ampliada',
+      'atores.a5.h': 'Artistas locales',
+      'atores.a5.r': 'Traductores',
+      'atores.a5.p': 'Artistas de la propia ciudad – visuales, plásticos, audiovisuales – reciben las ideas de los estudiantes y las transforman en obras para la exposición cultural.',
+      'atores.a5.d': 'Recibe: encargo pagado · exposición firmada · acervo permanente online',
+      'atores.a6.h': 'Comunidad del entorno',
+      'atores.a6.r': 'Audiencia viva',
+      'atores.a6.p': 'La comunidad circula por la exposición – vecinos, familias de los estudiantes, profesores de otras escuelas, transeúntes.',
+      'atores.a6.d': 'Recibe: exposición cultural gratuita · accesibilidad universal',
+      'atores.a7.h': 'Patrocinador',
+      'atores.a7.r': 'Habilitador estratégico',
+      'atores.a7.p': 'Marca pública o privada que viabiliza la jornada mediante la Lei Rouanet (ley brasileña de incentivo cultural) o con recursos directos. El patrocinador define el eje temático de la jornada, puede sugerir la ciudad-objetivo, y tiene su marca presente en las certificaciones, en la plataforma y en la exposición física.',
+      'atores.a7.extra': 'Toda interacción – adhesión de la escuela, partidas de los alumnos, envío de proyectos, encargo a los artistas, registro de la exposición – pasa por un mismo entorno digital, que documenta todo de forma pública y accesible. Es ese registro continuo el que da al patrocinador la rendición de cuentas, al estudiante los certificados verificables, y a la comunidad el legado permanente.',
+      // ── MODELO
+      'modelo.eyebrow': '05 · Replicabilidad',
+      'modelo.title': 'Un modelo replicable',
+      'modelo.lead': 'Misión Ciudad Azul es un modelo cultural pensado para realizarse en distintas ciudades, con distintos temas y distintos aliados. En cada jornada se configuran dos variables: el eje temático y el territorio.',
+      'modelo.v1.label': 'Variable configurable 01',
+      'modelo.v1.h': '🎯 El eje temático',
+      'modelo.v1.p': 'En cada nueva jornada, el patrocinador define un <strong style="color:var(--dark);">tema-eje</strong>. Ese tema atraviesa toda la experiencia: el juego, las misiones, los proyectos de los estudiantes y la curaduría artística de la exposición.',
+      'modelo.tema1': 'Reducción de emisiones de GEI',
+      'modelo.tema2': 'Movilidad urbana sostenible',
+      'modelo.tema3': 'Saneamiento',
+      'modelo.tema4': 'Gestión de residuos',
+      'modelo.tema5': 'Agua y cuencas urbanas',
+      'modelo.tema6': 'Energía renovable',
+      'modelo.tema7': 'Biodiversidad urbana',
+      'modelo.tema8': 'Economía circular',
+      'modelo.crit.label': 'Criterio de selección del tema',
+      'modelo.crit.text': 'El tema debe ser, al mismo tiempo, relevante para el sector del patrocinador y materializable en proyectos viables para estudiantes de secundaria – generando un resultado cultural con densidad local.',
+      'modelo.v2.label': 'Variable configurable 02',
+      'modelo.v2.h': '📍 La ciudad-territorio',
+      'modelo.v2.p': 'La ciudad donde se realiza la jornada se define en alianza con el patrocinador. La escuela aliada se selecciona luego localmente según criterios de adhesión, perfil etario y contexto urbano.',
+      'modelo.c1.label': 'Criterio 1 · Educación pública',
+      'modelo.c1.text': 'Ciudades con red consolidada de escuelas técnicas o de secundaria pública integral.',
+      'modelo.c2.label': 'Criterio 2 · Perfil etario',
+      'modelo.c2.text': 'Disponibilidad de grupos con estudiantes entre 16 y 20 años – el público objetivo del juego.',
+      'modelo.c3.label': 'Criterio 3 · Contexto urbano',
+      'modelo.c3.text': 'Configuración urbana que permita la realización de la exposición cultural de la jornada.',
+      'modelo.box.label': 'Por qué esto importa',
+      'modelo.box.title': 'El modelo se adapta – el método es el mismo',
+      'modelo.box.text': 'La estructura de seis etapas, el equipo creativo, la plataforma y los mecanismos de certificación son iguales en cada jornada. Lo que cambia es el tema, la ciudad y las historias locales que entran en la curaduría artística.',
+      'modelo.tag1.h': 'Estructura constante',
+      'modelo.tag1.d': '6 etapas · equipo · plataforma · método',
+      'modelo.tag2.h': 'Contenido local',
+      'modelo.tag2.d': 'tema · ciudad · escuela · artistas · cultura',
+      // ── LEGADO / LEGADO
+      'legado.eyebrow': '06 · Registro',
+      'legado.title': 'Registro y legado en la plataforma',
+      'legado.lead': 'Cada jornada deja una huella pública y permanente en la plataforma The Blue City – organizada en tres espacios que registran el involucramiento de los estudiantes, los proyectos enviados y el resultado artístico final.',
+      'legado.g1.h': 'Desempeño de los Jugadores',
+      'legado.g1.s': 'Métricas de involucramiento de la jornada',
+      'legado.g1.p': 'Registra el involucramiento individual y colectivo de los estudiantes a lo largo de la jornada – desde el primer acceso hasta el envío del proyecto final. Los datos se organizan por jornada, escuela y grupo, y quedan disponibles tras el cierre.',
+      'legado.g1.label': 'Lo que el panel registra',
+      'legado.g1.metrics': 'Jugadores activos · Tasa de adhesión · Misiones completadas · Badges · Proyectos enviados',
+      'legado.g2.h': 'Galería de Proyectos',
+      'legado.g2.s': 'Proyectos de los estudiantes · acervo vivo',
+      'legado.g2.p': 'Repositorio público de las entregas de los jugadores – videos, documentos, registros fotográficos y relatos de acciones reales relacionadas con el tema de la jornada. Es el acervo vivo de la producción estudiantil generada por el proyecto.',
+      'legado.g2.label': 'Diferencia importante',
+      'legado.g2.note': 'Exhibe los proyectos enviados por los estudiantes – las propuestas sobre cómo abordar el tema de la jornada.',
+      'legado.g3.h': 'Galería de Eventos',
+      'legado.g3.s': 'Resultado artístico final · exposición cultural',
+      'legado.g3.p': 'Documenta la exposición cultural de la jornada – el resultado final transformado en arte. Reúne fotos y registros de las obras expuestas, de los personajes en el espacio físico y de la mediación cultural con la comunidad visitante.',
+      'legado.g3.label': 'Legado permanente',
+      'legado.g3.note': 'La galería es permanente en la plataforma – la exposición sigue accesible en línea después del evento físico.',
+      // ── CASOS
+      'casos.eyebrow': '07 · En el territorio',
+      'casos.title': 'Casos de Misión Ciudad Azul',
+      'casos.lead': 'El modelo ya tiene su primera realización concreta en Palmas, y está abierto a nuevas alianzas para expandir el programa a otros territorios brasileños.',
+      'casos.palmas.status': '● En producción',
+      'casos.palmas.sub': 'Misión Termómetro Cero · Patrocinio Sotreq',
+      'casos.palmas.p': 'Primera realización del modelo, en alianza con Sotreq – distribuidora Caterpillar con operación consolidada en la capital del estado de Tocantins. El tema-eje elegido fue la <strong style="color:var(--dark);">Reducción de Emisiones de Gases de Efecto Invernadero</strong>.',
+      'casos.palmas.l1': 'Ciudad',
+      'casos.palmas.l2': 'Patrocinador',
+      'casos.palmas.v3': 'GEI',
+      'casos.palmas.l3': 'Tema-eje',
+      'casos.palmas.v4': 'Mar-Dic',
+      // ── APOIO / APOYO
+      'apoio.eyebrow': '08 · Cómo apoyar',
+      'apoio.title': 'Cuotas de patrocinio',
+      'apoio.lead': 'La primera realización del modelo – <strong style="color:var(--dark);">Misión Ciudad Azul en la Región Norte</strong> – está aprobada en la Ley de Incentivo a la Cultura de Brasil (PRONAC 237809) y cubre cinco ciudades. Sotreq ya patrocinó una de las ediciones; las demás cuotas siguen abiertas a marcas, instituciones y gobiernos interesados en viabilizar la jornada en su ciudad-territorio.',
+      'apoio.stat1': 'Ciudades en la Región Norte',
+      'apoio.stat2': 'Personas involucradas',
+      'apoio.stat3': 'Gratuito al público',
+      'apoio.heading': 'Cuotas · LIC IR Rouanet · PRONAC 237809',
+      'apoio.bronze.t': '1 ciudad · hasta 2.000 personas · R$ 190.000',
+      'apoio.bronze.d': 'Logotipo en materiales, sitio y certificados · 1 mención en prensa · 4 posts · video de resultados · Certificado NFT',
+      'apoio.prata.tier': 'PLATA',
+      'apoio.prata.t': '2 ciudades · hasta 4.000 personas · R$ 380.000',
+      'apoio.prata.d': 'Logotipo destacado en el sitio y galería · 2 menciones · 4 posts · 1 video exclusivo · Certificado NFT',
+      'apoio.ouro.tier': 'ORO',
+      'apoio.ouro.t': '3 ciudades · hasta 6.000 personas · R$ 570.000',
+      'apoio.ouro.d': 'Logo en los créditos de todos los videos · 3 menciones · 8 posts · 1 video exclusivo · kits institucionales · Certificado NFT',
+      'apoio.safira.tier': 'ZAFIRO',
+      'apoio.safira.t': '4 ciudades · hasta 8.000 personas · R$ 760.000',
+      'apoio.safira.d': 'Logo en todos los materiales · 4 menciones · 8 posts · 1 video exclusivo · kits personalizados · Certificado NFT',
+      'apoio.premium.t': '6 ciudades · hasta 12.000 personas · R$ 943.554 <span class="cota-bonus-title-accent">("5 + 1 ciudad bonus")</span>',
+      'apoio.premium.d': '6 menciones · 20 posts · 3 videos · activación cocreada · kits exclusivos · máximo destaque en todos los materiales',
+      'apoio.link': 'Ver contrapartidas →',
+      'apoio.bonus.label': 'Bonus exclusivo Premium',
+      'apoio.bonus.text': 'Patrocinador único del proyecto integral (R$ 943.554) gana la <strong>6ª ciudad como bonus</strong> – válido solo cuando una única empresa cubre el valor total del PRONAC. En combinaciones entre múltiples patrocinadores, el cálculo sigue la base de R$ 190.000 por ciudad.',
+      // ── EQUIPE / EQUIPO
+      'equipe.eyebrow': '09 · Estructura',
+      'equipe.title': 'El equipo detrás',
+      'equipe.lead': 'Cada jornada es conducida por un equipo estructurado en dos pilares articulados – la dimensión virtual, que construye el juego, y la dimensión física, que activa el territorio. Todo bajo la coordinación central del proyecto.',
+      'equipe.coord.h': 'Coordinadora del Proyecto',
+      'equipe.coord.r': 'Articulación general · virtual + físico',
+      'equipe.coord.p': 'Coordina toda la jornada de punta a punta – articula los dos pilares del equipo, garantiza el encaje entre producción del juego, acción en el territorio y relación con el patrocinador.',
+      'equipe.pilar1.tag': 'Virtual',
+      'equipe.pilar1.t': 'Construcción del juego',
+      'equipe.pilar1.d': 'del concepto cultural a la build jugable en la plataforma',
+      'equipe.m1.h': 'Investigadora Cultural',
+      'equipe.m1.r': 'Investigación de personajes',
+      'equipe.m1.p': 'Conduce la investigación sobre cosmologías, figuras míticas y referencias visuales que orientan a los personajes de la jornada – garantizando autenticidad cultural al juego y a la exposición.',
+      'equipe.m2.h': 'Ilustrador / Modelador 3D',
+      'equipe.m2.r': 'Ilustración de los personajes',
+      'equipe.m2.p': 'Recibe el dossier de la investigadora y da vida visual a los personajes – desde la ilustración de referencia hasta el modelo 3D low-poly listo para Unity. Trabaja en dos fases: concept art (aprobado antes de avanzar) y modelado 3D.',
+      'equipe.m3.h': 'Game Designer',
+      'equipe.m3.r': 'Desarrollo del juego',
+      'equipe.m3.p': 'Recibe el Game Design Document y los personajes 3D, y desarrolla el juego completo en Unity – entregando una build WebGL integrada y funcional en la plataforma The Blue City. Su entrega es el juego al que acceden los estudiantes.',
+      'equipe.pilar2.tag': 'Físico',
+      'equipe.pilar2.t': 'Activación en el territorio',
+      'equipe.pilar2.d': 'desde la llegada a la escuela hasta la exposición cultural',
+      'equipe.m4.h': 'Articuladora Educativa',
+      'equipe.m4.r': 'Puente con las escuelas',
+      'equipe.m4.p': 'Realiza la articulación con las escuelas aliadas – presenta el proyecto a la dirección y a la coordinación pedagógica y es responsable de involucrar a los estudiantes en la jornada, movilizando la adhesión al juego como actividad extracurricular.',
+      'equipe.m5.h': 'Productora Cultural',
+      'equipe.m5.r': 'Gestión de la jornada',
+      'equipe.m5.p': 'Figura central de la implementación territorial. Articula, ejecuta y consolida todas las etapas – desde la estructuración de la campaña hasta la exposición física en el territorio. Opera directamente el Panel del Productor Cultural en la plataforma.',
+      'equipe.m6.h': 'Prensa y Comunicación',
+      'equipe.m6.r': 'Cobertura en la ciudad-jornada',
+      'equipe.m6.p': 'Articula cobertura y difusión de la jornada en la prensa local de la ciudad donde ocurre la exposición – garantizando visibilidad al patrocinador y resonancia pública a la experiencia cultural en el territorio.',
+      'equipe.box.label': 'Cómo se replica el equipo',
+      'equipe.box.text': 'Cada nueva jornada mantiene esta estructura de dos pilares bajo una coordinación central. El pilar virtual se reaplica sobre los nuevos personajes y el tema-eje de cada edición; el pilar físico se reorganiza localmente con la escuela, los artistas, la prensa local y el patrocinador de la ciudad.',
+      // ── FOOTER
+      'footer.brand': 'Misión Ciudad Azul',
+      'footer.tagline': 'Realización The Blue City'
+    },
+    en: {
+      'page.title': 'The Blue City – Cultural Journey',
+      'topbar.sub': 'Cultural Journey',
+      'nav.sobre': 'About',
+      'nav.jornada': 'Journey',
+      'nav.fluxo': 'Flow',
+      'nav.atores': 'Actors',
+      'nav.modelo': 'Model',
+      'nav.legado': 'Legacy',
+      'nav.casos': 'Cases',
+      'nav.apoio': 'Support',
+      'nav.equipe': 'Team',
+      'hero.eyebrow': 'Institutional Presentation · The Blue City',
+      'hero.title': 'Art, culture and<br>technology for<br>planetary regeneration',
+      'hero.desc': 'A hybrid cultural exhibition model – digital educational game and cultural exhibition – designed to be realized in different cities, connecting schools, artists, communities and the struggle for regeneration.',
+      'hero.stat1.t': 'Digital game',
+      'hero.stat1.d': 'Themed missions played by students on the platform',
+      'hero.stat2.t': 'Verifiable certification',
+      'hero.stat2.d': 'Badges and NFTs on blockchain that count as experience',
+      'hero.stat3.t': 'Cultural exhibition',
+      'hero.stat3.d': 'Students\u2019 ideas translated into works by local artists',
+      'hero.stat4.t': 'Public legacy',
+      'hero.stat4.d': 'Permanent gallery recording every journey on the platform',
+      // ── SOBRE / ABOUT
+      'sobre.eyebrow': '01 · The Project',
+      'sobre.title': 'Blue City Mission',
+      'sobre.lead': 'An educational, technological and cultural journey connecting environmental education, narrative, technology and art – turning the classroom into a regeneration lab.',
+      'sobre.f1.h': 'A New Village',
+      'sobre.f1.p': 'The narrative proposes the city as a space of balanced coexistence between urban development, culture and environment. The project engages students in reflection and practice on the climate crisis and their role in regenerating the planet.',
+      'sobre.f2.h': 'Hybrid Experience',
+      'sobre.f2.p': 'The initiative combines digital educational games that boost students\u2019 professional trajectory and a cultural exhibition guided by symbolic characters inspired by Afro-Brazilian and Indigenous cultures, who travel through the journey from beginning to end.',
+      'sobre.f3.h': 'Local culture front and center',
+      'sobre.f3.p': 'Each journey is anchored in cultural research – Afro-Brazilian traditions, Indigenous cosmologies and visual references from the territory are translated into characters, missions and artistic curation in dialogue with the city where the project unfolds.',
+      'sobre.box.label': 'Why this model matters',
+      'sobre.box.text': 'Blue City Mission connects environmental education, gamification and Afro-Indigenous visual culture in a verifiable, measurable format – designed for real urban territories.',
+      // ── JORNADA / JOURNEY
+      'jornada.eyebrow': '02 · The Model',
+      'jornada.title': 'The Cultural Journey',
+      'jornada.lead': 'The Cultural Journey is an educational crossing that links virtual learning to real-world action, culminating in a cultural exhibition.',
+      'jornada.f1.h': 'Virtual World',
+      'jornada.f1.p': 'Students play on The Blue City platform, accumulate points and earn badges and certifications tied to real sustainability challenges.',
+      'jornada.f2.h': 'Real World',
+      'jornada.f2.p': 'Ideas generated in the game are transformed into artworks by local artists and presented in the journey\u2019s cultural exhibition, open to the community.',
+      'jornada.f3.h': 'Collective Impact',
+      'jornada.f3.p': 'Students, artists and community converge in an education and culture experience with measurable territorial impact – recorded and verifiable on the platform.',
+      'jornada.box.label': 'The crossing in one sentence',
+      'jornada.box.text': 'Students play, create projects on an environmental theme, and those ideas become art in the journey\u2019s cultural exhibition.',
+      // ── FLUXO / FLOW
+      'fluxo.eyebrow': '03 · How It Works',
+      'fluxo.title': 'Six stages, from game to street',
+      'fluxo.lead': 'The Cultural Journey unfolds across six linked stages – from the game\u2019s launch on the platform to the cultural exhibition.',
+      'fluxo.svg.title': 'How the Journey Works',
+      'fluxo.s1.h': 'Game launched',
+      'fluxo.s1.s': 'The Blue City platform',
+      'fluxo.s1.d': 'Themed mission published with challenges and objectives defined by the school and sponsor.',
+      'fluxo.s2.h': 'Students play',
+      'fluxo.s2.s': 'Over the course of the journey',
+      'fluxo.s2.d': 'The school engages students and teachers on The Blue City platform.',
+      'fluxo.s3.h': 'Certification',
+      'fluxo.s3.s': 'Badges + NFTs on blockchain',
+      'fluxo.s3.d': 'Verifiable certificate, shareable on LinkedIn, tied to the sponsor.',
+      'fluxo.s4.h': 'Real-world mission',
+      'fluxo.s4.s': 'Students submit ideas and projects',
+      'fluxo.s4.d': 'Addressing the journey\u2019s theme – e.g. greenhouse-gas reduction, sustainable urban mobility.',
+      'fluxo.s4.flag': '★ Connection point: virtual → real',
+      'fluxo.s5.h': 'Artists create',
+      'fluxo.s5.s': 'From the students\u2019 ideas',
+      'fluxo.s5.d': 'Artistic pieces are produced to compose the cultural exhibition as part of the journey.',
+      'fluxo.s6.h': 'Public cultural exhibition',
+      'fluxo.s6.s': 'Art + sustainability in a cultural show',
+      'fluxo.s6.note': 'Open to the community.',
+      'fluxo.s1.desc1': 'Themed mission published with',
+      'fluxo.s1.desc2': 'challenges and objectives defined',
+      'fluxo.s1.desc3': 'by the school and the sponsor',
+      'fluxo.s2.desc1': 'School engages students',
+      'fluxo.s2.desc2': 'and teachers on the platform',
+      'fluxo.s2.desc3': 'The Blue City',
+      'fluxo.s3.desc1': 'Verifiable certificate,',
+      'fluxo.s3.desc2': 'shareable on LinkedIn,',
+      'fluxo.s3.desc3': 'tied to the sponsor',
+      'fluxo.s4.desc1': 'Addressing the journey\u2019s theme',
+      'fluxo.s4.desc2': 'e.g. greenhouse-gas reduction',
+      'fluxo.s4.desc3': 'e.g. sustainable urban mobility',
+      'fluxo.s5.desc1': 'Artistic pieces are produced',
+      'fluxo.s5.desc2': 'to compose the cultural exhibition',
+      'fluxo.s5.desc3': 'as part of the journey',
+      // ── ATORES / ACTORS
+      'atores.eyebrow': '04 · Who takes part',
+      'atores.title': 'The actors involved',
+      'atores.lead': 'Blue City Mission brings together seven actors gathered around the same journey – each with their role, their contribution and their return. This convergence is what gives the project the strength of a cultural program.',
+      'atores.a1.h': 'Partner schools',
+      'atores.a1.r': 'Territory of the journey',
+      'atores.a1.p': 'Technical or secondary schools are invited to open their doors to the journey – the game is an extracurricular activity, played at home or during free time. The school authorizes the project\u2019s presentation to students and is registered as a partner on the platform.',
+      'atores.a1.d': 'Receives: recognition as a partner school · institutional seal on the platform · exhibition open to its community',
+      'atores.a2.h': 'Students',
+      'atores.a2.r': 'Protagonists',
+      'atores.a2.p': 'Students between 16 and 20 play, complete missions and submit projects on the environmental theme. Every participation generates badges and blockchain-verifiable certificates that count as verifiable professional experience in their educational journey.',
+      'atores.a2.d': 'Receives: verifiable badges + NFTs · exhibited project · LinkedIn-ready',
+      'atores.a3.h': 'Education Liaison',
+      'atores.a3.r': 'Bridge with schools',
+      'atores.a3.p': 'Articulates the work with partner schools – presents the project to school leadership and pedagogical coordination and is responsible for engaging students in the journey, mobilizing participation in the game as an extracurricular activity.',
+      'atores.a3.d': 'Receives: paid contract · training in the method · expanded educational network',
+      'atores.a4.h': 'Cultural Producer',
+      'atores.a4.r': 'Production liaison',
+      'atores.a4.p': 'Connects the project to local artists and cultural production – identifies territorial talent, coordinates commissions, suppliers and exhibition logistics.',
+      'atores.a4.d': 'Receives: paid contract · training in the method · expanded cultural network',
+      'atores.a5.h': 'Local artists',
+      'atores.a5.r': 'Translators',
+      'atores.a5.p': 'Artists from the city itself – visual, plastic, audiovisual – receive students\u2019 ideas and transform them into works for the cultural exhibition.',
+      'atores.a5.d': 'Receives: paid commission · signed exhibition · permanent online archive',
+      'atores.a6.h': 'Surrounding community',
+      'atores.a6.r': 'Living audience',
+      'atores.a6.p': 'The community circulates through the exhibition – neighbors, students\u2019 families, teachers from other schools, passers-by.',
+      'atores.a6.d': 'Receives: free cultural exhibition · universal accessibility',
+      'atores.a7.h': 'Sponsor',
+      'atores.a7.r': 'Strategic enabler',
+      'atores.a7.p': 'Public or private brand that enables the journey through the Lei Rouanet (Brazilian cultural-incentive law) or direct resources. The sponsor defines the journey\u2019s thematic axis, may suggest the target city, and has its brand present in certifications, on the platform and in the physical exhibition.',
+      'atores.a7.extra': 'Every interaction – school enrollment, student gameplay, project submissions, artist commissions, exhibition records – passes through a single digital environment that documents everything publicly and accessibly. This continuous record is what gives the sponsor accountability, the student verifiable certificates, and the community a permanent legacy.',
+      // ── MODELO / MODEL
+      'modelo.eyebrow': '05 · Replicability',
+      'modelo.title': 'A replicable model',
+      'modelo.lead': 'Blue City Mission is a cultural model designed to be realized in different cities, with different themes and different partners. With each journey, two variables are configured: the thematic axis and the territory.',
+      'modelo.v1.label': 'Configurable variable 01',
+      'modelo.v1.h': '🎯 The thematic axis',
+      'modelo.v1.p': 'For each new journey, the sponsor defines a <strong style="color:var(--dark);">core theme</strong>. This theme runs through the entire experience: the game, the missions, students\u2019 projects and the exhibition\u2019s artistic curation.',
+      'modelo.tema1': 'Reduction of GHG emissions',
+      'modelo.tema2': 'Sustainable urban mobility',
+      'modelo.tema3': 'Sanitation',
+      'modelo.tema4': 'Waste management',
+      'modelo.tema5': 'Water and urban basins',
+      'modelo.tema6': 'Renewable energy',
+      'modelo.tema7': 'Urban biodiversity',
+      'modelo.tema8': 'Circular economy',
+      'modelo.crit.label': 'Theme selection criterion',
+      'modelo.crit.text': 'The theme must be both relevant to the sponsor\u2019s sector and materializable in projects viable for secondary-school students – generating a cultural output with local density.',
+      'modelo.v2.label': 'Configurable variable 02',
+      'modelo.v2.h': '📍 The city-territory',
+      'modelo.v2.p': 'The city where the journey takes place is defined in partnership with the sponsor. The partner school is then selected locally based on adherence, age profile and urban context.',
+      'modelo.c1.label': 'Criterion 1 · Public education',
+      'modelo.c1.text': 'Cities with a consolidated network of technical or full-time public secondary schools.',
+      'modelo.c2.label': 'Criterion 2 · Age profile',
+      'modelo.c2.text': 'Availability of classes with students between 16 and 20 – the game\u2019s target audience.',
+      'modelo.c3.label': 'Criterion 3 · Urban context',
+      'modelo.c3.text': 'Urban configuration that allows the staging of the journey\u2019s cultural exhibition.',
+      'modelo.box.label': 'Why this matters',
+      'modelo.box.title': 'The model adapts – the method remains the same',
+      'modelo.box.text': 'The six-stage structure, the creative team, the platform and the certification mechanisms are the same in every journey. What changes is the theme, the city and the local stories that enter the artistic curation.',
+      'modelo.tag1.h': 'Constant structure',
+      'modelo.tag1.d': '6 stages · team · platform · method',
+      'modelo.tag2.h': 'Local content',
+      'modelo.tag2.d': 'theme · city · school · artists · culture',
+      // ── LEGADO / LEGACY
+      'legado.eyebrow': '06 · Record',
+      'legado.title': 'Record and legacy on the platform',
+      'legado.lead': 'Every journey leaves a public, permanent trace on The Blue City platform – organized into three spaces that record student engagement, the submitted projects and the final artistic result.',
+      'legado.g1.h': 'Player Performance',
+      'legado.g1.s': 'Journey engagement metrics',
+      'legado.g1.p': 'Records individual and collective student engagement throughout the journey – from first access to the submission of the final project. Data is organized by journey, school and class, and remains available after closing.',
+      'legado.g1.label': 'What the panel records',
+      'legado.g1.metrics': 'Active players · Adherence rate · Missions completed · Badges · Projects submitted',
+      'legado.g2.h': 'Project Gallery',
+      'legado.g2.s': 'Students\u2019 projects · living archive',
+      'legado.g2.p': 'Public repository of players\u2019 submissions – videos, documents, photographic records and reports of real actions related to the journey\u2019s theme. It is the living archive of student production generated by the project.',
+      'legado.g2.label': 'Important distinction',
+      'legado.g2.note': 'Displays the projects submitted by students – their proposals on how to address the journey\u2019s theme.',
+      'legado.g3.h': 'Events Gallery',
+      'legado.g3.s': 'Final artistic result · cultural exhibition',
+      'legado.g3.p': 'Documents the journey\u2019s cultural exhibition – the final result transformed into art. Gathers photos and records of exhibited works, of characters in the physical space, and of cultural mediation with the visiting community.',
+      'legado.g3.label': 'Permanent legacy',
+      'legado.g3.note': 'The gallery is permanent on the platform – the exhibition remains accessible online after the physical event.',
+      // ── CASOS / CASES
+      'casos.eyebrow': '07 · On the ground',
+      'casos.title': 'Blue City Mission cases',
+      'casos.lead': 'The model already has its first concrete realization in Palmas, and is open to new partnerships to expand the program to other Brazilian territories.',
+      'casos.palmas.status': '● In production',
+      'casos.palmas.sub': 'Zero Thermometer Mission · Sotreq sponsorship',
+      'casos.palmas.p': 'First realization of the model, in partnership with Sotreq – Caterpillar dealer with consolidated operations in the capital of Tocantins. The chosen core theme is <strong style="color:var(--dark);">Greenhouse Gas Emissions Reduction</strong>.',
+      'casos.palmas.l1': 'City',
+      'casos.palmas.l2': 'Sponsor',
+      'casos.palmas.v3': 'GHG',
+      'casos.palmas.l3': 'Core theme',
+      'casos.palmas.v4': 'Mar-Dec',
+      // ── APOIO / SUPPORT
+      'apoio.eyebrow': '08 · How to support',
+      'apoio.title': 'Sponsorship tiers',
+      'apoio.lead': 'The first realization of the model – <strong style="color:var(--dark);">Blue City Mission in the Northern Region</strong> – is approved under Brazil\u2019s Cultural Incentive Law (PRONAC 237809) and covers five cities. Sotreq has already sponsored one of the editions; the remaining tiers are open to brands, institutions and governments interested in bringing the journey to their city-territory.',
+      'apoio.stat1': 'Cities in the Northern Region',
+      'apoio.stat2': 'People engaged',
+      'apoio.stat3': 'Free to the public',
+      'apoio.heading': 'Tiers · LIC IR Rouanet · PRONAC 237809',
+      'apoio.bronze.t': '1 city · up to 2,000 people · R$ 190,000',
+      'apoio.bronze.d': 'Logo on materials, site and certificates · 1 press mention · 4 posts · results video · NFT certificate',
+      'apoio.prata.tier': 'SILVER',
+      'apoio.prata.t': '2 cities · up to 4,000 people · R$ 380,000',
+      'apoio.prata.d': 'Featured logo on site and gallery · 2 mentions · 4 posts · 1 exclusive video · NFT certificate',
+      'apoio.ouro.tier': 'GOLD',
+      'apoio.ouro.t': '3 cities · up to 6,000 people · R$ 570,000',
+      'apoio.ouro.d': 'Logo in the credits of every video · 3 mentions · 8 posts · 1 exclusive video · institutional kits · NFT certificate',
+      'apoio.safira.tier': 'SAPPHIRE',
+      'apoio.safira.t': '4 cities · up to 8,000 people · R$ 760,000',
+      'apoio.safira.d': 'Logo on all materials · 4 mentions · 8 posts · 1 exclusive video · custom kits · NFT certificate',
+      'apoio.premium.t': '6 cities · up to 12,000 people · R$ 943,554 <span class="cota-bonus-title-accent">("5 + 1 bonus city")</span>',
+      'apoio.premium.d': '6 mentions · 20 posts · 3 videos · co-created activation · exclusive kits · maximum prominence on all materials',
+      'apoio.link': 'See benefits →',
+      'apoio.bonus.label': 'Exclusive Premium bonus',
+      'apoio.bonus.text': 'A single sponsor of the entire project (R$ 943,554) gets the <strong>6th city as a bonus</strong> – valid only when one company covers the full PRONAC value. In combinations among multiple sponsors, the calculation follows the base of R$ 190,000 per city.',
+      // ── EQUIPE / TEAM
+      'equipe.eyebrow': '09 · Structure',
+      'equipe.title': 'The team behind it',
+      'equipe.lead': 'Each journey is led by a team structured around two articulated pillars – the virtual dimension, which builds the game, and the physical dimension, which activates the territory. All under the project\u2019s central coordination.',
+      'equipe.coord.h': 'Project Coordinator',
+      'equipe.coord.r': 'General articulation · virtual + physical',
+      'equipe.coord.p': 'Coordinates the whole journey end-to-end – articulates the two team pillars, ensures alignment between game production, fieldwork and sponsor relationship.',
+      'equipe.pilar1.tag': 'Virtual',
+      'equipe.pilar1.t': 'Building the game',
+      'equipe.pilar1.d': 'from cultural concept to playable build on the platform',
+      'equipe.m1.h': 'Cultural Researcher',
+      'equipe.m1.r': 'Character research',
+      'equipe.m1.p': 'Leads the research on cosmologies, mythical figures and visual references that guide the journey\u2019s characters – ensuring cultural authenticity for the game and the exhibition.',
+      'equipe.m2.h': 'Illustrator / 3D Modeler',
+      'equipe.m2.r': 'Character illustration',
+      'equipe.m2.p': 'Receives the researcher\u2019s dossier and brings the characters to visual life – from reference illustration to low-poly 3D model ready for Unity. Works in two phases: concept art (approved before moving forward) and 3D modeling.',
+      'equipe.m3.h': 'Game Designer',
+      'equipe.m3.r': 'Game development',
+      'equipe.m3.p': 'Receives the Game Design Document and the 3D characters, and develops the full game in Unity – delivering a WebGL build integrated and functional on The Blue City platform. Their deliverable is the game students play.',
+      'equipe.pilar2.tag': 'Physical',
+      'equipe.pilar2.t': 'Activating the territory',
+      'equipe.pilar2.d': 'from arrival at the school to the cultural exhibition',
+      'equipe.m4.h': 'Education Liaison',
+      'equipe.m4.r': 'Bridge with schools',
+      'equipe.m4.p': 'Articulates the work with partner schools – presents the project to school leadership and pedagogical coordination, and is responsible for engaging students in the journey, mobilizing participation in the game as an extracurricular activity.',
+      'equipe.m5.h': 'Cultural Producer',
+      'equipe.m5.r': 'Journey management',
+      'equipe.m5.p': 'Central figure of the territorial implementation. Articulates, executes and consolidates all stages – from campaign structuring to the physical exhibition in the territory. Operates the Cultural Producer Panel directly on the platform.',
+      'equipe.m6.h': 'Press & Communications',
+      'equipe.m6.r': 'Coverage in the host city',
+      'equipe.m6.p': 'Articulates coverage and outreach for the journey in the local press of the city where the exhibition takes place – ensuring visibility for the sponsor and public resonance for the cultural experience in the territory.',
+      'equipe.box.label': 'How the team replicates',
+      'equipe.box.text': 'Each new journey keeps this two-pillar structure under central coordination. The virtual pillar re-applies over the new characters and core theme of each edition; the physical pillar reorganizes locally with the school, the artists, the local press and the city\u2019s sponsor.',
+      // ── FOOTER
+      'footer.brand': 'Blue City Mission',
+      'footer.tagline': 'Realized by The Blue City'
+    }
+  };
+
+  function applyLang(lang) {
+    const dict = I18N[lang] || I18N.pt;
+    document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (dict[key] !== undefined) el.textContent = dict[key];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const key = el.getAttribute('data-i18n-html');
+      if (dict[key] !== undefined) el.innerHTML = dict[key];
+    });
+    document.querySelectorAll('.lang-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+    try { localStorage.setItem('tbc-lang', lang); } catch(e) {}
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+  });
+
+  // Idioma inicial: salvo > navegador > pt
+  let initialLang = 'pt';
+  try {
+    const saved = localStorage.getItem('tbc-lang');
+    if (saved && I18N[saved]) initialLang = saved;
+    else {
+      const nav = (navigator.language || 'pt').toLowerCase();
+      if (nav.startsWith('es')) initialLang = 'es';
+      else if (nav.startsWith('en')) initialLang = 'en';
+    }
+  } catch(e) {}
+  applyLang(initialLang);
+
+  const toTop = document.getElementById('toTop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 600) toTop.classList.add('show');
+    else toTop.classList.remove('show');
+  });
+  toTop.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+
+  const navLinks = document.querySelectorAll('.topbar-nav a');
+  const sections = Array.from(navLinks).map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+
+  function setActive() {
+    const scrollY = window.scrollY + 120;
+    let activeIndex = 0;
+    sections.forEach((s, i) => {
+      if (s.offsetTop <= scrollY) activeIndex = i;
+    });
+    navLinks.forEach((l, i) => {
+      l.classList.toggle('active', i === activeIndex);
+    });
+  }
+  window.addEventListener('scroll', setActive);
+  setActive();
+
+  // Menu hambúrguer (mobile)
+  const burger = document.getElementById('topbar-burger');
+  const nav = document.getElementById('topbar-nav');
+  if (burger && nav) {
+    burger.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      burger.classList.toggle('open', open);
+      burger.setAttribute('aria-expanded', open);
+    });
+    // fechar ao clicar num link
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      nav.classList.remove('open');
+      burger.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    }));
+  }
+</script>
+</body>
+</html>
