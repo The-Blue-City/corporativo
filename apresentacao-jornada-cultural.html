@@ -148,6 +148,35 @@
   .feature-card h3 { font-size:16px; font-weight:800; color:var(--dark); }
   .feature-card p { font-size:13.5px; color:var(--muted); line-height:1.7; }
 
+  /* ── BENEFIT CARDS (escola + estudante) ── */
+  .benefit-grid-top { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-bottom:16px; align-items:stretch; }
+  .benefit-grid-bottom { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+  .benefit-card { background:white; border-radius:14px; padding:22px 22px; border:1px solid rgba(40,88,160,0.08); box-shadow:0 2px 12px rgba(0,0,0,0.04); display:flex; flex-direction:column; gap:12px; transition:all 0.25s; border-left:4px solid var(--green); }
+  .benefit-card:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(40,88,160,0.1); }
+  .benefit-card-head { display:flex; align-items:center; gap:12px; }
+  .benefit-icon { width:42px; height:42px; border-radius:10px; background:var(--green-light); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
+  .benefit-card h3 { font-size:15px; font-weight:800; color:var(--dark); line-height:1.25; }
+  .benefit-card p { font-size:12.5px; color:var(--muted); line-height:1.65; }
+  .benefit-tag { font-size:10.5px; font-weight:700; color:var(--blue); background:var(--blue-light); padding:5px 10px; border-radius:6px; align-self:flex-start; letter-spacing:0.3px; }
+  .benefit-grid-bottom .benefit-card { padding:20px 18px; gap:10px; }
+  .benefit-grid-bottom .benefit-icon { width:38px; height:38px; font-size:18px; }
+  .benefit-grid-bottom .benefit-card h3 { font-size:13.5px; }
+  .benefit-grid-bottom .benefit-card p { font-size:12px; line-height:1.6; }
+  .benefit-grid-bottom .benefit-tag { font-size:10px; padding:4px 8px; }
+  .benefit-card.benefit-card-with-image { flex-direction:row; gap:20px; align-items:flex-start; }
+  .benefit-card.benefit-card-with-image .benefit-card-body { order:1; display:flex; flex-direction:column; gap:12px; flex:1; min-width:0; }
+  .benefit-card.benefit-card-with-image .benefit-image-slot { order:2; align-self:flex-start; }
+  .benefit-image-slot { flex-shrink:0; width:200px; height:200px; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+  .benefit-image-slot svg { width:100%; height:100%; display:block; }
+  /* Box 1 — Reconhecimento (azul) */
+  .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(1) { background:var(--blue-light); border:1px solid rgba(40,88,160,0.25); border-left:6px solid var(--blue); }
+  .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(1) .benefit-icon { background:rgba(40,88,160,0.18); }
+  .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(1) .benefit-tag { background:rgba(40,88,160,0.15); color:var(--blue); }
+  /* Box 2 — Estudantes (verde) */
+  .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(2) { background:var(--green-light); border:1px solid rgba(95,182,112,0.3); border-left:6px solid var(--green); }
+  .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(2) .benefit-icon { background:rgba(95,182,112,0.25); }
+  .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(2) .benefit-tag { background:rgba(95,182,112,0.2); color:#2d7a3e; }
+
   .info-card { background:var(--blue); border-radius:14px; padding:28px 32px; color:white; }
   .info-card h3 { font-size:17px; font-weight:800; margin-bottom:10px; }
   .info-card p { font-size:14px; color:rgba(255,255,255,0.88); line-height:1.7; }
@@ -305,6 +334,8 @@
     .actors-grid { grid-template-columns:1fr 1fr; gap:14px; }
     .legacy-grid { grid-template-columns:1fr; gap:16px; }
     .grid-2-uneven { grid-template-columns:1fr; gap:32px; }
+    .benefit-grid-bottom { grid-template-columns:repeat(2,1fr); }
+    .benefit-image-slot { width:160px; height:160px; }
     .topbar-inner { padding:14px 32px; }
     .footer-top { grid-template-columns:1fr 1fr; }
   }
@@ -326,6 +357,10 @@
     h2.section-title { font-size:26px; }
     .section-lead { font-size:15px; margin-bottom:32px; }
     .grid-2, .grid-3, .grid-4 { grid-template-columns:1fr; gap:16px; }
+    .benefit-grid-top, .benefit-grid-bottom { grid-template-columns:1fr; gap:14px; }
+    .benefit-grid-top { margin-bottom:14px; }
+    .benefit-card.benefit-card-with-image { flex-direction:column; align-items:stretch; gap:14px; }
+    .benefit-image-slot { width:100%; height:220px; }
     .actor-card { padding:20px 22px; }
     .actor-emoji { width:48px; height:48px; font-size:24px; }
     .actors-grid { grid-template-columns:1fr; gap:14px; }
@@ -403,6 +438,7 @@
       <a href="#jornada" data-i18n="nav.jornada">Jornada</a>
       <a href="#fluxo" data-i18n="nav.fluxo">Fluxo</a>
       <a href="#atores" data-i18n="nav.atores">Atores</a>
+      <a href="#ganhos" data-i18n="nav.ganhos">Ganhos</a>
       <a href="#modelo" data-i18n="nav.modelo">Modelo</a>
       <a href="#legado" data-i18n="nav.legado">Legado</a>
       <a href="#casos" data-i18n="nav.casos">Casos</a>
@@ -790,10 +826,140 @@
   </div>
 </section>
 
-<!-- ════════════════════ 05 · MODELO REPLICÁVEL ════════════════════ -->
+<!-- ════════════════════ 05 · PARA A ESCOLA, PARA O ESTUDANTE ════════════════════ -->
+<section id="ganhos" class="section-alt">
+  <div class="container">
+    <div class="eyebrow" data-i18n="ganhos.eyebrow">05 · Para a escola, para o estudante</div>
+    <h2 class="section-title" data-i18n="ganhos.title">O que cada jornada entrega a quem participa</h2>
+    <p class="section-lead" data-i18n="ganhos.lead">A cada edição do modelo, escolas e estudantes recebem entregas concretas – reconhecimento institucional para o território de origem e certificações verificáveis em blockchain para o aluno – além de uma exposição cultural pública, alinhamento curricular e legado permanente na plataforma.</p>
+
+    <div class="benefit-grid-top">
+
+      <div class="benefit-card benefit-card-with-image">
+        <div class="benefit-card-body">
+          <div class="benefit-card-head">
+            <div class="benefit-icon">🏫</div>
+            <h3 data-i18n="ganhos.escola.h">Reconhecimento como escola parceira</h3>
+          </div>
+          <p data-i18n="ganhos.escola.p">O nome da escola fica registrado como parceira institucional da jornada – na plataforma, nos materiais públicos do projeto, na cobertura de imprensa e nos créditos da exposição cultural.</p>
+          <span class="benefit-tag" data-i18n="ganhos.escola.tag">Selo institucional permanente</span>
+        </div>
+        <div class="benefit-image-slot">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" role="img" aria-label="Selo de Escola Parceira — Missão Cidade Azul">
+            <title>Selo de Escola Parceira</title>
+            <defs>
+              <path id="seloTopArc" d="M 75,250 A 175,175 0 0 1 425,250" fill="none"/>
+              <path id="seloBottomArc" d="M 65,250 A 185,185 0 0 0 435,250" fill="none"/>
+            </defs>
+            <circle cx="250" cy="250" r="240" fill="#1a2e3b"/>
+            <circle cx="250" cy="250" r="232" fill="none" stroke="#5fb670" stroke-width="1.5" stroke-dasharray="2 6"/>
+            <circle cx="250" cy="250" r="222" fill="none" stroke="#2858a0" stroke-width="2.5"/>
+            <circle cx="250" cy="250" r="214" fill="none" stroke="#468182" stroke-width="0.6" opacity="0.5"/>
+            <g fill="#5fb670">
+              <circle cx="250" cy="40" r="3.5"/>
+              <circle cx="250" cy="460" r="3.5"/>
+              <circle cx="40" cy="250" r="3.5"/>
+              <circle cx="460" cy="250" r="3.5"/>
+            </g>
+            <text font-family="Montserrat, sans-serif" font-size="19" font-weight="700" fill="#5fb670" letter-spacing="6">
+              <textPath href="#seloTopArc" startOffset="50%" text-anchor="middle">ESCOLA PARCEIRA</textPath>
+            </text>
+            <text font-family="Montserrat, sans-serif" font-size="11" font-weight="600" fill="#468182" letter-spacing="3.5">
+              <textPath href="#seloBottomArc" startOffset="50%" text-anchor="middle">VERIFICADO EM BLOCKCHAIN</textPath>
+            </text>
+            <line x1="200" y1="175" x2="300" y2="175" stroke="#468182" stroke-width="0.8"/>
+            <text x="250" y="220" font-family="Montserrat, sans-serif" font-size="32" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="-0.3">MISSÃO</text>
+            <text x="250" y="255" font-family="Montserrat, sans-serif" font-size="32" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="-0.3">CIDADE</text>
+            <text x="250" y="293" font-family="Montserrat, sans-serif" font-size="36" font-weight="800" fill="#5fb670" text-anchor="middle" letter-spacing="-0.3">AZUL</text>
+            <line x1="195" y1="320" x2="305" y2="320" stroke="#468182" stroke-width="0.8"/>
+            <text x="250" y="368" font-family="Montserrat, sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="2.5">THE BLUE CITY</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="benefit-card benefit-card-with-image">
+        <div class="benefit-card-body">
+          <div class="benefit-card-head">
+            <div class="benefit-icon">🎓</div>
+            <h3 data-i18n="ganhos.estudante.h">Estudantes com certificações verificáveis</h3>
+          </div>
+          <p data-i18n="ganhos.estudante.p">Cada estudante que participa recebe badges e certificados em blockchain – válidos como experiência comprovável em currículos, processos seletivos e LinkedIn. Uma diferenciação real na transição para o mercado e o ensino superior.</p>
+          <span class="benefit-tag" data-i18n="ganhos.estudante.tag">Educação ambiental + trajetória profissional</span>
+        </div>
+        <div class="benefit-image-slot">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 30 600 600" role="img" aria-label="Badge do Estudante — Missão Cidade Azul">
+            <title>Badge do Estudante</title>
+            <polygon points="300,30 568,180 568,480 300,630 32,480 32,180" fill="#f5d976"/>
+            <polygon points="300,55 546,193 546,467 300,605 54,467 54,193" fill="none" stroke="#b8801f" stroke-width="2.5"/>
+            <polygon points="300,80 524,206 524,454 300,580 76,454 76,206" fill="none" stroke="#b8801f" stroke-width="0.8" stroke-dasharray="3 5" opacity="0.55"/>
+            <g fill="#b8801f">
+              <circle cx="300" cy="30" r="5"/>
+              <circle cx="568" cy="180" r="5"/>
+              <circle cx="568" cy="480" r="5"/>
+              <circle cx="300" cy="630" r="5"/>
+              <circle cx="32" cy="480" r="5"/>
+              <circle cx="32" cy="180" r="5"/>
+            </g>
+            <text x="300" y="155" font-family="Montserrat, sans-serif" font-size="15" font-weight="700" fill="#7a5510" text-anchor="middle" letter-spacing="6">CONQUISTA</text>
+            <line x1="240" y1="175" x2="360" y2="175" stroke="#b8801f" stroke-width="1"/>
+            <text x="300" y="265" font-family="Montserrat, sans-serif" font-size="40" font-weight="800" fill="#1a2e3b" text-anchor="middle" letter-spacing="-0.3">MISSÃO</text>
+            <text x="300" y="310" font-family="Montserrat, sans-serif" font-size="40" font-weight="800" fill="#1a2e3b" text-anchor="middle" letter-spacing="-0.3">CIDADE</text>
+            <text x="300" y="358" font-family="Montserrat, sans-serif" font-size="44" font-weight="800" fill="#2d7a3e" text-anchor="middle" letter-spacing="-0.3">AZUL</text>
+            <line x1="220" y1="400" x2="380" y2="400" stroke="#b8801f" stroke-width="1"/>
+            <text x="300" y="445" font-family="Montserrat, sans-serif" font-size="11" font-weight="700" fill="#7a5510" text-anchor="middle" letter-spacing="3.5">VERIFICADO EM BLOCKCHAIN</text>
+            <text x="300" y="480" font-family="Montserrat, sans-serif" font-size="11" font-weight="700" fill="#1a2e3b" text-anchor="middle" letter-spacing="2.8">THE BLUE CITY</text>
+          </svg>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="benefit-grid-bottom">
+
+      <div class="benefit-card">
+        <div class="benefit-card-head">
+          <div class="benefit-icon">🎨</div>
+          <h3 data-i18n="ganhos.exp.h">Exposição cultural aberta à comunidade</h3>
+        </div>
+        <p data-i18n="ganhos.exp.p">A exposição cultural é gratuita e aberta a toda a comunidade da escola – estudantes, famílias, professores, vizinhança. As ideias dos alunos viram obras de arte assinadas por artistas locais.</p>
+        <span class="benefit-tag" data-i18n="ganhos.exp.tag">Cultura + acessibilidade universal</span>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-card-head">
+          <div class="benefit-icon">📚</div>
+          <h3 data-i18n="ganhos.bncc.h">Alinhamento com BNCC e competências do século XXI</h3>
+        </div>
+        <p data-i18n="ganhos.bncc.p">O projeto trabalha educação ambiental, pensamento crítico, letramento digital e expressão cultural – competências centrais da BNCC e dos referenciais ESG. Soma-se ao currículo da escola sem competir com ele.</p>
+        <span class="benefit-tag" data-i18n="ganhos.bncc.tag">Atividade extracurricular</span>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-card-head">
+          <div class="benefit-icon">🌱</div>
+          <h3 data-i18n="ganhos.legado.h">Legado permanente na plataforma</h3>
+        </div>
+        <p data-i18n="ganhos.legado.p">Tudo o que os estudantes produzem fica registrado em galerias públicas na plataforma The Blue City – um acervo vivo que documenta o engajamento, os projetos e a exposição final. A escola continua acessível como parte do programa mesmo após o evento.</p>
+        <span class="benefit-tag" data-i18n="ganhos.legado.tag">Visibilidade contínua</span>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-card-head">
+          <div class="benefit-icon">💸</div>
+          <h3 data-i18n="ganhos.gratuito.h">100% gratuito · zero custo operacional</h3>
+        </div>
+        <p data-i18n="ganhos.gratuito.p">A escola não paga pelo projeto, não contrata equipe e não capta recursos – toda a produção da jornada é viabilizada externamente. A escola entra como parceira institucional do território.</p>
+        <span class="benefit-tag" data-i18n="ganhos.gratuito.tag">Sem ônus pedagógico ou financeiro</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ 06 · MODELO REPLICÁVEL ════════════════════ -->
 <section id="modelo">
   <div class="container">
-    <div class="eyebrow" data-i18n="modelo.eyebrow">05 · Replicabilidade</div>
+    <div class="eyebrow" data-i18n="modelo.eyebrow">06 · Replicabilidade</div>
     <h2 class="section-title" data-i18n="modelo.title">Um modelo replicável</h2>
     <p class="section-lead" data-i18n="modelo.lead">Missão Cidade Azul é um modelo cultural pensado para ser realizado em diferentes cidades, com diferentes temas e diferentes parceiros. A cada jornada, duas variáveis se configuram: o eixo temático e o território.</p>
 
@@ -872,7 +1038,7 @@
 <!-- ════════════════════ 06 · LEGADO ════════════════════ -->
 <section id="legado" class="section-alt">
   <div class="container">
-    <div class="eyebrow" data-i18n="legado.eyebrow">06 · Registro</div>
+    <div class="eyebrow" data-i18n="legado.eyebrow">07 · Registro</div>
     <h2 class="section-title" data-i18n="legado.title">Registro e legado na plataforma</h2>
     <p class="section-lead" data-i18n="legado.lead">Toda jornada deixa um rastro público e permanente na plataforma The Blue City – organizado em três espaços que registram o engajamento dos estudantes, os projetos enviados e o resultado artístico final.</p>
 
@@ -934,7 +1100,7 @@
 <!-- ════════════════════ 07 · CASOS ════════════════════ -->
 <section id="casos">
   <div class="container">
-    <div class="eyebrow" data-i18n="casos.eyebrow">07 · No território</div>
+    <div class="eyebrow" data-i18n="casos.eyebrow">08 · No território</div>
     <h2 class="section-title" data-i18n="casos.title">Casos da Missão Cidade Azul</h2>
     <p class="section-lead" data-i18n="casos.lead">O modelo já tem sua primeira realização concreta em Palmas, e está aberto a novas parcerias para expandir o programa a outros territórios brasileiros.</p>
 
@@ -979,7 +1145,7 @@
 <!-- ════════════════════ 08 · APOIO ════════════════════ -->
 <section id="apoio" class="section-alt">
   <div class="container">
-    <div class="eyebrow" data-i18n="apoio.eyebrow">08 · Como apoiar</div>
+    <div class="eyebrow" data-i18n="apoio.eyebrow">09 · Como apoiar</div>
     <h2 class="section-title" data-i18n="apoio.title">Cotas de patrocínio</h2>
     <p class="section-lead" data-i18n-html="apoio.lead">A primeira realização do modelo – <strong style="color:var(--dark);">Missão Cidade Azul na Região Norte</strong> – está aprovada na Lei de Incentivo à Cultura (PRONAC 237809) e cobre cinco cidades. A Sotreq já patrocinou uma das edições; as demais cotas seguem abertas a marcas, instituições e governos interessados em viabilizar a jornada em sua cidade-território.</p>
 
@@ -1061,7 +1227,7 @@
 </section>
 <section id="equipe">
   <div class="container">
-    <div class="eyebrow" data-i18n="equipe.eyebrow">09 · Estrutura</div>
+    <div class="eyebrow" data-i18n="equipe.eyebrow">10 · Estrutura</div>
     <h2 class="section-title" data-i18n="equipe.title">A equipe por trás</h2>
     <p class="section-lead" data-i18n="equipe.lead">Cada jornada é conduzida por uma equipe estruturada em dois pilares articulados – a dimensão virtual, que constrói o jogo, e a dimensão física, que ativa o território. Tudo sob a coordenação central do projeto.</p>
 
@@ -1169,6 +1335,7 @@
       'nav.jornada': 'Jornada',
       'nav.fluxo': 'Fluxo',
       'nav.atores': 'Atores',
+      'nav.ganhos': 'Ganhos',
       'nav.modelo': 'Modelo',
       'nav.legado': 'Legado',
       'nav.casos': 'Casos',
@@ -1280,8 +1447,30 @@
       'atores.a7.r': 'Viabilizador estratégico',
       'atores.a7.p': 'Marca pública ou privada que viabiliza a jornada via Lei Rouanet ou recursos diretos. O patrocinador define o eixo temático da jornada, pode sugerir a cidade-alvo, e tem sua marca presente nas certificações, na plataforma e na exposição física.',
       'atores.a7.extra': 'Toda interação – adesão da escola, jogadas dos alunos, envio de projetos, encomenda dos artistas, registro da exposição – passa por um mesmo ambiente digital, que documenta tudo de forma pública e acessível. É esse registro contínuo que dá ao patrocinador a prestação de contas, ao estudante os certificados verificáveis, e à comunidade o legado permanente.',
+      // ── GANHOS (escola + estudante)
+      'ganhos.eyebrow': '05 · Para a escola, para o estudante',
+      'ganhos.title': 'O que cada jornada entrega a quem participa',
+      'ganhos.lead': 'A cada edição do modelo, escolas e estudantes recebem entregas concretas – reconhecimento institucional para o território de origem e certificações verificáveis em blockchain para o aluno – além de uma exposição cultural pública, alinhamento curricular e legado permanente na plataforma.',
+      'ganhos.escola.h': 'Reconhecimento como escola parceira',
+      'ganhos.escola.p': 'O nome da escola fica registrado como parceira institucional da jornada – na plataforma, nos materiais públicos do projeto, na cobertura de imprensa e nos créditos da exposição cultural.',
+      'ganhos.escola.tag': 'Selo institucional permanente',
+      'ganhos.estudante.h': 'Estudantes com certificações verificáveis',
+      'ganhos.estudante.p': 'Cada estudante que participa recebe badges e certificados em blockchain – válidos como experiência comprovável em currículos, processos seletivos e LinkedIn. Uma diferenciação real na transição para o mercado e o ensino superior.',
+      'ganhos.estudante.tag': 'Educação ambiental + trajetória profissional',
+      'ganhos.exp.h': 'Exposição cultural aberta à comunidade',
+      'ganhos.exp.p': 'A exposição cultural é gratuita e aberta a toda a comunidade da escola – estudantes, famílias, professores, vizinhança. As ideias dos alunos viram obras de arte assinadas por artistas locais.',
+      'ganhos.exp.tag': 'Cultura + acessibilidade universal',
+      'ganhos.bncc.h': 'Alinhamento com BNCC e competências do século XXI',
+      'ganhos.bncc.p': 'O projeto trabalha educação ambiental, pensamento crítico, letramento digital e expressão cultural – competências centrais da BNCC e dos referenciais ESG. Soma-se ao currículo da escola sem competir com ele.',
+      'ganhos.bncc.tag': 'Atividade extracurricular',
+      'ganhos.legado.h': 'Legado permanente na plataforma',
+      'ganhos.legado.p': 'Tudo o que os estudantes produzem fica registrado em galerias públicas na plataforma The Blue City – um acervo vivo que documenta o engajamento, os projetos e a exposição final. A escola continua acessível como parte do programa mesmo após o evento.',
+      'ganhos.legado.tag': 'Visibilidade contínua',
+      'ganhos.gratuito.h': '100% gratuito · zero custo operacional',
+      'ganhos.gratuito.p': 'A escola não paga pelo projeto, não contrata equipe e não capta recursos – toda a produção da jornada é viabilizada externamente. A escola entra como parceira institucional do território.',
+      'ganhos.gratuito.tag': 'Sem ônus pedagógico ou financeiro',
       // ── MODELO
-      'modelo.eyebrow': '05 · Replicabilidade',
+      'modelo.eyebrow': '06 · Replicabilidade',
       'modelo.title': 'Um modelo replicável',
       'modelo.lead': 'Missão Cidade Azul é um modelo cultural pensado para ser realizado em diferentes cidades, com diferentes temas e diferentes parceiros. A cada jornada, duas variáveis se configuram: o eixo temático e o território.',
       'modelo.v1.label': 'Variável configurável 01',
@@ -1314,7 +1503,7 @@
       'modelo.tag2.h': 'Conteúdo local',
       'modelo.tag2.d': 'tema · cidade · escola · artistas · cultura',
       // ── LEGADO
-      'legado.eyebrow': '06 · Registro',
+      'legado.eyebrow': '07 · Registro',
       'legado.title': 'Registro e legado na plataforma',
       'legado.lead': 'Toda jornada deixa um rastro público e permanente na plataforma The Blue City – organizado em três espaços que registram o engajamento dos estudantes, os projetos enviados e o resultado artístico final.',
       'legado.g1.h': 'Performance dos Jogadores',
@@ -1333,7 +1522,7 @@
       'legado.g3.label': 'Legado permanente',
       'legado.g3.note': 'A galeria é permanente na plataforma – a exposição continua acessível online após o evento físico.',
       // ── CASOS
-      'casos.eyebrow': '07 · No território',
+      'casos.eyebrow': '08 · No território',
       'casos.title': 'Casos da Missão Cidade Azul',
       'casos.lead': 'O modelo já tem sua primeira realização concreta em Palmas, e está aberto a novas parcerias para expandir o programa a outros territórios brasileiros.',
       'casos.palmas.status': '● Em produção',
@@ -1345,7 +1534,7 @@
       'casos.palmas.l3': 'Tema-eixo',
       'casos.palmas.v4': 'Mar-Dez',
       // ── APOIO
-      'apoio.eyebrow': '08 · Como apoiar',
+      'apoio.eyebrow': '09 · Como apoiar',
       'apoio.title': 'Cotas de patrocínio',
       'apoio.lead': 'A primeira realização do modelo – <strong style="color:var(--dark);">Missão Cidade Azul na Região Norte</strong> – está aprovada na Lei de Incentivo à Cultura (PRONAC 237809) e cobre cinco cidades. A Sotreq já patrocinou uma das edições; as demais cotas seguem abertas a marcas, instituições e governos interessados em viabilizar a jornada em sua cidade-território.',
       'apoio.stat1': 'Cidades na Região Norte',
@@ -1369,7 +1558,7 @@
       'apoio.bonus.label': 'Bônus exclusivo Premium',
       'apoio.bonus.text': 'Patrocinador único do projeto integral (R$ 943.554) ganha a <strong>6ª cidade como bônus</strong> – válido apenas quando uma única empresa cobre o valor total do PRONAC. Em combinações entre múltiplos patrocinadores, o cálculo segue a base de R$ 190.000 por cidade.',
       // ── EQUIPE
-      'equipe.eyebrow': '09 · Estrutura',
+      'equipe.eyebrow': '10 · Estrutura',
       'equipe.title': 'A equipe por trás',
       'equipe.lead': 'Cada jornada é conduzida por uma equipe estruturada em dois pilares articulados – a dimensão virtual, que constrói o jogo, e a dimensão física, que ativa o território. Tudo sob a coordenação central do projeto.',
       'equipe.coord.h': 'Coordenadora do Projeto',
@@ -1412,6 +1601,7 @@
       'nav.jornada': 'Jornada',
       'nav.fluxo': 'Flujo',
       'nav.atores': 'Actores',
+      'nav.ganhos': 'Logros',
       'nav.modelo': 'Modelo',
       'nav.legado': 'Legado',
       'nav.casos': 'Casos',
@@ -1523,8 +1713,30 @@
       'atores.a7.r': 'Habilitador estratégico',
       'atores.a7.p': 'Marca pública o privada que viabiliza la jornada mediante la Lei Rouanet (ley brasileña de incentivo cultural) o con recursos directos. El patrocinador define el eje temático de la jornada, puede sugerir la ciudad-objetivo, y tiene su marca presente en las certificaciones, en la plataforma y en la exposición física.',
       'atores.a7.extra': 'Toda interacción – adhesión de la escuela, partidas de los alumnos, envío de proyectos, encargo a los artistas, registro de la exposición – pasa por un mismo entorno digital, que documenta todo de forma pública y accesible. Es ese registro continuo el que da al patrocinador la rendición de cuentas, al estudiante los certificados verificables, y a la comunidad el legado permanente.',
+      // ── GANHOS (escuela + estudiante)
+      'ganhos.eyebrow': '05 · Para la escuela, para el estudiante',
+      'ganhos.title': 'Lo que cada jornada entrega a quien participa',
+      'ganhos.lead': 'En cada edición del modelo, escuelas y estudiantes reciben entregas concretas – reconocimiento institucional para el territorio de origen y certificaciones verificables en blockchain para el alumno – además de una exposición cultural pública, alineamiento curricular y legado permanente en la plataforma.',
+      'ganhos.escola.h': 'Reconocimiento como escuela aliada',
+      'ganhos.escola.p': 'El nombre de la escuela queda registrado como aliada institucional de la jornada – en la plataforma, en los materiales públicos del proyecto, en la cobertura de prensa y en los créditos de la exposición cultural.',
+      'ganhos.escola.tag': 'Sello institucional permanente',
+      'ganhos.estudante.h': 'Estudiantes con certificaciones verificables',
+      'ganhos.estudante.p': 'Cada estudiante que participa recibe insignias y certificados en blockchain – válidos como experiencia comprobable en currículums, procesos selectivos y LinkedIn. Una diferenciación real en la transición al mercado y a la educación superior.',
+      'ganhos.estudante.tag': 'Educación ambiental + trayectoria profesional',
+      'ganhos.exp.h': 'Exposición cultural abierta a la comunidad',
+      'ganhos.exp.p': 'La exposición cultural es gratuita y abierta a toda la comunidad de la escuela – estudiantes, familias, profesores, vecinos. Las ideas de los alumnos se convierten en obras de arte firmadas por artistas locales.',
+      'ganhos.exp.tag': 'Cultura + accesibilidad universal',
+      'ganhos.bncc.h': 'Alineamiento curricular y competencias del siglo XXI',
+      'ganhos.bncc.p': 'El proyecto trabaja educación ambiental, pensamiento crítico, alfabetización digital y expresión cultural – competencias centrales del currículo y de los referenciales ESG. Se suma al currículo de la escuela sin competir con él.',
+      'ganhos.bncc.tag': 'Actividad extracurricular',
+      'ganhos.legado.h': 'Legado permanente en la plataforma',
+      'ganhos.legado.p': 'Todo lo que producen los estudiantes queda registrado en galerías públicas en la plataforma The Blue City – un acervo vivo que documenta el compromiso, los proyectos y la exposición final. La escuela sigue accesible como parte del programa incluso después del evento.',
+      'ganhos.legado.tag': 'Visibilidad continua',
+      'ganhos.gratuito.h': '100% gratuito · cero costo operativo',
+      'ganhos.gratuito.p': 'La escuela no paga por el proyecto, no contrata equipo y no capta recursos – toda la producción de la jornada se viabiliza externamente. La escuela entra como aliada institucional del territorio.',
+      'ganhos.gratuito.tag': 'Sin carga pedagógica o financiera',
       // ── MODELO
-      'modelo.eyebrow': '05 · Replicabilidad',
+      'modelo.eyebrow': '06 · Replicabilidad',
       'modelo.title': 'Un modelo replicable',
       'modelo.lead': 'Misión Ciudad Azul es un modelo cultural pensado para realizarse en distintas ciudades, con distintos temas y distintos aliados. En cada jornada se configuran dos variables: el eje temático y el territorio.',
       'modelo.v1.label': 'Variable configurable 01',
@@ -1557,7 +1769,7 @@
       'modelo.tag2.h': 'Contenido local',
       'modelo.tag2.d': 'tema · ciudad · escuela · artistas · cultura',
       // ── LEGADO / LEGADO
-      'legado.eyebrow': '06 · Registro',
+      'legado.eyebrow': '07 · Registro',
       'legado.title': 'Registro y legado en la plataforma',
       'legado.lead': 'Cada jornada deja una huella pública y permanente en la plataforma The Blue City – organizada en tres espacios que registran el involucramiento de los estudiantes, los proyectos enviados y el resultado artístico final.',
       'legado.g1.h': 'Desempeño de los Jugadores',
@@ -1576,7 +1788,7 @@
       'legado.g3.label': 'Legado permanente',
       'legado.g3.note': 'La galería es permanente en la plataforma – la exposición sigue accesible en línea después del evento físico.',
       // ── CASOS
-      'casos.eyebrow': '07 · En el territorio',
+      'casos.eyebrow': '08 · En el territorio',
       'casos.title': 'Casos de Misión Ciudad Azul',
       'casos.lead': 'El modelo ya tiene su primera realización concreta en Palmas, y está abierto a nuevas alianzas para expandir el programa a otros territorios brasileños.',
       'casos.palmas.status': '● En producción',
@@ -1588,7 +1800,7 @@
       'casos.palmas.l3': 'Tema-eje',
       'casos.palmas.v4': 'Mar-Dic',
       // ── APOIO / APOYO
-      'apoio.eyebrow': '08 · Cómo apoyar',
+      'apoio.eyebrow': '09 · Cómo apoyar',
       'apoio.title': 'Cuotas de patrocinio',
       'apoio.lead': 'La primera realización del modelo – <strong style="color:var(--dark);">Misión Ciudad Azul en la Región Norte</strong> – está aprobada en la Ley de Incentivo a la Cultura de Brasil (PRONAC 237809) y cubre cinco ciudades. Sotreq ya patrocinó una de las ediciones; las demás cuotas siguen abiertas a marcas, instituciones y gobiernos interesados en viabilizar la jornada en su ciudad-territorio.',
       'apoio.stat1': 'Ciudades en la Región Norte',
@@ -1612,7 +1824,7 @@
       'apoio.bonus.label': 'Bonus exclusivo Premium',
       'apoio.bonus.text': 'Patrocinador único del proyecto integral (R$ 943.554) gana la <strong>6ª ciudad como bonus</strong> – válido solo cuando una única empresa cubre el valor total del PRONAC. En combinaciones entre múltiples patrocinadores, el cálculo sigue la base de R$ 190.000 por ciudad.',
       // ── EQUIPE / EQUIPO
-      'equipe.eyebrow': '09 · Estructura',
+      'equipe.eyebrow': '10 · Estructura',
       'equipe.title': 'El equipo detrás',
       'equipe.lead': 'Cada jornada es conducida por un equipo estructurado en dos pilares articulados – la dimensión virtual, que construye el juego, y la dimensión física, que activa el territorio. Todo bajo la coordinación central del proyecto.',
       'equipe.coord.h': 'Coordinadora del Proyecto',
@@ -1655,6 +1867,7 @@
       'nav.jornada': 'Journey',
       'nav.fluxo': 'Flow',
       'nav.atores': 'Actors',
+      'nav.ganhos': 'Outcomes',
       'nav.modelo': 'Model',
       'nav.legado': 'Legacy',
       'nav.casos': 'Cases',
@@ -1766,8 +1979,30 @@
       'atores.a7.r': 'Strategic enabler',
       'atores.a7.p': 'Public or private brand that enables the journey through the Lei Rouanet (Brazilian cultural-incentive law) or direct resources. The sponsor defines the journey\u2019s thematic axis, may suggest the target city, and has its brand present in certifications, on the platform and in the physical exhibition.',
       'atores.a7.extra': 'Every interaction – school enrollment, student gameplay, project submissions, artist commissions, exhibition records – passes through a single digital environment that documents everything publicly and accessibly. This continuous record is what gives the sponsor accountability, the student verifiable certificates, and the community a permanent legacy.',
+      // ── GANHOS (school + student)
+      'ganhos.eyebrow': '05 · For the school, for the student',
+      'ganhos.title': 'What each journey delivers to participants',
+      'ganhos.lead': 'In every edition of the model, schools and students receive concrete outcomes – institutional recognition for the host territory and blockchain-verifiable certifications for each student – along with a public cultural exhibition, curricular alignment and a permanent legacy on the platform.',
+      'ganhos.escola.h': 'Recognition as a partner school',
+      'ganhos.escola.p': 'The school\u2019s name is registered as an institutional partner of the journey – on the platform, in the project\u2019s public materials, in press coverage and in the exhibition credits.',
+      'ganhos.escola.tag': 'Permanent institutional seal',
+      'ganhos.estudante.h': 'Students with verifiable certifications',
+      'ganhos.estudante.p': 'Every participating student receives badges and certificates on blockchain – valid as provable experience on résumés, applications and LinkedIn. A real edge in the transition to the job market and higher education.',
+      'ganhos.estudante.tag': 'Environmental education + professional trajectory',
+      'ganhos.exp.h': 'Cultural exhibition open to the community',
+      'ganhos.exp.p': 'The cultural exhibition is free and open to the school\u2019s entire community – students, families, teachers, neighbours. The students\u2019 ideas become works of art signed by local artists.',
+      'ganhos.exp.tag': 'Culture + universal accessibility',
+      'ganhos.bncc.h': 'Curricular alignment and 21st-century skills',
+      'ganhos.bncc.p': 'The project works on environmental education, critical thinking, digital literacy and cultural expression – core curricular competencies and ESG references. It adds to the school\u2019s curriculum without competing with it.',
+      'ganhos.bncc.tag': 'Extracurricular activity',
+      'ganhos.legado.h': 'Permanent legacy on the platform',
+      'ganhos.legado.p': 'Everything students produce is recorded in public galleries on The Blue City platform – a living archive that documents engagement, projects and the final exhibition. The school stays accessible as part of the programme even after the event.',
+      'ganhos.legado.tag': 'Continuous visibility',
+      'ganhos.gratuito.h': '100% free · zero operational cost',
+      'ganhos.gratuito.p': 'The school does not pay for the project, does not hire staff and does not raise funds – the entire journey is externally funded. The school joins as an institutional partner of the territory.',
+      'ganhos.gratuito.tag': 'No pedagogical or financial burden',
       // ── MODELO / MODEL
-      'modelo.eyebrow': '05 · Replicability',
+      'modelo.eyebrow': '06 · Replicability',
       'modelo.title': 'A replicable model',
       'modelo.lead': 'Blue City Mission is a cultural model designed to be realized in different cities, with different themes and different partners. With each journey, two variables are configured: the thematic axis and the territory.',
       'modelo.v1.label': 'Configurable variable 01',
@@ -1800,7 +2035,7 @@
       'modelo.tag2.h': 'Local content',
       'modelo.tag2.d': 'theme · city · school · artists · culture',
       // ── LEGADO / LEGACY
-      'legado.eyebrow': '06 · Record',
+      'legado.eyebrow': '07 · Record',
       'legado.title': 'Record and legacy on the platform',
       'legado.lead': 'Every journey leaves a public, permanent trace on The Blue City platform – organized into three spaces that record student engagement, the submitted projects and the final artistic result.',
       'legado.g1.h': 'Player Performance',
@@ -1819,7 +2054,7 @@
       'legado.g3.label': 'Permanent legacy',
       'legado.g3.note': 'The gallery is permanent on the platform – the exhibition remains accessible online after the physical event.',
       // ── CASOS / CASES
-      'casos.eyebrow': '07 · On the ground',
+      'casos.eyebrow': '08 · On the ground',
       'casos.title': 'Blue City Mission cases',
       'casos.lead': 'The model already has its first concrete realization in Palmas, and is open to new partnerships to expand the program to other Brazilian territories.',
       'casos.palmas.status': '● In production',
@@ -1831,7 +2066,7 @@
       'casos.palmas.l3': 'Core theme',
       'casos.palmas.v4': 'Mar-Dec',
       // ── APOIO / SUPPORT
-      'apoio.eyebrow': '08 · How to support',
+      'apoio.eyebrow': '09 · How to support',
       'apoio.title': 'Sponsorship tiers',
       'apoio.lead': 'The first realization of the model – <strong style="color:var(--dark);">Blue City Mission in the Northern Region</strong> – is approved under Brazil\u2019s Cultural Incentive Law (PRONAC 237809) and covers five cities. Sotreq has already sponsored one of the editions; the remaining tiers are open to brands, institutions and governments interested in bringing the journey to their city-territory.',
       'apoio.stat1': 'Cities in the Northern Region',
@@ -1855,7 +2090,7 @@
       'apoio.bonus.label': 'Exclusive Premium bonus',
       'apoio.bonus.text': 'A single sponsor of the entire project (R$ 943,554) gets the <strong>6th city as a bonus</strong> – valid only when one company covers the full PRONAC value. In combinations among multiple sponsors, the calculation follows the base of R$ 190,000 per city.',
       // ── EQUIPE / TEAM
-      'equipe.eyebrow': '09 · Structure',
+      'equipe.eyebrow': '10 · Structure',
       'equipe.title': 'The team behind it',
       'equipe.lead': 'Each journey is led by a team structured around two articulated pillars – the virtual dimension, which builds the game, and the physical dimension, which activates the territory. All under the project\u2019s central coordination.',
       'equipe.coord.h': 'Project Coordinator',
