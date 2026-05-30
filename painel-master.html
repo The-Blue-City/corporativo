@@ -128,6 +128,8 @@
   thead th:first-child { border-top-left-radius: 12px; }
   thead th:last-child { border-top-right-radius: 12px; }
   tbody td { padding: 14px 20px; font-size: 13px; border-bottom: 1px solid #f2f6fa; vertical-align: middle; }
+  .table-sm tbody td { padding: 10px 16px; font-size: 12px; }
+  .table-sm thead th { padding: 9px 16px; }
   tbody tr:last-child td { border-bottom: none; }
   tbody tr:hover { background: #fafcfe; }
 
@@ -240,10 +242,9 @@
   .tip-end::before { left: auto; right: 13px; transform: none; }
   .tip-end:hover::after { transform: translateY(0); }
   /* Variante: balão abre abaixo (para colunas no meio da tabela) */
-  .tip-below::after { bottom: auto; top: calc(100% + 9px); left: 50%; transform: translateX(-50%) translateY(-4px); }
-  .tip-below::before { bottom: auto; top: calc(100% + 3px); left: 50%; transform: translateX(-50%);
-    border-top-color: transparent; border-bottom-color: #102a3f; }
-  .tip-below:hover::after { transform: translateX(-50%) translateY(0); }
+  /* tip-below handled via JS tooltip */
+  .tip-below::after { display: none !important; }
+  .tip-below::before { display: none !important; }
   .tip-info {
     display: inline-flex; align-items: center; justify-content: center;
     width: 14px; height: 14px; border-radius: 50%; margin-left: 5px; vertical-align: middle;
@@ -457,12 +458,7 @@
   <!-- ===== SIDEBAR ===== -->
   <aside class="sidebar">
     <div class="sidebar-logo">
-      <svg width="30" height="30" viewBox="0 0 45.6 45.6" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="22.8" cy="22.8" r="18.4" fill="#001522"/>
-        <rect x="12.2" y="17.5" width="20.8" height="3.2" fill="#fff"/>
-        <path d="M31.7 23l-.2.2c-1.3 1.1-2.4 2.1-4.1 2.1s-2.5-.4-4.1-1.3c-2.1-1.1-3.9-1.7-5.6-1.7-2.8 0-4.6 1.6-6 2.9l-.2.2 2 2.4.2-.2c1.3-1.1 2.4-2.1 4.1-2.1s2.5.4 4.1 1.3c2.1 1.1 3.9 1.7 5.6 1.7 2.7 0 4.5-1.6 5.9-2.9l.2-.2-2-2.4z" fill="#0c9ed9"/>
-      </svg>
-      <span>The Blue <em>City</em></span>
+<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAyMTguNCA0NS42Ij4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLmNscy0xIHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudCk7CiAgICAgIH0KCiAgICAgIC5jbHMtMSwgLmNscy0yLCAuY2xzLTMsIC5jbHMtNCwgLmNscy01LCAuY2xzLTYsIC5jbHMtNywgLmNscy04LCAuY2xzLTksIC5jbHMtMTAsIC5jbHMtMTEsIC5jbHMtMTIsIC5jbHMtMTMsIC5jbHMtMTQgewogICAgICAgIHN0cm9rZS13aWR0aDogMHB4OwogICAgICB9CgogICAgICAuY2xzLTIgewogICAgICAgIGZpbGw6ICMwYzllZDk7CiAgICAgIH0KCiAgICAgIC5jbHMtMyB7CiAgICAgICAgZmlsbDogdXJsKCNsaW5lYXItZ3JhZGllbnQtMTEpOwogICAgICB9CgogICAgICAuY2xzLTQgewogICAgICAgIGZpbGw6IHVybCgjbGluZWFyLWdyYWRpZW50LTEwKTsKICAgICAgfQoKICAgICAgLmNscy01IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC00KTsKICAgICAgfQoKICAgICAgLmNscy02IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC0yKTsKICAgICAgfQoKICAgICAgLmNscy03IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC0zKTsKICAgICAgfQoKICAgICAgLmNscy04IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC04KTsKICAgICAgfQoKICAgICAgLmNscy05IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC05KTsKICAgICAgfQoKICAgICAgLmNscy0xMCB7CiAgICAgICAgZmlsbDogdXJsKCNsaW5lYXItZ3JhZGllbnQtNyk7CiAgICAgIH0KCiAgICAgIC5jbHMtMTEgewogICAgICAgIGZpbGw6IHVybCgjbGluZWFyLWdyYWRpZW50LTUpOwogICAgICB9CgogICAgICAuY2xzLTEyIHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC02KTsKICAgICAgfQoKICAgICAgLmNscy0xMyB7CiAgICAgICAgZmlsbDogIzAwMTUyMjsKICAgICAgfQoKICAgICAgLmNscy0xNCB7CiAgICAgICAgZmlsbDogI2ZmZjsKICAgICAgfQogICAgPC9zdHlsZT4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50IiB4MT0iNDguOCIgeTE9IjI1LjciIHgyPSIyMTEuOCIgeTI9IjI1LjciIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0OCkgc2NhbGUoMSAtMSkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMDA2MTg4Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzk1Y2ZhMCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTIiIHkxPSIyNS45IiB5Mj0iMjUuOSIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtMyIgeTE9IjIzLjEiIHkyPSIyMy4xIiB4bGluazpocmVmPSIjbGluZWFyLWdyYWRpZW50Ii8+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC00IiB5MT0iMjUuNyIgeTI9IjI1LjciIHhsaW5rOmhyZWY9IiNsaW5lYXItZ3JhZGllbnQiLz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTUiIHkxPSIyNS44IiB5Mj0iMjUuOCIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtNiIgeTE9IjIzIiB5Mj0iMjMiIHhsaW5rOmhyZWY9IiNsaW5lYXItZ3JhZGllbnQiLz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTciIHkxPSIyMy4xIiB5Mj0iMjMuMSIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtOCIgeTE9IjI1LjgiIHkyPSIyNS44IiB4bGluazpocmVmPSIjbGluZWFyLWdyYWRpZW50Ii8+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC05IiB5MT0iMjYiIHkyPSIyNiIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtMTAiIHkxPSIyNS4zIiB5Mj0iMjUuMyIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtMTEiIHkxPSIyMC4zIiB5Mj0iMjAuMyIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogIDwvZGVmcz4KICA8Zz4KICAgIDxjaXJjbGUgY2xhc3M9ImNscy0xMyIgY3g9IjI2LjEiIGN5PSIyMi43IiByPSIxOC40Ii8+CiAgICA8Zz4KICAgICAgPHJlY3QgY2xhc3M9ImNscy0xNCIgeD0iMTUuNSIgeT0iMTcuNSIgd2lkdGg9IjIwLjgiIGhlaWdodD0iMy4yIi8+CiAgICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTM1LDIzbC0uMi4yYy0xLjMsMS4xLTIuNCwyLjEtNC4xLDIuMXMtMi41LS40LTQuMS0xLjNjLTIuMS0xLjEtMy45LTEuNy01LjYtMS43LTIuOCwwLTQuNiwxLjYtNiwyLjlsLS4yLjIsMiwyLjQuMi0uMmMxLjMtMS4xLDIuNC0yLjEsNC4xLTIuMXMyLjUuNCw0LjEsMS4zYzIuMSwxLjEsMy45LDEuNyw1LjYsMS43aDBjMi43LDAsNC41LTEuNiw1LjktMi45bC4yLS4yLTItMi40aDBaIi8+CiAgICA8L2c+CiAgPC9nPgogIDxnPgogICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNjQuNSwxNi44aC01Ljd2MTQuOWgtNC4zdi0xNC45aC01Ljd2LTMuOGgxNS43djMuOFoiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtNiIgZD0iTTc5LjEsMzEuNmgtNC4ydi03LjZjMC0uOS0uMi0xLjUtLjYtMS45cy0uOS0uNi0xLjQtLjYtLjcsMC0xLjEuM2MtLjQuMi0uOC41LTEuMS44LS4zLjQtLjYuOC0uNywxLjJ2Ny44aC00LjJWMTIuNWg0LjJ2Ny45Yy41LS44LDEuMi0xLjUsMi0xLjlzMS44LS42LDIuOC0uNiwxLjcuMiwyLjIuNWMuNi4zLDEsLjcsMS4zLDEuMnMuNSwxLC42LDEuN2MwLC42LjIsMS4yLjIsMS44djguNy0uMloiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtNyIgZD0iTTg3LjksMzEuOWMtMS4yLDAtMi4yLS4yLTMuMS0uNnMtMS43LS45LTIuMy0xLjVjLS42LS42LTEuMS0xLjQtMS41LTIuMi0uMy0uOC0uNS0xLjctLjUtMi42LDAtMS4zLjMtMi41LjktMy42czEuNC0xLjksMi41LTIuNiwyLjQtMSw0LTEsMi45LjMsNCwxLDEuOSwxLjUsMi41LDIuNi45LDIuMi45LDMuNSwwLC41LDAsLjd2LjZoLTEwLjJjMCwuNi4yLDEuMS41LDEuNXMuNy43LDEuMS45Yy41LjIuOS4zLDEuNC4zczEuMi0uMSwxLjgtLjRjLjYtLjMuOS0uNywxLjEtMS4ybDMuNiwxYy0uNC43LS44LDEuMy0xLjUsMS45LS42LjUtMS40LDEtMi4yLDEuMy0uOS4zLTEuOC41LTIuOS41aC0uMVpNODQuOSwyMy41aDZjMC0uNi0uMi0xLS41LTEuNS0uMy0uNC0uNi0uNy0xLjEtMXMtLjktLjMtMS41LS4zLTEsLjEtMS40LjNjLS40LjItLjguNS0xLjEuOS0uMy40LS40LjktLjUsMS41aDBaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTUiIGQ9Ik0xMTgsMjYuOGMwLDEuMS0uMywyLS44LDIuNy0uNi43LTEuMywxLjItMi4zLDEuNnMtMiwuNS0zLjIuNWgtOS4xVjEzaDEwLjRjLjksMCwxLjYuMiwyLjMuNy42LjUsMS4xLDEuMSwxLjUsMS44LjMuNy41LDEuNS41LDIuM3MtLjIsMS43LS43LDIuNWMtLjQuOC0xLjEsMS40LTIsMS44LDEuMS4zLDEuOS45LDIuNSwxLjcuNi44LjksMS44LjksMy4xaDBaTTEwNi45LDE2Ljd2My45aDQuMmMuMywwLC42LDAsLjktLjIuMy0uMS41LS40LjctLjYuMi0uMy4yLS42LjItMS4xczAtLjgtLjItMS4xYzAtLjMtLjMtLjUtLjYtLjYtLjItLjEtLjUtLjItLjktLjJoLTQuNC4xWk0xMTMuNywyNmMwLS40LDAtLjctLjItMS4xLS4yLS4zLS40LS42LS42LS43cy0uNi0uMy0uOS0uM2gtNC45djQuMWg0LjhjLjQsMCwuNywwLDEtLjMuMy0uMi41LS40LjctLjcuMi0uMy4yLS42LjItMWgwWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xMSIgZD0iTTExOS43LDEyLjVoNC4ydjE0LjNjMCwuNiwwLDEsLjMsMS4yLjIuMi41LjQuOS40cy41LDAsLjgtLjFjLjMsMCwuNS0uMi43LS4zbC42LDMuMmMtLjUuMi0xLjEuNC0xLjguNi0uNy4yLTEuMy4yLTEuOS4yLTEuMiwwLTIuMS0uMy0yLjgtMS0uNi0uNi0xLTEuNi0xLTIuN3YtMTUuN2gwWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xMiIgZD0iTTEyNy45LDI2Ljh2LTguOGg0LjJ2Ny44YzAsLjguMiwxLjQuNSwxLjkuMy40LjguNywxLjQuN3MuOCwwLDEuMS0uMmMuNC0uMS43LS4zLDEtLjZzLjYtLjcuOS0xLjF2LTguNGg0LjJ2OWMwLC40LDAsLjcuMi45LjEuMi40LjMuNy4zdjMuNWMtLjQsMC0uNy4xLTEsLjJzLS41LDAtLjgsMGMtLjcsMC0xLjMtLjEtMS44LS40LS40LS4zLS43LS43LS44LTEuM3YtLjhjLS43LjktMS41LDEuNi0yLjQsMnMtMiwuNi0zLjIuNi0yLjUtLjQtMy4yLTEuMy0xLjEtMi4yLTEuMS0zLjh2LS4yWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xMCIgZD0iTTE1MC42LDMxLjljLTEuMiwwLTIuMi0uMi0zLjEtLjYtLjktLjQtMS43LS45LTIuMy0xLjVzLTEuMS0xLjQtMS41LTIuMmMtLjMtLjgtLjUtMS43LS41LTIuNiwwLTEuMy4zLTIuNS45LTMuNi42LTEuMSwxLjQtMS45LDIuNS0yLjZzMi40LTEsNC0xLDIuOS4zLDQsMWMxLjEuNiwxLjksMS41LDIuNSwyLjZzLjksMi4yLjksMy41LDAsLjUsMCwuN3YuNmgtMTAuMmMwLC42LjIsMS4xLjUsMS41cy43LjcsMS4xLjljLjUuMi45LjMsMS40LjNzMS4yLS4xLDEuOC0uNC45LS43LDEuMS0xLjJsMy42LDFjLS40LjctLjgsMS4zLTEuNSwxLjktLjYuNS0xLjQsMS0yLjIsMS4zLS45LjMtMS44LjUtMi45LjVoLS4xWk0xNDcuNSwyMy41aDZjMC0uNi0uMi0xLS41LTEuNS0uMy0uNC0uNi0uNy0xLjEtMS0uNC0uMi0uOS0uMy0xLjUtLjNzLTEsLjEtMS40LjNjLS40LjItLjguNS0xLjEuOXMtLjQuOS0uNSwxLjVoLjFaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTgiIGQ9Ik0xNjQuMiwyMi4xYzAtMS4xLjItMi4yLjYtMy4zLjQtMS4xLDEtMi4xLDEuOC0zczEuOC0xLjYsMy0yLjJjMS4yLS41LDIuNS0uOCwzLjktLjhzMy4zLjQsNC42LDEuMSwyLjMsMS43LDIuOSwyLjlsLTMuMywyLjNjLS4zLS43LS42LTEuMi0xLjEtMS42cy0xLS42LTEuNS0uOGMtLjYtLjEtMS4xLS4yLTEuNi0uMi0uOCwwLTEuNS4yLTIuMS41cy0xLjEuOC0xLjUsMS4zLS43LDEuMS0uOSwxLjhjLS4yLjctLjMsMS4zLS4zLDJzLjEsMS41LjQsMi4yYy4yLjcuNiwxLjMsMSwxLjhzLjkuOSwxLjYsMS4yYy42LjMsMS4zLjUsMiwuNXMxLjEsMCwxLjYtLjIsMS0uNCwxLjUtLjguOC0uOSwxLjEtMS41bDMuNSwyLjFjLS40LjktMSwxLjctMS44LDIuMy0uOC42LTEuOCwxLjEtMi44LDEuNXMtMi4xLjUtMy4yLjUtMi42LS4zLTMuNy0uOGMtMS4xLS42LTIuMS0xLjMtMi45LTIuMi0uOC0uOS0xLjUtMi0xLjktMy4xcy0uNy0yLjMtLjctMy41aC0uMloiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtOSIgZD0iTTE4Mi41LDE2LjN2LTMuOGg0LjJ2My44aC00LjJaTTE4Mi41LDMxLjZ2LTEzLjhoNC4ydjEzLjhzLTQuMiwwLTQuMiwwWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy00IiBkPSJNMTk4LDMwLjljLS40LjItLjguMy0xLjIuNS0uNS4yLS45LjMtMS40LjQtLjUsMC0xLC4xLTEuNS4xcy0xLjMtLjEtMS45LS4zLTEtLjYtMS40LTEuMi0uNS0xLjItLjUtMi4xdi03LjFoLTEuOHYtMy4yaDEuOHYtNC40aDQuMnY0LjRoMi44djMuMmgtMi44djUuNmMwLC41LjEuOC4zLDFzLjUuMy45LjMuNiwwLDEtLjJjLjMtLjEuNi0uMi45LS4zbC44LDMuM2gtLjJaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik0xOTkuMSwzMy43Yy40LDAsLjcuMiwxLC4yaC44Yy40LDAsLjYsMCwuOS0uMnMuNC0uNC42LS44Yy4yLS40LjMtLjguNS0xLjRsLTUuMi0xMy43aDQuM2wzLjIsOS40LDIuNy05LjRoMy45bC01LjMsMTUuOWMtLjIuNy0uNiwxLjQtMS4xLDJzLTEuMSwxLTEuOSwxLjRjLS43LjMtMS41LjUtMi40LjVoLTEuMWMtLjQsMC0uNy0uMi0xLjEtLjN2LTMuNmguMloiLz4KICA8L2c+Cjwvc3ZnPg==" alt="The Blue City" style="height:32px; width:auto;">
     </div>
 
     <div class="sidebar-user-top">
@@ -554,7 +550,7 @@
       <div class="table-card">
         <div class="table-head">
           <div>
-            <h3>Ambientes multi-tenant</h3>
+            <h3>Empresas</h3>
           </div>
         </div>
         <table>
@@ -619,45 +615,95 @@
 
       <!-- CATÁLOGO DE JOGOS -->
       <div class="section-heading section-heading--noline" id="catalogo">
-        <span>Catálogo de Jogos</span>
+        <span>Catálogo e Territórios</span>
         <span style="flex:1; height:1px; background:rgba(70,129,130,0.2);"></span>
-        <button class="btn-ghost" style="padding:5px 11px;font-size:11px;" onclick="openModal('modal-categorias')">Adicionar tema</button>
       </div>
-      <div class="table-card">
-        <div class="table-head">
-          <div><h3>Temas cadastrados na biblioteca</h3></div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:20px;">
+
+        <!-- Temas -->
+        <div class="table-card table-sm" style="margin-bottom:0;">
+          <div class="table-head" style="display:flex; align-items:center; justify-content:space-between;">
+            <div><h3>Temas</h3></div>
+            <button class="btn-ghost" style="padding:5px 11px;font-size:11px;" onclick="openModal('modal-categorias')">Adicionar tema</button>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th><span class="tip tip-below" data-tip="Categoria temática usada para classificar os jogos.">Tema<span class="tip-info">i</span></span></th>
+                <th><span class="tip tip-below" data-tip="Número de jogos classificados com este tema.">Jogos<span class="tip-info">i</span></span></th>
+                <th style="width:120px; text-align:right;"><span class="tip tip-below" data-tip="Deletar tema da biblioteca.">Ações<span class="tip-info">i</span></span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span style="font-size:12px; font-weight:600; color:#1a2e3b;">Clima · GEE</span></td>
+                <td>2 jogos</td>
+                <td style="width:120px; text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
+              </tr>
+              <tr>
+                <td><span style="font-size:12px; font-weight:600; color:#1a2e3b;">Clima · Água</span></td>
+                <td>1 jogo</td>
+                <td style="width:120px; text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
+              </tr>
+              <tr>
+                <td><span style="font-size:12px; font-weight:600; color:#1a2e3b;">Energia</span></td>
+                <td>2 jogos</td>
+                <td style="width:120px; text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
+              </tr>
+              <tr>
+                <td><span style="font-size:12px; font-weight:600; color:#1a2e3b;">Biodiversidade</span></td>
+                <td>2 jogos</td>
+                <td style="width:120px; text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <table>
-          <thead>
-            <tr>
-              <th><span class="tip tip-right" data-tip="Categoria temática usada para classificar os jogos.">Tema<span class="tip-info">i</span></span></th>
-              <th><span class="tip tip-right" data-tip="Número de jogos classificados com este tema.">Jogos<span class="tip-info">i</span></span></th>
-              <th style="width:120px; text-align:right;"><span class="tip tip-end" data-tip="Deletar tema da biblioteca.">Ações<span class="tip-info">i</span></span></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><span style="font-size:13px; font-weight:600; color:#1a2e3b;">Clima · GEE</span></td>
-              <td>2 jogos</td>
-              <td style="width:120px; text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
-            </tr>
-            <tr>
-              <td><span style="font-size:13px; font-weight:600; color:#1a2e3b;">Clima · Água</span></td>
-              <td>1 jogo</td>
-              <td style="width:120px; text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
-            </tr>
-            <tr>
-              <td><span style="font-size:13px; font-weight:600; color:#1a2e3b;">Energia</span></td>
-              <td>2 jogos</td>
-              <td style="width:120px; text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
-            </tr>
-            <tr>
-              <td><span style="font-size:13px; font-weight:600; color:#1a2e3b;">Biodiversidade</span></td>
-              <td>2 jogos</td>
-              <td style="width:120px; text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
-            </tr>
-          </tbody>
-        </table>
+
+        <!-- Cidades -->
+        <div class="table-card table-sm" style="margin-bottom:0;">
+          <div class="table-head" style="display:flex; align-items:center; justify-content:space-between;">
+            <div><h3>Cidades</h3></div>
+            <button class="btn-ghost" style="padding:5px 11px;font-size:11px;" onclick="openModal('modal-cidades')">Adicionar cidade</button>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th style="width:40%;"><span class="tip tip-below" data-tip="Cidade disponível para uso como território de campanha.">Cidade<span class="tip-info">i</span></span></th>
+                <th style="width:15%;"><span class="tip tip-below" data-tip="Estado da cidade.">UF<span class="tip-info">i</span></span></th>
+                <th style="width:25%; text-align:center;"><span class="tip tip-below" data-tip="Campanhas ativas nesta cidade.">Campanhas<span class="tip-info">i</span></span></th>
+                <th style="width:20%; text-align:right;"><span class="tip tip-below" data-tip="Deletar cidade da plataforma.">Ações<span class="tip-info">i</span></span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span style="font-size:12px; font-weight:600; color:#1a2e3b;">Palmas</span></td>
+                <td>TO</td>
+                <td style="text-align:center;">3</td>
+                <td style="width:120px; text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
+              </tr>
+              <tr>
+                <td><span style="font-size:12px; font-weight:600; color:#1a2e3b;">São Paulo</span></td>
+                <td>SP</td>
+                <td style="text-align:center;">2</td>
+                <td style="width:120px; text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
+              </tr>
+              <tr>
+                <td><span style="font-size:12px; font-weight:600; color:#1a2e3b;">Belém</span></td>
+                <td>PA</td>
+                <td style="text-align:center;">1</td>
+                <td style="width:120px; text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
+              </tr>
+              <tr>
+                <td><span style="font-size:12px; font-weight:600; color:#1a2e3b;">Recife</span></td>
+                <td>PE</td>
+                <td style="text-align:center;">0</td>
+                <td style="width:120px; text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
       </div>
 
       <!-- BIBLIOTECA DE JOGOS -->
@@ -752,7 +798,7 @@
       </div>
       <div class="table-card" id="produtores">
         <div class="table-head">
-          <div><h3>Produtores cadastrados na plataforma</h3></div>
+          <div><h3>Produtores</h3></div>
         </div>
         <table>
           <thead>
@@ -767,7 +813,7 @@
           </thead>
           <tbody>
             <tr>
-              <td><div class="ent-cell"><div class="ent-logo lg-2">AM</div><div><div class="ent-name">Ana Martins</div><div class="ent-slug">Cultural</div></div></div></td>
+              <td><div class="ent-cell"><div class="ent-logo lg-2">AM</div><div><div class="ent-name">Ana Martins</div><div class="ent-slug">ana.martins@sotreq.com</div></div></div></td>
               <td><span class="sub-link">Sotreq</span></td>
               <td>3</td>
               <td>hoje</td>
@@ -775,7 +821,7 @@
               <td style="width:120px; text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn" onclick="openModal('modal-status-produtor')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg></button><button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
             </tr>
             <tr>
-              <td><div class="ent-cell"><div class="ent-logo lg-3">RC</div><div><div class="ent-name">Rafael Costa</div><div class="ent-slug">Cultural</div></div></div></td>
+              <td><div class="ent-cell"><div class="ent-logo lg-3">RC</div><div><div class="ent-name">Rafael Costa</div><div class="ent-slug">rafael.costa@sotreq.com</div></div></div></td>
               <td><span class="sub-link">Sotreq</span></td>
               <td>2</td>
               <td>ontem</td>
@@ -783,7 +829,7 @@
               <td style="width:120px; text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn" onclick="openModal('modal-status-produtor')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg></button><button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
             </tr>
             <tr>
-              <td><div class="ent-cell"><div class="ent-logo lg-1">JS</div><div><div class="ent-name">Julia Santos</div><div class="ent-slug">Corporativo</div></div></div></td>
+              <td><div class="ent-cell"><div class="ent-logo lg-1">JS</div><div><div class="ent-name">Julia Santos</div><div class="ent-slug">julia.santos@mercadolivre.com</div></div></div></td>
               <td><span class="sub-link">Mercado Livre</span></td>
               <td>2</td>
               <td>3 dias atrás</td>
@@ -791,7 +837,7 @@
               <td style="width:120px; text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn" onclick="openModal('modal-status-produtor')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg></button><button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
             </tr>
             <tr>
-              <td><div class="ent-cell"><div class="ent-logo lg-4">MO</div><div><div class="ent-name">Marcos Oliveira</div><div class="ent-slug">Corporativo</div></div></div></td>
+              <td><div class="ent-cell"><div class="ent-logo lg-4">MO</div><div><div class="ent-name">Marcos Oliveira</div><div class="ent-slug">marcos.oliveira@aegea.com.br</div></div></div></td>
               <td><span class="sub-link">Aegea</span></td>
               <td>1</td>
               <td>1 semana atrás</td>
@@ -1121,6 +1167,44 @@
     </div>
   </div>
 
+
+  <!-- MODAL: Adicionar cidade -->
+  <div class="modal-overlay" id="modal-cidades">
+    <div class="modal" style="max-width:420px;">
+      <div class="modal-head">
+        <div>
+          <h2>Adicionar cidade</h2>
+          <p>Cidades disponíveis globalmente na plataforma</p>
+        </div>
+        <button class="modal-close" onclick="closeModal('modal-cidades')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      </div>
+      <div class="modal-body">
+        <div class="field">
+          <label>Cidade <span style="color:#e05a2b;">*</span></label>
+          <input type="text" placeholder="Ex.: Curitiba">
+        </div>
+        <div class="field" style="margin-bottom:0;">
+          <label>UF <span style="color:#e05a2b;">*</span></label>
+          <select>
+            <option value="">Selecionar estado</option>
+            <option>AC</option><option>AL</option><option>AM</option><option>AP</option>
+            <option>BA</option><option>CE</option><option>DF</option><option>ES</option>
+            <option>GO</option><option>MA</option><option>MG</option><option>MS</option>
+            <option>MT</option><option>PA</option><option>PB</option><option>PE</option>
+            <option>PI</option><option>PR</option><option>RJ</option><option>RN</option>
+            <option>RO</option><option>RR</option><option>RS</option><option>SC</option>
+            <option>SE</option><option>SP</option><option>TO</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn-ghost" onclick="closeModal('modal-cidades')">Cancelar</button>
+        <div class="spacer"></div>
+        <button class="btn-primary">Adicionar</button>
+      </div>
+    </div>
+  </div>
+
   <!-- MODAL: Cadastrar jogo + upload Unity -->
   <div class="modal-overlay" id="modal-jogo">
     <div class="modal">
@@ -1221,48 +1305,38 @@
 
   <!-- MODAL: Produtores Culturais -->
   <div class="modal-overlay" id="modal-produtores">
-    <div class="modal">
+    <div class="modal" style="max-width:460px;">
       <div class="modal-head">
         <div>
-          <h2>Produtores Culturais</h2>
-          <p>Fase 4 · Acessos dos Produtores Culturais / Gestores Corporativos</p>
+          <h2>Adicionar produtor</h2>
+          <p>Novo acesso ao Painel do Produtor Cultural / Gestor Corporativo</p>
         </div>
         <button class="modal-close" onclick="closeModal('modal-produtores')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
       </div>
       <div class="modal-body">
-        <div class="prod-list" style="margin-bottom:18px;">
-          <div class="prod-item">
-            <div class="prod-avatar lg-1">LR</div>
-            <div class="prod-info"><div class="pn">Luana Ramos</div><div class="pe">luana.ramos@sotreq.com · Palmas, TO</div></div>
-            <span class="pill pill-active">Ativo</span>
-            
-          </div>
-          <div class="prod-item">
-            <div class="prod-avatar lg-2">CM</div>
-            <div class="prod-info"><div class="pn">Carlos Mendes</div><div class="pe">carlos.mendes@sotreq.com · Palmas, TO</div></div>
-            <span class="pill pill-active">Ativo</span>
-            
-          </div>
-          <div class="prod-item">
-            <div class="prod-avatar lg-3">AF</div>
-            <div class="prod-info"><div class="pn">Ana Ferreira</div><div class="pe">ana.ferreira@sotreq.com · Palmas, TO</div></div>
-            <span class="pill pill-inactive">Inativo</span>
-            
-          </div>
+        <div class="field">
+          <label>Nome completo <span style="color:#e05a2b;">*</span></label>
+          <input type="text" placeholder="Ex.: Ana Martins" style="width:100%; border:1.5px solid #dde4ef; border-radius:9px; padding:10px 13px; font-size:13px; font-family:'Montserrat',sans-serif; color:#1a2e3b;">
+        </div>
+        <div class="field">
+          <label>E-mail <span style="color:#e05a2b;">*</span></label>
+          <input type="email" placeholder="Ex.: ana@sotreq.com" style="width:100%; border:1.5px solid #dde4ef; border-radius:9px; padding:10px 13px; font-size:13px; font-family:'Montserrat',sans-serif; color:#1a2e3b;">
         </div>
         <div class="field" style="margin-bottom:0;">
-          <label>Cadastrar novo produtor</label>
-          <div class="add-inline">
-            <input type="text" placeholder="Nome">
-            <input type="text" placeholder="E-mail">
-            <button class="btn-primary">Adicionar</button>
-          </div>
+          <label>Empresa <span style="color:#e05a2b;">*</span></label>
+          <select style="width:100%; border:1.5px solid #dde4ef; border-radius:9px; padding:10px 13px; font-size:13px; font-family:'Montserrat',sans-serif; color:#1a2e3b; background:white;">
+            <option value="">Selecionar empresa</option>
+            <option>Sotreq</option>
+            <option>Mercado Livre</option>
+            <option>Aegea</option>
+            <option>BASF</option>
+          </select>
         </div>
       </div>
       <div class="modal-foot">
-        <button class="btn-ghost" onclick="closeModal('modal-produtores')">Fechar</button>
+        <button class="btn-ghost" onclick="closeModal('modal-produtores')">Cancelar</button>
         <div class="spacer"></div>
-        <button class="btn-primary">Salvar</button>
+        <button class="btn-primary">Adicionar produtor</button>
       </div>
     </div>
   </div>
@@ -1411,5 +1485,39 @@
   }
 </script>
 
+
+<div id="js-tooltip" style="display:none; position:fixed; background:#102a3f; color:#fff; font-family:'Montserrat',sans-serif; font-size:11px; font-weight:500; line-height:1.5; padding:9px 12px; border-radius:8px; max-width:220px; box-shadow:0 8px 22px rgba(16,42,63,0.28); z-index:9999; pointer-events:none;"></div>
+
+<script>
+  const jsTooltip = document.getElementById('js-tooltip');
+
+  document.querySelectorAll('.tip-below').forEach(el => {
+    el.addEventListener('mouseenter', function(e) {
+      const tip = this.getAttribute('data-tip');
+      if (!tip) return;
+      jsTooltip.textContent = tip;
+      jsTooltip.style.display = 'block';
+      positionTooltip(e);
+    });
+    el.addEventListener('mousemove', positionTooltip);
+    el.addEventListener('mouseleave', function() {
+      jsTooltip.style.display = 'none';
+    });
+  });
+
+  function positionTooltip(e) {
+    const margin = 10;
+    const tw = jsTooltip.offsetWidth;
+    const th = jsTooltip.offsetHeight;
+    let x = e.clientX - tw / 2;
+    let y = e.clientY + 20;
+    // Keep within viewport
+    if (x < margin) x = margin;
+    if (x + tw > window.innerWidth - margin) x = window.innerWidth - tw - margin;
+    if (y + th > window.innerHeight - margin) y = e.clientY - th - 10;
+    jsTooltip.style.left = x + 'px';
+    jsTooltip.style.top = y + 'px';
+  }
+</script>
 </body>
 </html>

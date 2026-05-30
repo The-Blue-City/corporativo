@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel do Produtor Cultural – The Blue City</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Montserrat', sans-serif; background: #f4f8fc; color: #1a2e3b; }
+  .layout { display: flex; min-height: 100vh; }
+
+  /* SIDEBAR */
+  .sidebar {
+    width: 210px; flex-shrink: 0;
+    background: #102a3f;
+    display: flex; flex-direction: column;
+    position: sticky; top: 0; height: 100vh;
+  }
+  .sidebar-logo {
+    display: flex; align-items: center; gap: 10px;
+    padding: 20px 22px; border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .sidebar-logo span { font-size: 15px; font-weight: 800; color: #fff; }
+  .sidebar-logo span em { font-style: normal; color: #5fb670; }
+  .sidebar-tag {
+    margin: 16px 22px 8px; font-size: 10px; font-weight: 700;
+    letter-spacing: 1.2px; text-transform: uppercase; color: rgba(255,255,255,0.35);
+  }
+  .nav-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 11px 22px; font-size: 13px; font-weight: 500;
+    color: rgba(255,255,255,0.7); text-decoration: none;
+    border-left: 3px solid transparent; transition: background 0.18s, color 0.18s;
+  }
+  .nav-item svg { flex-shrink: 0; opacity: 0.8; }
+  .nav-item:hover { background: rgba(255,255,255,0.05); color: #fff; }
+  .nav-item.active { background: rgba(12,158,217,0.14); color: #fff; border-left-color: #0c9ed9; font-weight: 600; }
+  .sidebar-user-top {
+    margin: 14px 16px 6px; padding: 12px 14px;
+    background: rgba(255,255,255,0.05); border-radius: 11px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .sidebar-avatar { width: 34px; height: 34px; border-radius: 50%; background: #468182; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; }
+  .sidebar-user-top .nm { font-size: 12px; font-weight: 600; color: #fff; }
+  .sidebar-user-top .rl { font-size: 10px; color: rgba(255,255,255,0.45); }
+
+  /* MAIN */
+  .main { flex: 1; min-width: 0; }
+  .topbar { background: #fff; border-bottom: 1px solid #e0e8f0; padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; }
+  .topbar h1 { font-size: 17px; font-weight: 800; color: #1a2e3b; }
+  .topbar .crumb { font-size: 11px; color: #6b7f95; margin-top: 2px; }
+  .topbar .crumb strong { color: #2858a0; font-weight: 600; }
+  .btn-primary { display: inline-flex; align-items: center; gap: 7px; background: #2858a0; color: #fff; border: none; border-radius: 8px; padding: 10px 18px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: 'Montserrat', sans-serif; transition: background 0.2s; }
+  .btn-primary:hover { background: #1a3a70; }
+  .btn-ghost { display: inline-flex; align-items: center; gap: 6px; background: transparent; color: #2858a0; border: 1.5px solid #c5d2e8; border-radius: 8px; padding: 8px 14px; font-size: 12px; font-weight: 600; cursor: pointer; font-family: 'Montserrat', sans-serif; transition: all 0.18s; }
+  .btn-ghost:hover { background: #f0f4fb; border-color: #2858a0; }
+
+  .canvas { padding: 28px 32px 48px; }
+
+  /* SECTION HEADING */
+  .section-heading { display: flex; align-items: center; gap: 12px; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #468182; margin: 28px 0 14px; }
+  .section-heading::after { content: ''; flex: 1; height: 1px; background: rgba(70,129,130,0.2); }
+  .section-heading--noline::after { display: none; }
+
+  /* KPIs */
+  .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 28px; }
+  .kpi { background: #fff; border: 1px solid #e0e8f0; border-radius: 14px; padding: 18px 20px; }
+  .kpi-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+  .kpi-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+  .ic-blue { background: #eef2fb; } .ic-teal { background: #e8f4f4; } .ic-green { background: #e8f6ec; } .ic-purple { background: #f0ecfb; }
+  .kpi-delta { font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 20px; }
+  .delta-up { background: #e8f6ec; color: #2a9a4a; }
+  .kpi .val { font-size: 26px; font-weight: 800; line-height: 1; margin: 12px 0 4px; }
+  .v-blue { color: #2858a0; } .v-teal { color: #468182; } .v-green { color: #2a9a4a; } .v-purple { color: #7c5cbf; }
+  .kpi .lbl { font-size: 12px; color: #6b7f95; font-weight: 500; }
+
+  /* TABELA */
+  .table-card { background: #fff; border: 1px solid #e0e8f0; border-radius: 14px; overflow: hidden; margin-bottom: 20px; }
+  .table-head { padding: 18px 20px 14px; border-bottom: 1px solid #eef2f6; }
+  .table-head h3 { font-size: 14px; font-weight: 700; color: #1a2e3b; }
+  .table-head p { font-size: 11px; color: #6b7f95; margin-top: 2px; }
+  table { width: 100%; border-collapse: collapse; }
+  thead th { text-align: left; font-size: 10px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; color: #94a4b6; padding: 11px 20px; background: #fafcfe; border-bottom: 1px solid #eef2f6; }
+  thead th:first-child { border-top-left-radius: 0; }
+  thead th:last-child { border-top-right-radius: 0; }
+  tbody td { padding: 14px 20px; font-size: 13px; border-bottom: 1px solid #f2f6fa; vertical-align: middle; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: #fafcfe; }
+
+  /* PILLS */
+  .pill { font-size: 10px; font-weight: 700; padding: 4px 11px; border-radius: 20px; display: inline-block; }
+  .pill-active { background: #e8f6ec; color: #2a9a4a; }
+  .pill-inactive { background: #eef0f3; color: #94a4b6; }
+  .pill-paused { background: #fff4e0; color: #c47a00; }
+  .pill-cultural { background: #eef2fb; color: #2858a0; }
+  .pill-corp { background: #f0ecfb; color: #7c5cbf; }
+
+  /* ENT CELL */
+  .ent-cell { display: flex; align-items: center; gap: 12px; }
+  .ent-logo { width: 34px; height: 34px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; color: #fff; flex-shrink: 0; }
+  .lg-1 { background: #2858a0; } .lg-2 { background: #3a9a4a; } .lg-3 { background: #7c5cbf; } .lg-4 { background: #e09820; }
+  .ent-name { font-weight: 700; color: #1a2e3b; }
+  .ent-slug { font-size: 11px; color: #6b7f95; }
+  .sub-link { font-family: 'Montserrat', monospace; font-size: 12px; color: #2858a0; font-weight: 600; }
+
+  /* ROW ACTIONS */
+  .row-actions { display: flex; align-items: center; gap: 6px; }
+  .icon-btn { width: 32px; height: 32px; border-radius: 8px; border: 1.5px solid #e0e8f0; background: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #6b7f95; transition: all 0.15s; }
+  .icon-btn:hover { border-color: #2858a0; color: #2858a0; }
+
+  /* GOV CARDS */
+  .gov-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .gov-card { background: #fff; border: 1px solid #e0e8f0; border-radius: 12px; padding: 20px 22px; }
+  .gov-card h4 { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; color: #1a2e3b; margin-bottom: 14px; }
+  .gov-rows { display: flex; flex-direction: column; gap: 10px; }
+  .gov-line { display: flex; align-items: center; justify-content: space-between; font-size: 12px; }
+  .gov-line .k { color: #6b7f95; }
+  .gov-line .v { font-weight: 700; color: #1a2e3b; }
+
+  /* STATUS BADGE */
+  .status-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px; }
+  .sb-active { background: #e8f6ec; color: #2a9a4a; }
+  .sb-paused { background: #fff4e0; color: #c47a00; }
+  .sb-closed { background: #eef0f3; color: #94a4b6; }
+
+  /* MODELO BADGE */
+  .modelo-badge { font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 20px; }
+  .mb-escola { background: #eef2fb; color: #2858a0; }
+  .mb-estrutura { background: #f0ecfb; color: #7c5cbf; }
+
+  /* MISSAO CARD */
+  .missao-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .missao-card { background: #fff; border: 1px solid #e0e8f0; border-radius: 12px; overflow: hidden; }
+  .missao-cover { height: 90px; background: linear-gradient(135deg, #1a2e3b 0%, #2858a0 100%); display: flex; align-items: center; justify-content: center; position: relative; }
+  .missao-cover svg { opacity: 0.4; }
+  .missao-tag { position: absolute; top: 8px; left: 8px; font-size: 9px; font-weight: 700; padding: 3px 8px; border-radius: 20px; background: rgba(255,255,255,0.2); color: #fff; letter-spacing: 0.5px; text-transform: uppercase; }
+  .missao-body { padding: 12px 14px; }
+  .missao-aluno { font-size: 12px; font-weight: 700; color: #1a2e3b; }
+  .missao-escola { font-size: 11px; color: #6b7f95; margin-top: 2px; }
+  .missao-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; }
+  .missao-actions { display: flex; gap: 5px; }
+  .missao-btn { font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 6px; border: none; cursor: pointer; font-family: 'Montserrat', sans-serif; }
+  .mb-approve { background: #e8f6ec; color: #2a9a4a; }
+  .mb-archive { background: #eef0f3; color: #94a4b6; }
+  .mb-art { background: #f0ecfb; color: #7c5cbf; }
+
+  /* TOOLTIPS */
+  .tip { position: relative; cursor: help; }
+  .tip::after { content: attr(data-tip); position: absolute; bottom: calc(100% + 9px); left: 50%; transform: translateX(-50%) translateY(4px); background: #102a3f; color: #fff; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 500; line-height: 1.5; padding: 9px 12px; border-radius: 8px; width: max-content; max-width: 260px; text-align: left; white-space: normal; letter-spacing: 0; text-transform: none; box-shadow: 0 8px 22px rgba(16,42,63,0.28); opacity: 0; visibility: hidden; transition: opacity 0.16s, transform 0.16s; z-index: 90; pointer-events: none; }
+  .tip::before { content: ''; position: absolute; bottom: calc(100% + 3px); left: 50%; transform: translateX(-50%); border: 6px solid transparent; border-top-color: #102a3f; opacity: 0; visibility: hidden; transition: opacity 0.16s; z-index: 91; pointer-events: none; }
+  .tip:hover::after { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+  .tip:hover::before { opacity: 1; visibility: visible; }
+  .tip-right::after { bottom: auto; top: 50%; left: calc(100% + 11px); transform: translateY(-50%) translateX(-4px); }
+  .tip-right::before { bottom: auto; top: 50%; left: calc(100% + 5px); transform: translateY(-50%); border: 6px solid transparent; border-right-color: #102a3f; border-top-color: transparent; }
+  .tip-right:hover::after { transform: translateY(-50%) translateX(0); }
+  .tip-end::after { left: auto; right: 0; transform: translateY(4px); }
+  .tip-end::before { left: auto; right: 13px; transform: none; }
+  .tip-end:hover::after { transform: translateY(0); }
+  .tip-info { display: inline-flex; align-items: center; justify-content: center; width: 14px; height: 14px; border-radius: 50%; margin-left: 5px; vertical-align: middle; background: #cdd9e6; color: #fff; font-size: 9px; font-weight: 800; cursor: help; }
+
+  /* MODAL */
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(10,30,50,0.55); z-index: 100; align-items: center; justify-content: center; }
+  .modal-overlay.open { display: flex; }
+  .modal { background: #fff; border-radius: 18px; width: 100%; max-width: 520px; box-shadow: 0 24px 60px rgba(16,42,63,0.3); overflow: hidden; }
+  .modal-head { padding: 22px 26px 18px; border-bottom: 1px solid #eef2f6; display: flex; align-items: flex-start; justify-content: space-between; }
+  .modal-head h2 { font-size: 17px; font-weight: 800; color: #1a2e3b; }
+  .modal-head p { font-size: 12px; color: #6b7f95; margin-top: 3px; }
+  .modal-close { width: 34px; height: 34px; border-radius: 9px; border: 1.5px solid #e0e8f0; background: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #6b7f95; flex-shrink: 0; }
+  .modal-body { padding: 22px 26px; }
+  .modal-foot { padding: 16px 26px; border-top: 1px solid #eef2f6; display: flex; align-items: center; gap: 10px; }
+  .spacer { flex: 1; }
+  .field { margin-bottom: 16px; }
+  .field label { display: block; font-size: 11px; font-weight: 700; color: #6b7f95; margin-bottom: 6px; letter-spacing: 0.3px; text-transform: uppercase; }
+  .field input, .field select, .field textarea { width: 100%; border: 1.5px solid #dde4ef; border-radius: 9px; padding: 10px 13px; font-size: 13px; font-family: 'Montserrat', sans-serif; color: #1a2e3b; background: #fff; outline: none; }
+  .field input:focus, .field select:focus, .field textarea:focus { border-color: #2858a0; box-shadow: 0 0 0 3px rgba(40,88,160,0.1); }
+  .req { color: #e05a2b; }
+  .hint { font-size: 11px; color: #94a4b6; margin-top: 5px; }
+  .toggle-row { display: flex; align-items: center; justify-content: space-between; background: #f8fafd; border: 1.5px solid #e0e8f0; border-radius: 12px; padding: 14px 16px; margin-bottom: 14px; }
+  .tr-title { font-size: 13px; font-weight: 700; color: #1a2e3b; }
+  .tr-desc { font-size: 11px; color: #6b7f95; margin-top: 3px; }
+  .switch { position: relative; display: inline-block; width: 44px; height: 24px; }
+  .switch input { opacity: 0; width: 0; height: 0; }
+  .track { position: absolute; inset: 0; background: #c8d4e0; border-radius: 24px; transition: 0.2s; cursor: pointer; }
+  .track::before { content: ''; position: absolute; left: 3px; top: 3px; width: 18px; height: 18px; background: #fff; border-radius: 50%; transition: 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+  input:checked + .track { background: #2a9a4a; }
+  input:checked + .track::before { transform: translateX(20px); }
+
+  /* CORRESPONDÊNCIAS */
+  .corr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid #e0e8f0; border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+  .corr-header { background: #fafcfe; padding: 10px 16px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: #94a4b6; border-bottom: 1px solid #eef2f6; }
+  .corr-header.cultural { border-right: 1px solid #eef2f6; }
+  .corr-row { display: contents; }
+  .corr-cell { padding: 10px 16px; font-size: 12px; border-bottom: 1px solid #f2f6fa; }
+  .corr-cell:first-child { border-right: 1px solid #f2f6fa; color: #2858a0; font-weight: 600; }
+  .corr-cell:last-child { color: #7c5cbf; font-weight: 600; }
+  .corr-row:last-child .corr-cell { border-bottom: none; }
+
+  @media (max-width: 900px) {
+    .kpi-row { grid-template-columns: repeat(2, 1fr); }
+    .missao-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* LOGIN SCREEN */
+  .login-overlay {
+    position: fixed; inset: 0; z-index: 500;
+    background: #f4f8fc;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .login-box {
+    background: #fff; border-radius: 20px; padding: 48px 44px;
+    width: 100%; max-width: 420px;
+    box-shadow: 0 16px 48px rgba(16,42,63,0.12);
+    border: 1px solid #e0e8f0;
+  }
+  .login-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 32px; justify-content: center; }
+  .login-logo span { font-size: 17px; font-weight: 800; color: #1a2e3b; }
+  .login-logo span em { font-style: normal; color: #5fb670; }
+  .login-title { font-size: 22px; font-weight: 800; color: #1a2e3b; margin-bottom: 6px; text-align: center; }
+  .login-subtitle { font-size: 13px; color: #6b7f95; text-align: center; margin-bottom: 32px; }
+  .login-field { margin-bottom: 16px; }
+  .login-field label { display: block; font-size: 11px; font-weight: 700; color: #6b7f95; margin-bottom: 6px; letter-spacing: 0.3px; text-transform: uppercase; }
+  .login-field input { width: 100%; border: 1.5px solid #dde4ef; border-radius: 10px; padding: 12px 14px; font-size: 13px; font-family: 'Montserrat', sans-serif; color: #1a2e3b; background: #fff; outline: none; transition: border-color 0.18s, box-shadow 0.18s; }
+  .login-field input:focus { border-color: #2858a0; box-shadow: 0 0 0 3px rgba(40,88,160,0.1); }
+  .login-btn { width: 100%; background: #2858a0; color: #fff; border: none; border-radius: 10px; padding: 13px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: 'Montserrat', sans-serif; transition: background 0.2s; margin-top: 8px; }
+  .login-btn:hover { background: #1a3a70; }
+  .login-error { font-size: 12px; color: #e05a2b; text-align: center; margin-top: 12px; display: none; }
+  .login-forgot { font-size: 12px; color: #94a4b6; text-align: center; margin-top: 16px; }
+  .login-forgot a { color: #2858a0; text-decoration: none; font-weight: 600; }
+  .login-forgot a:hover { text-decoration: underline; }
+  .login-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; background: #eef2fb; color: #2858a0; border-radius: 20px; padding: 4px 12px; margin: 0 auto 20px; display: block; text-align: center; width: fit-content; margin: 0 auto 24px; }
+
+
+  /* Disable CSS tooltips – using JS floating tooltip instead */
+  .tip::after, .tip::before,
+  .tip-right::after, .tip-right::before,
+  .tip-end::after, .tip-end::before,
+  .tip-below::after, .tip-below::before { display: none !important; }
+
+</style>
+</head>
+<body>
+<!-- LOGIN SCREEN -->
+<div class="login-overlay" id="login-overlay">
+  <div class="login-box">
+    <div class="login-logo">
+<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAyMTguNCA0NS42Ij4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLmNscy0xIHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudCk7CiAgICAgIH0KCiAgICAgIC5jbHMtMSwgLmNscy0yLCAuY2xzLTMsIC5jbHMtNCwgLmNscy01LCAuY2xzLTYsIC5jbHMtNywgLmNscy04LCAuY2xzLTksIC5jbHMtMTAsIC5jbHMtMTEsIC5jbHMtMTIsIC5jbHMtMTMsIC5jbHMtMTQgewogICAgICAgIHN0cm9rZS13aWR0aDogMHB4OwogICAgICB9CgogICAgICAuY2xzLTIgewogICAgICAgIGZpbGw6ICMwYzllZDk7CiAgICAgIH0KCiAgICAgIC5jbHMtMyB7CiAgICAgICAgZmlsbDogdXJsKCNsaW5lYXItZ3JhZGllbnQtMTEpOwogICAgICB9CgogICAgICAuY2xzLTQgewogICAgICAgIGZpbGw6IHVybCgjbGluZWFyLWdyYWRpZW50LTEwKTsKICAgICAgfQoKICAgICAgLmNscy01IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC00KTsKICAgICAgfQoKICAgICAgLmNscy02IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC0yKTsKICAgICAgfQoKICAgICAgLmNscy03IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC0zKTsKICAgICAgfQoKICAgICAgLmNscy04IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC04KTsKICAgICAgfQoKICAgICAgLmNscy05IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC05KTsKICAgICAgfQoKICAgICAgLmNscy0xMCB7CiAgICAgICAgZmlsbDogdXJsKCNsaW5lYXItZ3JhZGllbnQtNyk7CiAgICAgIH0KCiAgICAgIC5jbHMtMTEgewogICAgICAgIGZpbGw6IHVybCgjbGluZWFyLWdyYWRpZW50LTUpOwogICAgICB9CgogICAgICAuY2xzLTEyIHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC02KTsKICAgICAgfQoKICAgICAgLmNscy0xMyB7CiAgICAgICAgZmlsbDogIzAwMTUyMjsKICAgICAgfQoKICAgICAgLmNscy0xNCB7CiAgICAgICAgZmlsbDogI2ZmZjsKICAgICAgfQogICAgPC9zdHlsZT4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50IiB4MT0iNDguOCIgeTE9IjI1LjciIHgyPSIyMTEuOCIgeTI9IjI1LjciIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0OCkgc2NhbGUoMSAtMSkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMDA2MTg4Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzk1Y2ZhMCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTIiIHkxPSIyNS45IiB5Mj0iMjUuOSIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtMyIgeTE9IjIzLjEiIHkyPSIyMy4xIiB4bGluazpocmVmPSIjbGluZWFyLWdyYWRpZW50Ii8+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC00IiB5MT0iMjUuNyIgeTI9IjI1LjciIHhsaW5rOmhyZWY9IiNsaW5lYXItZ3JhZGllbnQiLz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTUiIHkxPSIyNS44IiB5Mj0iMjUuOCIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtNiIgeTE9IjIzIiB5Mj0iMjMiIHhsaW5rOmhyZWY9IiNsaW5lYXItZ3JhZGllbnQiLz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTciIHkxPSIyMy4xIiB5Mj0iMjMuMSIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtOCIgeTE9IjI1LjgiIHkyPSIyNS44IiB4bGluazpocmVmPSIjbGluZWFyLWdyYWRpZW50Ii8+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC05IiB5MT0iMjYiIHkyPSIyNiIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtMTAiIHkxPSIyNS4zIiB5Mj0iMjUuMyIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtMTEiIHkxPSIyMC4zIiB5Mj0iMjAuMyIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogIDwvZGVmcz4KICA8Zz4KICAgIDxjaXJjbGUgY2xhc3M9ImNscy0xMyIgY3g9IjI2LjEiIGN5PSIyMi43IiByPSIxOC40Ii8+CiAgICA8Zz4KICAgICAgPHJlY3QgY2xhc3M9ImNscy0xNCIgeD0iMTUuNSIgeT0iMTcuNSIgd2lkdGg9IjIwLjgiIGhlaWdodD0iMy4yIi8+CiAgICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTM1LDIzbC0uMi4yYy0xLjMsMS4xLTIuNCwyLjEtNC4xLDIuMXMtMi41LS40LTQuMS0xLjNjLTIuMS0xLjEtMy45LTEuNy01LjYtMS43LTIuOCwwLTQuNiwxLjYtNiwyLjlsLS4yLjIsMiwyLjQuMi0uMmMxLjMtMS4xLDIuNC0yLjEsNC4xLTIuMXMyLjUuNCw0LjEsMS4zYzIuMSwxLjEsMy45LDEuNyw1LjYsMS43aDBjMi43LDAsNC41LTEuNiw1LjktMi45bC4yLS4yLTItMi40aDBaIi8+CiAgICA8L2c+CiAgPC9nPgogIDxnPgogICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNjQuNSwxNi44aC01Ljd2MTQuOWgtNC4zdi0xNC45aC01Ljd2LTMuOGgxNS43djMuOFoiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtNiIgZD0iTTc5LjEsMzEuNmgtNC4ydi03LjZjMC0uOS0uMi0xLjUtLjYtMS45cy0uOS0uNi0xLjQtLjYtLjcsMC0xLjEuM2MtLjQuMi0uOC41LTEuMS44LS4zLjQtLjYuOC0uNywxLjJ2Ny44aC00LjJWMTIuNWg0LjJ2Ny45Yy41LS44LDEuMi0xLjUsMi0xLjlzMS44LS42LDIuOC0uNiwxLjcuMiwyLjIuNWMuNi4zLDEsLjcsMS4zLDEuMnMuNSwxLC42LDEuN2MwLC42LjIsMS4yLjIsMS44djguNy0uMloiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtNyIgZD0iTTg3LjksMzEuOWMtMS4yLDAtMi4yLS4yLTMuMS0uNnMtMS43LS45LTIuMy0xLjVjLS42LS42LTEuMS0xLjQtMS41LTIuMi0uMy0uOC0uNS0xLjctLjUtMi42LDAtMS4zLjMtMi41LjktMy42czEuNC0xLjksMi41LTIuNiwyLjQtMSw0LTEsMi45LjMsNCwxLDEuOSwxLjUsMi41LDIuNi45LDIuMi45LDMuNSwwLC41LDAsLjd2LjZoLTEwLjJjMCwuNi4yLDEuMS41LDEuNXMuNy43LDEuMS45Yy41LjIuOS4zLDEuNC4zczEuMi0uMSwxLjgtLjRjLjYtLjMuOS0uNywxLjEtMS4ybDMuNiwxYy0uNC43LS44LDEuMy0xLjUsMS45LS42LjUtMS40LDEtMi4yLDEuMy0uOS4zLTEuOC41LTIuOS41aC0uMVpNODQuOSwyMy41aDZjMC0uNi0uMi0xLS41LTEuNS0uMy0uNC0uNi0uNy0xLjEtMXMtLjktLjMtMS41LS4zLTEsLjEtMS40LjNjLS40LjItLjguNS0xLjEuOS0uMy40LS40LjktLjUsMS41aDBaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTUiIGQ9Ik0xMTgsMjYuOGMwLDEuMS0uMywyLS44LDIuNy0uNi43LTEuMywxLjItMi4zLDEuNnMtMiwuNS0zLjIuNWgtOS4xVjEzaDEwLjRjLjksMCwxLjYuMiwyLjMuNy42LjUsMS4xLDEuMSwxLjUsMS44LjMuNy41LDEuNS41LDIuM3MtLjIsMS43LS43LDIuNWMtLjQuOC0xLjEsMS40LTIsMS44LDEuMS4zLDEuOS45LDIuNSwxLjcuNi44LjksMS44LjksMy4xaDBaTTEwNi45LDE2Ljd2My45aDQuMmMuMywwLC42LDAsLjktLjIuMy0uMS41LS40LjctLjYuMi0uMy4yLS42LjItMS4xczAtLjgtLjItMS4xYzAtLjMtLjMtLjUtLjYtLjYtLjItLjEtLjUtLjItLjktLjJoLTQuNC4xWk0xMTMuNywyNmMwLS40LDAtLjctLjItMS4xLS4yLS4zLS40LS42LS42LS43cy0uNi0uMy0uOS0uM2gtNC45djQuMWg0LjhjLjQsMCwuNywwLDEtLjMuMy0uMi41LS40LjctLjcuMi0uMy4yLS42LjItMWgwWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xMSIgZD0iTTExOS43LDEyLjVoNC4ydjE0LjNjMCwuNiwwLDEsLjMsMS4yLjIuMi41LjQuOS40cy41LDAsLjgtLjFjLjMsMCwuNS0uMi43LS4zbC42LDMuMmMtLjUuMi0xLjEuNC0xLjguNi0uNy4yLTEuMy4yLTEuOS4yLTEuMiwwLTIuMS0uMy0yLjgtMS0uNi0uNi0xLTEuNi0xLTIuN3YtMTUuN2gwWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xMiIgZD0iTTEyNy45LDI2Ljh2LTguOGg0LjJ2Ny44YzAsLjguMiwxLjQuNSwxLjkuMy40LjguNywxLjQuN3MuOCwwLDEuMS0uMmMuNC0uMS43LS4zLDEtLjZzLjYtLjcuOS0xLjF2LTguNGg0LjJ2OWMwLC40LDAsLjcuMi45LjEuMi40LjMuNy4zdjMuNWMtLjQsMC0uNy4xLTEsLjJzLS41LDAtLjgsMGMtLjcsMC0xLjMtLjEtMS44LS40LS40LS4zLS43LS43LS44LTEuM3YtLjhjLS43LjktMS41LDEuNi0yLjQsMnMtMiwuNi0zLjIuNi0yLjUtLjQtMy4yLTEuMy0xLjEtMi4yLTEuMS0zLjh2LS4yWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xMCIgZD0iTTE1MC42LDMxLjljLTEuMiwwLTIuMi0uMi0zLjEtLjYtLjktLjQtMS43LS45LTIuMy0xLjVzLTEuMS0xLjQtMS41LTIuMmMtLjMtLjgtLjUtMS43LS41LTIuNiwwLTEuMy4zLTIuNS45LTMuNi42LTEuMSwxLjQtMS45LDIuNS0yLjZzMi40LTEsNC0xLDIuOS4zLDQsMWMxLjEuNiwxLjksMS41LDIuNSwyLjZzLjksMi4yLjksMy41LDAsLjUsMCwuN3YuNmgtMTAuMmMwLC42LjIsMS4xLjUsMS41cy43LjcsMS4xLjljLjUuMi45LjMsMS40LjNzMS4yLS4xLDEuOC0uNC45LS43LDEuMS0xLjJsMy42LDFjLS40LjctLjgsMS4zLTEuNSwxLjktLjYuNS0xLjQsMS0yLjIsMS4zLS45LjMtMS44LjUtMi45LjVoLS4xWk0xNDcuNSwyMy41aDZjMC0uNi0uMi0xLS41LTEuNS0uMy0uNC0uNi0uNy0xLjEtMS0uNC0uMi0uOS0uMy0xLjUtLjNzLTEsLjEtMS40LjNjLS40LjItLjguNS0xLjEuOXMtLjQuOS0uNSwxLjVoLjFaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTgiIGQ9Ik0xNjQuMiwyMi4xYzAtMS4xLjItMi4yLjYtMy4zLjQtMS4xLDEtMi4xLDEuOC0zczEuOC0xLjYsMy0yLjJjMS4yLS41LDIuNS0uOCwzLjktLjhzMy4zLjQsNC42LDEuMSwyLjMsMS43LDIuOSwyLjlsLTMuMywyLjNjLS4zLS43LS42LTEuMi0xLjEtMS42cy0xLS42LTEuNS0uOGMtLjYtLjEtMS4xLS4yLTEuNi0uMi0uOCwwLTEuNS4yLTIuMS41cy0xLjEuOC0xLjUsMS4zLS43LDEuMS0uOSwxLjhjLS4yLjctLjMsMS4zLS4zLDJzLjEsMS41LjQsMi4yYy4yLjcuNiwxLjMsMSwxLjhzLjkuOSwxLjYsMS4yYy42LjMsMS4zLjUsMiwuNXMxLjEsMCwxLjYtLjIsMS0uNCwxLjUtLjguOC0uOSwxLjEtMS41bDMuNSwyLjFjLS40LjktMSwxLjctMS44LDIuMy0uOC42LTEuOCwxLjEtMi44LDEuNXMtMi4xLjUtMy4yLjUtMi42LS4zLTMuNy0uOGMtMS4xLS42LTIuMS0xLjMtMi45LTIuMi0uOC0uOS0xLjUtMi0xLjktMy4xcy0uNy0yLjMtLjctMy41aC0uMloiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtOSIgZD0iTTE4Mi41LDE2LjN2LTMuOGg0LjJ2My44aC00LjJaTTE4Mi41LDMxLjZ2LTEzLjhoNC4ydjEzLjhzLTQuMiwwLTQuMiwwWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy00IiBkPSJNMTk4LDMwLjljLS40LjItLjguMy0xLjIuNS0uNS4yLS45LjMtMS40LjQtLjUsMC0xLC4xLTEuNS4xcy0xLjMtLjEtMS45LS4zLTEtLjYtMS40LTEuMi0uNS0xLjItLjUtMi4xdi03LjFoLTEuOHYtMy4yaDEuOHYtNC40aDQuMnY0LjRoMi44djMuMmgtMi44djUuNmMwLC41LjEuOC4zLDFzLjUuMy45LjMuNiwwLDEtLjJjLjMtLjEuNi0uMi45LS4zbC44LDMuM2gtLjJaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik0xOTkuMSwzMy43Yy40LDAsLjcuMiwxLC4yaC44Yy40LDAsLjYsMCwuOS0uMnMuNC0uNC42LS44Yy4yLS40LjMtLjguNS0xLjRsLTUuMi0xMy43aDQuM2wzLjIsOS40LDIuNy05LjRoMy45bC01LjMsMTUuOWMtLjIuNy0uNiwxLjQtMS4xLDJzLTEuMSwxLTEuOSwxLjRjLS43LjMtMS41LjUtMi40LjVoLTEuMWMtLjQsMC0uNy0uMi0xLjEtLjN2LTMuNmguMloiLz4KICA8L2c+Cjwvc3ZnPg==" alt="The Blue City" style="height:36px; width:auto;">
+    </div>
+    <span class="login-tag">Painel do Produtor Cultural</span>
+    <h2 class="login-title">Bem-vindo</h2>
+    <p class="login-subtitle">Entre com suas credenciais para acessar o painel</p>
+    <div class="login-field">
+      <label>E-mail</label>
+      <input type="email" id="login-email" placeholder="seu@email.com.br" onkeydown="if(event.key==='Enter') doLogin()">
+    </div>
+    <div class="login-field">
+      <label>Senha</label>
+      <input type="password" id="login-senha" placeholder="••••••••" onkeydown="if(event.key==='Enter') doLogin()">
+    </div>
+    <button class="login-btn" onclick="doLogin()">Entrar</button>
+    <p class="login-error" id="login-error">E-mail ou senha incorretos. Tente novamente.</p>
+    <p class="login-forgot"><a href="#">Esqueci minha senha</a></p>
+  </div>
+</div>
+
+<div class="layout" id="app-layout" style="display:none;">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAyMTguNCA0NS42Ij4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLmNscy0xIHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudCk7CiAgICAgIH0KCiAgICAgIC5jbHMtMSwgLmNscy0yLCAuY2xzLTMsIC5jbHMtNCwgLmNscy01LCAuY2xzLTYsIC5jbHMtNywgLmNscy04LCAuY2xzLTksIC5jbHMtMTAsIC5jbHMtMTEsIC5jbHMtMTIsIC5jbHMtMTMsIC5jbHMtMTQgewogICAgICAgIHN0cm9rZS13aWR0aDogMHB4OwogICAgICB9CgogICAgICAuY2xzLTIgewogICAgICAgIGZpbGw6ICMwYzllZDk7CiAgICAgIH0KCiAgICAgIC5jbHMtMyB7CiAgICAgICAgZmlsbDogdXJsKCNsaW5lYXItZ3JhZGllbnQtMTEpOwogICAgICB9CgogICAgICAuY2xzLTQgewogICAgICAgIGZpbGw6IHVybCgjbGluZWFyLWdyYWRpZW50LTEwKTsKICAgICAgfQoKICAgICAgLmNscy01IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC00KTsKICAgICAgfQoKICAgICAgLmNscy02IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC0yKTsKICAgICAgfQoKICAgICAgLmNscy03IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC0zKTsKICAgICAgfQoKICAgICAgLmNscy04IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC04KTsKICAgICAgfQoKICAgICAgLmNscy05IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC05KTsKICAgICAgfQoKICAgICAgLmNscy0xMCB7CiAgICAgICAgZmlsbDogdXJsKCNsaW5lYXItZ3JhZGllbnQtNyk7CiAgICAgIH0KCiAgICAgIC5jbHMtMTEgewogICAgICAgIGZpbGw6IHVybCgjbGluZWFyLWdyYWRpZW50LTUpOwogICAgICB9CgogICAgICAuY2xzLTEyIHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC02KTsKICAgICAgfQoKICAgICAgLmNscy0xMyB7CiAgICAgICAgZmlsbDogIzAwMTUyMjsKICAgICAgfQoKICAgICAgLmNscy0xNCB7CiAgICAgICAgZmlsbDogI2ZmZjsKICAgICAgfQogICAgPC9zdHlsZT4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50IiB4MT0iNDguOCIgeTE9IjI1LjciIHgyPSIyMTEuOCIgeTI9IjI1LjciIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0OCkgc2NhbGUoMSAtMSkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMDA2MTg4Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzk1Y2ZhMCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTIiIHkxPSIyNS45IiB5Mj0iMjUuOSIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtMyIgeTE9IjIzLjEiIHkyPSIyMy4xIiB4bGluazpocmVmPSIjbGluZWFyLWdyYWRpZW50Ii8+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC00IiB5MT0iMjUuNyIgeTI9IjI1LjciIHhsaW5rOmhyZWY9IiNsaW5lYXItZ3JhZGllbnQiLz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTUiIHkxPSIyNS44IiB5Mj0iMjUuOCIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtNiIgeTE9IjIzIiB5Mj0iMjMiIHhsaW5rOmhyZWY9IiNsaW5lYXItZ3JhZGllbnQiLz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTciIHkxPSIyMy4xIiB5Mj0iMjMuMSIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtOCIgeTE9IjI1LjgiIHkyPSIyNS44IiB4bGluazpocmVmPSIjbGluZWFyLWdyYWRpZW50Ii8+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC05IiB5MT0iMjYiIHkyPSIyNiIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtMTAiIHkxPSIyNS4zIiB5Mj0iMjUuMyIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtMTEiIHkxPSIyMC4zIiB5Mj0iMjAuMyIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogIDwvZGVmcz4KICA8Zz4KICAgIDxjaXJjbGUgY2xhc3M9ImNscy0xMyIgY3g9IjI2LjEiIGN5PSIyMi43IiByPSIxOC40Ii8+CiAgICA8Zz4KICAgICAgPHJlY3QgY2xhc3M9ImNscy0xNCIgeD0iMTUuNSIgeT0iMTcuNSIgd2lkdGg9IjIwLjgiIGhlaWdodD0iMy4yIi8+CiAgICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTM1LDIzbC0uMi4yYy0xLjMsMS4xLTIuNCwyLjEtNC4xLDIuMXMtMi41LS40LTQuMS0xLjNjLTIuMS0xLjEtMy45LTEuNy01LjYtMS43LTIuOCwwLTQuNiwxLjYtNiwyLjlsLS4yLjIsMiwyLjQuMi0uMmMxLjMtMS4xLDIuNC0yLjEsNC4xLTIuMXMyLjUuNCw0LjEsMS4zYzIuMSwxLjEsMy45LDEuNyw1LjYsMS43aDBjMi43LDAsNC41LTEuNiw1LjktMi45bC4yLS4yLTItMi40aDBaIi8+CiAgICA8L2c+CiAgPC9nPgogIDxnPgogICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNjQuNSwxNi44aC01Ljd2MTQuOWgtNC4zdi0xNC45aC01Ljd2LTMuOGgxNS43djMuOFoiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtNiIgZD0iTTc5LjEsMzEuNmgtNC4ydi03LjZjMC0uOS0uMi0xLjUtLjYtMS45cy0uOS0uNi0xLjQtLjYtLjcsMC0xLjEuM2MtLjQuMi0uOC41LTEuMS44LS4zLjQtLjYuOC0uNywxLjJ2Ny44aC00LjJWMTIuNWg0LjJ2Ny45Yy41LS44LDEuMi0xLjUsMi0xLjlzMS44LS42LDIuOC0uNiwxLjcuMiwyLjIuNWMuNi4zLDEsLjcsMS4zLDEuMnMuNSwxLC42LDEuN2MwLC42LjIsMS4yLjIsMS44djguNy0uMloiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtNyIgZD0iTTg3LjksMzEuOWMtMS4yLDAtMi4yLS4yLTMuMS0uNnMtMS43LS45LTIuMy0xLjVjLS42LS42LTEuMS0xLjQtMS41LTIuMi0uMy0uOC0uNS0xLjctLjUtMi42LDAtMS4zLjMtMi41LjktMy42czEuNC0xLjksMi41LTIuNiwyLjQtMSw0LTEsMi45LjMsNCwxLDEuOSwxLjUsMi41LDIuNi45LDIuMi45LDMuNSwwLC41LDAsLjd2LjZoLTEwLjJjMCwuNi4yLDEuMS41LDEuNXMuNy43LDEuMS45Yy41LjIuOS4zLDEuNC4zczEuMi0uMSwxLjgtLjRjLjYtLjMuOS0uNywxLjEtMS4ybDMuNiwxYy0uNC43LS44LDEuMy0xLjUsMS45LS42LjUtMS40LDEtMi4yLDEuMy0uOS4zLTEuOC41LTIuOS41aC0uMVpNODQuOSwyMy41aDZjMC0uNi0uMi0xLS41LTEuNS0uMy0uNC0uNi0uNy0xLjEtMXMtLjktLjMtMS41LS4zLTEsLjEtMS40LjNjLS40LjItLjguNS0xLjEuOS0uMy40LS40LjktLjUsMS41aDBaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTUiIGQ9Ik0xMTgsMjYuOGMwLDEuMS0uMywyLS44LDIuNy0uNi43LTEuMywxLjItMi4zLDEuNnMtMiwuNS0zLjIuNWgtOS4xVjEzaDEwLjRjLjksMCwxLjYuMiwyLjMuNy42LjUsMS4xLDEuMSwxLjUsMS44LjMuNy41LDEuNS41LDIuM3MtLjIsMS43LS43LDIuNWMtLjQuOC0xLjEsMS40LTIsMS44LDEuMS4zLDEuOS45LDIuNSwxLjcuNi44LjksMS44LjksMy4xaDBaTTEwNi45LDE2Ljd2My45aDQuMmMuMywwLC42LDAsLjktLjIuMy0uMS41LS40LjctLjYuMi0uMy4yLS42LjItMS4xczAtLjgtLjItMS4xYzAtLjMtLjMtLjUtLjYtLjYtLjItLjEtLjUtLjItLjktLjJoLTQuNC4xWk0xMTMuNywyNmMwLS40LDAtLjctLjItMS4xLS4yLS4zLS40LS42LS42LS43cy0uNi0uMy0uOS0uM2gtNC45djQuMWg0LjhjLjQsMCwuNywwLDEtLjMuMy0uMi41LS40LjctLjcuMi0uMy4yLS42LjItMWgwWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xMSIgZD0iTTExOS43LDEyLjVoNC4ydjE0LjNjMCwuNiwwLDEsLjMsMS4yLjIuMi41LjQuOS40cy41LDAsLjgtLjFjLjMsMCwuNS0uMi43LS4zbC42LDMuMmMtLjUuMi0xLjEuNC0xLjguNi0uNy4yLTEuMy4yLTEuOS4yLTEuMiwwLTIuMS0uMy0yLjgtMS0uNi0uNi0xLTEuNi0xLTIuN3YtMTUuN2gwWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xMiIgZD0iTTEyNy45LDI2Ljh2LTguOGg0LjJ2Ny44YzAsLjguMiwxLjQuNSwxLjkuMy40LjguNywxLjQuN3MuOCwwLDEuMS0uMmMuNC0uMS43LS4zLDEtLjZzLjYtLjcuOS0xLjF2LTguNGg0LjJ2OWMwLC40LDAsLjcuMi45LjEuMi40LjMuNy4zdjMuNWMtLjQsMC0uNy4xLTEsLjJzLS41LDAtLjgsMGMtLjcsMC0xLjMtLjEtMS44LS40LS40LS4zLS43LS43LS44LTEuM3YtLjhjLS43LjktMS41LDEuNi0yLjQsMnMtMiwuNi0zLjIuNi0yLjUtLjQtMy4yLTEuMy0xLjEtMi4yLTEuMS0zLjh2LS4yWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xMCIgZD0iTTE1MC42LDMxLjljLTEuMiwwLTIuMi0uMi0zLjEtLjYtLjktLjQtMS43LS45LTIuMy0xLjVzLTEuMS0xLjQtMS41LTIuMmMtLjMtLjgtLjUtMS43LS41LTIuNiwwLTEuMy4zLTIuNS45LTMuNi42LTEuMSwxLjQtMS45LDIuNS0yLjZzMi40LTEsNC0xLDIuOS4zLDQsMWMxLjEuNiwxLjksMS41LDIuNSwyLjZzLjksMi4yLjksMy41LDAsLjUsMCwuN3YuNmgtMTAuMmMwLC42LjIsMS4xLjUsMS41cy43LjcsMS4xLjljLjUuMi45LjMsMS40LjNzMS4yLS4xLDEuOC0uNC45LS43LDEuMS0xLjJsMy42LDFjLS40LjctLjgsMS4zLTEuNSwxLjktLjYuNS0xLjQsMS0yLjIsMS4zLS45LjMtMS44LjUtMi45LjVoLS4xWk0xNDcuNSwyMy41aDZjMC0uNi0uMi0xLS41LTEuNS0uMy0uNC0uNi0uNy0xLjEtMS0uNC0uMi0uOS0uMy0xLjUtLjNzLTEsLjEtMS40LjNjLS40LjItLjguNS0xLjEuOXMtLjQuOS0uNSwxLjVoLjFaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTgiIGQ9Ik0xNjQuMiwyMi4xYzAtMS4xLjItMi4yLjYtMy4zLjQtMS4xLDEtMi4xLDEuOC0zczEuOC0xLjYsMy0yLjJjMS4yLS41LDIuNS0uOCwzLjktLjhzMy4zLjQsNC42LDEuMSwyLjMsMS43LDIuOSwyLjlsLTMuMywyLjNjLS4zLS43LS42LTEuMi0xLjEtMS42cy0xLS42LTEuNS0uOGMtLjYtLjEtMS4xLS4yLTEuNi0uMi0uOCwwLTEuNS4yLTIuMS41cy0xLjEuOC0xLjUsMS4zLS43LDEuMS0uOSwxLjhjLS4yLjctLjMsMS4zLS4zLDJzLjEsMS41LjQsMi4yYy4yLjcuNiwxLjMsMSwxLjhzLjkuOSwxLjYsMS4yYy42LjMsMS4zLjUsMiwuNXMxLjEsMCwxLjYtLjIsMS0uNCwxLjUtLjguOC0uOSwxLjEtMS41bDMuNSwyLjFjLS40LjktMSwxLjctMS44LDIuMy0uOC42LTEuOCwxLjEtMi44LDEuNXMtMi4xLjUtMy4yLjUtMi42LS4zLTMuNy0uOGMtMS4xLS42LTIuMS0xLjMtMi45LTIuMi0uOC0uOS0xLjUtMi0xLjktMy4xcy0uNy0yLjMtLjctMy41aC0uMloiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtOSIgZD0iTTE4Mi41LDE2LjN2LTMuOGg0LjJ2My44aC00LjJaTTE4Mi41LDMxLjZ2LTEzLjhoNC4ydjEzLjhzLTQuMiwwLTQuMiwwWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy00IiBkPSJNMTk4LDMwLjljLS40LjItLjguMy0xLjIuNS0uNS4yLS45LjMtMS40LjQtLjUsMC0xLC4xLTEuNS4xcy0xLjMtLjEtMS45LS4zLTEtLjYtMS40LTEuMi0uNS0xLjItLjUtMi4xdi03LjFoLTEuOHYtMy4yaDEuOHYtNC40aDQuMnY0LjRoMi44djMuMmgtMi44djUuNmMwLC41LjEuOC4zLDFzLjUuMy45LjMuNiwwLDEtLjJjLjMtLjEuNi0uMi45LS4zbC44LDMuM2gtLjJaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik0xOTkuMSwzMy43Yy40LDAsLjcuMiwxLC4yaC44Yy40LDAsLjYsMCwuOS0uMnMuNC0uNC42LS44Yy4yLS40LjMtLjguNS0xLjRsLTUuMi0xMy43aDQuM2wzLjIsOS40LDIuNy05LjRoMy45bC01LjMsMTUuOWMtLjIuNy0uNiwxLjQtMS4xLDJzLTEuMSwxLTEuOSwxLjRjLS43LjMtMS41LjUtMi40LjVoLTEuMWMtLjQsMC0uNy0uMi0xLjEtLjN2LTMuNmguMloiLz4KICA8L2c+Cjwvc3ZnPg==" alt="The Blue City" style="height:28px; width:auto;">
+    </div>
+
+    <div class="sidebar-user-top">
+      <div class="sidebar-avatar">PP</div>
+      <div>
+        <div class="nm">Painel do Produtor</div>
+      </div>
+    </div>
+
+    <div class="sidebar-tag">Estrutura</div>
+    <a href="#escolas" class="nav-item active">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Escolas
+    </a>
+    <div class="sidebar-tag">Campanha</div>
+    <a href="#campanhas" class="nav-item">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      Campanhas
+    </a>
+    <a href="#campanha" class="nav-item">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Campanhas Ativas
+    </a>
+    <div class="sidebar-tag">Curadoria</div>
+    <a href="#missoes" class="nav-item">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      Projetos Enviados
+    </a>
+    <div class="sidebar-tag">Memória</div>
+    <a href="#eventos" class="nav-item">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+      Registro de Eventos
+    </a>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+    <div class="topbar">
+      <div>
+        <h1>Olá, Ana Martins</h1>
+        <p class="crumb">Produtora Cultural · Sotreq</p>
+      </div>
+
+    </div>
+
+    <div class="canvas">
+
+      <!-- KPIs -->
+      <div class="kpi-row">
+        <div class="kpi">
+          <div class="kpi-top">
+            <div class="kpi-icon ic-blue"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2858a0" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+            <span class="kpi-delta delta-up">ativa</span>
+          </div>
+          <div class="val v-blue">1</div>
+          <div class="lbl tip" data-tip="Total de campanhas ativas do produtor.">Campanha ativa<span class="tip-info">i</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-top">
+            <div class="kpi-icon ic-teal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#468182" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+            <span class="kpi-delta delta-up">+2</span>
+          </div>
+          <div class="val v-teal">5</div>
+          <div class="lbl tip" data-tip="Total de escolas vinculadas às campanhas ativas.">Escolas cadastradas<span class="tip-info">i</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-top">
+            <div class="kpi-icon ic-green"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2a9a4a" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+            <span class="kpi-delta delta-up">+12</span>
+          </div>
+          <div class="val v-green">347</div>
+          <div class="lbl tip" data-tip="Total de participantes que iniciaram a jornada nas campanhas ativas.">Participantes ativos<span class="tip-info">i</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-top">
+            <div class="kpi-icon ic-purple"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7c5cbf" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg></div>
+            <span class="kpi-delta delta-up">+8</span>
+          </div>
+          <div class="val v-purple">42</div>
+          <div class="lbl tip" data-tip="Total de projetos submetidos em todas as campanhas.">Projetos enviados<span class="tip-info">i</span></div>
+        </div>
+      </div>
+
+      <!-- ESCOLAS -->
+      <div class="section-heading section-heading--noline" id="escolas">
+        <span>Escolas</span>
+        <span style="flex:1; height:1px; background:rgba(70,129,130,0.2);"></span>
+        <button class="btn-primary" onclick="openModal('modal-escola')" style="font-size:12px; padding:8px 14px;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Cadastrar escola
+        </button>
+      </div>
+
+      <div class="table-card" style="margin-bottom:28px;">
+        <table>
+          <thead>
+            <tr>
+              <th><span class="tip tip-right" data-tip="Nome da escola cadastrada pelo produtor.">Escola<span class="tip-info">i</span></span></th>
+              
+              <th><span class="tip tip-right" data-tip="Campanhas às quais esta escola está vinculada.">Campanhas<span class="tip-info">i</span></span></th>
+              <th style="text-align:right;"><span class="tip tip-end" data-tip="Editar ou remover escola.">Ações<span class="tip-info">i</span></span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><div class="ent-cell"><div class="ent-logo lg-1">CE</div><div><div class="ent-name">CEULP Unitins</div><div class="ent-slug">Ensino Médio</div></div></div></td>
+              
+              <td>2</td>
+              <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;">
+                <button class="icon-btn" onclick="openModal('modal-escola')" title="Editar escola"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg></button>
+                <button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
+              </div></td>
+            </tr>
+            <tr>
+              <td><div class="ent-cell"><div class="ent-logo lg-2">ET</div><div><div class="ent-name">ETAP Palmas</div><div class="ent-slug">Técnico</div></div></div></td>
+              
+              <td>1</td>
+              <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;">
+                <button class="icon-btn" onclick="openModal('modal-escola')" title="Editar escola"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg></button>
+                <button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
+              </div></td>
+            </tr>
+            <tr>
+              <td><div class="ent-cell"><div class="ent-logo lg-3">IF</div><div><div class="ent-name">IFTO Palmas</div><div class="ent-slug">Técnico Integrado</div></div></div></td>
+              
+              <td>1</td>
+              <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;">
+                <button class="icon-btn" onclick="openModal('modal-escola')" title="Editar escola"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg></button>
+                <button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
+              </div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- CAMPANHA ATIVA -->
+      <!-- CAMPANHAS -->
+      <div class="section-heading section-heading--noline" id="campanhas">
+        <span>Campanhas</span>
+        <span style="flex:1; height:1px; background:rgba(70,129,130,0.2);"></span>
+        <button class="btn-primary" onclick="openModal('modal-campanha')" style="font-size:12px; padding:8px 14px;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Nova campanha
+        </button>
+      </div>
+
+      <div class="table-card" style="margin-bottom:28px;">
+        <table>
+          <thead>
+            <tr>
+              <th><span class="tip tip-right" data-tip="Nome da campanha.">Campanha<span class="tip-info">i</span></span></th>
+              <th><span class="tip tip-right" data-tip="Jogo vinculado à campanha.">Jogo<span class="tip-info">i</span></span></th>
+              <th><span class="tip tip-right" data-tip="Cidade onde a campanha está sendo realizada.">Cidade<span class="tip-info">i</span></span></th>
+              <th><span class="tip tip-right" data-tip="Período de início e encerramento da campanha.">Período<span class="tip-info">i</span></span></th>
+              <th><span class="tip tip-right" data-tip="Situação atual da campanha.">Status<span class="tip-info">i</span></span></th>
+              <th style="text-align:right;"><span class="tip tip-end" data-tip="Pausar, encerrar ou editar campanha.">Ações<span class="tip-info">i</span></span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><div class="ent-name">Termômetro Zero</div></td>
+              <td>Termômetro Zero</td>
+              <td>Palmas, TO</td>
+              <td style="font-size:12px; color:#6b7f95;">01/03/2025 – 30/06/2025</td>
+              <td><span class="pill pill-active">Ativa</span></td>
+              <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;">
+                <button class="icon-btn" onclick="openModal('modal-status-campanha')" title="Pausar / Encerrar"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg></button>
+                <button class="icon-btn" title="Editar"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg></button>
+              </div></td>
+            </tr>
+            <tr>
+              <td><div class="ent-name">Ciclo da Água</div></td>
+              <td>Ciclo da Água</td>
+              <td>Palmas, TO</td>
+              <td style="font-size:12px; color:#6b7f95;">10/01/2025 – 28/02/2025</td>
+              <td><span class="pill pill-inactive">Encerrada</span></td>
+              <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;">
+                <button class="icon-btn" title="Editar"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg></button>
+              </div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- CAMPANHAS ATIVAS -->
+      <div class="section-heading section-heading--noline" id="campanha">
+        <span>Campanhas Ativas</span>
+        <span style="flex:1; height:1px; background:rgba(70,129,130,0.2);"></span>
+      </div>
+
+      <div class="table-card">
+        <div class="table-head">
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <div>
+              <h3>Termômetro Zero – Palmas, TO</h3>
+              <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:6px;">
+                <span style="font-size:11px; font-weight:600; background:#eef2fb; color:#2858a0; border-radius:20px; padding:3px 10px;">Clima · Redução de GEE</span>
+                <span style="font-size:11px; font-weight:600; background:#e8f6ec; color:#2a9a4a; border-radius:20px; padding:3px 10px;">Iniciada em 01/03/2025</span>
+                <span style="font-size:11px; font-weight:600; background:#fff4e0; color:#c47a00; border-radius:20px; padding:3px 10px;">Encerramento previsto 30/06/2025</span>
+              </div>
+            </div>
+            <span class="status-badge sb-active">● Ativa</span>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th><span class="tip tip-right" data-tip="Escola vinculada à campanha neste território.">Escola<span class="tip-info">i</span></span></th>
+              <th><span class="tip tip-right" data-tip="QR Code único vinculado à escola para acesso à jornada.">QR Code<span class="tip-info">i</span></span></th>
+              <th><span class="tip tip-right" data-tip="Participantes que iniciaram a jornada nesta escola.">Participantes<span class="tip-info">i</span></span></th>
+              <th><span class="tip tip-right" data-tip="Projetos submetidos por participantes desta escola.">Projetos<span class="tip-info">i</span></span></th>
+              <th style="text-align:right;"><span class="tip tip-end" data-tip="Editar dados da escola ou visualizar detalhes.">Ações<span class="tip-info">i</span></span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><div class="ent-cell"><div class="ent-logo lg-1">CE</div><div><div class="ent-name">CEULP Unitins</div><div class="ent-slug">Ensino Médio</div></div></div></td>
+              <td><button class="btn-ghost" style="font-size:11px; padding:5px 10px;" onclick="openModal('modal-qr')">Ver QR Code</button></td>
+              <td>142</td>
+              <td>18</td>
+              <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;">
+                <button class="icon-btn" onclick="openModal('modal-edit-escola')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg></button>
+              </div></td>
+            </tr>
+            <tr>
+              <td><div class="ent-cell"><div class="ent-logo lg-2">ET</div><div><div class="ent-name">ETAP Palmas</div><div class="ent-slug">Técnico</div></div></div></td>
+              <td><button class="btn-ghost" style="font-size:11px; padding:5px 10px;" onclick="openModal('modal-qr')">Ver QR Code</button></td>
+              <td>98</td>
+              <td>12</td>
+              <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;">
+                <button class="icon-btn" onclick="openModal('modal-edit-escola')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg></button>
+              </div></td>
+            </tr>
+            <tr>
+              <td><div class="ent-cell"><div class="ent-logo lg-3">IF</div><div><div class="ent-name">IFTO Palmas</div><div class="ent-slug">Técnico Integrado</div></div></div></td>
+              <td><button class="btn-ghost" style="font-size:11px; padding:5px 10px;" onclick="openModal('modal-qr')">Ver QR Code</button></td>
+              <td>65</td>
+              <td>7</td>
+              <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;">
+                <button class="icon-btn" onclick="openModal('modal-edit-escola')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg></button>
+              </div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- MISSÕES -->
+      <div class="section-heading section-heading--noline" id="missoes">
+        <span>Projetos Enviados</span>
+        <span style="flex:1; height:1px; background:rgba(70,129,130,0.2);"></span>
+        <div style="display:flex; gap:8px;">
+          <button class="btn-ghost" style="font-size:11px; padding:5px 12px;">Todas (42)</button>
+          <button class="btn-ghost" style="font-size:11px; padding:5px 12px; background:#fff4e0; border-color:#f0c040; color:#c47a00;">Pendentes (28)</button>
+        </div>
+      </div>
+
+      <div class="missao-grid">
+        <div class="missao-card">
+          <div class="missao-cover">
+            <div class="missao-tag">Termômetro Zero</div>
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div class="missao-body">
+            <div class="missao-aluno">Mariana Costa</div>
+            <div class="missao-escola">CEULP Unitins · Turma 3A</div>
+            <div class="missao-foot">
+              <span style="font-size:10px; color:#94a4b6;">enviado há 2 dias</span>
+              <div class="missao-actions">
+                <button class="missao-btn mb-approve">Aprovar</button>
+                <button class="missao-btn mb-art">Arte</button>
+                <button class="missao-btn mb-archive">Arquivar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="missao-card">
+          <div class="missao-cover" style="background:linear-gradient(135deg,#2a3a1a 0%,#3a7a2a 100%);">
+            <div class="missao-tag">Termômetro Zero</div>
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div class="missao-body">
+            <div class="missao-aluno">Pedro Alves</div>
+            <div class="missao-escola">ETAP Palmas · Turma 2B</div>
+            <div class="missao-foot">
+              <span style="font-size:10px; color:#94a4b6;">enviado há 3 dias</span>
+              <div class="missao-actions">
+                <button class="missao-btn mb-approve">Aprovar</button>
+                <button class="missao-btn mb-art">Arte</button>
+                <button class="missao-btn mb-archive">Arquivar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="missao-card">
+          <div class="missao-cover" style="background:linear-gradient(135deg,#1a2a3a 0%,#1a5a8a 100%);">
+            <div class="missao-tag">Termômetro Zero</div>
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div class="missao-body">
+            <div class="missao-aluno">Luisa Ferreira</div>
+            <div class="missao-escola">IFTO Palmas · Turma 1C</div>
+            <div class="missao-foot">
+              <span style="font-size:10px; color:#94a4b6;">enviado há 5 dias</span>
+              <div class="missao-actions">
+                <button class="missao-btn mb-approve">Aprovar</button>
+                <button class="missao-btn mb-art">Arte</button>
+                <button class="missao-btn mb-archive">Arquivar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REGISTRO DE EVENTOS -->
+      <div class="section-heading section-heading--noline" id="eventos" style="margin-top:28px;">
+        <span>Registro de Eventos</span>
+        <span style="flex:1; height:1px; background:rgba(70,129,130,0.2);"></span>
+        <button class="btn-primary" onclick="openModal('modal-evento')" style="font-size:12px; padding:8px 14px;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Publicar registro
+        </button>
+      </div>
+
+      <div class="table-card">
+        <table>
+          <thead>
+            <tr>
+              <th><span class="tip tip-right" data-tip="Título do evento ou ação presencial registrada.">Evento<span class="tip-info">i</span></span></th>
+              <th><span class="tip tip-right" data-tip="Cidade, escola ou área onde o evento ocorreu.">Território<span class="tip-info">i</span></span></th>
+              <th><span class="tip tip-right" data-tip="Data de realização do evento.">Data<span class="tip-info">i</span></span></th>
+              <th><span class="tip tip-right" data-tip="Tipo de material publicado.">Materiais<span class="tip-info">i</span></span></th>
+              <th style="text-align:right;"><span class="tip tip-end" data-tip="Editar ou remover o registro.">Ações<span class="tip-info">i</span></span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><div class="ent-name">Exposição Termômetro Zero</div><div style="font-size:11px;color:#6b7f95;">Inauguração da mostra artística</div></td>
+              <td>Palmas, TO · CEULP Unitins</td>
+              <td>22/06/2025</td>
+              <td><span style="font-size:11px;background:#eef2fb;color:#2858a0;border-radius:20px;padding:3px 9px;font-weight:600;">Fotos · Release</span></td>
+              <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;">
+                <button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg></button>
+                <button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
+              </div></td>
+            </tr>
+            <tr>
+              <td><div class="ent-name">Lançamento da Campanha</div><div style="font-size:11px;color:#6b7f95;">Evento de abertura com parceiros</div></td>
+              <td>Palmas, TO · Sotreq</td>
+              <td>01/03/2025</td>
+              <td><span style="font-size:11px;background:#eef2fb;color:#2858a0;border-radius:20px;padding:3px 9px;font-weight:600;">Fotos · Vídeo</span></td>
+              <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;">
+                <button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg></button>
+                <button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
+              </div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Editar escola na campanha -->
+<div class="modal-overlay" id="modal-edit-escola">
+  <div class="modal" style="max-width:460px;">
+    <div class="modal-head">
+      <div>
+        <h2>Editar escola na campanha</h2>
+        <p>CEULP Unitins · Termômetro Zero</p>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-edit-escola')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div class="field" style="margin-bottom:0;">
+        <label>Nome da escola</label>
+        <input type="text" value="CEULP Unitins" style="width:100%; border:1.5px solid #dde4ef; border-radius:9px; padding:10px 13px; font-size:13px; font-family:'Montserrat',sans-serif; color:#1a2e3b;">
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn-ghost" onclick="closeModal('modal-edit-escola')">Cancelar</button>
+      <div class="spacer"></div>
+      <button class="btn-primary">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: QR Code -->
+<div class="modal-overlay" id="modal-qr">
+  <div class="modal" style="max-width:380px; text-align:center;">
+    <div class="modal-head">
+      <div>
+        <h2>QR Code</h2>
+        <p>Escaneie para acessar a jornada</p>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-qr')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body" style="display:flex; flex-direction:column; align-items:center; gap:16px;">
+      <!-- QR Code placeholder -->
+      <div style="width:180px; height:180px; background:#f4f8fc; border:2px solid #e0e8f0; border-radius:12px; display:flex; align-items:center; justify-content:center;">
+        <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+          <rect x="10" y="10" width="40" height="40" rx="4" fill="#1a2e3b"/>
+          <rect x="70" y="10" width="40" height="40" rx="4" fill="#1a2e3b"/>
+          <rect x="10" y="70" width="40" height="40" rx="4" fill="#1a2e3b"/>
+          <rect x="18" y="18" width="24" height="24" rx="2" fill="#fff"/>
+          <rect x="78" y="18" width="24" height="24" rx="2" fill="#fff"/>
+          <rect x="18" y="78" width="24" height="24" rx="2" fill="#fff"/>
+          <rect x="26" y="26" width="8" height="8" fill="#1a2e3b"/>
+          <rect x="86" y="26" width="8" height="8" fill="#1a2e3b"/>
+          <rect x="26" y="86" width="8" height="8" fill="#1a2e3b"/>
+          <rect x="70" y="70" width="8" height="8" fill="#1a2e3b"/>
+          <rect x="82" y="70" width="8" height="8" fill="#1a2e3b"/>
+          <rect x="94" y="70" width="8" height="8" fill="#1a2e3b"/>
+          <rect x="70" y="82" width="8" height="8" fill="#1a2e3b"/>
+          <rect x="94" y="82" width="8" height="8" fill="#1a2e3b"/>
+          <rect x="70" y="94" width="8" height="8" fill="#1a2e3b"/>
+          <rect x="82" y="94" width="8" height="8" fill="#1a2e3b"/>
+          <rect x="94" y="94" width="8" height="8" fill="#1a2e3b"/>
+        </svg>
+      </div>
+      <p style="font-size:12px; color:#6b7f95; font-family:'Montserrat',sans-serif;">Termômetro Zero · CEULP Unitins<br>Palmas, TO</p>
+      <button class="btn-ghost" style="font-size:12px;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Baixar QR Code
+      </button>
+    </div>
+    <div class="modal-foot" style="justify-content:center;">
+      <button class="btn-ghost" onclick="closeModal('modal-qr')">Fechar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Cadastrar escola -->
+<div class="modal-overlay" id="modal-escola">
+  <div class="modal" style="max-width:460px;">
+    <div class="modal-head">
+      <div>
+        <h2>Cadastrar escola</h2>
+        <p>Escolas disponíveis para vincular a campanhas</p>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-escola')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div class="field">
+        <label>Nome da escola <span class="req">*</span></label>
+        <input type="text" placeholder="Ex.: CEULP Unitins" style="width:100%; border:1.5px solid #dde4ef; border-radius:9px; padding:10px 13px; font-size:13px; font-family:'Montserrat',sans-serif; color:#1a2e3b;">
+      </div>
+      <div class="field" style="margin-bottom:0;">
+        <label>Nível de ensino</label>
+        <input type="text" placeholder="Ex.: Ensino Médio, Técnico, Superior..." style="width:100%; border:1.5px solid #dde4ef; border-radius:9px; padding:10px 13px; font-size:13px; font-family:'Montserrat',sans-serif; color:#1a2e3b;">
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn-ghost" onclick="closeModal('modal-escola')">Cancelar</button>
+      <div class="spacer"></div>
+      <button class="btn-primary">Cadastrar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Nova campanha -->
+<div class="modal-overlay" id="modal-campanha">
+  <div class="modal">
+    <div class="modal-head">
+      <div>
+        <h2>Nova campanha</h2>
+        <p>Etapa 1 · Estrutura base da campanha</p>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-campanha')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div class="field">
+        <label>Cidade <span class="req">*</span></label>
+        <select>
+            <option value="">Selecionar cidade</option>
+            <option>Palmas, TO</option>
+            <option>São Paulo, SP</option>
+            <option>Belém, PA</option>
+            <option>Recife, PE</option>
+          </select>
+          <p class="hint">Cidades disponíveis cadastradas pelo Painel Master.</p>
+      </div>
+      <div class="field">
+        <label>Jogo da biblioteca <span class="req">*</span></label>
+        <select>
+          <option value="">Selecionar jogo</option>
+          <option>Termômetro Zero</option>
+          <option>Ciclo da Água</option>
+          <option>Energia Limpa</option>
+          <option>Mata Atlântica</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Período da campanha <span class="req">*</span></label>
+        <div style="display:flex;gap:10px;">
+          <input type="date" style="flex:1;">
+          <input type="date" style="flex:1;">
+        </div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn-ghost" onclick="closeModal('modal-campanha')">Cancelar</button>
+      <div class="spacer"></div>
+      <button class="btn-primary" onclick="closeModal('modal-campanha'); openModal('modal-escolas')">Continuar →</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Etapa 2 – Vincular Escolas -->
+<div class="modal-overlay" id="modal-escolas">
+  <div class="modal">
+    <div class="modal-head">
+      <div>
+        <h2>Nova campanha</h2>
+        <p>Etapa 2 · Selecionar escolas</p>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-escolas')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div class="field">
+        <label>Selecionar escolas <span class="req">*</span></label>
+        <p class="hint" style="margin-bottom:10px;">Escolas previamente cadastradas pelo produtor.</p>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <label style="display:flex; align-items:center; gap:12px; background:#f8fafd; border:1.5px solid #e0e8f0; border-radius:10px; padding:12px 14px; cursor:pointer; width:100%; box-sizing:border-box;">
+            <input type="checkbox" style="flex-shrink:0; width:16px; height:16px;">
+            <div style="min-width:0;"><div style="font-size:12px; font-weight:500; color:#1a2e3b;">CEULP Unitins</div></div>
+          </label>
+          <label style="display:flex; align-items:center; gap:12px; background:#f8fafd; border:1.5px solid #e0e8f0; border-radius:10px; padding:12px 14px; cursor:pointer; width:100%; box-sizing:border-box;">
+            <input type="checkbox" style="flex-shrink:0; width:16px; height:16px;">
+            <div style="min-width:0;"><div style="font-size:12px; font-weight:500; color:#1a2e3b;">ETAP Palmas</div></div>
+          </label>
+          <label style="display:flex; align-items:center; gap:12px; background:#f8fafd; border:1.5px solid #e0e8f0; border-radius:10px; padding:12px 14px; cursor:pointer; width:100%; box-sizing:border-box;">
+            <input type="checkbox" style="flex-shrink:0; width:16px; height:16px;">
+            <div style="min-width:0;"><div style="font-size:12px; font-weight:500; color:#1a2e3b;">IFTO Palmas</div></div>
+          </label>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="modal-foot">
+      <button class="btn-ghost" onclick="closeModal('modal-escolas'); openModal('modal-campanha')">← Voltar</button>
+      <div class="spacer"></div>
+      <button class="btn-primary" onclick="closeModal('modal-escolas')">Ativar campanha</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Pausar / Encerrar campanha -->
+<div class="modal-overlay" id="modal-status-campanha">
+  <div class="modal" style="max-width:440px;">
+    <div class="modal-head">
+      <div>
+        <h2>Status da campanha</h2>
+        <p>Termômetro Zero · Palmas, TO</p>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-status-campanha')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div class="toggle-row">
+        <div>
+          <div class="tr-title">Campanha ativa</div>
+          <div class="tr-desc">Acessos via QR Code liberados</div>
+        </div>
+        <label class="switch"><input type="checkbox" checked><span class="track"></span></label>
+      </div>
+      <ul class="hint" style="font-size:11px; line-height:1.8; padding-left:18px; margin-top:8px;">
+        <li>Pausar suspende temporariamente os acessos via QR Code</li>
+        <li>Encerrar finaliza a campanha – projetos existentes são preservados</li>
+      </ul>
+      <div class="field" style="margin-top:16px; margin-bottom:0;">
+        <label>Ação</label>
+        <select>
+          <option>Pausar campanha</option>
+          <option>Encerrar campanha</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn-ghost" onclick="closeModal('modal-status-campanha')">Cancelar</button>
+      <div class="spacer"></div>
+      <button class="btn-primary">Aplicar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Publicar evento -->
+<div class="modal-overlay" id="modal-evento">
+  <div class="modal">
+    <div class="modal-head">
+      <div>
+        <h2>Publicar registro de evento</h2>
+        <p>Memória Institucional · Palmas, TO</p>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-evento')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div class="field">
+        <label>Título do evento <span class="req">*</span></label>
+        <input type="text" placeholder="Ex.: Exposição Termômetro Zero">
+      </div>
+      <div class="field">
+        <label>Tipo de evento</label>
+        <select>
+          <option>Exposição artística</option>
+          <option>Ativação corporativa</option>
+          <option>Lançamento</option>
+          <option>Evento presencial</option>
+          <option>Outro</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Território <span class="req">*</span></label>
+        <select>
+          <option>Palmas, TO · CEULP Unitins</option>
+          <option>Palmas, TO · ETAP Palmas</option>
+          <option>Palmas, TO · IFTO Palmas</option>
+          <option>Palmas, TO · Sotreq (geral)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Data <span class="req">*</span></label>
+        <input type="date">
+      </div>
+      <div class="field" style="margin-bottom:0;">
+        <label>Descrição / release</label>
+        <textarea rows="3" placeholder="Descreva o evento, participantes e destaques..."></textarea>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn-ghost" onclick="closeModal('modal-evento')">Cancelar</button>
+      <div class="spacer"></div>
+      <button class="btn-primary">Publicar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+
+  function doLogin() {
+    const email = document.getElementById('login-email').value.trim();
+    const senha = document.getElementById('login-senha').value;
+    const erro = document.getElementById('login-error');
+
+    if (!email || !senha) {
+      erro.style.display = 'block';
+      erro.textContent = 'Preencha e-mail e senha.';
+      return;
+    }
+
+    // Simulated auth – any non-empty credentials work
+    erro.style.display = 'none';
+    document.getElementById('login-overlay').style.display = 'none';
+    document.getElementById('app-layout').style.display = 'flex';
+  }
+
+
+  function adicionarEscola() {
+    const nome = document.getElementById('escola-nome').value.trim();
+    const nivel = document.getElementById('escola-nivel').value;
+    if (!nome) return;
+    const list = document.getElementById('escola-list');
+    const item = document.createElement('div');
+    item.style.cssText = 'display:flex; align-items:center; justify-content:space-between; background:#fff; border:1.5px solid #e0e8f0; border-radius:9px; padding:10px 14px;';
+    item.innerHTML = `<div><div style="font-size:13px;font-weight:700;color:#1a2e3b;">${nome}</div><div style="font-size:11px;color:#6b7f95;">${nivel || 'Nível não informado'}</div></div><button onclick="this.parentElement.remove()" style="background:none;border:none;cursor:pointer;color:#94a4b6;font-size:16px;">×</button>`;
+    list.appendChild(item);
+    document.getElementById('escola-nome').value = '';
+    document.getElementById('escola-nivel').value = '';
+  }
+
+  function openModal(id) { document.getElementById(id).classList.add('open'); }
+  function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+  document.querySelectorAll('.modal-overlay').forEach(m => {
+    m.addEventListener('click', e => { if (e.target === m) m.classList.remove('open'); });
+  });
+</script>
+
+<div id="js-tooltip" style="display:none; position:fixed; background:#102a3f; color:#fff; font-family:'Montserrat',sans-serif; font-size:11px; font-weight:500; line-height:1.5; padding:9px 12px; border-radius:8px; max-width:220px; box-shadow:0 8px 22px rgba(16,42,63,0.28); z-index:9999; pointer-events:none;"></div>
+
+<script>
+  const jsTooltip = document.getElementById('js-tooltip');
+
+  function initTooltips() {
+    document.querySelectorAll('[data-tip]').forEach(el => {
+      el.addEventListener('mouseenter', function(e) {
+        const tip = this.getAttribute('data-tip');
+        if (!tip) return;
+        jsTooltip.textContent = tip;
+        jsTooltip.style.display = 'block';
+        positionTooltip(e);
+      });
+      el.addEventListener('mousemove', positionTooltip);
+      el.addEventListener('mouseleave', function() {
+        jsTooltip.style.display = 'none';
+      });
+    });
+  }
+
+  function positionTooltip(e) {
+    const margin = 10;
+    const tw = jsTooltip.offsetWidth;
+    const th = jsTooltip.offsetHeight;
+    let x = e.clientX - tw / 2;
+    let y = e.clientY + 20;
+    if (x < margin) x = margin;
+    if (x + tw > window.innerWidth - margin) x = window.innerWidth - tw - margin;
+    if (y + th > window.innerHeight - margin) y = e.clientY - th - 10;
+    jsTooltip.style.left = x + 'px';
+    jsTooltip.style.top = y + 'px';
+  }
+
+  initTooltips();
+</script>
+</body>
+</html>
