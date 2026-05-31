@@ -735,6 +735,15 @@
 
   /* ── DIVIDER ── */
   .divider { height: 1px; background: rgba(40,88,160,0.07); margin: 0 60px; }
+  .etapas-conta { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .etapa-card { background: var(--white); border: 1px solid rgba(40,88,160,0.08); border-radius: 14px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.04); display: flex; flex-direction: column; }
+  .etapa-img { background: #eef4fc; padding: 8px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgba(40,88,160,0.08); }
+  .etapa-img img { max-width: 100%; max-height: 560px; border-radius: 10px; display: block; }
+  .etapa-body { padding: 20px 22px; }
+  .etapa-num { width: 30px; height: 30px; border-radius: 50%; background: var(--blue); color: #fff; font-weight: 800; font-size: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+  .etapa-body h3 { font-size: 16px; color: var(--dark); margin-bottom: 8px; }
+  .etapa-body p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+  @media (max-width: 860px) { .etapas-conta { grid-template-columns: 1fr; } }
 
   /* image placeholder note */
   .img-note {
@@ -969,6 +978,9 @@
     <div class="nav-item" onclick="goTo(1)">
       <span class="nav-dot"></span> Home
       <span class="nav-number">01</span>
+    </div>
+    <div class="nav-item" onclick="goTo(12)">
+      <span class="nav-dot"></span> Criação de Conta
     </div>
     <div class="nav-item" onclick="goTo(2)">
       <span class="nav-dot"></span> Jornadas
@@ -2473,17 +2485,60 @@
     </div>
   </section>
 
+  <!-- PAGE 12: CRIAÇÃO DE CONTA -->
+  <section class="page" id="page-12">
+    <div class="page-hero">
+      <div class="page-tag">Acesso · Plataforma</div>
+      <h1 class="page-title">Criação de Conta</h1>
+      <p class="page-subtitle">Como o jogador entra na plataforma, em três etapas e sem senha. O e-mail é a identidade e um código de uso único substitui a senha a cada acesso.</p>
+    </div>
+    <div class="page-body">
+      <div class="etapas-conta">
+        <div class="etapa-card">
+          <div class="etapa-img"><img src="https://the-blue-city.github.io/content/Conta1.png" alt="Etapa 1 – Dados e e-mail"></div>
+          <div class="etapa-body">
+            <div class="etapa-num">1</div>
+            <h3>Dados e e-mail</h3>
+            <p>O jogador informa nome, sobrenome e e-mail. Não há criação de senha: a conta fica vinculada ao e-mail, e o mesmo e-mail sempre reconecta a mesma conta.</p>
+          </div>
+        </div>
+        <div class="etapa-card">
+          <div class="etapa-img"><img src="https://the-blue-city.github.io/content/Conta2.png" alt="Etapa 2 – Código de acesso"></div>
+          <div class="etapa-body">
+            <div class="etapa-num">2</div>
+            <h3>Código de acesso</h3>
+            <p>A plataforma envia um código numérico de uso único para o e-mail. O jogador digita o código e entra. A cada novo login o processo se repete: e-mail, código e acesso.</p>
+          </div>
+        </div>
+        <div class="etapa-card">
+          <div class="etapa-img"><img src="https://the-blue-city.github.io/content/Conta3.png" alt="Etapa 3 – Nome e avatar"></div>
+          <div class="etapa-body">
+            <div class="etapa-num">3</div>
+            <h3>Nome e avatar</h3>
+            <p>O jogador escolhe o nome e o tipo de avatar. Cidade e escola já vêm fixas pelo QR Code da escola e não podem ser alteradas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-nav">
+      <button class="nav-btn" onclick="goTo(1)">← Home</button>
+      <span class="page-indicator">Criação de Conta</span>
+      <button class="nav-btn next" onclick="goTo(2)">Jornadas →</button>
+    </div>
+  </section>
+
 </main>
 
 <script>
-  const totalPages = 12;
+  const totalPages = 13;
   let current = 0;
 
   function goTo(index) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
     document.getElementById('page-' + index).classList.add('active');
-    document.querySelectorAll('.nav-item')[index].classList.add('active');
+    const navActive = document.querySelector('.nav-item[onclick="goTo(' + index + ')"]');
+    if (navActive) navActive.classList.add('active');
     current = index;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
