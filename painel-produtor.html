@@ -963,6 +963,11 @@
       <div class="section-heading section-heading--noline" id="eventos" style="margin-top:28px;">
         <span>Registro de Eventos</span>
         <span style="flex:1; height:1px; background:rgba(70,129,130,0.2);"></span>
+        <div style="display:flex; gap:8px;">
+          <button class="btn-filter active" id="btn-ev-todos" onclick="filtrarEventos('todos')">Todos (2)</button>
+          <button class="btn-filter" id="btn-ev-publicados" onclick="filtrarEventos('publicado')">Publicados (1)</button>
+          <button class="btn-filter" id="btn-ev-rascunhos" onclick="filtrarEventos('rascunho')">Rascunhos (1)</button>
+        </div>
         <button class="btn-primary" onclick="openModal('modal-evento')" style="font-size:12px; padding:8px 14px;">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           Cadastrar evento
@@ -970,7 +975,10 @@
       </div>
 
       <div class="table-card">
-        <table>
+        <table style="table-layout:fixed;">
+          <colgroup>
+            <col style="width:23%"><col style="width:16%"><col style="width:13%"><col style="width:15%"><col style="width:11%"><col style="width:12%"><col style="width:10%">
+          </colgroup>
           <thead>
             <tr>
               <th><span class="tip tip-right" data-tip="Nome do evento cadastrado.">Evento<span class="tip-info">i</span></span></th>
@@ -983,7 +991,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr data-status="publicado">
               <td><div class="ent-name">Exposição Termômetro Zero</div></td>
               <td>Termômetro Zero</td>
               <td>Palmas, TO</td>
@@ -996,7 +1004,7 @@
                 <button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
               </div></td>
             </tr>
-            <tr>
+            <tr data-status="rascunho">
               <td><div class="ent-name">Lançamento da Campanha</div></td>
               <td>Termômetro Zero</td>
               <td>Palmas, TO</td>
@@ -1011,6 +1019,14 @@
             </tr>
           </tbody>
         </table>
+      </div>
+
+      <div class="pagination" id="paginacao-eventos">
+        <button class="pag-btn arrow" id="pag-prev-ev" onclick="mudarPaginaEv(-1)" disabled>← Anterior</button>
+        <button class="pag-btn active" onclick="irPaginaEv(1)">1</button>
+        <button class="pag-btn" onclick="irPaginaEv(2)">2</button>
+        <button class="pag-btn" onclick="irPaginaEv(3)">3</button>
+        <button class="pag-btn arrow" id="pag-next-ev" onclick="mudarPaginaEv(1)">Próxima →</button>
       </div>
 
       </div><!-- /view-operacional -->
@@ -1490,7 +1506,7 @@
       a.classList.toggle('active', a.getAttribute('href') === '#' + target);
     });
 
-    if (isGuia) {
+    if (isGuia || target === 'escolas') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       const sec = document.getElementById(target);
@@ -1576,14 +1592,27 @@
 
 
   function toggleEvento(btn) {
-    const pill = btn.closest('tr').querySelector('.pill');
+    const tr = btn.closest('tr');
+    const pill = tr.querySelector('.pill');
     if (pill.classList.contains('pill-active')) {
       pill.classList.remove('pill-active'); pill.classList.add('pill-inactive');
       pill.textContent = 'Rascunho';
+      tr.setAttribute('data-status', 'rascunho');
     } else {
       pill.classList.remove('pill-inactive'); pill.classList.add('pill-active');
       pill.textContent = 'Publicado';
+      tr.setAttribute('data-status', 'publicado');
     }
+  }
+
+  function filtrarEventos(filtro) {
+    document.querySelectorAll('#eventos ~ .table-card tbody tr[data-status], #eventos + .table-card tbody tr[data-status]').forEach(tr => {
+      const st = tr.getAttribute('data-status');
+      tr.style.display = (filtro === 'todos' || st === filtro) ? '' : 'none';
+    });
+    document.getElementById('btn-ev-todos').classList.toggle('active', filtro === 'todos');
+    document.getElementById('btn-ev-publicados').classList.toggle('active', filtro === 'publicado');
+    document.getElementById('btn-ev-rascunhos').classList.toggle('active', filtro === 'rascunho');
   }
 
   function editarEvento(btn) {
@@ -1658,6 +1687,23 @@
 
   function mudarPagina(dir) {
     irPagina(Math.max(1, Math.min(totalPaginas, paginaAtual + dir)));
+  }
+
+  let paginaAtualEv = 1;
+  const totalPaginasEv = 3;
+
+  function irPaginaEv(n) {
+    paginaAtualEv = n;
+    document.querySelectorAll('#paginacao-eventos .pag-btn:not(.arrow)').forEach(btn => {
+      btn.classList.toggle('active', parseInt(btn.textContent) === n);
+    });
+    document.getElementById('pag-prev-ev').disabled = n === 1;
+    document.getElementById('pag-next-ev').disabled = n === totalPaginasEv;
+    document.getElementById('eventos').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function mudarPaginaEv(dir) {
+    irPaginaEv(Math.max(1, Math.min(totalPaginasEv, paginaAtualEv + dir)));
   }
 
   function filtrarProjetos(filtro) {
