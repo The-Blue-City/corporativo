@@ -175,22 +175,6 @@
 <!-- FORM -->
 <div class="form-wrap">
 
-  <!-- Identificação -->
-  <div class="form-card">
-    <h2>
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#468182" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-      Sobre você
-    </h2>
-    <div class="field">
-      <label>Nome completo <span class="req">*</span></label>
-      <input type="text" placeholder="Ex.: João Silva" id="nome">
-    </div>
-    <div class="field">
-      <label>Escola <span class="req">*</span></label>
-      <input type="text" placeholder="Ex.: Escola Técnica Estadual de Palmas" id="escola">
-    </div>
-  </div>
-
   <!-- Projeto -->
   <div class="form-card">
     <h2>
@@ -271,12 +255,11 @@
   }
 
   function enviarProjeto() {
-    const nome = document.getElementById('nome').value.trim();
     const titulo = document.getElementById('titulo').value.trim();
     const resumo = document.getElementById('resumo').value.trim();
     const descricao = document.getElementById('descricao').value.trim();
 
-    if (!nome || !titulo || !resumo || !descricao) {
+    if (!titulo || !resumo || !descricao) {
       alert('Por favor, preencha todos os campos obrigatórios.');
       return;
     }
