@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Blue City – Minha Galeria</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Montserrat', sans-serif; background: #f4f8fc; color: #1a2e3b; }
+
+  /* TOPBAR */
+  .topbar { background: #ffffff; border-bottom: 1px solid #e0e8f0; padding: 14px 40px; display: flex; align-items: center; justify-content: space-between; }
+  .topbar-logo { display: flex; align-items: center; gap: 10px; }
+  .topbar-logo span { font-size: 15px; font-weight: 800; color: #1a2e3b; }
+  .topbar-logo span em { font-style: normal; color: #5fb670; }
+  .topbar-nav { display: flex; gap: 28px; }
+  .topbar-nav a { font-size: 13px; color: #6b7f95; text-decoration: none; font-weight: 500; }
+  .topbar-nav a.active { color: #2858a0; font-weight: 700; }
+  .topbar-user { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #2858a0; font-weight: 600; }
+
+  /* HEADER */
+  .mg-header { background: linear-gradient(135deg, #e8f0f8 0%, #e2f0e2 100%); padding: 32px 40px; display: grid; grid-template-columns: 1fr 440px; gap: 30px; align-items: center; }
+  .mg-title { font-size: 30px; font-weight: 800; line-height: 1; margin-bottom: 14px; background: linear-gradient(90deg, #2858a0, #5fb670); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .mg-profile { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 12px; }
+  .mg-profile .pi { display: flex; align-items: center; gap: 7px; font-size: 13px; color: #1a2e3b; font-weight: 600; }
+  .mg-profile .pi svg { color: #2858a0; }
+  .mg-avatar { width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(135deg, #006188, #95cfa0); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .mg-sub { font-size: 13px; color: #6b7f95; line-height: 1.5; max-width: 560px; margin-bottom: 18px; }
+  .mg-level { display: flex; align-items: center; gap: 14px; }
+  .mg-level-badge { width: 44px; height: 44px; border-radius: 50%; background: #d6e4f7; color: #2858a0; font-size: 17px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .mg-level-info { flex: 1; }
+  .mg-level-info .lv { font-size: 15px; font-weight: 800; color: #1a2e3b; }
+  .mg-level-info .lv-sub { font-size: 12px; color: #6b7f95; margin-bottom: 6px; }
+  .mg-bar { height: 9px; background: #d4ddea; border-radius: 20px; overflow: hidden; }
+  .mg-bar > div { height: 100%; width: 55%; background: linear-gradient(90deg, #2858a0, #5fb670); border-radius: 20px; }
+
+  .kpi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .kpi-card { background: #fff; border: 1px solid #e0e8f0; border-radius: 12px; padding: 16px; text-align: center; }
+  .kpi-card svg { color: #2858a0; margin-bottom: 8px; }
+  .kpi-val { font-size: 22px; font-weight: 800; color: #1a2e3b; line-height: 1; margin-bottom: 4px; }
+  .kpi-lbl { font-size: 11px; color: #6b7f95; font-weight: 500; }
+
+  /* CONTENT + TABS */
+  .content { padding: 26px 40px 48px; }
+  .mg-panel { margin-bottom: 42px; }
+  .section-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+  .section-row h2 { font-size: 17px; font-weight: 700; color: #1a2e3b; }
+  .filters { display: flex; gap: 8px; }
+  .filter-btn { font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600; color: #6b7f95; background: #fff; border: 1.5px solid #dde4ef; border-radius: 8px; padding: 7px 14px; cursor: pointer; transition: all 0.15s; }
+  .filter-btn:hover { border-color: #2858a0; color: #2858a0; }
+  .filter-btn.active { background: #2858a0; color: #fff; border-color: #2858a0; }
+
+  /* GAME CARDS */
+  .games-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: start; }
+  .game-card { background: #fff; border: 1px solid #e0e8f0; border-radius: 14px; overflow: hidden; }
+  .game-thumb { height: 130px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #cdd9e6, #b9c6d6); position: relative; }
+  .game-thumb svg { color: #6b7f95; opacity: 0.85; }
+  .game-thumb.locked { background: linear-gradient(135deg, #3a4654, #20272f); }
+  .game-thumb.locked svg { color: #fff; opacity: 0.9; }
+  .lock-tag { position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.92); color: #6b7f95; font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 20px; }
+  .game-body { padding: 16px; }
+  .game-title { font-size: 14px; font-weight: 700; color: #1a2e3b; margin-bottom: 8px; line-height: 1.35; }
+  .tag { font-size: 10px; font-weight: 700; padding: 3px 11px; border-radius: 20px; display: inline-block; }
+  .tag-green { background: #d4f0d9; color: #2a7a3a; }
+  .tag-blue { background: #d6e4f7; color: #2858a0; }
+  .tag-teal { background: #d0e8e8; color: #357a7a; }
+  .tag-orange { background: #fbe6d2; color: #b3680f; }
+  .tag-gray { background: #eef1f5; color: #94a4b6; }
+  .prog-row { display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: #6b7f95; font-weight: 600; margin: 14px 0 6px; }
+  .game-pts { display: flex; align-items: center; justify-content: space-between; margin: 12px 0; }
+  .game-pts .pts { display: flex; align-items: center; gap: 5px; font-size: 13px; font-weight: 700; color: #1a2e3b; }
+  .game-pts .pts svg { color: #c8a02e; }
+  .game-badges { display: flex; gap: 5px; }
+  .gb { width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .gb-bronze { background: #e8d3b0; } .gb-silver { background: #d8dee6; } .gb-gold { background: #f3dd92; }
+  .next-box { background: #f4f8fc; border: 1px solid #e7eef6; border-radius: 9px; padding: 10px 12px; margin: 10px 0; }
+  .next-box .nl { font-size: 11px; font-weight: 700; color: #2858a0; margin-bottom: 2px; }
+  .next-box .nt { font-size: 12px; color: #5a6b7d; line-height: 1.4; }
+  .cert-box { background: #e8f6ec; border: 1px solid #c4e6cd; border-radius: 9px; padding: 10px 12px; margin: 10px 0; display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; color: #2a7a3a; }
+  .last-seen { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #94a4b6; margin: 10px 0; }
+  .btn { width: 100%; border: none; border-radius: 9px; padding: 11px; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 7px; }
+  .btn-blue { background: #2858a0; color: #fff; }
+  .btn-purple { background: #7c5cbf; color: #fff; }
+  .btn-locked { background: #aebfdb; color: #fff; cursor: default; }
+
+  /* MISSIONS */
+  .mission-row { background: #fff; border: 1px solid #e0e8f0; border-radius: 14px; padding: 18px 20px; display: flex; align-items: center; gap: 16px; margin-bottom: 12px; }
+  .mission-main { flex: 1; }
+  .mission-head { display: flex; align-items: center; gap: 10px; margin-bottom: 5px; }
+  .mission-head h3 { font-size: 14px; font-weight: 700; color: #1a2e3b; }
+  .mission-desc { font-size: 12.5px; color: #6b7f95; margin-bottom: 9px; }
+  .mission-meta { display: flex; gap: 18px; }
+  .mission-meta span { display: flex; align-items: center; gap: 5px; font-size: 11.5px; color: #94a4b6; font-weight: 600; }
+  .mission-meta svg { color: #c8a02e; }
+  .mission-meta .dt svg { color: #94a4b6; }
+  .mi-clock { color: #c8a02e; }
+
+  /* ACHIEVEMENTS */
+  .ach-game { margin-bottom: 28px; }
+  .ach-game-head { display: flex; align-items: center; gap: 10px; margin-bottom: 13px; }
+  .ach-game-head h3 { font-size: 14px; font-weight: 800; color: #1a2e3b; }
+  .conq-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .conq-tile { background: #fff; border: 1px solid #e0e8f0; border-radius: 14px; padding: 20px 14px; text-align: center; }
+  .conq-tile.cert { border-color: #d6e4f7; }
+  .conq-tile.locked { background: #fafbfd; }
+  .conq-ic { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 11px; }
+  .ic-bronze { background: #efdcc2; color: #a9763e; }
+  .ic-prata { background: #e2e7ee; color: #79838f; }
+  .ic-ouro { background: #f6e6a8; color: #a8862a; }
+  .ic-cert { background: #d6e4f7; color: #2858a0; }
+  .conq-tile.locked .conq-ic { background: #eef1f5; color: #b3bdc9; }
+  .conq-tile h4 { font-size: 13px; font-weight: 800; color: #1a2e3b; margin-bottom: 2px; }
+  .conq-tile .cl { font-size: 10.5px; color: #94a4b6; font-weight: 600; margin-bottom: 11px; }
+  .conq-tile.locked h4 { color: #aab4c0; }
+
+  @media (max-width: 900px) {
+    .mg-header { grid-template-columns: 1fr; }
+    .kpi-grid { grid-template-columns: 1fr 1fr; }
+    .games-grid, .conq-grid { grid-template-columns: 1fr; }
+    .topbar-nav { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="topbar-logo">
+<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAyMTguNCA0NS42Ij4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLmNscy0xIHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudCk7CiAgICAgIH0KCiAgICAgIC5jbHMtMSwgLmNscy0yLCAuY2xzLTMsIC5jbHMtNCwgLmNscy01LCAuY2xzLTYsIC5jbHMtNywgLmNscy04LCAuY2xzLTksIC5jbHMtMTAsIC5jbHMtMTEsIC5jbHMtMTIsIC5jbHMtMTMsIC5jbHMtMTQgewogICAgICAgIHN0cm9rZS13aWR0aDogMHB4OwogICAgICB9CgogICAgICAuY2xzLTIgewogICAgICAgIGZpbGw6ICMwYzllZDk7CiAgICAgIH0KCiAgICAgIC5jbHMtMyB7CiAgICAgICAgZmlsbDogdXJsKCNsaW5lYXItZ3JhZGllbnQtMTEpOwogICAgICB9CgogICAgICAuY2xzLTQgewogICAgICAgIGZpbGw6IHVybCgjbGluZWFyLWdyYWRpZW50LTEwKTsKICAgICAgfQoKICAgICAgLmNscy01IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC00KTsKICAgICAgfQoKICAgICAgLmNscy02IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC0yKTsKICAgICAgfQoKICAgICAgLmNscy03IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC0zKTsKICAgICAgfQoKICAgICAgLmNscy04IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC04KTsKICAgICAgfQoKICAgICAgLmNscy05IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC05KTsKICAgICAgfQoKICAgICAgLmNscy0xMCB7CiAgICAgICAgZmlsbDogdXJsKCNsaW5lYXItZ3JhZGllbnQtNyk7CiAgICAgIH0KCiAgICAgIC5jbHMtMTEgewogICAgICAgIGZpbGw6IHVybCgjbGluZWFyLWdyYWRpZW50LTUpOwogICAgICB9CgogICAgICAuY2xzLTEyIHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC02KTsKICAgICAgfQoKICAgICAgLmNscy0xMyB7CiAgICAgICAgZmlsbDogIzAwMTUyMjsKICAgICAgfQoKICAgICAgLmNscy0xNCB7CiAgICAgICAgZmlsbDogI2ZmZjsKICAgICAgfQogICAgPC9zdHlsZT4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50IiB4MT0iNDguOCIgeTE9IjI1LjciIHgyPSIyMTEuOCIgeTI9IjI1LjciIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0OCkgc2NhbGUoMSAtMSkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMDA2MTg4Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzk1Y2ZhMCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTIiIHkxPSIyNS45IiB5Mj0iMjUuOSIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtMyIgeTE9IjIzLjEiIHkyPSIyMy4xIiB4bGluazpocmVmPSIjbGluZWFyLWdyYWRpZW50Ii8+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC00IiB5MT0iMjUuNyIgeTI9IjI1LjciIHhsaW5rOmhyZWY9IiNsaW5lYXItZ3JhZGllbnQiLz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTUiIHkxPSIyNS44IiB5Mj0iMjUuOCIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtNiIgeTE9IjIzIiB5Mj0iMjMiIHhsaW5rOmhyZWY9IiNsaW5lYXItZ3JhZGllbnQiLz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTciIHkxPSIyMy4xIiB5Mj0iMjMuMSIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtOCIgeTE9IjI1LjgiIHkyPSIyNS44IiB4bGluazpocmVmPSIjbGluZWFyLWdyYWRpZW50Ii8+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC05IiB5MT0iMjYiIHkyPSIyNiIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtMTAiIHkxPSIyNS4zIiB5Mj0iMjUuMyIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtMTEiIHkxPSIyMC4zIiB5Mj0iMjAuMyIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogIDwvZGVmcz4KICA8Zz4KICAgIDxjaXJjbGUgY2xhc3M9ImNscy0xMyIgY3g9IjI2LjEiIGN5PSIyMi43IiByPSIxOC40Ii8+CiAgICA8Zz4KICAgICAgPHJlY3QgY2xhc3M9ImNscy0xNCIgeD0iMTUuNSIgeT0iMTcuNSIgd2lkdGg9IjIwLjgiIGhlaWdodD0iMy4yIi8+CiAgICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTM1LDIzbC0uMi4yYy0xLjMsMS4xLTIuNCwyLjEtNC4xLDIuMXMtMi41LS40LTQuMS0xLjNjLTIuMS0xLjEtMy45LTEuNy01LjYtMS43LTIuOCwwLTQuNiwxLjYtNiwyLjlsLS4yLjIsMiwyLjQuMi0uMmMxLjMtMS4xLDIuNC0yLjEsNC4xLTIuMXMyLjUuNCw0LjEsMS4zYzIuMSwxLjEsMy45LDEuNyw1LjYsMS43aDBjMi43LDAsNC41LTEuNiw1LjktMi45bC4yLS4yLTItMi40aDBaIi8+CiAgICA8L2c+CiAgPC9nPgogIDxnPgogICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNjQuNSwxNi44aC01Ljd2MTQuOWgtNC4zdi0xNC45aC01Ljd2LTMuOGgxNS43djMuOFoiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtNiIgZD0iTTc5LjEsMzEuNmgtNC4ydi03LjZjMC0uOS0uMi0xLjUtLjYtMS45cy0uOS0uNi0xLjQtLjYtLjcsMC0xLjEuM2MtLjQuMi0uOC41LTEuMS44LS4zLjQtLjYuOC0uNywxLjJ2Ny44aC00LjJWMTIuNWg0LjJ2Ny45Yy41LS44LDEuMi0xLjUsMi0xLjlzMS44LS42LDIuOC0uNiwxLjcuMiwyLjIuNWMuNi4zLDEsLjcsMS4zLDEuMnMuNSwxLC42LDEuN2MwLC42LjIsMS4yLjIsMS44djguNy0uMloiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtNyIgZD0iTTg3LjksMzEuOWMtMS4yLDAtMi4yLS4yLTMuMS0uNnMtMS43LS45LTIuMy0xLjVjLS42LS42LTEuMS0xLjQtMS41LTIuMi0uMy0uOC0uNS0xLjctLjUtMi42LDAtMS4zLjMtMi41LjktMy42czEuNC0xLjksMi41LTIuNiwyLjQtMSw0LTEsMi45LjMsNCwxLDEuOSwxLjUsMi41LDIuNi45LDIuMi45LDMuNSwwLC41LDAsLjd2LjZoLTEwLjJjMCwuNi4yLDEuMS41LDEuNXMuNy43LDEuMS45Yy41LjIuOS4zLDEuNC4zczEuMi0uMSwxLjgtLjRjLjYtLjMuOS0uNywxLjEtMS4ybDMuNiwxYy0uNC43LS44LDEuMy0xLjUsMS45LS42LjUtMS40LDEtMi4yLDEuMy0uOS4zLTEuOC41LTIuOS41aC0uMVpNODQuOSwyMy41aDZjMC0uNi0uMi0xLS41LTEuNS0uMy0uNC0uNi0uNy0xLjEtMXMtLjktLjMtMS41LS4zLTEsLjEtMS40LjNjLS40LjItLjguNS0xLjEuOS0uMy40LS40LjktLjUsMS41aDBaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTUiIGQ9Ik0xMTgsMjYuOGMwLDEuMS0uMywyLS44LDIuNy0uNi43LTEuMywxLjItMi4zLDEuNnMtMiwuNS0zLjIuNWgtOS4xVjEzaDEwLjRjLjksMCwxLjYuMiwyLjMuNy42LjUsMS4xLDEuMSwxLjUsMS44LjMuNy41LDEuNS41LDIuM3MtLjIsMS43LS43LDIuNWMtLjQuOC0xLjEsMS40LTIsMS44LDEuMS4zLDEuOS45LDIuNSwxLjcuNi44LjksMS44LjksMy4xaDBaTTEwNi45LDE2Ljd2My45aDQuMmMuMywwLC42LDAsLjktLjIuMy0uMS41LS40LjctLjYuMi0uMy4yLS42LjItMS4xczAtLjgtLjItMS4xYzAtLjMtLjMtLjUtLjYtLjYtLjItLjEtLjUtLjItLjktLjJoLTQuNC4xWk0xMTMuNywyNmMwLS40LDAtLjctLjItMS4xLS4yLS4zLS40LS42LS42LS43cy0uNi0uMy0uOS0uM2gtNC45djQuMWg0LjhjLjQsMCwuNywwLDEtLjMuMy0uMi41LS40LjctLjcuMi0uMy4yLS42LjItMWgwWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xMSIgZD0iTTExOS43LDEyLjVoNC4ydjE0LjNjMCwuNiwwLDEsLjMsMS4yLjIuMi41LjQuOS40cy41LDAsLjgtLjFjLjMsMCwuNS0uMi43LS4zbC42LDMuMmMtLjUuMi0xLjEuNC0xLjguNi0uNy4yLTEuMy4yLTEuOS4yLTEuMiwwLTIuMS0uMy0yLjgtMS0uNi0uNi0xLTEuNi0xLTIuN3YtMTUuN2gwWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xMiIgZD0iTTEyNy45LDI2Ljh2LTguOGg0LjJ2Ny44YzAsLjguMiwxLjQuNSwxLjkuMy40LjguNywxLjQuN3MuOCwwLDEuMS0uMmMuNC0uMS43LS4zLDEtLjZzLjYtLjcuOS0xLjF2LTguNGg0LjJ2OWMwLC40LDAsLjcuMi45LjEuMi40LjMuNy4zdjMuNWMtLjQsMC0uNy4xLTEsLjJzLS41LDAtLjgsMGMtLjcsMC0xLjMtLjEtMS44LS40LS40LS4zLS43LS43LS44LTEuM3YtLjhjLS43LjktMS41LDEuNi0yLjQsMnMtMiwuNi0zLjIuNi0yLjUtLjQtMy4yLTEuMy0xLjEtMi4yLTEuMS0zLjh2LS4yWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xMCIgZD0iTTE1MC42LDMxLjljLTEuMiwwLTIuMi0uMi0zLjEtLjYtLjktLjQtMS43LS45LTIuMy0xLjVzLTEuMS0xLjQtMS41LTIuMmMtLjMtLjgtLjUtMS43LS41LTIuNiwwLTEuMy4zLTIuNS45LTMuNi42LTEuMSwxLjQtMS45LDIuNS0yLjZzMi40LTEsNC0xLDIuOS4zLDQsMWMxLjEuNiwxLjksMS41LDIuNSwyLjZzLjksMi4yLjksMy41LDAsLjUsMCwuN3YuNmgtMTAuMmMwLC42LjIsMS4xLjUsMS41cy43LjcsMS4xLjljLjUuMi45LjMsMS40LjNzMS4yLS4xLDEuOC0uNC45LS43LDEuMS0xLjJsMy42LDFjLS40LjctLjgsMS4zLTEuNSwxLjktLjYuNS0xLjQsMS0yLjIsMS4zLS45LjMtMS44LjUtMi45LjVoLS4xWk0xNDcuNSwyMy41aDZjMC0uNi0uMi0xLS41LTEuNS0uMy0uNC0uNi0uNy0xLjEtMS0uNC0uMi0uOS0uMy0xLjUtLjNzLTEsLjEtMS40LjNjLS40LjItLjguNS0xLjEuOXMtLjQuOS0uNSwxLjVoLjFaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTgiIGQ9Ik0xNjQuMiwyMi4xYzAtMS4xLjItMi4yLjYtMy4zLjQtMS4xLDEtMi4xLDEuOC0zczEuOC0xLjYsMy0yLjJjMS4yLS41LDIuNS0uOCwzLjktLjhzMy4zLjQsNC42LDEuMSwyLjMsMS43LDIuOSwyLjlsLTMuMywyLjNjLS4zLS43LS42LTEuMi0xLjEtMS42cy0xLS42LTEuNS0uOGMtLjYtLjEtMS4xLS4yLTEuNi0uMi0uOCwwLTEuNS4yLTIuMS41cy0xLjEuOC0xLjUsMS4zLS43LDEuMS0uOSwxLjhjLS4yLjctLjMsMS4zLS4zLDJzLjEsMS41LjQsMi4yYy4yLjcuNiwxLjMsMSwxLjhzLjkuOSwxLjYsMS4yYy42LjMsMS4zLjUsMiwuNXMxLjEsMCwxLjYtLjIsMS0uNCwxLjUtLjguOC0uOSwxLjEtMS41bDMuNSwyLjFjLS40LjktMSwxLjctMS44LDIuMy0uOC42LTEuOCwxLjEtMi44LDEuNXMtMi4xLjUtMy4yLjUtMi42LS4zLTMuNy0uOGMtMS4xLS42LTIuMS0xLjMtMi45LTIuMi0uOC0uOS0xLjUtMi0xLjktMy4xcy0uNy0yLjMtLjctMy41aC0uMloiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtOSIgZD0iTTE4Mi41LDE2LjN2LTMuOGg0LjJ2My44aC00LjJaTTE4Mi41LDMxLjZ2LTEzLjhoNC4ydjEzLjhzLTQuMiwwLTQuMiwwWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy00IiBkPSJNMTk4LDMwLjljLS40LjItLjguMy0xLjIuNS0uNS4yLS45LjMtMS40LjQtLjUsMC0xLC4xLTEuNS4xcy0xLjMtLjEtMS45LS4zLTEtLjYtMS40LTEuMi0uNS0xLjItLjUtMi4xdi03LjFoLTEuOHYtMy4yaDEuOHYtNC40aDQuMnY0LjRoMi44djMuMmgtMi44djUuNmMwLC41LjEuOC4zLDFzLjUuMy45LjMuNiwwLDEtLjJjLjMtLjEuNi0uMi45LS4zbC44LDMuM2gtLjJaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik0xOTkuMSwzMy43Yy40LDAsLjcuMiwxLC4yaC44Yy40LDAsLjYsMCwuOS0uMnMuNC0uNC42LS44Yy4yLS40LjMtLjguNS0xLjRsLTUuMi0xMy43aDQuM2wzLjIsOS40LDIuNy05LjRoMy45bC01LjMsMTUuOWMtLjIuNy0uNiwxLjQtMS4xLDJzLTEuMSwxLTEuOSwxLjRjLS43LjMtMS41LjUtMi40LjVoLTEuMWMtLjQsMC0uNy0uMi0xLjEtLjN2LTMuNmguMloiLz4KICA8L2c+Cjwvc3ZnPg==" alt="The Blue City" style="height:32px; width:auto;">
+  </div>
+  <div class="topbar-nav">
+    <a href="jornadas.html">Jornadas</a>
+    <a href="galeria-projetos.html">Galeria de Projetos</a>
+    <a href="galeria-eventos.html">Galeria de Eventos</a>
+    <a href="performance-jogadores.html">Performance dos Jogadores</a>
+  </div>
+  <div class="topbar-user">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2858a0" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    João Silva
+  </div>
+</nav>
+
+<!-- HEADER -->
+<div class="mg-header">
+  <div>
+    <h1 class="mg-title">Minha Galeria</h1>
+    <div class="mg-profile">
+      <span class="pi"><span class="mg-avatar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span> LordeVerde</span>
+      <span class="pi"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Palmas, TO</span>
+      <span class="pi"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg> Escola Técnica de Palmas</span>
+    </div>
+    <p class="mg-sub">Acompanhe sua jornada, evolução, pontos, semanas completadas e projetos de cada missão.</p>
+    <div class="mg-level">
+      <div class="mg-level-badge">12</div>
+      <div class="mg-level-info">
+        <div class="lv">Nível 12</div>
+        <div class="lv-sub">500 pontos para o próximo nível</div>
+        <div class="mg-bar"><div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      <div class="kpi-val">3247</div>
+      <div class="kpi-lbl">Pontos Totais</div>
+    </div>
+    <div class="kpi-card">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg>
+      <div class="kpi-val">6</div>
+      <div class="kpi-lbl">Badges NFT</div>
+    </div>
+    <div class="kpi-card">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+      <div class="kpi-val">15</div>
+      <div class="kpi-lbl">Missões Completas</div>
+    </div>
+    <div class="kpi-card">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+      <div class="kpi-val">1</div>
+      <div class="kpi-lbl">Certificados</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- PANEL: MEUS JOGOS -->
+  <div class="mg-panel" id="panel-jogos">
+    <div class="section-row">
+      <h2>Meus Jogos</h2>
+      <div class="filters">
+        <button class="filter-btn active" onclick="filtrarJogos('todos', this)">Todos</button>
+        <button class="filter-btn" onclick="filtrarJogos('ativo', this)">Ativos</button>
+        <button class="filter-btn" onclick="filtrarJogos('concluido', this)">Concluídos</button>
+      </div>
+    </div>
+
+    <div class="games-grid">
+      <!-- Card 1 -->
+      <div class="game-card" data-status="ativo">
+        <div class="game-thumb"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 20h20"/><path d="M4 20V8l5-3v15"/><path d="M9 20V5l5 3v12"/><path d="M14 20V9l5 2v9"/><path d="M7 4c0-1 1-2 1-2s1 1 1 2"/><path d="M12 7c0-1 1-2 1-2s1 1 1 2"/></svg></div>
+        <div class="game-body">
+          <div class="game-title">Termômetro Zero</div>
+          <span class="tag tag-green">Clima</span>
+          <div class="prog-row"><span>Progresso</span><span>1/3</span></div>
+          <div class="mg-bar"><div style="width:33%;"></div></div>
+          <div class="game-pts">
+            <span class="pts"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 1.150 pts</span>
+            <span class="game-badges"><span class="gb gb-bronze"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9a7b3a" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg></span></span>
+          </div>
+          <div class="next-box"><div class="nl">Projeto Final</div><div class="nt">Desenvolver um plano de redução de gases</div></div>
+          <div class="last-seen"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Última vez: 10/11/2024</div>
+          <button class="btn btn-blue"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg> Continuar</button>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="game-card" data-status="ativo">
+        <div class="game-thumb"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 20h20"/><path d="M4 20V8l5-3v15"/><path d="M9 20V5l5 3v12"/><path d="M14 20V9l5 2v9"/><path d="M7 4c0-1 1-2 1-2s1 1 1 2"/><path d="M12 7c0-1 1-2 1-2s1 1 1 2"/></svg></div>
+        <div class="game-body">
+          <div class="game-title">Ciclo da Água</div>
+          <span class="tag tag-blue">Água</span>
+          <div class="prog-row"><span>Progresso</span><span>2/3</span></div>
+          <div class="mg-bar"><div style="width:66%;"></div></div>
+          <div class="game-pts">
+            <span class="pts"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 3.310 pts</span>
+            <span class="game-badges"><span class="gb gb-silver"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#7d8794" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg></span><span class="gb gb-bronze"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9a7b3a" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg></span></span>
+          </div>
+          <div class="next-box"><div class="nl">Projeto Final</div><div class="nt">Diagnóstico do consumo de água da escola</div></div>
+          <div class="last-seen"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Última vez: 10/11/2024</div>
+          <button class="btn btn-blue"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg> Continuar</button>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="game-card" data-status="concluido">
+        <div class="game-thumb"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 20h20"/><path d="M4 20V8l5-3v15"/><path d="M9 20V5l5 3v12"/><path d="M14 20V9l5 2v9"/><path d="M7 4c0-1 1-2 1-2s1 1 1 2"/><path d="M12 7c0-1 1-2 1-2s1 1 1 2"/></svg></div>
+        <div class="game-body">
+          <div class="game-title">Mata Atlântica</div>
+          <span class="tag tag-teal">Biodiversidade</span>
+          <div class="prog-row"><span>Progresso</span><span>3/3</span></div>
+          <div class="mg-bar"><div style="width:100%;"></div></div>
+          <div class="game-pts">
+            <span class="pts"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 6.180 pts</span>
+            <span class="game-badges"><span class="gb gb-gold"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#a8862a" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg></span><span class="gb gb-silver"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#7d8794" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg></span><span class="gb gb-bronze"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9a7b3a" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg></span></span>
+          </div>
+          <div class="cert-box"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg> Certificado Final Conquistado!</div>
+          <div class="last-seen"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Última vez: 12/11/2024</div>
+          <div class="next-box"><div class="nl">Projeto Final</div><div class="nt">Plantio de mudas nativas na escola</div></div>
+          <button class="btn btn-purple" onclick="location.href='enviar-projeto.html'"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg> Enviar vídeo ou projeto</button>
+        </div>
+      </div>
+
+      <!-- Card 4 (bloqueado) -->
+      <div class="game-card" data-status="bloqueado">
+        <div class="game-thumb locked">
+          <span class="lock-tag">Bloqueado</span>
+          <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <div class="game-body">
+          <div class="game-title">Energia Renovável</div>
+          <span class="tag tag-green">Energia</span>
+          <p class="mg-sub" style="margin:14px 0; max-width:none;">Complete 'Termômetro Zero' para desbloquear</p>
+          <button class="btn btn-locked"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Bloqueado</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANEL: MEUS PROJETOS -->
+  <div class="mg-panel" id="panel-projetos">
+    <div class="section-row"><h2>Meus Projetos</h2></div>
+
+    <div class="mission-row">
+      <div class="mission-main">
+        <div class="mission-head"><h3>Mata Atlântica</h3><span class="tag tag-orange">A enviar</span></div>
+        <p class="mission-desc">Você concluiu os 3 níveis da jornada. Agora envie seu projeto do mundo real.</p>
+      </div>
+      <button class="btn btn-purple" style="width:auto; padding:10px 18px;" onclick="location.href='enviar-projeto.html'"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg> Enviar vídeo ou projeto</button>
+    </div>
+
+    <div class="mission-row">
+      <div class="mission-main">
+        <div class="mission-head"><h3>Reúso de água da chuva na escola</h3><span class="tag tag-blue">Em análise</span></div>
+        <p class="mission-desc">Projeto enviado, aguardando análise do produtor cultural.</p>
+        <div class="mission-meta">
+          <span class="dt"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Enviado em 28/10/2024</span>
+        </div>
+      </div>
+      <svg class="mi-clock" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    </div>
+
+    <div class="mission-row">
+      <div class="mission-main">
+        <div class="mission-head"><h3>Mutirão de plantio no bairro</h3><span class="tag tag-green">Publicado</span></div>
+        <p class="mission-desc">Projeto aprovado e publicado na Galeria de Projetos.</p>
+        <div class="mission-meta">
+          <span class="dt"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Publicado em 15/10/2024</span>
+        </div>
+      </div>
+      <button class="btn" style="width:auto; padding:10px 18px; background:#fff; color:#2858a0; border:1.5px solid #2858a0;" onclick="location.href='galeria-projetos.html'">Ver na galeria</button>
+    </div>
+  </div>
+
+  <!-- PANEL: MINHAS CONQUISTAS -->
+  <div class="mg-panel" id="panel-conquistas">
+    <div class="section-row"><h2>Minhas Conquistas</h2></div>
+
+    <!-- Termômetro Zero -->
+    <div class="ach-game">
+      <div class="ach-game-head"><h3>Termômetro Zero</h3><span class="tag tag-green">Clima</span></div>
+      <div class="conq-grid">
+        <div class="conq-tile">
+          <div class="conq-ic ic-bronze"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg></div>
+          <h4>Bronze</h4><div class="cl">Nível 1 · NFT</div><span class="tag tag-green">Conquistada</span>
+        </div>
+        <div class="conq-tile locked">
+          <div class="conq-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg></div>
+          <h4>Prata</h4><div class="cl">Nível 2 · NFT</div><span class="tag tag-gray">Bloqueada</span>
+        </div>
+        <div class="conq-tile locked">
+          <div class="conq-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg></div>
+          <h4>Ouro</h4><div class="cl">Nível 3 · NFT</div><span class="tag tag-gray">Bloqueada</span>
+        </div>
+        <div class="conq-tile cert locked">
+          <div class="conq-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="14" rx="2"/><circle cx="12" cy="9" r="2.5"/><path d="M9.5 13 8 21l4-2 4 2-1.5-8"/></svg></div>
+          <h4>Certificado</h4><div class="cl">Conclua os 3 níveis</div><span class="tag tag-gray">Bloqueado</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ciclo da Água -->
+    <div class="ach-game">
+      <div class="ach-game-head"><h3>Ciclo da Água</h3><span class="tag tag-blue">Água</span></div>
+      <div class="conq-grid">
+        <div class="conq-tile">
+          <div class="conq-ic ic-bronze"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg></div>
+          <h4>Bronze</h4><div class="cl">Nível 1 · NFT</div><span class="tag tag-green">Conquistada</span>
+        </div>
+        <div class="conq-tile">
+          <div class="conq-ic ic-prata"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg></div>
+          <h4>Prata</h4><div class="cl">Nível 2 · NFT</div><span class="tag tag-green">Conquistada</span>
+        </div>
+        <div class="conq-tile locked">
+          <div class="conq-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg></div>
+          <h4>Ouro</h4><div class="cl">Nível 3 · NFT</div><span class="tag tag-gray">Bloqueada</span>
+        </div>
+        <div class="conq-tile cert locked">
+          <div class="conq-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="14" rx="2"/><circle cx="12" cy="9" r="2.5"/><path d="M9.5 13 8 21l4-2 4 2-1.5-8"/></svg></div>
+          <h4>Certificado</h4><div class="cl">Conclua os 3 níveis</div><span class="tag tag-gray">Bloqueado</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mata Atlântica -->
+    <div class="ach-game">
+      <div class="ach-game-head"><h3>Mata Atlântica</h3><span class="tag tag-teal">Biodiversidade</span></div>
+      <div class="conq-grid">
+        <div class="conq-tile">
+          <div class="conq-ic ic-bronze"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg></div>
+          <h4>Bronze</h4><div class="cl">Nível 1 · NFT</div><span class="tag tag-green">Conquistada</span>
+        </div>
+        <div class="conq-tile">
+          <div class="conq-ic ic-prata"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg></div>
+          <h4>Prata</h4><div class="cl">Nível 2 · NFT</div><span class="tag tag-green">Conquistada</span>
+        </div>
+        <div class="conq-tile">
+          <div class="conq-ic ic-ouro"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg></div>
+          <h4>Ouro</h4><div class="cl">Nível 3 · NFT</div><span class="tag tag-green">Conquistada</span>
+        </div>
+        <div class="conq-tile cert">
+          <div class="conq-ic ic-cert"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="14" rx="2"/><circle cx="12" cy="9" r="2.5"/><path d="M9.5 13 8 21l4-2 4 2-1.5-8"/></svg></div>
+          <h4>Certificado</h4><div class="cl">Jornada completa · NFT</div><span class="tag tag-green">Conquistado</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function filtrarJogos(f, btn) {
+    document.querySelectorAll('#panel-jogos .game-card').forEach(c => {
+      const s = c.getAttribute('data-status');
+      c.style.display = (f === 'todos' || s === f) ? '' : 'none';
+    });
+    document.querySelectorAll('#panel-jogos .filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
