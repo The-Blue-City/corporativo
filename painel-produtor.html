@@ -237,6 +237,51 @@
   .tip-end::after, .tip-end::before,
   .tip-below::after, .tip-below::before { display: none !important; }
 
+
+  /* Cards estilo galeria – Projetos Enviados */
+  .proj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; }
+  .proj-card { background: #fff; border-radius: 12px; border: 1px solid #e0e8f0; overflow: hidden; transition: box-shadow 0.2s, transform 0.2s; }
+  .proj-card:hover { box-shadow: 0 6px 20px rgba(40,88,160,0.1); transform: translateY(-2px); }
+  .proj-thumb { height: 120px; display: flex; align-items: center; justify-content: center; }
+  .pt-teal  { background: #d0e8e8; }
+  .pt-blue  { background: #d6e4f7; }
+  .pt-green { background: #d4f0d9; }
+  .proj-body { padding: 14px; }
+  .proj-title { font-size: 13px; font-weight: 700; color: #1a2e3b; margin-bottom: 3px; line-height: 1.4; }
+  .proj-author { font-size: 11px; color: #6b7f95; margin-bottom: 10px; }
+  .proj-footer { border-top: 1px solid #f0f4f8; padding-top: 10px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
+  .proj-meta { display: flex; align-items: center; gap: 10px; font-size: 11px; color: #94a4b6; }
+  .proj-actions { display: flex; gap: 5px; }
+  .proj-btn { font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 6px; border: none; cursor: pointer; font-family: 'Montserrat', sans-serif; }
+  .pb-approve { background: #e8f6ec; color: #2a9a4a; }
+  .pb-archive { background: #eef0f3; color: #94a4b6; }
+  .pb-art { background: #f0ecfb; color: #7c5cbf; }
+  @media (max-width: 900px) { .proj-grid { grid-template-columns: 1fr 1fr; } }
+
+
+  .btn-filter {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px; font-weight: 600;
+    padding: 5px 14px; border-radius: 20px;
+    border: 1.5px solid #dde4ef;
+    background: white; color: #6b7f95;
+    cursor: pointer; transition: all 0.15s;
+  }
+  .btn-filter:hover { border-color: #2858a0; color: #2858a0; }
+  .btn-filter.active { background: #2858a0; color: white; border-color: #2858a0; }
+
+
+  /* Paginação */
+  .pagination { display:flex; align-items:center; justify-content:center; gap:6px; margin-top:24px; }
+  .pag-btn { font-family:'Montserrat',sans-serif; font-size:12px; font-weight:600; width:34px; height:34px; border-radius:8px; border:1.5px solid #dde4ef; background:white; color:#6b7f95; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.15s; }
+  .pag-btn:hover { border-color:#2858a0; color:#2858a0; }
+  .pag-btn.active { background:#2858a0; color:white; border-color:#2858a0; }
+  .pag-btn.arrow { width:auto; padding:0 12px; }
+  .pag-btn:disabled { opacity:0.35; cursor:default; }
+
+
+  .proj-game { font-size: 10px; font-weight: 700; color: #2858a0; background: #eef2fb; border-radius: 20px; padding: 2px 9px; display: inline-block; margin-bottom: 5px; }
+
 </style>
 </head>
 <body>
@@ -512,66 +557,174 @@
         <span>Projetos Enviados</span>
         <span style="flex:1; height:1px; background:rgba(70,129,130,0.2);"></span>
         <div style="display:flex; gap:8px;">
-          <button class="btn-ghost" style="font-size:11px; padding:5px 12px;">Todas (42)</button>
-          <button class="btn-ghost" style="font-size:11px; padding:5px 12px; background:#fff4e0; border-color:#f0c040; color:#c47a00;">Pendentes (28)</button>
+          <button class="btn-filter active" id="btn-todas" onclick="filtrarProjetos('todas')">Todas (9)</button>
+          <button class="btn-filter" id="btn-pendentes" onclick="filtrarProjetos('pendente')">Pendentes (6)</button>
+          <button class="btn-filter" id="btn-aprovados" onclick="filtrarProjetos('aprovado')">Aprovados (2)</button>
+          <button class="btn-filter" id="btn-arte" onclick="filtrarProjetos('arte')">Arte (1)</button>
+          <button class="btn-filter" id="btn-arquivados" onclick="filtrarProjetos('arquivado')">Arquivados (0)</button>
         </div>
       </div>
 
-      <div class="missao-grid">
-        <div class="missao-card">
-          <div class="missao-cover">
-            <div class="missao-tag">Termômetro Zero</div>
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      <div class="proj-grid" id="proj-grid">
+
+        <a href="galeria-projeto-detalhe.html" style="text-decoration:none; color:inherit; display:block;"><div class="proj-card" data-status="pendente">
+          <div class="proj-thumb pt-teal">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#468182" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
           </div>
-          <div class="missao-body">
-            <div class="missao-aluno">Mariana Costa</div>
-            <div class="missao-escola">CEULP Unitins · Turma 3A</div>
-            <div class="missao-foot">
-              <span style="font-size:10px; color:#94a4b6;">enviado há 2 dias</span>
-              <div class="missao-actions">
-                <button class="missao-btn mb-approve">Aprovar</button>
-                <button class="missao-btn mb-art">Arte</button>
-                <button class="missao-btn mb-archive">Arquivar</button>
-              </div>
+          <div class="proj-body">
+            <span class="proj-game">Termômetro Zero</span>
+            <p class="proj-title">Plantio de mudas nativas</p>
+            <p class="proj-author">Mariana Costa · CEULP Unitins</p>
+            <div class="proj-footer">
+              <div class="proj-meta"><span style="font-size:10px; color:#94a4b6;">há 2 dias</span></div>
+              <div class="proj-actions"><button class="proj-btn pb-approve" data-tip="Aprovar para publicação na Galeria de Projetos" onclick="aprovarCard(this)">Aprovar</button>
+                <button class="proj-btn pb-art" data-tip="Marcar para interpretação artística – será considerado para uma exposição" onclick="arteCard(this)">Arte</button>
+                <button class="proj-btn pb-archive" data-tip="Arquivar – projeto não será publicado na Galeria" onclick="arquivarCard(this)">Arquivar</button></div>
             </div>
           </div>
-        </div>
-        <div class="missao-card">
-          <div class="missao-cover" style="background:linear-gradient(135deg,#2a3a1a 0%,#3a7a2a 100%);">
-            <div class="missao-tag">Termômetro Zero</div>
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div></a>
+
+        <a href="galeria-projeto-detalhe.html" style="text-decoration:none; color:inherit; display:block;"><div class="proj-card" data-status="pendente">
+          <div class="proj-thumb pt-blue">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#2858a0" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
           </div>
-          <div class="missao-body">
-            <div class="missao-aluno">Pedro Alves</div>
-            <div class="missao-escola">ETAP Palmas · Turma 2B</div>
-            <div class="missao-foot">
-              <span style="font-size:10px; color:#94a4b6;">enviado há 3 dias</span>
-              <div class="missao-actions">
-                <button class="missao-btn mb-approve">Aprovar</button>
-                <button class="missao-btn mb-art">Arte</button>
-                <button class="missao-btn mb-archive">Arquivar</button>
-              </div>
+          <div class="proj-body">
+            <span class="proj-game">Termômetro Zero</span>
+            <p class="proj-title">Plano de redução de emissões</p>
+            <p class="proj-author">Pedro Alves · ETAP Palmas</p>
+            <div class="proj-footer">
+              <div class="proj-meta"><span style="font-size:10px; color:#94a4b6;">há 3 dias</span></div>
+              <div class="proj-actions"><button class="proj-btn pb-approve" data-tip="Aprovar para publicação na Galeria de Projetos" onclick="aprovarCard(this)">Aprovar</button>
+                <button class="proj-btn pb-art" data-tip="Marcar para interpretação artística – será considerado para uma exposição" onclick="arteCard(this)">Arte</button>
+                <button class="proj-btn pb-archive" data-tip="Arquivar – projeto não será publicado na Galeria" onclick="arquivarCard(this)">Arquivar</button></div>
             </div>
           </div>
-        </div>
-        <div class="missao-card">
-          <div class="missao-cover" style="background:linear-gradient(135deg,#1a2a3a 0%,#1a5a8a 100%);">
-            <div class="missao-tag">Termômetro Zero</div>
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div></a>
+
+        <a href="galeria-projeto-detalhe.html" style="text-decoration:none; color:inherit; display:block;"><div class="proj-card" data-status="pendente">
+          <div class="proj-thumb pt-green">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#5fb670" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
           </div>
-          <div class="missao-body">
-            <div class="missao-aluno">Luisa Ferreira</div>
-            <div class="missao-escola">IFTO Palmas · Turma 1C</div>
-            <div class="missao-foot">
-              <span style="font-size:10px; color:#94a4b6;">enviado há 5 dias</span>
-              <div class="missao-actions">
-                <button class="missao-btn mb-approve">Aprovar</button>
-                <button class="missao-btn mb-art">Arte</button>
-                <button class="missao-btn mb-archive">Arquivar</button>
-              </div>
+          <div class="proj-body">
+            <span class="proj-game">Termômetro Zero</span>
+            <p class="proj-title">Horta comunitária escolar</p>
+            <p class="proj-author">Luisa Ferreira · IFTO Palmas</p>
+            <div class="proj-footer">
+              <div class="proj-meta"><span style="font-size:10px; color:#94a4b6;">há 5 dias</span></div>
+              <div class="proj-actions"><button class="proj-btn pb-approve" data-tip="Aprovar para publicação na Galeria de Projetos" onclick="aprovarCard(this)">Aprovar</button>
+                <button class="proj-btn pb-art" data-tip="Marcar para interpretação artística – será considerado para uma exposição" onclick="arteCard(this)">Arte</button>
+                <button class="proj-btn pb-archive" data-tip="Arquivar – projeto não será publicado na Galeria" onclick="arquivarCard(this)">Arquivar</button></div>
             </div>
           </div>
-        </div>
+        </div></a>
+
+        <a href="galeria-projeto-detalhe.html" style="text-decoration:none; color:inherit; display:block;"><div class="proj-card" data-status="pendente">
+          <div class="proj-thumb pt-blue">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#2858a0" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div class="proj-body">
+            <span class="proj-game">Termômetro Zero</span>
+            <p class="proj-title">Compostagem na escola</p>
+            <p class="proj-author">Rafael Lima · CEULP Unitins</p>
+            <div class="proj-footer">
+              <div class="proj-meta"><span style="font-size:10px; color:#94a4b6;">há 6 dias</span></div>
+              <div class="proj-actions"><button class="proj-btn pb-approve" data-tip="Aprovar para publicação na Galeria de Projetos" onclick="aprovarCard(this)">Aprovar</button>
+                <button class="proj-btn pb-art" data-tip="Marcar para interpretação artística – será considerado para uma exposição" onclick="arteCard(this)">Arte</button>
+                <button class="proj-btn pb-archive" data-tip="Arquivar – projeto não será publicado na Galeria" onclick="arquivarCard(this)">Arquivar</button></div>
+            </div>
+          </div>
+        </div></a>
+
+        <a href="galeria-projeto-detalhe.html" style="text-decoration:none; color:inherit; display:block;"><div class="proj-card" data-status="pendente">
+          <div class="proj-thumb pt-teal">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#468182" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+          </div>
+          <div class="proj-body">
+            <span class="proj-game">Termômetro Zero</span>
+            <p class="proj-title">Auditoria energética</p>
+            <p class="proj-author">Carla Souza · ETAP Palmas</p>
+            <div class="proj-footer">
+              <div class="proj-meta"><span style="font-size:10px; color:#94a4b6;">há 1 semana</span></div>
+              <div class="proj-actions"><button class="proj-btn pb-approve" data-tip="Aprovar para publicação na Galeria de Projetos" onclick="aprovarCard(this)">Aprovar</button>
+                <button class="proj-btn pb-art" data-tip="Marcar para interpretação artística – será considerado para uma exposição" onclick="arteCard(this)">Arte</button>
+                <button class="proj-btn pb-archive" data-tip="Arquivar – projeto não será publicado na Galeria" onclick="arquivarCard(this)">Arquivar</button></div>
+            </div>
+          </div>
+        </div></a>
+
+        <a href="galeria-projeto-detalhe.html" style="text-decoration:none; color:inherit; display:block;"><div class="proj-card" data-status="pendente">
+          <div class="proj-thumb pt-green">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#5fb670" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <div class="proj-body">
+            <span class="proj-game">Termômetro Zero</span>
+            <p class="proj-title">Trilha de reflorestamento</p>
+            <p class="proj-author">Bruno Reis · IFTO Palmas</p>
+            <div class="proj-footer">
+              <div class="proj-meta"><span style="font-size:10px; color:#94a4b6;">há 1 semana</span></div>
+              <div class="proj-actions"><button class="proj-btn pb-approve" data-tip="Aprovar para publicação na Galeria de Projetos" onclick="aprovarCard(this)">Aprovar</button>
+                <button class="proj-btn pb-art" data-tip="Marcar para interpretação artística – será considerado para uma exposição" onclick="arteCard(this)">Arte</button>
+                <button class="proj-btn pb-archive" data-tip="Arquivar – projeto não será publicado na Galeria" onclick="arquivarCard(this)">Arquivar</button></div>
+            </div>
+          </div>
+        </div></a>
+
+        <a href="galeria-projeto-detalhe.html" style="text-decoration:none; color:inherit; display:block;"><div class="proj-card" data-status="aprovado">
+          <div class="proj-thumb pt-teal">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#468182" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div class="proj-body">
+            <span class="proj-game">Termômetro Zero</span>
+            <p class="proj-title">Mapeamento de emissões locais</p>
+            <p class="proj-author">Ana Lima · CEULP Unitins</p>
+            <div class="proj-footer">
+              <div class="proj-meta"><span style="font-size:10px; color:#94a4b6;">há 2 semanas</span></div>
+              <div class="proj-actions"><span style="font-size:10px; font-weight:700; color:#2a9a4a;">✓ Aprovado</span></div>
+            </div>
+          </div>
+        </div></a>
+
+        <a href="galeria-projeto-detalhe.html" style="text-decoration:none; color:inherit; display:block;"><div class="proj-card" data-status="aprovado">
+          <div class="proj-thumb pt-blue">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#2858a0" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+          </div>
+          <div class="proj-body">
+            <span class="proj-game">Termômetro Zero</span>
+            <p class="proj-title">Vídeo sobre energia solar</p>
+            <p class="proj-author">João Melo · ETAP Palmas</p>
+            <div class="proj-footer">
+              <div class="proj-meta"><span style="font-size:10px; color:#94a4b6;">há 2 semanas</span></div>
+              <div class="proj-actions"><span style="font-size:10px; font-weight:700; color:#2a9a4a;">✓ Aprovado</span></div>
+            </div>
+          </div>
+        </div></a>
+
+        <a href="galeria-projeto-detalhe.html" style="text-decoration:none; color:inherit; display:block;"><div class="proj-card" data-status="arte">
+          <div class="proj-thumb pt-green">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#5fb670" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <div class="proj-body">
+            <span class="proj-game">Termômetro Zero</span>
+            <p class="proj-title">Relatório de biodiversidade</p>
+            <p class="proj-author">Bia Santos · IFTO Palmas</p>
+            <div class="proj-footer">
+              <div class="proj-meta"><span style="font-size:10px; color:#94a4b6;">há 3 semanas</span></div>
+              <div class="proj-actions"><span style="font-size:10px; font-weight:700; color:#7c5cbf;">✦ Arte</span></div>
+            </div>
+          </div>
+        </div></a>
+
+      </div>
+
+      <!-- PAGINAÇÃO -->
+      <div class="pagination" id="paginacao">
+        <button class="pag-btn arrow" id="pag-prev" onclick="mudarPagina(-1)" disabled>← Anterior</button>
+        <button class="pag-btn active" onclick="irPagina(1)">1</button>
+        <button class="pag-btn" onclick="irPagina(2)">2</button>
+        <button class="pag-btn" onclick="irPagina(3)">3</button>
+        <span style="font-size:12px; color:#94a4b6;">...</span>
+        <button class="pag-btn" onclick="irPagina(12)">12</button>
+        <button class="pag-btn arrow" id="pag-next" onclick="mudarPagina(1)">Próxima →</button>
       </div>
 
       <!-- REGISTRO DE EVENTOS -->
@@ -973,6 +1126,58 @@
   }
 
   initTooltips();
+</script>
+
+<script>
+
+  let paginaAtual = 1;
+  const totalPaginas = 12;
+
+  function irPagina(n) {
+    paginaAtual = n;
+    document.querySelectorAll('.pagination .pag-btn:not(.arrow)').forEach((btn, i) => {
+      btn.classList.toggle('active', parseInt(btn.textContent) === n);
+    });
+    document.getElementById('pag-prev').disabled = n === 1;
+    document.getElementById('pag-next').disabled = n === totalPaginas;
+    document.getElementById('proj-grid').scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  function mudarPagina(dir) {
+    irPagina(Math.max(1, Math.min(totalPaginas, paginaAtual + dir)));
+  }
+
+  function filtrarProjetos(filtro) {
+    const cards = document.querySelectorAll('#proj-grid .proj-card');
+    cards.forEach(c => {
+      const status = c.getAttribute('data-status');
+      c.style.display = (filtro === 'todas' || status === filtro) ? '' : 'none';
+    });
+    document.getElementById('btn-todas').classList.toggle('active', filtro === 'todas');
+    document.getElementById('btn-pendentes').classList.toggle('active', filtro === 'pendente');
+    document.getElementById('btn-aprovados').classList.toggle('active', filtro === 'aprovado');
+    document.getElementById('btn-arte').classList.toggle('active', filtro === 'arte');
+    document.getElementById('btn-arquivados').classList.toggle('active', filtro === 'arquivado');
+  }
+
+
+  function aprovarCard(btn) {
+    const card = btn.closest('.proj-card');
+    card.setAttribute('data-status', 'aprovado');
+    btn.closest('.proj-actions').innerHTML = '<span style="font-size:10px; font-weight:700; color:#2a9a4a;">✓ Aprovado</span>';
+  }
+
+  function arteCard(btn) {
+    const card = btn.closest('.proj-card');
+    card.setAttribute('data-status', 'arte');
+    btn.closest('.proj-actions').innerHTML = '<span style="font-size:10px; font-weight:700; color:#7c5cbf;">✦ Arte</span>';
+  }
+
+  function arquivarCard(btn) {
+    const card = btn.closest('.proj-card');
+    card.setAttribute('data-status', 'arquivado');
+    btn.closest('.proj-actions').innerHTML = '<span style="font-size:10px; font-weight:700; color:#94a4b6;">– Arquivado</span>';
+  }
 </script>
 </body>
 </html>

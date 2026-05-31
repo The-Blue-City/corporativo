@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Termômetro Zero — Galeria de Projetos</title>
+<title>Termômetro Zero – Galeria de Projetos</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -38,7 +38,7 @@
   .breadcrumb-bar span { color: #c0c8d4; font-size: 12px; }
   .breadcrumb-bar strong { font-size: 12px; color: #1a2e3b; }
 
-  /* HERO — light gradient like the platform */
+  /* HERO – light gradient like the platform */
   .hero {
     background: linear-gradient(135deg, #e8f0f8 0%, #e2f0e2 100%);
     padding: 36px 40px 28px;
@@ -137,6 +137,18 @@
     text-align: center; margin-top: 28px;
     font-style: italic;
   }
+
+  .card-game { font-size: 10px; font-weight: 700; color: #2858a0; background: #eef2fb; border-radius: 20px; padding: 2px 9px; display: inline-block; margin-bottom: 5px; }
+
+
+  .periodo-quick-gal {
+    font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600;
+    padding: 5px 12px; border-radius: 20px; border: 1.5px solid #dde4ef;
+    background: white; color: #6b7f95; cursor: pointer; transition: all 0.15s;
+  }
+  .periodo-quick-gal:hover { border-color: #2858a0; color: #2858a0; }
+  .periodo-quick-gal.active { background: #2858a0; color: white; border-color: #2858a0; }
+
 </style>
 </head>
 <body>
@@ -159,53 +171,85 @@
 </nav>
 
 <!-- BREADCRUMB -->
-<div class="breadcrumb-bar">
-  <a href="#">Galeria de Projetos</a>
-  <span>/</span>
-  <strong>Termômetro Zero</strong>
-</div>
+
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-tags">
-    <span class="tag tag-green">Clima</span>
-    <span class="tag tag-active">Ativo</span>
-    <div class="hero-loc">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#6b7f95" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      Palmas, TO
-    </div>
-  </div>
-  <h1>Termômetro <em>Zero</em></h1>
-  <p class="hero-sub">Redução de Gases de Efeito Estufa &nbsp;·&nbsp; Sotreq &nbsp;·&nbsp; 2025</p>
+  <h1>Galeria de <em>Projetos</em></h1>
+  <p class="hero-sub">Projetos reais enviados por participantes das jornadas The Blue City</p>
   <div class="stats-row">
-    <div class="stat-box"><div class="val val-blue">923</div><div class="lbl">Participantes</div></div>
-    <div class="stat-box"><div class="val val-green">247</div><div class="lbl">Projetos enviados</div></div>
-    <div class="stat-box"><div class="val val-teal">89%</div><div class="lbl">Taxa de conclusão</div></div>
-    <div class="stat-box"><div class="val val-purple">1.247</div><div class="lbl">NFTs emitidos</div></div>
+    <div class="stat-box"><div class="val val-blue">3.847</div><div class="lbl">Participantes</div></div>
+    <div class="stat-box"><div class="val val-green">1.204</div><div class="lbl">Projetos publicados</div></div>
+    <div class="stat-box"><div class="val val-teal">12</div><div class="lbl">Cidades</div></div>
   </div>
 </div>
 
 <!-- CONTENT -->
 <div class="content">
-  <div class="content-header">
-    <div>
-      <h2>Projetos da comunidade</h2>
-      <p>247 entregas recebidas</p>
-    </div>
-    <select>
-      <option>Mais recentes</option>
-      <option>Mais curtidos</option>
-      <option>Mais visualizados</option>
+  <!-- FILTERS -->
+  <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding: 18px 0 20px; border-bottom: 1px solid #e0e8f0; margin-bottom:24px;">
+    <label style="font-size:11px; font-weight:700; color:#6b7f95; letter-spacing:0.5px;">Filtrar por</label>
+    <select style="font-family:'Montserrat',sans-serif; font-size:12px; padding:7px 12px; border-radius:8px; border:1.5px solid #dde4ef; background:#fff; color:#1a2e3b; cursor:pointer;">
+      <option>Todos os temas</option><option>Clima · GEE</option><option>Clima · Água</option><option>Energia</option><option>Biodiversidade</option>
     </select>
+    <select style="font-family:'Montserrat',sans-serif; font-size:12px; padding:7px 12px; border-radius:8px; border:1.5px solid #dde4ef; background:#fff; color:#1a2e3b; cursor:pointer;">
+      <option>Todos os jogos</option><option>Termômetro Zero</option><option>Ciclo da Água</option><option>Energia Limpa</option><option>Mata Atlântica</option>
+    </select>
+    <div style="width:1px; height:24px; background:#e0e8f0;"></div>
+    <select style="font-family:'Montserrat',sans-serif; font-size:12px; padding:7px 12px; border-radius:8px; border:1.5px solid #dde4ef; background:#fff; color:#1a2e3b; cursor:pointer;">
+      <option>Todas as cidades</option><option>Palmas, TO</option><option>São Paulo, SP</option><option>Belém, PA</option><option>Recife, PE</option>
+    </select>
+    <select style="font-family:'Montserrat',sans-serif; font-size:12px; padding:7px 12px; border-radius:8px; border:1.5px solid #dde4ef; background:#fff; color:#1a2e3b; cursor:pointer;">
+      <option>Todas as escolas</option><option>CEULP Unitins</option><option>ETAP Palmas</option><option>IFTO Palmas</option>
+    </select>
+    <div style="width:1px; height:24px; background:#e0e8f0;"></div>
+    <div style="position:relative;" id="periodo-wrapper-gal">
+      <button onclick="togglePeriodoGal()" id="periodo-trigger-gal"
+        style="font-family:'Montserrat',sans-serif; font-size:12px; font-weight:600; color:#1a2e3b; background:white; border:1.5px solid #dde4ef; border-radius:8px; padding:7px 14px; cursor:pointer; display:flex; align-items:center; gap:8px; min-width:170px; justify-content:space-between;">
+        <span id="periodo-label-gal">Selecionar período</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div id="periodo-dropdown-gal" style="display:none; position:absolute; top:calc(100% + 6px); left:0; background:white; border:1.5px solid #dde4ef; border-radius:12px; padding:16px; box-shadow:0 8px 24px rgba(16,42,63,0.12); z-index:200; min-width:280px;">
+        <div style="font-size:10px; font-weight:700; color:#94a4b6; letter-spacing:0.8px; text-transform:uppercase; margin-bottom:10px;">Atalhos</div>
+        <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:14px;">
+          <button class="periodo-quick-gal" onclick="aplicarAtalhoGal(30)">30 dias</button>
+          <button class="periodo-quick-gal" onclick="aplicarAtalhoGal(90)">3 meses</button>
+          <button class="periodo-quick-gal" onclick="aplicarAtalhoGal(180)">6 meses</button>
+          <button class="periodo-quick-gal" onclick="aplicarAtalhoGal(365)">1 ano</button>
+        </div>
+        <div style="font-size:10px; font-weight:700; color:#94a4b6; letter-spacing:0.8px; text-transform:uppercase; margin-bottom:10px;">Intervalo personalizado</div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div style="flex:1;">
+            <label style="font-size:10px; color:#94a4b6; font-weight:600; display:block; margin-bottom:3px;">Início</label>
+            <input type="date" id="periodo-inicio-gal" style="width:100%; font-family:'Montserrat',sans-serif; font-size:12px; color:#1a2e3b; border:1.5px solid #dde4ef; border-radius:8px; padding:6px 8px; box-sizing:border-box;">
+          </div>
+          <span style="font-size:14px; color:#94a4b6; margin-top:14px;">→</span>
+          <div style="flex:1;">
+            <label style="font-size:10px; color:#94a4b6; font-weight:600; display:block; margin-bottom:3px;">Fim</label>
+            <input type="date" id="periodo-fim-gal" style="width:100%; font-family:'Montserrat',sans-serif; font-size:12px; color:#1a2e3b; border:1.5px solid #dde4ef; border-radius:8px; padding:6px 8px; box-sizing:border-box;">
+          </div>
+        </div>
+        <div style="display:flex; gap:8px; margin-top:14px;">
+          <button onclick="limparPeriodoGal()" style="font-family:'Montserrat',sans-serif; font-size:11px; font-weight:600; color:#6b7f95; background:white; border:1.5px solid #dde4ef; border-radius:8px; padding:7px 14px; cursor:pointer; flex:1;">Limpar</button>
+          <button onclick="aplicarPeriodoGal()" style="font-family:'Montserrat',sans-serif; font-size:11px; font-weight:700; color:white; background:#2858a0; border:1.5px solid #2858a0; border-radius:8px; padding:7px 14px; cursor:pointer; flex:1;">Aplicar</button>
+        </div>
+      </div>
+    </div>
+    <div style="margin-left:auto;">
+      <select style="font-family:'Montserrat',sans-serif; font-size:12px; padding:7px 12px; border-radius:8px; border:1.5px solid #dde4ef; background:#fff; color:#1a2e3b; cursor:pointer;">
+        <option>Mais recentes</option><option>Mais curtidos</option><option>Mais visualizados</option>
+      </select>
+    </div>
   </div>
 
   <div class="grid">
 
-    <div class="card">
+    <a href="galeria-projeto-detalhe.html" style="text-decoration:none; color:inherit; display:block;"><div class="card">
       <div class="card-thumb thumb-teal">
         <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#468182" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
       </div>
       <div class="card-body">
+        <span class="card-game">Termômetro Zero</span>
         <p class="card-title">Plantio de mudas nativas</p>
         <p class="card-author">João Silva · Palmas, TO</p>
         <div class="card-footer">
@@ -214,13 +258,14 @@
           <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Compartilhar</button>
         </div>
       </div>
-    </div>
+    </div></a>
 
-    <div class="card">
+    <a href="galeria-projeto-detalhe.html" style="text-decoration:none; color:inherit; display:block;"><div class="card">
       <div class="card-thumb thumb-blue">
         <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#2858a0" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
       </div>
       <div class="card-body">
+        <span class="card-game">Termômetro Zero</span>
         <p class="card-title">Plano de redução de emissões</p>
         <p class="card-author">Maria Oliveira · Palmas, TO</p>
         <div class="card-footer">
@@ -229,13 +274,14 @@
           <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Compartilhar</button>
         </div>
       </div>
-    </div>
+    </div></a>
 
-    <div class="card">
+    <a href="galeria-projeto-detalhe.html" style="text-decoration:none; color:inherit; display:block;"><div class="card">
       <div class="card-thumb thumb-green">
         <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#5fb670" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
       </div>
       <div class="card-body">
+        <span class="card-game">Ciclo da Água</span>
         <p class="card-title">Horta comunitária escolar</p>
         <p class="card-author">Carlos Mendes · Palmas, TO</p>
         <div class="card-footer">
@@ -244,13 +290,14 @@
           <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Compartilhar</button>
         </div>
       </div>
-    </div>
+    </div></a>
 
-    <div class="card">
+    <a href="galeria-projeto-detalhe.html" style="text-decoration:none; color:inherit; display:block;"><div class="card">
       <div class="card-thumb thumb-teal">
         <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#468182" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
       </div>
       <div class="card-body">
+        <span class="card-game">Termômetro Zero</span>
         <p class="card-title">Compostagem em condomínio</p>
         <p class="card-author">Ana Ferreira · Palmas, TO</p>
         <div class="card-footer">
@@ -259,13 +306,14 @@
           <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Compartilhar</button>
         </div>
       </div>
-    </div>
+    </div></a>
 
-    <div class="card">
+    <a href="galeria-projeto-detalhe.html" style="text-decoration:none; color:inherit; display:block;"><div class="card">
       <div class="card-thumb thumb-blue">
         <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#2858a0" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
       </div>
       <div class="card-body">
+        <span class="card-game">Energia Limpa</span>
         <p class="card-title">Auditoria energética do escritório</p>
         <p class="card-author">Pedro Costa · Palmas, TO</p>
         <div class="card-footer">
@@ -274,13 +322,14 @@
           <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Compartilhar</button>
         </div>
       </div>
-    </div>
+    </div></a>
 
-    <div class="card">
+    <a href="galeria-projeto-detalhe.html" style="text-decoration:none; color:inherit; display:block;"><div class="card">
       <div class="card-thumb thumb-green">
         <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#5fb670" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
       </div>
       <div class="card-body">
+        <span class="card-game">Biodiversidade</span>
         <p class="card-title">Trilha de ciclismo sustentável</p>
         <p class="card-author">Luana Ramos · Palmas, TO</p>
         <div class="card-footer">
@@ -289,13 +338,14 @@
           <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Compartilhar</button>
         </div>
       </div>
-    </div>
+    </div></a>
 
-    <div class="card">
+    <a href="galeria-projeto-detalhe.html" style="text-decoration:none; color:inherit; display:block;"><div class="card">
       <div class="card-thumb thumb-teal">
         <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#468182" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
       </div>
       <div class="card-body">
+        <span class="card-game">Ciclo da Água</span>
         <p class="card-title">Reflorestamento do córrego</p>
         <p class="card-author">Marcos Lima · Palmas, TO</p>
         <div class="card-footer">
@@ -304,9 +354,9 @@
           <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Compartilhar</button>
         </div>
       </div>
-    </div>
+    </div></a>
 
-    <div class="card">
+    <a href="galeria-projeto-detalhe.html" style="text-decoration:none; color:inherit; display:block;"><div class="card">
       <div class="card-thumb thumb-blue">
         <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#2858a0" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
       </div>
@@ -319,9 +369,9 @@
           <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Compartilhar</button>
         </div>
       </div>
-    </div>
+    </div></a>
 
-    <div class="card">
+    <a href="galeria-projeto-detalhe.html" style="text-decoration:none; color:inherit; display:block;"><div class="card">
       <div class="card-thumb thumb-green">
         <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#5fb670" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
       </div>
@@ -334,11 +384,46 @@
           <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Compartilhar</button>
         </div>
       </div>
-    </div>
+    </div></a>
 
   </div>
   <p class="footer-note">Exibindo 9 de 247 projetos &nbsp;·&nbsp; * Dados fictícios, demonstrativos</p>
 </div>
 
+
+<script>
+  function togglePeriodoGal() {
+    const dd = document.getElementById('periodo-dropdown-gal');
+    dd.style.display = dd.style.display === 'none' ? 'block' : 'none';
+  }
+  document.addEventListener('click', function(e) {
+    const w = document.getElementById('periodo-wrapper-gal');
+    if (w && !w.contains(e.target)) document.getElementById('periodo-dropdown-gal').style.display = 'none';
+  });
+  function aplicarAtalhoGal(dias) {
+    document.querySelectorAll('.periodo-quick-gal').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+    const fim = new Date(), inicio = new Date();
+    inicio.setDate(fim.getDate() - dias);
+    document.getElementById('periodo-inicio-gal').value = inicio.toISOString().split('T')[0];
+    document.getElementById('periodo-fim-gal').value = fim.toISOString().split('T')[0];
+    aplicarPeriodoGal();
+  }
+  function aplicarPeriodoGal() {
+    const inicio = document.getElementById('periodo-inicio-gal').value;
+    const fim = document.getElementById('periodo-fim-gal').value;
+    if (!inicio || !fim) return;
+    const fmt = d => new Date(d).toLocaleDateString('pt-BR');
+    document.getElementById('periodo-label-gal').textContent = fmt(inicio) + ' – ' + fmt(fim);
+    document.getElementById('periodo-dropdown-gal').style.display = 'none';
+  }
+  function limparPeriodoGal() {
+    document.getElementById('periodo-inicio-gal').value = '';
+    document.getElementById('periodo-fim-gal').value = '';
+    document.getElementById('periodo-label-gal').textContent = 'Selecionar período';
+    document.getElementById('periodo-dropdown-gal').style.display = 'none';
+    document.querySelectorAll('.periodo-quick-gal').forEach(b => b.classList.remove('active'));
+  }
+</script>
 </body>
 </html>
