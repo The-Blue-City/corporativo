@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enviar Projeto – The Blue City</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Montserrat', sans-serif; background: #f4f8fc; color: #1a2e3b; }
+
+  .topbar {
+    background: #fff; border-bottom: 1px solid #e0e8f0;
+    padding: 14px 40px; display: flex;
+    align-items: center; justify-content: space-between;
+  }
+  .topbar-logo { display: flex; align-items: center; gap: 10px; }
+  .topbar-nav { display: flex; gap: 28px; }
+  .topbar-nav a { font-size: 13px; color: #6b7f95; text-decoration: none; font-weight: 500; }
+  .topbar-nav a.active { color: #2858a0; font-weight: 700; }
+  .topbar-user { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #2858a0; font-weight: 600; }
+
+  .breadcrumb-bar {
+    background: #fff; padding: 10px 40px;
+    border-bottom: 1px solid #e0e8f0;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .breadcrumb-bar a { font-size: 12px; color: #2858a0; font-weight: 600; text-decoration: none; }
+  .breadcrumb-bar span { color: #c0c8d4; font-size: 12px; }
+  .breadcrumb-bar strong { font-size: 12px; color: #1a2e3b; }
+
+  .hero {
+    background: linear-gradient(135deg, #e8f0f8 0%, #e2f0e2 100%);
+    padding: 36px 40px; text-align: center;
+  }
+  .hero-tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 4px 14px; border-radius: 20px; background: #d6e4f7; color: #2858a0; margin-bottom: 14px; }
+  .hero h1 { font-size: 24px; font-weight: 800; color: #2858a0; margin-bottom: 6px; }
+  .hero p { font-size: 13px; color: #6b7f95; max-width: 520px; margin: 0 auto; line-height: 1.6; }
+
+  .form-wrap {
+    max-width: 720px; margin: 40px auto; padding: 0 24px 60px;
+  }
+
+  .form-card {
+    background: #fff; border: 1px solid #e0e8f0; border-radius: 16px;
+    padding: 32px 36px; margin-bottom: 20px;
+  }
+  .form-card h2 {
+    font-size: 13px; font-weight: 700; letter-spacing: 0.8px;
+    text-transform: uppercase; color: #468182;
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 22px; padding-bottom: 12px;
+    border-bottom: 1px solid rgba(70,129,130,0.15);
+  }
+
+  .field { margin-bottom: 20px; }
+  .field:last-child { margin-bottom: 0; }
+  .field label {
+    display: block; font-size: 11px; font-weight: 700;
+    color: #6b7f95; margin-bottom: 7px;
+    letter-spacing: 0.3px; text-transform: uppercase;
+  }
+  .req { color: #e05a2b; }
+  .field input, .field textarea, .field select {
+    width: 100%; border: 1.5px solid #dde4ef;
+    border-radius: 10px; padding: 11px 14px;
+    font-size: 13px; font-family: 'Montserrat', sans-serif;
+    color: #1a2e3b; background: #fff; outline: none;
+    transition: border-color 0.18s, box-shadow 0.18s;
+  }
+  .field input:focus, .field textarea:focus, .field select:focus {
+    border-color: #2858a0;
+    box-shadow: 0 0 0 3px rgba(40,88,160,0.1);
+  }
+  .field textarea { resize: vertical; line-height: 1.7; }
+  .hint { font-size: 11px; color: #94a4b6; margin-top: 6px; line-height: 1.5; }
+
+  /* Upload area */
+  .upload-area {
+    border: 2px dashed #c5d2e8; border-radius: 10px;
+    padding: 32px 20px; text-align: center; cursor: pointer;
+    transition: border-color 0.18s, background 0.18s;
+    background: #fafcfe;
+  }
+  .upload-area:hover { border-color: #2858a0; background: #f0f5fb; }
+  .upload-area input[type="file"] { display: none; }
+  .upload-icon { margin-bottom: 12px; color: #94a4b6; }
+  .upload-area p { font-size: 13px; font-weight: 600; color: #6b7f95; margin-bottom: 4px; }
+  .upload-area small { font-size: 11px; color: #94a4b6; }
+  .upload-btn {
+    display: inline-block; margin-top: 14px;
+    font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600;
+    color: #2858a0; background: #eef2fb; border: none;
+    border-radius: 8px; padding: 8px 18px; cursor: pointer;
+    transition: background 0.18s;
+  }
+  .upload-btn:hover { background: #d6e4f7; }
+  .upload-preview {
+    display: none; align-items: center; gap: 10px;
+    background: #f0f5fb; border-radius: 8px; padding: 10px 14px;
+    margin-top: 12px; font-size: 12px; color: #2858a0; font-weight: 600;
+  }
+  .upload-preview svg { flex-shrink: 0; }
+
+  /* Character counter */
+  .char-count { font-size: 11px; color: #94a4b6; text-align: right; margin-top: 4px; }
+
+  /* Submit area */
+  .submit-area {
+    background: #fff; border: 1px solid #e0e8f0; border-radius: 16px;
+    padding: 24px 36px; display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap;
+  }
+  .submit-area p { font-size: 12px; color: #6b7f95; line-height: 1.6; max-width: 420px; }
+  .btn-submit {
+    font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700;
+    background: #2858a0; color: #fff; border: none;
+    border-radius: 10px; padding: 13px 28px; cursor: pointer;
+    transition: background 0.2s; white-space: nowrap;
+  }
+  .btn-submit:hover { background: #1a3a70; }
+
+  /* Success state */
+  .success-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(10,30,50,0.55); z-index: 100;
+    align-items: center; justify-content: center;
+  }
+  .success-overlay.show { display: flex; }
+  .success-box {
+    background: #fff; border-radius: 20px;
+    padding: 48px 44px; text-align: center;
+    max-width: 440px; width: 90%;
+    box-shadow: 0 24px 60px rgba(16,42,63,0.3);
+  }
+  .success-icon {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: #e8f6ec; display: flex; align-items: center;
+    justify-content: center; margin: 0 auto 20px;
+  }
+  .success-box h2 { font-size: 20px; font-weight: 800; color: #1a2e3b; margin-bottom: 10px; }
+  .success-box p { font-size: 13px; color: #6b7f95; line-height: 1.7; margin-bottom: 24px; }
+  .btn-voltar {
+    font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700;
+    color: #2858a0; background: #eef2fb; border: none;
+    border-radius: 10px; padding: 12px 24px; cursor: pointer;
+    text-decoration: none; display: inline-block;
+  }
+
+  @media (max-width: 640px) {
+    .topbar-nav { display: none; }
+    .form-card { padding: 22px 20px; }
+    .submit-area { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<nav class="topbar" style="justify-content:space-between;">
+  <div class="topbar-logo"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAyMTguNCA0NS42Ij4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLmNscy0xIHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudCk7CiAgICAgIH0KCiAgICAgIC5jbHMtMSwgLmNscy0yLCAuY2xzLTMsIC5jbHMtNCwgLmNscy01LCAuY2xzLTYsIC5jbHMtNywgLmNscy04LCAuY2xzLTksIC5jbHMtMTAsIC5jbHMtMTEsIC5jbHMtMTIsIC5jbHMtMTMsIC5jbHMtMTQgewogICAgICAgIHN0cm9rZS13aWR0aDogMHB4OwogICAgICB9CgogICAgICAuY2xzLTIgewogICAgICAgIGZpbGw6ICMwYzllZDk7CiAgICAgIH0KCiAgICAgIC5jbHMtMyB7CiAgICAgICAgZmlsbDogdXJsKCNsaW5lYXItZ3JhZGllbnQtMTEpOwogICAgICB9CgogICAgICAuY2xzLTQgewogICAgICAgIGZpbGw6IHVybCgjbGluZWFyLWdyYWRpZW50LTEwKTsKICAgICAgfQoKICAgICAgLmNscy01IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC00KTsKICAgICAgfQoKICAgICAgLmNscy02IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC0yKTsKICAgICAgfQoKICAgICAgLmNscy03IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC0zKTsKICAgICAgfQoKICAgICAgLmNscy04IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC04KTsKICAgICAgfQoKICAgICAgLmNscy05IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC05KTsKICAgICAgfQoKICAgICAgLmNscy0xMCB7CiAgICAgICAgZmlsbDogdXJsKCNsaW5lYXItZ3JhZGllbnQtNyk7CiAgICAgIH0KCiAgICAgIC5jbHMtMTEgewogICAgICAgIGZpbGw6IHVybCgjbGluZWFyLWdyYWRpZW50LTUpOwogICAgICB9CgogICAgICAuY2xzLTEyIHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC02KTsKICAgICAgfQoKICAgICAgLmNscy0xMyB7CiAgICAgICAgZmlsbDogIzAwMTUyMjsKICAgICAgfQoKICAgICAgLmNscy0xNCB7CiAgICAgICAgZmlsbDogI2ZmZjsKICAgICAgfQogICAgPC9zdHlsZT4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50IiB4MT0iNDguOCIgeTE9IjI1LjciIHgyPSIyMTEuOCIgeTI9IjI1LjciIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0OCkgc2NhbGUoMSAtMSkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMDA2MTg4Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzk1Y2ZhMCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTIiIHkxPSIyNS45IiB5Mj0iMjUuOSIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtMyIgeTE9IjIzLjEiIHkyPSIyMy4xIiB4bGluazpocmVmPSIjbGluZWFyLWdyYWRpZW50Ii8+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC00IiB5MT0iMjUuNyIgeTI9IjI1LjciIHhsaW5rOmhyZWY9IiNsaW5lYXItZ3JhZGllbnQiLz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTUiIHkxPSIyNS44IiB5Mj0iMjUuOCIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtNiIgeTE9IjIzIiB5Mj0iMjMiIHhsaW5rOmhyZWY9IiNsaW5lYXItZ3JhZGllbnQiLz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTciIHkxPSIyMy4xIiB5Mj0iMjMuMSIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtOCIgeTE9IjI1LjgiIHkyPSIyNS44IiB4bGluazpocmVmPSIjbGluZWFyLWdyYWRpZW50Ii8+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC05IiB5MT0iMjYiIHkyPSIyNiIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtMTAiIHkxPSIyNS4zIiB5Mj0iMjUuMyIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtMTEiIHkxPSIyMC4zIiB5Mj0iMjAuMyIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogIDwvZGVmcz4KICA8Zz4KICAgIDxjaXJjbGUgY2xhc3M9ImNscy0xMyIgY3g9IjI2LjEiIGN5PSIyMi43IiByPSIxOC40Ii8+CiAgICA8Zz4KICAgICAgPHJlY3QgY2xhc3M9ImNscy0xNCIgeD0iMTUuNSIgeT0iMTcuNSIgd2lkdGg9IjIwLjgiIGhlaWdodD0iMy4yIi8+CiAgICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTM1LDIzbC0uMi4yYy0xLjMsMS4xLTIuNCwyLjEtNC4xLDIuMXMtMi41LS40LTQuMS0xLjNjLTIuMS0xLjEtMy45LTEuNy01LjYtMS43LTIuOCwwLTQuNiwxLjYtNiwyLjlsLS4yLjIsMiwyLjQuMi0uMmMxLjMtMS4xLDIuNC0yLjEsNC4xLTIuMXMyLjUuNCw0LjEsMS4zYzIuMSwxLjEsMy45LDEuNyw1LjYsMS43aDBjMi43LDAsNC41LTEuNiw1LjktMi45bC4yLS4yLTItMi40aDBaIi8+CiAgICA8L2c+CiAgPC9nPgogIDxnPgogICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNjQuNSwxNi44aC01Ljd2MTQuOWgtNC4zdi0xNC45aC01Ljd2LTMuOGgxNS43djMuOFoiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtNiIgZD0iTTc5LjEsMzEuNmgtNC4ydi03LjZjMC0uOS0uMi0xLjUtLjYtMS45cy0uOS0uNi0xLjQtLjYtLjcsMC0xLjEuM2MtLjQuMi0uOC41LTEuMS44LS4zLjQtLjYuOC0uNywxLjJ2Ny44aC00LjJWMTIuNWg0LjJ2Ny45Yy41LS44LDEuMi0xLjUsMi0xLjlzMS44LS42LDIuOC0uNiwxLjcuMiwyLjIuNWMuNi4zLDEsLjcsMS4zLDEuMnMuNSwxLC42LDEuN2MwLC42LjIsMS4yLjIsMS44djguNy0uMloiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtNyIgZD0iTTg3LjksMzEuOWMtMS4yLDAtMi4yLS4yLTMuMS0uNnMtMS43LS45LTIuMy0xLjVjLS42LS42LTEuMS0xLjQtMS41LTIuMi0uMy0uOC0uNS0xLjctLjUtMi42LDAtMS4zLjMtMi41LjktMy42czEuNC0xLjksMi41LTIuNiwyLjQtMSw0LTEsMi45LjMsNCwxLDEuOSwxLjUsMi41LDIuNi45LDIuMi45LDMuNSwwLC41LDAsLjd2LjZoLTEwLjJjMCwuNi4yLDEuMS41LDEuNXMuNy43LDEuMS45Yy41LjIuOS4zLDEuNC4zczEuMi0uMSwxLjgtLjRjLjYtLjMuOS0uNywxLjEtMS4ybDMuNiwxYy0uNC43LS44LDEuMy0xLjUsMS45LS42LjUtMS40LDEtMi4yLDEuMy0uOS4zLTEuOC41LTIuOS41aC0uMVpNODQuOSwyMy41aDZjMC0uNi0uMi0xLS41LTEuNS0uMy0uNC0uNi0uNy0xLjEtMXMtLjktLjMtMS41LS4zLTEsLjEtMS40LjNjLS40LjItLjguNS0xLjEuOS0uMy40LS40LjktLjUsMS41aDBaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTUiIGQ9Ik0xMTgsMjYuOGMwLDEuMS0uMywyLS44LDIuNy0uNi43LTEuMywxLjItMi4zLDEuNnMtMiwuNS0zLjIuNWgtOS4xVjEzaDEwLjRjLjksMCwxLjYuMiwyLjMuNy42LjUsMS4xLDEuMSwxLjUsMS44LjMuNy41LDEuNS41LDIuM3MtLjIsMS43LS43LDIuNWMtLjQuOC0xLjEsMS40LTIsMS44LDEuMS4zLDEuOS45LDIuNSwxLjcuNi44LjksMS44LjksMy4xaDBaTTEwNi45LDE2Ljd2My45aDQuMmMuMywwLC42LDAsLjktLjIuMy0uMS41LS40LjctLjYuMi0uMy4yLS42LjItMS4xczAtLjgtLjItMS4xYzAtLjMtLjMtLjUtLjYtLjYtLjItLjEtLjUtLjItLjktLjJoLTQuNC4xWk0xMTMuNywyNmMwLS40LDAtLjctLjItMS4xLS4yLS4zLS40LS42LS42LS43cy0uNi0uMy0uOS0uM2gtNC45djQuMWg0LjhjLjQsMCwuNywwLDEtLjMuMy0uMi41LS40LjctLjcuMi0uMy4yLS42LjItMWgwWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xMSIgZD0iTTExOS43LDEyLjVoNC4ydjE0LjNjMCwuNiwwLDEsLjMsMS4yLjIuMi41LjQuOS40cy41LDAsLjgtLjFjLjMsMCwuNS0uMi43LS4zbC42LDMuMmMtLjUuMi0xLjEuNC0xLjguNi0uNy4yLTEuMy4yLTEuOS4yLTEuMiwwLTIuMS0uMy0yLjgtMS0uNi0uNi0xLTEuNi0xLTIuN3YtMTUuN2gwWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xMiIgZD0iTTEyNy45LDI2Ljh2LTguOGg0LjJ2Ny44YzAsLjguMiwxLjQuNSwxLjkuMy40LjguNywxLjQuN3MuOCwwLDEuMS0uMmMuNC0uMS43LS4zLDEtLjZzLjYtLjcuOS0xLjF2LTguNGg0LjJ2OWMwLC40LDAsLjcuMi45LjEuMi40LjMuNy4zdjMuNWMtLjQsMC0uNy4xLTEsLjJzLS41LDAtLjgsMGMtLjcsMC0xLjMtLjEtMS44LS40LS40LS4zLS43LS43LS44LTEuM3YtLjhjLS43LjktMS41LDEuNi0yLjQsMnMtMiwuNi0zLjIuNi0yLjUtLjQtMy4yLTEuMy0xLjEtMi4yLTEuMS0zLjh2LS4yWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xMCIgZD0iTTE1MC42LDMxLjljLTEuMiwwLTIuMi0uMi0zLjEtLjYtLjktLjQtMS43LS45LTIuMy0xLjVzLTEuMS0xLjQtMS41LTIuMmMtLjMtLjgtLjUtMS43LS41LTIuNiwwLTEuMy4zLTIuNS45LTMuNi42LTEuMSwxLjQtMS45LDIuNS0yLjZzMi40LTEsNC0xLDIuOS4zLDQsMWMxLjEuNiwxLjksMS41LDIuNSwyLjZzLjksMi4yLjksMy41LDAsLjUsMCwuN3YuNmgtMTAuMmMwLC42LjIsMS4xLjUsMS41cy43LjcsMS4xLjljLjUuMi45LjMsMS40LjNzMS4yLS4xLDEuOC0uNC45LS43LDEuMS0xLjJsMy42LDFjLS40LjctLjgsMS4zLTEuNSwxLjktLjYuNS0xLjQsMS0yLjIsMS4zLS45LjMtMS44LjUtMi45LjVoLS4xWk0xNDcuNSwyMy41aDZjMC0uNi0uMi0xLS41LTEuNS0uMy0uNC0uNi0uNy0xLjEtMS0uNC0uMi0uOS0uMy0xLjUtLjNzLTEsLjEtMS40LjNjLS40LjItLjguNS0xLjEuOXMtLjQuOS0uNSwxLjVoLjFaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTgiIGQ9Ik0xNjQuMiwyMi4xYzAtMS4xLjItMi4yLjYtMy4zLjQtMS4xLDEtMi4xLDEuOC0zczEuOC0xLjYsMy0yLjJjMS4yLS41LDIuNS0uOCwzLjktLjhzMy4zLjQsNC42LDEuMSwyLjMsMS43LDIuOSwyLjlsLTMuMywyLjNjLS4zLS43LS42LTEuMi0xLjEtMS42cy0xLS42LTEuNS0uOGMtLjYtLjEtMS4xLS4yLTEuNi0uMi0uOCwwLTEuNS4yLTIuMS41cy0xLjEuOC0xLjUsMS4zLS43LDEuMS0uOSwxLjhjLS4yLjctLjMsMS4zLS4zLDJzLjEsMS41LjQsMi4yYy4yLjcuNiwxLjMsMSwxLjhzLjkuOSwxLjYsMS4yYy42LjMsMS4zLjUsMiwuNXMxLjEsMCwxLjYtLjIsMS0uNCwxLjUtLjguOC0uOSwxLjEtMS41bDMuNSwyLjFjLS40LjktMSwxLjctMS44LDIuMy0uOC42LTEuOCwxLjEtMi44LDEuNXMtMi4xLjUtMy4yLjUtMi42LS4zLTMuNy0uOGMtMS4xLS42LTIuMS0xLjMtMi45LTIuMi0uOC0uOS0xLjUtMi0xLjktMy4xcy0uNy0yLjMtLjctMy41aC0uMloiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtOSIgZD0iTTE4Mi41LDE2LjN2LTMuOGg0LjJ2My44aC00LjJaTTE4Mi41LDMxLjZ2LTEzLjhoNC4ydjEzLjhzLTQuMiwwLTQuMiwwWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy00IiBkPSJNMTk4LDMwLjljLS40LjItLjguMy0xLjIuNS0uNS4yLS45LjMtMS40LjQtLjUsMC0xLC4xLTEuNS4xcy0xLjMtLjEtMS45LS4zLTEtLjYtMS40LTEuMi0uNS0xLjItLjUtMi4xdi03LjFoLTEuOHYtMy4yaDEuOHYtNC40aDQuMnY0LjRoMi44djMuMmgtMi44djUuNmMwLC41LjEuOC4zLDFzLjUuMy45LjMuNiwwLDEtLjJjLjMtLjEuNi0uMi45LS4zbC44LDMuM2gtLjJaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik0xOTkuMSwzMy43Yy40LDAsLjcuMiwxLC4yaC44Yy40LDAsLjYsMCwuOS0uMnMuNC0uNC42LS44Yy4yLS40LjMtLjguNS0xLjRsLTUuMi0xMy43aDQuM2wzLjIsOS40LDIuNy05LjRoMy45bC01LjMsMTUuOWMtLjIuNy0uNiwxLjQtMS4xLDJzLTEuMSwxLTEuOSwxLjRjLS43LjMtMS41LjUtMi40LjVoLTEuMWMtLjQsMC0uNy0uMi0xLjEtLjN2LTMuNmguMloiLz4KICA8L2c+Cjwvc3ZnPg==" alt="The Blue City" style="height:32px; width:auto;"></div>
+  <div class="topbar-user">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2858a0" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    João Silva
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <span class="hero-tag">🎉 Jornada concluída · Termômetro Zero · Palmas, TO</span>
+  <h1>Parabéns! Agora envie seu projeto</h1>
+  <p>Você concluiu todas as etapas da jornada virtual. Compartilhe agora o que você fez no mundo real. Seu projeto será avaliado e, se aprovado, publicado na Galeria de Projetos.</p>
+</div>
+
+<!-- FORM -->
+<div class="form-wrap">
+
+  <!-- Identificação -->
+  <div class="form-card">
+    <h2>
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#468182" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      Sobre você
+    </h2>
+    <div class="field">
+      <label>Nome completo <span class="req">*</span></label>
+      <input type="text" placeholder="Ex.: João Silva" id="nome">
+    </div>
+    <div class="field">
+      <label>Escola <span class="req">*</span></label>
+      <input type="text" placeholder="Ex.: Escola Técnica Estadual de Palmas" id="escola">
+    </div>
+  </div>
+
+  <!-- Projeto -->
+  <div class="form-card">
+    <h2>
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#468182" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      Seu projeto
+    </h2>
+    <div class="field">
+      <label>Título do projeto <span class="req">*</span></label>
+      <input type="text" placeholder="Ex.: Plantio de mudas nativas" id="titulo" oninput="updatePreview()">
+      <p class="hint">Um título claro e descritivo para o que você fez.</p>
+    </div>
+    <div class="field">
+      <label>Resumo <span class="req">*</span></label>
+      <textarea rows="3" placeholder="Descreva em uma ou duas frases o que foi o projeto e como ele se relaciona com a jornada." id="resumo" maxlength="280" oninput="countChars(this, 'count-resumo')"></textarea>
+      <div class="char-count"><span id="count-resumo">0</span> / 280</div>
+    </div>
+    <div class="field">
+      <label>Sobre o projeto <span class="req">*</span></label>
+      <textarea rows="7" placeholder="Conte em detalhes o que você fez: como surgiu a ideia, quem participou, quais foram os resultados e o impacto na sua comunidade." id="descricao" maxlength="2000" oninput="countChars(this, 'count-desc')"></textarea>
+      <div class="char-count"><span id="count-desc">0</span> / 2000</div>
+    </div>
+  </div>
+
+  <!-- Upload -->
+  <div class="form-card">
+    <h2>
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#468182" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      Entrega do projeto
+    </h2>
+    <div class="upload-area" onclick="document.getElementById('file-input').click()">
+      <input type="file" id="file-input" accept=".pdf,.jpg,.jpeg,.png,.mp4" onchange="showPreview(this)">
+      <div class="upload-icon">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#94a4b6" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      </div>
+      <p>Arraste seu arquivo aqui ou clique para selecionar</p>
+      <small>PDF, JPG, PNG ou MP4 · máximo 50 MB</small>
+      <button class="upload-btn" type="button">Selecionar arquivo</button>
+    </div>
+    <div class="upload-preview" id="upload-preview">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2858a0" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      <span id="file-name"></span>
+    </div>
+    <p class="hint" style="margin-top:10px;">Envie uma foto, vídeo ou documento que mostre o resultado do seu projeto no mundo real.</p>
+  </div>
+
+  <!-- Submit -->
+  <div class="submit-area">
+    <p>Ao enviar, seu projeto será analisado pelo produtor cultural responsável pela campanha. Se aprovado, será publicado na Galeria de Projetos.</p>
+    <button class="btn-submit" onclick="enviarProjeto()">Enviar projeto →</button>
+  </div>
+
+</div>
+
+<!-- SUCCESS -->
+<div class="success-overlay" id="success-overlay">
+  <div class="success-box">
+    <div class="success-icon">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2a9a4a" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <h2>Projeto enviado!</h2>
+    <p>Seu projeto foi recebido e está aguardando análise do produtor cultural. Você será notificado quando ele for aprovado e publicado na Galeria.</p>
+    <a href="galeria-projetos.html" class="btn-voltar">Ver Galeria de Projetos</a>
+  </div>
+</div>
+
+<script>
+  function countChars(el, id) {
+    document.getElementById(id).textContent = el.value.length;
+  }
+
+  function showPreview(input) {
+    const preview = document.getElementById('upload-preview');
+    const nameEl = document.getElementById('file-name');
+    if (input.files && input.files[0]) {
+      nameEl.textContent = input.files[0].name;
+      preview.style.display = 'flex';
+    }
+  }
+
+  function enviarProjeto() {
+    const nome = document.getElementById('nome').value.trim();
+    const titulo = document.getElementById('titulo').value.trim();
+    const resumo = document.getElementById('resumo').value.trim();
+    const descricao = document.getElementById('descricao').value.trim();
+
+    if (!nome || !titulo || !resumo || !descricao) {
+      alert('Por favor, preencha todos os campos obrigatórios.');
+      return;
+    }
+    document.getElementById('success-overlay').classList.add('show');
+  }
+</script>
+</body>
+</html>

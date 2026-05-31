@@ -179,6 +179,7 @@
   <p class="hero-sub">Projetos reais enviados por participantes das jornadas The Blue City</p>
   <div class="stats-row">
     <div class="stat-box"><div class="val val-blue">3.847</div><div class="lbl">Participantes</div></div>
+    <div class="stat-box"><div class="val val-purple">3.847</div><div class="lbl">Jornadas concluídas</div></div>
     <div class="stat-box"><div class="val val-green">1.204</div><div class="lbl">Projetos publicados</div></div>
     <div class="stat-box"><div class="val val-teal">12</div><div class="lbl">Cidades</div></div>
   </div>
@@ -198,9 +199,6 @@
     <div style="width:1px; height:24px; background:#e0e8f0;"></div>
     <select style="font-family:'Montserrat',sans-serif; font-size:12px; padding:7px 12px; border-radius:8px; border:1.5px solid #dde4ef; background:#fff; color:#1a2e3b; cursor:pointer;">
       <option>Todas as cidades</option><option>Palmas, TO</option><option>São Paulo, SP</option><option>Belém, PA</option><option>Recife, PE</option>
-    </select>
-    <select style="font-family:'Montserrat',sans-serif; font-size:12px; padding:7px 12px; border-radius:8px; border:1.5px solid #dde4ef; background:#fff; color:#1a2e3b; cursor:pointer;">
-      <option>Todas as escolas</option><option>CEULP Unitins</option><option>ETAP Palmas</option><option>IFTO Palmas</option>
     </select>
     <div style="width:1px; height:24px; background:#e0e8f0;"></div>
     <div style="position:relative;" id="periodo-wrapper-gal">
@@ -387,7 +385,19 @@
     </div></a>
 
   </div>
-  <p class="footer-note">Exibindo 9 de 247 projetos &nbsp;·&nbsp; * Dados fictícios, demonstrativos</p>
+
+  <!-- PAGINAÇÃO -->
+  <div style="display:flex; align-items:center; justify-content:center; gap:6px; margin-top:28px; margin-bottom:8px;">
+    <button class="pag-btn arrow" disabled style="opacity:0.35; cursor:default; font-family:'Montserrat',sans-serif; font-size:12px; font-weight:600; height:34px; border-radius:8px; border:1.5px solid #dde4ef; background:white; color:#6b7f95; padding:0 12px;">← Anterior</button>
+    <button class="pag-btn active" style="font-family:'Montserrat',sans-serif; font-size:12px; font-weight:600; width:34px; height:34px; border-radius:8px; border:1.5px solid #2858a0; background:#2858a0; color:white; cursor:pointer;">1</button>
+    <button class="pag-btn" style="font-family:'Montserrat',sans-serif; font-size:12px; font-weight:600; width:34px; height:34px; border-radius:8px; border:1.5px solid #dde4ef; background:white; color:#6b7f95; cursor:pointer;">2</button>
+    <button class="pag-btn" style="font-family:'Montserrat',sans-serif; font-size:12px; font-weight:600; width:34px; height:34px; border-radius:8px; border:1.5px solid #dde4ef; background:white; color:#6b7f95; cursor:pointer;">3</button>
+    <span style="font-size:12px; color:#94a4b6;">...</span>
+    <button class="pag-btn" style="font-family:'Montserrat',sans-serif; font-size:12px; font-weight:600; width:34px; height:34px; border-radius:8px; border:1.5px solid #dde4ef; background:white; color:#6b7f95; cursor:pointer;">28</button>
+    <button class="pag-btn arrow" style="font-family:'Montserrat',sans-serif; font-size:12px; font-weight:600; height:34px; border-radius:8px; border:1.5px solid #dde4ef; background:white; color:#6b7f95; cursor:pointer; padding:0 12px;">Próxima →</button>
+  </div>
+
+  <p class="footer-note">Exibindo 9 de 247 projetos</p>
 </div>
 
 

@@ -242,9 +242,11 @@
   .tip-end::before { left: auto; right: 13px; transform: none; }
   .tip-end:hover::after { transform: translateY(0); }
   /* Variante: balão abre abaixo (para colunas no meio da tabela) */
-  /* tip-below handled via JS tooltip */
-  .tip-below::after { display: none !important; }
-  .tip-below::before { display: none !important; }
+  /* ALL tooltips handled via JS floating tooltip */
+  .tip::after, .tip::before,
+  .tip-right::after, .tip-right::before,
+  .tip-end::after, .tip-end::before,
+  .tip-below::after, .tip-below::before { display: none !important; }
   .tip-info {
     display: inline-flex; align-items: center; justify-content: center;
     width: 14px; height: 14px; border-radius: 50%; margin-left: 5px; vertical-align: middle;
@@ -450,6 +452,24 @@
   .periodo-quick:hover { border-color: #2858a0; color: #2858a0; }
   .periodo-quick.active { background: #2858a0; color: white; border-color: #2858a0; }
 
+
+  .btn-filter-bib {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px; font-weight: 600;
+    padding: 5px 14px; border-radius: 20px;
+    border: 1.5px solid #dde4ef;
+    background: white; color: #6b7f95;
+    cursor: pointer; transition: all 0.15s;
+  }
+  .btn-filter-bib:hover { border-color: #2858a0; color: #2858a0; }
+  .btn-filter-bib.active { background: #2858a0; color: white; border-color: #2858a0; }
+
+
+  .pagination { display:flex; align-items:center; justify-content:center; gap:6px; margin-top:24px; }
+  .pag-btn { font-family:'Montserrat',sans-serif; font-size:12px; font-weight:600; width:34px; height:34px; border-radius:8px; border:1.5px solid #dde4ef; background:white; color:#6b7f95; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.15s; }
+  .pag-btn:hover { border-color:#2858a0; color:#2858a0; }
+  .pag-btn.active { background:#2858a0; color:white; border-color:#2858a0; }
+  .pag-btn.arrow { width:auto; padding:0 12px; }
 </style>
 </head>
 <body>
@@ -484,9 +504,13 @@
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
       Produtores
     </a>
+    <a href="#gov-institucional" class="nav-item">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      Gov. Institucional
+    </a>
     <a href="#monitoramento" class="nav-item">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-      Monitoramento
+      Performance
     </a>
   </aside>
 
@@ -630,30 +654,35 @@
             <thead>
               <tr>
                 <th><span class="tip tip-below" data-tip="Categoria temática usada para classificar os jogos.">Tema<span class="tip-info">i</span></span></th>
-                <th><span class="tip tip-below" data-tip="Número de jogos classificados com este tema.">Jogos<span class="tip-info">i</span></span></th>
-                <th style="width:120px; text-align:right;"><span class="tip tip-below" data-tip="Deletar tema da biblioteca.">Ações<span class="tip-info">i</span></span></th>
+                <th style="text-align:center; white-space:nowrap;"><span class="tip tip-below" data-tip="Número de jogos classificados com este tema.">Jogos<span class="tip-info">i</span></span></th>
+                <th style="text-align:center; white-space:nowrap;"><span class="tip tip-below" data-tip="Campanhas ativas que usam este tema.">Campanhas<span class="tip-info">i</span></span></th>
+                <th style="text-align:right; white-space:nowrap;"><span class="tip tip-below" data-tip="Deletar tema da biblioteca.">Ações<span class="tip-info">i</span></span></th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td><span style="font-size:12px; font-weight:600; color:#1a2e3b;">Clima · GEE</span></td>
-                <td>2 jogos</td>
-                <td style="width:120px; text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
+                <td style="text-align:center;">2 jogos</td>
+                <td style="text-align:center;">5</td>
+                <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
               </tr>
               <tr>
                 <td><span style="font-size:12px; font-weight:600; color:#1a2e3b;">Clima · Água</span></td>
-                <td>1 jogo</td>
-                <td style="width:120px; text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
+                <td style="text-align:center;">1 jogo</td>
+                <td style="text-align:center;">2</td>
+                <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
               </tr>
               <tr>
                 <td><span style="font-size:12px; font-weight:600; color:#1a2e3b;">Energia</span></td>
-                <td>2 jogos</td>
-                <td style="width:120px; text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
+                <td style="text-align:center;">2 jogos</td>
+                <td style="text-align:center;">3</td>
+                <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
               </tr>
               <tr>
                 <td><span style="font-size:12px; font-weight:600; color:#1a2e3b;">Biodiversidade</span></td>
-                <td>2 jogos</td>
-                <td style="width:120px; text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
+                <td style="text-align:center;">2 jogos</td>
+                <td style="text-align:center;">2</td>
+                <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
               </tr>
             </tbody>
           </table>
@@ -668,36 +697,36 @@
           <table>
             <thead>
               <tr>
-                <th style="width:40%;"><span class="tip tip-below" data-tip="Cidade disponível para uso como território de campanha.">Cidade<span class="tip-info">i</span></span></th>
-                <th style="width:15%;"><span class="tip tip-below" data-tip="Estado da cidade.">UF<span class="tip-info">i</span></span></th>
-                <th style="width:25%; text-align:center;"><span class="tip tip-below" data-tip="Campanhas ativas nesta cidade.">Campanhas<span class="tip-info">i</span></span></th>
-                <th style="width:20%; text-align:right;"><span class="tip tip-below" data-tip="Deletar cidade da plataforma.">Ações<span class="tip-info">i</span></span></th>
+                <th><span class="tip tip-below" data-tip="Cidade disponível para uso como território de campanha.">Cidade<span class="tip-info">i</span></span></th>
+                <th style="text-align:center; white-space:nowrap;"><span class="tip tip-below" data-tip="Estado da cidade.">UF<span class="tip-info">i</span></span></th>
+                <th style="text-align:center; white-space:nowrap;"><span class="tip tip-below" data-tip="Campanhas ativas nesta cidade.">Campanhas<span class="tip-info">i</span></span></th>
+                <th style="text-align:right; white-space:nowrap;"><span class="tip tip-below" data-tip="Deletar cidade da plataforma.">Ações<span class="tip-info">i</span></span></th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td><span style="font-size:12px; font-weight:600; color:#1a2e3b;">Palmas</span></td>
-                <td>TO</td>
+                <td style="text-align:center;">TO</td>
                 <td style="text-align:center;">3</td>
-                <td style="width:120px; text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
+                <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
               </tr>
               <tr>
                 <td><span style="font-size:12px; font-weight:600; color:#1a2e3b;">São Paulo</span></td>
-                <td>SP</td>
+                <td style="text-align:center;">SP</td>
                 <td style="text-align:center;">2</td>
-                <td style="width:120px; text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
+                <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
               </tr>
               <tr>
                 <td><span style="font-size:12px; font-weight:600; color:#1a2e3b;">Belém</span></td>
-                <td>PA</td>
+                <td style="text-align:center;">PA</td>
                 <td style="text-align:center;">1</td>
-                <td style="width:120px; text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
+                <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
               </tr>
               <tr>
                 <td><span style="font-size:12px; font-weight:600; color:#1a2e3b;">Recife</span></td>
-                <td>PE</td>
+                <td style="text-align:center;">PE</td>
                 <td style="text-align:center;">0</td>
-                <td style="width:120px; text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
+                <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
               </tr>
             </tbody>
           </table>
@@ -709,13 +738,19 @@
       <div class="section-heading section-heading--noline" id="biblioteca">
         <span>Biblioteca de Jogos</span>
         <span style="flex:1; height:1px; background:rgba(70,129,130,0.2);"></span>
-        <button class="btn-primary" onclick="openModal('modal-jogo')">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          Cadastrar jogo
-        </button>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <button class="btn-filter-bib active" id="bib-todos" onclick="filtrarBib('todos')">Todos (6)</button>
+          <button class="btn-filter-bib" id="bib-ativos" onclick="filtrarBib('ativo')">Ativos (5)</button>
+          <button class="btn-filter-bib" id="bib-inativos" onclick="filtrarBib('inativo')">Inativos (1)</button>
+          <button class="btn-primary" onclick="openModal('modal-jogo')" style="margin-left:8px;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Cadastrar jogo
+          </button>
+        </div>
       </div>
-      <div class="game-grid">
-        <div class="game-card">
+
+      <div class="game-grid" id="game-grid">
+        <div class="game-card" data-status="ativo">
           <div class="game-cover gc-1">
             <span class="status-dot sd-active">● Ativo</span>
             <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 13a3 3 0 1 0 6 0"/></svg>
@@ -727,7 +762,7 @@
             <div class="game-foot"><span class="campaigns"><strong>5</strong> campanhas</span></div>
           </div>
         </div>
-        <div class="game-card">
+        <div class="game-card" data-status="ativo">
           <div class="game-cover gc-2">
             <span class="status-dot sd-active">● Ativo</span>
             <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.4"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/></svg>
@@ -739,7 +774,7 @@
             <div class="game-foot"><span class="campaigns"><strong>4</strong> campanhas</span></div>
           </div>
         </div>
-        <div class="game-card">
+        <div class="game-card" data-status="inativo">
           <div class="game-cover gc-3">
             <span class="status-dot sd-inactive">● Inativo</span>
             <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.4"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
@@ -751,7 +786,7 @@
             <div class="game-foot"><span class="campaigns"><strong>0</strong> campanhas</span></div>
           </div>
         </div>
-        <div class="game-card">
+        <div class="game-card" data-status="ativo">
           <div class="game-cover gc-1">
             <span class="status-dot sd-active">● Ativo</span>
             <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.4"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
@@ -763,7 +798,7 @@
             <div class="game-foot"><span class="campaigns"><strong>3</strong> campanhas</span></div>
           </div>
         </div>
-        <div class="game-card">
+        <div class="game-card" data-status="ativo">
           <div class="game-cover gc-2">
             <span class="status-dot sd-active">● Ativo</span>
             <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.4"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
@@ -775,7 +810,7 @@
             <div class="game-foot"><span class="campaigns"><strong>2</strong> campanhas</span></div>
           </div>
         </div>
-        <div class="game-card">
+        <div class="game-card" data-status="ativo">
           <div class="game-cover gc-3">
             <span class="status-dot sd-active">● Ativo</span>
             <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.4"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg>
@@ -787,6 +822,15 @@
             <div class="game-foot"><span class="campaigns"><strong>1</strong> campanhas</span></div>
           </div>
         </div>
+      </div>
+
+      <!-- Paginação biblioteca -->
+      <div style="display:flex; align-items:center; justify-content:center; gap:6px; margin-top:20px;">
+        <button class="pag-btn arrow" disabled style="opacity:0.35; cursor:default;">← Anterior</button>
+        <button class="pag-btn active">1</button>
+        <button class="pag-btn">2</button>
+        <button class="pag-btn">3</button>
+        <button class="pag-btn arrow">Próxima →</button>
       </div>
 
       <!-- GOVERNANÇA -->
@@ -812,7 +856,7 @@
           </thead>
           <tbody>
             <tr>
-              <td><div class="ent-cell"><div class="ent-logo lg-2">AM</div><div><div class="ent-name">Ana Martins</div><div class="ent-slug">ana.martins@sotreq.com</div></div></div></td>
+              <td><div class="ent-cell"><div class="ent-logo lg-2">AM</div><div><div class="ent-name">Ana Martins</div><div class="ent-slug">ana.martins@sotreq.com</div><div class="ent-slug" style="color:#94a4b6;">(63) 99801-2345</div></div></div></td>
               <td><span class="sub-link">Sotreq</span></td>
               <td>3</td>
               <td>hoje</td>
@@ -820,7 +864,7 @@
               <td style="width:120px; text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn" onclick="openModal('modal-status-produtor')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg></button><button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
             </tr>
             <tr>
-              <td><div class="ent-cell"><div class="ent-logo lg-3">RC</div><div><div class="ent-name">Rafael Costa</div><div class="ent-slug">rafael.costa@sotreq.com</div></div></div></td>
+              <td><div class="ent-cell"><div class="ent-logo lg-3">RC</div><div><div class="ent-name">Rafael Costa</div><div class="ent-slug">rafael.costa@sotreq.com</div><div class="ent-slug" style="color:#94a4b6;">(63) 99802-3456</div></div></div></td>
               <td><span class="sub-link">Sotreq</span></td>
               <td>2</td>
               <td>ontem</td>
@@ -828,7 +872,7 @@
               <td style="width:120px; text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn" onclick="openModal('modal-status-produtor')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg></button><button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
             </tr>
             <tr>
-              <td><div class="ent-cell"><div class="ent-logo lg-1">JS</div><div><div class="ent-name">Julia Santos</div><div class="ent-slug">julia.santos@mercadolivre.com</div></div></div></td>
+              <td><div class="ent-cell"><div class="ent-logo lg-1">JS</div><div><div class="ent-name">Julia Santos</div><div class="ent-slug">julia.santos@mercadolivre.com</div><div class="ent-slug" style="color:#94a4b6;">(11) 99803-4567</div></div></div></td>
               <td><span class="sub-link">Mercado Livre</span></td>
               <td>2</td>
               <td>3 dias atrás</td>
@@ -836,7 +880,7 @@
               <td style="width:120px; text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn" onclick="openModal('modal-status-produtor')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg></button><button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
             </tr>
             <tr>
-              <td><div class="ent-cell"><div class="ent-logo lg-4">MO</div><div><div class="ent-name">Marcos Oliveira</div><div class="ent-slug">marcos.oliveira@aegea.com.br</div></div></div></td>
+              <td><div class="ent-cell"><div class="ent-logo lg-4">MO</div><div><div class="ent-name">Marcos Oliveira</div><div class="ent-slug">marcos.oliveira@aegea.com.br</div><div class="ent-slug" style="color:#94a4b6;">(61) 99804-5678</div></div></div></td>
               <td><span class="sub-link">Aegea</span></td>
               <td>1</td>
               <td>1 semana atrás</td>
@@ -847,11 +891,71 @@
         </table>
       </div>
 
-      <!-- MONITORAMENTO -->
-      <div class="section-heading" id="monitoramento">Monitoramento</div>
+      <!-- GOVERNANÇA INSTITUCIONAL -->
+      <div class="section-heading section-heading--noline" id="gov-institucional" style="margin-top:28px;">
+        <span>Governança Institucional</span>
+        <span style="flex:1; height:1px; background:rgba(70,129,130,0.2);"></span>
+      </div>
 
-      <!-- Filtro de período -->
+<div class="table-card" style="margin-top:16px;">
+        <div class="table-head">
+          <div><h3>Governança Institucional</h3></div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th style="width:35%;"><span class="tip tip-right" data-tip="Empresa provisionada sob este Painel Master.">Empresa<span class="tip-info">i</span></span></th>
+              <th style="width:20%;"><span class="tip tip-right" data-tip="Status do subdomínio da empresa.">Status<span class="tip-info">i</span></span></th>
+              <th style="width:20%; text-align:center;"><span class="tip tip-right" data-tip="Total de campanhas criadas dentro do ambiente da empresa.">Campanhas<span class="tip-info">i</span></span></th>
+              <th style="width:25%; text-align:right;"><span class="tip tip-end" data-tip="Total de cidades ou unidades com campanha ativa na empresa.">Cidades / unidades<span class="tip-info">i</span></span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><div class="ent-cell"><div class="ent-logo lg-1">SO</div><div><div class="ent-name">Sotreq</div></div></div></td>
+              <td><span class="pill pill-active">Ativa</span></td>
+              <td style="text-align:center;">5</td>
+              <td style="text-align:right;">8 cidades</td>
+            </tr>
+            <tr>
+              <td><div class="ent-cell"><div class="ent-logo lg-2">ML</div><div><div class="ent-name">Mercado Livre</div></div></div></td>
+              <td><span class="pill pill-active">Ativa</span></td>
+              <td style="text-align:center;">4</td>
+              <td style="text-align:right;">6 cidades</td>
+            </tr>
+            <tr>
+              <td><div class="ent-cell"><div class="ent-logo lg-3">AE</div><div><div class="ent-name">Aegea</div></div></div></td>
+              <td><span class="pill pill-active">Ativa</span></td>
+              <td style="text-align:center;">3</td>
+              <td style="text-align:right;">4 cidades</td>
+            </tr>
+            <tr>
+              <td><div class="ent-cell"><div class="ent-logo lg-4">BA</div><div><div class="ent-name">BASF</div></div></div></td>
+              <td><span class="pill pill-inactive">Inativa</span></td>
+              <td style="text-align:center;">0</td>
+              <td style="text-align:right;">—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- MONITORAMENTO -->
+      <div class="section-heading" id="monitoramento">
+        <span>Monitoramento de Performance</span>
+        <span style="flex:1; height:1px; background:rgba(70,129,130,0.2);"></span>
+      </div>
+
+      <!-- Filtros: empresa + período -->
       <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px; flex-wrap:wrap;">
+        <span style="font-size:11px; font-weight:600; color:#6b7f95;">Empresa:</span>
+        <select id="empresa-filter" onchange="filtrarEmpresa()" style="font-family:'Montserrat',sans-serif; font-size:12px; font-weight:600; color:#1a2e3b; background:white; border:1.5px solid #dde4ef; border-radius:8px; padding:7px 14px; cursor:pointer;">
+          <option value="todas">Todas as empresas</option>
+          <option value="sotreq">Sotreq</option>
+          <option value="mercadolivre">Mercado Livre</option>
+          <option value="aegea">Aegea</option>
+          <option value="basf">BASF</option>
+        </select>
+        <div style="width:1px; height:24px; background:#e0e8f0;"></div>
         <span style="font-size:11px; font-weight:600; color:#6b7f95;">Período:</span>
 
         <!-- Dropdown trigger -->
@@ -918,49 +1022,34 @@
           </div>
         </div>
 
+        <div class="gov-card">
+          <h4><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2858a0" stroke-width="2"><polygon points="6 3 20 12 6 21 6 3"/></svg> Governança do Catálogo</h4>
+          <div class="gov-rows">
+            <div class="gov-line"><span class="k">Total de jogos na biblioteca</span><span class="v">6</span></div>
+            <div class="gov-line"><span class="k">Jogos ativos</span><span class="v">5</span></div>
+            <div class="gov-line"><span class="k">Jogos inativos</span><span class="v">1</span></div>
+            <div class="gov-line"><span class="k">Jogos por tema (média)</span><span class="v">1,5</span></div>
+          </div>
+        </div>
+
+        <div class="gov-card">
+          <h4><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7c5cbf" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Gestão de Produtores</h4>
+          <div class="gov-rows">
+            <div class="gov-line"><span class="k">Produtores cadastrados</span><span class="v">4</span></div>
+            <div class="gov-line"><span class="k">Produtores ativos no período</span><span class="v periodo-val">3</span></div>
+            <div class="gov-line"><span class="k">Campanhas criadas por produtor (média)</span><span class="v periodo-val">1,7</span></div>
+            <div class="gov-line"><span class="k">Última atividade registrada</span><span class="v">hoje</span></div>
+          </div>
+        </div>
+
       </div>
 
-      <!-- Governança Institucional -->
-      <div class="table-card" style="margin-top:16px;">
-        <div class="table-head">
-          <div><h3>Governança Institucional</h3></div>
-        </div>
-        <table>
-          <thead>
-            <tr>
-              <th style="width:35%;"><span class="tip tip-right" data-tip="Empresa provisionada sob este Painel Master.">Empresa<span class="tip-info">i</span></span></th>
-              <th style="width:20%;"><span class="tip tip-right" data-tip="Status do subdomínio da empresa.">Status<span class="tip-info">i</span></span></th>
-              <th style="width:20%; text-align:center;"><span class="tip tip-right" data-tip="Total de campanhas criadas dentro do ambiente da empresa.">Campanhas<span class="tip-info">i</span></span></th>
-              <th style="width:25%; text-align:right;"><span class="tip tip-end" data-tip="Total de cidades ou unidades com campanha ativa na empresa.">Cidades / unidades<span class="tip-info">i</span></span></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><div class="ent-cell"><div class="ent-logo lg-1">SO</div><div><div class="ent-name">Sotreq</div></div></div></td>
-              <td><span class="pill pill-active">Ativa</span></td>
-              <td style="text-align:center;">5</td>
-              <td style="text-align:right;">8 cidades</td>
-            </tr>
-            <tr>
-              <td><div class="ent-cell"><div class="ent-logo lg-2">ML</div><div><div class="ent-name">Mercado Livre</div></div></div></td>
-              <td><span class="pill pill-active">Ativa</span></td>
-              <td style="text-align:center;">4</td>
-              <td style="text-align:right;">6 cidades</td>
-            </tr>
-            <tr>
-              <td><div class="ent-cell"><div class="ent-logo lg-3">AE</div><div><div class="ent-name">Aegea</div></div></div></td>
-              <td><span class="pill pill-active">Ativa</span></td>
-              <td style="text-align:center;">3</td>
-              <td style="text-align:right;">4 cidades</td>
-            </tr>
-            <tr>
-              <td><div class="ent-cell"><div class="ent-logo lg-4">BA</div><div><div class="ent-name">BASF</div></div></div></td>
-              <td><span class="pill pill-inactive">Inativa</span></td>
-              <td style="text-align:center;">0</td>
-              <td style="text-align:right;">—</td>
-            </tr>
-          </tbody>
-        </table>
+      <!-- Botão imprimir -->
+      <div id="print-btn-wrapper" style="display:flex; justify-content:flex-end; margin-top:24px;">
+        <button onclick="imprimirPerformance()" style="font-family:'Montserrat',sans-serif; font-size:13px; font-weight:600; color:#2858a0; background:white; border:1.5px solid #2858a0; border-radius:8px; padding:10px 20px; cursor:pointer; display:flex; align-items:center; gap:8px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          Imprimir relatório de performance
+        </button>
       </div>
 
     </div>
@@ -1321,6 +1410,10 @@
           <label>E-mail <span style="color:#e05a2b;">*</span></label>
           <input type="email" placeholder="Ex.: ana@sotreq.com" style="width:100%; border:1.5px solid #dde4ef; border-radius:9px; padding:10px 13px; font-size:13px; font-family:'Montserrat',sans-serif; color:#1a2e3b;">
         </div>
+        <div class="field">
+          <label>Celular</label>
+          <input type="tel" placeholder="Ex.: (63) 99999-0000" style="width:100%; border:1.5px solid #dde4ef; border-radius:9px; padding:10px 13px; font-size:13px; font-family:'Montserrat',sans-serif; color:#1a2e3b;">
+        </div>
         <div class="field" style="margin-bottom:0;">
           <label>Empresa <span style="color:#e05a2b;">*</span></label>
           <select style="width:100%; border:1.5px solid #dde4ef; border-radius:9px; padding:10px 13px; font-size:13px; font-family:'Montserrat',sans-serif; color:#1a2e3b; background:white;">
@@ -1490,7 +1583,7 @@
 <script>
   const jsTooltip = document.getElementById('js-tooltip');
 
-  document.querySelectorAll('.tip-below').forEach(el => {
+  document.querySelectorAll('[data-tip]').forEach(el => {
     el.addEventListener('mouseenter', function(e) {
       const tip = this.getAttribute('data-tip');
       if (!tip) return;
@@ -1518,5 +1611,46 @@
     jsTooltip.style.top = y + 'px';
   }
 </script>
+
+<script>
+  function filtrarBib(filtro) {
+    document.querySelectorAll('#game-grid .game-card').forEach(c => {
+      c.style.display = (filtro === 'todos' || c.getAttribute('data-status') === filtro) ? '' : 'none';
+    });
+    document.getElementById('bib-todos').classList.toggle('active', filtro === 'todos');
+    document.getElementById('bib-ativos').classList.toggle('active', filtro === 'ativo');
+    document.getElementById('bib-inativos').classList.toggle('active', filtro === 'inativo');
+  }
+</script>
+
+<script>
+  function imprimirPerformance() {
+    window.print();
+  }
+
+  function filtrarEmpresa() {
+    const empresa = document.getElementById('empresa-filter').value;
+    // In a real system this would reload data — for prototype just show label
+    const label = empresa === 'todas' ? 'Todas as empresas' :
+      document.getElementById('empresa-filter').options[document.getElementById('empresa-filter').selectedIndex].text;
+    console.log('Filtrando por:', label);
+  }
+</script>
+
+<style>
+  @media print {
+    .sidebar, .topbar, .section-heading--noline,
+    #periodo-wrapper, .periodo-quick, #periodo-label,
+    #periodo-clear-btn, #empresa-filter,
+    #print-btn-wrapper, .pag-btn, .pagination,
+    #empresas, #catalogo, #biblioteca, #governanca,
+    #gov-institucional { display: none !important; }
+    .canvas { padding: 8px 24px; }
+    .gov-card { break-inside: avoid; border: 1px solid #ccc; }
+    .main { margin: 0; width: 100%; }
+    .layout { display: block; }
+    .section-heading { color: #000; border: none; }
+  }
+</style>
 </body>
 </html>

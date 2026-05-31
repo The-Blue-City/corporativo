@@ -184,6 +184,15 @@
   .track { position: absolute; inset: 0; background: #c8d4e0; border-radius: 24px; transition: 0.2s; cursor: pointer; }
   .track::before { content: ''; position: absolute; left: 3px; top: 3px; width: 18px; height: 18px; background: #fff; border-radius: 50%; transition: 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
   input:checked + .track { background: #2a9a4a; }
+
+  /* Evento stepper */
+  .ev-step { display:flex; align-items:center; gap:7px; flex-shrink:0; }
+  .ev-dot { width:24px; height:24px; border-radius:50%; border:2px solid #dde4ef; background:white; color:#94a4b6; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; }
+  .ev-step span { font-size:11px; font-weight:600; color:#94a4b6; }
+  .ev-step.active .ev-dot { background:#2858a0; border-color:#2858a0; color:white; }
+  .ev-step.active span { color:#2858a0; }
+  .ev-step.done .ev-dot { background:#e8f6ec; border-color:#2a9a4a; color:#2a9a4a; }
+  .ev-line { flex:1; height:1px; background:#dde4ef; margin:0 8px; }
   input:checked + .track::before { transform: translateX(20px); }
 
   /* CORRESPONDÊNCIAS */
@@ -282,6 +291,76 @@
 
   .proj-game { font-size: 10px; font-weight: 700; color: #2858a0; background: #eef2fb; border-radius: 20px; padding: 2px 9px; display: inline-block; margin-bottom: 5px; }
 
+  /* PASSO A PASSO */
+  .guide-hero { background: linear-gradient(120deg,#102a3f,#1a3a58); border-radius: 18px; padding: 30px 32px; color: #fff; margin-bottom: 8px; }
+  .guide-hero .eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: #5fb670; margin-bottom: 10px; }
+  .guide-hero h2 { font-size: 24px; font-weight: 800; margin-bottom: 8px; }
+  .guide-hero p { font-size: 13.5px; line-height: 1.6; color: rgba(255,255,255,0.78); max-width: 640px; }
+
+  .concept-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 14px; }
+  .concept-card { background: #fff; border: 1px solid #e0e8f0; border-radius: 14px; padding: 18px 20px; position: relative; }
+  .concept-card .cc-tag { display:inline-flex; align-items:center; gap:6px; font-size: 10px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; margin-bottom: 11px; }
+  .cc-virtual { background:#eef2fb; color:#2858a0; }
+  .cc-real { background:#e8f6ec; color:#2a9a4a; }
+  .cc-combo { background:#e8f4f4; color:#468182; }
+  .cc-city { background:#f0ecfb; color:#7c5cbf; }
+  .concept-card h3 { font-size: 16px; font-weight: 800; color: #1a2e3b; margin-bottom: 6px; }
+  .concept-card p { font-size: 12.5px; line-height: 1.55; color: #6b7f95; }
+  .concept-card .cc-formula { margin-top: 11px; padding-top: 11px; border-top: 1px dashed #e0e8f0; font-size: 11.5px; font-weight: 600; color: #468182; }
+  .concept-card--wide { grid-column: span 3; display: grid; grid-template-columns: 1fr 1.3fr; gap: 24px; align-items: center; }
+  .concept-card--wide .cc-left p { font-size: 13px; }
+
+  .etapa-flow { display: flex; flex-wrap: wrap; gap: 8px; align-items: stretch; }
+  .etapa-chip { flex: 1; min-width: 96px; background: #f8fafd; border: 1px solid #e7eef6; border-radius: 11px; padding: 12px 12px 13px; display: flex; flex-direction: column; gap: 6px; }
+  .etapa-chip .ec-num { width: 22px; height: 22px; border-radius: 7px; background: #102a3f; color: #fff; font-size: 11px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+  .etapa-chip .ec-name { font-size: 12px; font-weight: 700; color: #1a2e3b; line-height: 1.3; }
+  .etapa-chip .ec-where { font-size: 10.5px; color: #94a4b6; line-height: 1.35; }
+  .etapa-chip.is-panel .ec-num { background: #2858a0; }
+
+  /* QUEM CONDUZ + QR */
+  .pilot-card { background: linear-gradient(120deg,#1a3a58,#102a3f); border-radius: 14px; padding: 18px 22px; color: #fff; display: flex; align-items: center; gap: 16px; margin-bottom: 14px; }
+  .pilot-card .pc-ic { width: 42px; height: 42px; border-radius: 12px; background: rgba(255,255,255,0.12); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .pilot-card h4 { font-size: 14.5px; font-weight: 800; margin-bottom: 3px; }
+  .pilot-card p { font-size: 12.5px; line-height: 1.5; color: rgba(255,255,255,0.78); }
+
+  .track-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 14px; align-items: stretch; }
+  .track-card { background: #fff; border: 1px solid #e0e8f0; border-top: 3px solid var(--accent); border-radius: 14px; padding: 18px 20px; }
+  .track-card.t-art { --accent: #2858a0; }
+  .track-card.t-prod { --accent: #468182; }
+  .track-card .tc-tag { font-size: 10px; font-weight: 700; color: #94a4b6; text-transform: uppercase; letter-spacing: 0.6px; }
+  .track-card h4 { font-size: 15px; font-weight: 800; color: #1a2e3b; margin: 4px 0 8px; }
+  .track-card p { font-size: 12px; line-height: 1.55; color: #6b7f95; margin-bottom: 11px; }
+  .track-card .tc-etapas { font-size: 11px; font-weight: 700; color: var(--accent); padding-top: 10px; border-top: 1px dashed #e0e8f0; }
+  .handoff-col { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; min-width: 130px; padding: 0 4px; }
+  .handoff-col .ho-arrow { color: #b3c2d4; }
+  .handoff-col .ho-txt { font-size: 10.5px; color: #6b7f95; text-align: center; line-height: 1.4; font-weight: 600; }
+
+  .qr-flow { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+  .qr-step { background: #f8fafd; border: 1px solid #e7eef6; border-radius: 12px; padding: 16px 16px 17px; text-align: center; }
+  .qr-step .qs-ic { width: 40px; height: 40px; border-radius: 11px; background: #fff; border: 1px solid #e0e8f0; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; }
+  .qr-step h4 { font-size: 13px; font-weight: 800; color: #1a2e3b; margin-bottom: 5px; }
+  .qr-step p { font-size: 11.5px; line-height: 1.5; color: #6b7f95; }
+
+  .step-list { display: flex; flex-direction: column; gap: 12px; }
+  .step-row { background: #fff; border: 1px solid #e0e8f0; border-radius: 14px; padding: 20px 22px; display: grid; grid-template-columns: 46px 1fr auto; gap: 18px; align-items: center; }
+  .step-row .sr-num { width: 46px; height: 46px; border-radius: 13px; background: #102a3f; color: #fff; font-size: 19px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+  .step-row .sr-body h4 { font-size: 14.5px; font-weight: 800; color: #1a2e3b; margin-bottom: 4px; }
+  .step-row .sr-body p { font-size: 12.5px; line-height: 1.55; color: #6b7f95; }
+  .step-row .sr-body em { font-style: normal; font-weight: 700; color: #468182; }
+  .step-link { display: inline-flex; align-items: center; gap: 6px; background: #f0f4fb; color: #2858a0; border: 1.5px solid #d8e2f2; border-radius: 9px; padding: 9px 14px; font-size: 12px; font-weight: 700; cursor: pointer; font-family: 'Montserrat', sans-serif; white-space: nowrap; transition: all 0.18s; }
+  .step-link:hover { background: #2858a0; color: #fff; border-color: #2858a0; }
+
+  @media (max-width: 880px) {
+    .concept-grid { grid-template-columns: 1fr; }
+    .concept-card--wide { grid-column: span 1; grid-template-columns: 1fr; gap: 16px; }
+    .track-grid { grid-template-columns: 1fr; }
+    .handoff-col { flex-direction: row; min-width: 0; padding: 4px 0; }
+    .handoff-col .ho-arrow { transform: rotate(90deg); }
+    .qr-flow { grid-template-columns: 1fr; }
+    .step-row { grid-template-columns: 40px 1fr; }
+    .step-row .step-link { grid-column: 1 / -1; justify-self: start; }
+  }
+
 </style>
 </head>
 <body>
@@ -323,19 +402,23 @@
       </div>
     </div>
 
-    <a href="#escolas" class="nav-item active">
+    <a href="#passo" class="nav-item active" onclick="navTo(event,'passo')">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      Passo a passo
+    </a>
+    <a href="#escolas" class="nav-item" onclick="navTo(event,'escolas')">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
       Escolas
     </a>
-    <a href="#campanhas" class="nav-item">
+    <a href="#campanhas" class="nav-item" onclick="navTo(event,'campanhas')">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
       Campanhas
     </a>
-    <a href="#missoes" class="nav-item">
+    <a href="#missoes" class="nav-item" onclick="navTo(event,'missoes')">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
       Projetos Enviados
     </a>
-    <a href="#eventos" class="nav-item">
+    <a href="#eventos" class="nav-item" onclick="navTo(event,'eventos')">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
       Registro de Eventos
     </a>
@@ -352,6 +435,149 @@
     </div>
 
     <div class="canvas">
+
+      <!-- ===== VIEW: PASSO A PASSO ===== -->
+      <div id="view-passo">
+
+        <div class="guide-hero">
+          <div class="eyebrow">Comece por aqui</div>
+          <h2>Como funciona o Painel do Produtor</h2>
+          <p>Este painel é onde você leva o jogo até as escolas de uma cidade e acompanha tudo o que acontece depois da parte virtual: a curadoria dos projetos, a transformação deles em obras e o registro do evento cultural. Antes dos passos, vale entender quatro palavras que usamos o tempo todo.</p>
+        </div>
+
+        <div class="section-heading"><span>Entenda a nomenclatura</span></div>
+
+        <div class="concept-grid">
+          <div class="concept-card">
+            <span class="cc-tag cc-virtual">Virtual</span>
+            <h3>Jornada</h3>
+            <p>A etapa virtual do jogo. O jogador percorre os 3 níveis, conquista as badges e recebe o certificado final.</p>
+          </div>
+          <div class="concept-card">
+            <span class="cc-tag cc-real">Real</span>
+            <h3>Projeto</h3>
+            <p>O projeto real que o jogador envia depois de concluir a jornada – a ponte entre o jogo e uma ação concreta no mundo.</p>
+          </div>
+          <div class="concept-card">
+            <span class="cc-tag cc-combo">Virtual + Real</span>
+            <h3>Missão</h3>
+            <p>A jornada somada ao projeto enviado. É o percurso completo de um único jogador.</p>
+            <div class="cc-formula">Jornada + Projeto = Missão</div>
+          </div>
+
+          <div class="concept-card concept-card--wide">
+            <div class="cc-left">
+              <span class="cc-tag cc-city">Cidade</span>
+              <h3>Campanha</h3>
+              <p>Fazer o jogo acontecer nas escolas de uma cidade, do início ao fim. É a missão levada à escala de um território – e percorre cinco etapas:</p>
+            </div>
+            <div class="etapa-flow">
+              <div class="etapa-chip is-panel"><span class="ec-num">1</span><span class="ec-name">Jornada</span><span class="ec-where">No jogo</span></div>
+              <div class="etapa-chip is-panel"><span class="ec-num">2</span><span class="ec-name">Projeto</span><span class="ec-where">Enviado pelo jogador</span></div>
+              <div class="etapa-chip is-panel"><span class="ec-num">3</span><span class="ec-name">Curadoria de artistas</span><span class="ec-where">Projetos viram obras</span></div>
+              <div class="etapa-chip is-panel"><span class="ec-num">4</span><span class="ec-name">Evento</span><span class="ec-where">Exposição cultural</span></div>
+              <div class="etapa-chip is-panel"><span class="ec-num">5</span><span class="ec-name">Registro</span><span class="ec-where">Documentação do evento</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-heading"><span>Condução da campanha</span></div>
+
+        <div class="pilot-card">
+          <div class="pc-ic">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div>
+            <h4>Gestão do painel</h4>
+            <p>A Produtora Cultural designa quem opera este painel. Essa pessoa conduz a campanha de ponta a ponta e coordena as duas frentes do trabalho de campo.</p>
+          </div>
+        </div>
+
+        <div class="track-grid">
+          <div class="track-card t-art">
+            <span class="tc-tag">Frente nas escolas</span>
+            <h4>Articulador Educacional</h4>
+            <p>Leva o jogo às escolas, mobiliza os estudantes, acompanha a jornada e coleta os projetos entregues.</p>
+            <div class="tc-etapas">Etapas: Jornada · Projeto</div>
+          </div>
+
+          <div class="handoff-col">
+            <svg class="ho-arrow" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            <span class="ho-txt">Os projetos coletados passam do Articulador para o Produtor</span>
+          </div>
+
+          <div class="track-card t-prod">
+            <span class="tc-tag">Frente no território</span>
+            <h4>Produtor Cultural</h4>
+            <p>Prepara o território, faz a curadoria dos projetos, conecta artistas locais e monta e documenta a exposição.</p>
+            <div class="tc-etapas">Etapas: Curadoria · Evento · Registro</div>
+          </div>
+        </div>
+
+        <div class="section-heading"><span>Como os alunos entram no jogo</span></div>
+
+        <div class="qr-flow">
+          <div class="qr-step">
+            <div class="qs-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2858a0" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></div>
+            <h4>Você cria a campanha</h4>
+            <p>Ao criar a campanha e vincular as escolas, o painel gera um QR code único para cada escola.</p>
+          </div>
+          <div class="qr-step">
+            <div class="qs-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#468182" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+            <h4>O QR code vai para as peças</h4>
+            <p>Cada QR code é aplicado em peças físicas, como cartazes colados na escola, e virtuais, em sites e redes sociais.</p>
+          </div>
+          <div class="qr-step">
+            <div class="qs-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5fb670" stroke-width="2"><path d="M5 3l14 9-14 9V3z"/></svg></div>
+            <h4>Os alunos entram no jogo</h4>
+            <p>Os estudantes daquela escola escaneiam o QR code e iniciam a jornada na plataforma.</p>
+          </div>
+        </div>
+
+        <div class="section-heading"><span>O que você faz no painel</span></div>
+
+        <div class="step-list">
+          <div class="step-row">
+            <div class="sr-num">1</div>
+            <div class="sr-body">
+              <h4>Cadastra as escolas</h4>
+              <p>Em <em>Escolas</em>, insira todas as escolas com as quais vai trabalhar – nome, cidade, nível de ensino e tema. Esse é o cadastro base que você reutiliza ao montar cada campanha.</p>
+            </div>
+            <button class="step-link" onclick="navTo(event,'escolas')">Ir para Escolas →</button>
+          </div>
+
+          <div class="step-row">
+            <div class="sr-num">2</div>
+            <div class="sr-body">
+              <h4>Cria a campanha e vincula as escolas</h4>
+              <p>Em <em>Campanhas</em>, crie a campanha definindo jogo, cidade e período, e vincule as escolas cadastradas. Cada escola recebe um QR Code único – é por ele que os jogadores acessam a jornada.</p>
+            </div>
+            <button class="step-link" onclick="navTo(event,'campanhas')">Ir para Campanhas →</button>
+          </div>
+
+          <div class="step-row">
+            <div class="sr-num">3</div>
+            <div class="sr-body">
+              <h4>Faz a curadoria dos projetos</h4>
+              <p>Em <em>Projetos Enviados</em>, conforme os jogadores concluem a jornada e enviam seus projetos, você decide o destino de cada um: <em>Aprovar</em> (publica na Galeria), <em>Arte</em> (encaminha para virar obra na exposição) ou <em>Arquivar</em>. É aqui que acontece a curadoria de artistas da campanha.</p>
+            </div>
+            <button class="step-link" onclick="navTo(event,'missoes')">Ir para Projetos →</button>
+          </div>
+
+          <div class="step-row">
+            <div class="sr-num">4</div>
+            <div class="sr-body">
+              <h4>Registra o evento</h4>
+              <p>Em <em>Registro de Eventos</em>, cadastre a exposição cultural que encerra a campanha – com fotos, artistas e depoimentos. Esse registro é o que documenta o ciclo completo e alimenta a Galeria de Eventos.</p>
+            </div>
+            <button class="step-link" onclick="navTo(event,'eventos')">Ir para Eventos →</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ===== VIEW: OPERACIONAL ===== -->
+      <div id="view-operacional" style="display:none;">
 
       <!-- KPIs -->
       <div class="kpi-row">
@@ -391,12 +617,13 @@
 
       <!-- ESCOLAS -->
       <div class="section-heading section-heading--noline" id="escolas">
-        <span>Escolas</span>
+        <span>Cadastro de Escolas</span>
         <span style="flex:1; height:1px; background:rgba(70,129,130,0.2);"></span>
         <button class="btn-primary" onclick="openModal('modal-escola')" style="font-size:12px; padding:8px 14px;">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           Cadastrar escola
         </button>
+        <span class="tip tip-right" data-tip="Insira todas as escolas com as quais você vai trabalhar." style="cursor:help;"><span class="tip-info">i</span></span>
       </div>
 
       <div class="table-card" style="margin-bottom:28px;">
@@ -404,16 +631,18 @@
           <thead>
             <tr>
               <th><span class="tip tip-right" data-tip="Nome da escola cadastrada pelo produtor.">Escola<span class="tip-info">i</span></span></th>
-              
-              <th><span class="tip tip-right" data-tip="Campanhas às quais esta escola está vinculada.">Campanhas<span class="tip-info">i</span></span></th>
+              <th><span class="tip tip-right" data-tip="Cidade onde a escola está localizada.">Cidade<span class="tip-info">i</span></span></th>
+              <th><span class="tip tip-right" data-tip="Tema do jogo vinculado às campanhas desta escola.">Tema<span class="tip-info">i</span></span></th>
+              <th><span class="tip tip-right" data-tip="Campanhas às quais esta escola está vinculada.">Campanhas vinculadas<span class="tip-info">i</span></span></th>
               <th style="text-align:right;"><span class="tip tip-end" data-tip="Editar ou remover escola.">Ações<span class="tip-info">i</span></span></th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td><div class="ent-cell"><div class="ent-logo lg-1">CE</div><div><div class="ent-name">CEULP Unitins</div><div class="ent-slug">Ensino Médio</div></div></div></td>
-              
-              <td>2</td>
+              <td>Palmas, TO</td>
+              <td><span style="font-size:11px; font-weight:600; background:#eef2fb; color:#2858a0; border-radius:20px; padding:2px 9px;">Clima · GEE · Água</span></td>
+              <td style="font-size:12px; color:#6b7f95;">Termômetro Zero · Ciclo da Água</td>
               <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;">
                 <button class="icon-btn" onclick="openModal('modal-escola')" title="Editar escola"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg></button>
                 <button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
@@ -421,8 +650,9 @@
             </tr>
             <tr>
               <td><div class="ent-cell"><div class="ent-logo lg-2">ET</div><div><div class="ent-name">ETAP Palmas</div><div class="ent-slug">Técnico</div></div></div></td>
-              
-              <td>1</td>
+              <td>Palmas, TO</td>
+              <td><span style="font-size:11px; font-weight:600; background:#eef2fb; color:#2858a0; border-radius:20px; padding:2px 9px;">Clima · GEE</span></td>
+              <td style="font-size:12px; color:#6b7f95;">Termômetro Zero</td>
               <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;">
                 <button class="icon-btn" onclick="openModal('modal-escola')" title="Editar escola"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg></button>
                 <button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
@@ -430,8 +660,9 @@
             </tr>
             <tr>
               <td><div class="ent-cell"><div class="ent-logo lg-3">IF</div><div><div class="ent-name">IFTO Palmas</div><div class="ent-slug">Técnico Integrado</div></div></div></td>
-              
-              <td>1</td>
+              <td>Palmas, TO</td>
+              <td><span style="font-size:11px; font-weight:600; background:#eef2fb; color:#2858a0; border-radius:20px; padding:2px 9px;">Clima · GEE</span></td>
+              <td style="font-size:12px; color:#6b7f95;">Termômetro Zero</td>
               <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;">
                 <button class="icon-btn" onclick="openModal('modal-escola')" title="Editar escola"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg></button>
                 <button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
@@ -444,12 +675,13 @@
       <!-- CAMPANHA ATIVA -->
       <!-- CAMPANHAS -->
       <div class="section-heading section-heading--noline" id="campanhas">
-        <span>Campanhas</span>
+        <span>Cadastro de Campanhas</span>
         <span style="flex:1; height:1px; background:rgba(70,129,130,0.2);"></span>
         <button class="btn-primary" onclick="openModal('modal-campanha')" style="font-size:12px; padding:8px 14px;">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           Nova campanha
         </button>
+        <span class="tip tip-right" data-tip="Campanha é uma missão realizada em uma cidade com um tema específico." style="cursor:help;"><span class="tip-info">i</span></span>
       </div>
 
       <div class="table-card" style="margin-bottom:28px;">
@@ -473,7 +705,7 @@
               <td><span class="pill pill-active">Ativa</span></td>
               <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;">
                 <button class="icon-btn" onclick="openModal('modal-status-campanha')" title="Pausar / Encerrar"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg></button>
-                <button class="icon-btn" title="Editar"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg></button>
+                <button class="icon-btn" onclick="openModal('modal-edit-campanha')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg></button>
               </div></td>
             </tr>
             <tr>
@@ -483,7 +715,7 @@
               <td style="font-size:12px; color:#6b7f95;">10/01/2025 – 28/02/2025</td>
               <td><span class="pill pill-inactive">Encerrada</span></td>
               <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;">
-                <button class="icon-btn" title="Editar"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg></button>
+                <button class="icon-btn" onclick="openModal('modal-edit-campanha')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg></button>
               </div></td>
             </tr>
           </tbody>
@@ -517,7 +749,7 @@
               <th><span class="tip tip-right" data-tip="QR Code único vinculado à escola para acesso à jornada.">QR Code<span class="tip-info">i</span></span></th>
               <th><span class="tip tip-right" data-tip="Participantes que iniciaram a jornada nesta escola.">Participantes<span class="tip-info">i</span></span></th>
               <th><span class="tip tip-right" data-tip="Projetos submetidos por participantes desta escola.">Projetos<span class="tip-info">i</span></span></th>
-              <th style="text-align:right;"><span class="tip tip-end" data-tip="Editar dados da escola ou visualizar detalhes.">Ações<span class="tip-info">i</span></span></th>
+              <th style="text-align:right;"><span class="tip tip-end" data-tip="Remover escola da campanha.">Ações<span class="tip-info">i</span></span></th>
             </tr>
           </thead>
           <tbody>
@@ -527,7 +759,7 @@
               <td>142</td>
               <td>18</td>
               <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;">
-                <button class="icon-btn" onclick="openModal('modal-edit-escola')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg></button>
+                <button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
               </div></td>
             </tr>
             <tr>
@@ -536,7 +768,7 @@
               <td>98</td>
               <td>12</td>
               <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;">
-                <button class="icon-btn" onclick="openModal('modal-edit-escola')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg></button>
+                <button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
               </div></td>
             </tr>
             <tr>
@@ -545,7 +777,7 @@
               <td>65</td>
               <td>7</td>
               <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;">
-                <button class="icon-btn" onclick="openModal('modal-edit-escola')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg></button>
+                <button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
               </div></td>
             </tr>
           </tbody>
@@ -746,6 +978,7 @@
               <th><span class="tip tip-right" data-tip="Cidade onde o evento ocorreu.">Cidade<span class="tip-info">i</span></span></th>
               <th><span class="tip tip-right" data-tip="Local específico do evento.">Local<span class="tip-info">i</span></span></th>
               <th><span class="tip tip-right" data-tip="Data de realização do evento.">Data<span class="tip-info">i</span></span></th>
+              <th style="text-align:center;"><span class="tip tip-right" data-tip="Status de publicação na Galeria de Eventos.">Status<span class="tip-info">i</span></span></th>
               <th style="text-align:right;"><span class="tip tip-end" data-tip="Editar ou remover o registro.">Ações<span class="tip-info">i</span></span></th>
             </tr>
           </thead>
@@ -756,8 +989,10 @@
               <td>Palmas, TO</td>
               <td>CEULP Unitins</td>
               <td>22/06/2025</td>
+              <td style="text-align:center;"><span class="pill pill-active">Publicado</span></td>
               <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;">
-                <button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg></button>
+                <button class="icon-btn" onclick="toggleEvento(this)" data-tip="Publicar / despublicar evento"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg></button>
+                <button class="icon-btn" onclick="editarEvento(this)" data-tip="Editar evento"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg></button>
                 <button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
               </div></td>
             </tr>
@@ -767,8 +1002,10 @@
               <td>Palmas, TO</td>
               <td>Sotreq</td>
               <td>01/03/2025</td>
+              <td style="text-align:center;"><span class="pill pill-inactive">Rascunho</span></td>
               <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;">
-                <button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg></button>
+                <button class="icon-btn" onclick="toggleEvento(this)" data-tip="Publicar / despublicar evento"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg></button>
+                <button class="icon-btn" onclick="editarEvento(this)" data-tip="Editar evento"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg></button>
                 <button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
               </div></td>
             </tr>
@@ -776,6 +1013,53 @@
         </table>
       </div>
 
+      </div><!-- /view-operacional -->
+
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Editar campanha -->
+<div class="modal-overlay" id="modal-edit-campanha">
+  <div class="modal" style="max-width:480px;">
+    <div class="modal-head">
+      <div>
+        <h2>Editar campanha</h2>
+        <p>Termômetro Zero – Palmas, TO</p>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-edit-campanha')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div class="field">
+        <label>Cidade <span class="req">*</span></label>
+        <select style="width:100%; border:1.5px solid #dde4ef; border-radius:9px; padding:10px 13px; font-size:13px; font-family:'Montserrat',sans-serif; color:#1a2e3b; background:white;">
+          <option>Palmas, TO</option>
+          <option>São Paulo, SP</option>
+          <option>Belém, PA</option>
+          <option>Recife, PE</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Jogo <span class="req">*</span></label>
+        <select style="width:100%; border:1.5px solid #dde4ef; border-radius:9px; padding:10px 13px; font-size:13px; font-family:'Montserrat',sans-serif; color:#1a2e3b; background:white;">
+          <option>Termômetro Zero</option>
+          <option>Ciclo da Água</option>
+          <option>Energia Limpa</option>
+          <option>Mata Atlântica</option>
+        </select>
+      </div>
+      <div class="field" style="margin-bottom:0;">
+        <label>Período <span class="req">*</span></label>
+        <div style="display:flex; gap:10px;">
+          <input type="date" value="2025-03-01" style="flex:1; border:1.5px solid #dde4ef; border-radius:9px; padding:10px 13px; font-size:13px; font-family:'Montserrat',sans-serif; color:#1a2e3b;">
+          <input type="date" value="2025-06-30" style="flex:1; border:1.5px solid #dde4ef; border-radius:9px; padding:10px 13px; font-size:13px; font-family:'Montserrat',sans-serif; color:#1a2e3b;">
+        </div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn-ghost" onclick="closeModal('modal-edit-campanha')">Cancelar</button>
+      <div class="spacer"></div>
+      <button class="btn-primary">Salvar</button>
     </div>
   </div>
 </div>
@@ -863,6 +1147,17 @@
       <div class="field">
         <label>Nome da escola <span class="req">*</span></label>
         <input type="text" placeholder="Ex.: CEULP Unitins" style="width:100%; border:1.5px solid #dde4ef; border-radius:9px; padding:10px 13px; font-size:13px; font-family:'Montserrat',sans-serif; color:#1a2e3b;">
+      </div>
+      <div class="field">
+        <label>Cidade <span class="req">*</span></label>
+        <select style="width:100%; border:1.5px solid #dde4ef; border-radius:9px; padding:10px 13px; font-size:13px; font-family:'Montserrat',sans-serif; color:#1a2e3b; background:white;">
+          <option value="">Selecionar cidade</option>
+          <option>Palmas, TO</option>
+          <option>São Paulo, SP</option>
+          <option>Belém, PA</option>
+          <option>Recife, PE</option>
+        </select>
+        <p class="hint">Cidades disponíveis cadastradas pelo Painel Master.</p>
       </div>
       <div class="field" style="margin-bottom:0;">
         <label>Nível de ensino</label>
@@ -1005,15 +1300,36 @@
 
 <!-- MODAL: Publicar evento -->
 <div class="modal-overlay" id="modal-evento">
-  <div class="modal" style="max-width:480px;">
+  <div class="modal" style="max-width:560px;">
     <div class="modal-head">
       <div>
         <h2>Cadastrar evento</h2>
-        <p>Memória Institucional</p>
+        <p id="evento-step-label">Etapa 1 · Informações básicas</p>
       </div>
       <button class="modal-close" onclick="closeModal('modal-evento')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
-    <div class="modal-body">
+
+    <!-- Stepper -->
+    <div style="display:flex; align-items:center; padding:14px 26px; border-bottom:1px solid #eef2f6; gap:0;">
+      <div class="ev-step active" id="ev-s1">
+        <div class="ev-dot">1</div><span>Base</span>
+      </div>
+      <div class="ev-line"></div>
+      <div class="ev-step" id="ev-s2">
+        <div class="ev-dot">2</div><span>Conteúdo</span>
+      </div>
+      <div class="ev-line"></div>
+      <div class="ev-step" id="ev-s3">
+        <div class="ev-dot">3</div><span>Pessoas</span>
+      </div>
+      <div class="ev-line"></div>
+      <div class="ev-step" id="ev-s4">
+        <div class="ev-dot">4</div><span>Resultados</span>
+      </div>
+    </div>
+
+    <!-- ETAPA 1: Base -->
+    <div class="modal-body ev-pane" id="ev-pane-1">
       <div class="field">
         <label>Campanha <span class="req">*</span></label>
         <select style="width:100%; border:1.5px solid #dde4ef; border-radius:9px; padding:10px 13px; font-size:13px; font-family:'Montserrat',sans-serif; color:#1a2e3b; background:white;">
@@ -1045,10 +1361,100 @@
         <input type="date" style="width:100%; border:1.5px solid #dde4ef; border-radius:9px; padding:10px 13px; font-size:13px; font-family:'Montserrat',sans-serif; color:#1a2e3b;">
       </div>
     </div>
-    <div class="modal-foot">
+
+    <!-- ETAPA 2: Conteúdo -->
+    <div class="modal-body ev-pane" id="ev-pane-2" style="display:none;">
+      <div class="field">
+        <label>Resumo <span class="req">*</span></label>
+        <textarea rows="2" placeholder="Uma frase descrevendo o evento e seu impacto." style="width:100%; border:1.5px solid #dde4ef; border-radius:9px; padding:10px 13px; font-size:13px; font-family:'Montserrat',sans-serif; color:#1a2e3b; resize:vertical;"></textarea>
+      </div>
+      <div class="field">
+        <label>Descrição completa</label>
+        <textarea rows="4" placeholder="Descreva o evento em detalhes: programação, parceiros, resultados e impacto na comunidade." style="width:100%; border:1.5px solid #dde4ef; border-radius:9px; padding:10px 13px; font-size:13px; font-family:'Montserrat',sans-serif; color:#1a2e3b; resize:vertical;"></textarea>
+      </div>
+      <div class="field">
+        <label>Vídeo do evento</label>
+        <input type="url" placeholder="URL do YouTube ou Vimeo" style="width:100%; border:1.5px solid #dde4ef; border-radius:9px; padding:10px 13px; font-size:13px; font-family:'Montserrat',sans-serif; color:#1a2e3b;">
+      </div>
+      <div class="field">
+        <label>Fotos</label>
+        <div id="fotos-list" style="display:flex; flex-direction:column; gap:10px; margin-bottom:10px;"></div>
+        <button class="btn-ghost" style="font-size:11px; padding:6px 12px;" onclick="adicionarFoto()" type="button">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Adicionar foto
+        </button>
+        <p class="hint" style="margin-top:6px;">Para cada foto, selecione o arquivo e adicione a legenda correspondente.</p>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:0; display:none;">
+      </div>
+    </div>
+
+    <!-- ETAPA 3: Pessoas -->
+    <div class="modal-body ev-pane" id="ev-pane-3" style="display:none;">
+      <div style="font-size:11px; font-weight:700; color:#6b7f95; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:12px;">Artistas</div>
+      <div id="artistas-list" style="display:flex; flex-direction:column; gap:10px; margin-bottom:12px;">
+        <div class="artista-item" style="background:#f8fafd; border:1.5px solid #e0e8f0; border-radius:10px; padding:12px 14px; display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+          <input type="text" placeholder="Nome do artista" style="border:1.5px solid #dde4ef; border-radius:8px; padding:8px 10px; font-size:12px; font-family:'Montserrat',sans-serif; color:#1a2e3b;">
+          <input type="text" placeholder="Cidade, Estado" style="border:1.5px solid #dde4ef; border-radius:8px; padding:8px 10px; font-size:12px; font-family:'Montserrat',sans-serif; color:#1a2e3b;">
+          <textarea placeholder="Bio curta do artista..." rows="2" style="grid-column:span 2; border:1.5px solid #dde4ef; border-radius:8px; padding:8px 10px; font-size:12px; font-family:'Montserrat',sans-serif; color:#1a2e3b; resize:none;"></textarea>
+        </div>
+      </div>
+      <button class="btn-ghost" style="font-size:11px; padding:6px 12px; margin-bottom:20px;" onclick="addArtista()">+ Adicionar artista</button>
+
+      <div style="font-size:11px; font-weight:700; color:#6b7f95; text-transform:uppercase; letter-spacing:0.6px; margin-bottom:12px;">Depoimentos</div>
+      <div id="dep-list" style="display:flex; flex-direction:column; gap:10px;">
+        <div class="dep-item" style="background:#f8fafd; border:1.5px solid #e0e8f0; border-radius:10px; padding:12px 14px; display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+          <input type="text" placeholder="Nome" style="border:1.5px solid #dde4ef; border-radius:8px; padding:8px 10px; font-size:12px; font-family:'Montserrat',sans-serif; color:#1a2e3b;">
+          <input type="text" placeholder="Papel / Empresa" style="border:1.5px solid #dde4ef; border-radius:8px; padding:8px 10px; font-size:12px; font-family:'Montserrat',sans-serif; color:#1a2e3b;">
+          <textarea placeholder="Depoimento..." rows="2" style="grid-column:span 2; border:1.5px solid #dde4ef; border-radius:8px; padding:8px 10px; font-size:12px; font-family:'Montserrat',sans-serif; color:#1a2e3b; resize:none;"></textarea>
+        </div>
+      </div>
+      <button class="btn-ghost" style="font-size:11px; padding:6px 12px; margin-top:12px;" onclick="addDepoimento()">+ Adicionar depoimento</button>
+    </div>
+
+    <!-- ETAPA 4: Resultados -->
+    <div class="modal-body ev-pane" id="ev-pane-4" style="display:none;">
+      <p style="font-size:12px; color:#6b7f95; margin-bottom:16px; line-height:1.6;">Insira os números do evento após a sua realização. Esses dados aparecem nos destaques da Galeria de Eventos.</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+        <div class="field" style="margin-bottom:0;">
+          <label>Participantes</label>
+          <input type="number" placeholder="Ex.: 923" style="width:100%; border:1.5px solid #dde4ef; border-radius:9px; padding:10px 13px; font-size:13px; font-family:'Montserrat',sans-serif; color:#1a2e3b;">
+        </div>
+        <div class="field" style="margin-bottom:0;">
+          <label>Visitantes</label>
+          <input type="number" placeholder="Ex.: 1.240" style="width:100%; border:1.5px solid #dde4ef; border-radius:9px; padding:10px 13px; font-size:13px; font-family:'Montserrat',sans-serif; color:#1a2e3b;">
+        </div>
+        <div class="field" style="margin-bottom:0;">
+          <label>Obras / projetos expostos</label>
+          <input type="number" placeholder="Ex.: 247" style="width:100%; border:1.5px solid #dde4ef; border-radius:9px; padding:10px 13px; font-size:13px; font-family:'Montserrat',sans-serif; color:#1a2e3b;">
+        </div>
+        <div class="field" style="margin-bottom:0;">
+          <label>Duração</label>
+          <input type="text" placeholder="Ex.: 30 dias" style="width:100%; border:1.5px solid #dde4ef; border-radius:9px; padding:10px 13px; font-size:13px; font-family:'Montserrat',sans-serif; color:#1a2e3b;">
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer dinâmico -->
+    <div class="modal-foot" id="ev-foot-1">
       <button class="btn-ghost" onclick="closeModal('modal-evento')">Cancelar</button>
       <div class="spacer"></div>
-      <button class="btn-primary">Cadastrar</button>
+      <button class="btn-primary" onclick="eventoStep(2)">Continuar →</button>
+    </div>
+    <div class="modal-foot" id="ev-foot-2" style="display:none;">
+      <button class="btn-ghost" onclick="eventoStep(1)">← Voltar</button>
+      <div class="spacer"></div>
+      <button class="btn-primary" onclick="eventoStep(3)">Continuar →</button>
+    </div>
+    <div class="modal-foot" id="ev-foot-3" style="display:none;">
+      <button class="btn-ghost" onclick="eventoStep(2)">← Voltar</button>
+      <div class="spacer"></div>
+      <button class="btn-primary" onclick="eventoStep(4)">Continuar →</button>
+    </div>
+    <div class="modal-foot" id="ev-foot-4" style="display:none;">
+      <button class="btn-ghost" onclick="eventoStep(3)">← Voltar</button>
+      <div class="spacer"></div>
+      <button class="btn-primary" onclick="closeModal('modal-evento')">Publicar evento</button>
     </div>
   </div>
 </div>
@@ -1072,6 +1478,27 @@
     document.getElementById('app-layout').style.display = 'flex';
   }
 
+  function navTo(ev, target) {
+    if (ev) ev.preventDefault();
+    const guia = document.getElementById('view-passo');
+    const oper = document.getElementById('view-operacional');
+    const isGuia = target === 'passo';
+    guia.style.display = isGuia ? 'block' : 'none';
+    oper.style.display = isGuia ? 'none' : 'block';
+
+    document.querySelectorAll('.sidebar .nav-item').forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + target);
+    });
+
+    if (isGuia) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      const sec = document.getElementById(target);
+      if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      else window.scrollTo({ top: 0 });
+    }
+  }
+
 
   function adicionarEscola() {
     const nome = document.getElementById('escola-nome').value.trim();
@@ -1086,7 +1513,91 @@
     document.getElementById('escola-nivel').value = '';
   }
 
-  function openModal(id) { document.getElementById(id).classList.add('open'); }
+  let fotoCount = 0;
+
+  function adicionarFoto() {
+    fotoCount++;
+    const list = document.getElementById('fotos-list');
+    const id = 'foto-' + fotoCount;
+    const item = document.createElement('div');
+    item.id = id;
+    item.style.cssText = 'background:#f8fafd; border:1.5px solid #e0e8f0; border-radius:10px; padding:12px 14px; display:flex; flex-direction:column; gap:8px; position:relative;';
+    item.innerHTML = `
+      <button onclick="document.getElementById('${id}').remove()" style="position:absolute; top:8px; right:8px; background:none; border:none; cursor:pointer; color:#94a4b6; font-size:16px; line-height:1;">×</button>
+      <div style="font-size:10px; font-weight:700; color:#94a4b6; text-transform:uppercase; letter-spacing:0.5px;">Foto ${fotoCount}</div>
+      <input type="file" accept="image/jpeg,image/png" onchange="previewFoto(this, '${id}')" style="border:1.5px solid #dde4ef; border-radius:8px; padding:7px 10px; font-size:12px; font-family:'Montserrat',sans-serif; color:#1a2e3b; background:white;">
+      <div id="${id}-preview" style="display:none;">
+        <img id="${id}-img" style="width:100%; max-height:140px; object-fit:cover; border-radius:8px;">
+      </div>
+      <input type="text" placeholder="Legenda desta foto..." style="border:1.5px solid #dde4ef; border-radius:8px; padding:8px 10px; font-size:12px; font-family:'Montserrat',sans-serif; color:#1a2e3b;">
+    `;
+    list.appendChild(item);
+  }
+
+  function previewFoto(input, id) {
+    if (input.files && input.files[0]) {
+      const img = document.getElementById(id + '-img');
+      const preview = document.getElementById(id + '-preview');
+      img.src = URL.createObjectURL(input.files[0]);
+      preview.style.display = 'block';
+    }
+  }
+
+  function eventoStep(n) {
+    [1,2,3,4].forEach(i => {
+      document.getElementById('ev-pane-'+i).style.display = i === n ? 'block' : 'none';
+      document.getElementById('ev-foot-'+i).style.display = i === n ? 'flex' : 'none';
+      const step = document.getElementById('ev-s'+i);
+      step.classList.remove('active','done');
+      if (i === n) step.classList.add('active');
+      if (i < n) step.classList.add('done');
+    });
+    const labels = ['Etapa 1 · Informações básicas','Etapa 2 · Conteúdo e mídia','Etapa 3 · Artistas e depoimentos','Etapa 4 · Resultados'];
+    document.getElementById('evento-step-label').textContent = labels[n-1];
+  }
+
+  function addArtista() {
+    const list = document.getElementById('artistas-list');
+    const div = document.createElement('div');
+    div.className = 'artista-item';
+    div.style.cssText = 'background:#f8fafd; border:1.5px solid #e0e8f0; border-radius:10px; padding:12px 14px; display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:0;';
+    div.innerHTML = `<input type="text" placeholder="Nome do artista" style="border:1.5px solid #dde4ef; border-radius:8px; padding:8px 10px; font-size:12px; font-family:'Montserrat',sans-serif; color:#1a2e3b;"><input type="text" placeholder="Cidade, Estado" style="border:1.5px solid #dde4ef; border-radius:8px; padding:8px 10px; font-size:12px; font-family:'Montserrat',sans-serif; color:#1a2e3b;"><textarea placeholder="Bio curta do artista..." rows="2" style="grid-column:span 2; border:1.5px solid #dde4ef; border-radius:8px; padding:8px 10px; font-size:12px; font-family:'Montserrat',sans-serif; color:#1a2e3b; resize:none;"></textarea>`;
+    list.appendChild(div);
+  }
+
+  function addDepoimento() {
+    const list = document.getElementById('dep-list');
+    const div = document.createElement('div');
+    div.className = 'dep-item';
+    div.style.cssText = 'background:#f8fafd; border:1.5px solid #e0e8f0; border-radius:10px; padding:12px 14px; display:grid; grid-template-columns:1fr 1fr; gap:10px;';
+    div.innerHTML = `<input type="text" placeholder="Nome" style="border:1.5px solid #dde4ef; border-radius:8px; padding:8px 10px; font-size:12px; font-family:'Montserrat',sans-serif; color:#1a2e3b;"><input type="text" placeholder="Papel / Empresa" style="border:1.5px solid #dde4ef; border-radius:8px; padding:8px 10px; font-size:12px; font-family:'Montserrat',sans-serif; color:#1a2e3b;"><textarea placeholder="Depoimento..." rows="2" style="grid-column:span 2; border:1.5px solid #dde4ef; border-radius:8px; padding:8px 10px; font-size:12px; font-family:'Montserrat',sans-serif; color:#1a2e3b; resize:none;"></textarea>`;
+    list.appendChild(div);
+  }
+
+
+  function toggleEvento(btn) {
+    const pill = btn.closest('tr').querySelector('.pill');
+    if (pill.classList.contains('pill-active')) {
+      pill.classList.remove('pill-active'); pill.classList.add('pill-inactive');
+      pill.textContent = 'Rascunho';
+    } else {
+      pill.classList.remove('pill-inactive'); pill.classList.add('pill-active');
+      pill.textContent = 'Publicado';
+    }
+  }
+
+  function editarEvento(btn) {
+    const modal = document.getElementById('modal-evento');
+    const titulo = btn.closest('tr').querySelector('.ent-name').textContent;
+    modal.querySelector('h2').textContent = 'Editar evento';
+    modal.querySelector('#evento-step-label').textContent = 'Etapa 1 · Informações básicas';
+    openModal('modal-evento');
+  }
+
+  function openModal(id) {
+    document.getElementById(id).classList.add('open');
+    if (id === 'modal-evento') eventoStep(1);
+  }
   function closeModal(id) { document.getElementById(id).classList.remove('open'); }
   document.querySelectorAll('.modal-overlay').forEach(m => {
     m.addEventListener('click', e => { if (e.target === m) m.classList.remove('open'); });
