@@ -77,6 +77,8 @@
 
   /* TABELA */
   .table-card { background: #fff; border: 1px solid #e0e8f0; border-radius: 14px; overflow: hidden; margin-bottom: 20px; }
+  .table-card--open { overflow: visible; }
+  .table-card--open table { table-layout: fixed; }
   .table-head { padding: 18px 20px 14px; border-bottom: 1px solid #eef2f6; }
   .table-head h3 { font-size: 14px; font-weight: 700; color: #1a2e3b; }
   .table-head p { font-size: 11px; color: #6b7f95; margin-top: 2px; }
@@ -360,6 +362,34 @@
     .step-row { grid-template-columns: 40px 1fr; }
     .step-row .step-link { grid-column: 1 / -1; justify-self: start; }
   }
+  /* ACOMPANHAMENTO */
+  .acomp-funnel { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-bottom: 14px; }
+  .fstep { background: #fff; border: 1px solid #e0e8f0; border-radius: 14px; padding: 16px 12px; text-align: center; }
+  .fstep .fs-val { font-size: 22px; font-weight: 800; color: #1a2e3b; line-height: 1; margin-bottom: 5px; }
+  .fstep .fs-lbl { font-size: 11px; color: #6b7f95; font-weight: 600; line-height: 1.3; }
+  .fstep .fs-pct { font-size: 10px; color: #94a4b6; font-weight: 700; margin-top: 5px; }
+  .fstep.f-blue   { background: #eef4fc; border-color: #dbe6f6; }
+  .fstep.f-blue   .fs-val { color: #2858a0; }
+  .fstep.f-teal   { background: #eaf5f5; border-color: #d3e7e7; }
+  .fstep.f-teal   .fs-val { color: #468182; }
+  .fstep.f-bronze { background: #f7eee1; border-color: #ebdcc6; }
+  .fstep.f-bronze .fs-val { color: #a9763e; }
+  .fstep.f-prata  { background: #eff2f6; border-color: #dfe5ec; }
+  .fstep.f-prata  .fs-val { color: #79838f; }
+  .fstep.f-ouro   { background: #fbf4da; border-color: #f0e4b8; }
+  .fstep.f-ouro   .fs-val { color: #a8862a; }
+  .fstep.f-roxo   { background: #f3eefb; border-color: #e6dcf6; }
+  .fstep.f-roxo   .fs-val { color: #7c5cbf; }
+  .cohort-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 12px; }
+  .cohort-card { background: #fff; border: 1px solid #e0e8f0; border-radius: 14px; padding: 18px 20px; }
+  .cohort-card .cc-count { font-size: 24px; font-weight: 800; color: #c47a00; line-height: 1; margin-bottom: 5px; }
+  .cohort-card .cc-lbl { font-size: 12px; color: #6b7f95; font-weight: 500; line-height: 1.4; margin-bottom: 14px; min-height: 34px; }
+  .btn-remind { width: 100%; border: 1.5px solid #2858a0; background: #fff; color: #2858a0; border-radius: 9px; padding: 9px; font-size: 12px; font-weight: 700; cursor: pointer; font-family: 'Montserrat', sans-serif; display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.15s; }
+  .btn-remind:hover { background: #2858a0; color: #fff; }
+  .btn-remind.sent { border-color: #5fb670; background: #e8f6ec; color: #2a7a3a; cursor: default; }
+  .pill-low { background: #fdecec; color: #c0392b; }
+  .acomp-note { font-size: 11.5px; color: #94a4b6; margin: 0 0 24px; display: flex; align-items: flex-start; gap: 7px; line-height: 1.45; }
+  @media (max-width: 880px) { .acomp-funnel { grid-template-columns: repeat(2, 1fr); } .cohort-grid { grid-template-columns: 1fr; } }
 
 </style>
 </head>
@@ -413,6 +443,10 @@
     <a href="#campanhas" class="nav-item" onclick="navTo(event,'campanhas')">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
       Campanhas
+    </a>
+    <a href="#acompanhamento" class="nav-item" onclick="navTo(event,'acompanhamento')">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      Acompanhamento
     </a>
     <a href="#missoes" class="nav-item" onclick="navTo(event,'missoes')">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
@@ -538,7 +572,7 @@
 
         <div class="step-list">
           <div class="step-row">
-            <div class="sr-num">1</div>
+            <div class="sr-num" style="background:#2858a0;">1</div>
             <div class="sr-body">
               <h4>Cadastra as escolas</h4>
               <p>Em <em>Escolas</em>, insira todas as escolas com as quais vai trabalhar – nome, cidade, nível de ensino e tema. Esse é o cadastro base que você reutiliza ao montar cada campanha.</p>
@@ -547,7 +581,7 @@
           </div>
 
           <div class="step-row">
-            <div class="sr-num">2</div>
+            <div class="sr-num" style="background:#468182;">2</div>
             <div class="sr-body">
               <h4>Cria a campanha e vincula as escolas</h4>
               <p>Em <em>Campanhas</em>, crie a campanha definindo jogo, cidade e período, e vincule as escolas cadastradas. Cada escola recebe um QR Code único – é por ele que os jogadores acessam a jornada.</p>
@@ -556,7 +590,7 @@
           </div>
 
           <div class="step-row">
-            <div class="sr-num">3</div>
+            <div class="sr-num" style="background:#2a9a4a;">3</div>
             <div class="sr-body">
               <h4>Faz a curadoria dos projetos</h4>
               <p>Em <em>Projetos Enviados</em>, conforme os jogadores concluem a jornada e enviam seus projetos, você decide o destino de cada um: <em>Aprovar</em> (publica na Galeria), <em>Arte</em> (encaminha para virar obra na exposição) ou <em>Arquivar</em>. É aqui que acontece a curadoria de artistas da campanha.</p>
@@ -565,7 +599,7 @@
           </div>
 
           <div class="step-row">
-            <div class="sr-num">4</div>
+            <div class="sr-num" style="background:#7c5cbf;">4</div>
             <div class="sr-body">
               <h4>Registra o evento</h4>
               <p>Em <em>Registro de Eventos</em>, cadastre a exposição cultural que encerra a campanha – com fotos, artistas e depoimentos. Esse registro é o que documenta o ciclo completo e alimenta a Galeria de Eventos.</p>
@@ -779,6 +813,121 @@
               <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;">
                 <button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
               </div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ACOMPANHAMENTO -->
+      <div class="section-heading section-heading--noline" id="acompanhamento">
+        <span>Acompanhamento dos Jogadores</span>
+        <span style="flex:1; height:1px; background:rgba(70,129,130,0.2);"></span>
+      </div>
+
+      <div class="acomp-funnel">
+        <div class="fstep f-blue"><div class="fs-val">2.450</div><div class="fs-lbl">Contas criadas</div><div class="fs-pct">100%</div></div>
+        <div class="fstep f-teal"><div class="fs-val">2.300</div><div class="fs-lbl">Começaram a jogar</div><div class="fs-pct">94%</div></div>
+        <div class="fstep f-bronze"><div class="fs-val">2.080</div><div class="fs-lbl">Nível 1 · Bronze</div><div class="fs-pct">85%</div></div>
+        <div class="fstep f-prata"><div class="fs-val">1.560</div><div class="fs-lbl">Nível 2 · Prata</div><div class="fs-pct">64%</div></div>
+        <div class="fstep f-ouro"><div class="fs-val">1.120</div><div class="fs-lbl">Nível 3 · Certificado</div><div class="fs-pct">46%</div></div>
+        <div class="fstep f-roxo"><div class="fs-val">840</div><div class="fs-lbl">Projeto enviado</div><div class="fs-pct">34%</div></div>
+      </div>
+
+      <div class="cohort-grid">
+        <div class="cohort-card">
+          <div class="cc-count">150</div>
+          <div class="cc-lbl">Criaram conta, mas ainda não começaram a jogar</div>
+          <button class="btn-remind" onclick="enviarLembrete(this, 150)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v12H5.17L4 17.17z"/></svg> Enviar lembrete</button>
+        </div>
+        <div class="cohort-card">
+          <div class="cc-count">520</div>
+          <div class="cc-lbl">Pararam no Nível 1 e não avançaram para o Nível 2</div>
+          <button class="btn-remind" onclick="enviarLembrete(this, 520)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v12H5.17L4 17.17z"/></svg> Enviar lembrete</button>
+        </div>
+        <div class="cohort-card">
+          <div class="cc-count">280</div>
+          <div class="cc-lbl">Concluíram os 3 níveis, mas ainda não enviaram o projeto</div>
+          <button class="btn-remind" onclick="enviarLembrete(this, 280)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v12H5.17L4 17.17z"/></svg> Enviar lembrete</button>
+        </div>
+      </div>
+
+      <div class="acomp-note">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0; margin-top:1px;"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <span>O lembrete é enviado pelo sistema diretamente aos alunos da coorte. Você aciona o grupo; nome e e-mail individuais não são exibidos no painel.</span>
+      </div>
+
+      <div class="table-card table-card--open">
+        <div class="table-head">
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <div>
+              <h3>Escolas da campanha</h3>
+              <p style="font-size:11px; color:#6b7f95; margin-top:4px;">Engajamento por escola, para priorizar quais revisitar</p>
+            </div>
+          </div>
+        </div>
+        <table>
+          <colgroup>
+            <col style="width:19%">
+            <col style="width:11%">
+            <col style="width:9%">
+            <col style="width:9%">
+            <col style="width:9%">
+            <col style="width:18%">
+            <col style="width:11%">
+            <col style="width:14%">
+          </colgroup>
+          <thead>
+            <tr>
+              <th><span class="tip tip-right" data-tip="Escola vinculada a esta campanha.">Escola<span class="tip-info">i</span></span></th>
+              <th><span class="tip tip-right" data-tip="Cidade onde a escola está localizada.">Cidade<span class="tip-info">i</span></span></th>
+              <th style="text-align:center; white-space:nowrap;"><span class="tip tip-right" data-tip="Alunos que criaram conta nesta escola.">Contas<span class="tip-info">i</span></span></th>
+              <th style="text-align:center; white-space:nowrap;"><span class="tip tip-right" data-tip="Alunos que alcançaram o Nível 1 (Bronze).">Nível 1<span class="tip-info">i</span></span></th>
+              <th style="text-align:center; white-space:nowrap;"><span class="tip tip-right" data-tip="Alunos que alcançaram o Nível 2 (Prata).">Nível 2<span class="tip-info">i</span></span></th>
+              <th style="text-align:center;"><span class="tip tip-right" data-tip="Alunos que concluíram o Nível 3 (Ouro) e receberam o certificado.">Nível 3/Concluíram<span class="tip-info">i</span></span></th>
+              <th style="text-align:center; white-space:nowrap;"><span class="tip tip-right" data-tip="Projetos enviados pelos alunos desta escola.">Projetos<span class="tip-info">i</span></span></th>
+              <th style="text-align:right;"><span class="tip tip-end" data-tip="Nível de engajamento da escola, para priorizar quais revisitar.">Engajamento<span class="tip-info">i</span></span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><div class="ent-cell"><div class="ent-logo lg-2">ET</div><div><div class="ent-name">ETEC Palmas</div><div class="ent-slug">Técnico</div></div></div></td>
+              <td>Palmas, TO</td>
+              <td style="text-align:center;">980</td>
+              <td style="text-align:center;">900</td>
+              <td style="text-align:center;">650</td>
+              <td style="text-align:center;">470</td>
+              <td style="text-align:center;">360</td>
+              <td style="text-align:right;"><span class="pill pill-active">Alta</span></td>
+            </tr>
+            <tr>
+              <td><div class="ent-cell"><div class="ent-logo lg-3">CG</div><div><div class="ent-name">Colégio Girassol</div><div class="ent-slug">Ensino Médio</div></div></div></td>
+              <td>Palmas, TO</td>
+              <td style="text-align:center;">850</td>
+              <td style="text-align:center;">780</td>
+              <td style="text-align:center;">560</td>
+              <td style="text-align:center;">410</td>
+              <td style="text-align:center;">300</td>
+              <td style="text-align:right;"><span class="pill pill-active">Alta</span></td>
+            </tr>
+            <tr>
+              <td><div class="ent-cell"><div class="ent-logo lg-1">CT</div><div><div class="ent-name">CEM Taquaralto</div><div class="ent-slug">Ensino Médio</div></div></div></td>
+              <td>Palmas, TO</td>
+              <td style="text-align:center;">620</td>
+              <td style="text-align:center;">540</td>
+              <td style="text-align:center;">360</td>
+              <td style="text-align:center;">240</td>
+              <td style="text-align:center;">180</td>
+              <td style="text-align:right;"><span class="pill pill-paused">Média</span></td>
+            </tr>
+            <tr>
+              <td><div class="ent-cell"><div class="ent-logo lg-4">EA</div><div><div class="ent-name">EE Aurora</div><div class="ent-slug">Ensino Fundamental</div></div></div></td>
+              <td>Palmas, TO</td>
+              <td style="text-align:center;">120</td>
+              <td style="text-align:center;">90</td>
+              <td style="text-align:center;">50</td>
+              <td style="text-align:center;">30</td>
+              <td style="text-align:center;">15</td>
+              <td style="text-align:right;"><span class="pill pill-low">Baixa</span></td>
             </tr>
           </tbody>
         </table>
@@ -1705,6 +1854,13 @@
   function mudarPaginaEv(dir) {
     irPaginaEv(Math.max(1, Math.min(totalPaginasEv, paginaAtualEv + dir)));
   }
+
+  function enviarLembrete(btn, n) {
+    if (btn.classList.contains('sent')) return;
+    btn.classList.add('sent');
+    btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Lembrete enviado a ' + n + ' alunos';
+  }
+
 
   function filtrarProjetos(filtro) {
     const cards = document.querySelectorAll('#proj-grid .proj-card');
