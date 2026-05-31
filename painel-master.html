@@ -470,6 +470,22 @@
   .pag-btn:hover { border-color:#2858a0; color:#2858a0; }
   .pag-btn.active { background:#2858a0; color:white; border-color:#2858a0; }
   .pag-btn.arrow { width:auto; padding:0 12px; }
+
+  /* ACOMPANHAMENTO */
+  .acomp-funnel { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-bottom: 14px; }
+  .fstep { background: #fff; border: 1px solid #e0e8f0; border-radius: 14px; padding: 16px 12px; text-align: center; }
+  .fstep .fs-val { font-size: 22px; font-weight: 800; color: #1a2e3b; line-height: 1; margin-bottom: 5px; }
+  .fstep .fs-lbl { font-size: 11px; color: #6b7f95; font-weight: 600; line-height: 1.3; }
+  .fstep .fs-pct { font-size: 10px; color: #94a4b6; font-weight: 700; margin-top: 5px; }
+  .fstep.f-blue   { background: #eef4fc; border-color: #dbe6f6; } .fstep.f-blue .fs-val { color: #2858a0; }
+  .fstep.f-teal   { background: #eaf5f5; border-color: #d3e7e7; } .fstep.f-teal .fs-val { color: #468182; }
+  .fstep.f-bronze { background: #f7eee1; border-color: #ebdcc6; } .fstep.f-bronze .fs-val { color: #a9763e; }
+  .fstep.f-prata  { background: #eff2f6; border-color: #dfe5ec; } .fstep.f-prata .fs-val { color: #79838f; }
+  .fstep.f-ouro   { background: #fbf4da; border-color: #f0e4b8; } .fstep.f-ouro .fs-val { color: #a8862a; }
+  .fstep.f-roxo   { background: #f3eefb; border-color: #e6dcf6; } .fstep.f-roxo .fs-val { color: #7c5cbf; }
+  .table-card--open { overflow: visible; }
+  .acomp-note { font-size: 11.5px; color: #94a4b6; margin: 0 0 22px; display: flex; align-items: flex-start; gap: 7px; line-height: 1.45; }
+  @media (max-width: 880px) { .acomp-funnel { grid-template-columns: repeat(2, 1fr); } }
 </style>
 </head>
 <body>
@@ -507,6 +523,10 @@
     <a href="#gov-institucional" class="nav-item">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
       Gov. Institucional
+    </a>
+    <a href="#acompanhamento" class="nav-item">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      Acompanhamento
     </a>
     <a href="#monitoramento" class="nav-item">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
@@ -934,6 +954,81 @@
               <td><span class="pill pill-inactive">Inativa</span></td>
               <td style="text-align:center;">0</td>
               <td style="text-align:right;">—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ACOMPANHAMENTO DOS JOGADORES -->
+      <div class="section-heading" id="acompanhamento">
+        <span>Acompanhamento dos Jogadores</span>
+        <span style="flex:1; height:1px; background:rgba(70,129,130,0.2);"></span>
+      </div>
+
+      <div class="acomp-funnel">
+        <div class="fstep f-blue"><div class="fs-val">9.840</div><div class="fs-lbl">Contas criadas</div><div class="fs-pct">100%</div></div>
+        <div class="fstep f-teal"><div class="fs-val">9.210</div><div class="fs-lbl">Começaram a jogar</div><div class="fs-pct">94%</div></div>
+        <div class="fstep f-bronze"><div class="fs-val">8.110</div><div class="fs-lbl">Nível 1 · Bronze</div><div class="fs-pct">82%</div></div>
+        <div class="fstep f-prata"><div class="fs-val">5.940</div><div class="fs-lbl">Nível 2 · Prata</div><div class="fs-pct">60%</div></div>
+        <div class="fstep f-ouro"><div class="fs-val">4.180</div><div class="fs-lbl">Nível 3 · Certificado</div><div class="fs-pct">42%</div></div>
+        <div class="fstep f-roxo"><div class="fs-val">3.020</div><div class="fs-lbl">Projeto enviado</div><div class="fs-pct">31%</div></div>
+      </div>
+
+      <div class="acomp-note">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0; margin-top:1px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <span>Visão de governança, agregada por produtor e campanha. Nenhum dado individual de aluno é exibido, e as ações de reengajamento (lembretes) são executadas no Painel do Produtor, não aqui.</span>
+      </div>
+
+      <div class="table-card table-card--open">
+        <div class="table-head">
+          <div>
+            <h3>Funil por produtor</h3>
+            <p style="font-size:11px; color:#6b7f95; margin-top:4px;">Comparação entre os produtores do ecossistema</p>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th><span class="tip tip-right" data-tip="Produtor cultural que opera as campanhas.">Produtor<span class="tip-info">i</span></span></th>
+              <th style="text-align:center;"><span class="tip tip-right" data-tip="Campanhas ativas do produtor.">Campanhas<span class="tip-info">i</span></span></th>
+              <th style="text-align:center;"><span class="tip tip-right" data-tip="Contas criadas pelos jogadores.">Contas<span class="tip-info">i</span></span></th>
+              <th style="text-align:center;"><span class="tip tip-right" data-tip="Percentual que concluiu os 3 níveis.">Conclusão<span class="tip-info">i</span></span></th>
+              <th style="text-align:center;"><span class="tip tip-right" data-tip="Certificados emitidos.">Certificados<span class="tip-info">i</span></span></th>
+              <th style="text-align:right;"><span class="tip tip-end" data-tip="Projetos enviados pelos alunos.">Projetos<span class="tip-info">i</span></span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><div class="ent-cell"><div class="ent-logo lg-2">AM</div><div><div class="ent-name">Ana Martins</div><div class="ent-slug">Sotreq</div></div></div></td>
+              <td style="text-align:center;">3</td>
+              <td style="text-align:center;">3.450</td>
+              <td style="text-align:center;">46%</td>
+              <td style="text-align:center;">1.580</td>
+              <td style="text-align:right;">1.120</td>
+            </tr>
+            <tr>
+              <td><div class="ent-cell"><div class="ent-logo lg-3">RC</div><div><div class="ent-name">Rafael Costa</div><div class="ent-slug">Sotreq</div></div></div></td>
+              <td style="text-align:center;">2</td>
+              <td style="text-align:center;">2.380</td>
+              <td style="text-align:center;">45%</td>
+              <td style="text-align:center;">1.060</td>
+              <td style="text-align:right;">760</td>
+            </tr>
+            <tr>
+              <td><div class="ent-cell"><div class="ent-logo lg-1">JS</div><div><div class="ent-name">Julia Santos</div><div class="ent-slug">Mercado Livre</div></div></div></td>
+              <td style="text-align:center;">2</td>
+              <td style="text-align:center;">2.610</td>
+              <td style="text-align:center;">44%</td>
+              <td style="text-align:center;">1.150</td>
+              <td style="text-align:right;">840</td>
+            </tr>
+            <tr>
+              <td><div class="ent-cell"><div class="ent-logo lg-4">MO</div><div><div class="ent-name">Marcos Oliveira</div><div class="ent-slug">Aegea</div></div></div></td>
+              <td style="text-align:center;">1</td>
+              <td style="text-align:center;">1.400</td>
+              <td style="text-align:center;">28%</td>
+              <td style="text-align:center;">390</td>
+              <td style="text-align:right;">300</td>
             </tr>
           </tbody>
         </table>
