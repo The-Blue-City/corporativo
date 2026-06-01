@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Painel Master — The Blue City</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Montserrat', sans-serif; background: #f4f8fc; color: #1a2e3b; }
@@ -486,6 +487,29 @@
   .table-card--open { overflow: visible; }
   .acomp-note { font-size: 11.5px; color: #94a4b6; margin: 0 0 22px; display: flex; align-items: flex-start; gap: 7px; line-height: 1.45; }
   @media (max-width: 880px) { .acomp-funnel { grid-template-columns: repeat(2, 1fr); } }
+  .emit-flow { display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 600; }
+  .emit-flow-step { background: #eef4fc; border: 1px solid #dbe6f6; color: #2858a0; padding: 5px 10px; border-radius: 20px; }
+  .emit-flow-arrow { color: #b8c4d2; }
+  .emit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 14px; }
+  .emit-card { border: 1px solid #e0e8f0; border-radius: 14px; padding: 18px; background: #fff; display: flex; flex-direction: column; }
+  .emit-top { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #1a2e3b; }
+  .emit-dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
+  .emit-cert { font-size: 9.5px; font-weight: 700; color: #a8862a; background: #fff; border: 1px solid #f0e4b8; padding: 2px 7px; border-radius: 20px; margin-left: auto; }
+  .emit-num { font-size: 30px; font-weight: 800; line-height: 1; margin: 14px 0 3px; }
+  .emit-sub { font-size: 11.5px; color: #6b7f95; font-weight: 600; }
+  .emit-cols { font-size: 10.5px; color: #94a4b6; font-weight: 600; margin: 12px 0 14px; padding-top: 12px; border-top: 1px dashed rgba(0,0,0,0.1); line-height: 1.5; }
+  .emit-meta { font-size: 10.5px; color: #94a4b6; font-weight: 600; margin-top: 4px; display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+  .emit-lastdate { display: inline-flex; align-items: center; gap: 6px; padding: 6px 11px; background: #fff; border: 1px solid #e0e8f0; border-radius: 8px; font-size: 11.5px; font-weight: 700; color: #1a2e3b; }
+  .emit-lastdate svg { opacity: 0.6; flex-shrink: 0; }
+  .emit-lastdate strong { font-weight: 800; }
+  .emit-actions { display: flex; flex-direction: column; gap: 8px; margin-top: auto; }
+  .emit-card .emit-actions .btn-ghost { background: #fff; }
+  .emit-card .emit-actions .btn-ghost, .emit-card .emit-actions .btn-primary { width: 100%; justify-content: center; }
+  .emit-card.is-done .emit-num { color: #aeb9c6; }
+  .emit-card.e-bronze { background: #f7eee1; border-color: #ebdcc6; } .e-bronze .emit-dot { background: #a9763e; } .e-bronze .emit-num { color: #a9763e; }
+  .emit-card.e-prata  { background: #eff2f6; border-color: #dfe5ec; } .e-prata .emit-dot { background: #79838f; } .e-prata .emit-num { color: #79838f; }
+  .emit-card.e-ouro   { background: #fbf4da; border-color: #f0e4b8; } .e-ouro .emit-dot { background: #a8862a; } .e-ouro .emit-num { color: #a8862a; }
+  @media (max-width: 880px) { .emit-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -527,6 +551,10 @@
     <a href="#acompanhamento" class="nav-item">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
       Acompanhamento
+    </a>
+    <a href="#emissao" class="nav-item">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+      Emissão de Credenciais
     </a>
     <a href="#monitoramento" class="nav-item">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
@@ -1034,7 +1062,71 @@
         </table>
       </div>
 
-      <!-- MONITORAMENTO -->
+      <!-- EMISSAO DE CREDENCIAIS (POK) -->
+      <div class="section-heading" id="emissao">
+        <span>Emissão de Credenciais (POK)</span>
+        <span style="flex:1; height:1px; background:rgba(70,129,130,0.2);"></span>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px; flex-wrap:wrap;">
+        <span style="font-size:11px; font-weight:600; color:#6b7f95;">Campanha:</span>
+        <select id="emit-campanha" onchange="updateEmit()" style="font-family:'Montserrat',sans-serif; font-size:12px; font-weight:600; color:#1a2e3b; background:white; border:1.5px solid #dde4ef; border-radius:8px; padding:7px 14px; cursor:pointer;">
+          <option>Termômetro Zero · Palmas, TO</option>
+          <option>Ciclo da Água · Belém, PA</option>
+          <option>Energia Limpa · Salvador, BA</option>
+        </select>
+      </div>
+
+      <div class="emit-flow" style="margin-bottom:16px;">
+        <span class="emit-flow-step">1 · Baixe o lote</span>
+        <span class="emit-flow-arrow">→</span>
+        <span class="emit-flow-step">2 · Suba na POK</span>
+        <span class="emit-flow-arrow">→</span>
+        <span class="emit-flow-step">3 · Badge enviada ao aluno</span>
+      </div>
+
+      <div class="emit-grid">
+        <div class="emit-card e-bronze">
+          <div class="emit-top"><span class="emit-dot"></span>Bronze · Nível 1</div>
+          <div class="emit-num" id="emit-num-bronze">0</div>
+          <div class="emit-sub" id="emit-sub-bronze"></div>
+          <div class="emit-meta" id="emit-meta-bronze"></div>
+          <div class="emit-cols">Nome · Sobrenome · E-mail · Documento · Escola · Cidade</div>
+          <div class="emit-actions">
+            <button class="btn-ghost" id="emit-baixar-bronze" onclick="baixarXLSX('bronze')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="3" x2="12" y2="15"/></svg> Baixar XLSX</button>
+            <button class="btn-primary" id="emit-confirm-bronze" onclick="confirmarEmissao('bronze')" style="display:none;">Confirmar emissão na POK</button>
+          </div>
+        </div>
+        <div class="emit-card e-prata">
+          <div class="emit-top"><span class="emit-dot"></span>Prata · Nível 2</div>
+          <div class="emit-num" id="emit-num-prata">0</div>
+          <div class="emit-sub" id="emit-sub-prata"></div>
+          <div class="emit-meta" id="emit-meta-prata"></div>
+          <div class="emit-cols">Nome · Sobrenome · E-mail · Documento · Escola · Cidade</div>
+          <div class="emit-actions">
+            <button class="btn-ghost" id="emit-baixar-prata" onclick="baixarXLSX('prata')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="3" x2="12" y2="15"/></svg> Baixar XLSX</button>
+            <button class="btn-primary" id="emit-confirm-prata" onclick="confirmarEmissao('prata')" style="display:none;">Confirmar emissão na POK</button>
+          </div>
+        </div>
+        <div class="emit-card e-ouro">
+          <div class="emit-top"><span class="emit-dot"></span>Ouro · Nível 3<span class="emit-cert">+ certificado automático</span></div>
+          <div class="emit-num" id="emit-num-ouro">0</div>
+          <div class="emit-sub" id="emit-sub-ouro"></div>
+          <div class="emit-meta" id="emit-meta-ouro"></div>
+          <div class="emit-cols">Nome · Sobrenome · E-mail · Documento · Escola · Cidade</div>
+          <div class="emit-actions">
+            <button class="btn-ghost" id="emit-baixar-ouro" onclick="baixarXLSX('ouro')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="3" x2="12" y2="15"/></svg> Baixar XLSX</button>
+            <button class="btn-primary" id="emit-confirm-ouro" onclick="confirmarEmissao('ouro')" style="display:none;">Confirmar emissão na POK</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="acomp-note">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0; margin-top:1px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <span>O certificado é emitido automaticamente pela POK quando o aluno recebe as 3 badges da trilha. O e‑mail é a chave que liga as badges ao mesmo aluno, então deve ser o mesmo nos 3 lotes. Esta é a única tela com dados individuais, sob responsabilidade da The Blue City como controladora e amparada no consentimento do cadastro.</span>
+      </div>
+
+            <!-- MONITORAMENTO -->
       <div class="section-heading" id="monitoramento">
         <span>Monitoramento de Performance</span>
         <span style="flex:1; height:1px; background:rgba(70,129,130,0.2);"></span>
@@ -1543,6 +1635,83 @@
         item.classList.add('active');
       });
     });
+
+    // Emissão de credenciais (POK) - dados por campanha
+    var emitData = {
+      'Termômetro Zero · Palmas, TO': { cidade: 'Palmas, TO', escolas: ['ETEC Palmas','Colégio Girassol','CEM Taquaralto','EE Aurora'], n: { bronze:[180,2310], prata:[140,1620], ouro:[95,1150] } },
+      'Ciclo da Água · Belém, PA':    { cidade: 'Belém, PA',   escolas: ['EE Tapajós','Colégio Amazônia','ETE Belém'],                 n: { bronze:[210,1980], prata:[160,1340], ouro:[110,910] } },
+      'Energia Limpa · Salvador, BA': { cidade: 'Salvador, BA',escolas: ['Colégio Bahia','EE Pelourinho','CETEP Salvador'],            n: { bronze:[150,1620], prata:[120,1100], ouro:[80,720] } }
+    };
+    var emitRuntime = {};
+    var CAL_ICON = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>';
+    function initRuntime(){
+      Object.keys(emitData).forEach(function(camp){
+        emitRuntime[camp] = {};
+        ['bronze','prata','ouro'].forEach(function(k){
+          var pend = emitData[camp].n[k][0], eleg = emitData[camp].n[k][1];
+          emitRuntime[camp][k] = { pend: pend, eleg: eleg, issued: eleg - pend, last: '22/05/2026', downloaded: false };
+        });
+      });
+    }
+    function fmtBR(n){ return n.toLocaleString('pt-BR'); }
+    function hojeBR(){ var d = new Date(), p = function(n){ return (n<10?'0':'')+n; }; return p(d.getDate())+'/'+p(d.getMonth()+1)+'/'+d.getFullYear(); }
+    function updateEmit(){
+      var camp = document.getElementById('emit-campanha').value;
+      var r = emitRuntime[camp]; if(!r) return;
+      ['bronze','prata','ouro'].forEach(function(k){
+        var s = r[k];
+        var numEl = document.getElementById('emit-num-'+k);
+        var card = numEl.closest('.emit-card');
+        var sub = document.getElementById('emit-sub-'+k);
+        var baixar = document.getElementById('emit-baixar-'+k);
+        var confirmar = document.getElementById('emit-confirm-'+k);
+        numEl.textContent = s.pend;
+        if(s.pend > 0){
+          sub.innerHTML = 'a emitir · de <span>'+fmtBR(s.eleg)+'</span> elegíveis';
+          baixar.disabled = false; baixar.style.opacity = ''; baixar.style.pointerEvents = '';
+          confirmar.style.display = s.downloaded ? '' : 'none';
+          card.classList.remove('is-done');
+        } else {
+          sub.innerHTML = 'nada a emitir agora · '+fmtBR(s.eleg)+' elegíveis';
+          baixar.disabled = true; baixar.style.opacity = '0.45'; baixar.style.pointerEvents = 'none';
+          confirmar.style.display = 'none';
+          card.classList.add('is-done');
+        }
+        document.getElementById('emit-meta-'+k).innerHTML =
+          '<span>Já emitidas: '+fmtBR(s.issued)+'</span>' +
+          '<span class="emit-lastdate">'+CAL_ICON+'Última emissão · <strong>'+(s.last || '–')+'</strong></span>';
+      });
+    }
+    function confirmarEmissao(nivel){
+      var camp = document.getElementById('emit-campanha').value;
+      var s = emitRuntime[camp][nivel];
+      s.issued += s.pend; s.pend = 0; s.downloaded = false; s.last = hojeBR();
+      updateEmit();
+    }
+    function baixarXLSX(nivel){
+      var camp = document.getElementById('emit-campanha').value;
+      var d = emitData[camp]; if(!d) return;
+      if(typeof XLSX === 'undefined'){ alert('A biblioteca de planilha ainda está carregando. Tente novamente em instantes.'); return; }
+      var nomes = ['Ana Beatriz Souza','Lucas Pereira','Mariana Lima','Pedro Henrique Alves','Júlia Fernandes','Gabriel Rocha','Larissa Martins','Rafael Cardoso'];
+      var aoa = [['first_name','last_name','email','document','Escola','Cidade']];
+      for(var i=0;i<6;i++){
+        var nome = nomes[i % nomes.length];
+        var parts = nome.split(' ');
+        var first = parts.shift();
+        var last = parts.join(' ');
+        var email = nome.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ /g,'.') + '@aluno.exemplo.br';
+        aoa.push([first, last, email, '', d.escolas[i % d.escolas.length], d.cidade]);
+      }
+      var ws = XLSX.utils.aoa_to_sheet(aoa);
+      var wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, 'Jogadores');
+      var slug = camp.split(' · ')[0].toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+      XLSX.writeFile(wb, 'pok-'+nivel+'-'+slug+'.xlsx');
+      emitRuntime[camp][nivel].downloaded = true;
+      updateEmit();
+    }
+    initRuntime();
+    updateEmit();
 
     function openModal(id){ document.getElementById(id).classList.add('open'); document.body.style.overflow='hidden'; }
     function closeModal(id){ document.getElementById(id).classList.remove('open'); document.body.style.overflow=''; }
