@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<!-- Clipping Cidade Azul 2013-2016 - identidade The Blue City -->
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cidade Azul – Clipping de Imprensa</title>
+
+<!-- Open Graph / WhatsApp / LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cidade Azul – Clipping de Imprensa">
+<meta property="og:description" content="79 matérias, 14 projetos, 2013–2016 – a trajetória da Cidade Azul na imprensa nacional e internacional, da arte urbana aos rios enterrados de São Paulo">
+<meta property="og:image" content="https://the-blue-city.github.io/content/TBC_OGClipping.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+<meta property="og:url" content="https://the-blue-city.github.io/clipping/index.html">
+<meta property="og:site_name" content="The Blue City">
+<meta property="og:locale" content="pt_BR">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cidade Azul – Clipping de Imprensa">
+<meta name="twitter:description" content="79 matérias, 14 projetos, 2013–2016 – a trajetória da Cidade Azul na imprensa nacional e internacional">
+<meta name="twitter:image" content="https://the-blue-city.github.io/content/TBC_OGClipping.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #2858a0;
+    --teal: #468182;
+    --sidebar-bg: #121e33;
+    --green: #5fb670;
+    --blue-light: #d6e4f7;
+    --teal-light: #d0e8e8;
+    --green-light: #d4f0d9;
+    --dark: #1a2e3b;
+    --mid: #1e3a5f;
+    --text: #2c3e50;
+    --muted: #6b7f95;
+    --bg: #f4f8fc;
+    --white: #ffffff;
+    --sidebar-w: 280px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    width: var(--sidebar-w);
+    height: 100vh;
+    background: var(--sidebar-bg);
+    position: fixed;
+    left: 0; top: 0;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    border-right: 1px solid rgba(255,255,255,0.1);
+    overflow-y: auto;
+  }
+
+  .sidebar-logo {
+    padding: 28px 24px 22px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .sidebar-label {
+    padding: 20px 24px 10px;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 24px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
+    color: rgba(255,255,255,0.55);
+    font-size: 12px;
+    font-weight: 500;
+    position: relative;
+    user-select: none;
+    text-decoration: none;
+  }
+
+  .nav-item:hover {
+    background: rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.85);
+    border-left-color: rgba(95,182,112,0.4);
+  }
+
+  .nav-item.active {
+    background: rgba(0,0,0,0.18);
+    color: white;
+    border-left-color: var(--green);
+  }
+
+  .nav-item.active .nav-dot { background: var(--green); }
+
+  .nav-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    flex-shrink: 0;
+    transition: background 0.2s;
+  }
+
+  .nav-number {
+    margin-left: auto;
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .nav-item.active .nav-number { color: var(--green); opacity: 0.7; }
+
+  .sidebar-footer {
+    margin-top: auto;
+    padding: 20px 24px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    font-size: 11px;
+    color: #ffffff;
+    line-height: 1.6;
+  }
+
+  /* ── MAIN ── */
+  .main {
+    margin-left: var(--sidebar-w);
+    flex: 1;
+    min-height: 100vh;
+  }
+
+  /* ── HERO ── */
+  .page-hero {
+    padding: 60px 60px 48px;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(40,88,160,0.08);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-hero::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(95,182,112,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .page-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: 30%;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(70,129,130,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .page-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--green-light);
+    border: 1px solid rgba(95,182,112,0.3);
+    color: #38a349;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .page-title {
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--dark);
+    line-height: 1.2;
+    margin-bottom: 14px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .page-title em {
+    font-style: normal;
+    color: var(--teal);
+  }
+
+  .page-subtitle {
+    font-size: 15px;
+    color: #1a2e3b;
+    max-width: 640px;
+    line-height: 1.65;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── STATS ── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 28px;
+    max-width: 640px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .stat-card {
+    background: white;
+    border-radius: 10px;
+    padding: 16px 14px;
+    text-align: center;
+    border: 1px solid rgba(40,88,160,0.08);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  }
+
+  .stat-value {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--blue);
+    line-height: 1;
+    margin-bottom: 5px;
+  }
+
+  .stat-value.green { color: var(--green); }
+  .stat-value.teal  { color: var(--teal); }
+
+  .stat-label {
+    font-size: 10px;
+    color: var(--muted);
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  /* ── DESTAQUES INTERNACIONAIS ── */
+  .intl-strip {
+    padding: 40px 60px 8px;
+  }
+
+  .section-heading {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-heading::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(70,129,130,0.2);
+  }
+
+  .intl-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+
+  .intl-card {
+    background: linear-gradient(150deg, #16263f 0%, #121e33 100%);
+    border-radius: 12px;
+    padding: 20px 22px;
+    border: 1px solid rgba(95,182,112,0.25);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .intl-card::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(95,182,112,0.14) 0%, transparent 70%);
+  }
+
+  .intl-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(18,30,51,0.3);
+  }
+
+  .intl-eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 8px;
+  }
+
+  .intl-card h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: white;
+    line-height: 1.4;
+    margin-bottom: 6px;
+  }
+
+  .intl-card p {
+    font-size: 11.5px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.55;
+  }
+
+  /* ── SEÇÕES DE PROJETO ── */
+  .clip-section {
+    padding: 48px 60px 16px;
+    scroll-margin-top: 8px;
+  }
+
+  .clip-section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
+  }
+
+  .clip-section h2 {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--dark);
+  }
+
+  .clip-section h2 em {
+    font-style: normal;
+    color: var(--teal);
+  }
+
+  .year-chip {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--blue);
+    background: var(--blue-light);
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  .count-chip {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--muted);
+  }
+
+  .clip-section-desc {
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.6;
+    max-width: 640px;
+    margin-bottom: 26px;
+  }
+
+  .sub-heading {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin: 26px 0 14px;
+  }
+
+  /* ── GRID DE CARDS ── */
+  .clip-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 18px;
+  }
+
+  .clip-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(40,88,160,0.08);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    transition: box-shadow 0.2s, transform 0.2s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .clip-card:hover {
+    box-shadow: 0 8px 28px rgba(40,88,160,0.14);
+    transform: translateY(-3px);
+  }
+
+  .clip-img {
+    aspect-ratio: 4 / 3;
+    background: linear-gradient(140deg, #e8eff8 0%, #dcebea 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .clip-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    transition: transform 0.3s;
+  }
+
+  .clip-card:hover .clip-img img { transform: scale(1.04); }
+
+  .clip-ph {
+    position: absolute;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--teal);
+  }
+
+  .clip-ph .ph-circle {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: rgba(70,129,130,0.14);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 800;
+  }
+
+  .clip-ph .ph-text {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+  .clip-img.no-img img { display: none; }
+  .clip-img.no-img .clip-ph { display: flex; }
+
+  .clip-body {
+    padding: 14px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+  }
+
+  .clip-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .clip-veiculo {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--teal);
+  }
+
+  .clip-ano {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--blue);
+    background: var(--blue-light);
+    padding: 2px 8px;
+    border-radius: 12px;
+    flex-shrink: 0;
+  }
+
+  .clip-titulo {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--dark);
+    line-height: 1.45;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: rgba(40,88,160,0.08);
+    margin: 40px 60px 0;
+  }
+
+  /* ── LIGHTBOX ── */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(18,30,51,0.92);
+    z-index: 500;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    cursor: zoom-out;
+  }
+
+  .lightbox.open { display: flex; }
+
+  .lightbox img {
+    max-width: min(960px, 92vw);
+    max-height: 80vh;
+    border-radius: 10px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    background: white;
+  }
+
+  .lightbox-caption {
+    margin-top: 16px;
+    text-align: center;
+    color: white;
+    max-width: 640px;
+  }
+
+  .lightbox-caption .lc-veiculo {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--green);
+  }
+
+  .lightbox-caption .lc-titulo {
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+
+  .lightbox-close {
+    position: fixed;
+    top: 20px; right: 24px;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: white;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .lightbox-close:hover { background: rgba(255,255,255,0.22); }
+
+  /* ── FOOTER ── */
+  .page-footer {
+    padding: 48px 60px 56px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* ── HAMBURGER ── */
+  .hamburger {
+    display: none;
+    position: fixed;
+    top: 14px; left: 14px;
+    z-index: 300;
+    background: var(--sidebar-bg);
+    border: none;
+    border-radius: 8px;
+    width: 42px; height: 42px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 0;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  }
+
+  .hamburger span {
+    display: block;
+    width: 20px; height: 2px;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.25s;
+  }
+
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 150;
+  }
+
+  .sidebar-overlay.visible { display: block; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1100px) {
+    .intl-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 768px) {
+    .hamburger { display: flex; }
+
+    .sidebar {
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      z-index: 200;
+    }
+
+    .sidebar.open { transform: translateX(0); }
+
+    .main { margin-left: 0; }
+
+    .page-hero { padding: 72px 22px 36px; }
+    .page-title { font-size: 27px; }
+    .page-subtitle { font-size: 14px; }
+
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+
+    .intl-strip { padding: 32px 20px 4px; }
+    .intl-grid { grid-template-columns: 1fr; }
+
+    .clip-section { padding: 36px 20px 8px; }
+    .clip-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+    .clip-titulo { font-size: 12px; }
+
+    .divider { margin: 28px 20px 0; }
+    .page-footer { padding: 36px 20px 44px; }
+  }
+</style>
+</head>
+<body>
+
+<button class="hamburger" id="hamburger" aria-label="Menu">
+  <span></span><span></span><span></span>
+</button>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <svg style="height:32px;width:auto;display:block;" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 218.4 45.6">
+  <defs>
+    <style>
+      .gd-cls-1 {
+        fill: url(#gd-linear-gradient);
+      }
+
+      .gd-cls-1, .gd-cls-2, .gd-cls-3, .gd-cls-4, .gd-cls-5 {
+        stroke-width: 0px;
+      }
+
+      .gd-cls-2 {
+        fill: #000;
+      }
+
+      .gd-cls-3 {
+        fill: #001522;
+      }
+
+      .gd-cls-4 {
+        fill: #0c9ed9;
+      }
+
+      .gd-cls-5 {
+        fill: #fff;
+      }
+    
+</style>
+    <linearGradient id="gd-linear-gradient" x1="48.8" y1="25.1" x2="211.8" y2="25.1" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#006188"/>
+      <stop offset="1" stop-color="#95cfa0"/>
+    </linearGradient>
+  </defs>
+  <g>
+    <circle class="gd-cls-3" cx="26.1" cy="22.7" r="18.4"/>
+    <g>
+      <rect class="gd-cls-5" x="15.5" y="17.5" width="20.8" height="3.2"/>
+      <path class="gd-cls-4" d="M35,23l-.2.2c-1.3,1.1-2.4,2.1-4.1,2.1s-2.5-.4-4.1-1.3c-2.1-1.1-3.9-1.7-5.6-1.7-2.8,0-4.6,1.6-6,2.9l-.2.2,2,2.4.2-.2c1.3-1.1,2.4-2.1,4.1-2.1s2.5.4,4.1,1.3c2.1,1.1,3.9,1.7,5.6,1.7h0c2.7,0,4.5-1.6,5.9-2.9l.2-.2-2-2.4Z"/>
+    </g>
+  </g>
+  <g>
+    <g>
+      <path class="gd-cls-2" d="M64.5,16.8h-5.7v14.9h-4.3v-14.9h-5.7v-3.8h15.7v3.8Z"/>
+      <path class="gd-cls-2" d="M79.1,31.6h-4.2v-7.6c0-.9-.2-1.5-.6-1.9-.4-.4-.9-.6-1.4-.6s-.7,0-1.1.3c-.4.2-.8.5-1.1.8-.3.4-.6.8-.7,1.2v7.8h-4.2V12.5h4.2v7.9c.5-.8,1.2-1.5,2-1.9.8-.4,1.8-.6,2.8-.6s1.7.2,2.2.5c.6.3,1,.7,1.3,1.2.3.5.5,1,.6,1.7.1.6.2,1.2.2,1.8v8.7Z"/>
+      <path class="gd-cls-2" d="M87.9,31.9c-1.2,0-2.2-.2-3.1-.6s-1.7-.9-2.3-1.5c-.6-.6-1.1-1.4-1.5-2.2-.3-.8-.5-1.7-.5-2.6,0-1.3.3-2.5.9-3.6.6-1.1,1.4-1.9,2.5-2.6s2.4-1,4-1,2.9.3,4,1,1.9,1.5,2.5,2.6c.6,1.1.9,2.2.9,3.5s0,.5,0,.7,0,.4,0,.6h-10.2c0,.6.2,1.1.5,1.5.3.4.7.7,1.1.9.5.2.9.3,1.4.3s1.2-.1,1.8-.4c.6-.3.9-.7,1.1-1.2l3.6,1c-.4.7-.8,1.3-1.5,1.9-.6.5-1.4,1-2.2,1.3-.9.3-1.8.5-2.9.5ZM84.9,23.5h6c0-.6-.2-1-.5-1.5-.3-.4-.6-.7-1.1-1s-.9-.3-1.5-.3-1,.1-1.4.3c-.4.2-.8.5-1.1.9-.3.4-.4.9-.5,1.5Z"/>
+      <path class="gd-cls-2" d="M118,26.8c0,1.1-.3,2-.8,2.7-.6.7-1.3,1.2-2.3,1.6-1,.4-2,.5-3.2.5h-9.1V13h10.4c.9,0,1.6.2,2.3.7.6.5,1.1,1.1,1.5,1.8.3.7.5,1.5.5,2.3s-.2,1.7-.7,2.5c-.4.8-1.1,1.4-2,1.8,1.1.3,1.9.9,2.5,1.7.6.8.9,1.8.9,3.1ZM106.9,16.7v3.9h4.2c.3,0,.6,0,.9-.2.3-.1.5-.4.7-.6.2-.3.2-.6.2-1.1s0-.8-.2-1.1c-.1-.3-.3-.5-.6-.6-.2-.1-.5-.2-.9-.2h-4.4ZM113.7,26c0-.4,0-.7-.2-1.1-.2-.3-.4-.6-.6-.7s-.6-.3-.9-.3h-4.9v4.1h4.8c.4,0,.7,0,1-.3.3-.2.5-.4.7-.7.2-.3.2-.6.2-1Z"/>
+      <path class="gd-cls-2" d="M119.7,12.5h4.2v14.3c0,.6.1,1,.3,1.2.2.2.5.4.9.4s.5,0,.8-.1c.3,0,.5-.2.7-.3l.6,3.2c-.5.2-1.1.4-1.8.6-.7.2-1.3.2-1.9.2-1.2,0-2.1-.3-2.8-1-.6-.6-1-1.6-1-2.7v-15.7Z"/>
+      <path class="gd-cls-2" d="M127.9,26.8v-8.8h4.2v7.8c0,.8.2,1.4.5,1.9.3.4.8.7,1.4.7s.8,0,1.1-.2c.4-.1.7-.3,1-.6s.6-.7.9-1.1v-8.4h4.2v9c0,.4,0,.7.2.9.1.2.4.3.7.3v3.5c-.4,0-.7.1-1,.2s-.5,0-.8,0c-.7,0-1.3-.1-1.8-.4-.4-.3-.7-.7-.8-1.3v-.8c-.7.9-1.5,1.6-2.4,2-.9.4-2,.6-3.2.6s-2.5-.4-3.2-1.3c-.7-.9-1.1-2.2-1.1-3.8Z"/>
+      <path class="gd-cls-2" d="M150.6,31.9c-1.2,0-2.2-.2-3.1-.6-.9-.4-1.7-.9-2.3-1.5-.6-.6-1.1-1.4-1.5-2.2-.3-.8-.5-1.7-.5-2.6,0-1.3.3-2.5.9-3.6.6-1.1,1.4-1.9,2.5-2.6,1.1-.7,2.4-1,4-1s2.9.3,4,1c1.1.6,1.9,1.5,2.5,2.6.6,1.1.9,2.2.9,3.5s0,.5,0,.7,0,.4,0,.6h-10.2c0,.6.2,1.1.5,1.5s.7.7,1.1.9c.5.2.9.3,1.4.3s1.2-.1,1.8-.4c.6-.3.9-.7,1.1-1.2l3.6,1c-.4.7-.8,1.3-1.5,1.9-.6.5-1.4,1-2.2,1.3-.9.3-1.8.5-2.9.5ZM147.5,23.5h6c0-.6-.2-1-.5-1.5-.3-.4-.6-.7-1.1-1-.4-.2-.9-.3-1.5-.3s-1,.1-1.4.3c-.4.2-.8.5-1.1.9-.3.4-.4.9-.5,1.5Z"/>
+      <path class="gd-cls-2" d="M164.2,22.1c0-1.1.2-2.2.6-3.3.4-1.1,1-2.1,1.8-3,.8-.9,1.8-1.6,3-2.2,1.2-.5,2.5-.8,3.9-.8s3.3.4,4.6,1.1,2.3,1.7,2.9,2.9l-3.3,2.3c-.3-.7-.6-1.2-1.1-1.6-.5-.4-1-.6-1.5-.8-.6-.1-1.1-.2-1.6-.2-.8,0-1.5.2-2.1.5-.6.3-1.1.8-1.5,1.3-.4.5-.7,1.1-.9,1.8-.2.7-.3,1.3-.3,2s.1,1.5.4,2.2c.2.7.6,1.3,1,1.8.4.5.9.9,1.6,1.2.6.3,1.3.5,2,.5s1.1,0,1.6-.2c.5-.2,1-.4,1.5-.8.5-.4.8-.9,1.1-1.5l3.5,2.1c-.4.9-1,1.7-1.8,2.3-.8.6-1.8,1.1-2.8,1.5s-2.1.5-3.2.5-2.6-.3-3.7-.8c-1.1-.6-2.1-1.3-2.9-2.2-.8-.9-1.5-2-1.9-3.1-.4-1.1-.7-2.3-.7-3.5Z"/>
+      <path class="gd-cls-2" d="M182.5,16.3v-3.8h4.2v3.8h-4.2ZM182.5,31.6v-13.8h4.2v13.8h-4.2Z"/>
+      <path class="gd-cls-2" d="M198,30.9c-.4.2-.8.3-1.2.5-.5.2-.9.3-1.4.4-.5,0-1,.1-1.5.1s-1.3-.1-1.9-.3-1-.6-1.4-1.2-.5-1.2-.5-2.1v-7.1h-1.8v-3.2h1.8v-4.4h4.2v4.4h2.8v3.2h-2.8v5.6c0,.5.1.8.3,1,.2.2.5.3.9.3s.6,0,1-.2c.3-.1.6-.2.9-.3l.8,3.3Z"/>
+      <path class="gd-cls-2" d="M199.1,33.7c.4.1.7.2,1,.2.3,0,.6,0,.8,0,.4,0,.6,0,.9-.2s.4-.4.6-.8c.2-.4.3-.8.5-1.4l-5.2-13.7h4.3l3.2,9.4,2.7-9.4h3.9l-5.3,15.9c-.2.7-.6,1.4-1.1,2-.5.6-1.1,1-1.9,1.4-.7.3-1.5.5-2.4.5-.4,0-.7,0-1.1,0-.4,0-.7-.2-1.1-.3v-3.6Z"/>
+    </g>
+    <g>
+      <path class="gd-cls-1" d="M64.5,16.8h-5.7v14.9h-4.3v-14.9h-5.7v-3.8h15.7v3.8Z"/>
+      <path class="gd-cls-1" d="M79.1,31.6h-4.2v-7.6c0-.9-.2-1.5-.6-1.9-.4-.4-.9-.6-1.4-.6s-.7,0-1.1.3c-.4.2-.8.5-1.1.8-.3.4-.6.8-.7,1.2v7.8h-4.2V12.5h4.2v7.9c.5-.8,1.2-1.5,2-1.9.8-.4,1.8-.6,2.8-.6s1.7.2,2.2.5c.6.3,1,.7,1.3,1.2.3.5.5,1,.6,1.7.1.6.2,1.2.2,1.8v8.7Z"/>
+      <path class="gd-cls-1" d="M87.9,31.9c-1.2,0-2.2-.2-3.1-.6s-1.7-.9-2.3-1.5c-.6-.6-1.1-1.4-1.5-2.2-.3-.8-.5-1.7-.5-2.6,0-1.3.3-2.5.9-3.6.6-1.1,1.4-1.9,2.5-2.6s2.4-1,4-1,2.9.3,4,1,1.9,1.5,2.5,2.6c.6,1.1.9,2.2.9,3.5s0,.5,0,.7,0,.4,0,.6h-10.2c0,.6.2,1.1.5,1.5.3.4.7.7,1.1.9.5.2.9.3,1.4.3s1.2-.1,1.8-.4c.6-.3.9-.7,1.1-1.2l3.6,1c-.4.7-.8,1.3-1.5,1.9-.6.5-1.4,1-2.2,1.3-.9.3-1.8.5-2.9.5ZM84.9,23.5h6c0-.6-.2-1-.5-1.5-.3-.4-.6-.7-1.1-1s-.9-.3-1.5-.3-1,.1-1.4.3c-.4.2-.8.5-1.1.9-.3.4-.4.9-.5,1.5Z"/>
+      <path class="gd-cls-1" d="M118,26.8c0,1.1-.3,2-.8,2.7-.6.7-1.3,1.2-2.3,1.6-1,.4-2,.5-3.2.5h-9.1V13h10.4c.9,0,1.6.2,2.3.7.6.5,1.1,1.1,1.5,1.8.3.7.5,1.5.5,2.3s-.2,1.7-.7,2.5c-.4.8-1.1,1.4-2,1.8,1.1.3,1.9.9,2.5,1.7.6.8.9,1.8.9,3.1ZM106.9,16.7v3.9h4.2c.3,0,.6,0,.9-.2.3-.1.5-.4.7-.6.2-.3.2-.6.2-1.1s0-.8-.2-1.1c-.1-.3-.3-.5-.6-.6-.2-.1-.5-.2-.9-.2h-4.4ZM113.7,26c0-.4,0-.7-.2-1.1-.2-.3-.4-.6-.6-.7s-.6-.3-.9-.3h-4.9v4.1h4.8c.4,0,.7,0,1-.3.3-.2.5-.4.7-.7.2-.3.2-.6.2-1Z"/>
+      <path class="gd-cls-1" d="M119.7,12.5h4.2v14.3c0,.6.1,1,.3,1.2.2.2.5.4.9.4s.5,0,.8-.1c.3,0,.5-.2.7-.3l.6,3.2c-.5.2-1.1.4-1.8.6-.7.2-1.3.2-1.9.2-1.2,0-2.1-.3-2.8-1-.6-.6-1-1.6-1-2.7v-15.7Z"/>
+      <path class="gd-cls-1" d="M127.9,26.8v-8.8h4.2v7.8c0,.8.2,1.4.5,1.9.3.4.8.7,1.4.7s.8,0,1.1-.2c.4-.1.7-.3,1-.6s.6-.7.9-1.1v-8.4h4.2v9c0,.4,0,.7.2.9.1.2.4.3.7.3v3.5c-.4,0-.7.1-1,.2s-.5,0-.8,0c-.7,0-1.3-.1-1.8-.4-.4-.3-.7-.7-.8-1.3v-.8c-.7.9-1.5,1.6-2.4,2-.9.4-2,.6-3.2.6s-2.5-.4-3.2-1.3c-.7-.9-1.1-2.2-1.1-3.8Z"/>
+      <path class="gd-cls-1" d="M150.6,31.9c-1.2,0-2.2-.2-3.1-.6-.9-.4-1.7-.9-2.3-1.5-.6-.6-1.1-1.4-1.5-2.2-.3-.8-.5-1.7-.5-2.6,0-1.3.3-2.5.9-3.6.6-1.1,1.4-1.9,2.5-2.6,1.1-.7,2.4-1,4-1s2.9.3,4,1c1.1.6,1.9,1.5,2.5,2.6.6,1.1.9,2.2.9,3.5s0,.5,0,.7,0,.4,0,.6h-10.2c0,.6.2,1.1.5,1.5s.7.7,1.1.9c.5.2.9.3,1.4.3s1.2-.1,1.8-.4c.6-.3.9-.7,1.1-1.2l3.6,1c-.4.7-.8,1.3-1.5,1.9-.6.5-1.4,1-2.2,1.3-.9.3-1.8.5-2.9.5ZM147.5,23.5h6c0-.6-.2-1-.5-1.5-.3-.4-.6-.7-1.1-1-.4-.2-.9-.3-1.5-.3s-1,.1-1.4.3c-.4.2-.8.5-1.1.9-.3.4-.4.9-.5,1.5Z"/>
+      <path class="gd-cls-1" d="M164.2,22.1c0-1.1.2-2.2.6-3.3.4-1.1,1-2.1,1.8-3,.8-.9,1.8-1.6,3-2.2,1.2-.5,2.5-.8,3.9-.8s3.3.4,4.6,1.1,2.3,1.7,2.9,2.9l-3.3,2.3c-.3-.7-.6-1.2-1.1-1.6-.5-.4-1-.6-1.5-.8-.6-.1-1.1-.2-1.6-.2-.8,0-1.5.2-2.1.5-.6.3-1.1.8-1.5,1.3-.4.5-.7,1.1-.9,1.8-.2.7-.3,1.3-.3,2s.1,1.5.4,2.2c.2.7.6,1.3,1,1.8.4.5.9.9,1.6,1.2.6.3,1.3.5,2,.5s1.1,0,1.6-.2c.5-.2,1-.4,1.5-.8.5-.4.8-.9,1.1-1.5l3.5,2.1c-.4.9-1,1.7-1.8,2.3-.8.6-1.8,1.1-2.8,1.5s-2.1.5-3.2.5-2.6-.3-3.7-.8c-1.1-.6-2.1-1.3-2.9-2.2-.8-.9-1.5-2-1.9-3.1-.4-1.1-.7-2.3-.7-3.5Z"/>
+      <path class="gd-cls-1" d="M182.5,16.3v-3.8h4.2v3.8h-4.2ZM182.5,31.6v-13.8h4.2v13.8h-4.2Z"/>
+      <path class="gd-cls-1" d="M198,30.9c-.4.2-.8.3-1.2.5-.5.2-.9.3-1.4.4-.5,0-1,.1-1.5.1s-1.3-.1-1.9-.3-1-.6-1.4-1.2-.5-1.2-.5-2.1v-7.1h-1.8v-3.2h1.8v-4.4h4.2v4.4h2.8v3.2h-2.8v5.6c0,.5.1.8.3,1,.2.2.5.3.9.3s.6,0,1-.2c.3-.1.6-.2.9-.3l.8,3.3Z"/>
+      <path class="gd-cls-1" d="M199.1,33.7c.4.1.7.2,1,.2.3,0,.6,0,.8,0,.4,0,.6,0,.9-.2s.4-.4.6-.8c.2-.4.3-.8.5-1.4l-5.2-13.7h4.3l3.2,9.4,2.7-9.4h3.9l-5.3,15.9c-.2.7-.6,1.4-1.1,2-.5.6-1.1,1-1.9,1.4-.7.3-1.5.5-2.4.5-.4,0-.7,0-1.1,0-.4,0-.7-.2-1.1-.3v-3.6Z"/>
+    </g>
+  </g>
+</svg>
+  </div>
+
+  <div class="sidebar-label">Início</div>
+  <a class="nav-item active" href="#visao-geral" data-target="visao-geral">
+    <span class="nav-dot"></span> Visão Geral <span class="nav-number">79</span>
+  </a>
+
+  <div class="sidebar-label">Tecnologia &amp; Arte</div>
+  <a class="nav-item" href="#cidade-azul" data-target="cidade-azul">
+    <span class="nav-dot"></span> Cidade Azul – Rios Enterrados <span class="nav-number">20</span>
+  </a>
+  <a class="nav-item" href="#rio-pinheiros" data-target="rio-pinheiros">
+    <span class="nav-dot"></span> Viva Rio Pinheiros <span class="nav-number">9</span>
+  </a>
+
+  <div class="sidebar-label">Intervenções Urbanas</div>
+  <a class="nav-item" href="#coruja" data-target="coruja">
+    <span class="nav-dot"></span> Projeto Coruja &amp; Galeria Coruja <span class="nav-number">13</span>
+  </a>
+  <a class="nav-item" href="#quadra-amiga" data-target="quadra-amiga">
+    <span class="nav-dot"></span> Quadra Amiga &amp; Horta na Caixa <span class="nav-number">11</span>
+  </a>
+  <a class="nav-item" href="#faixa" data-target="faixa">
+    <span class="nav-dot"></span> Cadê a Faixa? <span class="nav-number">4</span>
+  </a>
+
+  <div class="sidebar-label">Ocupação e Comunidade</div>
+  <a class="nav-item" href="#edite" data-target="edite">
+    <span class="nav-dot"></span> Galeria Jardim Edite <span class="nav-number">10</span>
+  </a>
+  <a class="nav-item" href="#arte-cidade" data-target="arte-cidade">
+    <span class="nav-dot"></span> Arte na Cidade <span class="nav-number">6</span>
+  </a>
+  <a class="nav-item" href="#praca" data-target="praca">
+    <span class="nav-dot"></span> Almoço na Praça &amp; Escola na Praça <span class="nav-number">6</span>
+  </a>
+
+  <div class="sidebar-footer">
+    Clipping de Imprensa 2013–2016<br>
+    © Cidade Azul · The Blue City
+  </div>
+</aside>
+
+<main class="main">
+
+  <!-- HERO / VISÃO GERAL -->
+  <section class="page-hero" id="visao-geral">
+    <span class="page-tag">Clipping de Imprensa</span>
+    <h1 class="page-title">Cidade Azul <em>na imprensa</em></h1>
+    <p class="page-subtitle">
+      Entre 2013 e 2016, os projetos da Cidade Azul ocuparam ruas, praças, parques e rios de São Paulo
+      – e, com eles, as páginas da imprensa nacional e internacional. Este clipping reúne a cobertura
+      de 14 projetos de arte, tecnologia e regeneração urbana que antecederam e inspiraram a plataforma The Blue City.
+    </p>
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-value">79</div>
+        <div class="stat-label">Matérias publicadas</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value teal">14</div>
+        <div class="stat-label">Projetos realizados</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value green">40+</div>
+        <div class="stat-label">Veículos de imprensa</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">4</div>
+        <div class="stat-label">Anos de cobertura<br>2013–2016</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESTAQUES INTERNACIONAIS -->
+  <div class="intl-strip">
+    <div class="section-heading">Reconhecimento internacional</div>
+    <div class="intl-grid">
+      <div class="intl-card">
+        <div class="intl-eyebrow">United Nations Water</div>
+        <h3>The Blue Cities</h3>
+        <p>O projeto dos rios enterrados de São Paulo destacado pela agência da ONU dedicada à água</p>
+      </div>
+      <div class="intl-card">
+        <div class="intl-eyebrow">Salzburg Global Seminar</div>
+        <h3>Beyond Green: The Arts as a Catalyst for Sustainability</h3>
+        <p>A Cidade Azul como caso de arte catalisadora de sustentabilidade no seminário global na Áustria</p>
+      </div>
+      <div class="intl-card">
+        <div class="intl-eyebrow">SXSW Eco · Austin</div>
+        <h3>Finalist at Place by Design</h3>
+        <p>Finalista da premiação de design de espaços públicos do SXSW Eco em 2015</p>
+      </div>
+      <div class="intl-card">
+        <div class="intl-eyebrow">Red Bull Amaphiko</div>
+        <h3>The Biggest Problems, the Best Solutions</h3>
+        <p>Destaque na plataforma global de empreendedorismo social da Red Bull</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÕES GERADAS VIA JS -->
+  <div id="sections"></div>
+
+  <footer class="page-footer">
+    Cidade Azul Comunicação · Clipping de Imprensa 2013–2016<br>
+    Parte da trajetória que deu origem à plataforma The Blue City
+  </footer>
+</main>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Fechar">×</button>
+  <img id="lightboxImg" src="" alt="">
+  <div class="lightbox-caption">
+    <div class="lc-veiculo" id="lcVeiculo"></div>
+    <div class="lc-titulo" id="lcTitulo"></div>
+  </div>
+</div>
+
+<script>
+/* ─────────────────────────────────────────────────────────────
+   DADOS DO CLIPPING
+   Imagens: https://the-blue-city.github.io/content/clipping/{prefix}-{NN}.jpg
+   A numeração segue a ordem das entradas dentro de cada seção
+   (mesma ordem das páginas do PDF original).
+   ───────────────────────────────────────────────────────────── */
+const BASE_IMG = 'https://the-blue-city.github.io/content/clipping/';
+
+const SECTIONS = [
+  {
+    id: 'cidade-azul',
+    prefix: 'cidade-azul',
+    titulo: 'Cidade Azul – <em>Rios Enterrados</em>',
+    anos: '2015–2016',
+    desc: 'São Paulo é cortada por mais de 300 rios enterrados sob o asfalto. O projeto Cidade Azul uniu mapeamento, arte e expedições urbanas para revelar essas águas invisíveis – e ganhou repercussão da imprensa local à ONU.',
+    grupos: [
+      { entradas: [
+        { ano: '2016', veiculo: 'Virada Zen', titulo: 'Cidade Azul' },
+        { ano: '2016', veiculo: 'United Nations Water', titulo: 'The Blue Cities' },
+        { ano: '2016', veiculo: 'Salzburg Global Seminar', titulo: 'Beyond Green: The Arts as a Catalyst for Sustainability' },
+        { ano: '2016', veiculo: 'Amaphiko Magazine', titulo: 'The Biggest Problems, the Best Solutions' },
+        { ano: '2016', veiculo: 'Revista Red Bull Amaphiko', titulo: 'Cidade Azul' },
+        { ano: '2015', veiculo: 'SXSW Eco', titulo: 'Finalist at Place by Design' },
+        { ano: '2016', veiculo: 'Imprensa internacional', titulo: 'Project Aims to Uncover Hundreds of Buried Rivers in São Paulo, Brazil' },
+        { ano: '2016', veiculo: 'Blog Natura', titulo: 'Cidade Azul' },
+        { ano: '2015', veiculo: 'Catraca Livre', titulo: 'Expedição inusitada leva visitantes pelas águas do Rio Verde, em São Paulo' },
+        { ano: '2015', veiculo: 'Fundação S.O.S. Mata Atlântica', titulo: 'São Paulo é cortada por mais de 300 rios, mas quase ninguém se dá conta disso' },
+        { ano: '2015', veiculo: 'The Greenest Post', titulo: 'Sabia que há mais de 300 rios enterrados embaixo do asfalto em SP? Descubra onde estão!' },
+        { ano: '2015', veiculo: 'Pensareco', titulo: 'Descubra os rios enterrados com o projeto Cidade Azul' },
+        { ano: '2015', veiculo: 'Superinteressante', titulo: 'A cidade é azul. Venha descobrir' },
+        { ano: '2015', veiculo: 'Outra Cidade', titulo: 'Projeto quer descobrir as centenas de rios que São Paulo enterrou' },
+        { ano: '2015', veiculo: 'Guia da Vila', titulo: 'Chega de sujar os rios' },
+        { ano: '2015', veiculo: 'Estado de São Paulo', titulo: 'Por baixo' },
+        { ano: '2015', veiculo: 'Estado de São Paulo', titulo: 'Por baixo – continuação' },
+        { ano: '2015', veiculo: 'Catraca Livre', titulo: 'Instagram' },
+        { ano: '2015', veiculo: 'Mesa&Cadeira', titulo: 'Cidade Azul' },
+        { ano: '2015', veiculo: 'Blog Natura', titulo: 'Cidade Azul e Viva Rio Pinheiros' }
+      ]}
+    ]
+  },
+  {
+    id: 'rio-pinheiros',
+    prefix: 'rio-pinheiros',
+    titulo: 'Viva <em>Rio Pinheiros</em>',
+    anos: '2014',
+    desc: 'Intervenções de revitalização ao longo da ciclovia e das margens do Rio Pinheiros, com um recado direto: não adianta ficar limpando o rio, tem que parar de sujar.',
+    grupos: [
+      { entradas: [
+        { ano: '2014', veiculo: 'Brasil Post', titulo: '21 mulheres que estão fazendo do Brasil um país melhor e você precisa conhecer' },
+        { ano: '2014', veiculo: 'Folha de São Paulo', titulo: 'Não adianta ficar limpando o rio. Tem que parar de sujar' },
+        { ano: '2014', veiculo: 'Folha de São Paulo', titulo: 'Não adianta ficar limpando o rio – continuação' },
+        { ano: '2014', veiculo: 'Projeto Draft', titulo: 'Viva Rio Pinheiros' },
+        { ano: '2014', veiculo: 'G1 – Globo.com', titulo: 'Designer cria projeto para revitalizar trechos da ciclovia do Rio Pinheiros' },
+        { ano: '2014', veiculo: 'Superinteressante', titulo: 'Projeto de revitalização promove intervenções em vários pontos do Rio Pinheiros' },
+        { ano: '2014', veiculo: 'Meio&Mensagem', titulo: 'Super apoia ação Viva Rio Pinheiros' },
+        { ano: '2014', veiculo: 'Catraca Livre', titulo: 'Ajude a revitalizar e ocupar o Rio Pinheiros' },
+        { ano: '2014', veiculo: 'Catraca Livre', titulo: 'Intervenção urbana' }
+      ]}
+    ]
+  },
+  {
+    id: 'coruja',
+    prefix: 'coruja',
+    titulo: 'Projeto Coruja &amp; <em>Galeria Coruja</em>',
+    anos: '2013–2014',
+    desc: 'A transformação do Parque Linear das Corujas, na Vila Madalena, em ponto de encontro da comunidade – da campanha pela primeira "praia" de São Paulo à galeria rotativa de arte de rua a céu aberto.',
+    grupos: [
+      { label: 'Projeto Coruja', entradas: [
+        { ano: '2013', veiculo: 'Superinteressante', titulo: 'O fim do esquerdo-direitismo' },
+        { ano: '2013', veiculo: 'Veja SP', titulo: 'Parque poderá ter praia e pegada nova-iorquina' },
+        { ano: '2013', veiculo: 'Catraca Livre', titulo: 'São Paulo vai ganhar sua primeira praia' },
+        { ano: '2013', veiculo: 'Diário de São Paulo', titulo: 'Vila Madalena terá uma "praia" em parque linear' },
+        { ano: '2013', veiculo: 'Catraca Livre', titulo: 'Projeto pretende transformar parque linear das Corujas em ponto de encontro com ajuda da comunidade' },
+        { ano: '2013', veiculo: 'Vila Mundo', titulo: 'Após campanha, incorporadora concorda em diminuir muro no Parque Linear das Corujas' }
+      ]},
+      { label: 'Galeria Coruja', entradas: [
+        { ano: '2014', veiculo: 'Jornal do Brasil', titulo: 'Grafites são vendidos para financiar aula de rua' },
+        { ano: '2014', veiculo: 'Conexão Cultural', titulo: 'Segunda edição da Galeria Coruja no Parque Linear' },
+        { ano: '2013', veiculo: 'Vila Mundo', titulo: 'Parque Linear das Corujas inaugura galeria rotativa de arte de rua' },
+        { ano: '2013', veiculo: 'Conexão Cultural', titulo: 'Lançamento Galeria a Céu Aberto Coruja' },
+        { ano: '2014', veiculo: 'Mistura Urbana', titulo: 'Sábado Cultural Galeria Coruja' },
+        { ano: '2013', veiculo: 'Follow the Colors', titulo: 'Conheça a Galeria Coruja na Vila Madalena, em São Paulo' },
+        { ano: '2013', veiculo: 'Conexão Cultural', titulo: 'Conheça a Galeria Coruja na Vila Madalena, em São Paulo' }
+      ]}
+    ]
+  },
+  {
+    id: 'quadra-amiga',
+    prefix: 'quadra-amiga',
+    titulo: 'Quadra Amiga &amp; <em>Horta na Caixa</em>',
+    anos: '2014',
+    desc: 'Quarteirões transformados pela vizinhança na Pompéia e na Vila Mascote, com oficinas de horta em caixotes de feira que viraram febre – do Design Weekend à TV Cultura.',
+    grupos: [
+      { label: 'Quadra Amiga Pompéia', entradas: [
+        { ano: '2014', veiculo: 'Rádio Estadão', titulo: 'Paulistices: projeto Quadra Amiga transforma trecho do bairro da Pompéia' },
+        { ano: '2014', veiculo: 'Conexão Cultural', titulo: 'Oficina de horta na Pompéia' },
+        { ano: '2014', veiculo: 'Conexão Cultural', titulo: 'Oficina de horta na Pompéia – II' },
+        { ano: '2014', veiculo: 'TV Cultura', titulo: 'Projeto Quadra Amiga promete espaço urbano em SP' },
+        { ano: '2014', veiculo: 'Estado de São Paulo', titulo: 'Aprenda a fazer uma horta na caixa' },
+        { ano: '2014', veiculo: 'Doutor Cupim', titulo: 'Árvores e a Quadra Amiga' }
+      ]},
+      { label: 'Horta na Caixa', entradas: [
+        { ano: '2014', veiculo: 'Conexão Cultural', titulo: 'Design Weekend – Oficina de Horta na Caixa' },
+        { ano: '2014', veiculo: 'Peperômia Urbana', titulo: 'Oficina de reutilização de caixotes de feira para criar hortinha de temperos para pequenos espaços' }
+      ]},
+      { label: 'Quadra Amiga Vila Mascote', entradas: [
+        { ano: '2014', veiculo: 'Imprensa local', titulo: 'Quadra Amiga na Vila Mascote' },
+        { ano: '2014', veiculo: 'Imprensa local', titulo: 'Quadra Amiga na Vila Mascote – II' },
+        { ano: '2014', veiculo: 'Brasil Atualidade', titulo: 'Revitalização da Vila Mascote conta com a participação do Ateliê Azu' }
+      ]}
+    ]
+  },
+  {
+    id: 'faixa',
+    prefix: 'faixa',
+    titulo: 'Cadê a <em>Faixa?</em>',
+    anos: '2015',
+    desc: 'Moradores fecharam a rua e pintaram, com as próprias mãos, a faixa de pedestres que faltava na Vila Beatriz – um gesto de cidadania que a imprensa transformou em símbolo.',
+    grupos: [
+      { entradas: [
+        { ano: '2015', veiculo: 'Veja SP', titulo: 'Moradores fecham rua para pintar faixa de pedestres na Vila Madalena' },
+        { ano: '2015', veiculo: 'Estado de São Paulo', titulo: 'A faixa que foi pintada duas vezes' },
+        { ano: '2015', veiculo: 'Gazeta de Pinheiros', titulo: 'Moradores pintam faixa de pedestres na Vila Beatriz' },
+        { ano: '2015', veiculo: 'Cidade a Pé', titulo: 'Moradores pintam faixa de pedestres na Vila Beatriz' }
+      ]}
+    ]
+  },
+  {
+    id: 'edite',
+    prefix: 'edite',
+    titulo: 'Galeria <em>Jardim Edite</em>',
+    anos: '2014',
+    desc: 'A ocupação criativa da praça Arlindo Rossi e do conjunto Jardim Edite: artistas colorindo empenas, festas comunitárias e uma galeria infantil – um destino que entrou até no roteiro dos guias de turismo de São Paulo.',
+    grupos: [
+      { label: 'Vem pro Edite', entradas: [
+        { ano: '2014', veiculo: 'Conexão Cultural', titulo: 'Festa na praça Arlindo Rossi' },
+        { ano: '2014', veiculo: 'Conexão Cultural', titulo: 'Vem pro Edite – atividades ao ar livre' }
+      ]},
+      { label: 'Galeria Jardim Edite', entradas: [
+        { ano: '2014', veiculo: 'Estado de São Paulo', titulo: 'Dez passeios gratuitos em São Paulo, por dez guias de turismo' },
+        { ano: '2014', veiculo: 'Prefeitura de São Paulo', titulo: 'Artistas vão colorir o Jardim Edite em janeiro' },
+        { ano: '2014', veiculo: 'Conexão Cultural', titulo: 'Colorindo o Jardim Edite – Edição II' },
+        { ano: '2014', veiculo: 'Conexão Cultural', titulo: 'Grande festa na praça Arlindo Rossi' },
+        { ano: '2014', veiculo: 'Conexão Cultural', titulo: 'Colorindo o Jardim Edite' }
+      ]},
+      { label: 'Galeria Infantil Jardim Edite', entradas: [
+        { ano: '2014', veiculo: 'Conexão Cultural', titulo: 'Ocupação criativa da praça Arlindo Rossi' },
+        { ano: '2014', veiculo: 'Conexão Cultural', titulo: 'Artistas vão colorir o Jardim Edite em janeiro' },
+        { ano: '2014', veiculo: 'Conexão Cultural', titulo: 'Colorindo o Jardim Edite – Edição I' }
+      ]}
+    ]
+  },
+  {
+    id: 'arte-cidade',
+    prefix: 'arte-cidade',
+    titulo: 'Arte na <em>Cidade</em>',
+    anos: '2014',
+    desc: 'A galeria de arte reciclada: tapumes de obra transformados em suporte de arte urbana, com cobertura de Casa Claudia ao Estadão.',
+    grupos: [
+      { entradas: [
+        { ano: '2014', veiculo: 'Revista Casa Claudia', titulo: 'Arte na Cidade' },
+        { ano: '2014', veiculo: 'Guia da Folha de São Paulo', titulo: 'Arte na Cidade' },
+        { ano: '2014', veiculo: 'Conexão Cultural', titulo: 'Tapume Arte na Cidade' },
+        { ano: '2014', veiculo: 'Estado de São Paulo', titulo: 'Tapume reciclado' },
+        { ano: '2014', veiculo: 'Estado de São Paulo', titulo: 'Tapume reciclado – II' },
+        { ano: '2014', veiculo: 'Estado de São Paulo', titulo: 'Tapume reciclado – III' }
+      ]}
+    ]
+  },
+  {
+    id: 'praca',
+    prefix: 'praca',
+    titulo: 'Almoço na Praça &amp; <em>Escola na Praça</em>',
+    anos: '2013',
+    desc: 'Os primeiros convites da Cidade Azul para ocupar o espaço público: paulistanos almoçando juntos na praça para fugir da rotina e alunos da Olavo Pezzotti levando a escola para fora dos muros.',
+    grupos: [
+      { label: 'Almoço na Praça', entradas: [
+        { ano: '2013', veiculo: 'Sampa Criativa', titulo: 'Vamos almoçar na praça?' },
+        { ano: '2013', veiculo: 'TV Folha', titulo: 'Paulistanos almoçam na praça para fugir da rotina' },
+        { ano: '2013', veiculo: 'Catraca Livre', titulo: 'Almoço na Praça celebra o Dia Mundial da Boa Ação' },
+        { ano: '2013', veiculo: 'Update or Die', titulo: 'Almoço na Praça celebra o Dia Mundial da Boa Ação em SP' },
+        { ano: '2013', veiculo: 'Conexão Cultural', titulo: 'Almoço na praça' }
+      ]},
+      { label: 'Escola na Praça', entradas: [
+        { ano: '2013', veiculo: 'Vilamundo', titulo: 'Projeto Escola na Praça leva alunos da Olavo Pezzotti a ocupar espaços públicos' }
+      ]}
+    ]
+  }
+];
+
+/* ── RENDER ── */
+function esc(s) {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function pad(n) { return String(n).padStart(2, '0'); }
+
+const container = document.getElementById('sections');
+let html = '';
+
+SECTIONS.forEach((sec, sIdx) => {
+  const total = sec.grupos.reduce((a, g) => a + g.entradas.length, 0);
+  html += '<div class="divider"></div>';
+  html += '<section class="clip-section" id="' + sec.id + '">';
+  html += '<div class="clip-section-header">';
+  html += '<h2>' + sec.titulo + '</h2>';
+  html += '<span class="year-chip">' + sec.anos + '</span>';
+  html += '<span class="count-chip">' + total + ' matérias</span>';
+  html += '</div>';
+  html += '<p class="clip-section-desc">' + sec.desc + '</p>';
+
+  let n = 0;
+  sec.grupos.forEach(g => {
+    if (g.label) html += '<div class="sub-heading">' + esc(g.label) + '</div>';
+    html += '<div class="clip-grid">';
+    g.entradas.forEach(e => {
+      n += 1;
+      const img = BASE_IMG + sec.prefix + '-' + pad(n) + '.jpg';
+      html += '<article class="clip-card" data-img="' + img + '" data-veiculo="' + esc(e.veiculo) + '" data-titulo="' + esc(e.titulo) + '">';
+      html += '<div class="clip-img">';
+      html += '<img src="' + img + '" alt="' + esc(e.veiculo + ' – ' + e.titulo) + '" loading="lazy" onerror="this.parentElement.classList.add(\'no-img\')">';
+      html += '<div class="clip-ph"><div class="ph-circle">' + esc(e.veiculo.charAt(0)) + '</div><div class="ph-text">' + esc(e.veiculo) + '</div></div>';
+      html += '</div>';
+      html += '<div class="clip-body">';
+      html += '<div class="clip-meta"><span class="clip-veiculo">' + esc(e.veiculo) + '</span><span class="clip-ano">' + esc(e.ano) + '</span></div>';
+      html += '<div class="clip-titulo">' + esc(e.titulo) + '</div>';
+      html += '</div>';
+      html += '</article>';
+    });
+    html += '</div>';
+  });
+
+  html += '</section>';
+});
+
+container.innerHTML = html;
+
+/* ── LIGHTBOX ── */
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+const lcVeiculo = document.getElementById('lcVeiculo');
+const lcTitulo = document.getElementById('lcTitulo');
+
+document.querySelectorAll('.clip-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const wrap = card.querySelector('.clip-img');
+    if (wrap.classList.contains('no-img')) return; // sem imagem ainda
+    lightboxImg.src = card.dataset.img;
+    lcVeiculo.textContent = card.dataset.veiculo;
+    lcTitulo.textContent = card.dataset.titulo;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+});
+
+function closeLightbox() {
+  lightbox.classList.remove('open');
+  lightboxImg.src = '';
+  document.body.style.overflow = '';
+}
+
+lightbox.addEventListener('click', e => { if (e.target === lightbox || e.target === lightboxImg) closeLightbox(); });
+document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+/* ── SCROLLSPY ── */
+const navItems = document.querySelectorAll('.nav-item');
+const targets = ['visao-geral', ...SECTIONS.map(s => s.id)].map(id => document.getElementById(id));
+
+function onScroll() {
+  let current = targets[0].id;
+  const y = window.scrollY + 140;
+  targets.forEach(t => { if (t && t.offsetTop <= y) current = t.id; });
+  navItems.forEach(item => item.classList.toggle('active', item.dataset.target === current));
+}
+
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+/* ── MENU MOBILE ── */
+const hamburger = document.getElementById('hamburger');
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('sidebarOverlay');
+
+function toggleMenu(force) {
+  const open = force !== undefined ? force : !sidebar.classList.contains('open');
+  sidebar.classList.toggle('open', open);
+  hamburger.classList.toggle('open', open);
+  overlay.classList.toggle('visible', open);
+}
+
+hamburger.addEventListener('click', () => toggleMenu());
+overlay.addEventListener('click', () => toggleMenu(false));
+navItems.forEach(item => item.addEventListener('click', () => { if (window.innerWidth <= 768) toggleMenu(false); }));
+</script>
+</body>
+</html>
