@@ -125,6 +125,13 @@
 
   .nav-item.active .nav-number { color: var(--green); }
 
+  .nav-item.nav-sub {
+    padding: 8px 24px 8px 44px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+  }
+  .nav-item.nav-sub .nav-dot { width: 5px; height: 5px; }
+
   .sidebar-footer {
     margin-top: auto;
     padding: 20px 24px;
@@ -411,6 +418,114 @@
   </svg>
 </button>
 
+
+<style>
+  /* ── DOSSIÊS DOS PERSONAGENS ── */
+  .dz-research {
+    background: var(--bg); border: 1px solid #e0e8f0;
+    border-radius: 10px; padding: 14px 18px; margin-top: 20px;
+  }
+  .dz-research strong {
+    display: block; font-size: 10px; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 6px;
+  }
+  .dz-research p { font-size: 12px; color: #1a1a1a; line-height: 1.6; }
+  .dz-quote {
+    border-radius: 10px; padding: 18px 22px; margin-top: 16px;
+    font-size: 13px; color: #000; line-height: 1.75;
+  }
+  .dz-quote.sol   { background: #fdf8ef; border: 1px solid #f0e2c8; }
+  .dz-quote.vento { background: #faf2f3; border: 1px solid #ecd5d9; }
+  .dz-h2 {
+    font-size: 21px; font-weight: 800;
+    color: #1a1a1a; line-height: 1.25; margin-bottom: 14px;
+  }
+  .dz-h3 { font-size: 14px; font-weight: 700; color: var(--blue); margin: 22px 0 8px; }
+  .dz-section { margin-bottom: 44px; }
+  .dz-section > p, .dz-media p { font-size: 13px; color: #1a1a1a; margin-bottom: 12px; line-height: 1.7; }
+  .dz-list { list-style: none; margin: 0 0 12px; padding: 0; }
+  .dz-list li {
+    font-size: 13px; color: #1a1a1a;
+    padding-left: 18px; position: relative; margin-bottom: 7px; line-height: 1.6;
+  }
+  .dz-list li::before { content: '•'; position: absolute; left: 4px; color: var(--teal); font-weight: 700; }
+  .dz-fig {
+    background: white; border: 1px solid #e0e8f0;
+    border-radius: 12px; overflow: hidden; margin: 0;
+  }
+  .dz-fig img { display: block; width: 100%; height: auto; }
+  .dz-fig .dz-ph {
+    aspect-ratio: 3/4;
+    background: #fdf2e6; border-bottom: 2px dashed #e07b20;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; color: #e07b20; font-weight: 600; text-align: center;
+    line-height: 1.5; padding: 16px;
+  }
+  .dz-fig figcaption {
+    padding: 8px 12px; font-size: 11px;
+    color: #1a1a1a; font-weight: 600; text-align: center;
+  }
+  .dz-media { display: grid; grid-template-columns: 250px 1fr; gap: 24px; align-items: start; margin: 18px 0; }
+  .dz-media.rev { grid-template-columns: 1fr 250px; }
+  .dz-media .dz-h3:first-child { margin-top: 0; }
+  .dz-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .dz-media.lg { grid-template-columns: 420px 1fr; }
+  .dz-imgrow { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0 8px; align-items: start; }
+  .dz-imgrow .dz-ph { aspect-ratio: 4/3; }
+  .dz-imgsingle { max-width: 460px; margin: 16px auto 8px; }
+  .dz-states { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px; }
+  .dz-state { border-radius: 12px; padding: 20px 22px; border: 1px solid #e0e8f0; background: white; }
+  .dz-state h4 { font-size: 12px; font-weight: 800; letter-spacing: 0.8px; margin-bottom: 12px; }
+  .dz-state p { font-size: 12px; margin-bottom: 6px; color: #1a1a1a; line-height: 1.6; }
+  .dz-state p b { color: #1a1a1a; font-weight: 700; }
+  .dz-state.blocked { background: #f2f4f6; }
+  .dz-state.blocked h4 { color: #1a1a1a; }
+  .dz-state.full-sol   { background: #fdf2d4; border-color: #f3dca0; }
+  .dz-state.full-sol h4 { color: #C0392B; }
+  .dz-state.full-vento { background: #faf2f3; border-color: #e3c3ca; }
+  .dz-state.full-vento h4 { color: #6E1F2E; }
+  .dz-palette { width: 100%; border-collapse: collapse; margin-top: 16px; background: white; border-radius: 12px; overflow: hidden; border: 1px solid #e0e8f0; }
+  .dz-palette th {
+    text-align: left; padding: 10px 14px;
+    background: var(--dark); color: white;
+    font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+  }
+  .dz-palette td { padding: 10px 14px; border-bottom: 1px solid #eef2f6; font-size: 12px; color: #1a1a1a; }
+  .dz-palette tr:last-child td { border-bottom: none; }
+  .dz-palette td b { color: #1a1a1a; font-weight: 700; }
+  .dz-swatch { width: 38px; height: 24px; border-radius: 6px; border: 1px solid rgba(0,0,0,0.12); display: block; }
+  .dz-palette code { font-family: 'Courier New', monospace; font-size: 11px; color: #1a1a1a; }
+  .dz-note {
+    margin-top: 14px; background: white; border: 1px solid #e0e8f0;
+    border-radius: 0 10px 10px 0; padding: 14px 18px;
+    font-size: 12px; color: #1a1a1a; line-height: 1.7;
+  }
+  .dz-note.sol   { border-left: 3px solid #F5A623; }
+  .dz-note.vento { border-left: 3px solid #6E1F2E; }
+  .dz-note b { color: #1a1a1a; }
+  .dz-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; }
+  .dz-card {
+    background: white; border: 1px solid #e0e8f0;
+    border-radius: 12px; padding: 18px 20px;
+  }
+  .dz-card h4 { font-size: 13px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px; }
+  .dz-card p { font-size: 12px; color: #1a1a1a; line-height: 1.65; margin-bottom: 0; }
+  .dz-card.wide { grid-column: 1 / -1; }
+  .dz-card .dz-list li { font-size: 12px; color: #1a1a1a; }
+  .dz-mood { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px; align-items: start; }
+  .dz-credit {
+    margin-top: 40px; padding-top: 20px;
+    border-top: 1px solid #e0e8f0;
+    text-align: center; font-size: 12px; color: #1a1a1a;
+  }
+  .dz-credit b { color: #1a1a1a; }
+  @media (max-width: 680px) {
+    .dz-media, .dz-media.rev, .dz-media.lg, .dz-imgrow { grid-template-columns: 1fr; }
+    .dz-states, .dz-grid, .dz-mood { grid-template-columns: 1fr; }
+  }
+</style>
+
 <!-- ═══════ SIDEBAR ═══════ -->
 <aside class="sidebar">
   <div class="sidebar-logo">
@@ -485,37 +600,43 @@
   </div>
 
   <div class="sidebar-label">Visão Geral</div>
-  <div class="nav-item active" onclick="goTo(0)">
+  <div class="nav-item active" data-page="0" onclick="goTo(0)">
     <span class="nav-dot"></span> Apresentação
     <span class="nav-number">00</span>
   </div>
 
   <div class="sidebar-label section">Equipe Criativa</div>
-  <div class="nav-item" onclick="goTo(1)">
+  <div class="nav-item" data-page="1" onclick="goTo(1)">
     <span class="nav-dot"></span> Pesquisadora Cultural
     <span class="nav-number">01</span>
   </div>
-  <div class="nav-item" onclick="goTo(2)">
+  <div class="nav-item nav-sub" data-page="8" onclick="goTo(8)">
+    <span class="nav-dot"></span> Personagem U'acü
+  </div>
+  <div class="nav-item nav-sub" data-page="9" onclick="goTo(9)">
+    <span class="nav-dot"></span> Personagem Afefé
+  </div>
+  <div class="nav-item" data-page="2" onclick="goTo(2)">
     <span class="nav-dot"></span> Ilustrador
     <span class="nav-number">02</span>
   </div>
-  <div class="nav-item" onclick="goTo(3)">
+  <div class="nav-item" data-page="3" onclick="goTo(3)">
     <span class="nav-dot"></span> Game Designer
     <span class="nav-number">03</span>
   </div>
-  <div class="nav-item" onclick="goTo(4)">
+  <div class="nav-item" data-page="4" onclick="goTo(4)">
     <span class="nav-dot"></span> Articulador Educacional
     <span class="nav-number">04</span>
   </div>
-  <div class="nav-item" onclick="goTo(5)">
+  <div class="nav-item" data-page="5" onclick="goTo(5)">
     <span class="nav-dot"></span> Produtor Cultural
     <span class="nav-number">05</span>
   </div>
-  <div class="nav-item" onclick="goTo(6)">
+  <div class="nav-item" data-page="6" onclick="goTo(6)">
     <span class="nav-dot"></span> Exposição
     <span class="nav-number">06</span>
   </div>
-  <div class="nav-item" onclick="goTo(7)">
+  <div class="nav-item" data-page="7" onclick="goTo(7)">
     <span class="nav-dot"></span> Fluxo e Cronograma
     <span class="nav-number">07</span>
   </div>
@@ -851,7 +972,7 @@
             <p style="font-size:11px; color:#6b7f95; line-height:1.6; margin-bottom:10px;">Espírito do sol invocado pelos pajés para realizar curas e quebrar feitiços. O pajé atua como intermediário entre o mundo humano e o divino, chamando U'acü para restaurar o equilíbrio e afastar o mal.</p>
             <p style="font-size:10px; color:#6b7f95; font-style:italic; margin-top:10px; padding-top:8px; border-top:1px solid #e0e8f0;">Pesquisa em diálogo com Santo Cruz Mariano Clemente (Museu Magüta) e Rose Salvador.</p>
             <div style="margin-top:12px;">
-              <a href="https://the-blue-city.github.io/content/U%CC%88%E2%80%99acu-1personagem.pdf" target="_blank" style="display:inline-flex; align-items:center; gap:7px; font-size:11px; font-weight:700; color:#2858a0; text-decoration:none; background:#d6e4f7; border-radius:8px; padding:7px 12px;">
+              <a href="#" onclick="event.preventDefault(); goTo(8);" style="display:inline-flex; align-items:center; gap:7px; font-size:11px; font-weight:700; color:#2858a0; text-decoration:none; background:#d6e4f7; border-radius:8px; padding:7px 12px;">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
                 Ver dossiê U'acü
               </a>
@@ -871,7 +992,7 @@
             <p style="font-size:11px; color:#6b7f95; line-height:1.6; margin-bottom:10px;">Personagem feminina inspirada em Oyá/Iansã – orixá dos ventos, tempestades e transformações. Anuncia a mudança antes da tempestade chegar e ensina que o ar limpo é um direito e um território a ser defendido.</p>
             <p style="font-size:10px; color:#6b7f95; font-style:italic; margin-top:10px; padding-top:8px; border-top:1px solid #e0e8f0;">Pesquisa em diálogo com José Neri (babalorixá).</p>
             <div style="margin-top:12px;">
-              <a href="https://the-blue-city.github.io/content/Afefe%CC%81-2personagem.pdf" target="_blank" style="display:inline-flex; align-items:center; gap:7px; font-size:11px; font-weight:700; color:#2858a0; text-decoration:none; background:#d6e4f7; border-radius:8px; padding:7px 12px;">
+              <a href="#" onclick="event.preventDefault(); goTo(9);" style="display:inline-flex; align-items:center; gap:7px; font-size:11px; font-weight:700; color:#2858a0; text-decoration:none; background:#d6e4f7; border-radius:8px; padding:7px 12px;">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
                 Ver dossiê Afefé
               </a>
@@ -934,11 +1055,11 @@
           </div>
           <p>Para cada personagem: história e origem mítica, características físicas detalhadas, pinturas corporais, roupa e acessórios, personalidade, mito de criação e referências visuais. É a base de toda a criação visual.</p>
           <div style="margin-top:14px; display:flex; flex-wrap:wrap; gap:6px;">
-            <a href="https://the-blue-city.github.io/content/U%CC%88%E2%80%99acu-1personagem.pdf" target="_blank" style="display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:700; color:#8a6d00; text-decoration:none; background:#fdf3c4; border-radius:6px; padding:6px 10px;">
+            <a href="#" onclick="event.preventDefault(); goTo(8);" style="display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:700; color:#8a6d00; text-decoration:none; background:#fdf3c4; border-radius:6px; padding:6px 10px;">
               <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
               Ver dossiê U'acü
             </a>
-            <a href="https://the-blue-city.github.io/content/Afefe%CC%81-2personagem.pdf" target="_blank" style="display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:700; color:#8a6d00; text-decoration:none; background:#fdf3c4; border-radius:6px; padding:6px 10px;">
+            <a href="#" onclick="event.preventDefault(); goTo(9);" style="display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:700; color:#8a6d00; text-decoration:none; background:#fdf3c4; border-radius:6px; padding:6px 10px;">
               <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
               Ver dossiê Afefé
             </a>
@@ -1150,7 +1271,7 @@
           </div>
           <p>Dois modelos 3D em .fbx com textura flat color e rig simples – Iansã (Mundo dos Ventos) e U'acü (Mundo do Sol) – prontos para importação no Unity.</p>
           <div style="margin-top:14px;">
-            <a href="#" onclick="event.preventDefault(); document.querySelectorAll('.page').forEach(p=>p.classList.remove('active')); document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active')); document.getElementById('page-2').classList.add('active'); document.querySelectorAll('.nav-item')[2].classList.add('active');" style="display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:700; color:#468182; text-decoration:none; background:#d0e8e8; border-radius:8px; padding:8px 14px;">
+            <a href="#" onclick="event.preventDefault(); goTo(2);" style="display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:700; color:#468182; text-decoration:none; background:#d0e8e8; border-radius:8px; padding:8px 14px;">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
               Ver página do Ilustrador
             </a>
@@ -2163,10 +2284,502 @@
     </div>
   </section>
 
+
+  <!-- ══ PAGE 8: DOSSIÊ U'ACÜ ══ -->
+  <section class="page" id="page-8">
+    <div class="page-hero role-pesquisadora">
+      <div style="display:flex; align-items:center; gap:18px; margin-bottom:20px; padding-bottom:18px; border-bottom:1px solid rgba(40,88,160,0.12);">
+        <img src="https://the-blue-city.github.io/content/ester.jpg" alt="Ester Menezes" style="width:60px; height:60px; border-radius:50%; object-fit:cover; object-position:top; border:3px solid #d6e4f7; flex-shrink:0;">
+        <div>
+          <div class="role-badge rb-blue" style="margin-bottom:6px;">🔍 Pesquisadora Cultural</div>
+          <p style="font-size:16px; font-weight:800; color:var(--dark); margin-bottom:2px;">Ester Menezes</p>
+          <p style="font-size:12px; color:var(--muted);">Artesã · Artista Híbrida · Diretora de Arte · Produtora Cultural</p>
+        </div>
+      </div>
+      <div class="role-badge rb-teal">☀️ Mundo do Sol</div>
+      <h1 class="page-title">U'acü</h1>
+      <p class="page-subtitle">Sol na língua Tikuna · Cultura Indígena · Guia do Mundo do Sol</p>
+      <div class="dz-research">
+        <strong>Pesquisa realizada em diálogo com</strong>
+        <p>Santo Cruz Mariano Clemente – ancião Tikuna e diretor do Museu Magüta</p>
+        <p>Rose Salvador – artista visual do povo Tikuna</p>
+      </div>
+      <div class="dz-quote sol">
+        Personagem masculino que representa o elemento Sol e é o guia do Mundo do Sol. Inspirado na cosmologia Tikuna – o povo indígena mais numeroso do Brasil – cujo espírito do sol é invocado pelos pajés para realizar curas e quebrar feitiços. O pajé atua como intermediário entre o mundo humano e o divino, chamando U'acü para restaurar o equilíbrio e afastar o mal.
+      </div>
+    </div>
+
+    <div class="page-body single" style="max-width:100%; padding:36px 60px 0;">
+
+      <div class="dz-section">
+        <div class="section-heading">1. Figura Mítica Aprofundada</div>
+        <div class="dz-h2">U'acü na Cosmologia Tikuna</div>
+        <p>O povo Tikuna (Magüta) é o mais numeroso do Brasil, com cerca de 57 mil pessoas, habitando as margens do Rio Solimões, no Alto Amazonas. Sua cosmologia é rica em seres sobrenaturais que habitam diferentes camadas do universo – o céu, a terra e as águas.</p>
+        <p>U'acü é o nome do Sol na língua Tikuna. Na tradição Tikuna, o sol não é apenas um astro celeste, mas uma entidade espiritual viva, dotada de poder curativo e protetor. Ele percorre o céu diariamente, iluminando o caminho dos vivos e afastando as trevas dos espíritos malignos.</p>
+
+        <div class="dz-media lg">
+          <figure class="dz-fig">
+            <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-01-uacu-livro-tikuna-dois-estados.png" alt="U'acü – livro ilustrado Tikuna">
+            <figcaption>U'acü – livro ilustrado Tikuna</figcaption>
+          </figure>
+          <div>
+            <div class="dz-h3">O Pajé como Intermediário</div>
+            <p>O pajé Tikuna invoca U'acü em rituais de cura. Quando uma pessoa sofre de mal causado por feitiço, o pajé sopra fumaça de tabaco sagrado sobre o enfermo e usa um feixe de plantas medicinais para varrer o mal do corpo – até que o espírito solar se manifeste e a cura aconteça.</p>
+            <p>Na ilustração original do livro Tikuna, o sol aparece em dois estados: bloqueado/cinza (quando a Terra está sob o feitiço da poluição) e pleno/vermelho (quando invocado pelo pajé com o maracá vermelho).</p>
+          </div>
+        </div>
+
+        <div class="dz-media lg">
+          <figure class="dz-fig">
+            <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-02-ritual-cura-acacu-livro-tikuna.png" alt="Ritual de cura – livro Tikuna">
+            <figcaption>Ritual de cura – livro Tikuna</figcaption>
+          </figure>
+          <div>
+            <div class="dz-h3">O Ritual de Invocação</div>
+            <p>Em ilustração do livro Tikuna: o pajé, dentro da maloca, sopra fumaça de tabaco sagrado sobre o enfermo deitado, enquanto usa um feixe de folhas medicinais para varrer o mal. Atrás do pajé surge o espírito convocado – etéreo e luminoso.</p>
+            <p>A árvore sagrada açacu (uatchiwa) também se manifesta – os espíritos habitam a natureza e são parte do mesmo sistema de cura.</p>
+          </div>
+        </div>
+
+        <div style="background:#fdf2d4; border:1px solid #f3dca0; border-left:4px solid #F5A623; border-radius:10px; padding:18px 22px; margin-top:22px;">
+          <div class="dz-h3" style="margin-top:0; color:#C0392B;">Conexão com o Tema do Jogo</div>
+          <p style="margin-bottom:0; font-size:13px; line-height:1.7; color:#000;">O desequilíbrio ambiental – queima de combustíveis fósseis, desmatamento, poluição – é o grande 'feitiço' lançado sobre a Terra. U'acü guia o visitante pelo Mundo do Sol, ensinando como a luz solar pode ser fonte de energia limpa e como recuperar o equilíbrio do planeta.</p>
+        </div>
+      </div>
+
+      <div class="dz-section">
+        <div class="section-heading">2. Os Dois Estados de U'acü</div>
+        <div class="dz-h2">Arco Narrativo do Personagem</div>
+        <p>A ilustração original Tikuna revela que U'acü existe em dois estados visuais distintos:</p>
+        <div class="dz-states">
+          <div class="dz-state blocked">
+            <h4>ESTADO 1 – BLOQUEADO</h4>
+            <p><b>Cor:</b> cinza escuro / fumaça</p>
+            <p><b>Causa:</b> poluição, desmatamento, feitiço</p>
+            <p><b>No jogo:</b> estado inicial – o visitante deve restaurá-lo</p>
+          </div>
+          <div class="dz-state full-sol">
+            <h4>ESTADO 2 – PLENO</h4>
+            <p><b>Cor:</b> vermelho vivo + raios dourados</p>
+            <p><b>Causa:</b> invocação pelo pajé via ritual</p>
+            <p><b>No jogo:</b> estado restaurado – recompensa das missões</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="dz-section">
+        <div class="section-heading">3. Referências Iconográficas</div>
+        <div class="dz-h2">Características Físicas e Visuais</div>
+        <p>Pele morena acobreada, estatura média, cabelos pretos lisos e curtos, olhos escuros com brilho intenso. Corpo forte e ágil.</p>
+
+        <div class="dz-h3">Pinturas Corporais</div>
+        <ul class="dz-list">
+          <li>Rosto coberto com urucum vermelho intenso – da testa até o queixo</li>
+          <li>Referência: povo Kayapó / Xikrin</li>
+          <li>A pintura vermelha representa o calor e a energia do sol</li>
+          <li>Apenas o rosto é pintado – o corpo fica coberto pelo tururi</li>
+        </ul>
+        <div class="dz-imgrow">
+          <figure class="dz-fig">
+            <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-03-pintura-urucum-kayapo-xikrin-a.png" alt="Pintura de urucum – Kayapó/Xikrin">
+            <figcaption>Kayapó/Xikrin</figcaption>
+          </figure>
+          <figure class="dz-fig">
+            <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-04-pintura-urucum-kayapo-xikrin-b.png" alt="Pintura de urucum – Kayapó/Xikrin">
+            <figcaption>Kayapó/Xikrin</figcaption>
+          </figure>
+        </div>
+
+        <div class="dz-h3">Roupa</div>
+        <ul class="dz-list">
+          <li>Veste de tururi – fibra vegetal amazônica resistente e flexível, obtida do invólucro dos frutos da palmeira Manicaria saccifera (Ubuçu)</li>
+          <li>Pintada à mão com padrões geométricos em losangos e diamantes encadeados, nas cores preto, vermelho/terracota e branco</li>
+          <li>Referência: mascarado Tikuna da Festa da Moça Nova (Worecü)</li>
+        </ul>
+        <figure class="dz-fig dz-imgsingle">
+          <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-05-mascarado-tururi-tikuna.png" alt="Mascarado Tikuna – tururi">
+          <figcaption>Mascarado Tikuna – tururi</figcaption>
+        </figure>
+
+        <div class="dz-h3">Acessórios</div>
+        <ul class="dz-list">
+          <li>Cocar com penas amarelas e laranja em arco amplo – referência: povo Enawenê-Nawê</li>
+          <li>Maracá vermelho com padrões geométricos gravados – instrumento sagrado do pajé para invocar U'acü; é ao mesmo tempo sua arma e sua ferramenta de cura</li>
+        </ul>
+        <div class="dz-imgrow">
+          <figure class="dz-fig">
+            <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-06-cocar-enawene-nawe.png" alt="Cocar – Enawenê-Nawê">
+            <figcaption>Cocar – Enawenê-Nawê</figcaption>
+          </figure>
+          <figure class="dz-fig">
+            <div class="dz-ph">[ imagem<br>maracá vermelho ]</div>
+            <figcaption>Maracá vermelho</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="dz-section">
+        <div class="section-heading">4. Paleta de Cores Sugerida</div>
+        <div class="dz-h2">Paleta Cromática de U'acü</div>
+        <p>A paleta evoca o calor do sol, a terra amazônica e a espiritualidade Tikuna:</p>
+        <table class="dz-palette">
+          <thead><tr><th>Cor</th><th>Nome</th><th>Hex</th><th>Significado</th></tr></thead>
+          <tbody>
+            <tr><td><span class="dz-swatch" style="background:#C0392B;"></span></td><td><b>Vermelho Urucum</b></td><td><code>#C0392B</code></td><td>Pintura facial – energia do sol</td></tr>
+            <tr><td><span class="dz-swatch" style="background:#F5A623;"></span></td><td><b>Dourado Solar</b></td><td><code>#F5A623</code></td><td>Cor primária – raios do sol</td></tr>
+            <tr><td><span class="dz-swatch" style="background:#C8780A;"></span></td><td><b>Âmbar</b></td><td><code>#C8780A</code></td><td>Calor e energia vital</td></tr>
+            <tr><td><span class="dz-swatch" style="background:#8B3A1A;"></span></td><td><b>Terracota</b></td><td><code>#8B3A1A</code></td><td>Terra e ancestralidade</td></tr>
+            <tr><td><span class="dz-swatch" style="background:#1A1A1A;"></span></td><td><b>Preto Jenipapo</b></td><td><code>#1A1A1A</code></td><td>Padrões do tururi</td></tr>
+            <tr><td><span class="dz-swatch" style="background:#F5F0E8;"></span></td><td><b>Branco Natural</b></td><td><code>#F5F0E8</code></td><td>Fibra do tururi</td></tr>
+          </tbody>
+        </table>
+        <div class="dz-note sol"><b>Nota:</b> O vermelho do urucum é a cor dominante – representa o sol pleno e a energia curativa. O preto e branco do tururi contrastam e equilibram a composição.</div>
+      </div>
+
+      <div class="dz-section">
+        <div class="section-heading">5. Orientações para o Ilustrador</div>
+        <div class="dz-h2">Diretrizes de Representação</div>
+        <div class="dz-grid">
+          <div class="dz-card">
+            <h4>Silhueta e Postura</h4>
+            <p>Braços abertos, palmas para cima – postura receptiva e irradiante. A silhueta deve lembrar um sol: expansiva, com o cocar se abrindo ao redor da cabeça como raios.</p>
+          </div>
+          <div class="dz-card">
+            <h4>Expressão</h4>
+            <p>Serena e poderosa. Olhos que transmitem sabedoria ancestral. Não deve aparentar agressividade – sua força é curativa e protetora.</p>
+          </div>
+          <div class="dz-card">
+            <h4>Autenticidade Cultural</h4>
+            <p>Baseado em pesquisa em diálogo com Santo Cruz Mariano Clemente (ancião Tikuna, Museu Magüta) e Rose Salvador (artista visual Tikuna). As referências culturais específicas do povo Tikuna aqui documentadas são o guia para a representação do personagem.</p>
+          </div>
+          <div class="dz-card">
+            <h4>Bioma de Referência</h4>
+            <p>Alto Rio Solimões, Amazônia. Luz dourada filtrando pela floresta, reflexos solares na água. A árvore açacu (uatchiwa) pode aparecer no cenário.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="dz-section">
+        <div class="section-heading">6. Conexão com o Tema Central</div>
+        <div class="dz-h2">U'acü e a Redução de Gases de Efeito Estufa</div>
+        <div class="dz-grid">
+          <div class="dz-card" style="background:#fff8e7; border-color:#f0e3c0;">
+            <h4>Metáfora Mítica</h4>
+            <p>O 'feitiço' sobre a Terra = emissão de gases de efeito estufa. U'acü, invocado pelo pajé, representa a cura = transição para energia solar limpa.</p>
+          </div>
+          <div class="dz-card" style="background:#d5e8f0; border-color:#b8d6e4;">
+            <h4>Missão no Jogo</h4>
+            <p>Guiar o jogador a descobrir fontes de energia solar, reduzindo a dependência de combustíveis fósseis no Mundo do Sol.</p>
+          </div>
+          <div class="dz-card" style="background:#ffe9cc; border-color:#f0d2a0;">
+            <h4>Poder de Cura</h4>
+            <p>U'acü cura territórios degradados pelo garimpo e desmatamento, revelando como povos indígenas são guardiões do clima.</p>
+          </div>
+          <div class="dz-card" style="background:#e8f5e9; border-color:#c8e6ca;">
+            <h4>Conhecimento Ancestral</h4>
+            <p>Transmite saberes Tikuna sobre ciclos solares, agricultura de baixo impacto e relação sustentável com a floresta amazônica.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="dz-section">
+        <div class="section-heading">7. Validação Cultural</div>
+        <div class="dz-h2">Quem Orientou Esta Pesquisa</div>
+        <p>O personagem U'acü foi desenvolvido em diálogo direto com lideranças e artistas do povo Tikuna, garantindo autenticidade cultural e respeito às tradições representadas.</p>
+
+        <div class="dz-media" style="margin-top:24px;">
+          <figure class="dz-fig">
+            <img src="https://raw.githubusercontent.com/The-Blue-City/content/main/SantoCruzMarianoClementeTikuna.jpg" alt="Santo Cruz Mariano Clemente">
+            <figcaption>Santo Cruz Mariano Clemente</figcaption>
+          </figure>
+          <div>
+            <div class="dz-h3" style="margin-top:0; color:#000;">Santo Cruz Mariano Clemente</div>
+            <p style="color:#000;">Ancião Tikuna, músico e poeta, nascido em 1960 na aldeia Lauro Sodré (Benjamin Constant/AM). Seu nome na língua Tikuna é Pu'cüracü, do clã do mutum. Atuou 38 anos na educação em defesa dos direitos indígenas e participou da formação da OGPTB (Organização Geral dos Professores Ticuna Bilíngues) e da CGTT (Conselho Geral da Tribo Ticuna).</p>
+            <p style="color:#000;">Graduado em Antropologia, Sociologia e Filosofia, é servidor da FUNAI e, desde abril de 2018, diretor do Museu Magüta – o primeiro museu indígena do Brasil – dedicado à preservação da memória, da cultura e das tradições do povo Tikuna.</p>
+            <p style="font-size:12px; margin-bottom:0;"><a href="https://osbrasisesuasmemorias.com.br/santo-cruz-mariano-clemente-ticuna/" target="_blank" rel="noopener" style="color:var(--blue); text-decoration:none; font-weight:600;">Biografia completa · Os Brasis e suas Memórias ↗</a></p>
+          </div>
+        </div>
+
+        <div class="dz-media rev" style="margin-top:24px;">
+          <div>
+            <div class="dz-h3" style="margin-top:0; color:#000;">Rose Salvador</div>
+            <p style="color:#000;">Artista visual, artesã e produtora cultural do povo Tikuna, originária da Aldeia Bom Caminho, no Alto Solimões (AM) e radicada em Recife (PE). Sua trajetória é marcada pela salvaguarda e difusão dos saberes ancestrais, do grafismo e das narrativas de seu povo.</p>
+            <ul class="dz-list">
+              <li><b>Coletivo Moingobé:</b> é uma das coordenadoras dessa iniciativa, que promove intercâmbios culturais, exposições e o diálogo entre diferentes povos originários.</li>
+              <li><b>Cestaria e artesanato tradicional:</b> produz e difunde conhecimentos sobre a cestaria tikuna, feita com a fibra do arumã, com padronagens que representam os animais do cotidiano e ensinamentos transmitidos no Ritual da Moça Nova.</li>
+              <li><b>Preservação cultural e resistência:</b> enxerga sua produção como um ritual de resistência, focado na autonomia, na geração de renda para as mulheres artesãs de sua comunidade e em contar a história dos povos indígenas a partir de suas próprias narrativas.</li>
+            </ul>
+            <p style="font-size:12px; margin-bottom:0;">
+              <a href="https://www.instagram.com/salvador___rose/" target="_blank" rel="noopener" style="color:var(--blue); text-decoration:none; font-weight:600;">@salvador___rose ↗</a>
+            </p>
+          </div>
+          <figure class="dz-fig">
+            <img src="https://raw.githubusercontent.com/The-Blue-City/content/main/RoseSalvador.jpg" alt="Rose Salvador">
+            <figcaption>Rose Salvador</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="dz-section">
+        <div class="section-heading">8. Territórios de Articulação</div>
+        <div class="dz-h2">Pontes com as Comunidades de Origem</div>
+        <p>A pesquisadora Ester Menezes mantém articulação ativa em duas frentes territoriais.</p>
+        <div class="dz-grid">
+          <div class="dz-card">
+            <h4>Povo Tikuna – Amazonas</h4>
+            <p style="color:#000; margin-bottom:10px; font-weight:600;">Personagem U'acü finalizado</p>
+            <ul class="dz-list">
+              <li>Alto Solimões, tríplice fronteira</li>
+              <li>Cidade-base: Benjamin Constant (AM)</li>
+              <li>Várias aldeias no Alto Solimões; região do Vale do Javari próxima</li>
+            </ul>
+          </div>
+          <div class="dz-card">
+            <h4>Povo Krahô – Tocantins</h4>
+            <p style="color:#000; margin-bottom:10px; font-weight:600;">Personagem 2 em desenvolvimento</p>
+            <ul class="dz-list">
+              <li>Comunidade em Itacajá (TO), também Goiatins</li>
+              <li>Mais de 28 aldeias dentro dessas cidades</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="dz-note" style="border-left:3px solid #1a2e3b; margin-top:16px; color:#000;">
+          <b>Referência geográfica:</b> Vale do Javari (AM) – próximo ao Alto Solimões, citado como referência de proximidade ao território Tikuna, fora das frentes de articulação.
+        </div>
+
+        <div class="dz-note" style="border-left:3px solid #1a2e3b; margin-top:12px; color:#000;">
+          <b>Referências iconográficas no dossiê do U'acü</b> (não são territórios de articulação): Kayapó / Xikrin – referência da pintura facial de urucum; Enawenê-Nawê – referência do cocar de penas amarelas e laranja.
+        </div>
+      </div>
+
+      <div class="dz-credit">
+        Dossiê elaborado por <b>Ester Menezes</b> · Pesquisadora Cultural<br>
+        Missão Termômetro Zero
+      </div>
+    </div>
+
+    <div class="page-nav">
+      <button class="nav-btn" onclick="goTo(1)">← Pesquisadora Cultural</button>
+      <span class="page-indicator">Dossiê · <strong>U'acü</strong></span>
+      <button class="nav-btn next" onclick="goTo(9)">Personagem Afefé →</button>
+    </div>
+  </section>
+
+
+  <!-- ══ PAGE 9: DOSSIÊ AFEFÉ ══ -->
+  <section class="page" id="page-9">
+    <div class="page-hero role-pesquisadora">
+      <div style="display:flex; align-items:center; gap:18px; margin-bottom:20px; padding-bottom:18px; border-bottom:1px solid rgba(40,88,160,0.12);">
+        <img src="https://the-blue-city.github.io/content/ester.jpg" alt="Ester Menezes" style="width:60px; height:60px; border-radius:50%; object-fit:cover; object-position:top; border:3px solid #d6e4f7; flex-shrink:0;">
+        <div>
+          <div class="role-badge rb-blue" style="margin-bottom:6px;">🔍 Pesquisadora Cultural</div>
+          <p style="font-size:16px; font-weight:800; color:var(--dark); margin-bottom:2px;">Ester Menezes</p>
+          <p style="font-size:12px; color:var(--muted);">Artesã · Artista Híbrida · Diretora de Arte · Produtora Cultural</p>
+        </div>
+      </div>
+      <div class="role-badge rb-blue">⚡ Mundo dos Ventos</div>
+      <h1 class="page-title">Afefé</h1>
+      <p class="page-subtitle">Vento na língua Iorubá · Cultura Afro-Brasileira · Guia do Mundo dos Ventos</p>
+      <div class="dz-research">
+        <strong>Pesquisa realizada em diálogo com</strong>
+        <p>José Neri – babalorixá</p>
+      </div>
+      <div class="dz-quote vento">
+        Personagem feminina que representa o elemento Vento e é a guia do Mundo dos Ventos. Inspirada em Oyá/Iansã – orixá dos ventos, tempestades e transformações na tradição iorubá e no Candomblé brasileiro – cuja energia é movimento, ruptura e passagem. Afefé anuncia a mudança antes mesmo da tempestade chegar, guiando o visitante pelo Mundo dos Ventos e ensinando que o ar limpo é um direito e um território a ser defendido.
+      </div>
+    </div>
+
+    <div class="page-body single" style="max-width:100%; padding:36px 60px 0;">
+
+      <div class="dz-section">
+        <div class="section-heading">1. Figura Mítica Aprofundada</div>
+        <div class="dz-h2">Afefé e a Energia de Oyá</div>
+        <p>Afefé é uma palavra de origem iorubá que significa vento, brisa ou ar. Na cultura afro-brasileira – especialmente no Candomblé e na Umbanda – o termo está profundamente associado a Oyá (também conhecida como Iansã), o orixá que preside os ventos, as tempestades, os raios e os processos de transformação. Oyá é uma das divindades mais complexas do panteão iorubá: guerreira, protetora, mãe dos eguns (espíritos dos ancestrais) e senhora dos limiares entre o mundo dos vivos e o mundo dos mortos.</p>
+        <p>O nome Afefé foi escolhido para o personagem porque carrega em si o próprio elemento que ela representa: não é apenas o nome da divindade, mas o nome do fenômeno. Isso cria uma identidade própria ao personagem – ela não é Oyá, mas é feita da mesma substância.</p>
+
+        <div class="dz-h3">Oyá – Movimento e Travessia</div>
+        <p>Na cosmologia iorubá e no Candomblé brasileiro, Oyá não é uma energia de permanência – ela é travessia, deslocamento, transformação constante. Existe sempre uma intensidade nela, mesmo quando aparentemente está calma. Segundo o babalorixá José Neri, Oyá é o vento que anuncia a mudança antes mesmo da tempestade chegar.</p>
+        <p>Em estado de calmaria, Oyá se manifesta como presença observadora, silenciosa e estratégica. Não é uma calmaria passiva – é como o ar pesado antes da chuva: existe tensão, percepção aguçada e inteligência emocional muito forte. Elegante, magnética e nunca totalmente previsível.</p>
+        <p>Em estado de tempestade, Oyá é ruptura. É a força que desmonta estruturas que já não servem mais – impulsiva, feroz, extremamente protetora. Mas não é destruição vazia: existe sempre um propósito de limpeza, transformação e abertura de caminho. A tempestade de Oyá não surge por capricho; ela vem depois de acúmulos, silenciamentos e injustiças.</p>
+
+        <div class="dz-h3">A Relação com os Ancestrais</div>
+        <p>Um dos aspectos mais singulares de Oyá é sua relação com os eguns – os espíritos dos ancestrais. Em muitas tradições, ela é a única orixá que transita entre o mundo dos vivos e o mundo dos mortos, acompanhando as almas em seu processo de passagem. Isso confere ao personagem Afefé uma dimensão espiritual muito profunda: alguém que 'morre e renasce' muitas vezes ao longo da narrativa, que muda de pele constantemente e que entende a transformação não como perda, mas como caminho.</p>
+
+        <div class="dz-h3">Conexão com o Tema do Jogo</div>
+        <p>O ar poluído é o grande silenciamento de Afefé – é quando o vento perde força, quando a brisa não chega e a tempestade que deveria limpar não consegue se formar. A poluição atmosférica, os gases de efeito estufa e o desmatamento são o 'feitiço' lançado sobre o Mundo dos Ventos. Afefé guia o visitante para restaurar o ar limpo, descobrir fontes de energia eólica e compreender que o vento é um recurso vivo, espiritual e climático ao mesmo tempo.</p>
+      </div>
+
+      <div class="dz-section">
+        <div class="section-heading">2. Os Dois Estados de Afefé</div>
+        <div class="dz-h2">Arco Narrativo do Personagem</div>
+        <p>Assim como Oyá existe em estados distintos – da brisa silenciosa à tempestade transformadora – Afefé no jogo apresenta dois estados visuais que refletem o equilíbrio ou desequilíbrio do Mundo dos Ventos:</p>
+        <div class="dz-states">
+          <div class="dz-state blocked">
+            <h4>ESTADO 1 – BLOQUEADA</h4>
+            <p><b>Cor:</b> cinza esfumaçado / cobre apagado</p>
+            <p><b>Causa:</b> poluição atmosférica, gases de efeito estufa, ar irrespirável</p>
+            <p><b>No jogo:</b> estado inicial – o visitante deve restaurar o vento</p>
+          </div>
+          <div class="dz-state full-vento">
+            <h4>ESTADO 2 – PLENA</h4>
+            <p><b>Cor:</b> vinho vivo + cobre luminoso + dourado</p>
+            <p><b>Causa:</b> ar limpo restaurado, energia eólica em movimento</p>
+            <p><b>No jogo:</b> estado restaurado – recompensa das missões</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="dz-section">
+        <div class="section-heading">3. Referências Iconográficas</div>
+        <div class="dz-h2">Características Físicas e Visuais</div>
+        <p>Mulher jovem, pele negra, corpo esguio e alongado – silhueta que evoca leveza e velocidade, como o próprio vento. Cabelos crespos, soltos e volumosos, sempre em movimento, como se uma brisa constante os habitasse. Olhos expressivos com olhar de quem observa tudo e não revela tudo. Postura ereta, elegante – presença magnética mesmo em repouso.</p>
+
+        <div class="dz-h3">Roupa</div>
+        <p>Tecidos longos e fluidos em várias camadas sobrepostas, criando a sensação de que o vento faz parte da roupa. As camadas têm comprimentos diferentes – algumas rasam o chão, outras voam. Tons de vinho, vermelho queimado, cobre e terracota, com detalhes dourados nas bordas. A roupa nunca parece estática: mesmo numa ilustração parada, os tecidos devem sugerir movimento.</p>
+
+        <div class="dz-h3">Acessórios</div>
+        <ul class="dz-list">
+          <li>Espada-de-são-jorge (Dracaena trifasciata) – planta sagrada profundamente associada a Oyá/Iansã na tradição afro-brasileira, usada para proteção, limpeza de energias e abertura de caminhos. No jogo, substitui a espada de metal: Afefé carrega a planta como seu objeto de poder, conectando o símbolo espiritual ao mundo natural. A espada-de-são-jorge também ocorre no Cerrado, reforçando a ligação com o bioma</li>
+          <li>Búzios – adornos em colares, pulseiras e bordados na roupa. Na tradição do Candomblé, os búzios são sagrados: servem para a comunicação com os orixás e são símbolos de identidade e pertencimento espiritual. Na roupa de Afefé aparecem como detalhes brancos contrastando com os tons vinho e cobre</li>
+          <li>Braceletes em cobre e dourado nos pulsos – referência aos adornos de Oyá</li>
+          <li>Borboletas vermelhas ao redor – símbolo de transformação e presença de Oyá; o Cerrado tem uma das maiores diversidades de borboletas do Brasil</li>
+          <li>Elementos do Cerrado integrados ao tecido ou ao cabelo: ipê amarelo, capim dourado</li>
+        </ul>
+      </div>
+
+      <div class="dz-section">
+        <div class="section-heading">4. Paleta de Cores Sugerida</div>
+        <div class="dz-h2">Paleta Cromática de Afefé</div>
+        <p>A paleta evoca a força de Oyá, a terra do Cerrado e a eletricidade do vento antes da tempestade:</p>
+        <table class="dz-palette">
+          <thead><tr><th>Cor</th><th>Nome</th><th>Significado</th></tr></thead>
+          <tbody>
+            <tr><td><span class="dz-swatch" style="background:#6E1F2E;"></span></td><td><b>Vinho Oyá</b></td><td>Cor primária – força e transformação</td></tr>
+            <tr><td><span class="dz-swatch" style="background:#A93226;"></span></td><td><b>Vermelho Queimado</b></td><td>Tempestade e ruptura</td></tr>
+            <tr><td><span class="dz-swatch" style="background:#B87333;"></span></td><td><b>Cobre</b></td><td>Intensidade e calor do vento</td></tr>
+            <tr><td><span class="dz-swatch" style="background:#D4A017;"></span></td><td><b>Dourado Cerrado</b></td><td>Raios, eletricidade, capim dourado</td></tr>
+            <tr><td><span class="dz-swatch" style="background:#F1C40F;"></span></td><td><b>Amarelo Ipê</b></td><td>Bioma Cerrado – flor do ipê amarelo</td></tr>
+            <tr><td><span class="dz-swatch" style="background:#1A1A1A;"></span></td><td><b>Preto Tempestade</b></td><td>Contornos e sombras – ar pesado antes da chuva</td></tr>
+          </tbody>
+        </table>
+        <div class="dz-note vento"><b>Nota:</b> O vinho e o cobre são as cores dominantes – representam a força de Oyá e o vento pleno. O dourado aparece como acento de luz, evocando raios e o capim dourado do Cerrado.</div>
+      </div>
+
+      <div class="dz-section">
+        <div class="section-heading">5. Orientações para o Ilustrador</div>
+        <div class="dz-h2">Diretrizes de Representação</div>
+        <div class="dz-grid">
+          <div class="dz-card">
+            <h4>Silhueta e Postura</h4>
+            <p>Corpo esguio e alongado, em postura de movimento – mesmo que parada, a silhueta deve sugerir que está prestes a se deslocar. Os tecidos em camadas voam ao redor do corpo criando volume e dinamismo. A espada pode estar erguida ou apoiada no ombro. Os cabelos crespos e volumosos se expandem como uma coroa de vento.</p>
+          </div>
+          <div class="dz-card">
+            <h4>Expressão</h4>
+            <p>Olhar observador e penetrante – não agressivo, mas que não revela tudo. Expressão que transmite inteligência emocional profunda e autonomia. Adequada para público infantil: não deve aparentar violência, mas sim presença e poder sereno. A beleza dela é magnética e um pouco imprevisível.</p>
+          </div>
+          <div class="dz-card wide">
+            <h4>Elementos Visuais Essenciais</h4>
+            <ul class="dz-list">
+              <li>Cabelos crespos ao vento – elemento mais importante da silhueta</li>
+              <li>Tecidos em movimento em múltiplas camadas de tons vinho/cobre/dourado</li>
+              <li>Borboletas vermelhas ao redor – símbolo de transformação de Oyá</li>
+              <li>Espada-de-são-jorge carregada como objeto de poder – folhas longas, rígidas, verde-escuras com bordas amarelas</li>
+              <li>Búzios brancos nos colares, pulseiras e bordados da roupa – contraste com os tons escuros</li>
+              <li>Sensação de eletricidade no ambiente – como se o ar ao redor vibrasse</li>
+            </ul>
+          </div>
+          <div class="dz-card">
+            <h4>Bioma de Referência</h4>
+            <p>Cerrado brasileiro – chapadas abertas, céu amplo, árvores retorcidas que resistem ao vento. A luz deve ser quente e dourada, como no final da tarde no Cerrado. Ipê amarelo e capim dourado podem aparecer no cenário. Nuvens em formação, como antes de uma tempestade que ainda não chegou.</p>
+          </div>
+          <div class="dz-card">
+            <h4>O que Evitar</h4>
+            <p>Não retratar Afefé apenas como 'mulher explosiva' ou guerreira genérica. A sofisticação de Oyá está na inteligência emocional e espiritual – ela sente profundamente, mas não demonstra fragilidade de forma convencional. O amor dela aparece como proteção feroz e honestidade brutal. Evitar excesso de vermelho isolado – a paleta deve ser rica em camadas, não monocromática.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="dz-section">
+        <div class="section-heading">6. Conexão com o Tema Central</div>
+        <div class="dz-h2">Afefé e a Redução de Gases de Efeito Estufa</div>
+        <div class="dz-grid">
+          <div class="dz-card">
+            <h4>Metáfora Mítica</h4>
+            <p>O ar poluído é o silenciamento de Afefé – quando os gases de efeito estufa bloqueiam o vento e sufocam o Mundo dos Ventos.</p>
+          </div>
+          <div class="dz-card">
+            <h4>Missão no Jogo</h4>
+            <p>Guiar o jogador a descobrir fontes de energia eólica, reduzindo a dependência de combustíveis fósseis.</p>
+          </div>
+          <div class="dz-card">
+            <h4>Poder de Limpeza</h4>
+            <p>Afefé limpa territórios sufocados pela poluição, revelando que o vento é agente de cura – tanto espiritual quanto climático.</p>
+          </div>
+          <div class="dz-card">
+            <h4>Conhecimento Ancestral</h4>
+            <p>Transmite saberes da tradição iorubá sobre ciclos do vento, respeito à natureza e a relação entre equilíbrio espiritual e equilíbrio ambiental.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="dz-section">
+        <div class="section-heading">7. Referências Visuais</div>
+        <div class="dz-h2">Moodboard – Oyá/Iansã na Arte Afro-Brasileira</div>
+        <p>Imagens reunidas como inspiração para o ilustrador. Podem ser úteis para sentir a presença, a paleta e os adornos de Oyá/Iansã na arte afro-brasileira contemporânea – sempre adaptando para a identidade própria de Afefé.</p>
+        <div class="dz-mood">
+          <figure class="dz-fig">
+            <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-01-movimento-turbante-buzios.png" alt="Movimento, turbante e búzios">
+            <figcaption>Movimento, turbante e búzios</figcaption>
+          </figure>
+          <figure class="dz-fig">
+            <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-02-saia-rodada-camadas-borboletas.png" alt="Saia rodada em camadas e borboletas">
+            <figcaption>Saia rodada em camadas e borboletas</figcaption>
+          </figure>
+          <figure class="dz-fig">
+            <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-03-bufalo-espada-sao-jorge-eruexim.png" alt="Búfalo, espada-de-são-jorge e eruexim">
+            <figcaption>Búfalo, espada-de-são-jorge e eruexim</figcaption>
+          </figure>
+          <figure class="dz-fig">
+            <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-04-adornos-buzios-presenca-frontal.png" alt="Adornos, búzios e presença frontal">
+            <figcaption>Adornos, búzios e presença frontal</figcaption>
+          </figure>
+          <figure class="dz-fig">
+            <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-05-veu-borboletas-saia-buzios.png" alt="Véu, borboletas e saia com búzios">
+            <figcaption>Véu, borboletas e saia com búzios</figcaption>
+          </figure>
+          <figure class="dz-fig">
+            <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-06-bufalo-simbolo-oya.png" alt="Búfalo como símbolo de Oyá">
+            <figcaption>Búfalo como símbolo de Oyá</figcaption>
+          </figure>
+          <figure class="dz-fig">
+            <div class="dz-ph">[ imagem moodboard 7<br>movimento e eruexim ]</div>
+            <figcaption>Movimento e eruexim</figcaption>
+          </figure>
+          <figure class="dz-fig">
+            <div class="dz-ph">[ imagem moodboard 8<br>postura guerreira e contas longas ]</div>
+            <figcaption>Postura guerreira e contas longas</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="dz-credit">
+        Dossiê elaborado por <b>Ester Menezes</b> · Pesquisadora Cultural<br>
+        Missão Termômetro Zero
+      </div>
+    </div>
+
+    <div class="page-nav">
+      <button class="nav-btn" onclick="goTo(8)">← Personagem U'acü</button>
+      <span class="page-indicator">Dossiê · <strong>Afefé</strong></span>
+      <button class="nav-btn next" onclick="goTo(1)">Pesquisadora Cultural →</button>
+    </div>
+  </section>
+
   </main>
 
 <script>
-  const totalPages = 8;
+  const totalPages = 10;
   let current = 0;
 
   function goTo(index) {
@@ -2177,7 +2790,7 @@
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
     document.getElementById('page-' + index).classList.add('active');
-    document.querySelectorAll('.nav-item')[index].classList.add('active');
+    var ni = document.querySelector('.nav-item[data-page="' + index + '"]'); if (ni) ni.classList.add('active');
     current = index;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
