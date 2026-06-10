@@ -441,7 +441,7 @@
     font-size: 21px; font-weight: 800;
     color: #1a1a1a; line-height: 1.25; margin-bottom: 14px;
   }
-  .dz-h3 { font-size: 14px; font-weight: 700; color: var(--blue); margin: 22px 0 8px; }
+  .dz-h3 { font-size: 14px; font-weight: 700; color: #000; margin: 22px 0 8px; }
   .dz-section { margin-bottom: 44px; }
   .dz-section > p, .dz-media p { font-size: 13px; color: #1a1a1a; margin-bottom: 12px; line-height: 1.7; }
   .dz-list { list-style: none; margin: 0 0 12px; padding: 0; }
@@ -523,6 +523,9 @@
   @media (max-width: 680px) {
     .dz-media, .dz-media.rev, .dz-media.lg, .dz-imgrow { grid-template-columns: 1fr; }
     .dz-states, .dz-grid, .dz-mood { grid-template-columns: 1fr; }
+    .dz-palette { font-size: 11px; }
+    .dz-palette th, .dz-palette td { padding: 8px 9px; }
+    .dz-imgsingle, .dz-media.lg figure.dz-fig { max-width: 100%; }
   }
 </style>
 
@@ -2527,7 +2530,6 @@
         <div class="dz-grid">
           <div class="dz-card">
             <h4>Povo Tikuna – Amazonas</h4>
-            <p style="color:#000; margin-bottom:10px; font-weight:600;">Personagem U'acü finalizado</p>
             <ul class="dz-list">
               <li>Alto Solimões, tríplice fronteira</li>
               <li>Cidade-base: Benjamin Constant (AM)</li>
@@ -2536,7 +2538,6 @@
           </div>
           <div class="dz-card">
             <h4>Povo Krahô – Tocantins</h4>
-            <p style="color:#000; margin-bottom:10px; font-weight:600;">Personagem 2 em desenvolvimento</p>
             <ul class="dz-list">
               <li>Comunidade em Itacajá (TO), também Goiatins</li>
               <li>Mais de 28 aldeias dentro dessas cidades</li>
@@ -2546,10 +2547,6 @@
 
         <div class="dz-note" style="border-left:3px solid #1a2e3b; margin-top:16px; color:#000;">
           <b>Referência geográfica:</b> Vale do Javari (AM) – próximo ao Alto Solimões, citado como referência de proximidade ao território Tikuna.
-        </div>
-
-        <div class="dz-note" style="border-left:3px solid #1a2e3b; margin-top:12px; color:#000;">
-          <b>Referências iconográficas no dossiê do U'acü</b> (não são territórios de articulação): Kayapó / Xikrin – referência da pintura facial de urucum; Enawenê-Nawê – referência do cocar de penas amarelas e laranja.
         </div>
       </div>
 
@@ -2598,16 +2595,34 @@
         <p>Afefé é uma palavra de origem iorubá que significa vento, brisa ou ar. Na cultura afro-brasileira – especialmente no Candomblé e na Umbanda – o termo está profundamente associado a Oyá (também conhecida como Iansã), o orixá que preside os ventos, as tempestades, os raios e os processos de transformação. Oyá é uma das divindades mais complexas do panteão iorubá: guerreira, protetora, mãe dos eguns (espíritos dos ancestrais) e senhora dos limiares entre o mundo dos vivos e o mundo dos mortos.</p>
         <p>O nome Afefé foi escolhido para o personagem porque carrega em si o próprio elemento que ela representa: não é apenas o nome da divindade, mas o nome do fenômeno. Isso cria uma identidade própria ao personagem – ela não é Oyá, mas é feita da mesma substância.</p>
 
-        <div class="dz-h3">Oyá – Movimento e Travessia</div>
-        <p>Na cosmologia iorubá e no Candomblé brasileiro, Oyá não é uma energia de permanência – ela é travessia, deslocamento, transformação constante. Existe sempre uma intensidade nela, mesmo quando aparentemente está calma. Segundo o babalorixá José Neri, Oyá é o vento que anuncia a mudança antes mesmo da tempestade chegar.</p>
-        <p>Em estado de calmaria, Oyá se manifesta como presença observadora, silenciosa e estratégica. Não é uma calmaria passiva – é como o ar pesado antes da chuva: existe tensão, percepção aguçada e inteligência emocional muito forte. Elegante, magnética e nunca totalmente previsível.</p>
-        <p>Em estado de tempestade, Oyá é ruptura. É a força que desmonta estruturas que já não servem mais – impulsiva, feroz, extremamente protetora. Mas não é destruição vazia: existe sempre um propósito de limpeza, transformação e abertura de caminho. A tempestade de Oyá não surge por capricho; ela vem depois de acúmulos, silenciamentos e injustiças.</p>
+        <div class="dz-media lg">
+          <figure class="dz-fig">
+            <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-01-movimento-turbante-buzios.png" alt="Movimento, turbante e búzios">
+            <figcaption>Movimento, turbante e búzios</figcaption>
+          </figure>
+          <div>
+            <div class="dz-h3" style="margin-top:0;">Oyá – Movimento e Travessia</div>
+            <p>Na cosmologia iorubá e no Candomblé brasileiro, Oyá não é uma energia de permanência – ela é travessia, deslocamento, transformação constante. Existe sempre uma intensidade nela, mesmo quando aparentemente está calma. Segundo o babalorixá José Neri, Oyá é o vento que anuncia a mudança antes mesmo da tempestade chegar.</p>
+            <p>Em estado de calmaria, Oyá se manifesta como presença observadora, silenciosa e estratégica. Não é uma calmaria passiva – é como o ar pesado antes da chuva: existe tensão, percepção aguçada e inteligência emocional muito forte. Elegante, magnética e nunca totalmente previsível.</p>
+            <p style="margin-bottom:0;">Em estado de tempestade, Oyá é ruptura. É a força que desmonta estruturas que já não servem mais – impulsiva, feroz, extremamente protetora. Mas não é destruição vazia: existe sempre um propósito de limpeza, transformação e abertura de caminho. A tempestade de Oyá não surge por capricho; ela vem depois de acúmulos, silenciamentos e injustiças.</p>
+          </div>
+        </div>
 
-        <div class="dz-h3">A Relação com os Ancestrais</div>
-        <p>Um dos aspectos mais singulares de Oyá é sua relação com os eguns – os espíritos dos ancestrais. Em muitas tradições, ela é a única orixá que transita entre o mundo dos vivos e o mundo dos mortos, acompanhando as almas em seu processo de passagem. Isso confere ao personagem Afefé uma dimensão espiritual muito profunda: alguém que 'morre e renasce' muitas vezes ao longo da narrativa, que muda de pele constantemente e que entende a transformação não como perda, mas como caminho.</p>
+        <div class="dz-media lg">
+          <figure class="dz-fig">
+            <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-06-bufalo-simbolo-oya.png" alt="Búfalo como símbolo de Oyá">
+            <figcaption>Búfalo como símbolo de Oyá</figcaption>
+          </figure>
+          <div>
+            <div class="dz-h3" style="margin-top:0;">A Relação com os Ancestrais</div>
+            <p style="margin-bottom:0;">Um dos aspectos mais singulares de Oyá é sua relação com os eguns – os espíritos dos ancestrais. Em muitas tradições, ela é a única orixá que transita entre o mundo dos vivos e o mundo dos mortos, acompanhando as almas em seu processo de passagem. Isso confere ao personagem Afefé uma dimensão espiritual muito profunda: alguém que 'morre e renasce' muitas vezes ao longo da narrativa, que muda de pele constantemente e que entende a transformação não como perda, mas como caminho.</p>
+          </div>
+        </div>
 
-        <div class="dz-h3">Conexão com o Tema do Jogo</div>
-        <p>O ar poluído é o grande silenciamento de Afefé – é quando o vento perde força, quando a brisa não chega e a tempestade que deveria limpar não consegue se formar. A poluição atmosférica, os gases de efeito estufa e o desmatamento são o 'feitiço' lançado sobre o Mundo dos Ventos. Afefé guia o visitante para restaurar o ar limpo, descobrir fontes de energia eólica e compreender que o vento é um recurso vivo, espiritual e climático ao mesmo tempo.</p>
+        <div style="background:#faf2f3; border:1px solid #e3c3ca; border-left:4px solid #6E1F2E; border-radius:10px; padding:18px 22px; margin-top:22px;">
+          <div class="dz-h3" style="margin-top:0; color:#6E1F2E;">Conexão com o Tema do Jogo</div>
+          <p style="margin-bottom:0; font-size:13px; line-height:1.7; color:#000;">O ar poluído é o grande silenciamento de Afefé – é quando o vento perde força, quando a brisa não chega e a tempestade que deveria limpar não consegue se formar. A poluição atmosférica, os gases de efeito estufa e o desmatamento são o 'feitiço' lançado sobre o Mundo dos Ventos. Afefé guia o visitante para restaurar o ar limpo, descobrir fontes de energia eólica e compreender que o vento é um recurso vivo, espiritual e climático ao mesmo tempo.</p>
+        </div>
       </div>
 
       <div class="dz-section">
@@ -2633,10 +2648,27 @@
       <div class="dz-section">
         <div class="section-heading">3. Referências Iconográficas</div>
         <div class="dz-h2">Características Físicas e Visuais</div>
-        <p>Mulher jovem, pele negra, corpo esguio e alongado – silhueta que evoca leveza e velocidade, como o próprio vento. Cabelos crespos, soltos e volumosos, sempre em movimento, como se uma brisa constante os habitasse. Olhos expressivos com olhar de quem observa tudo e não revela tudo. Postura ereta, elegante – presença magnética mesmo em repouso.</p>
+        <div class="dz-media lg">
+          <figure class="dz-fig">
+            <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-04-adornos-buzios-presenca-frontal.png" alt="Adornos, búzios e presença frontal">
+            <figcaption>Adornos, búzios e presença frontal</figcaption>
+          </figure>
+          <div>
+            <p style="margin-top:0;">As referências visuais a seguir são representações de Oyá/Iansã na arte afro-brasileira – inspiração para o ilustrador sentir a presença, a paleta e os adornos, sempre adaptando à identidade própria de Afefé.</p>
+            <p style="margin-bottom:0;">Mulher jovem, pele negra, corpo esguio e alongado – silhueta que evoca leveza e velocidade, como o próprio vento. Cabelos crespos, soltos e volumosos, sempre em movimento, como se uma brisa constante os habitasse. Olhos expressivos com olhar de quem observa tudo e não revela tudo. Postura ereta, elegante – presença magnética mesmo em repouso.</p>
+          </div>
+        </div>
 
-        <div class="dz-h3">Roupa</div>
-        <p>Tecidos longos e fluidos em várias camadas sobrepostas, criando a sensação de que o vento faz parte da roupa. As camadas têm comprimentos diferentes – algumas rasam o chão, outras voam. Tons de vinho, vermelho queimado, cobre e terracota, com detalhes dourados nas bordas. A roupa nunca parece estática: mesmo numa ilustração parada, os tecidos devem sugerir movimento.</p>
+        <div class="dz-media lg">
+          <figure class="dz-fig">
+            <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-02-saia-rodada-camadas-borboletas.png" alt="Saia rodada em camadas e borboletas">
+            <figcaption>Saia rodada em camadas e borboletas</figcaption>
+          </figure>
+          <div>
+            <div class="dz-h3" style="margin-top:0;">Roupa</div>
+            <p style="margin-bottom:0;">Tecidos longos e fluidos em várias camadas sobrepostas, criando a sensação de que o vento faz parte da roupa. As camadas têm comprimentos diferentes – algumas rasam o chão, outras voam. Tons de vinho, vermelho queimado, cobre e terracota, com detalhes dourados nas bordas. A roupa nunca parece estática: mesmo numa ilustração parada, os tecidos devem sugerir movimento.</p>
+          </div>
+        </div>
 
         <div class="dz-h3">Acessórios</div>
         <ul class="dz-list">
@@ -2646,6 +2678,16 @@
           <li>Borboletas vermelhas ao redor – símbolo de transformação e presença de Oyá; o Cerrado tem uma das maiores diversidades de borboletas do Brasil</li>
           <li>Elementos do Cerrado integrados ao tecido ou ao cabelo: ipê amarelo, capim dourado</li>
         </ul>
+        <div class="dz-imgrow">
+          <figure class="dz-fig">
+            <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-03-bufalo-espada-sao-jorge-eruexim.png" alt="Búfalo, espada-de-são-jorge e eruexim">
+            <figcaption>Búfalo, espada-de-são-jorge e eruexim</figcaption>
+          </figure>
+          <figure class="dz-fig">
+            <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-05-veu-borboletas-saia-buzios.png" alt="Véu, borboletas e saia com búzios">
+            <figcaption>Véu, borboletas e saia com búzios</figcaption>
+          </figure>
+        </div>
       </div>
 
       <div class="dz-section">
@@ -2698,25 +2740,35 @@
             <p>Não retratar Afefé apenas como 'mulher explosiva' ou guerreira genérica. A sofisticação de Oyá está na inteligência emocional e espiritual – ela sente profundamente, mas não demonstra fragilidade de forma convencional. O amor dela aparece como proteção feroz e honestidade brutal. Evitar excesso de vermelho isolado – a paleta deve ser rica em camadas, não monocromática.</p>
           </div>
         </div>
+        <div class="dz-imgrow">
+          <figure class="dz-fig">
+            <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-07-movimento-eruexim.png" alt="Movimento e eruexim">
+            <figcaption>Movimento e eruexim</figcaption>
+          </figure>
+          <figure class="dz-fig">
+            <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-08-postura-guerreira-contas-longas.png" alt="Postura guerreira e contas longas">
+            <figcaption>Postura guerreira e contas longas</figcaption>
+          </figure>
+        </div>
       </div>
 
       <div class="dz-section">
         <div class="section-heading">6. Conexão com o Tema Central</div>
         <div class="dz-h2">Afefé e a Redução de Gases de Efeito Estufa</div>
         <div class="dz-grid">
-          <div class="dz-card">
+          <div class="dz-card" style="background:#fff8e7; border-color:#f0e3c0;">
             <h4>Metáfora Mítica</h4>
             <p>O ar poluído é o silenciamento de Afefé – quando os gases de efeito estufa bloqueiam o vento e sufocam o Mundo dos Ventos.</p>
           </div>
-          <div class="dz-card">
+          <div class="dz-card" style="background:#d5e8f0; border-color:#b8d6e4;">
             <h4>Missão no Jogo</h4>
             <p>Guiar o jogador a descobrir fontes de energia eólica, reduzindo a dependência de combustíveis fósseis.</p>
           </div>
-          <div class="dz-card">
+          <div class="dz-card" style="background:#ffe9cc; border-color:#f0d2a0;">
             <h4>Poder de Limpeza</h4>
             <p>Afefé limpa territórios sufocados pela poluição, revelando que o vento é agente de cura – tanto espiritual quanto climático.</p>
           </div>
-          <div class="dz-card">
+          <div class="dz-card" style="background:#e8f5e9; border-color:#c8e6ca;">
             <h4>Conhecimento Ancestral</h4>
             <p>Transmite saberes da tradição iorubá sobre ciclos do vento, respeito à natureza e a relação entre equilíbrio espiritual e equilíbrio ambiental.</p>
           </div>
@@ -2724,46 +2776,24 @@
       </div>
 
       <div class="dz-section">
-        <div class="section-heading">7. Referências Visuais</div>
-        <div class="dz-h2">Moodboard – Oyá/Iansã na Arte Afro-Brasileira</div>
-        <p>Imagens reunidas como inspiração para o ilustrador. Podem ser úteis para sentir a presença, a paleta e os adornos de Oyá/Iansã na arte afro-brasileira contemporânea – sempre adaptando para a identidade própria de Afefé.</p>
-        <div class="dz-mood">
+        <div class="section-heading">7. Validação Cultural</div>
+        <div class="dz-h2">Quem Orientou Esta Pesquisa</div>
+        <p>O personagem Afefé foi desenvolvido em diálogo com a tradição iorubá e o Candomblé brasileiro, garantindo autenticidade cultural e respeito às tradições representadas.</p>
+
+        <div class="dz-media" style="margin-top:24px;">
           <figure class="dz-fig">
-            <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-01-movimento-turbante-buzios.png" alt="Movimento, turbante e búzios">
-            <figcaption>Movimento, turbante e búzios</figcaption>
+            <div class="dz-ph" style="aspect-ratio:3/4;">[ foto<br>José Neri ]</div>
+            <figcaption>José Neri</figcaption>
           </figure>
-          <figure class="dz-fig">
-            <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-02-saia-rodada-camadas-borboletas.png" alt="Saia rodada em camadas e borboletas">
-            <figcaption>Saia rodada em camadas e borboletas</figcaption>
-          </figure>
-          <figure class="dz-fig">
-            <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-03-bufalo-espada-sao-jorge-eruexim.png" alt="Búfalo, espada-de-são-jorge e eruexim">
-            <figcaption>Búfalo, espada-de-são-jorge e eruexim</figcaption>
-          </figure>
-          <figure class="dz-fig">
-            <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-04-adornos-buzios-presenca-frontal.png" alt="Adornos, búzios e presença frontal">
-            <figcaption>Adornos, búzios e presença frontal</figcaption>
-          </figure>
-          <figure class="dz-fig">
-            <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-05-veu-borboletas-saia-buzios.png" alt="Véu, borboletas e saia com búzios">
-            <figcaption>Véu, borboletas e saia com búzios</figcaption>
-          </figure>
-          <figure class="dz-fig">
-            <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-06-bufalo-simbolo-oya.png" alt="Búfalo como símbolo de Oyá">
-            <figcaption>Búfalo como símbolo de Oyá</figcaption>
-          </figure>
-          <figure class="dz-fig">
-            <div class="dz-ph">[ imagem moodboard 7<br>movimento e eruexim ]</div>
-            <figcaption>Movimento e eruexim</figcaption>
-          </figure>
-          <figure class="dz-fig">
-            <div class="dz-ph">[ imagem moodboard 8<br>postura guerreira e contas longas ]</div>
-            <figcaption>Postura guerreira e contas longas</figcaption>
-          </figure>
+          <div>
+            <div class="dz-h3" style="margin-top:0; color:#000;">José Neri</div>
+            <p style="color:#000; font-weight:600; margin-bottom:10px;">Babalorixá</p>
+            <p style="color:#000;">Babalorixá consultado na pesquisa de Afefé. Sua orientação sobre Oyá/Iansã – em especial sobre os estados de calmaria e de tempestade da orixá e seu papel de travessia entre os mundos – fundamentou a construção espiritual do personagem.</p>
+          </div>
         </div>
       </div>
 
-      <div class="dz-credit">
+<div class="dz-credit">
         Dossiê elaborado por <b>Ester Menezes</b> · Pesquisadora Cultural<br>
         Missão Termômetro Zero
       </div>
