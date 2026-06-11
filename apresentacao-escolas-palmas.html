@@ -228,9 +228,11 @@
   .cert-side-cards { display:grid; grid-template-columns:1fr 1fr; gap:14px; align-items:stretch; }
   .cert-side-cards .benefit-card { min-height:240px; }
   .cert-side-cards .benefit-tag { margin-top:auto; }
-  .cert-conheca { margin-top:28px; text-align:center; font-size:15px; color:var(--text); }
-  .cert-conheca a { color:#5123a4; font-weight:700; text-decoration:none; border-bottom:2px solid rgba(81,35,164,0.3); padding-bottom:1px; transition:border-color 0.2s; }
-  .cert-conheca a:hover { border-color:#5123a4; }
+  .cert-conheca { margin-top:32px; text-align:center; }
+  .cert-conheca-btn { display:inline-flex; align-items:center; justify-content:center; gap:10px; max-width:720px; background:#5123a4; color:#fff; font-size:15px; font-weight:700; line-height:1.45; text-decoration:none; padding:16px 30px; border-radius:14px; box-shadow:0 6px 20px rgba(81,35,164,0.28); transition:transform .15s ease, box-shadow .15s ease, background .15s ease; }
+  .cert-conheca-btn strong { font-weight:800; }
+  .cert-conheca-btn::after { content:"→"; font-weight:800; font-size:17px; }
+  .cert-conheca-btn:hover { background:#45209a; transform:translateY(-1px); box-shadow:0 10px 26px rgba(81,35,164,0.36); }
   .cert-group-head { display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin:0; }
   .cert-grouppill { font-size:11px; font-weight:800; letter-spacing:0.5px; text-transform:uppercase; padding:6px 14px; border-radius:20px; display:inline-flex; align-items:center; gap:7px; }
   .cert-grouppill-aluno { color:#2d7a3e; background:var(--green-light); }
@@ -649,8 +651,8 @@
 <section id="certificado">
   <div class="container">
     <div class="eyebrow">Certificado POK · Proof of Knowledge</div>
-    <h2 class="section-title section-title-sm">O certificado é o que move o aluno – e o que a escola entrega de valor</h2>
-    <p class="section-lead">O engajamento da jornada nasce do certificado. A cada missão cumprida, o estudante recebe um certificado digital verificável emitido pela POK – a mesma tecnologia usada por mais de 1.200 universidades, empresas e governos em mais de 19 países. Não é um certificado de papel: é um certificado digital e verificável que o aluno carrega para a vida e que a escola oferece sem custo algum.</p>
+    <h2 class="section-title section-title-sm">O certificado é o que move o aluno</h2>
+    <p class="section-lead">O engajamento da jornada nasce do certificado. A cada missão cumprida, o estudante recebe um certificado digital verificável emitido pela POK – a mesma tecnologia usada por mais de 1.200 universidades, empresas e governos em mais de 19 países. POK é um certificado digital e verificável que o aluno carrega para a vida.</p>
 
       <div class="cert-two">
 
@@ -734,7 +736,7 @@
 
       </div>
 
-      <p class="cert-conheca">Conheça a <a href="https://pok.tech" target="_blank" rel="noopener">plataforma POK</a> de certificações, microcredenciais e badges em blockchain</p>
+      <p class="cert-conheca"><a class="cert-conheca-btn" href="https://pok.tech" target="_blank" rel="noopener">Conheça a <strong>plataforma POK</strong> de certificações, microcredenciais e badges em blockchain</a></p>
 
   </div>
 </section>
