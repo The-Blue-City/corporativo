@@ -32,7 +32,7 @@
     --green-light: #d4f0d9;
     --dark: #1a2e3b;
     --text: #2c3e50;
-    --muted: #6b7f95;
+    --muted: #000;
     --bg: #f4f8fc;
     --sidebar-w: 280px;
   }
@@ -334,7 +334,7 @@
   .fi-green { background: var(--green-light); }
 
   .feature-card h3 { font-size: 14px; font-weight: 700; color: var(--dark); }
-  .feature-card p  { font-size: 13px; color: var(--muted); line-height: 1.65; }
+  .feature-card p  { font-size: 13px; color: #000; line-height: 1.65; }
 
   /* deliverable list */
   .deliverable-list { display: flex; flex-direction: column; gap: 10px; }
@@ -405,6 +405,58 @@
     border-radius: 8px; padding: 10px 14px;
     font-size: 12px; color: var(--blue);
     text-align: center; margin-top: 8px;
+  }
+
+  /* ── IFTO: cartões de estatística ── */
+  .ifto-stats {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 16px; margin-bottom: 36px;
+  }
+  .ifto-stat {
+    background: white; border-radius: 12px;
+    border: 1px solid rgba(40,88,160,0.08);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    padding: 22px 22px;
+  }
+  .ifto-stat .num {
+    font-size: 30px; font-weight: 800; color: var(--blue);
+    line-height: 1; margin-bottom: 6px;
+  }
+  .ifto-stat .lbl {
+    font-size: 12.5px; color: #1a2e3b; font-weight: 700; margin-bottom: 4px;
+  }
+  .ifto-stat .desc { font-size: 11.5px; color: var(--muted); line-height: 1.5; }
+  .ifto-intro p { font-size: 14px; line-height: 1.7; color: #2c3e50; margin-bottom: 14px; }
+  .ifto-intro p strong { color: var(--dark); font-weight: 700; }
+
+  /* ── CARTA EM FORMATO CARTA, integrada ao conteúdo ── */
+  .carta { margin: 4px 0 36px; }
+  .carta .data { color:#000; font-size:13px; margin-bottom:20px; }
+  .carta .destinatario { margin-bottom:20px; }
+  .carta .destinatario p { margin:0 0 2px; font-size:13.5px; color:#000; }
+  .carta .destinatario .forte { font-weight:700; color:var(--dark); }
+  .carta .dest-row { display:flex; align-items:center; justify-content:flex-start; gap:24px; margin-bottom:20px; }
+  .carta p { font-size:14px; line-height:1.7; color:#000; margin:0 0 14px; text-align:justify; }
+  .carta .saudacao { margin-bottom:16px; }
+  .carta strong { font-weight:700; color:var(--dark); }
+  .carta .bloco-titulo {
+    font-size:16px; font-weight:700; color:var(--blue);
+    margin:26px 0 8px;
+  }
+  .carta .ganhos { list-style:none; padding:0; margin:10px 0 4px; }
+  .carta .ganhos li {
+    position:relative; padding-left:24px; margin-bottom:12px;
+    font-size:14px; line-height:1.65; color:#000; text-align:justify;
+  }
+  .carta .ganhos li::before { content:"•"; position:absolute; left:5px; top:0; color:var(--green); font-weight:700; }
+  .carta .ganhos b { font-weight:700; color:var(--dark); }
+  .carta .assinatura { margin-top:30px; }
+  .carta .assinatura p { margin:0 0 2px; font-size:13.5px; color:#000; }
+  .carta .assinatura .nome { font-weight:700; color:var(--dark); font-size:16px; margin-bottom:2px; }
+  @media (max-width:640px){
+    .ifto-stats { grid-template-columns:1fr; }
+    .carta p, .carta .ganhos li { text-align:left; }
+    .carta .dest-row { flex-direction:column; align-items:flex-start; gap:14px; }
   }
 </style>
 
@@ -527,6 +579,156 @@
     .dz-palette th, .dz-palette td { padding: 8px 9px; }
     .dz-imgsingle, .dz-media.lg figure.dz-fig { max-width: 100%; }
   }
+
+  /* ── LAYOUT BASE ── */
+  .main {
+    margin-left: var(--sidebar-w);
+    width: calc(100% - var(--sidebar-w));
+    min-height: 100vh;
+  }
+
+  /* ── TABLET ── */
+  @media (max-width: 900px) {
+    :root { --sidebar-w: 200px; }
+    .page-title { font-size: 26px !important; }
+    div[style*="grid-template-columns:1fr 1fr 1fr"],
+    div[style*="grid-template-columns: 1fr 1fr 1fr"] {
+      grid-template-columns: 1fr 1fr !important;
+    }
+    div[style*="grid-template-columns:repeat(4"],
+    div[style*="grid-template-columns:repeat(5"],
+    div[style*="grid-template-columns:repeat(6"] {
+      grid-template-columns: 1fr 1fr !important;
+    }
+    div[style*="padding:0 60px"],
+    div[style*="padding:36px 60px"] {
+      padding-left: 24px !important;
+      padding-right: 24px !important;
+    }
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 640px) {
+    :root { --sidebar-w: 0px; }
+
+    body { overflow-x: hidden; }
+
+    #mobile-topbar { display: flex !important; }
+
+    .sidebar {
+      position: fixed !important;
+      top: 0; left: 0;
+      width: 260px !important;
+      height: 100vh !important;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      z-index: 150;
+      overflow-y: auto;
+    }
+
+    .sidebar.open {
+      transform: translateX(0);
+    }
+
+    .main {
+      margin-left: 0 !important;
+      width: 100% !important;
+    }
+
+    .page-hero { padding: 20px 16px !important; }
+    .page-title { font-size: 20px !important; }
+    .page-subtitle { font-size: 12px !important; }
+
+    div[style*="padding:0 60px"],
+    div[style*="padding:36px 60px"],
+    div[style*="padding:0 60px 40px"],
+    div[style*="padding:0 60px 32px"] {
+      padding: 16px !important;
+    }
+
+    div[style*="grid-template-columns:1fr 1fr"],
+    div[style*="grid-template-columns: 1fr 1fr"],
+    div[style*="grid-template-columns:1fr 1fr 1fr"],
+    div[style*="grid-template-columns: 1fr 1fr 1fr"],
+    div[style*="grid-template-columns:repeat(3"],
+    div[style*="grid-template-columns:repeat(4"],
+    div[style*="grid-template-columns:repeat(5"],
+    div[style*="grid-template-columns:repeat(6"] {
+      grid-template-columns: 1fr !important;
+    }
+
+    .page-nav {
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 10px !important;
+      padding: 16px !important;
+    }
+
+    .feature-card { padding: 14px !important; }
+
+    div[style*="display:flex; align-items:center; gap:24px"] {
+      flex-wrap: wrap !important;
+      gap: 12px !important;
+    }
+
+    img[style*="width:160px"] {
+      width: 100% !important;
+      max-width: 200px !important;
+    }
+
+    /* Cards de personagem (U'acü, Yapu) – empilha imagem/placeholder e texto */
+    div[style*="gap:24px; align-items:flex-start"] {
+      flex-direction: column !important;
+      align-items: stretch !important;
+      gap: 16px !important;
+    }
+
+    /* Placeholder de imagem do U'acü (div, não img) */
+    div[style*="width:160px; height:200px"] {
+      width: 100% !important;
+      max-width: 200px !important;
+      margin: 0 auto !important;
+    }
+  }
+
+  /* ── CRONOGRAMA RESPONSIVO ── */
+  .schedule-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .schedule-table-inner {
+    min-width: 500px;
+  }
+
+  @media (max-width: 640px) {
+    .cronograma-timeline {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .cronograma-timeline svg {
+      min-width: 700px;
+    }
+
+    .schedule-table-inner {
+      min-width: 480px;
+    }
+
+    .schedule-table-inner > div {
+      grid-template-columns: 70px 130px 1fr !important;
+      padding: 10px 12px !important;
+      gap: 10px !important;
+    }
+
+    .organograma-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .organograma-wrapper svg {
+      min-width: 800px;
+    }
+  }
 </style>
 
 <!-- ═══════ SIDEBAR ═══════ -->
@@ -631,6 +833,12 @@
     <span class="nav-dot"></span> Articulador Educacional
     <span class="nav-number">04</span>
   </div>
+  <div class="nav-item nav-sub" data-page="10" onclick="goTo(10)">
+    <span class="nav-dot"></span> Escola IFTO
+  </div>
+  <div class="nav-item nav-sub" data-page="11" onclick="goTo(11)">
+    <span class="nav-dot"></span> Escola UFT
+  </div>
   <div class="nav-item" data-page="5" onclick="goTo(5)">
     <span class="nav-dot"></span> Produtor Cultural
     <span class="nav-number">05</span>
@@ -657,7 +865,7 @@
     <div class="intro-hero">
       <div class="intro-top">
         <div class="intro-logo">
-          <svg style="height:48px;width:auto;display:block;" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 218.4 45.6">
+          <svg style="height:48px;width:auto;display:block;" id="Layer_intro" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 218.4 45.6">
   <defs>
     <style>
       .sb-cls-1 {
@@ -679,159 +887,7 @@
       .sb-cls-4 {
         fill: #fff;
       }
-    
-
-
-  /* ── LAYOUT BASE ── */
-  .main {
-    margin-left: var(--sidebar-w);
-    width: calc(100% - var(--sidebar-w));
-    min-height: 100vh;
-  }
-
-  /* ── TABLET ── */
-  @media (max-width: 900px) {
-    :root { --sidebar-w: 200px; }
-    .page-title { font-size: 26px !important; }
-    div[style*="grid-template-columns:1fr 1fr 1fr"],
-    div[style*="grid-template-columns: 1fr 1fr 1fr"] {
-      grid-template-columns: 1fr 1fr !important;
-    }
-    div[style*="grid-template-columns:repeat(4"],
-    div[style*="grid-template-columns:repeat(5"],
-    div[style*="grid-template-columns:repeat(6"] {
-      grid-template-columns: 1fr 1fr !important;
-    }
-    div[style*="padding:0 60px"],
-    div[style*="padding:36px 60px"] {
-      padding-left: 24px !important;
-      padding-right: 24px !important;
-    }
-  }
-
-  /* ── MOBILE ── */
-  @media (max-width: 640px) {
-    :root { --sidebar-w: 0px; }
-
-    body { overflow-x: hidden; }
-
-    #mobile-topbar { display: flex !important; }
-
-    .sidebar {
-      position: fixed !important;
-      top: 0; left: 0;
-      width: 260px !important;
-      height: 100vh !important;
-      transform: translateX(-100%);
-      transition: transform 0.3s ease;
-      z-index: 150;
-      overflow-y: auto;
-    }
-
-    .sidebar.open {
-      transform: translateX(0);
-    }
-
-    .main {
-      margin-left: 0 !important;
-      width: 100% !important;
-    }
-
-    .page-hero { padding: 20px 16px !important; }
-    .page-title { font-size: 20px !important; }
-    .page-subtitle { font-size: 12px !important; }
-
-    div[style*="padding:0 60px"],
-    div[style*="padding:36px 60px"],
-    div[style*="padding:0 60px 40px"],
-    div[style*="padding:0 60px 32px"] {
-      padding: 16px !important;
-    }
-
-    div[style*="grid-template-columns:1fr 1fr"],
-    div[style*="grid-template-columns: 1fr 1fr"],
-    div[style*="grid-template-columns:1fr 1fr 1fr"],
-    div[style*="grid-template-columns: 1fr 1fr 1fr"],
-    div[style*="grid-template-columns:repeat(3"],
-    div[style*="grid-template-columns:repeat(4"],
-    div[style*="grid-template-columns:repeat(5"],
-    div[style*="grid-template-columns:repeat(6"] {
-      grid-template-columns: 1fr !important;
-    }
-
-    .page-nav {
-      flex-direction: column !important;
-      align-items: center !important;
-      gap: 10px !important;
-      padding: 16px !important;
-    }
-
-    .feature-card { padding: 14px !important; }
-
-    div[style*="display:flex; align-items:center; gap:24px"] {
-      flex-wrap: wrap !important;
-      gap: 12px !important;
-    }
-
-    img[style*="width:160px"] {
-      width: 100% !important;
-      max-width: 200px !important;
-    }
-
-    /* Cards de personagem (U'acü, Yapu) — empilha imagem/placeholder e texto */
-    div[style*="gap:24px; align-items:flex-start"] {
-      flex-direction: column !important;
-      align-items: stretch !important;
-      gap: 16px !important;
-    }
-
-    /* Placeholder de imagem do U'acü (div, não img) */
-    div[style*="width:160px; height:200px"] {
-      width: 100% !important;
-      max-width: 200px !important;
-      margin: 0 auto !important;
-    }
-  }
-
-  /* ── CRONOGRAMA RESPONSIVO ── */
-  .schedule-table-wrapper {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .schedule-table-inner {
-    min-width: 500px;
-  }
-
-  @media (max-width: 640px) {
-    .cronograma-timeline {
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .cronograma-timeline svg {
-      min-width: 700px;
-    }
-
-    .schedule-table-inner {
-      min-width: 480px;
-    }
-
-    .schedule-table-inner > div {
-      grid-template-columns: 70px 130px 1fr !important;
-      padding: 10px 12px !important;
-      gap: 10px !important;
-    }
-
-    .organograma-wrapper {
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-    .organograma-wrapper svg {
-      min-width: 800px;
-    }
-  }
-</style>
+    </style>
   </defs>
   <g>
     <circle class="sb-cls-2" cx="26.1" cy="22.7" r="18.4"/>
@@ -972,8 +1028,8 @@
             <p style="font-size:10px; font-weight:700; color:#468182; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;">Mundo do Sol</p>
             <p style="font-size:14px; font-weight:800; color:#1a2e3b; margin-bottom:2px;">U'acü – Sol em Tikuna</p>
             <p style="font-size:11px; font-weight:600; color:#2858a0; margin-bottom:10px;">Cosmologia Tikuna · Amazônia</p>
-            <p style="font-size:11px; color:#6b7f95; line-height:1.6; margin-bottom:10px;">Espírito do sol invocado pelos pajés para realizar curas e quebrar feitiços. O pajé atua como intermediário entre o mundo humano e o divino, chamando U'acü para restaurar o equilíbrio e afastar o mal.</p>
-            <p style="font-size:10px; color:#6b7f95; font-style:italic; margin-top:10px; padding-top:8px; border-top:1px solid #e0e8f0;">Pesquisa em diálogo com Santo Cruz Mariano Clemente (Museu Magüta) e Rose Salvador.</p>
+            <p style="font-size:11px; color:#000; line-height:1.6; margin-bottom:10px;">Espírito do sol invocado pelos pajés para realizar curas e quebrar feitiços. O pajé atua como intermediário entre o mundo humano e o divino, chamando U'acü para restaurar o equilíbrio e afastar o mal.</p>
+            <p style="font-size:10px; color:#000; font-style:italic; margin-top:10px; padding-top:8px; border-top:1px solid #e0e8f0;">Pesquisa em diálogo com Santo Cruz Mariano Clemente (Museu Magüta) e Rose Salvador.</p>
             <div style="margin-top:12px;">
               <a href="#" onclick="event.preventDefault(); goTo(8);" style="display:inline-flex; align-items:center; gap:7px; font-size:11px; font-weight:700; color:#2858a0; text-decoration:none; background:#d6e4f7; border-radius:8px; padding:7px 12px;">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
@@ -992,8 +1048,8 @@
             <p style="font-size:10px; font-weight:700; color:#468182; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;">Mundo dos Ventos</p>
             <p style="font-size:14px; font-weight:800; color:#1a2e3b; margin-bottom:2px;">Afefé – Vento em Iorubá</p>
             <p style="font-size:11px; font-weight:600; color:#2858a0; margin-bottom:10px;">Cultura Afro-Brasileira · Cerrado</p>
-            <p style="font-size:11px; color:#6b7f95; line-height:1.6; margin-bottom:10px;">Personagem feminina inspirada em Oyá/Iansã – orixá dos ventos, tempestades e transformações. Anuncia a mudança antes da tempestade chegar e ensina que o ar limpo é um direito e um território a ser defendido.</p>
-            <p style="font-size:10px; color:#6b7f95; font-style:italic; margin-top:10px; padding-top:8px; border-top:1px solid #e0e8f0;">Pesquisa em diálogo com José Neri (babalorixá).</p>
+            <p style="font-size:11px; color:#000; line-height:1.6; margin-bottom:10px;">Personagem feminina inspirada em Oyá/Iansã – orixá dos ventos, tempestades e transformações. Anuncia a mudança antes da tempestade chegar e ensina que o ar limpo é um direito e um território a ser defendido.</p>
+            <p style="font-size:10px; color:#000; font-style:italic; margin-top:10px; padding-top:8px; border-top:1px solid #e0e8f0;">Pesquisa em diálogo com José Neri (babalorixá).</p>
             <div style="margin-top:12px;">
               <a href="#" onclick="event.preventDefault(); goTo(9);" style="display:inline-flex; align-items:center; gap:7px; font-size:11px; font-weight:700; color:#2858a0; text-decoration:none; background:#d6e4f7; border-radius:8px; padding:7px 12px;">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
@@ -1012,8 +1068,8 @@
           <p style="font-size:11px; font-weight:700; color:#468182; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;">Pesquisa e Personagem</p>
           <p style="font-size:15px; font-weight:800; color:#1a2e3b; margin-bottom:2px;">Yapu – do Guarany Mbyá: Trovão</p>
           <p style="font-size:12px; font-weight:600; color:#2858a0; margin-bottom:12px;">Cultura indígena · Mentor do Mundo do Saneamento</p>
-          <p style="font-size:12px; color:#6b7f95; line-height:1.7; margin-bottom:10px;">Personagem masculino que representa o elemento água e é o mentor do Mundo do Saneamento. Inspirado na divindade Tupã – "O Espírito do Trovão" –, grande criador dos céus, da terra e dos mares. Através de seus raios, tempestades e trovões, Yapu alerta os povos sobre as catástrofes ambientais causadas pela má exploração dos recursos naturais, da poluição das águas e do desmatamento. Bioma: Cerrado.</p>
-          <p style="font-size:10px; color:#6b7f95; font-style:italic; margin-top:14px; padding-top:10px; border-top:1px solid #e0e8f0;">* Exemplo de personagem desenvolvido a partir de pesquisa</p>
+          <p style="font-size:12px; color:#000; line-height:1.7; margin-bottom:10px;">Personagem masculino que representa o elemento água e é o mentor do Mundo do Saneamento. Inspirado na divindade Tupã – "O Espírito do Trovão" –, grande criador dos céus, da terra e dos mares. Através de seus raios, tempestades e trovões, Yapu alerta os povos sobre as catástrofes ambientais causadas pela má exploração dos recursos naturais, da poluição das águas e do desmatamento. Bioma: Cerrado.</p>
+          <p style="font-size:10px; color:#000; font-style:italic; margin-top:14px; padding-top:10px; border-top:1px solid #e0e8f0;">* Exemplo de personagem desenvolvido a partir de pesquisa</p>
           <div style="margin-top:12px;">
             <a href="https://drive.google.com/file/d/154lJVBjSWH6oOa0qc6c5rn99l5drlqff/view?usp=drive_link" target="_blank" style="display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:700; color:#2858a0; text-decoration:none; background:#d6e4f7; border-radius:8px; padding:8px 14px;">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
@@ -1161,22 +1217,22 @@
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:16px; text-align:center;">
           <div style="width:36px; height:36px; border-radius:50%; background:#2858a0; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">1</div>
           <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Receber dossiê</p>
-          <p style="font-size:10px; color:#6b7f95; line-height:1.5;">Leitura do dossiê da pesquisadora com todas as referências</p>
+          <p style="font-size:10px; color:#000; line-height:1.5;">Leitura do dossiê da pesquisadora com todas as referências</p>
         </div>
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:16px; text-align:center;">
           <div style="width:36px; height:36px; border-radius:50%; background:#468182; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">2</div>
           <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Criar concept art</p>
-          <p style="font-size:10px; color:#6b7f95; line-height:1.5;">Character sheet 2D com frente, lado e costas de cada personagem</p>
+          <p style="font-size:10px; color:#000; line-height:1.5;">Character sheet 2D com frente, lado e costas de cada personagem</p>
         </div>
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:16px; text-align:center;">
           <div style="width:36px; height:36px; border-radius:50%; background:#468182; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">3</div>
           <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Aprovação</p>
-          <p style="font-size:10px; color:#6b7f95; line-height:1.5;">O concept art é revisado e aprovado antes de avançar para o 3D</p>
+          <p style="font-size:10px; color:#000; line-height:1.5;">O concept art é revisado e aprovado antes de avançar para o 3D</p>
         </div>
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:16px; text-align:center;">
           <div style="width:36px; height:36px; border-radius:50%; background:#5fb670; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">4</div>
           <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Modelagem 3D</p>
-          <p style="font-size:10px; color:#6b7f95; line-height:1.5;">Modelo low poly com textura e rig, entregue em .fbx pronto para Unity</p>
+          <p style="font-size:10px; color:#000; line-height:1.5;">Modelo low poly com textura e rig, entregue em .fbx pronto para Unity</p>
         </div>
       </div>
 
@@ -1195,7 +1251,7 @@
         <p style="font-size:13px; font-weight:700; color:#1a2e3b; margin-bottom:4px;">Exemplo de concept art – character sheet</p>
         <p style="font-size:11px; color:#468182; font-weight:600; margin-bottom:16px;">Frente · Lado · Costas – formato padrão de entrega</p>
         <img src="https://the-blue-city.github.io/content/CharacterSheetEx.png" alt="Exemplo de character sheet" style="width:100%; border-radius:10px; display:block; margin-bottom:10px;">
-        <p style="font-size:10px; color:#6b7f95; font-style:italic; padding-top:10px; border-top:1px solid #e0e8f0;">* Imagem ilustrativa – não representa os personagens do projeto. Fonte: <a href="https://lexica.art/prompt/68a9c03b-bc36-4fd2-85d6-65ede5772412" target="_blank" style="color:#2858a0;">lexica.art</a></p>
+        <p style="font-size:10px; color:#000; font-style:italic; padding-top:10px; border-top:1px solid #e0e8f0;">* Imagem ilustrativa – não representa os personagens do projeto. Fonte: <a href="https://lexica.art/prompt/68a9c03b-bc36-4fd2-85d6-65ede5772412" target="_blank" style="color:#2858a0;">lexica.art</a></p>
       </div>
 
       <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:24px; margin-bottom:20px;">
@@ -1209,7 +1265,7 @@
         <p style="font-size:12px; font-weight:700; color:#1a2e3b; margin-bottom:4px;">Yapu – Guarany Mbyá: Trovão</p>
         <p style="font-size:11px; color:#468182; font-weight:600; margin-bottom:14px;">Modelo 3D Low Poly · Missão Saneamento</p>
         <img src="https://the-blue-city.github.io/content/YapuEx.png" alt="Yapu T-pose modelo 3D" style="width:100%; display:block; margin-bottom:12px; border-radius:10px;">
-        <p style="font-size:10px; color:#6b7f95; font-style:italic; padding-top:10px; border-top:1px solid #e0e8f0;">* Exemplo real de entrega de Fase 2 – T-pose do modelo 3D do Yapu, produzido para a Missão Saneamento.</p>
+        <p style="font-size:10px; color:#000; font-style:italic; padding-top:10px; border-top:1px solid #e0e8f0;">* Exemplo real de entrega de Fase 2 – T-pose do modelo 3D do Yapu, produzido para a Missão Saneamento.</p>
       </div>
 
       <div style="background:#1a2e3b; border-radius:12px; overflow:hidden;">
@@ -1361,7 +1417,7 @@
             <h3>Prazo e Formato de Entrega</h3>
           </div>
           <p>Duas entregas com aprovação obrigatória entre elas:</p>
-          <ul style="font-size:12px; color:#6b7f95; padding-left:18px; line-height:1.9; margin:8px 0 0;">
+          <ul style="font-size:12px; color:#000; padding-left:18px; line-height:1.9; margin:8px 0 0;">
             <li><strong style="color:#2858a0;">Entrega 1</strong> – Build WebGL para aprovação. Data final: 15/06.</li>
             <li><strong style="color:#5fb670;">Entrega 2</strong> – Build final integrada + projeto Unity. Data final: 30/06.</li>
           </ul>
@@ -1373,27 +1429,27 @@
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:16px; text-align:center;">
           <div style="width:36px; height:36px; border-radius:50%; background:#2858a0; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">1</div>
           <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Leitura do GDD</p>
-          <p style="font-size:10px; color:#6b7f95; line-height:1.5;">Análise do Game Design Document e alinhamento de requisitos técnicos</p>
+          <p style="font-size:10px; color:#000; line-height:1.5;">Análise do Game Design Document e alinhamento de requisitos técnicos</p>
         </div>
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:16px; text-align:center;">
           <div style="width:36px; height:36px; border-radius:50%; background:#468182; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">2</div>
           <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Importar personagens</p>
-          <p style="font-size:10px; color:#6b7f95; line-height:1.5;">Importar os .fbx do ilustrador e configurar animações no Unity</p>
+          <p style="font-size:10px; color:#000; line-height:1.5;">Importar os .fbx do ilustrador e configurar animações no Unity</p>
         </div>
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:16px; text-align:center;">
           <div style="width:36px; height:36px; border-radius:50%; background:#468182; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">3</div>
           <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Desenvolver o jogo</p>
-          <p style="font-size:10px; color:#6b7f95; line-height:1.5;">Mecânicas, fluxo de jornada, etapas, badges e certificado</p>
+          <p style="font-size:10px; color:#000; line-height:1.5;">Mecânicas, fluxo de jornada, etapas, badges e certificado</p>
         </div>
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:16px; text-align:center;">
           <div style="width:36px; height:36px; border-radius:50%; background:#468182; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">4</div>
           <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Aprovação</p>
-          <p style="font-size:10px; color:#6b7f95; line-height:1.5;">Versão inicial revisada e aprovada antes da integração final</p>
+          <p style="font-size:10px; color:#000; line-height:1.5;">Versão inicial revisada e aprovada antes da integração final</p>
         </div>
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:16px; text-align:center;">
           <div style="width:36px; height:36px; border-radius:50%; background:#5fb670; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">5</div>
           <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Entrega final</p>
-          <p style="font-size:10px; color:#6b7f95; line-height:1.5;">Build WebGL integrada à The Blue City + projeto Unity</p>
+          <p style="font-size:10px; color:#000; line-height:1.5;">Build WebGL integrada à The Blue City + projeto Unity</p>
         </div>
       </div>
 
@@ -1530,27 +1586,27 @@
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:16px; text-align:center;">
           <div style="width:36px; height:36px; border-radius:50%; background:#2858a0; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">1</div>
           <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Articulação territorial</p>
-          <p style="font-size:10px; color:#6b7f95; line-height:1.5;">Secretaria municipal de educação, direção e coordenação pedagógica das escolas</p>
+          <p style="font-size:10px; color:#000; line-height:1.5;">Secretaria municipal de educação, direção e coordenação pedagógica das escolas</p>
         </div>
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:16px; text-align:center;">
           <div style="width:36px; height:36px; border-radius:50%; background:#468182; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">2</div>
           <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Mobilização dos estudantes</p>
-          <p style="font-size:10px; color:#6b7f95; line-height:1.5;">Apresentação da jornada às turmas, adesão e cadastro na plataforma</p>
+          <p style="font-size:10px; color:#000; line-height:1.5;">Apresentação da jornada às turmas, adesão e cadastro na plataforma</p>
         </div>
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:16px; text-align:center;">
           <div style="width:36px; height:36px; border-radius:50%; background:#468182; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">3</div>
           <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Acompanhamento na plataforma</p>
-          <p style="font-size:10px; color:#6b7f95; line-height:1.5;">Uso dos painéis para gerenciar a entrada dos estudantes e o engajamento na jornada</p>
+          <p style="font-size:10px; color:#000; line-height:1.5;">Uso dos painéis para gerenciar a entrada dos estudantes e o engajamento na jornada</p>
         </div>
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:16px; text-align:center;">
           <div style="width:36px; height:36px; border-radius:50%; background:#468182; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">4</div>
           <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Recebimento dos projetos</p>
-          <p style="font-size:10px; color:#6b7f95; line-height:1.5;">Coleta e curadoria preliminar das entregas dos estudantes ao final da jornada</p>
+          <p style="font-size:10px; color:#000; line-height:1.5;">Coleta e curadoria preliminar das entregas dos estudantes ao final da jornada</p>
         </div>
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:16px; text-align:center;">
           <div style="width:36px; height:36px; border-radius:50%; background:#5fb670; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">5</div>
           <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Ponte com Produtor Cultural</p>
-          <p style="font-size:10px; color:#6b7f95; line-height:1.5;">Entrega dos projetos como inspiração para os artistas locais e a exposição</p>
+          <p style="font-size:10px; color:#000; line-height:1.5;">Entrega dos projetos como inspiração para os artistas locais e a exposição</p>
         </div>
       </div>
 
@@ -1559,22 +1615,22 @@
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:18px; text-align:center;">
           <p style="font-size:10px; font-weight:700; color:#2858a0; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;">Marco 1</p>
           <p style="font-size:15px; font-weight:800; color:#1a2e3b; margin-bottom:8px;">15 de agosto</p>
-          <p style="font-size:11px; color:#6b7f95; line-height:1.5;">Prazo final da mobilização inicial: escolas autorizam e alunos se inscrevem no jogo.</p>
+          <p style="font-size:11px; color:#000; line-height:1.5;">Prazo final da mobilização inicial: escolas autorizam e alunos se inscrevem no jogo.</p>
         </div>
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:18px; text-align:center;">
           <p style="font-size:10px; font-weight:700; color:#468182; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;">Marco 2</p>
           <p style="font-size:15px; font-weight:800; color:#1a2e3b; margin-bottom:8px;">1º de setembro</p>
-          <p style="font-size:11px; color:#6b7f95; line-height:1.5;">Lançamento do jogo. Início do acompanhamento do engajamento via painéis da plataforma.</p>
+          <p style="font-size:11px; color:#000; line-height:1.5;">Lançamento do jogo. Início do acompanhamento do engajamento via painéis da plataforma.</p>
         </div>
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:18px; text-align:center;">
           <p style="font-size:10px; font-weight:700; color:#468182; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;">Marco 3</p>
           <p style="font-size:15px; font-weight:800; color:#1a2e3b; margin-bottom:8px;">30 de setembro</p>
-          <p style="font-size:11px; color:#6b7f95; line-height:1.5;">Encerramento da jornada na plataforma. Recebimento e organização dos projetos dos alunos.</p>
+          <p style="font-size:11px; color:#000; line-height:1.5;">Encerramento da jornada na plataforma. Recebimento e organização dos projetos dos alunos.</p>
         </div>
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:18px; text-align:center;">
           <p style="font-size:10px; font-weight:700; color:#5fb670; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;">Marco 4</p>
           <p style="font-size:15px; font-weight:800; color:#1a2e3b; margin-bottom:8px;">1º de outubro</p>
-          <p style="font-size:11px; color:#6b7f95; line-height:1.5;">Entrega dos projetos ao Produtor Cultural, que gerencia a conexão com os artistas locais.</p>
+          <p style="font-size:11px; color:#000; line-height:1.5;">Entrega dos projetos ao Produtor Cultural, que gerencia a conexão com os artistas locais.</p>
         </div>
       </div>
       <div style="background:#1a2e3b; border-radius:10px; padding:14px 18px; margin-bottom:40px; display:flex; align-items:center; gap:12px;">
@@ -1599,6 +1655,226 @@
     <div class="page-nav">
       <button class="nav-btn" onclick="goTo(3)">← Game Designer</button>
       <span class="page-indicator">Equipe Criativa <strong>4</strong> de 7</span>
+      <button class="nav-btn next" onclick="goTo(10)">Escola IFTO →</button>
+    </div>
+  </section>
+
+  <!-- ══ PAGE 10: ESCOLA IFTO ══ -->
+  <section class="page" id="page-10">
+    <div class="page-hero role-articulador">
+      <div style="display:flex; align-items:center; gap:24px; margin-bottom:16px;">
+        <img src="https://the-blue-city.github.io/content/logoIFTO.png" alt="IFTO" style="height:80px; width:auto; max-width:150px; object-fit:contain; flex-shrink:0;">
+        <div>
+          <div class="role-badge rb-green" style="margin-bottom:8px;">🏫 Escola Parceira</div>
+          <p style="font-size:18px; font-weight:800; color:var(--dark); margin-bottom:2px;">Instituto Federal do Tocantins – IFTO</p>
+          <p style="font-size:12px; color:var(--muted);">Campus Palmas · Diretoria de Inovação e Empreendedorismo – DIEM · NEEDS</p>
+        </div>
+      </div>
+      <h1 class="page-title">IFTO – Parceiro Institucional em Palmas</h1>
+      <p class="page-subtitle">O Instituto Federal do Tocantins é o parceiro institucional âncora da Missão Termômetro Zero em Palmas – uma instituição pública de educação profissional, científica e tecnológica cuja vocação em inovação e empreendedorismo dialoga diretamente com a jornada.</p>
+    </div>
+
+    <div class="page-body single" style="max-width:100%; padding:36px 60px 0;">
+
+      <div class="section-heading">Quem é o IFTO</div>
+      <div class="ifto-intro">
+        <p>O <strong>Instituto Federal do Tocantins (IFTO)</strong> integra a Rede Federal de Educação Profissional, Científica e Tecnológica e oferta ensino técnico integrado ao ensino médio, cursos subsequentes, graduações e pós-graduação, articulando ensino, pesquisa e extensão em todo o estado. O <strong>Campus Palmas</strong> é a maior unidade do instituto e o ponto de ancoragem natural da jornada na capital.</p>
+        <p>A <strong>Diretoria de Inovação e Empreendedorismo (DIEM)</strong> e o <strong>Núcleo de Empreendedorismo e Desenvolvimento de Soluções (NEEDS)</strong> conduzem, dentro do campus, uma agenda voltada a desafios reais, cultura de soluções e gamificação no ensino – exatamente o terreno em que a Missão Termômetro Zero se inscreve.</p>
+      </div>
+
+      <div class="ifto-stats">
+        <div class="ifto-stat">
+          <div class="num">6.000</div>
+          <div class="lbl">Estudantes em Palmas</div>
+          <div class="desc">Público potencial da jornada no Campus Palmas – ensino técnico, graduação e egressos</div>
+        </div>
+        <div class="ifto-stat">
+          <div class="num">DIEM</div>
+          <div class="lbl">Inovação e Empreendedorismo</div>
+          <div class="desc">Diretoria parceira, com o NEEDS conectando estudantes a desafios reais de sustentabilidade</div>
+        </div>
+      </div>
+
+      <div class="section-heading">Carta de parceria</div>
+      <div class="carta">
+
+        <div class="data">São Paulo, 10 de junho de 2026</div>
+
+        <div class="dest-row">
+          <a href="https://www.ifto.edu.br/palmas" target="_blank" rel="noopener" style="flex-shrink:0; line-height:0;">
+            <img src="https://the-blue-city.github.io/content/logoIFTO.png" alt="IFTO" style="height:130px; width:auto; max-width:300px; object-fit:contain;">
+          </a>
+          <div class="destinatario" style="margin-bottom:0;">
+            <p class="forte">Ao Instituto Federal do Tocantins – IFTO</p>
+            <p>Diretoria de Inovação e Empreendedorismo – DIEM</p>
+            <p>Núcleo de Empreendedorismo e Desenvolvimento de Soluções – NEEDS</p>
+            <p>Palmas – Tocantins</p>
+          </div>
+        </div>
+
+        <p class="saudacao">Prezada equipe da Diretoria de Inovação e Empreendedorismo,</p>
+
+        <p>A <strong>The Blue City</strong> é uma iniciativa que conecta educação ambiental, tecnologia e cultura em jornadas educativas realizadas em territórios urbanos reais. Escrevemos para convidar formalmente o IFTO a integrar, como <strong>parceiro institucional</strong>, a <strong>Missão Termômetro Zero</strong> – jornada educativa, tecnológica e cultural que acontecerá em Palmas ao longo de 2026, com o tema Redução de Emissões de Gases de Efeito Estufa.</p>
+
+        <p>A jornada combina três frentes integradas: um <strong>jogo digital</strong> com missões temáticas jogadas pelos estudantes; <strong>certificações verificáveis em blockchain</strong> emitidas a cada etapa; e uma <strong>exposição cultural</strong> aberta à comunidade, na qual as ideias dos estudantes são traduzidas em obras por artistas locais. A realização é viabilizada através do patrocínio da Sotreq, <strong>sem qualquer custo para a instituição</strong>.</p>
+
+        <p>O convite ao IFTO não é casual. A natureza da Missão – que une empreendedorismo, desenvolvimento de soluções para desafios reais de sustentabilidade e gamificação – dialoga diretamente com a missão da DIEM e com o trabalho do NEEDS, inclusive com a experiência de vocês em projetos de gamificação no ensino. Vemos o IFTO como o parceiro institucional ideal para ancorar essa jornada em Palmas.</p>
+
+        <div class="bloco-titulo">O ganho para os estudantes</div>
+        <p>Mais do que uma atividade extracurricular, a Missão entrega ao estudante uma <strong>trajetória profissional comprovável</strong>. As credenciais da jornada são emitidas através da <strong>POK</strong> – plataforma de credenciamento digital que registra <strong>badges, microcredenciais e certificados em blockchain</strong>, seguindo padrões internacionais como o Open Badges:</p>
+        <ul class="ganhos">
+          <li><b>Trilhas formativas</b> – a jornada organiza o aprendizado em etapas encadeadas, e cada etapa concluída se converte em uma credencial verificável, compondo uma trilha de competências em sustentabilidade, pensamento crítico e letramento digital.</li>
+          <li><b>Badges e certificados POK</b> – emitidos em blockchain e ancorados em padrões internacionais (Open Badges), são verificáveis por qualquer terceiro, à prova de fraude e permanentes – não dependem da existência da plataforma para serem validados.</li>
+          <li><b>Jornada profissional</b> – cada conquista soma a um histórico digital que o estudante carrega consigo, válido como experiência comprovável em currículos, processos seletivos e no LinkedIn.</li>
+          <li><b>Diferenciação real na transição</b> – para os estudantes do ensino técnico e da graduação, e também para os egressos do IFTO, as credenciais funcionam como diferencial concreto na entrada no mercado de trabalho e na continuidade dos estudos.</li>
+        </ul>
+
+        <div class="bloco-titulo">O ganho para a instituição</div>
+        <p>Para o IFTO, a parceria agrega valor institucional sem gerar ônus pedagógico ou financeiro:</p>
+        <ul class="ganhos">
+          <li><b>Reconhecimento como parceiro institucional</b> – o nome do IFTO fica registrado na plataforma, nos materiais públicos do projeto, na cobertura de imprensa e nos créditos da exposição cultural, acompanhado de um selo institucional verificável em blockchain.</li>
+          <li><b>Alinhamento com a vocação de inovação e empreendedorismo</b> – a jornada reforça, na prática, o papel da DIEM ao conectar estudantes a desafios reais e a uma cultura de soluções, somando-se ao currículo sem competir com ele.</li>
+          <li><b>Aderência a referenciais educacionais</b> – o projeto trabalha educação ambiental, pensamento crítico, letramento digital e expressão cultural, competências centrais da BNCC, das habilidades do século XXI e dos referenciais ESG.</li>
+          <li><b>Legado permanente</b> – tudo o que os estudantes produzem fica registrado em galerias públicas na plataforma The Blue City, um acervo vivo que documenta o engajamento, os projetos e a exposição final, acessível mesmo após o encerramento do evento.</li>
+        </ul>
+
+        <div class="bloco-titulo">Um compromisso leve para a instituição</div>
+        <p>A participação do IFTO é institucional e de baixo esforço operacional. A jornada acontece no tempo extracurricular do estudante, sem alteração de calendário, sem contratação de equipe e sem contrapartida financeira. À instituição cabe autorizar a apresentação do projeto, apoiar a divulgação aos estudantes elegíveis através dos canais internos já existentes, figurar como parceira via carta de parceria simples e, na etapa final, acolher e divulgar a exposição cultural à sua comunidade.</p>
+
+        <p>Ficaríamos honrados em apresentar a Missão Termômetro Zero com profundidade à direção e à equipe da DIEM, em uma reunião institucional, para detalhar o cronograma de 2026 e responder a quaisquer dúvidas. Colocamo-nos inteiramente à disposição.</p>
+
+        <div class="assinatura">
+          <p>Atenciosamente,</p>
+          <div style="height:30px"></div>
+          <p class="nome">Carolina Ferrés</p>
+          <p>The Blue City · Missão Cidade Azul</p>
+        </div>
+
+        <div style="margin-top:28px; padding-top:22px; border-top:1px solid rgba(40,88,160,0.12); text-align:center;">
+          <a href="https://docs.google.com/document/d/1R3PyGVeok17UAdaU96VGzyLHxxiUEMdrOnuIa9P7mw0/edit?usp=sharing" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:600; color:var(--blue); background:#fff; border:1.5px solid rgba(40,88,160,0.15); border-radius:8px; padding:10px 20px; text-decoration:none;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            Abrir documento editável
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="divider"></div>
+    <div class="page-nav">
+      <button class="nav-btn" onclick="goTo(4)">← Articulador Educacional</button>
+      <span class="page-indicator">Equipe Criativa · <strong>Escola IFTO</strong></span>
+      <button class="nav-btn next" onclick="goTo(11)">Escola UFT →</button>
+    </div>
+  </section>
+
+  <!-- ══ PAGE 11: ESCOLA UFT ══ -->
+  <section class="page" id="page-11">
+    <div class="page-hero role-articulador">
+      <div style="display:flex; align-items:center; gap:24px; margin-bottom:16px;">
+        <img src="https://the-blue-city.github.io/content/logoUFT.png" alt="UFT" style="height:80px; width:auto; max-width:150px; object-fit:contain; flex-shrink:0;">
+        <div>
+          <div class="role-badge rb-green" style="margin-bottom:8px;">🎓 Escola Parceira</div>
+          <p style="font-size:18px; font-weight:800; color:var(--dark); margin-bottom:2px;">Universidade Federal do Tocantins – UFT</p>
+          <p style="font-size:12px; color:var(--muted);">Sede em Palmas · Pró-Reitoria de Extensão, Cultura e Assuntos Comunitários – Proex · Agência de Inovação</p>
+        </div>
+      </div>
+      <h1 class="page-title">UFT – Parceiro Institucional em Palmas</h1>
+      <p class="page-subtitle">A Universidade Federal do Tocantins é parceira institucional da Missão Termômetro Zero em Palmas – uma universidade pública cuja vocação em extensão, cultura, inovação e sustentabilidade dialoga diretamente com a jornada.</p>
+    </div>
+
+    <div class="page-body single" style="max-width:100%; padding:36px 60px 0;">
+
+      <div class="section-heading">Quem é a UFT</div>
+      <div class="ifto-intro">
+        <p>A <strong>Universidade Federal do Tocantins (UFT)</strong>, criada em 2000, é a principal instituição pública de ensino superior do estado, com sede em Palmas e campi em diversas cidades. Oferta cursos de <strong>graduação e pós-graduação</strong> em todas as áreas do conhecimento, articulando ensino, pesquisa e extensão de forma indissociável. O <strong>Campus de Palmas</strong> é a sede e a maior unidade da universidade.</p>
+        <p>A <strong>Pró-Reitoria de Extensão, Cultura e Assuntos Comunitários (Proex)</strong> conduz a articulação entre a universidade e a sociedade – incluindo extensão tecnológica, tecnologia social e ação cultural – e, junto à <strong>Agência de Inovação da UFT</strong>, forma o terreno natural em que a Missão Termômetro Zero se inscreve. A vocação ambiental da UFT, que abriga o curso de Engenharia Ambiental mais antigo do país, reforça o alinhamento com o tema da jornada.</p>
+      </div>
+
+      <div class="ifto-stats">
+        <div class="ifto-stat">
+          <div class="num">6.000</div>
+          <div class="lbl">Estudantes em Palmas</div>
+          <div class="desc">Público potencial da jornada no Campus de Palmas – graduação, pós-graduação e egressos</div>
+        </div>
+        <div class="ifto-stat">
+          <div class="num">Proex</div>
+          <div class="lbl">Extensão, Cultura e Inovação</div>
+          <div class="desc">Pró-Reitoria parceira, com a Agência de Inovação articulando a universidade à sociedade</div>
+        </div>
+      </div>
+
+      <div class="section-heading">Carta de parceria</div>
+      <div class="carta">
+
+        <div class="data">São Paulo, 10 de junho de 2026</div>
+
+        <div class="dest-row">
+          <a href="https://www.uft.edu.br/campus/palmas" target="_blank" rel="noopener" style="flex-shrink:0; line-height:0;">
+            <img src="https://the-blue-city.github.io/content/logoUFT.png" alt="UFT" style="height:130px; width:auto; max-width:300px; object-fit:contain;">
+          </a>
+          <div class="destinatario" style="margin-bottom:0;">
+            <p class="forte">À Universidade Federal do Tocantins – UFT</p>
+            <p>Pró-Reitoria de Extensão, Cultura e Assuntos Comunitários – Proex</p>
+            <p>Agência de Inovação da UFT</p>
+            <p>Palmas – Tocantins</p>
+          </div>
+        </div>
+
+        <p class="saudacao">Prezada equipe da Pró-Reitoria de Extensão, Cultura e Assuntos Comunitários,</p>
+
+        <p>A <strong>The Blue City</strong> é uma iniciativa que conecta educação ambiental, tecnologia e cultura em jornadas educativas realizadas em territórios urbanos reais. Escrevemos para convidar formalmente a UFT a integrar, como <strong>parceira institucional</strong>, a <strong>Missão Termômetro Zero</strong> – jornada educativa, tecnológica e cultural que acontecerá em Palmas ao longo de 2026, com o tema Redução de Emissões de Gases de Efeito Estufa.</p>
+
+        <p>A jornada combina três frentes integradas: um <strong>jogo digital</strong> com missões temáticas jogadas pelos estudantes; <strong>certificações verificáveis em blockchain</strong> emitidas a cada etapa; e uma <strong>exposição cultural</strong> aberta à comunidade, na qual as ideias dos estudantes são traduzidas em obras por artistas locais. A realização é viabilizada através do patrocínio da Sotreq, <strong>sem qualquer custo para a instituição</strong>.</p>
+
+        <p>O convite à UFT não é casual. A natureza da Missão – que une extensão universitária, cultura, tecnologia social e gamificação em torno da sustentabilidade – dialoga diretamente com a missão da Proex e com a atuação da Agência de Inovação, somando-se à vocação ambiental da universidade. Vemos a UFT como a parceira institucional ideal para ancorar essa jornada em Palmas.</p>
+
+        <div class="bloco-titulo">O ganho para os estudantes</div>
+        <p>Mais do que uma atividade extracurricular, a Missão entrega ao estudante uma <strong>trajetória profissional comprovável</strong>. As credenciais da jornada são emitidas através da <strong>POK</strong> – plataforma de credenciamento digital que registra <strong>badges, microcredenciais e certificados em blockchain</strong>, seguindo padrões internacionais como o Open Badges:</p>
+        <ul class="ganhos">
+          <li><b>Trilhas formativas</b> – a jornada organiza o aprendizado em etapas encadeadas, e cada etapa concluída se converte em uma credencial verificável, compondo uma trilha de competências em sustentabilidade, pensamento crítico e letramento digital.</li>
+          <li><b>Badges e certificados POK</b> – emitidos em blockchain e ancorados em padrões internacionais (Open Badges), são verificáveis por qualquer terceiro, à prova de fraude e permanentes – não dependem da existência da plataforma para serem validados.</li>
+          <li><b>Diálogo com a extensão curricularizada</b> – por seu caráter de extensão universitária, a jornada conversa com a creditização da extensão, agregando ao percurso acadêmico dos estudantes de graduação e pós-graduação.</li>
+          <li><b>Jornada profissional comprovável</b> – cada conquista soma a um histórico digital que o estudante carrega consigo, válido como experiência em currículos, processos seletivos e no LinkedIn, e como diferencial concreto para egressos da UFT.</li>
+        </ul>
+
+        <div class="bloco-titulo">O ganho para a instituição</div>
+        <p>Para a UFT, a parceria agrega valor institucional sem gerar ônus acadêmico ou financeiro:</p>
+        <ul class="ganhos">
+          <li><b>Reconhecimento como parceira institucional</b> – o nome da UFT fica registrado na plataforma, nos materiais públicos do projeto, na cobertura de imprensa e nos créditos da exposição cultural, acompanhado de um selo institucional verificável em blockchain.</li>
+          <li><b>Alinhamento com a vocação de extensão e inovação</b> – a jornada reforça, na prática, o papel da Proex e da Agência de Inovação ao conectar estudantes a desafios reais e a uma cultura de soluções, articulando universidade e sociedade.</li>
+          <li><b>Aderência a referenciais do ensino superior</b> – o projeto trabalha educação ambiental, pensamento crítico, letramento digital e expressão cultural, em sintonia com a Política Nacional de Extensão Universitária, os Objetivos de Desenvolvimento Sustentável (ODS) e os referenciais ESG.</li>
+          <li><b>Legado permanente</b> – tudo o que os estudantes produzem fica registrado em galerias públicas na plataforma The Blue City, um acervo vivo que documenta o engajamento, os projetos e a exposição final, acessível mesmo após o encerramento do evento.</li>
+        </ul>
+
+        <div class="bloco-titulo">Um compromisso leve para a instituição</div>
+        <p>A participação da UFT é institucional e de baixo esforço operacional. A jornada acontece no tempo extracurricular do estudante, sem alteração de calendário, sem contratação de equipe e sem contrapartida financeira. À instituição cabe autorizar a apresentação do projeto, apoiar a divulgação aos estudantes elegíveis através dos canais internos já existentes, figurar como parceira via carta de parceria simples e, na etapa final, acolher e divulgar a exposição cultural à sua comunidade.</p>
+
+        <p>Ficaríamos honrados em apresentar a Missão Termômetro Zero com profundidade à Pró-Reitoria de Extensão e à Agência de Inovação, em uma reunião institucional, para detalhar o cronograma de 2026 e responder a quaisquer dúvidas. Colocamo-nos inteiramente à disposição.</p>
+
+        <div class="assinatura">
+          <p>Atenciosamente,</p>
+          <div style="height:30px"></div>
+          <p class="nome">Carolina Ferrés</p>
+          <p>The Blue City · Missão Cidade Azul</p>
+        </div>
+
+        <div style="margin-top:28px; padding-top:22px; border-top:1px solid rgba(40,88,160,0.12); text-align:center;">
+          <a href="https://docs.google.com/document/d/1R3PyGVeok17UAdaU96VGzyLHxxiUEMdrOnuIa9P7mw0/edit?usp=sharing" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:600; color:var(--blue); background:#fff; border:1.5px solid rgba(40,88,160,0.15); border-radius:8px; padding:10px 20px; text-decoration:none;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            Abrir documento editável
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="divider"></div>
+    <div class="page-nav">
+      <button class="nav-btn" onclick="goTo(10)">← Escola IFTO</button>
+      <span class="page-indicator">Equipe Criativa · <strong>Escola UFT</strong></span>
       <button class="nav-btn next" onclick="goTo(5)">Produtor Cultural →</button>
     </div>
   </section>
@@ -1721,27 +1997,27 @@
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:16px; text-align:center;">
           <div style="width:36px; height:36px; border-radius:50%; background:#2858a0; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">1</div>
           <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Preparar o território</p>
-          <p style="font-size:10px; color:#6b7f95; line-height:1.5;">Mapeamento de espaços, identificação de artistas e estruturação logística</p>
+          <p style="font-size:10px; color:#000; line-height:1.5;">Mapeamento de espaços, identificação de artistas e estruturação logística</p>
         </div>
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:16px; text-align:center;">
           <div style="width:36px; height:36px; border-radius:50%; background:#468182; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">2</div>
           <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Receber e selecionar</p>
-          <p style="font-size:10px; color:#6b7f95; line-height:1.5;">Recebe os projetos do Articulador e faz a curadoria</p>
+          <p style="font-size:10px; color:#000; line-height:1.5;">Recebe os projetos do Articulador e faz a curadoria</p>
         </div>
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:16px; text-align:center;">
           <div style="width:36px; height:36px; border-radius:50%; background:#468182; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">3</div>
           <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Conectar artistas</p>
-          <p style="font-size:10px; color:#6b7f95; line-height:1.5;">Articulação com artistas locais para produção de obras derivadas</p>
+          <p style="font-size:10px; color:#000; line-height:1.5;">Articulação com artistas locais para produção de obras derivadas</p>
         </div>
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:16px; text-align:center;">
           <div style="width:36px; height:36px; border-radius:50%; background:#5fb670; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">4</div>
           <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Realizar exposição</p>
-          <p style="font-size:10px; color:#6b7f95; line-height:1.5;">Montagem expográfica e evento aberto à comunidade no território</p>
+          <p style="font-size:10px; color:#000; line-height:1.5;">Montagem expográfica e evento aberto à comunidade no território</p>
         </div>
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:16px; text-align:center;">
           <div style="width:36px; height:36px; border-radius:50%; background:#729b35; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">5</div>
           <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Documentar</p>
-          <p style="font-size:10px; color:#6b7f95; line-height:1.5;">Registros publicados na Memória Institucional da plataforma</p>
+          <p style="font-size:10px; color:#000; line-height:1.5;">Registros publicados na Memória Institucional da plataforma</p>
         </div>
       </div>
 
@@ -1750,22 +2026,22 @@
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:18px; text-align:center;">
           <p style="font-size:10px; font-weight:700; color:#2858a0; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;">Marco 1</p>
           <p style="font-size:15px; font-weight:800; color:#1a2e3b; margin-bottom:8px;">Junho a Setembro</p>
-          <p style="font-size:11px; color:#6b7f95; line-height:1.5;">Preparação territorial em paralelo ao trabalho do Articulador: mapeamento de espaços, artistas e logística.</p>
+          <p style="font-size:11px; color:#000; line-height:1.5;">Preparação territorial em paralelo ao trabalho do Articulador: mapeamento de espaços, artistas e logística.</p>
         </div>
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:18px; text-align:center;">
           <p style="font-size:10px; font-weight:700; color:#468182; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;">Marco 2</p>
           <p style="font-size:15px; font-weight:800; color:#1a2e3b; margin-bottom:8px;">1º de outubro</p>
-          <p style="font-size:11px; color:#6b7f95; line-height:1.5;">Recebimento dos projetos do Articulador. Início da curadoria e da articulação com artistas locais.</p>
+          <p style="font-size:11px; color:#000; line-height:1.5;">Recebimento dos projetos do Articulador. Início da curadoria e da articulação com artistas locais.</p>
         </div>
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:18px; text-align:center;">
           <p style="font-size:10px; font-weight:700; color:#468182; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;">Marco 3</p>
           <p style="font-size:15px; font-weight:800; color:#1a2e3b; margin-bottom:8px;">Outubro</p>
-          <p style="font-size:11px; color:#6b7f95; line-height:1.5;">Produção das obras derivadas pelos artistas e montagem da exposição no território.</p>
+          <p style="font-size:11px; color:#000; line-height:1.5;">Produção das obras derivadas pelos artistas e montagem da exposição no território.</p>
         </div>
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:18px; text-align:center;">
           <p style="font-size:10px; font-weight:700; color:#5fb670; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;">Marco 4</p>
           <p style="font-size:15px; font-weight:800; color:#1a2e3b; margin-bottom:8px;">Novembro</p>
-          <p style="font-size:11px; color:#6b7f95; line-height:1.5;">Realização da exposição, registro fotográfico e publicação na Memória Institucional.</p>
+          <p style="font-size:11px; color:#000; line-height:1.5;">Realização da exposição, registro fotográfico e publicação na Memória Institucional.</p>
         </div>
       </div>
       <div style="background:#1a2e3b; border-radius:10px; padding:14px 18px; margin-bottom:40px; display:flex; align-items:center; gap:12px;">
@@ -1851,9 +2127,9 @@
             </div>
           </div>
           <div style="width:100%; height:200px; background:#eef2f6; border-radius:8px; margin-bottom:12px; display:flex; align-items:center; justify-content:center; border:1px dashed #b0c8e8;">
-            <p style="font-size:11px; color:#6b7f95; text-align:center;">[ imagem Iansã<br>a inserir ]</p>
+            <p style="font-size:11px; color:#000; text-align:center;">[ imagem Iansã<br>a inserir ]</p>
           </div>
-          <p style="font-size:12px; color:#6b7f95; line-height:1.7;">Orixá feminino que preside os ventos, tempestades, raios e espíritos. Guia o visitante pelo Mundo dos Ventos – conectando os temas de clima e gases de efeito estufa à narrativa da exposição. Personagem criado a partir da pesquisa de Ester Menezes.</p>
+          <p style="font-size:12px; color:#000; line-height:1.7;">Orixá feminino que preside os ventos, tempestades, raios e espíritos. Guia o visitante pelo Mundo dos Ventos – conectando os temas de clima e gases de efeito estufa à narrativa da exposição. Personagem criado a partir da pesquisa de Ester Menezes.</p>
         </div>
         <div style="background:white; border-radius:12px; border:2px solid #468182; padding:20px;">
           <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
@@ -1864,15 +2140,15 @@
             </div>
           </div>
           <div style="width:100%; height:200px; background:#eef6f0; border-radius:8px; margin-bottom:12px; display:flex; align-items:center; justify-content:center; border:1px dashed #a0d8b0;">
-            <p style="font-size:11px; color:#6b7f95; text-align:center;">[ imagem U'acü<br>a inserir ]</p>
+            <p style="font-size:11px; color:#000; text-align:center;">[ imagem U'acü<br>a inserir ]</p>
           </div>
-          <p style="font-size:12px; color:#6b7f95; line-height:1.7;">Espírito do Sol na cosmologia Tikuna, invocado pelos pajés para realizar curas e restaurar o equilíbrio. Guia o visitante pelo Mundo do Sol – conectando os temas de energia solar e renovável à narrativa da exposição. Personagem criado a partir da pesquisa de Ester Menezes.</p>
+          <p style="font-size:12px; color:#000; line-height:1.7;">Espírito do Sol na cosmologia Tikuna, invocado pelos pajés para realizar curas e restaurar o equilíbrio. Guia o visitante pelo Mundo do Sol – conectando os temas de energia solar e renovável à narrativa da exposição. Personagem criado a partir da pesquisa de Ester Menezes.</p>
         </div>
       </div>
 
       <div class="section-heading">Mapa Expográfico</div>
       <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:24px; margin-bottom:32px;">
-        <p style="font-size:13px; color:#6b7f95; line-height:1.7; margin-bottom:20px;">O mapa expográfico organiza o espaço da exposição – definindo a disposição dos dois módulos temáticos, o fluxo dos visitantes e a trilha de QR codes no quarteirão externo. As posições dos painéis serão confirmadas conforme o espaço físico disponível em cada cidade.</p>
+        <p style="font-size:13px; color:#000; line-height:1.7; margin-bottom:20px;">O mapa expográfico organiza o espaço da exposição – definindo a disposição dos dois módulos temáticos, o fluxo dos visitantes e a trilha de QR codes no quarteirão externo. As posições dos painéis serão confirmadas conforme o espaço físico disponível em cada cidade.</p>
         <?xml version="1.0" encoding="UTF-8"?>
 <img src="https://the-blue-city.github.io/content/mapa-expografico.png" alt="Mapa Expográfico – Termômetro Zero" style="width:100%; display:block; border-radius:8px;">
       </div>
@@ -1881,24 +2157,24 @@
       <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-bottom:40px;">
         <div style="background:#f4f8fc; border-radius:12px; border:1px dashed #c0cdd8; padding:20px;">
           <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
-            <div style="width:32px; height:32px; border-radius:50%; background:#e0e8f0; color:#6b7f95; font-size:16px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">📍</div>
-            <p style="font-size:13px; font-weight:700; color:#6b7f95;">Local e Montagem</p>
+            <div style="width:32px; height:32px; border-radius:50%; background:#e0e8f0; color:#000; font-size:16px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">📍</div>
+            <p style="font-size:13px; font-weight:700; color:#000;">Local e Montagem</p>
           </div>
-          <p style="font-size:12px; color:#6b7f95; line-height:1.6;">O Produtor Cultural é responsável por encontrar e preparar o espaço físico da exposição no território. A ser definido durante a execução da jornada.</p>
+          <p style="font-size:12px; color:#000; line-height:1.6;">O Produtor Cultural é responsável por encontrar e preparar o espaço físico da exposição no território. A ser definido durante a execução da jornada.</p>
         </div>
         <div style="background:#f4f8fc; border-radius:12px; border:1px dashed #c0cdd8; padding:20px;">
           <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
-            <div style="width:32px; height:32px; border-radius:50%; background:#e0e8f0; color:#6b7f95; font-size:16px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">🎨</div>
-            <p style="font-size:13px; font-weight:700; color:#6b7f95;">Artistas Envolvidos</p>
+            <div style="width:32px; height:32px; border-radius:50%; background:#e0e8f0; color:#000; font-size:16px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">🎨</div>
+            <p style="font-size:13px; font-weight:700; color:#000;">Artistas Envolvidos</p>
           </div>
-          <p style="font-size:12px; color:#6b7f95; line-height:1.6;">Os artistas que irão interpretar os projetos dos jogadores serão articulados pelo Produtor Cultural. A ser definido durante a execução da jornada.</p>
+          <p style="font-size:12px; color:#000; line-height:1.6;">Os artistas que irão interpretar os projetos dos jogadores serão articulados pelo Produtor Cultural. A ser definido durante a execução da jornada.</p>
         </div>
         <div style="background:#f4f8fc; border-radius:12px; border:1px dashed #c0cdd8; padding:20px;">
           <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
-            <div style="width:32px; height:32px; border-radius:50%; background:#e0e8f0; color:#6b7f95; font-size:16px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">📷</div>
-            <p style="font-size:13px; font-weight:700; color:#6b7f95;">Registro e Documentação</p>
+            <div style="width:32px; height:32px; border-radius:50%; background:#e0e8f0; color:#000; font-size:16px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">📷</div>
+            <p style="font-size:13px; font-weight:700; color:#000;">Registro e Documentação</p>
           </div>
-          <p style="font-size:12px; color:#6b7f95; line-height:1.6;">O registro fotográfico e audiovisual da exposição será realizado durante e após o evento, e publicado na Memória Institucional da plataforma.</p>
+          <p style="font-size:12px; color:#000; line-height:1.6;">O registro fotográfico e audiovisual da exposição será realizado durante e após o evento, e publicado na Memória Institucional da plataforma.</p>
         </div>
       </div>
 
@@ -1930,9 +2206,9 @@
 
           <!-- COORDENADORA -->
           <rect x="450" y="20" width="300" height="70" rx="10" fill="white" stroke="#c4c4c4" stroke-width="1.5" stroke-dasharray="4 3"/>
-          <text x="608" y="44" text-anchor="middle" font-size="11" font-weight="700" fill="#6b7f95" letter-spacing="1.5">COORDENAÇÃO</text>
+          <text x="608" y="44" text-anchor="middle" font-size="11" font-weight="700" fill="#000" letter-spacing="1.5">COORDENAÇÃO</text>
           <text x="600" y="64" text-anchor="middle" font-size="16" font-weight="800" fill="#1a2e3b">Coordenadora do Projeto</text>
-          <text x="600" y="80" text-anchor="middle" font-size="11" fill="#6b7f95">Articulação geral · virtual + físico</text>
+          <text x="600" y="80" text-anchor="middle" font-size="11" fill="#000">Articulação geral · virtual + físico</text>
 
           <!-- Conectores Coordenadora -> Pilares -->
           <line x1="600" y1="90" x2="600" y2="115" stroke="#d4dde6" stroke-width="1.5"/>
@@ -1942,24 +2218,24 @@
 
           <!-- PILAR VIRTUAL -->
           <rect x="60" y="140" width="480" height="70" rx="10" fill="white" stroke="#c4c4c4" stroke-width="1.5" stroke-dasharray="4 3"/>
-          <text x="312" y="164" text-anchor="middle" font-size="11" font-weight="700" fill="#6b7f95" letter-spacing="1.5">VIRTUAL</text>
+          <text x="312" y="164" text-anchor="middle" font-size="11" font-weight="700" fill="#000" letter-spacing="1.5">VIRTUAL</text>
           <text x="300" y="184" text-anchor="middle" font-size="16" font-weight="800" fill="#1a2e3b">Construção do jogo</text>
-          <text x="300" y="200" text-anchor="middle" font-size="11" fill="#6b7f95">do conceito cultural à build jogável</text>
+          <text x="300" y="200" text-anchor="middle" font-size="11" fill="#000">do conceito cultural à build jogável</text>
 
           <!-- PILAR FÍSICO -->
           <rect x="660" y="140" width="480" height="70" rx="10" fill="white" stroke="#c4c4c4" stroke-width="1.5" stroke-dasharray="4 3"/>
-          <text x="912" y="164" text-anchor="middle" font-size="11" font-weight="700" fill="#6b7f95" letter-spacing="1.5">FÍSICO</text>
+          <text x="912" y="164" text-anchor="middle" font-size="11" font-weight="700" fill="#000" letter-spacing="1.5">FÍSICO</text>
           <text x="900" y="184" text-anchor="middle" font-size="16" font-weight="800" fill="#1a2e3b">Ativação no território</text>
-          <text x="900" y="200" text-anchor="middle" font-size="11" fill="#6b7f95">da chegada à escola à exposição cultural</text>
+          <text x="900" y="200" text-anchor="middle" font-size="11" fill="#000">da chegada à escola à exposição cultural</text>
 
           <!-- Conector Físico -> Produtora -->
           <line x1="900" y1="210" x2="900" y2="250" stroke="#d4dde6" stroke-width="1.5"/>
 
           <!-- PRODUTORA CULTURAL (empresa) -->
           <rect x="720" y="250" width="360" height="64" rx="10" fill="white" stroke="#c4c4c4" stroke-width="1.5" stroke-dasharray="4 3"/>
-          <text x="912" y="272" text-anchor="middle" font-size="10" font-weight="700" fill="#6b7f95" letter-spacing="1.5">EMPRESA</text>
+          <text x="912" y="272" text-anchor="middle" font-size="10" font-weight="700" fill="#000" letter-spacing="1.5">EMPRESA</text>
           <text x="900" y="290" text-anchor="middle" font-size="14" font-weight="800" fill="#1a2e3b">Produtora Cultural</text>
-          <text x="900" y="306" text-anchor="middle" font-size="10" fill="#6b7f95">contrata e coordena os profissionais de campo</text>
+          <text x="900" y="306" text-anchor="middle" font-size="10" fill="#000">contrata e coordena os profissionais de campo</text>
 
           <!-- Conectores Virtual -> 3 profissionais -->
           <line x1="300" y1="210" x2="300" y2="340" stroke="#d4dde6" stroke-width="1.5"/>
@@ -2032,7 +2308,7 @@
   <line x1="30" y1="110" x2="1102" y2="110" stroke="#e0e8f0" stroke-width="2" stroke-linecap="round"/>
 
   <!-- ============ MAI ============ -->
-  <line x1="85" y1="110" x2="85" y2="125" stroke="#6b7f95" stroke-width="1"/>
+  <line x1="85" y1="110" x2="85" y2="125" stroke="#000" stroke-width="1"/>
   <circle cx="85" cy="110" r="5" fill="#1a2e3b" stroke="white" stroke-width="2"/>
   <text x="85" y="96" text-anchor="middle" font-size="9" font-weight="800" fill="#1a2e3b">MAI</text>
   <rect x="35" y="125" width="100" height="20" rx="4" fill="#2858a0"/>
@@ -2041,17 +2317,17 @@
   <rect x="35" y="153" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
   <text x="85" y="175" text-anchor="middle" font-size="16">🔍</text>
   <text x="85" y="199" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Pesquisadora</text>
-  <text x="85" y="215" text-anchor="middle" font-size="7" fill="#6b7f95">Conceituação</text>
-  <text x="85" y="227" text-anchor="middle" font-size="7" fill="#6b7f95">dos personagens</text>
+  <text x="85" y="215" text-anchor="middle" font-size="7" fill="#000">Conceituação</text>
+  <text x="85" y="227" text-anchor="middle" font-size="7" fill="#000">dos personagens</text>
   <!-- Game Designer -->
   <rect x="35" y="261" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
   <text x="85" y="283" text-anchor="middle" font-size="16">🎮</text>
   <text x="85" y="307" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Game Designer</text>
-  <text x="85" y="323" text-anchor="middle" font-size="7" fill="#6b7f95">Início da</text>
-  <text x="85" y="335" text-anchor="middle" font-size="7" fill="#6b7f95">produção do jogo</text>
+  <text x="85" y="323" text-anchor="middle" font-size="7" fill="#000">Início da</text>
+  <text x="85" y="335" text-anchor="middle" font-size="7" fill="#000">produção do jogo</text>
 
   <!-- ============ JUN ============ -->
-  <line x1="221" y1="110" x2="221" y2="125" stroke="#6b7f95" stroke-width="1"/>
+  <line x1="221" y1="110" x2="221" y2="125" stroke="#000" stroke-width="1"/>
   <circle cx="221" cy="110" r="5" fill="#1a2e3b" stroke="white" stroke-width="2"/>
   <text x="221" y="96" text-anchor="middle" font-size="9" font-weight="800" fill="#1a2e3b">JUN</text>
   <rect x="171" y="125" width="100" height="20" rx="4" fill="#2858a0"/>
@@ -2060,23 +2336,23 @@
   <rect x="171" y="153" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
   <text x="221" y="175" text-anchor="middle" font-size="16">🎨</text>
   <text x="221" y="199" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Ilustrador</text>
-  <text x="221" y="215" text-anchor="middle" font-size="7" fill="#6b7f95">Ilustração dos</text>
-  <text x="221" y="227" text-anchor="middle" font-size="7" fill="#6b7f95">personagens</text>
+  <text x="221" y="215" text-anchor="middle" font-size="7" fill="#000">Ilustração dos</text>
+  <text x="221" y="227" text-anchor="middle" font-size="7" fill="#000">personagens</text>
   <!-- Game Designer -->
   <rect x="171" y="261" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
   <text x="221" y="283" text-anchor="middle" font-size="16">🎮</text>
   <text x="221" y="307" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Game Designer</text>
-  <text x="221" y="323" text-anchor="middle" font-size="7" fill="#6b7f95">Finalização</text>
-  <text x="221" y="335" text-anchor="middle" font-size="7" fill="#6b7f95">do jogo</text>
+  <text x="221" y="323" text-anchor="middle" font-size="7" fill="#000">Finalização</text>
+  <text x="221" y="335" text-anchor="middle" font-size="7" fill="#000">do jogo</text>
   <!-- Articulador Educacional -->
   <rect x="171" y="369" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
   <text x="221" y="391" text-anchor="middle" font-size="16">🏫</text>
   <text x="221" y="415" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Articulador Educ.</text>
-  <text x="221" y="431" text-anchor="middle" font-size="7" fill="#6b7f95">Contato com</text>
-  <text x="221" y="443" text-anchor="middle" font-size="7" fill="#6b7f95">secretarias e escolas</text>
+  <text x="221" y="431" text-anchor="middle" font-size="7" fill="#000">Contato com</text>
+  <text x="221" y="443" text-anchor="middle" font-size="7" fill="#000">secretarias e escolas</text>
 
   <!-- ============ JUL ============ -->
-  <line x1="357" y1="110" x2="357" y2="125" stroke="#6b7f95" stroke-width="1"/>
+  <line x1="357" y1="110" x2="357" y2="125" stroke="#000" stroke-width="1"/>
   <circle cx="357" cy="110" r="5" fill="#1a2e3b" stroke="white" stroke-width="2"/>
   <text x="357" y="96" text-anchor="middle" font-size="9" font-weight="800" fill="#1a2e3b">JUL</text>
   <rect x="307" y="125" width="100" height="20" rx="4" fill="#2858a0"/>
@@ -2085,22 +2361,22 @@
   <rect x="307" y="153" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
   <text x="357" y="175" text-anchor="middle" font-size="16">🎮</text>
   <text x="357" y="199" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Game Designer</text>
-  <text x="357" y="215" text-anchor="middle" font-size="7" fill="#6b7f95">Testes do jogo</text>
+  <text x="357" y="215" text-anchor="middle" font-size="7" fill="#000">Testes do jogo</text>
   <!-- Articulador Educacional -->
   <rect x="307" y="261" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
   <text x="357" y="283" text-anchor="middle" font-size="16">🏫</text>
   <text x="357" y="307" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Articulador Educ.</text>
-  <text x="357" y="323" text-anchor="middle" font-size="7" fill="#6b7f95">Treinamento</text>
-  <text x="357" y="335" text-anchor="middle" font-size="7" fill="#6b7f95">na plataforma</text>
+  <text x="357" y="323" text-anchor="middle" font-size="7" fill="#000">Treinamento</text>
+  <text x="357" y="335" text-anchor="middle" font-size="7" fill="#000">na plataforma</text>
   <!-- Produtor Cultural -->
   <rect x="307" y="369" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
   <text x="357" y="391" text-anchor="middle" font-size="16">🎭</text>
   <text x="357" y="415" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Produtor Cultural</text>
-  <text x="357" y="431" text-anchor="middle" font-size="7" fill="#6b7f95">Treinamento</text>
-  <text x="357" y="443" text-anchor="middle" font-size="7" fill="#6b7f95">na plataforma</text>
+  <text x="357" y="431" text-anchor="middle" font-size="7" fill="#000">Treinamento</text>
+  <text x="357" y="443" text-anchor="middle" font-size="7" fill="#000">na plataforma</text>
 
   <!-- ============ AGO ============ -->
-  <line x1="493" y1="110" x2="493" y2="125" stroke="#6b7f95" stroke-width="1"/>
+  <line x1="493" y1="110" x2="493" y2="125" stroke="#000" stroke-width="1"/>
   <circle cx="493" cy="110" r="5" fill="#1a2e3b" stroke="white" stroke-width="2"/>
   <text x="493" y="96" text-anchor="middle" font-size="9" font-weight="800" fill="#1a2e3b">AGO</text>
   <rect x="443" y="125" width="100" height="20" rx="4" fill="#2858a0"/>
@@ -2109,17 +2385,17 @@
   <rect x="443" y="153" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
   <text x="493" y="175" text-anchor="middle" font-size="16">🏫</text>
   <text x="493" y="199" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Articulador Educ.</text>
-  <text x="493" y="215" text-anchor="middle" font-size="7" fill="#6b7f95">Apresentação às</text>
-  <text x="493" y="227" text-anchor="middle" font-size="7" fill="#6b7f95">escolas e turmas</text>
+  <text x="493" y="215" text-anchor="middle" font-size="7" fill="#000">Apresentação às</text>
+  <text x="493" y="227" text-anchor="middle" font-size="7" fill="#000">escolas e turmas</text>
   <!-- Articulador Educacional - Mobilização -->
   <rect x="443" y="261" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
   <text x="493" y="283" text-anchor="middle" font-size="16">🏫</text>
   <text x="493" y="307" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Articulador Educ.</text>
-  <text x="493" y="323" text-anchor="middle" font-size="7" fill="#6b7f95">Fechamento da</text>
-  <text x="493" y="335" text-anchor="middle" font-size="7" fill="#6b7f95">mobilização</text>
+  <text x="493" y="323" text-anchor="middle" font-size="7" fill="#000">Fechamento da</text>
+  <text x="493" y="335" text-anchor="middle" font-size="7" fill="#000">mobilização</text>
 
   <!-- ============ SET ============ -->
-  <line x1="629" y1="110" x2="629" y2="125" stroke="#6b7f95" stroke-width="1"/>
+  <line x1="629" y1="110" x2="629" y2="125" stroke="#000" stroke-width="1"/>
   <circle cx="629" cy="110" r="5" fill="#1a2e3b" stroke="white" stroke-width="2"/>
   <text x="629" y="96" text-anchor="middle" font-size="9" font-weight="800" fill="#1a2e3b">SET</text>
   <rect x="579" y="125" width="100" height="20" rx="4" fill="#2858a0"/>
@@ -2128,17 +2404,17 @@
   <rect x="579" y="153" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
   <text x="629" y="175" text-anchor="middle" font-size="16">🏫</text>
   <text x="629" y="199" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Articulador Educ.</text>
-  <text x="629" y="215" text-anchor="middle" font-size="7" fill="#6b7f95">Acompanhamento</text>
-  <text x="629" y="227" text-anchor="middle" font-size="7" fill="#6b7f95">da jornada</text>
+  <text x="629" y="215" text-anchor="middle" font-size="7" fill="#000">Acompanhamento</text>
+  <text x="629" y="227" text-anchor="middle" font-size="7" fill="#000">da jornada</text>
   <!-- Produtor Cultural -->
   <rect x="579" y="261" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
   <text x="629" y="283" text-anchor="middle" font-size="16">🎭</text>
   <text x="629" y="307" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Produtor Cultural</text>
-  <text x="629" y="323" text-anchor="middle" font-size="7" fill="#6b7f95">Preparação</text>
-  <text x="629" y="335" text-anchor="middle" font-size="7" fill="#6b7f95">territorial</text>
+  <text x="629" y="323" text-anchor="middle" font-size="7" fill="#000">Preparação</text>
+  <text x="629" y="335" text-anchor="middle" font-size="7" fill="#000">territorial</text>
 
   <!-- ============ OUT ============ -->
-  <line x1="765" y1="110" x2="765" y2="125" stroke="#6b7f95" stroke-width="1"/>
+  <line x1="765" y1="110" x2="765" y2="125" stroke="#000" stroke-width="1"/>
   <circle cx="765" cy="110" r="5" fill="#1a2e3b" stroke="white" stroke-width="2"/>
   <text x="765" y="96" text-anchor="middle" font-size="9" font-weight="800" fill="#1a2e3b">OUT</text>
   <rect x="715" y="125" width="100" height="20" rx="4" fill="#2858a0"/>
@@ -2147,23 +2423,23 @@
   <rect x="715" y="153" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
   <text x="765" y="175" text-anchor="middle" font-size="16">🏫</text>
   <text x="765" y="199" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Articulador Educ.</text>
-  <text x="765" y="215" text-anchor="middle" font-size="7" fill="#6b7f95">Coleta dos</text>
-  <text x="765" y="227" text-anchor="middle" font-size="7" fill="#6b7f95">projetos</text>
+  <text x="765" y="215" text-anchor="middle" font-size="7" fill="#000">Coleta dos</text>
+  <text x="765" y="227" text-anchor="middle" font-size="7" fill="#000">projetos</text>
   <!-- Produtor Cultural -->
   <rect x="715" y="261" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
   <text x="765" y="283" text-anchor="middle" font-size="16">🎭</text>
   <text x="765" y="307" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Produtor Cultural</text>
-  <text x="765" y="323" text-anchor="middle" font-size="7" fill="#6b7f95">Curadoria e</text>
-  <text x="765" y="335" text-anchor="middle" font-size="7" fill="#6b7f95">conexão com artistas</text>
+  <text x="765" y="323" text-anchor="middle" font-size="7" fill="#000">Curadoria e</text>
+  <text x="765" y="335" text-anchor="middle" font-size="7" fill="#000">conexão com artistas</text>
   <!-- Assessoria de Imprensa -->
   <rect x="715" y="369" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
   <text x="765" y="391" text-anchor="middle" font-size="16">📰</text>
   <text x="765" y="415" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Assessoria Impr.</text>
-  <text x="765" y="431" text-anchor="middle" font-size="7" fill="#6b7f95">Pré-divulgação</text>
-  <text x="765" y="443" text-anchor="middle" font-size="7" fill="#6b7f95">da exposição</text>
+  <text x="765" y="431" text-anchor="middle" font-size="7" fill="#000">Pré-divulgação</text>
+  <text x="765" y="443" text-anchor="middle" font-size="7" fill="#000">da exposição</text>
 
   <!-- ============ NOV ============ -->
-  <line x1="901" y1="110" x2="901" y2="125" stroke="#6b7f95" stroke-width="1"/>
+  <line x1="901" y1="110" x2="901" y2="125" stroke="#000" stroke-width="1"/>
   <circle cx="901" cy="110" r="5" fill="#1a2e3b" stroke="white" stroke-width="2"/>
   <text x="901" y="96" text-anchor="middle" font-size="9" font-weight="800" fill="#1a2e3b">NOV</text>
   <rect x="851" y="125" width="100" height="20" rx="4" fill="#2858a0"/>
@@ -2172,23 +2448,23 @@
   <rect x="851" y="153" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
   <text x="901" y="175" text-anchor="middle" font-size="16">🏫</text>
   <text x="901" y="199" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Articulador Educ.</text>
-  <text x="901" y="215" text-anchor="middle" font-size="7" fill="#6b7f95">Encerramento da</text>
-  <text x="901" y="227" text-anchor="middle" font-size="7" fill="#6b7f95">articulação</text>
+  <text x="901" y="215" text-anchor="middle" font-size="7" fill="#000">Encerramento da</text>
+  <text x="901" y="227" text-anchor="middle" font-size="7" fill="#000">articulação</text>
   <!-- Produtor Cultural -->
   <rect x="851" y="261" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
   <text x="901" y="283" text-anchor="middle" font-size="16">🎭</text>
   <text x="901" y="307" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Produtor Cultural</text>
-  <text x="901" y="323" text-anchor="middle" font-size="7" fill="#6b7f95">Realização da</text>
-  <text x="901" y="335" text-anchor="middle" font-size="7" fill="#6b7f95">exposição</text>
+  <text x="901" y="323" text-anchor="middle" font-size="7" fill="#000">Realização da</text>
+  <text x="901" y="335" text-anchor="middle" font-size="7" fill="#000">exposição</text>
   <!-- Assessoria de Imprensa -->
   <rect x="851" y="369" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
   <text x="901" y="391" text-anchor="middle" font-size="16">📰</text>
   <text x="901" y="415" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Assessoria Impr.</text>
-  <text x="901" y="431" text-anchor="middle" font-size="7" fill="#6b7f95">Lançamento</text>
-  <text x="901" y="443" text-anchor="middle" font-size="7" fill="#6b7f95">da exposição</text>
+  <text x="901" y="431" text-anchor="middle" font-size="7" fill="#000">Lançamento</text>
+  <text x="901" y="443" text-anchor="middle" font-size="7" fill="#000">da exposição</text>
 
   <!-- ============ DEZ ============ -->
-  <line x1="1037" y1="110" x2="1037" y2="125" stroke="#6b7f95" stroke-width="1"/>
+  <line x1="1037" y1="110" x2="1037" y2="125" stroke="#000" stroke-width="1"/>
   <circle cx="1037" cy="110" r="5" fill="#1a2e3b" stroke="white" stroke-width="2"/>
   <text x="1037" y="96" text-anchor="middle" font-size="9" font-weight="800" fill="#1a2e3b">DEZ</text>
   <rect x="987" y="125" width="100" height="20" rx="4" fill="#2858a0"/>
@@ -2197,29 +2473,29 @@
   <rect x="987" y="153" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
   <text x="1037" y="175" text-anchor="middle" font-size="16">🎭</text>
   <text x="1037" y="199" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Produtor Cultural</text>
-  <text x="1037" y="215" text-anchor="middle" font-size="7" fill="#6b7f95">Desmontagem e</text>
-  <text x="1037" y="227" text-anchor="middle" font-size="7" fill="#6b7f95">documentação</text>
+  <text x="1037" y="215" text-anchor="middle" font-size="7" fill="#000">Desmontagem e</text>
+  <text x="1037" y="227" text-anchor="middle" font-size="7" fill="#000">documentação</text>
   <!-- Assessoria de Imprensa -->
   <rect x="987" y="261" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
   <text x="1037" y="283" text-anchor="middle" font-size="16">📰</text>
   <text x="1037" y="307" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Assessoria Impr.</text>
-  <text x="1037" y="323" text-anchor="middle" font-size="7" fill="#6b7f95">Cobertura</text>
-  <text x="1037" y="335" text-anchor="middle" font-size="7" fill="#6b7f95">pós-evento</text>
+  <text x="1037" y="323" text-anchor="middle" font-size="7" fill="#000">Cobertura</text>
+  <text x="1037" y="335" text-anchor="middle" font-size="7" fill="#000">pós-evento</text>
 
   <!-- ============ LEGENDA ============ -->
   <line x1="100" y1="500" x2="1032" y2="500" stroke="#e8eef4" stroke-width="1"/>
   <text x="155" y="530" text-anchor="middle" font-size="11">🔍</text>
-  <text x="175" y="534" font-size="9" fill="#6b7f95">Pesquisadora Cultural</text>
+  <text x="175" y="534" font-size="9" fill="#000">Pesquisadora Cultural</text>
   <text x="345" y="530" text-anchor="middle" font-size="11">🎨</text>
-  <text x="365" y="534" font-size="9" fill="#6b7f95">Ilustrador</text>
+  <text x="365" y="534" font-size="9" fill="#000">Ilustrador</text>
   <text x="475" y="530" text-anchor="middle" font-size="11">🎮</text>
-  <text x="495" y="534" font-size="9" fill="#6b7f95">Game Designer</text>
+  <text x="495" y="534" font-size="9" fill="#000">Game Designer</text>
   <text x="620" y="530" text-anchor="middle" font-size="11">🏫</text>
-  <text x="640" y="534" font-size="9" fill="#6b7f95">Articulador Educacional</text>
+  <text x="640" y="534" font-size="9" fill="#000">Articulador Educacional</text>
   <text x="800" y="530" text-anchor="middle" font-size="11">🎭</text>
-  <text x="820" y="534" font-size="9" fill="#6b7f95">Produtor Cultural</text>
+  <text x="820" y="534" font-size="9" fill="#000">Produtor Cultural</text>
   <text x="945" y="530" text-anchor="middle" font-size="11">📰</text>
-  <text x="965" y="534" font-size="9" fill="#6b7f95">Assessoria de Imprensa</text>
+  <text x="965" y="534" font-size="9" fill="#000">Assessoria de Imprensa</text>
   <text x="566" y="565" text-anchor="middle" font-size="8.5" fill="#9aabb8" font-style="italic"></text>
 </svg>
       </div>
@@ -2238,42 +2514,42 @@
         <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:white;border-bottom:1px solid rgba(40,88,160,0.07);">
           <div style="font-size:12px;font-weight:700;color:#468182;">Maio</div>
           <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção</div>
-          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Pesquisadora Cultural:</strong> conceituação dos personagens.<br><strong>Game Designer:</strong> início da produção do jogo.</div>
+          <div style="font-size:11px;color:#000;line-height:1.65;"><strong>Pesquisadora Cultural:</strong> conceituação dos personagens.<br><strong>Game Designer:</strong> início da produção do jogo.</div>
         </div>
         <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:#f9fbfd;border-bottom:1px solid rgba(40,88,160,0.07);">
           <div style="font-size:12px;font-weight:700;color:#468182;">Junho</div>
           <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção</div>
-          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Ilustrador:</strong> ilustração dos personagens.<br><strong>Game Designer:</strong> finalização do jogo.<br><strong>Articulador Educacional:</strong> contato com secretarias e escolas.</div>
+          <div style="font-size:11px;color:#000;line-height:1.65;"><strong>Ilustrador:</strong> ilustração dos personagens.<br><strong>Game Designer:</strong> finalização do jogo.<br><strong>Articulador Educacional:</strong> contato com secretarias e escolas.</div>
         </div>
         <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:white;border-bottom:1px solid rgba(40,88,160,0.07);">
           <div style="font-size:12px;font-weight:700;color:#468182;">Julho</div>
           <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção</div>
-          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Game Designer:</strong> testes do jogo.<br><strong>Articulador Educacional:</strong> treinamento na plataforma.<br><strong>Produtor Cultural:</strong> treinamento na plataforma.</div>
+          <div style="font-size:11px;color:#000;line-height:1.65;"><strong>Game Designer:</strong> testes do jogo.<br><strong>Articulador Educacional:</strong> treinamento na plataforma.<br><strong>Produtor Cultural:</strong> treinamento na plataforma.</div>
         </div>
         <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:#f9fbfd;border-bottom:1px solid rgba(40,88,160,0.07);">
           <div style="font-size:12px;font-weight:700;color:#5fb670;">Agosto</div>
           <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Mobilização</div>
-          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Articulador Educacional:</strong> apresentação às escolas e turmas.<br><strong>Articulador Educacional:</strong> fechamento da mobilização.</div>
+          <div style="font-size:11px;color:#000;line-height:1.65;"><strong>Articulador Educacional:</strong> apresentação às escolas e turmas.<br><strong>Articulador Educacional:</strong> fechamento da mobilização.</div>
         </div>
         <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:white;border-bottom:1px solid rgba(40,88,160,0.07);">
           <div style="font-size:12px;font-weight:700;color:#5fb670;">Setembro</div>
           <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Jornada</div>
-          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Articulador Educacional:</strong> acompanhamento da jornada.<br><strong>Produtor Cultural:</strong> preparação territorial.</div>
+          <div style="font-size:11px;color:#000;line-height:1.65;"><strong>Articulador Educacional:</strong> acompanhamento da jornada.<br><strong>Produtor Cultural:</strong> preparação territorial.</div>
         </div>
         <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:#f9fbfd;border-bottom:1px solid rgba(40,88,160,0.07);">
           <div style="font-size:12px;font-weight:700;color:#5fb670;">Outubro</div>
           <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Curadoria</div>
-          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Articulador Educacional:</strong> coleta dos projetos.<br><strong>Produtor Cultural:</strong> curadoria e conexão com artistas.<br><strong>Assessoria de Imprensa:</strong> pré-divulgação da exposição.</div>
+          <div style="font-size:11px;color:#000;line-height:1.65;"><strong>Articulador Educacional:</strong> coleta dos projetos.<br><strong>Produtor Cultural:</strong> curadoria e conexão com artistas.<br><strong>Assessoria de Imprensa:</strong> pré-divulgação da exposição.</div>
         </div>
         <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:white;border-bottom:1px solid rgba(40,88,160,0.07);">
           <div style="font-size:12px;font-weight:700;color:#38a349;">Novembro</div>
           <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Exposição</div>
-          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Articulador Educacional:</strong> encerramento da articulação.<br><strong>Produtor Cultural:</strong> realização da exposição.<br><strong>Assessoria de Imprensa:</strong> lançamento da exposição.</div>
+          <div style="font-size:11px;color:#000;line-height:1.65;"><strong>Articulador Educacional:</strong> encerramento da articulação.<br><strong>Produtor Cultural:</strong> realização da exposição.<br><strong>Assessoria de Imprensa:</strong> lançamento da exposição.</div>
         </div>
         <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:#f9fbfd;">
           <div style="font-size:12px;font-weight:700;color:#1a2e3b;">Dezembro</div>
           <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Pós-produção</div>
-          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Produtor Cultural:</strong> desmontagem da exposição e documentação.<br><strong>Assessoria de Imprensa:</strong> cobertura pós-evento.</div>
+          <div style="font-size:11px;color:#000;line-height:1.65;"><strong>Produtor Cultural:</strong> desmontagem da exposição e documentação.<br><strong>Assessoria de Imprensa:</strong> cobertura pós-evento.</div>
         </div>
         </div>
       </div>
@@ -2322,7 +2598,7 @@
 
         <div class="dz-media lg">
           <figure class="dz-fig">
-            <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-01-uacu-livro-tikuna-dois-estados.png" alt="U'acü – livro ilustrado Tikuna">
+            <img src="https://the-blue-city.github.io/exposicao/ref-01-uacu-livro-tikuna-dois-estados.png" alt="U'acü – livro ilustrado Tikuna">
             <figcaption>U'acü – livro ilustrado Tikuna</figcaption>
           </figure>
           <div>
@@ -2334,7 +2610,7 @@
 
         <div class="dz-media lg">
           <figure class="dz-fig">
-            <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-02-ritual-cura-acacu-livro-tikuna.png" alt="Ritual de cura – livro Tikuna">
+            <img src="https://the-blue-city.github.io/exposicao/ref-02-ritual-cura-acacu-livro-tikuna.png" alt="Ritual de cura – livro Tikuna">
             <figcaption>Ritual de cura – livro Tikuna</figcaption>
           </figure>
           <div>
@@ -2384,11 +2660,11 @@
         </ul>
         <div class="dz-imgrow">
           <figure class="dz-fig">
-            <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-03-pintura-urucum-kayapo-xikrin-a.png" alt="Pintura de urucum – Kayapó/Xikrin">
+            <img src="https://the-blue-city.github.io/exposicao/ref-03-pintura-urucum-kayapo-xikrin-a.png" alt="Pintura de urucum – Kayapó/Xikrin">
             <figcaption>Kayapó/Xikrin</figcaption>
           </figure>
           <figure class="dz-fig">
-            <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-04-pintura-urucum-kayapo-xikrin-b.png" alt="Pintura de urucum – Kayapó/Xikrin">
+            <img src="https://the-blue-city.github.io/exposicao/ref-04-pintura-urucum-kayapo-xikrin-b.png" alt="Pintura de urucum – Kayapó/Xikrin">
             <figcaption>Kayapó/Xikrin</figcaption>
           </figure>
         </div>
@@ -2400,7 +2676,7 @@
           <li>Referência: mascarado Tikuna da Festa da Moça Nova (Worecü)</li>
         </ul>
         <figure class="dz-fig dz-imgsingle">
-          <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-05-mascarado-tururi-tikuna.png" alt="Mascarado Tikuna – tururi">
+          <img src="https://the-blue-city.github.io/exposicao/ref-05-mascarado-tururi-tikuna.png" alt="Mascarado Tikuna – tururi">
           <figcaption>Mascarado Tikuna – tururi</figcaption>
         </figure>
 
@@ -2411,7 +2687,7 @@
         </ul>
         <div class="dz-imgrow">
           <figure class="dz-fig">
-            <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-06-cocar-enawene-nawe.png" alt="Cocar – Enawenê-Nawê">
+            <img src="https://the-blue-city.github.io/exposicao/ref-06-cocar-enawene-nawe.png" alt="Cocar – Enawenê-Nawê">
             <figcaption>Cocar – Enawenê-Nawê</figcaption>
           </figure>
           <figure class="dz-fig">
@@ -2492,7 +2768,7 @@
 
         <div class="dz-media" style="margin-top:24px;">
           <figure class="dz-fig">
-            <img src="https://raw.githubusercontent.com/The-Blue-City/content/main/SantoCruzMarianoClementeTikuna.jpg" alt="Santo Cruz Mariano Clemente">
+            <img src="https://the-blue-city.github.io/content/SantoCruzMarianoClementeTikuna.jpg" alt="Santo Cruz Mariano Clemente">
             <figcaption>Santo Cruz Mariano Clemente</figcaption>
           </figure>
           <div>
@@ -2517,7 +2793,7 @@
             </p>
           </div>
           <figure class="dz-fig">
-            <img src="https://raw.githubusercontent.com/The-Blue-City/content/main/RoseSalvador.jpg" alt="Rose Salvador">
+            <img src="https://the-blue-city.github.io/content/RoseSalvador.jpg" alt="Rose Salvador">
             <figcaption>Rose Salvador</figcaption>
           </figure>
         </div>
@@ -2597,7 +2873,7 @@
 
         <div class="dz-media lg">
           <figure class="dz-fig">
-            <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-01-movimento-turbante-buzios.png" alt="Movimento, turbante e búzios">
+            <img src="https://the-blue-city.github.io/exposicao/ref-01-movimento-turbante-buzios.png" alt="Movimento, turbante e búzios">
             <figcaption>Movimento, turbante e búzios</figcaption>
           </figure>
           <div>
@@ -2610,7 +2886,7 @@
 
         <div class="dz-media lg">
           <figure class="dz-fig">
-            <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-06-bufalo-simbolo-oya.png" alt="Búfalo como símbolo de Oyá">
+            <img src="https://the-blue-city.github.io/exposicao/ref-06-bufalo-simbolo-oya.png" alt="Búfalo como símbolo de Oyá">
             <figcaption>Búfalo como símbolo de Oyá</figcaption>
           </figure>
           <div>
@@ -2650,7 +2926,7 @@
         <div class="dz-h2">Características Físicas e Visuais</div>
         <div class="dz-media lg">
           <figure class="dz-fig">
-            <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-04-adornos-buzios-presenca-frontal.png" alt="Adornos, búzios e presença frontal">
+            <img src="https://the-blue-city.github.io/exposicao/ref-04-adornos-buzios-presenca-frontal.png" alt="Adornos, búzios e presença frontal">
             <figcaption>Adornos, búzios e presença frontal</figcaption>
           </figure>
           <div>
@@ -2661,7 +2937,7 @@
 
         <div class="dz-media lg">
           <figure class="dz-fig">
-            <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-02-saia-rodada-camadas-borboletas.png" alt="Saia rodada em camadas e borboletas">
+            <img src="https://the-blue-city.github.io/exposicao/ref-02-saia-rodada-camadas-borboletas.png" alt="Saia rodada em camadas e borboletas">
             <figcaption>Saia rodada em camadas e borboletas</figcaption>
           </figure>
           <div>
@@ -2680,11 +2956,11 @@
         </ul>
         <div class="dz-imgrow">
           <figure class="dz-fig">
-            <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-03-bufalo-espada-sao-jorge-eruexim.png" alt="Búfalo, espada-de-são-jorge e eruexim">
+            <img src="https://the-blue-city.github.io/exposicao/ref-03-bufalo-espada-sao-jorge-eruexim.png" alt="Búfalo, espada-de-são-jorge e eruexim">
             <figcaption>Búfalo, espada-de-são-jorge e eruexim</figcaption>
           </figure>
           <figure class="dz-fig">
-            <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-05-veu-borboletas-saia-buzios.png" alt="Véu, borboletas e saia com búzios">
+            <img src="https://the-blue-city.github.io/exposicao/ref-05-veu-borboletas-saia-buzios.png" alt="Véu, borboletas e saia com búzios">
             <figcaption>Véu, borboletas e saia com búzios</figcaption>
           </figure>
         </div>
@@ -2742,11 +3018,11 @@
         </div>
         <div class="dz-imgrow">
           <figure class="dz-fig">
-            <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-07-movimento-eruexim.png" alt="Movimento e eruexim">
+            <img src="https://the-blue-city.github.io/exposicao/ref-07-movimento-eruexim.png" alt="Movimento e eruexim">
             <figcaption>Movimento e eruexim</figcaption>
           </figure>
           <figure class="dz-fig">
-            <img src="https://raw.githubusercontent.com/The-Blue-City/exposicao/main/ref-08-postura-guerreira-contas-longas.png" alt="Postura guerreira e contas longas">
+            <img src="https://the-blue-city.github.io/exposicao/ref-08-postura-guerreira-contas-longas.png" alt="Postura guerreira e contas longas">
             <figcaption>Postura guerreira e contas longas</figcaption>
           </figure>
         </div>
@@ -2782,7 +3058,7 @@
 
         <div class="dz-media" style="margin-top:24px;">
           <figure class="dz-fig">
-            <div class="dz-ph" style="aspect-ratio:3/4;">[ foto<br>José Neri ]</div>
+            <img src="https://the-blue-city.github.io/exposicao/babalorixa.jpg" alt="José Neri – babalorixá">
             <figcaption>José Neri</figcaption>
           </figure>
           <div>
@@ -2809,7 +3085,8 @@
   </main>
 
 <script>
-  const totalPages = 10;
+  // Ordem de navegação igual à do menu lateral (Apresentação, Pesquisadora, U'acü, Afefé, Ilustrador, Game Designer, Articulador, Escola IFTO, ...)
+  const navOrder = [0, 1, 8, 9, 2, 3, 4, 10, 11, 5, 6, 7];
   let current = 0;
 
   function goTo(index) {
@@ -2826,11 +3103,13 @@
   }
 
   document.addEventListener('keydown', e => {
+    var pos = navOrder.indexOf(current);
+    if (pos === -1) return;
     if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-      if (current < totalPages - 1) goTo(current + 1);
+      if (pos < navOrder.length - 1) goTo(navOrder[pos + 1]);
     }
     if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-      if (current > 0) goTo(current - 1);
+      if (pos > 0) goTo(navOrder[pos - 1]);
     }
   });
 </script>
