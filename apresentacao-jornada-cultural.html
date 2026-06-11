@@ -420,12 +420,13 @@
   .cert-grouppill-aluno { color:#2d7a3e; background:var(--green-light); }
   .cert-group-sub { font-size:12.5px; color:var(--muted); font-weight:600; }
   .cert-conheca { margin-top:32px; text-align:center; }
-  .cert-conheca-btn { display:inline-flex; align-items:center; justify-content:center; gap:10px; max-width:720px; background:#5123a4; color:#fff; font-size:15px; font-weight:700; line-height:1.45; text-decoration:none; padding:16px 30px; border-radius:14px; box-shadow:0 6px 20px rgba(81,35,164,0.28); transition:transform .15s ease, box-shadow .15s ease, background .15s ease; }
-  .cert-conheca-btn strong { font-weight:800; }
-  .cert-conheca-btn::after { content:"→"; font-weight:800; font-size:17px; }
-  .cert-conheca-btn:hover { background:#45209a; transform:translateY(-1px); box-shadow:0 10px 26px rgba(81,35,164,0.36); }
+  .cert-conheca-btn { display:inline-block; max-width:none; white-space:nowrap; background:#e7ddf7; color:#000000; font-size:14.5px; font-weight:500; line-height:1.5; text-decoration:none; text-align:center; padding:14px 30px; border-radius:12px; box-shadow:0 4px 14px rgba(81,35,164,0.16); transition:transform .15s ease, box-shadow .15s ease, background .15s ease; }
+  .cert-conheca-btn strong { font-weight:600; }
+  .cert-conheca-btn::after { content:"\2192"; margin-left:8px; font-weight:800; font-size:17px; }
+  .cert-conheca-btn:hover { background:#d7c6f2; transform:translateY(-1px); box-shadow:0 8px 20px rgba(81,35,164,0.24); }
   @media (max-width:900px) { .cert-side-cards { grid-template-columns:1fr; } }
-  @media (max-width:560px) { .cert-two { grid-template-columns:1fr; gap:28px; } .cert-side-cards .benefit-card { min-height:0; } }
+  @media (max-width:560px) {
+    .cert-conheca-btn { white-space:normal; font-size:13.5px; padding:14px 20px; } .cert-two { grid-template-columns:1fr; gap:28px; } .cert-side-cards .benefit-card { min-height:0; } }
 </style>
 </head>
 <body>
@@ -784,7 +785,7 @@
         <div class="actor-body">
           <h3 data-i18n="atores.a1.h">Escolas parceiras</h3>
           <div class="actor-role" data-i18n="atores.a1.r">Território da jornada</div>
-          <p data-i18n="atores.a1.p">Escolas técnicas ou de ensino médio são convidadas a abrir suas portas para a jornada – o jogo é uma atividade extracurricular, jogada em casa ou em horário livre. A escola autoriza a apresentação do projeto aos estudantes e fica registrada como parceira na plataforma.</p>
+          <p data-i18n="atores.a1.p">Escolas técnicas ou de ensino médio e ensino superior são convidadas a abrir suas portas para a jornada – o jogo é uma atividade extracurricular, jogada em casa ou em horário livre. A escola autoriza a apresentação do projeto aos estudantes e fica registrada como parceira na plataforma.</p>
           <span class="actor-deliv" data-i18n="atores.a1.d">Recebe: reconhecimento como escola parceira · selo institucional na plataforma · exposição aberta à sua comunidade</span>
         </div>
       </div>
@@ -1102,7 +1103,7 @@
         </div>
         <div style="margin-top:18px;padding:14px 16px;background:var(--bg);border-radius:8px;border-left:3px solid var(--blue);">
           <div style="font-size:11px;font-weight:700;color:var(--blue);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.6px;" data-i18n="modelo.crit.label">Critério de seleção do tema</div>
-          <div style="font-size:12.5px;color:var(--muted);line-height:1.6;" data-i18n="modelo.crit.text">O tema precisa ser ao mesmo tempo relevante para o setor do patrocinador e materializável em projetos viáveis por estudantes do ensino médio – gerando saída cultural com densidade local.</div>
+          <div style="font-size:12.5px;color:var(--muted);line-height:1.6;" data-i18n="modelo.crit.text">O tema precisa ser ao mesmo tempo relevante para o setor do patrocinador e materializável em projetos viáveis por estudantes do ensino médio e ensino superior – gerando saída cultural com densidade local.</div>
         </div>
       </div>
 
@@ -1113,7 +1114,7 @@
         <div style="display:flex;flex-direction:column;gap:8px;">
           <div style="padding:11px 14px;background:var(--bg);border-radius:8px;border-left:3px solid var(--teal);">
             <div style="font-size:12.5px;font-weight:700;color:var(--dark);margin-bottom:2px;" data-i18n="modelo.c1.label">Critério 1 · Ensino público</div>
-            <div style="font-size:11.5px;color:var(--muted);line-height:1.5;" data-i18n="modelo.c1.text">Cidades com rede consolidada de escolas técnicas ou de ensino médio público integral.</div>
+            <div style="font-size:11.5px;color:var(--muted);line-height:1.5;" data-i18n="modelo.c1.text">Cidades com rede consolidada de escolas técnicas ou de ensino médio e ensino superior público integral.</div>
           </div>
           <div style="padding:11px 14px;background:var(--bg);border-radius:8px;border-left:3px solid var(--teal);">
             <div style="font-size:12.5px;font-weight:700;color:var(--dark);margin-bottom:2px;" data-i18n="modelo.c2.label">Critério 2 · Perfil etário</div>
@@ -1460,7 +1461,7 @@
       'atores.lead': 'A Missão Cidade Azul reúne sete atores que se encontram em torno da mesma jornada – cada um com seu papel, sua entrega e sua contrapartida. É essa convergência que dá ao projeto força de programa cultural.',
       'atores.a1.h': 'Escolas parceiras',
       'atores.a1.r': 'Território da jornada',
-      'atores.a1.p': 'Escolas técnicas ou de ensino médio são convidadas a abrir suas portas para a jornada – o jogo é uma atividade extracurricular, jogada em casa ou em horário livre. A escola autoriza a apresentação do projeto aos estudantes e fica registrada como parceira na plataforma.',
+      'atores.a1.p': 'Escolas técnicas ou de ensino médio e ensino superior são convidadas a abrir suas portas para a jornada – o jogo é uma atividade extracurricular, jogada em casa ou em horário livre. A escola autoriza a apresentação do projeto aos estudantes e fica registrada como parceira na plataforma.',
       'atores.a1.d': 'Recebe: reconhecimento como escola parceira · selo institucional na plataforma · exposição aberta à sua comunidade',
       'atores.a2.h': 'Estudantes',
       'atores.a2.r': 'Protagonistas',
@@ -1569,12 +1570,12 @@
       'modelo.tema7': 'Biodiversidade urbana',
       'modelo.tema8': 'Economia circular',
       'modelo.crit.label': 'Critério de seleção do tema',
-      'modelo.crit.text': 'O tema precisa ser ao mesmo tempo relevante para o setor do patrocinador e materializável em projetos viáveis por estudantes do ensino médio – gerando saída cultural com densidade local.',
+      'modelo.crit.text': 'O tema precisa ser ao mesmo tempo relevante para o setor do patrocinador e materializável em projetos viáveis por estudantes do ensino médio e ensino superior – gerando saída cultural com densidade local.',
       'modelo.v2.label': 'Variável configurável 02',
       'modelo.v2.h': '📍 A cidade-território',
       'modelo.v2.p': 'A cidade onde a jornada acontece é definida em parceria com o patrocinador. A escola parceira é então selecionada localmente segundo critérios de adesão, perfil etário e contexto urbano.',
       'modelo.c1.label': 'Critério 1 · Ensino público',
-      'modelo.c1.text': 'Cidades com rede consolidada de escolas técnicas ou de ensino médio público integral.',
+      'modelo.c1.text': 'Cidades com rede consolidada de escolas técnicas ou de ensino médio e ensino superior público integral.',
       'modelo.c2.label': 'Critério 2 · Perfil etário',
       'modelo.c2.text': 'Disponibilidade de turmas com estudantes entre 16 e 20 anos – o público-alvo do jogo.',
       'modelo.c3.label': 'Critério 3 · Contexto urbano',
@@ -1771,7 +1772,7 @@
       'atores.lead': 'Misión Ciudad Azul reúne siete actores que se encuentran en torno a una misma jornada – cada uno con su rol, su entrega y su contrapartida. Es esa convergencia la que da al proyecto fuerza de programa cultural.',
       'atores.a1.h': 'Escuelas asociadas',
       'atores.a1.r': 'Territorio de la jornada',
-      'atores.a1.p': 'Escuelas técnicas o de educación secundaria son invitadas a abrir sus puertas a la jornada – el juego es una actividad extracurricular, jugada en casa o en horario libre. La escuela autoriza la presentación del proyecto a los estudiantes y queda registrada como aliada en la plataforma.',
+      'atores.a1.p': 'Escuelas técnicas, de educación secundaria o de educación superior son invitadas a abrir sus puertas a la jornada – el juego es una actividad extracurricular, jugada en casa o en horario libre. La escuela autoriza la presentación del proyecto a los estudiantes y queda registrada como aliada en la plataforma.',
       'atores.a1.d': 'Recibe: reconocimiento como escuela aliada · sello institucional en la plataforma · exposición abierta a su comunidad',
       'atores.a2.h': 'Estudiantes',
       'atores.a2.r': 'Protagonistas',
@@ -1880,12 +1881,12 @@
       'modelo.tema7': 'Biodiversidad urbana',
       'modelo.tema8': 'Economía circular',
       'modelo.crit.label': 'Criterio de selección del tema',
-      'modelo.crit.text': 'El tema debe ser, al mismo tiempo, relevante para el sector del patrocinador y materializable en proyectos viables para estudiantes de secundaria – generando un resultado cultural con densidad local.',
+      'modelo.crit.text': 'El tema debe ser, al mismo tiempo, relevante para el sector del patrocinador y materializable en proyectos viables para estudiantes de secundaria y de educación superior – generando un resultado cultural con densidad local.',
       'modelo.v2.label': 'Variable configurable 02',
       'modelo.v2.h': '📍 La ciudad-territorio',
       'modelo.v2.p': 'La ciudad donde se realiza la jornada se define en alianza con el patrocinador. La escuela aliada se selecciona luego localmente según criterios de adhesión, perfil etario y contexto urbano.',
       'modelo.c1.label': 'Criterio 1 · Educación pública',
-      'modelo.c1.text': 'Ciudades con red consolidada de escuelas técnicas o de secundaria pública integral.',
+      'modelo.c1.text': 'Ciudades con red consolidada de escuelas técnicas o de secundaria y educación superior pública integral.',
       'modelo.c2.label': 'Criterio 2 · Perfil etario',
       'modelo.c2.text': 'Disponibilidad de grupos con estudiantes entre 16 y 20 años – el público objetivo del juego.',
       'modelo.c3.label': 'Criterio 3 · Contexto urbano',
@@ -2082,7 +2083,7 @@
       'atores.lead': 'Blue City Mission brings together seven actors gathered around the same journey – each with their role, their contribution and their return. This convergence is what gives the project the strength of a cultural program.',
       'atores.a1.h': 'Partner schools',
       'atores.a1.r': 'Territory of the journey',
-      'atores.a1.p': 'Technical or secondary schools are invited to open their doors to the journey – the game is an extracurricular activity, played at home or during free time. The school authorizes the project\u2019s presentation to students and is registered as a partner on the platform.',
+      'atores.a1.p': 'Technical, secondary and higher-education institutions are invited to open their doors to the journey – the game is an extracurricular activity, played at home or during free time. The school authorizes the project\u2019s presentation to students and is registered as a partner on the platform.',
       'atores.a1.d': 'Receives: recognition as a partner school · institutional seal on the platform · exhibition open to its community',
       'atores.a2.h': 'Students',
       'atores.a2.r': 'Protagonists',
@@ -2191,12 +2192,12 @@
       'modelo.tema7': 'Urban biodiversity',
       'modelo.tema8': 'Circular economy',
       'modelo.crit.label': 'Theme selection criterion',
-      'modelo.crit.text': 'The theme must be both relevant to the sponsor\u2019s sector and materializable in projects viable for secondary-school students – generating a cultural output with local density.',
+      'modelo.crit.text': 'The theme must be both relevant to the sponsor\u2019s sector and materializable in projects viable for secondary-school and higher-education students – generating a cultural output with local density.',
       'modelo.v2.label': 'Configurable variable 02',
       'modelo.v2.h': '📍 The city-territory',
       'modelo.v2.p': 'The city where the journey takes place is defined in partnership with the sponsor. The partner school is then selected locally based on adherence, age profile and urban context.',
       'modelo.c1.label': 'Criterion 1 · Public education',
-      'modelo.c1.text': 'Cities with a consolidated network of technical or full-time public secondary schools.',
+      'modelo.c1.text': 'Cities with a consolidated network of technical, secondary or higher-education full-time public institutions.',
       'modelo.c2.label': 'Criterion 2 · Age profile',
       'modelo.c2.text': 'Availability of classes with students between 16 and 20 – the game\u2019s target audience.',
       'modelo.c3.label': 'Criterion 3 · Urban context',

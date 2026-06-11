@@ -229,10 +229,10 @@
   .cert-side-cards .benefit-card { min-height:240px; }
   .cert-side-cards .benefit-tag { margin-top:auto; }
   .cert-conheca { margin-top:32px; text-align:center; }
-  .cert-conheca-btn { display:inline-flex; align-items:center; justify-content:center; gap:10px; max-width:720px; background:#5123a4; color:#fff; font-size:15px; font-weight:700; line-height:1.45; text-decoration:none; padding:16px 30px; border-radius:14px; box-shadow:0 6px 20px rgba(81,35,164,0.28); transition:transform .15s ease, box-shadow .15s ease, background .15s ease; }
-  .cert-conheca-btn strong { font-weight:800; }
-  .cert-conheca-btn::after { content:"→"; font-weight:800; font-size:17px; }
-  .cert-conheca-btn:hover { background:#45209a; transform:translateY(-1px); box-shadow:0 10px 26px rgba(81,35,164,0.36); }
+  .cert-conheca-btn { display:inline-block; max-width:none; white-space:nowrap; background:#e7ddf7; color:#000000; font-size:14.5px; font-weight:500; line-height:1.5; text-decoration:none; text-align:center; padding:14px 30px; border-radius:12px; box-shadow:0 4px 14px rgba(81,35,164,0.16); transition:transform .15s ease, box-shadow .15s ease, background .15s ease; }
+  .cert-conheca-btn strong { font-weight:600; }
+  .cert-conheca-btn::after { content:"\2192"; margin-left:8px; font-weight:800; font-size:17px; }
+  .cert-conheca-btn:hover { background:#d7c6f2; transform:translateY(-1px); box-shadow:0 8px 20px rgba(81,35,164,0.24); }
   .cert-group-head { display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin:0; }
   .cert-grouppill { font-size:11px; font-weight:800; letter-spacing:0.5px; text-transform:uppercase; padding:6px 14px; border-radius:20px; display:inline-flex; align-items:center; gap:7px; }
   .cert-grouppill-aluno { color:#2d7a3e; background:var(--green-light); }
@@ -369,6 +369,7 @@
     .cert-side-cards { grid-template-columns:1fr; }
   }
   @media (max-width:560px) {
+    .cert-conheca-btn { white-space:normal; font-size:13.5px; padding:14px 20px; }
     .cert-two { grid-template-columns:1fr; gap:28px; }
     .cert-side-cards .benefit-card { min-height:0; }
     .cert-block { padding:24px 20px; }
@@ -894,7 +895,7 @@
     <div class="cta-block">
       <div class="cta-eyebrow">Próximo passo</div>
       <h2 class="cta-title">Seja uma das escolas parceiras <br class="br-desktop">da Missão Termômetro Zero em Palmas</h2>
-      <p class="cta-desc">Estamos convidando escolas técnicas e de ensino médio de Palmas. Se a sua escola tem interesse em receber a jornada em 2026, mande um e-mail que nosso time agendará uma reunião institucional para apresentar o projeto com profundidade e responder dúvidas.</p>
+      <p class="cta-desc">Estamos convidando escolas técnicas e de ensino médio e ensino superior de Palmas. Se a sua escola tem interesse em receber a jornada em 2026, mande um e-mail que nosso time agendará uma reunião institucional para apresentar o projeto com profundidade e responder dúvidas.</p>
       <div class="cta-contact">
         <div class="cta-contact-item">
           <div class="cta-contact-icon">✉️</div>
