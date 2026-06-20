@@ -1703,11 +1703,11 @@
       <div class="section-heading">Escolas Candidatas</div>
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:32px;">
         <div class="feature-card" style="border-left:3px solid var(--green);">
-          <div class="feature-card-header"><div class="feature-icon fi-green">⭐</div><h3>IFTO – Campus Palmas</h3></div>
+          <div class="feature-card-header"><div class="feature-icon fi-green">⭐</div><h3>IFTO – Campus Palmas</h3><span style="margin-left:auto;display:inline-flex;align-items:center;gap:5px;background:#e8f5e9;color:#2e9e4f;font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;white-space:nowrap;">✓ Aderiu</span></div>
           <p>Instituto Federal do Tocantins, Plano Diretor Sul – ensino médio integrado técnico de alta qualidade, excelente infraestrutura e perfil fortemente alinhado ao projeto.</p>
         </div>
         <div class="feature-card" style="border-left:3px solid var(--green);">
-          <div class="feature-card-header"><div class="feature-icon fi-green">⭐</div><h3>UFT – Campus Palmas</h3></div>
+          <div class="feature-card-header"><div class="feature-icon fi-green">⭐</div><h3>UFT – Campus Palmas</h3><span style="margin-left:auto;display:inline-flex;align-items:center;gap:5px;background:#e8f5e9;color:#2e9e4f;font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;white-space:nowrap;">✓ Aderiu</span></div>
           <p>Universidade Federal do Tocantins, principal instituição pública de ensino superior do estado – vocação ambiental (Engenharia Ambiental mais antiga do país) e perfil fortemente alinhado ao projeto através da Proex e da Inovato (Agência de Inovação da UFT).</p>
         </div>
         <div class="feature-card">
@@ -3194,8 +3194,8 @@
     var me = L.map('map-escolas', { zoomControl: true, scrollWheelZoom: false }).setView([-10.230, -48.318], 12);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap contributors', maxZoom: 19 }).addTo(me);
     var schools = [
-      { lat: -10.1992652, lng: -48.3123871, name: 'IFTO – Campus Palmas', note: 'Preferencial · Plano Diretor Sul', preferred: true },
-      { lat: -10.1800446, lng: -48.3627952, name: 'UFT – Campus Palmas', note: 'Preferencial · Plano Diretor Norte', preferred: true },
+      { lat: -10.1992652, lng: -48.3123871, name: 'IFTO – Campus Palmas', note: '✓ Aderiu · Plano Diretor Sul', preferred: true },
+      { lat: -10.1800446, lng: -48.3627952, name: 'UFT – Campus Palmas', note: '✓ Aderiu · Plano Diretor Norte', preferred: true },
       { lat: -10.2330763, lng: -48.3215427, name: 'CEM Tiradentes', note: 'Plano Diretor Sul', preferred: false },
       { lat: -10.1650008, lng: -48.3451332, name: 'CEM Castro Alves', note: 'Plano Diretor Norte', preferred: false },
       { lat: -10.2524012, lng: -48.3219074, name: 'Colégio Est. São José', note: 'Plano Diretor Sul', preferred: false },
