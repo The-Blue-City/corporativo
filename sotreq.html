@@ -34,9 +34,9 @@
     --green-light: #d4f0d9;
     --dark: #1a2e3b;
     --text: #2c3e50;
-    --muted: #6b7f95;
+    --muted: #000;
     --bg: #f4f8fc;
-    --sidebar-w: 280px;
+    --sidebar-w: 230px;
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family:'Montserrat',sans-serif; background:var(--bg); color:var(--text); display:flex; min-height:100vh; }
@@ -242,6 +242,125 @@
     .stats-row { grid-template-columns:1fr !important; }
     .responsive-grid-4 { grid-template-columns:1fr !important; }
   }
+
+  /* ── BADGES DE PAPEL (dossiês) ── */
+  .role-badge { display:inline-flex; align-items:center; gap:8px; padding:6px 14px; border-radius:20px; font-size:11px; font-weight:700; letter-spacing:0.5px; margin-bottom:14px; }
+  .rb-blue  { background:var(--blue-light); color:var(--blue); }
+  .rb-teal  { background:var(--teal-light); color:var(--teal); }
+  .rb-green { background:var(--green-light); color:#38a349; }
+
+  /* ── DOSSIÊS DOS PERSONAGENS ── */
+  .dz-research {
+    background: var(--bg); border: 1px solid #e0e8f0;
+    border-radius: 10px; padding: 14px 18px; margin-top: 20px;
+  }
+  .dz-research strong {
+    display: block; font-size: 10px; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 6px;
+  }
+  .dz-research p { font-size: 12px; color: #1a1a1a; line-height: 1.6; }
+  .dz-quote {
+    border-radius: 10px; padding: 18px 22px; margin-top: 16px;
+    font-size: 13px; color: #000; line-height: 1.75;
+  }
+  .dz-quote.sol   { background: #fdf8ef; border: 1px solid #f0e2c8; }
+  .dz-quote.vento { background: #faf2f3; border: 1px solid #ecd5d9; }
+  .dz-h2 {
+    font-size: 21px; font-weight: 800;
+    color: #1a1a1a; line-height: 1.25; margin-bottom: 14px;
+  }
+  .dz-h3 { font-size: 14px; font-weight: 700; color: #000; margin: 22px 0 8px; }
+  .dz-section { margin-bottom: 44px; }
+  .dz-section > p, .dz-media p { font-size: 13px; color: #1a1a1a; margin-bottom: 12px; line-height: 1.7; }
+  .dz-list { list-style: none; margin: 0 0 12px; padding: 0; }
+  .dz-list li {
+    font-size: 13px; color: #1a1a1a;
+    padding-left: 18px; position: relative; margin-bottom: 7px; line-height: 1.6;
+  }
+  .dz-list li::before { content: '•'; position: absolute; left: 4px; color: var(--teal); font-weight: 700; }
+  .dz-fig {
+    background: white; border: 1px solid #e0e8f0;
+    border-radius: 12px; overflow: hidden; margin: 0;
+  }
+  .dz-fig img { display: block; width: 100%; height: auto; }
+  .dz-fig .dz-ph {
+    aspect-ratio: 3/4;
+    background: #fdf2e6; border-bottom: 2px dashed #e07b20;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; color: #e07b20; font-weight: 600; text-align: center;
+    line-height: 1.5; padding: 16px;
+  }
+  .dz-fig figcaption {
+    padding: 8px 12px; font-size: 11px;
+    color: #1a1a1a; font-weight: 600; text-align: center;
+  }
+  .dz-media { display: grid; grid-template-columns: 250px 1fr; gap: 24px; align-items: start; margin: 18px 0; }
+  .dz-media.rev { grid-template-columns: 1fr 250px; }
+  .dz-media .dz-h3:first-child { margin-top: 0; }
+  .dz-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .dz-media.lg { grid-template-columns: 420px 1fr; }
+  .dz-imgrow { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0 8px; align-items: start; }
+  .dz-imgrow .dz-ph { aspect-ratio: 4/3; }
+  .dz-imgsingle { max-width: 460px; margin: 16px auto 8px; }
+  .dz-states { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px; }
+  .dz-state { border-radius: 12px; padding: 20px 22px; border: 1px solid #e0e8f0; background: white; }
+  .dz-state h4 { font-size: 12px; font-weight: 800; letter-spacing: 0.8px; margin-bottom: 12px; }
+  .dz-state p { font-size: 12px; margin-bottom: 6px; color: #1a1a1a; line-height: 1.6; }
+  .dz-state p b { color: #1a1a1a; font-weight: 700; }
+  .dz-state.blocked { background: #f2f4f6; }
+  .dz-state.blocked h4 { color: #1a1a1a; }
+  .dz-state.full-sol   { background: #fdf2d4; border-color: #f3dca0; }
+  .dz-state.full-sol h4 { color: #C0392B; }
+  .dz-state.full-vento { background: #faf2f3; border-color: #e3c3ca; }
+  .dz-state.full-vento h4 { color: #6E1F2E; }
+  .dz-palette { width: 100%; border-collapse: collapse; margin-top: 16px; background: white; border-radius: 12px; overflow: hidden; border: 1px solid #e0e8f0; }
+  .dz-palette th {
+    text-align: left; padding: 10px 14px;
+    background: var(--dark); color: white;
+    font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+  }
+  .dz-palette td { padding: 10px 14px; border-bottom: 1px solid #eef2f6; font-size: 12px; color: #1a1a1a; }
+  .dz-palette tr:last-child td { border-bottom: none; }
+  .dz-palette td b { color: #1a1a1a; font-weight: 700; }
+  .dz-swatch { width: 38px; height: 24px; border-radius: 6px; border: 1px solid rgba(0,0,0,0.12); display: block; }
+  .dz-palette code { font-family: 'Courier New', monospace; font-size: 11px; color: #1a1a1a; }
+  .dz-note {
+    margin-top: 14px; background: white; border: 1px solid #e0e8f0;
+    border-radius: 0 10px 10px 0; padding: 14px 18px;
+    font-size: 12px; color: #1a1a1a; line-height: 1.7;
+  }
+  .dz-note.sol   { border-left: 3px solid #F5A623; }
+  .dz-note.vento { border-left: 3px solid #6E1F2E; }
+  .dz-note b { color: #1a1a1a; }
+  .dz-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; }
+  .dz-card {
+    background: white; border: 1px solid #e0e8f0;
+    border-radius: 12px; padding: 18px 20px;
+  }
+  .dz-card h4 { font-size: 13px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px; }
+  .dz-card p { font-size: 12px; color: #1a1a1a; line-height: 1.65; margin-bottom: 0; }
+  .dz-card.wide { grid-column: 1 / -1; }
+  .dz-card .dz-list li { font-size: 12px; color: #1a1a1a; }
+  .dz-mood { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px; align-items: start; }
+  .dz-credit {
+    margin-top: 40px; padding-top: 20px;
+    border-top: 1px solid #e0e8f0;
+    text-align: center; font-size: 12px; color: #1a1a1a;
+  }
+  .dz-credit b { color: #1a1a1a; }
+  @media (max-width: 680px) {
+    .dz-media, .dz-media.rev, .dz-media.lg, .dz-imgrow { grid-template-columns: 1fr; }
+    .dz-states, .dz-grid, .dz-mood { grid-template-columns: 1fr; }
+    .dz-palette { font-size: 11px; }
+    .dz-palette th, .dz-palette td { padding: 8px 9px; }
+    .dz-imgsingle, .dz-media.lg figure.dz-fig { max-width: 100%; }
+  }
+
+
+
+  .nav-item.nav-sub { padding-left:44px; font-size:11px; color:rgba(255,255,255,0.45); }
+  .nav-item.nav-sub .nav-dot { width:5px; height:5px; }
 </style>
 </head>
 <body>
@@ -256,25 +375,27 @@
   </div>
 
   <div class="sidebar-label">Visão Geral</div>
-  <div class="nav-item active" onclick="goTo(0)"><span class="nav-dot"></span> Apresentação<span class="nav-number">00</span></div>
+  <div class="nav-item active" data-page="0" onclick="goTo(0)"><span class="nav-dot"></span> Apresentação<span class="nav-number">00</span></div>
 
   <div class="sidebar-label section">Missão Cidade Azul</div>
-  <div class="nav-item" onclick="goTo(1)"><span class="nav-dot"></span> Introdução<span class="nav-number">01</span></div>
-  <div class="nav-item" onclick="goTo(2)"><span class="nav-dot"></span> A Plataforma<span class="nav-number">02</span></div>
-  <div class="nav-item" onclick="goTo(3)"><span class="nav-dot"></span> Jornada Cultural<span class="nav-number">03</span></div>
-  <div class="nav-item" onclick="goTo(4)"><span class="nav-dot"></span> Jornada Corporativa<span class="nav-number">04</span></div>
+  <div class="nav-item" data-page="1" onclick="goTo(1)"><span class="nav-dot"></span> Introdução<span class="nav-number">01</span></div>
+  <div class="nav-item" data-page="2" onclick="goTo(2)"><span class="nav-dot"></span> A Plataforma<span class="nav-number">02</span></div>
+  <div class="nav-item" data-page="3" onclick="goTo(3)"><span class="nav-dot"></span> Jornada Cultural<span class="nav-number">03</span></div>
+  <div class="nav-item" data-page="4" onclick="goTo(4)"><span class="nav-dot"></span> Jornada Corporativa<span class="nav-number">04</span></div>
 
   <div class="sidebar-label section">Jornada Cultural · Sotreq</div>
-  <div class="nav-item" onclick="goTo(5)"><span class="nav-dot"></span> Cidade Escolhida<span class="nav-number">05</span></div>
-  <div class="nav-item" onclick="goTo(6)"><span class="nav-dot"></span> Público-alvo<span class="nav-number">06</span></div>
-  <div class="nav-item" onclick="goTo(7)"><span class="nav-dot"></span> Tema e Jogo<span class="nav-number">07</span></div>
-  <div class="nav-item" onclick="goTo(8)"><span class="nav-dot"></span> Personagens<span class="nav-number">08</span></div>
-  <div class="nav-item" onclick="goTo(9)"><span class="nav-dot"></span> Exposição<span class="nav-number">09</span></div>
-  <div class="nav-item" onclick="goTo(10)"><span class="nav-dot"></span> Cronograma<span class="nav-number">10</span></div>
-  <div class="nav-item" onclick="goTo(11)"><span class="nav-dot"></span> Resultados<span class="nav-number">11</span></div>
+  <div class="nav-item" data-page="5" onclick="goTo(5)"><span class="nav-dot"></span> Cidade Escolhida<span class="nav-number">05</span></div>
+  <div class="nav-item" data-page="6" onclick="goTo(6)"><span class="nav-dot"></span> Público-alvo<span class="nav-number">06</span></div>
+  <div class="nav-item" data-page="7" onclick="goTo(7)"><span class="nav-dot"></span> Tema e Jogo<span class="nav-number">07</span></div>
+  <div class="nav-item" data-page="8" onclick="goTo(8)"><span class="nav-dot"></span> Personagens<span class="nav-number">08</span></div>
+  <div class="nav-item nav-sub" data-page="13" onclick="goTo(13)"><span class="nav-dot"></span> Dossiê U'acü</div>
+  <div class="nav-item nav-sub" data-page="14" onclick="goTo(14)"><span class="nav-dot"></span> Dossiê Afefé</div>
+  <div class="nav-item" data-page="9" onclick="goTo(9)"><span class="nav-dot"></span> Exposição<span class="nav-number">09</span></div>
+  <div class="nav-item" data-page="10" onclick="goTo(10)"><span class="nav-dot"></span> Cronograma<span class="nav-number">10</span></div>
+  <div class="nav-item" data-page="11" onclick="goTo(11)"><span class="nav-dot"></span> Resultados<span class="nav-number">11</span></div>
 
   <div class="sidebar-label section">Estratégia</div>
-  <div class="nav-item" onclick="goTo(12)"><span class="nav-dot"></span> Sugestão de Nova Cidade<span class="nav-number">12</span></div>
+  <div class="nav-item" data-page="12" onclick="goTo(12)"><span class="nav-dot"></span> Sugestão de Nova Cidade<span class="nav-number">12</span></div>
 
   <div class="sidebar-footer">© The Blue City</div>
 </aside>
@@ -336,7 +457,7 @@
         <div class="section-heading">Ficha técnica</div>
         <div style="background:white;border-radius:12px;padding:24px 28px;border:1px solid rgba(40,88,160,0.1);box-shadow:0 2px 8px rgba(0,0,0,0.03);">
           <h3 style="font-size:15px;font-weight:800;color:#1a2e3b;margin:0 0 12px 0;">📋 Missão Cidade Azul · Região Norte</h3>
-          <p style="font-size:13px;color:#6b7f95;line-height:1.75;margin:0;"><strong style="color:#1a2e3b;">Formato:</strong> Exposição interativa híbrida com jogo educativo e oficina formativa<br>
+          <p style="font-size:13px;color:#000;line-height:1.75;margin:0;"><strong style="color:#1a2e3b;">Formato:</strong> Exposição interativa híbrida com jogo educativo e oficina formativa<br>
           <strong style="color:#1a2e3b;">Abrangência:</strong> Cinco cidades da Região Norte do Brasil<br>
           <strong style="color:#1a2e3b;">Período:</strong> 2026 e 2027<br>
           <strong style="color:#1a2e3b;">Público total:</strong> 10.000 pessoas<br>
@@ -359,7 +480,7 @@
             <span style="font-size:11px;font-weight:800;color:#b87333;background:#fff3e8;border:1px solid #f0c898;padding:4px 10px;border-radius:20px;text-align:center;">BRONZE</span>
             <div>
               <div style="font-size:12px;font-weight:700;color:#1a2e3b;">1 cidade · até 2.000 pessoas · R$ 190.000</div>
-              <div style="font-size:11px;color:#6b7f95;margin-top:2px;">Logotipo em materiais, site e certificados · 1 menção em imprensa · 4 posts · vídeo de resultados · Certificado NFT</div>
+              <div style="font-size:11px;color:#000;margin-top:2px;">Logotipo em materiais, site e certificados · 1 menção em imprensa · 4 posts · vídeo de resultados · Certificado NFT</div>
             </div>
             <a href="contrapartidas.html#page-0" style="font-size:11px;font-weight:700;color:#2858a0;text-decoration:none;white-space:nowrap;padding:5px 12px;border:1.5px solid rgba(40,88,160,0.2);border-radius:6px;">Ver contrapartidas →</a>
           </div>
@@ -368,7 +489,7 @@
             <span style="font-size:11px;font-weight:800;color:#7a7a7a;background:#f5f5f5;border:1px solid #ddd;padding:4px 10px;border-radius:20px;text-align:center;">PRATA</span>
             <div>
               <div style="font-size:12px;font-weight:700;color:#1a2e3b;">2 cidades · até 4.000 pessoas · R$ 380.000</div>
-              <div style="font-size:11px;color:#6b7f95;margin-top:2px;">Logotipo em destaque no site e galeria · 2 menções · 4 posts · 1 vídeo exclusivo · Certificado NFT</div>
+              <div style="font-size:11px;color:#000;margin-top:2px;">Logotipo em destaque no site e galeria · 2 menções · 4 posts · 1 vídeo exclusivo · Certificado NFT</div>
             </div>
             <a href="contrapartidas.html#page-1" style="font-size:11px;font-weight:700;color:#2858a0;text-decoration:none;white-space:nowrap;padding:5px 12px;border:1.5px solid rgba(40,88,160,0.2);border-radius:6px;">Ver contrapartidas →</a>
           </div>
@@ -377,7 +498,7 @@
             <span style="font-size:11px;font-weight:800;color:#c8a000;background:#fffbe6;border:1px solid #ffe066;padding:4px 10px;border-radius:20px;text-align:center;">OURO</span>
             <div>
               <div style="font-size:12px;font-weight:700;color:#1a2e3b;">3 cidades · até 6.000 pessoas · R$ 570.000</div>
-              <div style="font-size:11px;color:#6b7f95;margin-top:2px;">Logo nos créditos de todos os vídeos · 3 menções · 8 posts · 1 vídeo exclusivo · kits institucionais · Certificado NFT</div>
+              <div style="font-size:11px;color:#000;margin-top:2px;">Logo nos créditos de todos os vídeos · 3 menções · 8 posts · 1 vídeo exclusivo · kits institucionais · Certificado NFT</div>
             </div>
             <a href="contrapartidas.html#page-2" style="font-size:11px;font-weight:700;color:#2858a0;text-decoration:none;white-space:nowrap;padding:5px 12px;border:1.5px solid rgba(40,88,160,0.2);border-radius:6px;">Ver contrapartidas →</a>
           </div>
@@ -386,7 +507,7 @@
             <span style="font-size:11px;font-weight:800;color:#0057a8;background:#e8f0fb;border:1px solid #a8c4f0;padding:4px 10px;border-radius:20px;text-align:center;">SAFIRA</span>
             <div>
               <div style="font-size:12px;font-weight:700;color:#1a2e3b;">4 cidades · até 8.000 pessoas · R$ 760.000</div>
-              <div style="font-size:11px;color:#6b7f95;margin-top:2px;">Logo em todos os materiais · 4 menções · 8 posts · 1 vídeo exclusivo · kits personalizados · Certificado NFT</div>
+              <div style="font-size:11px;color:#000;margin-top:2px;">Logo em todos os materiais · 4 menções · 8 posts · 1 vídeo exclusivo · kits personalizados · Certificado NFT</div>
             </div>
             <a href="contrapartidas.html#page-3" style="font-size:11px;font-weight:700;color:#2858a0;text-decoration:none;white-space:nowrap;padding:5px 12px;border:1.5px solid rgba(40,88,160,0.2);border-radius:6px;">Ver contrapartidas →</a>
           </div>
@@ -427,18 +548,26 @@
       <p class="page-subtitle">The Blue City é uma plataforma de exposições híbridas gamificadas que engaja estudantes e comunidades na construção de um futuro mais sustentável – unindo o mundo virtual ao mundo real.</p>
     </div>
     <div class="page-body single" style="padding-top:24px;padding-bottom:24px;">
+      <div style="display:flex;align-items:center;gap:20px;background:white;border-radius:12px;padding:20px 24px;border:1px solid rgba(40,88,160,0.08);box-shadow:0 2px 10px rgba(0,0,0,0.04);margin-bottom:16px;">
+        <div style="width:80px;height:80px;border-radius:50%;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,0.08);background:#d6e4f7;display:flex;align-items:center;justify-content:center;font-size:30px;">💻</div>
+        <div>
+          <div style="font-size:14px;font-weight:800;color:#1a2e3b;">[Nome do programador]</div>
+          <div style="font-size:11px;color:#468182;font-weight:600;margin-top:2px;">Desenvolvimento da Plataforma · The Blue City</div>
+          <div style="font-size:13px;color:#000;margin-top:6px;line-height:1.65;">Responsável pelo desenvolvimento da plataforma The Blue City – arquitetura, integração dos jogos e emissão de certificados verificáveis em blockchain.</div>
+        </div>
+      </div>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:8px;">
         <div class="feature-card">
           <div class="feature-card-header"><div class="feature-icon fi-blue">🎮</div><h3>Jornadas Gamificadas</h3></div>
-          <p>A plataforma transforma temas socioambientais em jornadas gamificadas: missões temáticas, desafios progressivos e narrativas imersivas que engajam estudantes e comunidades em práticas reais de sustentabilidade.</p>
+          <p>A plataforma transforma temas socioambientais em jornadas gamificadas: jogos temáticos, desafios progressivos e narrativas que engajam estudantes e comunidades em práticas reais de sustentabilidade.</p>
         </div>
         <div class="feature-card">
           <div class="feature-card-header"><div class="feature-icon fi-teal">🏆</div><h3>Certificação Blockchain</h3></div>
-          <p>Ao concluir as jornadas, os participantes recebem certificações verificáveis em blockchain – Open Badge 3.0 e Europass – compartilháveis no LinkedIn e vinculadas ao patrocinador.</p>
+          <p>Durante as jornadas, os participantes recebem certificações verificáveis em blockchain – Open Badge 3.0 e Europass – compartilháveis no LinkedIn e vinculadas ao patrocinador.</p>
         </div>
         <div class="feature-card">
           <div class="feature-card-header"><div class="feature-icon fi-green">🌍</div><h3>Impacto no Mundo Real</h3></div>
-          <p>O jogo não termina na tela: as ideias geradas pelos participantes alimentam exposições culturais e intervenções urbanas – transformando escolas e bairros em espaços de reflexão climática.</p>
+          <p>As ideias geradas pelos participantes alimentam exposições culturais – transformando escolas e bairros em espaços de reflexão climática.</p>
         </div>
       </div>
       <a href="index.html" target="_blank" class="link-card" style="margin-bottom:8px;">
@@ -464,7 +593,7 @@
       <h1 class="page-title">Jornada Cultural</h1>
       <p class="page-subtitle">A Jornada Cultural conecta o aprendizado virtual a ações reais no mundo físico. Os projetos enviados pelos jogadores são transformados em obras artísticas e expostos publicamente no entorno da escola parceira.</p>
     </div>
-    <div class="page-body single" style="max-width:960px; margin:0 auto;">
+    <div class="page-body single">
       <div>
         <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-bottom:48px;">
           <div class="feature-card">
@@ -473,7 +602,7 @@
           </div>
           <div class="feature-card">
             <div class="feature-card-header"><div class="feature-icon fi-green">🌍</div><h3>Mundo Real</h3></div>
-            <p>As ideias geradas no jogo se transformam em obras de arte expostas publicamente no entorno das escolas – por 30 dias, abertas à comunidade.</p>
+            <p>As ideias geradas no jogo se transformam em obras de arte expostas publicamente no entorno das escolas – abertas à comunidade.</p>
           </div>
           <div class="feature-card">
             <div class="feature-card-header"><div class="feature-icon fi-blue">🤝</div><h3>Impacto Coletivo</h3></div>
@@ -502,9 +631,9 @@
             <text x="90" y="100" font-size="12" font-weight="700" fill="#2858a0">Jogo Lançado</text>
             <text x="90" y="116" font-size="10" font-weight="600" fill="#468182">Plataforma The Blue City</text>
             <line x1="46" y1="130" x2="276" y2="130" stroke="#e0e8f0" stroke-width="1"/>
-            <text x="46" y="148" font-size="9.5" fill="#6b7f95">Missão temática publicada com</text>
-            <text x="46" y="163" font-size="9.5" fill="#6b7f95">desafios e objetivos definidos</text>
-            <text x="46" y="178" font-size="9.5" fill="#6b7f95">pela escola e patrocinador</text>
+            <text x="46" y="148" font-size="9.5" fill="#000">Missão temática publicada com</text>
+            <text x="46" y="163" font-size="9.5" fill="#000">desafios e objetivos definidos</text>
+            <text x="46" y="178" font-size="9.5" fill="#000">pela escola e patrocinador</text>
             <line x1="294" y1="137" x2="336" y2="137" stroke="#2858a0" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-b)"/>
             <rect x="340" y="72" width="260" height="130" rx="10" fill="#f4f8fc" stroke="#2858a0" stroke-width="1.5"/>
             <rect x="340" y="72" width="260" height="5" rx="5" fill="#2858a0"/>
@@ -513,9 +642,9 @@
             <text x="400" y="100" font-size="12" font-weight="700" fill="#2858a0">Alunos Jogam</text>
             <text x="400" y="116" font-size="10" font-weight="600" fill="#468182">Durante o período da jornada</text>
             <line x1="356" y1="130" x2="586" y2="130" stroke="#e0e8f0" stroke-width="1"/>
-            <text x="356" y="148" font-size="9.5" fill="#6b7f95">Escola engaja alunos</text>
-            <text x="356" y="163" font-size="9.5" fill="#6b7f95">e professores na plataforma</text>
-            <text x="356" y="178" font-size="9.5" fill="#6b7f95">The Blue City</text>
+            <text x="356" y="148" font-size="9.5" fill="#000">Escola engaja alunos</text>
+            <text x="356" y="163" font-size="9.5" fill="#000">e professores na plataforma</text>
+            <text x="356" y="178" font-size="9.5" fill="#000">The Blue City</text>
             <line x1="604" y1="137" x2="646" y2="137" stroke="#2858a0" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-b)"/>
             <rect x="650" y="72" width="280" height="130" rx="10" fill="#f4f8fc" stroke="#2858a0" stroke-width="1.5"/>
             <rect x="650" y="72" width="280" height="5" rx="5" fill="#2858a0"/>
@@ -524,9 +653,9 @@
             <text x="710" y="100" font-size="12" font-weight="700" fill="#2858a0">Certificação</text>
             <text x="710" y="116" font-size="10" font-weight="600" fill="#468182">Badges + NFT em blockchain</text>
             <line x1="666" y1="130" x2="916" y2="130" stroke="#e0e8f0" stroke-width="1"/>
-            <text x="666" y="148" font-size="9.5" fill="#6b7f95">Certificado verificável e</text>
-            <text x="666" y="163" font-size="9.5" fill="#6b7f95">compartilhável no LinkedIn,</text>
-            <text x="666" y="178" font-size="9.5" fill="#6b7f95">vinculado ao patrocinador</text>
+            <text x="666" y="148" font-size="9.5" fill="#000">Certificado verificável e</text>
+            <text x="666" y="163" font-size="9.5" fill="#000">compartilhável no LinkedIn,</text>
+            <text x="666" y="178" font-size="9.5" fill="#000">vinculado ao patrocinador</text>
             <line x1="790" y1="206" x2="790" y2="248" stroke="#468182" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-t)"/>
             <rect x="430" y="256" width="500" height="140" rx="10" fill="#eaf4ea" stroke="#5fb670" stroke-width="2"/>
             <rect x="430" y="256" width="500" height="5" rx="5" fill="#5fb670"/>
@@ -535,9 +664,9 @@
             <text x="492" y="286" font-size="12" font-weight="700" fill="#38a349">Missão no Mundo Real</text>
             <text x="492" y="302" font-size="10" font-weight="600" fill="#468182">Alunos enviam ideias e projetos</text>
             <line x1="446" y1="314" x2="916" y2="314" stroke="#c8e6c9" stroke-width="1"/>
-            <text x="446" y="332" font-size="9.5" fill="#6b7f95">Endereçando o tema da jornada</text>
-            <text x="446" y="347" font-size="9.5" fill="#6b7f95">ex: redução de gases de efeito estufa</text>
-            <text x="446" y="362" font-size="9.5" fill="#6b7f95">ex: mobilidade urbana sustentável</text>
+            <text x="446" y="332" font-size="9.5" fill="#000">Endereçando o tema da jornada</text>
+            <text x="446" y="347" font-size="9.5" fill="#000">ex: redução de gases de efeito estufa</text>
+            <text x="446" y="362" font-size="9.5" fill="#000">ex: mobilidade urbana sustentável</text>
             <text x="446" y="380" font-size="9" font-weight="700" fill="#5fb670">★  Ponto de conexão: virtual → real</text>
             <line x1="426" y1="326" x2="384" y2="326" stroke="#468182" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-t)"/>
             <rect x="30" y="256" width="350" height="140" rx="10" fill="#f4f8fc" stroke="#468182" stroke-width="1.5"/>
@@ -547,9 +676,9 @@
             <text x="90" y="286" font-size="12" font-weight="700" fill="#468182">Artistas Criam</text>
             <text x="90" y="302" font-size="10" font-weight="600" fill="#468182">A partir das ideias dos alunos</text>
             <line x1="46" y1="314" x2="366" y2="314" stroke="#e0e8f0" stroke-width="1"/>
-            <text x="46" y="332" font-size="9.5" fill="#6b7f95">Peças artísticas são produzidas</text>
-            <text x="46" y="347" font-size="9.5" fill="#6b7f95">para compor a exposição cultural</text>
-            <text x="46" y="362" font-size="9.5" fill="#6b7f95">como parte da jornada</text>
+            <text x="46" y="332" font-size="9.5" fill="#000">Peças artísticas são produzidas</text>
+            <text x="46" y="347" font-size="9.5" fill="#000">para compor a exposição cultural</text>
+            <text x="46" y="362" font-size="9.5" fill="#000">como parte da jornada</text>
             <line x1="205" y1="400" x2="205" y2="432" stroke="#468182" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-t)"/>
             <rect x="30" y="440" width="900" height="100" rx="10" fill="#1a2e3b" stroke="#2858a0" stroke-width="1.5"/>
             <rect x="30" y="440" width="900" height="5" rx="5" fill="#2858a0"/>
@@ -566,9 +695,9 @@
         </div>
 
         <div class="section-heading" style="margin-bottom:24px;">Mapa Expográfico</div>
-        <p style="font-size:13px;color:#6b7f95;margin-bottom:24px;">A exposição ocupa o quarteirão da escola e seu entorno – painéis com personagens do lado de fora, trilha de QR codes pelas calçadas e espaço interno com módulos imersivos.</p>
+        <p style="font-size:13px;color:#000;margin-bottom:24px;">O mapa expográfico mostra a organização da exposição em um local próximo às escolas envolvidas no projeto – painéis com os personagens, percurso com QR codes e espaço interno com módulos imersivos.</p>
         <div class="map-fullwidth" style="width:calc(100vw - 280px - 160px);position:relative;left:50%;transform:translateX(-50%);margin-bottom:48px;background:white;padding:24px 24px 48px 24px;border-radius:12px;border:1px solid #e0e8f0;box-shadow:0 2px 12px rgba(0,0,0,0.04);box-sizing:border-box;">
-          <img src="https://the-blue-city.github.io/content/mapa-expografico.png" alt="Mapa Expográfico – vista esquemática do quarteirão e espaço interno da exposição" style="width:100%;height:auto;display:block;">
+          <img src="https://the-blue-city.github.io/content/mapa-expografico.png" alt="Mapa Expográfico – vista esquemática do espaço da exposição" style="width:100%;height:auto;display:block;">
         </div>
       </div>
     </div>
@@ -587,7 +716,7 @@
       <h1 class="page-title">Jornada Corporativa</h1>
       <p class="page-subtitle">A Jornada Corporativa engaja colaboradores em missões temáticas, culminando num evento interno com os melhores projetos.</p>
     </div>
-    <div class="page-body single" style="max-width:960px; margin:0 auto;">
+    <div class="page-body single">
       <div>
         <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:18px;">
           <div class="feature-card">
@@ -625,9 +754,9 @@
             <text x="90" y="100" font-size="12" font-weight="700" fill="#2858a0">Jogo Lançado</text>
             <text x="90" y="116" font-size="10" font-weight="600" fill="#468182">Plataforma The Blue City</text>
             <line x1="46" y1="130" x2="276" y2="130" stroke="#e0e8f0" stroke-width="1"/>
-            <text x="46" y="148" font-size="9.5" fill="#6b7f95">Jornada temática publicada pela</text>
-            <text x="46" y="163" font-size="9.5" fill="#6b7f95">empresa com objetivos ESG definidos</text>
-            <text x="46" y="178" font-size="9.5" fill="#6b7f95">pelo gestor corporativo</text>
+            <text x="46" y="148" font-size="9.5" fill="#000">Jornada temática publicada pela</text>
+            <text x="46" y="163" font-size="9.5" fill="#000">empresa com objetivos ESG definidos</text>
+            <text x="46" y="178" font-size="9.5" fill="#000">pelo gestor corporativo</text>
             <line x1="294" y1="137" x2="336" y2="137" stroke="#2858a0" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-bc)"/>
             <rect x="340" y="72" width="260" height="130" rx="10" fill="#f4f8fc" stroke="#2858a0" stroke-width="1.5"/>
             <rect x="340" y="72" width="260" height="5" rx="5" fill="#2858a0"/>
@@ -636,9 +765,9 @@
             <text x="400" y="100" font-size="12" font-weight="700" fill="#2858a0">Colaboradores Jogam</text>
             <text x="400" y="116" font-size="10" font-weight="600" fill="#468182">Durante o período da jornada</text>
             <line x1="356" y1="130" x2="586" y2="130" stroke="#e0e8f0" stroke-width="1"/>
-            <text x="356" y="148" font-size="9.5" fill="#6b7f95">Equipes engajam na plataforma</text>
-            <text x="356" y="163" font-size="9.5" fill="#6b7f95">por departamento, acumulando</text>
-            <text x="356" y="178" font-size="9.5" fill="#6b7f95">pontos e badges</text>
+            <text x="356" y="148" font-size="9.5" fill="#000">Equipes engajam na plataforma</text>
+            <text x="356" y="163" font-size="9.5" fill="#000">por departamento, acumulando</text>
+            <text x="356" y="178" font-size="9.5" fill="#000">pontos e badges</text>
             <line x1="604" y1="137" x2="646" y2="137" stroke="#2858a0" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-bc)"/>
             <rect x="650" y="72" width="280" height="130" rx="10" fill="#f4f8fc" stroke="#2858a0" stroke-width="1.5"/>
             <rect x="650" y="72" width="280" height="5" rx="5" fill="#2858a0"/>
@@ -647,9 +776,9 @@
             <text x="710" y="100" font-size="12" font-weight="700" fill="#2858a0">Certificação</text>
             <text x="710" y="116" font-size="10" font-weight="600" fill="#468182">Badges + NFT em blockchain</text>
             <line x1="666" y1="130" x2="916" y2="130" stroke="#e0e8f0" stroke-width="1"/>
-            <text x="666" y="148" font-size="9.5" fill="#6b7f95">Certificado verificável e</text>
-            <text x="666" y="163" font-size="9.5" fill="#6b7f95">compartilhável no LinkedIn,</text>
-            <text x="666" y="178" font-size="9.5" fill="#6b7f95">vinculado à empresa parceira</text>
+            <text x="666" y="148" font-size="9.5" fill="#000">Certificado verificável e</text>
+            <text x="666" y="163" font-size="9.5" fill="#000">compartilhável no LinkedIn,</text>
+            <text x="666" y="178" font-size="9.5" fill="#000">vinculado à empresa parceira</text>
             <line x1="790" y1="206" x2="790" y2="248" stroke="#468182" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-tc)"/>
             <rect x="430" y="256" width="500" height="130" rx="10" fill="#eaf4ea" stroke="#5fb670" stroke-width="2"/>
             <rect x="430" y="256" width="500" height="5" rx="5" fill="#5fb670"/>
@@ -658,8 +787,8 @@
             <text x="492" y="286" font-size="12" font-weight="700" fill="#38a349">Missão no Mundo Real</text>
             <text x="492" y="302" font-size="10" font-weight="600" fill="#468182">Colaboradores enviam projetos</text>
             <line x1="446" y1="314" x2="916" y2="314" stroke="#c8e6c9" stroke-width="1"/>
-            <text x="446" y="332" font-size="9.5" fill="#6b7f95">Vídeos, documentos e registros de</text>
-            <text x="446" y="347" font-size="9.5" fill="#6b7f95">ações reais alinhadas ao tema ESG</text>
+            <text x="446" y="332" font-size="9.5" fill="#000">Vídeos, documentos e registros de</text>
+            <text x="446" y="347" font-size="9.5" fill="#000">ações reais alinhadas ao tema ESG</text>
             <text x="446" y="365" font-size="9" font-weight="700" fill="#5fb670">★  Ponto de conexão: virtual → real</text>
             <line x1="426" y1="316" x2="384" y2="316" stroke="#468182" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-tc)"/>
             <rect x="30" y="256" width="350" height="130" rx="10" fill="#f4f8fc" stroke="#468182" stroke-width="1.5"/>
@@ -669,9 +798,9 @@
             <text x="90" y="286" font-size="12" font-weight="700" fill="#468182">Gestor Seleciona</text>
             <text x="90" y="302" font-size="10" font-weight="600" fill="#468182">Curadoria corporativa</text>
             <line x1="46" y1="314" x2="366" y2="314" stroke="#e0e8f0" stroke-width="1"/>
-            <text x="46" y="332" font-size="9.5" fill="#6b7f95">O gestor corporativo avalia e</text>
-            <text x="46" y="347" font-size="9.5" fill="#6b7f95">seleciona os melhores projetos</text>
-            <text x="46" y="362" font-size="9.5" fill="#6b7f95">alinhados aos objetivos da empresa</text>
+            <text x="46" y="332" font-size="9.5" fill="#000">O gestor corporativo avalia e</text>
+            <text x="46" y="347" font-size="9.5" fill="#000">seleciona os melhores projetos</text>
+            <text x="46" y="362" font-size="9.5" fill="#000">alinhados aos objetivos da empresa</text>
             <line x1="205" y1="390" x2="205" y2="432" stroke="#468182" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-tc)"/>
             <rect x="30" y="440" width="900" height="100" rx="10" fill="#1a2e3b" stroke="#2858a0" stroke-width="1.5"/>
             <rect x="30" y="440" width="900" height="5" rx="5" fill="#2858a0"/>
@@ -744,6 +873,14 @@
       <p class="page-subtitle">O público-alvo do projeto são estudantes de escolas técnicas do ensino público de Palmas, Tocantins, com idades entre 16 e 20 anos. As escolas são o canal através do qual chegamos a eles – e a escola participante será definida em abril de 2026, na etapa de articulação territorial.</p>
     </div>
     <div class="page-body single">
+      <div style="display:flex;align-items:center;gap:20px;background:white;border-radius:12px;padding:20px 24px;border:1px solid rgba(40,88,160,0.08);box-shadow:0 2px 10px rgba(0,0,0,0.04);margin-bottom:20px;">
+        <div style="width:80px;height:80px;border-radius:50%;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,0.08);background:#d4f0d9;display:flex;align-items:center;justify-content:center;font-size:30px;">🏫</div>
+        <div>
+          <div style="font-size:14px;font-weight:800;color:#1a2e3b;">[Nome do Articulador Educacional]</div>
+          <div style="font-size:11px;color:#468182;font-weight:600;margin-top:2px;">Ponte com as Escolas · Mobilização de Estudantes · Adesão à Jornada</div>
+          <div style="font-size:13px;color:#000;margin-top:6px;line-height:1.65;">Responsável pela articulação com as escolas parceiras – apresenta o projeto à direção e à coordenação pedagógica e mobiliza os estudantes para a adesão à jornada como atividade extracurricular.</div>
+        </div>
+      </div>
       <div class="info-card" style="margin-bottom:16px;">
         <h3>👥 Público-alvo do projeto em Palmas</h3>
         <p>Estudantes de escolas técnicas do ensino público de Palmas, Tocantins – com idades entre 16 e 20 anos. As escolas são o canal através do qual chegamos a esse público, e a escola participante será definida em abril de 2026 na etapa de articulação territorial.</p>
@@ -754,6 +891,10 @@
         <div class="feature-card" style="border-left:3px solid var(--green);">
           <div class="feature-card-header"><div class="feature-icon fi-green">⭐</div><h3>IFTO – Campus Palmas</h3></div>
           <p>Instituto Federal do Tocantins, Plano Diretor Sul – ensino médio integrado técnico de alta qualidade, excelente infraestrutura e perfil fortemente alinhado ao projeto.</p>
+        </div>
+        <div class="feature-card" style="border-left:3px solid var(--green);">
+          <div class="feature-card-header"><div class="feature-icon fi-green">⭐</div><h3>UFT – Campus Palmas</h3></div>
+          <p>Universidade Federal do Tocantins, principal instituição pública de ensino superior do estado – vocação ambiental (Engenharia Ambiental mais antiga do país) e perfil fortemente alinhado ao projeto através da Proex e da Inovato (Agência de Inovação da UFT).</p>
         </div>
         <div class="feature-card">
           <div class="feature-card-header"><div class="feature-icon fi-blue">🏫</div><h3>CEM Tiradentes</h3></div>
@@ -766,10 +907,6 @@
         <div class="feature-card">
           <div class="feature-card-header"><div class="feature-icon fi-teal">🏫</div><h3>Colégio Est. São José</h3></div>
           <p>Escola estadual no Plano Diretor Sul com oferta de ensino médio.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-card-header"><div class="feature-icon fi-teal">🏫</div><h3>Escola Est. Setor Sul</h3></div>
-          <p>Escola estadual com possibilidade de turmas do ensino médio no Taquaralto.</p>
         </div>
         <div class="feature-card">
           <div class="feature-card-header"><div class="feature-icon fi-teal">🏫</div><h3>Escola Est. Profª Elizângela</h3></div>
@@ -792,36 +929,66 @@
       <h1 class="page-title">Termômetro Zero</h1>
       <p class="page-subtitle">Redução de Emissões de Gases de Efeito Estufa – o tema escolhido pela Sotreq para guiar toda a experiência em Palmas, conectado diretamente ao setor em que a empresa atua.</p>
     </div>
-    <div style="padding:0 60px;margin-bottom:0;">
-      <div style="border-radius:12px;overflow:hidden;border:1px solid #e0e8f0;box-shadow:0 2px 12px rgba(0,0,0,0.04);">
-        <img src="https://the-blue-city.github.io/content/Jogo_GEE.png" alt="Termômetro Zero – Redução de GEE" style="width:100%;height:auto;display:block;">
+    <div style="padding:24px 60px 0;">
+      <div style="display:flex;align-items:center;gap:20px;background:white;border-radius:12px;padding:20px 24px;border:1px solid rgba(40,88,160,0.08);box-shadow:0 2px 10px rgba(0,0,0,0.04);margin-bottom:24px;">
+        <div style="width:80px;height:80px;border-radius:50%;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,0.08);overflow:hidden;background:#d4f0d9;"><img src="https://the-blue-city.github.io/content/Cristiano.jpg" alt="Cristiano Prado Caetano" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;"></div>
+        <div>
+          <div style="font-size:14px;font-weight:800;color:#1a2e3b;">Cristiano Prado Caetano</div>
+          <div style="font-size:11px;color:#468182;font-weight:600;margin-top:2px;">Unity · WebGL · Game Design · Integração com The Blue City</div>
+          <div style="font-size:13px;color:#000;margin-top:6px;line-height:1.65;">Responsável pelo desenvolvimento do jogo em Unity – recebe o Game Design Document e os personagens do ilustrador e entrega a build WebGL integrada e funcional na plataforma The Blue City.</div>
+        </div>
       </div>
     </div>
-    <div class="page-body">
+    <div style="padding:0 60px;margin-bottom:0;">
+      <div style="border-radius:12px;overflow:hidden;border:1px solid #e0e8f0;box-shadow:0 2px 12px rgba(0,0,0,0.04);">
+        <img src="https://the-blue-city.github.io/content/TermometroZero1.jpg" alt="Tela do jogo Termômetro Zero" style="width:100%;height:auto;display:block;">
+      </div>
+    </div>
+    <div style="padding:16px 60px 0;">
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
+        <figure style="margin:0;background:white;border:1px solid rgba(40,88,160,0.1);box-shadow:0 2px 12px rgba(0,0,0,0.04);border-radius:12px;overflow:hidden;cursor:pointer;" onclick="window.open('https://the-blue-city.github.io/content/TermometroZero2.jpg','_blank')">
+          <img src="https://the-blue-city.github.io/content/TermometroZero2.jpg" alt="Tela do jogo Termômetro Zero 2" style="width:100%;display:block;">
+        </figure>
+        <figure style="margin:0;background:white;border:1px solid rgba(40,88,160,0.1);box-shadow:0 2px 12px rgba(0,0,0,0.04);border-radius:12px;overflow:hidden;cursor:pointer;" onclick="window.open('https://the-blue-city.github.io/content/TermometroZero3.jpg','_blank')">
+          <img src="https://the-blue-city.github.io/content/TermometroZero3.jpg" alt="Tela do jogo Termômetro Zero 3" style="width:100%;display:block;">
+        </figure>
+        <figure style="margin:0;background:white;border:1px solid rgba(40,88,160,0.1);box-shadow:0 2px 12px rgba(0,0,0,0.04);border-radius:12px;overflow:hidden;cursor:pointer;" onclick="window.open('https://the-blue-city.github.io/content/TermometroZero4.jpg','_blank')">
+          <img src="https://the-blue-city.github.io/content/TermometroZero4.jpg" alt="Tela do jogo Termômetro Zero 4" style="width:100%;display:block;">
+        </figure>
+        <figure style="margin:0;background:white;border:1px solid rgba(40,88,160,0.1);box-shadow:0 2px 12px rgba(0,0,0,0.04);border-radius:12px;overflow:hidden;cursor:pointer;" onclick="window.open('https://the-blue-city.github.io/content/TermometroZero5.jpg','_blank')">
+          <img src="https://the-blue-city.github.io/content/TermometroZero5.jpg" alt="Tela do jogo Termômetro Zero 5" style="width:100%;display:block;">
+        </figure>
+      </div>
+    </div>
+    <div class="page-body single">
       <div class="content-section">
         <div class="section-heading">O tema escolhido</div>
-        <div class="feature-card">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+        <div class="feature-card" style="margin:0;">
           <div class="feature-card-header"><div class="feature-icon fi-blue">🌡️</div><h3>Redução de Emissões de GEE</h3></div>
-          <p>O jogo aborda de forma narrativa e gamificada como as escolhas individuais e coletivas afetam o clima urbano – transporte, energia, resíduos e consumo são transformados em missões e desafios progressivos dentro da plataforma.</p>
+          <p>O jogo Termômetro Zero aborda de forma narrativa e gamificada como as escolhas individuais e coletivas afetam o clima urbano – transporte, energia, resíduos e consumo são transformados em missões e desafios progressivos dentro da plataforma.</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card" style="margin:0;">
           <div class="feature-card-header"><div class="feature-icon fi-teal">⚡</div><h3>Foco em Energia</h3></div>
-          <p>Com personagens inspirados no Mundo dos Ventos e no Mundo do Sol, o jogo conecta o tema climático ao universo de atuação da Sotreq – tornando a narrativa relevante e autêntica para o contexto da empresa e para os estudantes de Palmas.</p>
+          <p>Com os personagens Afefé (Mundo dos Ventos) e U'acü (Mundo do Sol), o jogo conecta o tema climático ao universo de atuação da Sotreq – tornando a narrativa relevante e autêntica para o contexto da empresa e para os estudantes de Palmas.</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card" style="margin:0;">
           <div class="feature-card-header"><div class="feature-icon fi-green">📋</div><h3>Mecânicas e Formato</h3></div>
-          <p>30 dias de jogo: desafios virtuais dentro da plataforma, missões no território urbano com QR codes, pontuação por engajamento e conquista de badges intermediários – até a certificação final vinculada à Sotreq em blockchain.</p>
+          <p>Desafios virtuais dentro da plataforma, pontuação por engajamento e conquista de badges intermediários – até a certificação final vinculada à Sotreq em blockchain.</p>
+        </div>
         </div>
       </div>
       <div class="content-section">
         <div class="section-heading">Por que GEE?</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
         <div class="info-card">
           <h3>🏭 Alinhamento com a Sotreq</h3>
           <p>A Sotreq, como representante Caterpillar no Brasil, atua em setores com impacto direto nas emissões urbanas – energia, construção, mineração e agronegócio. Patrocinar um projeto educativo sobre GEE posiciona a empresa como referência em responsabilidade climática junto a jovens e comunidades da Região Norte.</p>
         </div>
-        <div class="info-card teal" style="margin-top:12px;">
+        <div class="info-card teal">
           <h3>🎓 Certificação vinculada</h3>
           <p>Ao concluir a jornada, cada participante recebe um badge digital verificável em blockchain com o nome da Sotreq – compartilhável no LinkedIn e com padrões internacionais.</p>
+        </div>
         </div>
       </div>
     </div>
@@ -848,7 +1015,7 @@
         <div>
           <div style="font-size:14px;font-weight:800;color:#1a2e3b;">Ester Menezes</div>
           <div style="font-size:11px;color:#468182;font-weight:600;margin-top:2px;">Artesã · Artista Híbrida · Diretora de Arte · Produtora Cultural</div>
-          <div style="font-size:12px;color:#6b7f95;margin-top:6px;line-height:1.55;">Responsável pela conceituação dos personagens – pesquisa cosmologias afro-brasileiras e indígenas para orientar o ilustrador e garantir autenticidade cultural ao projeto.</div>
+          <div style="font-size:13px;color:#000;margin-top:6px;line-height:1.65;">Responsável pela conceituação dos personagens – pesquisa cosmologias afro-brasileiras e indígenas para orientar o ilustrador e garantir autenticidade cultural ao projeto.</div>
         </div>
       </div>
 
@@ -876,19 +1043,34 @@
         </div>
       </div>
 
-      <!-- Placeholders das ilustrações -->
-      <div class="section-heading" style="margin-bottom:16px;">Ilustrações dos Personagens</div>
+      <!-- Dossiês completos dos personagens -->
+      <div>
+      <div class="section-heading" style="margin-bottom:8px;">Dossiês culturais dos personagens</div>
+      <p style="font-size:13px;color:#000;line-height:1.65;margin:0 0 14px;">A pesquisa cultural dos dois personagens está concluída e validada por consultores das tradições representadas. Acesse os dossiês completos – cosmologia, referências iconográficas, paleta, diretrizes de ilustração e validação cultural.</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
-        <div class="img-placeholder" style="height:260px;">
-          <div class="ph-icon">⚡</div>
-          <div class="ph-label">Afefé · Mundo dos Ventos</div>
-          <div style="font-size:11px;margin-top:4px;">Ilustração – a inserir</div>
+        <div onclick="goTo(13)" style="cursor:pointer;background:white;border-radius:12px;border:1px solid rgba(40,88,160,0.1);box-shadow:0 2px 12px rgba(0,0,0,0.04);overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(40,88,160,0.12)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(0,0,0,0.04)'">
+          <div style="background:linear-gradient(135deg,#fdf2d4,#f3dca0);padding:28px 24px;text-align:center;">
+            <div style="font-size:36px;">☀️</div>
+            <div style="font-size:17px;font-weight:800;color:#1a2e3b;margin-top:6px;">U'acü</div>
+            <div style="font-size:12px;color:#8a6d1a;font-weight:600;">Sol na língua Tikuna · Mundo do Sol</div>
+          </div>
+          <div style="padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:10px;">
+            <span style="font-size:12px;color:#000;">Cultura indígena Tikuna · Amazônia</span>
+            <span style="font-size:12px;font-weight:700;color:#2858a0;white-space:nowrap;">Ver dossiê →</span>
+          </div>
         </div>
-        <div class="img-placeholder" style="height:260px;">
-          <div class="ph-icon">☀️</div>
-          <div class="ph-label">U'acü · Mundo do Sol</div>
-          <div style="font-size:11px;margin-top:4px;">Ilustração – a inserir</div>
+        <div onclick="goTo(14)" style="cursor:pointer;background:white;border-radius:12px;border:1px solid rgba(40,88,160,0.1);box-shadow:0 2px 12px rgba(0,0,0,0.04);overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(40,88,160,0.12)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(0,0,0,0.04)'">
+          <div style="background:linear-gradient(135deg,#faf2f3,#e3c3ca);padding:28px 24px;text-align:center;">
+            <div style="font-size:36px;">⚡</div>
+            <div style="font-size:17px;font-weight:800;color:#1a2e3b;margin-top:6px;">Afefé</div>
+            <div style="font-size:12px;color:#8a3a4a;font-weight:600;">Vento na língua Iorubá · Mundo dos Ventos</div>
+          </div>
+          <div style="padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:10px;">
+            <span style="font-size:12px;color:#000;">Cultura afro-brasileira · Cerrado</span>
+            <span style="font-size:12px;font-weight:700;color:#2858a0;white-space:nowrap;">Ver dossiê →</span>
+          </div>
         </div>
+      </div>
       </div>
 
     </div>
@@ -907,25 +1089,37 @@
       <h1 class="page-title">Exposição</h1>
       <p class="page-subtitle">A exposição é a materialização da última etapa da Jornada Cultural – onde o jogo virtual encontra o mundo físico. As ideias dos estudantes se transformam em obras de arte expostas publicamente no entorno da escola parceira em Palmas.</p>
     </div>
-    <div style="padding:0 60px;margin-bottom:0;">
+    <div style="padding:24px 60px 0;">
+      <div style="display:flex;align-items:center;gap:20px;background:white;border-radius:12px;padding:20px 24px;border:1px solid rgba(40,88,160,0.08);box-shadow:0 2px 10px rgba(0,0,0,0.04);">
+        <div style="width:80px;height:80px;border-radius:50%;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,0.08);background:#d6e4f7;display:flex;align-items:center;justify-content:center;font-size:30px;">🎭</div>
+        <div>
+          <div style="font-size:14px;font-weight:800;color:#1a2e3b;">[Nome do Produtor Cultural]</div>
+          <div style="font-size:11px;color:#468182;font-weight:600;margin-top:2px;">Preparação Territorial · Curadoria · Conexão com Artistas · Exposição</div>
+          <div style="font-size:13px;color:#000;margin-top:6px;line-height:1.65;">Conduz a produção cultural do projeto – da preparação do território à realização da exposição. Recebe os projetos dos estudantes para curadoria e produção das obras expostas à comunidade.</div>
+        </div>
+      </div>
+    </div>
+    <div style="padding:16px 60px 0;margin-bottom:0;">
       <div style="border-radius:12px;overflow:hidden;border:1px solid #e0e8f0;box-shadow:0 2px 12px rgba(0,0,0,0.04);height:260px;">
         <img src="https://the-blue-city.github.io/content/exposicao.jpg" alt="Exposição Cultural" style="width:100%;height:100%;object-fit:cover;display:block;">
       </div>
     </div>
-    <div class="page-body">
+    <div class="page-body single">
       <div class="content-section">
         <div class="section-heading">O que é</div>
-        <div class="feature-card">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+        <div class="feature-card" style="margin:0;">
           <div class="feature-card-header"><div class="feature-icon fi-blue">🎨</div><h3>Arte a partir das ideias dos alunos</h3></div>
-          <p>Após 30 dias de jogo, os estudantes enviam ideias endereçando o tema da redução de GEE. Artistas locais transformam essas ideias em peças artísticas – obras que compõem a mostra pública e conectam o aprendizado digital à comunidade de Palmas.</p>
+          <p>Após finalizar o jogo, os estudantes enviam ideias endereçando o tema da redução de GEE. Artistas locais transformam essas ideias em peças artísticas – obras que compõem a mostra pública e conectam o aprendizado digital à comunidade de Palmas.</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-card-header"><div class="feature-icon fi-teal">📍</div><h3>Espaço público próximo à escola</h3></div>
-          <p>A exposição ocupa o quarteirão da escola participante e seu entorno – painéis externos com personagens e QR codes, trilha gamificada pelas calçadas e espaço interno com módulos imersivos. 30 dias abertos ao público, com entrada gratuita.</p>
+        <div class="feature-card" style="margin:0;">
+          <div class="feature-card-header"><div class="feature-icon fi-teal">📍</div><h3>Próximo às escolas envolvidas</h3></div>
+          <p>A exposição acontece em um local próximo às escolas envolvidas no projeto – com painéis e personagens, QR codes e módulos imersivos que recriam a experiência do jogo no mundo físico, ao alcance dos estudantes.</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card" style="margin:0;">
           <div class="feature-card-header"><div class="feature-icon fi-green">♿</div><h3>Acessível e gratuita</h3></div>
           <p>Toda a programação é gratuita, com audiodescrição, intérprete de Libras e monitores de apoio – garantindo acesso a pessoas com deficiência e à toda a comunidade do entorno.</p>
+        </div>
         </div>
       </div>
       <div class="content-section">
@@ -935,17 +1129,17 @@
           <p>A Sotreq terá sua marca presente em toda a sinalização da exposição – painéis, banners, certificados emitidos aos participantes e materiais digitais. A empresa é apresentada como patrocinadora que tornou possível a experiência cultural e educativa em Palmas.</p>
         </div>
         <div class="stats-row" style="margin-top:16px;">
-          <div class="stat-card"><div class="stat-value">30</div><div class="stat-label">Dias de exposição pública</div></div>
+          <div class="stat-card"><div class="stat-value">Local</div><div class="stat-label">Próximo às escolas envolvidas</div></div>
           <div class="stat-card"><div class="stat-value teal">2.000</div><div class="stat-label">Pessoas impactadas</div></div>
-          <div class="stat-card"><div class="stat-value green">100%</div><div class="stat-label">Gratuito ao público</div></div>
+          <div class="stat-card"><div class="stat-value green">100%</div><div class="stat-label">Acesso gratuito</div></div>
         </div>
       </div>
     </div>
     <div style="padding:0 60px 48px 60px;">
       <div class="section-heading" style="margin-bottom:20px;">Mapa Expográfico</div>
-      <p style="font-size:13px;color:#6b7f95;margin-bottom:24px;">A exposição ocupa o quarteirão da escola e seu entorno – painéis com personagens do lado de fora, trilha de QR codes pelas calçadas e espaço interno com módulos imersivos.</p>
+      <p style="font-size:13px;color:#000;margin-bottom:24px;">O mapa expográfico mostra a organização da exposição em um local próximo às escolas envolvidas no projeto – painéis com os personagens, percurso com QR codes e espaço interno com módulos imersivos.</p>
       <div style="background:white;padding:24px 24px 48px 24px;border-radius:12px;border:1px solid #e0e8f0;box-shadow:0 2px 12px rgba(0,0,0,0.04);">
-        <img src="https://the-blue-city.github.io/content/mapa-expografico.png" alt="Mapa Expográfico – vista esquemática do quarteirão e espaço interno da exposição" style="width:100%;height:auto;display:block;">
+        <img src="https://the-blue-city.github.io/content/mapa-expografico.png" alt="Mapa Expográfico – vista esquemática do espaço da exposição" style="width:100%;height:auto;display:block;">
       </div>
     </div>
     <div class="divider"></div>
@@ -976,6 +1170,9 @@
           <circle cx="60" cy="110" r="6" fill="#2858a0"/>
           <text x="60" y="98" text-anchor="middle" font-size="8" font-weight="800" fill="#2858a0">MAR</text>
           <rect x="14" y="125" width="92" height="130" rx="6" fill="#2858a0"/>
+           <circle cx="102" cy="128" r="11" fill="#ffffff"/>
+           <circle cx="102" cy="128" r="8.5" fill="#e0a800"/>
+           <path d="M 98.2 128.2 L 100.8 131 L 106.2 124.8" stroke="#ffffff" stroke-width="2.1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
           <text x="60" y="142" text-anchor="middle" font-size="7.5" font-weight="800" fill="white">Pré-produção</text>
           <line x1="24" y1="150" x2="96" y2="150" stroke="rgba(255,255,255,0.25)" stroke-width="0.5"/>
           <text x="60" y="166" text-anchor="middle" font-size="6.5" font-weight="700" fill="rgba(255,255,255,0.95)">Plataforma</text>
@@ -987,6 +1184,9 @@
           <circle cx="164" cy="110" r="6" fill="#2858a0"/>
           <text x="164" y="98" text-anchor="middle" font-size="8" font-weight="800" fill="#2858a0">ABR</text>
           <rect x="118" y="125" width="92" height="130" rx="6" fill="#2858a0"/>
+           <circle cx="206" cy="128" r="11" fill="#ffffff"/>
+           <circle cx="206" cy="128" r="8.5" fill="#e0a800"/>
+           <path d="M 202.2 128.2 L 204.8 131 L 210.2 124.8" stroke="#ffffff" stroke-width="2.1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
           <text x="164" y="142" text-anchor="middle" font-size="7.5" font-weight="800" fill="white">Pré-produção</text>
           <line x1="128" y1="150" x2="200" y2="150" stroke="rgba(255,255,255,0.25)" stroke-width="0.5"/>
           <text x="164" y="166" text-anchor="middle" font-size="6.5" font-weight="700" fill="rgba(255,255,255,0.95)">Conteúdo</text>
@@ -999,6 +1199,9 @@
           <circle cx="268" cy="110" r="6" fill="#5fb670"/>
           <text x="268" y="98" text-anchor="middle" font-size="8" font-weight="800" fill="#5fb670">MAI</text>
           <rect x="222" y="125" width="92" height="130" rx="6" fill="#5fb670"/>
+           <circle cx="310" cy="128" r="11" fill="#ffffff"/>
+           <circle cx="310" cy="128" r="8.5" fill="#e0a800"/>
+           <path d="M 306.2 128.2 L 308.8 131 L 314.2 124.8" stroke="#ffffff" stroke-width="2.1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
           <text x="268" y="142" text-anchor="middle" font-size="7.5" font-weight="800" fill="white">Produção</text>
           <line x1="232" y1="150" x2="304" y2="150" stroke="rgba(255,255,255,0.3)" stroke-width="0.5"/>
           <text x="268" y="164" text-anchor="middle" font-size="6.5" font-weight="700" fill="white">Conteúdo</text>
@@ -1013,6 +1216,9 @@
           <circle cx="372" cy="110" r="6" fill="#5fb670"/>
           <text x="372" y="98" text-anchor="middle" font-size="8" font-weight="800" fill="#5fb670">JUN</text>
           <rect x="326" y="125" width="92" height="130" rx="6" fill="#5fb670"/>
+           <circle cx="414" cy="128" r="11" fill="#ffffff"/>
+           <circle cx="414" cy="128" r="8.5" fill="#e0a800"/>
+           <path d="M 410.2 128.2 L 412.8 131 L 418.2 124.8" stroke="#ffffff" stroke-width="2.1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
           <text x="372" y="142" text-anchor="middle" font-size="7.5" font-weight="800" fill="white">Produção</text>
           <line x1="336" y1="150" x2="408" y2="150" stroke="rgba(255,255,255,0.3)" stroke-width="0.5"/>
           <text x="372" y="164" text-anchor="middle" font-size="6.5" font-weight="700" fill="white">Conteúdo</text>
@@ -1109,13 +1315,13 @@
 
           <!-- Legenda simplificada -->
           <rect x="160" y="295" width="10" height="10" rx="2" fill="#2858a0"/>
-          <text x="175" y="304" font-size="8" fill="#6b7f95">Pré-produção (mar–abr)</text>
+          <text x="175" y="304" font-size="8" fill="#000">Pré-produção (mar–abr)</text>
           <rect x="320" y="295" width="10" height="10" rx="2" fill="#5fb670"/>
-          <text x="335" y="304" font-size="8" fill="#6b7f95">Produção (mai–out)</text>
+          <text x="335" y="304" font-size="8" fill="#000">Produção (mai–out)</text>
           <rect x="460" y="295" width="10" height="10" rx="2" fill="#38a349"/>
-          <text x="475" y="304" font-size="8" fill="#6b7f95">Lançamento da Exposição (nov)</text>
+          <text x="475" y="304" font-size="8" fill="#000">Lançamento da Exposição (nov)</text>
           <rect x="650" y="295" width="10" height="10" rx="2" fill="#1a2e3b"/>
-          <text x="665" y="304" font-size="8" fill="#6b7f95">Pós-produção (dez)</text>
+          <text x="665" y="304" font-size="8" fill="#000">Pós-produção (dez)</text>
 
           <text x="530" y="335" text-anchor="middle" font-size="7.5" fill="#9aabb8" font-style="italic">Datas de setembro a novembro a confirmar com a escola participante.</text>
         </svg>
@@ -1135,61 +1341,61 @@
         <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:white;border-bottom:1px solid rgba(40,88,160,0.07);">
           <div style="font-size:12px;font-weight:700;color:#2858a0;">Março</div>
           <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Pré-produção</div>
-          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Plataforma:</strong> arquitetura + infraestrutura.</div>
+          <div style="font-size:11px;color:#000;line-height:1.65;"><strong>Plataforma:</strong> arquitetura + infraestrutura.</div>
         </div>
 
         <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:#f9fbfd;border-bottom:1px solid rgba(40,88,160,0.07);">
           <div style="font-size:12px;font-weight:700;color:#2858a0;">Abril</div>
           <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Pré-produção</div>
-          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Conteúdo:</strong> game design document.<br><strong>Plataforma:</strong> estrutura base.</div>
+          <div style="font-size:11px;color:#000;line-height:1.65;"><strong>Conteúdo:</strong> game design document.<br><strong>Plataforma:</strong> estrutura base.</div>
         </div>
 
         <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:white;border-bottom:1px solid rgba(40,88,160,0.07);">
           <div style="font-size:12px;font-weight:700;color:#468182;">Maio</div>
           <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção</div>
-          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Conteúdo:</strong> personagens + desenvolvimento jogo.<br><strong>Ativação:</strong> contato com produtora.<br><strong>Plataforma:</strong> jornada + missões.</div>
+          <div style="font-size:11px;color:#000;line-height:1.65;"><strong>Conteúdo:</strong> personagens + desenvolvimento jogo.<br><strong>Ativação:</strong> contato com produtora.<br><strong>Plataforma:</strong> jornada + missões.</div>
         </div>
 
         <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:#f9fbfd;border-bottom:1px solid rgba(40,88,160,0.07);">
           <div style="font-size:12px;font-weight:700;color:#468182;">Junho</div>
           <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção</div>
-          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Conteúdo:</strong> desenvolvimento jogo.<br><strong>Ativação:</strong> contato com escolas.<br><strong>Plataforma:</strong> painéis de gestão.</div>
+          <div style="font-size:11px;color:#000;line-height:1.65;"><strong>Conteúdo:</strong> desenvolvimento jogo.<br><strong>Ativação:</strong> contato com escolas.<br><strong>Plataforma:</strong> painéis de gestão.</div>
         </div>
 
         <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:white;border-bottom:1px solid rgba(40,88,160,0.07);">
           <div style="font-size:12px;font-weight:700;color:#468182;">Julho</div>
           <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção</div>
-          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Conteúdo:</strong> material de divulgação.<br><strong>Ativação:</strong> treinamento de produtores.<br><strong>Plataforma:</strong> camadas públicas.</div>
+          <div style="font-size:11px;color:#000;line-height:1.65;"><strong>Conteúdo:</strong> material de divulgação.<br><strong>Ativação:</strong> treinamento de produtores.<br><strong>Plataforma:</strong> camadas públicas.</div>
         </div>
 
         <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:#f9fbfd;border-bottom:1px solid rgba(40,88,160,0.07);">
           <div style="font-size:12px;font-weight:700;color:#5fb670;">Agosto</div>
           <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção</div>
-          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Conteúdo:</strong> contato com assessoria de imprensa.<br><strong>Ativação:</strong> lançamento do jogo.<br><strong>Plataforma:</strong> suporte.</div>
+          <div style="font-size:11px;color:#000;line-height:1.65;"><strong>Conteúdo:</strong> contato com assessoria de imprensa.<br><strong>Ativação:</strong> lançamento do jogo.<br><strong>Plataforma:</strong> suporte.</div>
         </div>
 
         <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:white;border-bottom:1px solid rgba(40,88,160,0.07);">
           <div style="font-size:12px;font-weight:700;color:#5fb670;">Setembro</div>
           <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção</div>
-          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Conteúdo:</strong> pré-produção da exposição.<br><strong>Ativação:</strong> ativação do jogo.<br><strong>Plataforma:</strong> suporte.</div>
+          <div style="font-size:11px;color:#000;line-height:1.65;"><strong>Conteúdo:</strong> pré-produção da exposição.<br><strong>Ativação:</strong> ativação do jogo.<br><strong>Plataforma:</strong> suporte.</div>
         </div>
 
         <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:#f9fbfd;border-bottom:1px solid rgba(40,88,160,0.07);">
           <div style="font-size:12px;font-weight:700;color:#5fb670;">Outubro</div>
           <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção</div>
-          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Conteúdo:</strong> produção da exposição.<br><strong>Ativação:</strong> recebimento de trabalhos.<br><strong>Plataforma:</strong> suporte.</div>
+          <div style="font-size:11px;color:#000;line-height:1.65;"><strong>Conteúdo:</strong> produção da exposição.<br><strong>Ativação:</strong> recebimento de trabalhos.<br><strong>Plataforma:</strong> suporte.</div>
         </div>
 
         <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:white;border-bottom:1px solid rgba(40,88,160,0.07);">
           <div style="font-size:12px;font-weight:700;color:#38a349;">Novembro</div>
           <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção</div>
-          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Conteúdo:</strong> lançamento da exposição + assessoria de imprensa.<br><strong>Ativação:</strong> fechamento do jogo.<br><strong>Plataforma:</strong> escala + otimização.</div>
+          <div style="font-size:11px;color:#000;line-height:1.65;"><strong>Conteúdo:</strong> lançamento da exposição + assessoria de imprensa.<br><strong>Ativação:</strong> fechamento do jogo.<br><strong>Plataforma:</strong> escala + otimização.</div>
         </div>
 
         <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:#f9fbfd;">
           <div style="font-size:12px;font-weight:700;color:#1a2e3b;">Dezembro</div>
           <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Pós-produção</div>
-          <div style="font-size:11px;color:#6b7f95;line-height:1.65;"><strong>Conteúdo:</strong> organização do material.<br><strong>Ativação:</strong> desmontagem da exposição.<br><strong>Plataforma:</strong> estabilização + consolidação.</div>
+          <div style="font-size:11px;color:#000;line-height:1.65;"><strong>Conteúdo:</strong> organização do material.<br><strong>Ativação:</strong> desmontagem da exposição.<br><strong>Plataforma:</strong> estabilização + consolidação.</div>
         </div>
 
         </div>
@@ -1211,7 +1417,7 @@
       <p class="page-subtitle">Os resultados da parceria Sotreq ficam registrados e acessíveis na plataforma The Blue City – em três espaços dedicados: Performance dos Jogadores, Galeria de Projetos e Galeria de Eventos.</p>
     </div>
 
-    <div class="page-body single" style="max-width:960px;margin:0 auto;">
+    <div class="page-body single">
 
       <div class="section-heading" style="margin-bottom:20px;">Espaços de resultado na plataforma</div>
 
@@ -1225,7 +1431,7 @@
           </div>
         </div>
         <div style="padding:24px 28px;">
-          <p style="font-size:13px;color:#6b7f95;line-height:1.65;margin-bottom:20px;">O painel de Performance dos Jogadores registra o engajamento individual e coletivo dos estudantes ao longo da jornada – do primeiro acesso ao envio do projeto final. Os dados são organizados por jornada e ficam disponíveis para consulta após o encerramento.</p>
+          <p style="font-size:13px;color:#000;line-height:1.65;margin-bottom:20px;">O painel de Performance dos Jogadores registra o engajamento individual e coletivo dos estudantes ao longo da jornada – do primeiro acesso ao envio do projeto final. Os dados são organizados por jornada e ficam disponíveis para consulta após o encerramento.</p>
           <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
             <div class="stat-card">
               <div class="stat-value">–</div>
@@ -1242,7 +1448,7 @@
           </div>
           <div style="margin-top:16px;padding:14px 18px;background:#f4f8fc;border-radius:10px;border-left:3px solid var(--blue);">
             <div style="font-size:11px;font-weight:700;color:var(--blue);margin-bottom:4px;">O que o painel registra</div>
-            <div style="font-size:12px;color:#6b7f95;line-height:1.6;">Número de jogadores ativos · Taxa de adesão por turma · Missões completadas · Badges conquistados · Projetos enviados · Ranking de participação</div>
+            <div style="font-size:12px;color:#000;line-height:1.6;">Número de jogadores ativos · Taxa de adesão por turma · Missões completadas · Badges conquistados · Projetos enviados · Ranking de participação</div>
           </div>
         </div>
       </div>
@@ -1257,7 +1463,7 @@
           </div>
         </div>
         <div style="padding:24px 28px;">
-          <p style="font-size:13px;color:#6b7f95;line-height:1.65;margin-bottom:20px;">A Galeria de Projetos é o repositório público das entregas brutas dos jogadores – vídeos, documentos, registros fotográficos e relatos de ações reais relacionados ao tema da redução de emissões de GEE. É o acervo vivo da produção estudantil gerada pela jornada.</p>
+          <p style="font-size:13px;color:#000;line-height:1.65;margin-bottom:20px;">A Galeria de Projetos é o repositório público das entregas brutas dos jogadores – vídeos, documentos, registros fotográficos e relatos de ações reais relacionados ao tema da redução de emissões de GEE. É o acervo vivo da produção estudantil gerada pela jornada.</p>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
             <div class="feature-card" style="margin:0;">
               <div class="feature-card-header"><div class="feature-icon fi-teal">📄</div><h3>O que aparece</h3></div>
@@ -1270,7 +1476,7 @@
           </div>
           <div style="margin-top:16px;padding:14px 18px;background:#f4f8fc;border-radius:10px;border-left:3px solid var(--teal);">
             <div style="font-size:11px;font-weight:700;color:var(--teal);margin-bottom:4px;">Diferença importante</div>
-            <div style="font-size:12px;color:#6b7f95;line-height:1.6;">A Galeria de Projetos exibe as <strong style="color:#1a2e3b;">entregas brutas dos jogadores</strong> – o material bruto gerado durante o jogo. As obras artísticas finais resultantes da curadoria da exposição ficam na Galeria de Eventos.</div>
+            <div style="font-size:12px;color:#000;line-height:1.6;">A Galeria de Projetos exibe as <strong style="color:#1a2e3b;">entregas brutas dos jogadores</strong> – o material bruto gerado durante o jogo. As obras artísticas finais resultantes da curadoria da exposição ficam na Galeria de Eventos.</div>
           </div>
         </div>
       </div>
@@ -1285,7 +1491,7 @@
           </div>
         </div>
         <div style="padding:24px 28px;">
-          <p style="font-size:13px;color:#6b7f95;line-height:1.65;margin-bottom:20px;">A Galeria de Eventos documenta a exposição pública realizada no entorno da escola parceira em Palmas – o resultado final transformado em arte. Aqui ficam as fotos e registros das obras expostas, dos personagens no espaço físico e da mediação cultural com o público visitante.</p>
+          <p style="font-size:13px;color:#000;line-height:1.65;margin-bottom:20px;">A Galeria de Eventos documenta a exposição pública realizada no entorno da escola parceira em Palmas – o resultado final transformado em arte. Aqui ficam as fotos e registros das obras expostas, dos personagens no espaço físico e da mediação cultural com o público visitante.</p>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
             <div class="feature-card" style="margin:0;">
               <div class="feature-card-header"><div class="feature-icon fi-green">🖼️</div><h3>O que aparece</h3></div>
@@ -1298,7 +1504,7 @@
           </div>
           <div style="margin-top:16px;padding:14px 18px;background:#f4f8fc;border-radius:10px;border-left:3px solid #38a349;">
             <div style="font-size:11px;font-weight:700;color:#38a349;margin-bottom:4px;">O resultado artístico final</div>
-            <div style="font-size:12px;color:#6b7f95;line-height:1.6;">As obras expostas são o produto da transformação dos projetos dos estudantes pelo olhar artístico da Pesquisadora Cultural – materializando a síntese entre educação ambiental, cultura regional e expressão criativa.</div>
+            <div style="font-size:12px;color:#000;line-height:1.6;">As obras expostas são o produto da transformação dos projetos dos estudantes pelo olhar artístico da Pesquisadora Cultural – materializando a síntese entre educação ambiental, cultura regional e expressão criativa.</div>
           </div>
         </div>
       </div>
@@ -1346,7 +1552,7 @@
       <p class="page-subtitle">Após a edição em Palmas, propomos uma segunda jornada Missão Cidade Azul em parceria com a Sotreq – em uma cidade onde a empresa já tem presença consolidada e perfil socioeconômico análogo. Nossa recomendação é Marabá (PA).</p>
     </div>
 
-    <div class="page-body single" style="max-width:980px;margin:0 auto;">
+    <div class="page-body single">
 
       <!-- DESTAQUE: MARABÁ -->
       <div style="margin-bottom:36px;padding-bottom:32px;border-bottom:1px solid rgba(40,88,160,0.12);">
@@ -1357,7 +1563,7 @@
         </div>
 
         <h2 style="font-size:36px;font-weight:800;margin-bottom:10px;letter-spacing:-0.5px;color:var(--dark);">Marabá <span style="font-size:20px;font-weight:500;color:var(--muted);">· Pará</span></h2>
-        <p style="font-size:14px;color:#6b7f95;line-height:1.65;max-width:720px;margin-bottom:24px;">Cidade-polo da Região Norte, hub logístico no eixo Belém-Brasília, com filial Sotreq consolidada e um ecossistema institucional, educacional e de infraestrutura que espelha – e em alguns aspectos amplifica – o perfil de Palmas.</p>
+        <p style="font-size:14px;color:#000;line-height:1.65;max-width:720px;margin-bottom:24px;">Cidade-polo da Região Norte, hub logístico no eixo Belém-Brasília, com filial Sotreq consolidada e um ecossistema institucional, educacional e de infraestrutura que espelha – e em alguns aspectos amplifica – o perfil de Palmas.</p>
 
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
           <div style="background:var(--blue);border-radius:10px;padding:14px 16px;color:white;">
@@ -1399,7 +1605,7 @@
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
           <div style="border-left:3px solid var(--teal);padding-left:18px;">
             <div style="font-size:14px;font-weight:800;color:var(--dark);margin-bottom:10px;">Palmas (TO) · Edição atual</div>
-            <ul style="list-style:none;padding:0;margin:0;font-size:13px;color:#6b7f95;line-height:1.85;">
+            <ul style="list-style:none;padding:0;margin:0;font-size:13px;color:#000;line-height:1.85;">
               <li>📍 Capital do Tocantins</li>
               <li>🛣️ Eixo Belém-Brasília</li>
               <li>🎓 UFT · IFTO</li>
@@ -1409,7 +1615,7 @@
           </div>
           <div style="border-left:3px solid var(--green);padding-left:18px;">
             <div style="font-size:14px;font-weight:800;color:var(--dark);margin-bottom:10px;">Marabá (PA) · Próxima edição</div>
-            <ul style="list-style:none;padding:0;margin:0;font-size:13px;color:#6b7f95;line-height:1.85;">
+            <ul style="list-style:none;padding:0;margin:0;font-size:13px;color:#000;line-height:1.85;">
               <li>📍 Polo regional do sudeste paraense</li>
               <li>🛣️ Transamazônica · Carajás</li>
               <li>🎓 Unifesspa · IFPA</li>
@@ -1420,14 +1626,14 @@
         </div>
         <div style="margin-top:20px;padding:14px 18px;background:#f4f8fc;border-radius:10px;border-left:3px solid var(--blue);">
           <div style="font-size:11px;font-weight:700;color:var(--blue);margin-bottom:4px;">Continuidade narrativa</div>
-          <div style="font-size:12px;color:#6b7f95;line-height:1.6;">Palmas e Marabá compõem juntas um arco cultural Norte que conecta cerrado e Amazônia – fortalecendo o posicionamento da Sotreq como patrocinadora de uma jornada cultural de longo prazo, ancorada nas regiões onde a empresa opera.</div>
+          <div style="font-size:12px;color:#000;line-height:1.6;">Palmas e Marabá compõem juntas um arco cultural Norte que conecta cerrado e Amazônia – fortalecendo o posicionamento da Sotreq como patrocinadora de uma jornada cultural de longo prazo, ancorada nas regiões onde a empresa opera.</div>
         </div>
       </div>
 
       <!-- LISTA: CIDADES SOTREQ NA REGIÃO NORTE -->
       <div class="section-heading" style="margin-bottom:20px;">Todas as cidades Sotreq na Região Norte</div>
 
-      <p style="font-size:13px;color:#6b7f95;line-height:1.65;margin-bottom:24px;max-width:760px;">A Sotreq atua na Região Norte do Brasil desde o final da década de 1970, quando incorporou os estados do Pará e Amapá. Em 2001, expandiu para Rondônia, Amazonas, Acre e Roraima. Abaixo, as principais filiais e cidades atendidas:</p>
+      <p style="font-size:13px;color:#000;line-height:1.65;margin-bottom:24px;max-width:760px;">A Sotreq atua na Região Norte do Brasil desde o final da década de 1970, quando incorporou os estados do Pará e Amapá. Em 2001, expandiu para Rondônia, Amazonas, Acre e Roraima. Abaixo, as principais filiais e cidades atendidas:</p>
 
       <div style="background:white;border-radius:14px;border:1px solid rgba(40,88,160,0.1);overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.04);margin-bottom:36px;">
 
@@ -1440,27 +1646,27 @@
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
             <div style="padding:10px 14px;background:#f4f8fc;border-radius:8px;border-left:3px solid var(--blue);">
               <div style="font-size:13px;font-weight:700;color:var(--dark);">Belém</div>
-              <div style="font-size:11px;color:#6b7f95;">Av. Almirante Barroso, 3864 – Souza</div>
+              <div style="font-size:11px;color:#000;">Av. Almirante Barroso, 3864 – Souza</div>
             </div>
             <div style="padding:10px 14px;background:#f4f8fc;border-radius:8px;border-left:3px solid var(--green);">
               <div style="font-size:13px;font-weight:700;color:var(--dark);">Marabá ★</div>
-              <div style="font-size:11px;color:#6b7f95;">BR-230, Km 5,5 – Nova Marabá</div>
+              <div style="font-size:11px;color:#000;">BR-230, Km 5,5 – Nova Marabá</div>
             </div>
             <div style="padding:10px 14px;background:#f4f8fc;border-radius:8px;border-left:3px solid var(--blue);">
               <div style="font-size:13px;font-weight:700;color:var(--dark);">Parauapebas</div>
-              <div style="font-size:11px;color:#6b7f95;">PA-275 · Polo de mineração · ~48 mil m²</div>
+              <div style="font-size:11px;color:#000;">PA-275 · Polo de mineração · ~48 mil m²</div>
             </div>
             <div style="padding:10px 14px;background:#f4f8fc;border-radius:8px;border-left:3px solid var(--blue);">
               <div style="font-size:13px;font-weight:700;color:var(--dark);">Canaã dos Carajás</div>
-              <div style="font-size:11px;color:#6b7f95;">Setor de mineração · sudeste do Pará</div>
+              <div style="font-size:11px;color:#000;">Setor de mineração · sudeste do Pará</div>
             </div>
             <div style="padding:10px 14px;background:#f4f8fc;border-radius:8px;border-left:3px solid var(--blue);">
               <div style="font-size:13px;font-weight:700;color:var(--dark);">Vitória do Xingu</div>
-              <div style="font-size:11px;color:#6b7f95;">Filial estratégica · entorno Belo Monte</div>
+              <div style="font-size:11px;color:#000;">Filial estratégica · entorno Belo Monte</div>
             </div>
             <div style="padding:10px 14px;background:#f4f8fc;border-radius:8px;border-left:3px solid var(--blue);">
               <div style="font-size:13px;font-weight:700;color:var(--dark);">Altamira</div>
-              <div style="font-size:11px;color:#6b7f95;">Rod. Transamazônica, Km 3 – Floresta</div>
+              <div style="font-size:11px;color:#000;">Rod. Transamazônica, Km 3 – Floresta</div>
             </div>
           </div>
         </div>
@@ -1473,7 +1679,7 @@
         <div style="padding:18px 24px;border-bottom:1px solid rgba(40,88,160,0.08);">
           <div style="padding:10px 14px;background:#f4f8fc;border-radius:8px;border-left:3px solid var(--teal);">
             <div style="font-size:13px;font-weight:700;color:var(--dark);">Macapá</div>
-            <div style="font-size:11px;color:#6b7f95;">Atendimento Cat® no estado do Amapá</div>
+            <div style="font-size:11px;color:#000;">Atendimento Cat® no estado do Amapá</div>
           </div>
         </div>
 
@@ -1486,19 +1692,19 @@
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
             <div style="padding:10px 14px;background:#f4f8fc;border-radius:8px;border-left:3px solid #38a349;">
               <div style="font-size:13px;font-weight:700;color:var(--dark);">Porto Velho · RO</div>
-              <div style="font-size:11px;color:#6b7f95;">Capital · hub logístico amazônico</div>
+              <div style="font-size:11px;color:#000;">Capital · hub logístico amazônico</div>
             </div>
             <div style="padding:10px 14px;background:#f4f8fc;border-radius:8px;border-left:3px solid #38a349;">
               <div style="font-size:13px;font-weight:700;color:var(--dark);">Manaus · AM</div>
-              <div style="font-size:11px;color:#6b7f95;">Capital · Polo Industrial · maior cidade do Norte</div>
+              <div style="font-size:11px;color:#000;">Capital · Polo Industrial · maior cidade do Norte</div>
             </div>
             <div style="padding:10px 14px;background:#f4f8fc;border-radius:8px;border-left:3px solid #38a349;">
               <div style="font-size:13px;font-weight:700;color:var(--dark);">Rio Branco · AC</div>
-              <div style="font-size:11px;color:#6b7f95;">Capital · atendimento Cat® no Acre</div>
+              <div style="font-size:11px;color:#000;">Capital · atendimento Cat® no Acre</div>
             </div>
             <div style="padding:10px 14px;background:#f4f8fc;border-radius:8px;border-left:3px solid #38a349;">
               <div style="font-size:13px;font-weight:700;color:var(--dark);">Boa Vista · RR</div>
-              <div style="font-size:11px;color:#6b7f95;">Capital · atendimento Cat® em Roraima</div>
+              <div style="font-size:11px;color:#000;">Capital · atendimento Cat® em Roraima</div>
             </div>
           </div>
         </div>
@@ -1514,10 +1720,531 @@
     </div>
   </section>
 
+
+  <!-- ══ 13: DOSSIÊ U'ACÜ (produção – sem edição) ══ -->
+  <section class="page" id="page-13">
+    <div class="page-hero role-pesquisadora">
+      <div style="display:flex; align-items:center; gap:18px; margin-bottom:20px; padding-bottom:18px; border-bottom:1px solid rgba(40,88,160,0.12);">
+        <img src="https://the-blue-city.github.io/content/ester.jpg" alt="Ester Menezes" style="width:60px; height:60px; border-radius:50%; object-fit:cover; object-position:top; border:3px solid #d6e4f7; flex-shrink:0;">
+        <div>
+          <div class="role-badge rb-blue" style="margin-bottom:6px;">🔍 Pesquisadora Cultural</div>
+          <p style="font-size:16px; font-weight:800; color:var(--dark); margin-bottom:2px;">Ester Menezes</p>
+          <p style="font-size:12px; color:var(--muted);">Artesã · Artista Híbrida · Diretora de Arte · Produtora Cultural</p>
+        </div>
+      </div>
+      <div class="role-badge rb-teal">☀️ Mundo do Sol</div>
+      <h1 class="page-title">U'acü</h1>
+      <p class="page-subtitle">Sol na língua Tikuna · Cultura Indígena · Guia do Mundo do Sol</p>
+      <div class="dz-research">
+        <strong>Pesquisa realizada em diálogo com</strong>
+        <p>Santo Cruz Mariano Clemente – ancião Tikuna e diretor do Museu Magüta</p>
+        <p>Rose Salvador – artista visual do povo Tikuna</p>
+      </div>
+      <div class="dz-quote sol">
+        Personagem masculino que representa o elemento Sol e é o guia do Mundo do Sol. Inspirado na cosmologia Tikuna – o povo indígena mais numeroso do Brasil – cujo espírito do sol é invocado pelos pajés para realizar curas e quebrar feitiços. O pajé atua como intermediário entre o mundo humano e o divino, chamando U'acü para restaurar o equilíbrio e afastar o mal.
+      </div>
+    </div>
+
+    <div class="page-body single" style="max-width:100%; padding:36px 60px 0;">
+
+      <div class="dz-section">
+        <div class="section-heading">1. Figura Mítica Aprofundada</div>
+        <div class="dz-h2">U'acü na Cosmologia Tikuna</div>
+        <p>O povo Tikuna (Magüta) é o mais numeroso do Brasil, com cerca de 57 mil pessoas, habitando as margens do Rio Solimões, no Alto Amazonas. Sua cosmologia é rica em seres sobrenaturais que habitam diferentes camadas do universo – o céu, a terra e as águas.</p>
+        <p>U'acü é o nome do Sol na língua Tikuna. Na tradição Tikuna, o sol não é apenas um astro celeste, mas uma entidade espiritual viva, dotada de poder curativo e protetor. Ele percorre o céu diariamente, iluminando o caminho dos vivos e afastando as trevas dos espíritos malignos.</p>
+
+        <div class="dz-media lg">
+          <figure class="dz-fig">
+            <img src="https://the-blue-city.github.io/exposicao/ref-01-uacu-livro-tikuna-dois-estados.png" alt="U'acü – livro ilustrado Tikuna">
+            <figcaption>U'acü – livro ilustrado Tikuna</figcaption>
+          </figure>
+          <div>
+            <div class="dz-h3">O Pajé como Intermediário</div>
+            <p>O pajé Tikuna invoca U'acü em rituais de cura. Quando uma pessoa sofre de mal causado por feitiço, o pajé sopra fumaça de tabaco sagrado sobre o enfermo e usa um feixe de plantas medicinais para varrer o mal do corpo – até que o espírito solar se manifeste e a cura aconteça.</p>
+            <p>Na ilustração original do livro Tikuna, o sol aparece em dois estados: bloqueado/cinza (quando a Terra está sob o feitiço da poluição) e pleno/vermelho (quando invocado pelo pajé com o maracá vermelho).</p>
+          </div>
+        </div>
+
+        <div class="dz-media lg">
+          <figure class="dz-fig">
+            <img src="https://the-blue-city.github.io/exposicao/ref-02-ritual-cura-acacu-livro-tikuna.png" alt="Ritual de cura – livro Tikuna">
+            <figcaption>Ritual de cura – livro Tikuna</figcaption>
+          </figure>
+          <div>
+            <div class="dz-h3">O Ritual de Invocação</div>
+            <p>Em ilustração do livro Tikuna: o pajé, dentro da maloca, sopra fumaça de tabaco sagrado sobre o enfermo deitado, enquanto usa um feixe de folhas medicinais para varrer o mal. Atrás do pajé surge o espírito convocado – etéreo e luminoso.</p>
+            <p>A árvore sagrada açacu (uatchiwa) também se manifesta – os espíritos habitam a natureza e são parte do mesmo sistema de cura.</p>
+          </div>
+        </div>
+
+        <div style="background:#fdf2d4; border:1px solid #f3dca0; border-left:4px solid #F5A623; border-radius:10px; padding:18px 22px; margin-top:22px;">
+          <div class="dz-h3" style="margin-top:0; color:#C0392B;">Conexão com o Tema do Jogo</div>
+          <p style="margin-bottom:0; font-size:13px; line-height:1.7; color:#000;">O desequilíbrio ambiental – queima de combustíveis fósseis, desmatamento, poluição – é o grande 'feitiço' lançado sobre a Terra. U'acü guia o visitante pelo Mundo do Sol, ensinando como a luz solar pode ser fonte de energia limpa e como recuperar o equilíbrio do planeta.</p>
+        </div>
+      </div>
+
+      <div class="dz-section">
+        <div class="section-heading">2. Os Dois Estados de U'acü</div>
+        <div class="dz-h2">Arco Narrativo do Personagem</div>
+        <p>A ilustração original Tikuna revela que U'acü existe em dois estados visuais distintos:</p>
+        <div class="dz-states">
+          <div class="dz-state blocked">
+            <h4>ESTADO 1 – BLOQUEADO</h4>
+            <p><b>Cor:</b> cinza escuro / fumaça</p>
+            <p><b>Causa:</b> poluição, desmatamento, feitiço</p>
+            <p><b>No jogo:</b> estado inicial – o visitante deve restaurá-lo</p>
+          </div>
+          <div class="dz-state full-sol">
+            <h4>ESTADO 2 – PLENO</h4>
+            <p><b>Cor:</b> vermelho vivo + raios dourados</p>
+            <p><b>Causa:</b> invocação pelo pajé via ritual</p>
+            <p><b>No jogo:</b> estado restaurado – recompensa das missões</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="dz-section">
+        <div class="section-heading">3. Referências Iconográficas</div>
+        <div class="dz-h2">Características Físicas e Visuais</div>
+        <p>Pele morena acobreada, estatura média, cabelos pretos lisos e curtos, olhos escuros com brilho intenso. Corpo forte e ágil.</p>
+
+        <div class="dz-h3">Pinturas Corporais</div>
+        <ul class="dz-list">
+          <li>Rosto coberto com urucum vermelho intenso – da testa até o queixo</li>
+          <li>Referência: povo Kayapó / Xikrin</li>
+          <li>A pintura vermelha representa o calor e a energia do sol</li>
+          <li>Apenas o rosto é pintado – o corpo fica coberto pelo tururi</li>
+        </ul>
+        <div class="dz-imgrow">
+          <figure class="dz-fig">
+            <img src="https://the-blue-city.github.io/exposicao/ref-03-pintura-urucum-kayapo-xikrin-a.png" alt="Pintura de urucum – Kayapó/Xikrin">
+            <figcaption>Kayapó/Xikrin</figcaption>
+          </figure>
+          <figure class="dz-fig">
+            <img src="https://the-blue-city.github.io/exposicao/ref-04-pintura-urucum-kayapo-xikrin-b.png" alt="Pintura de urucum – Kayapó/Xikrin">
+            <figcaption>Kayapó/Xikrin</figcaption>
+          </figure>
+        </div>
+
+        <div class="dz-h3">Roupa</div>
+        <ul class="dz-list">
+          <li>Veste de tururi – fibra vegetal amazônica resistente e flexível, obtida do invólucro dos frutos da palmeira Manicaria saccifera (Ubuçu)</li>
+          <li>Pintada à mão com padrões geométricos em losangos e diamantes encadeados, nas cores preto, vermelho/terracota e branco</li>
+          <li>Referência: mascarado Tikuna da Festa da Moça Nova (Worecü)</li>
+        </ul>
+        <figure class="dz-fig dz-imgsingle">
+          <img src="https://the-blue-city.github.io/exposicao/ref-05-mascarado-tururi-tikuna.png" alt="Mascarado Tikuna – tururi">
+          <figcaption>Mascarado Tikuna – tururi</figcaption>
+        </figure>
+
+        <div class="dz-h3">Acessórios</div>
+        <ul class="dz-list">
+          <li>Cocar com penas amarelas e laranja em arco amplo – referência: povo Enawenê-Nawê</li>
+          <li>Maracá vermelho com padrões geométricos gravados – instrumento sagrado do pajé para invocar U'acü; é ao mesmo tempo sua arma e sua ferramenta de cura</li>
+        </ul>
+        <div class="dz-imgrow">
+          <figure class="dz-fig">
+            <img src="https://the-blue-city.github.io/exposicao/ref-06-cocar-enawene-nawe.png" alt="Cocar – Enawenê-Nawê">
+            <figcaption>Cocar – Enawenê-Nawê</figcaption>
+          </figure>
+          <figure class="dz-fig">
+            <div class="dz-ph">[ imagem<br>maracá vermelho ]</div>
+            <figcaption>Maracá vermelho</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="dz-section">
+        <div class="section-heading">4. Paleta de Cores Sugerida</div>
+        <div class="dz-h2">Paleta Cromática de U'acü</div>
+        <p>A paleta evoca o calor do sol, a terra amazônica e a espiritualidade Tikuna:</p>
+        <table class="dz-palette">
+          <thead><tr><th>Cor</th><th>Nome</th><th>Hex</th><th>Significado</th></tr></thead>
+          <tbody>
+            <tr><td><span class="dz-swatch" style="background:#C0392B;"></span></td><td><b>Vermelho Urucum</b></td><td><code>#C0392B</code></td><td>Pintura facial – energia do sol</td></tr>
+            <tr><td><span class="dz-swatch" style="background:#F5A623;"></span></td><td><b>Dourado Solar</b></td><td><code>#F5A623</code></td><td>Cor primária – raios do sol</td></tr>
+            <tr><td><span class="dz-swatch" style="background:#C8780A;"></span></td><td><b>Âmbar</b></td><td><code>#C8780A</code></td><td>Calor e energia vital</td></tr>
+            <tr><td><span class="dz-swatch" style="background:#8B3A1A;"></span></td><td><b>Terracota</b></td><td><code>#8B3A1A</code></td><td>Terra e ancestralidade</td></tr>
+            <tr><td><span class="dz-swatch" style="background:#1A1A1A;"></span></td><td><b>Preto Jenipapo</b></td><td><code>#1A1A1A</code></td><td>Padrões do tururi</td></tr>
+            <tr><td><span class="dz-swatch" style="background:#F5F0E8;"></span></td><td><b>Branco Natural</b></td><td><code>#F5F0E8</code></td><td>Fibra do tururi</td></tr>
+          </tbody>
+        </table>
+        <div class="dz-note sol"><b>Nota:</b> O vermelho do urucum é a cor dominante – representa o sol pleno e a energia curativa. O preto e branco do tururi contrastam e equilibram a composição.</div>
+      </div>
+
+      <div class="dz-section">
+        <div class="section-heading">5. Orientações para o Ilustrador</div>
+        <div class="dz-h2">Diretrizes de Representação</div>
+        <div class="dz-grid">
+          <div class="dz-card">
+            <h4>Silhueta e Postura</h4>
+            <p>Braços abertos, palmas para cima – postura receptiva e irradiante. A silhueta deve lembrar um sol: expansiva, com o cocar se abrindo ao redor da cabeça como raios.</p>
+          </div>
+          <div class="dz-card">
+            <h4>Expressão</h4>
+            <p>Serena e poderosa. Olhos que transmitem sabedoria ancestral. Não deve aparentar agressividade – sua força é curativa e protetora.</p>
+          </div>
+          <div class="dz-card">
+            <h4>Autenticidade Cultural</h4>
+            <p>Baseado em pesquisa em diálogo com Santo Cruz Mariano Clemente (ancião Tikuna, Museu Magüta) e Rose Salvador (artista visual Tikuna). As referências culturais específicas do povo Tikuna aqui documentadas são o guia para a representação do personagem.</p>
+          </div>
+          <div class="dz-card">
+            <h4>Bioma de Referência</h4>
+            <p>Alto Rio Solimões, Amazônia. Luz dourada filtrando pela floresta, reflexos solares na água. A árvore açacu (uatchiwa) pode aparecer no cenário.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="dz-section">
+        <div class="section-heading">6. Conexão com o Tema Central</div>
+        <div class="dz-h2">U'acü e a Redução de Gases de Efeito Estufa</div>
+        <div class="dz-grid">
+          <div class="dz-card" style="background:#fff8e7; border-color:#f0e3c0;">
+            <h4>Metáfora Mítica</h4>
+            <p>O 'feitiço' sobre a Terra = emissão de gases de efeito estufa. U'acü, invocado pelo pajé, representa a cura = transição para energia solar limpa.</p>
+          </div>
+          <div class="dz-card" style="background:#d5e8f0; border-color:#b8d6e4;">
+            <h4>Missão no Jogo</h4>
+            <p>Guiar o jogador a descobrir fontes de energia solar, reduzindo a dependência de combustíveis fósseis no Mundo do Sol.</p>
+          </div>
+          <div class="dz-card" style="background:#ffe9cc; border-color:#f0d2a0;">
+            <h4>Poder de Cura</h4>
+            <p>U'acü cura territórios degradados pelo garimpo e desmatamento, revelando como povos indígenas são guardiões do clima.</p>
+          </div>
+          <div class="dz-card" style="background:#e8f5e9; border-color:#c8e6ca;">
+            <h4>Conhecimento Ancestral</h4>
+            <p>Transmite saberes Tikuna sobre ciclos solares, agricultura de baixo impacto e relação sustentável com a floresta amazônica.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="dz-section">
+        <div class="section-heading">7. Validação Cultural</div>
+        <div class="dz-h2">Quem Orientou Esta Pesquisa</div>
+        <p>O personagem U'acü foi desenvolvido em diálogo direto com lideranças e artistas do povo Tikuna, garantindo autenticidade cultural e respeito às tradições representadas.</p>
+
+        <div class="dz-media" style="margin-top:24px;">
+          <figure class="dz-fig">
+            <img src="https://the-blue-city.github.io/content/SantoCruzMarianoClementeTikuna.jpg" alt="Santo Cruz Mariano Clemente">
+            <figcaption>Santo Cruz Mariano Clemente</figcaption>
+          </figure>
+          <div>
+            <div class="dz-h3" style="margin-top:0; color:#000;">Santo Cruz Mariano Clemente</div>
+            <p style="color:#000;">Ancião Tikuna, músico e poeta, nascido em 1960 na aldeia Lauro Sodré (Benjamin Constant/AM). Seu nome na língua Tikuna é Pu'cüracü, do clã do mutum. Atuou 38 anos na educação em defesa dos direitos indígenas e participou da formação da OGPTB (Organização Geral dos Professores Ticuna Bilíngues) e da CGTT (Conselho Geral da Tribo Ticuna).</p>
+            <p style="color:#000;">Graduado em Antropologia, Sociologia e Filosofia, é servidor da FUNAI e, desde abril de 2018, diretor do Museu Magüta – o primeiro museu indígena do Brasil – dedicado à preservação da memória, da cultura e das tradições do povo Tikuna.</p>
+            <p style="font-size:12px; margin-bottom:0;"><a href="https://osbrasisesuasmemorias.com.br/santo-cruz-mariano-clemente-ticuna/" target="_blank" rel="noopener" style="color:var(--blue); text-decoration:none; font-weight:600;">Biografia completa · Os Brasis e suas Memórias ↗</a></p>
+          </div>
+        </div>
+
+        <div class="dz-media rev" style="margin-top:24px;">
+          <div>
+            <div class="dz-h3" style="margin-top:0; color:#000;">Rose Salvador</div>
+            <p style="color:#000;">Artista visual, artesã e produtora cultural do povo Tikuna, originária da Aldeia Bom Caminho, no Alto Solimões (AM) e radicada em Recife (PE). Sua trajetória é marcada pela salvaguarda e difusão dos saberes ancestrais, do grafismo e das narrativas de seu povo.</p>
+            <ul class="dz-list">
+              <li><b>Coletivo Moingobé:</b> é uma das coordenadoras dessa iniciativa, que promove intercâmbios culturais, exposições e o diálogo entre diferentes povos originários.</li>
+              <li><b>Cestaria e artesanato tradicional:</b> produz e difunde conhecimentos sobre a cestaria tikuna, feita com a fibra do arumã, com padronagens que representam os animais do cotidiano e ensinamentos transmitidos no Ritual da Moça Nova.</li>
+              <li><b>Preservação cultural e resistência:</b> enxerga sua produção como um ritual de resistência, focado na autonomia, na geração de renda para as mulheres artesãs de sua comunidade e em contar a história dos povos indígenas a partir de suas próprias narrativas.</li>
+            </ul>
+            <p style="font-size:12px; margin-bottom:0;">
+              <a href="https://www.instagram.com/salvador___rose/" target="_blank" rel="noopener" style="color:var(--blue); text-decoration:none; font-weight:600;">@salvador___rose ↗</a>
+            </p>
+          </div>
+          <figure class="dz-fig">
+            <img src="https://the-blue-city.github.io/content/RoseSalvador.jpg" alt="Rose Salvador">
+            <figcaption>Rose Salvador</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="dz-section">
+        <div class="section-heading">8. Territórios de Articulação</div>
+        <div class="dz-h2">Pontes com as Comunidades de Origem</div>
+        <p>A pesquisadora Ester Menezes mantém articulação ativa em duas frentes territoriais.</p>
+        <div class="dz-grid">
+          <div class="dz-card">
+            <h4>Povo Tikuna – Amazonas</h4>
+            <ul class="dz-list">
+              <li>Alto Solimões, tríplice fronteira</li>
+              <li>Cidade-base: Benjamin Constant (AM)</li>
+              <li>Várias aldeias no Alto Solimões; região do Vale do Javari próxima</li>
+            </ul>
+          </div>
+          <div class="dz-card">
+            <h4>Povo Krahô – Tocantins</h4>
+            <ul class="dz-list">
+              <li>Comunidade em Itacajá (TO), também Goiatins</li>
+              <li>Mais de 28 aldeias dentro dessas cidades</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="dz-note" style="border-left:3px solid #1a2e3b; margin-top:16px; color:#000;">
+          <b>Referência geográfica:</b> Vale do Javari (AM) – próximo ao Alto Solimões, citado como referência de proximidade ao território Tikuna.
+        </div>
+      </div>
+
+      <div class="dz-credit">
+        Dossiê elaborado por <b>Ester Menezes</b> · Pesquisadora Cultural<br>
+        Missão Termômetro Zero
+      </div>
+    </div>
+
+    <div class="page-nav">
+      <button class="nav-btn" onclick="goTo(8)">← Os Personagens</button>
+      <span class="page-indicator">Dossiê · <strong>U'acü</strong></span>
+      <button class="nav-btn next" onclick="goTo(14)">Personagem Afefé →</button>
+    </div>
+  </section>
+
+
+
+  <!-- ══ 14: DOSSIÊ AFEFÉ (produção – sem edição) ══ -->
+  <section class="page" id="page-14">
+    <div class="page-hero role-pesquisadora">
+      <div style="display:flex; align-items:center; gap:18px; margin-bottom:20px; padding-bottom:18px; border-bottom:1px solid rgba(40,88,160,0.12);">
+        <img src="https://the-blue-city.github.io/content/ester.jpg" alt="Ester Menezes" style="width:60px; height:60px; border-radius:50%; object-fit:cover; object-position:top; border:3px solid #d6e4f7; flex-shrink:0;">
+        <div>
+          <div class="role-badge rb-blue" style="margin-bottom:6px;">🔍 Pesquisadora Cultural</div>
+          <p style="font-size:16px; font-weight:800; color:var(--dark); margin-bottom:2px;">Ester Menezes</p>
+          <p style="font-size:12px; color:var(--muted);">Artesã · Artista Híbrida · Diretora de Arte · Produtora Cultural</p>
+        </div>
+      </div>
+      <div class="role-badge rb-blue">⚡ Mundo dos Ventos</div>
+      <h1 class="page-title">Afefé</h1>
+      <p class="page-subtitle">Vento na língua Iorubá · Cultura Afro-Brasileira · Guia do Mundo dos Ventos</p>
+      <div class="dz-research">
+        <strong>Pesquisa realizada em diálogo com</strong>
+        <p>José Neri – babalorixá</p>
+      </div>
+      <div class="dz-quote vento">
+        Personagem feminina que representa o elemento Vento e é a guia do Mundo dos Ventos. Inspirada em Oyá/Iansã – orixá dos ventos, tempestades e transformações na tradição iorubá e no Candomblé brasileiro – cuja energia é movimento, ruptura e passagem. Afefé anuncia a mudança antes mesmo da tempestade chegar, guiando o visitante pelo Mundo dos Ventos e ensinando que o ar limpo é um direito e um território a ser defendido.
+      </div>
+    </div>
+
+    <div class="page-body single" style="max-width:100%; padding:36px 60px 0;">
+
+      <div class="dz-section">
+        <div class="section-heading">1. Figura Mítica Aprofundada</div>
+        <div class="dz-h2">Afefé e a Energia de Oyá</div>
+        <p>Afefé é uma palavra de origem iorubá que significa vento, brisa ou ar. Na cultura afro-brasileira – especialmente no Candomblé e na Umbanda – o termo está profundamente associado a Oyá (também conhecida como Iansã), o orixá que preside os ventos, as tempestades, os raios e os processos de transformação. Oyá é uma das divindades mais complexas do panteão iorubá: guerreira, protetora, mãe dos eguns (espíritos dos ancestrais) e senhora dos limiares entre o mundo dos vivos e o mundo dos mortos.</p>
+        <p>O nome Afefé foi escolhido para o personagem porque carrega em si o próprio elemento que ela representa: não é apenas o nome da divindade, mas o nome do fenômeno. Isso cria uma identidade própria ao personagem – ela não é Oyá, mas é feita da mesma substância.</p>
+
+        <div class="dz-media lg">
+          <figure class="dz-fig">
+            <img src="https://the-blue-city.github.io/exposicao/ref-01-movimento-turbante-buzios.png" alt="Movimento, turbante e búzios">
+            <figcaption>Movimento, turbante e búzios</figcaption>
+          </figure>
+          <div>
+            <div class="dz-h3" style="margin-top:0;">Oyá – Movimento e Travessia</div>
+            <p>Na cosmologia iorubá e no Candomblé brasileiro, Oyá não é uma energia de permanência – ela é travessia, deslocamento, transformação constante. Existe sempre uma intensidade nela, mesmo quando aparentemente está calma. Segundo o babalorixá José Neri, Oyá é o vento que anuncia a mudança antes mesmo da tempestade chegar.</p>
+            <p>Em estado de calmaria, Oyá se manifesta como presença observadora, silenciosa e estratégica. Não é uma calmaria passiva – é como o ar pesado antes da chuva: existe tensão, percepção aguçada e inteligência emocional muito forte. Elegante, magnética e nunca totalmente previsível.</p>
+            <p style="margin-bottom:0;">Em estado de tempestade, Oyá é ruptura. É a força que desmonta estruturas que já não servem mais – impulsiva, feroz, extremamente protetora. Mas não é destruição vazia: existe sempre um propósito de limpeza, transformação e abertura de caminho. A tempestade de Oyá não surge por capricho; ela vem depois de acúmulos, silenciamentos e injustiças.</p>
+          </div>
+        </div>
+
+        <div class="dz-media lg">
+          <figure class="dz-fig">
+            <img src="https://the-blue-city.github.io/exposicao/ref-06-bufalo-simbolo-oya.png" alt="Búfalo como símbolo de Oyá">
+            <figcaption>Búfalo como símbolo de Oyá</figcaption>
+          </figure>
+          <div>
+            <div class="dz-h3" style="margin-top:0;">A Relação com os Ancestrais</div>
+            <p style="margin-bottom:0;">Um dos aspectos mais singulares de Oyá é sua relação com os eguns – os espíritos dos ancestrais. Em muitas tradições, ela é a única orixá que transita entre o mundo dos vivos e o mundo dos mortos, acompanhando as almas em seu processo de passagem. Isso confere ao personagem Afefé uma dimensão espiritual muito profunda: alguém que 'morre e renasce' muitas vezes ao longo da narrativa, que muda de pele constantemente e que entende a transformação não como perda, mas como caminho.</p>
+          </div>
+        </div>
+
+        <div style="background:#faf2f3; border:1px solid #e3c3ca; border-left:4px solid #6E1F2E; border-radius:10px; padding:18px 22px; margin-top:22px;">
+          <div class="dz-h3" style="margin-top:0; color:#6E1F2E;">Conexão com o Tema do Jogo</div>
+          <p style="margin-bottom:0; font-size:13px; line-height:1.7; color:#000;">O ar poluído é o grande silenciamento de Afefé – é quando o vento perde força, quando a brisa não chega e a tempestade que deveria limpar não consegue se formar. A poluição atmosférica, os gases de efeito estufa e o desmatamento são o 'feitiço' lançado sobre o Mundo dos Ventos. Afefé guia o visitante para restaurar o ar limpo, descobrir fontes de energia eólica e compreender que o vento é um recurso vivo, espiritual e climático ao mesmo tempo.</p>
+        </div>
+      </div>
+
+      <div class="dz-section">
+        <div class="section-heading">2. Os Dois Estados de Afefé</div>
+        <div class="dz-h2">Arco Narrativo do Personagem</div>
+        <p>Assim como Oyá existe em estados distintos – da brisa silenciosa à tempestade transformadora – Afefé no jogo apresenta dois estados visuais que refletem o equilíbrio ou desequilíbrio do Mundo dos Ventos:</p>
+        <div class="dz-states">
+          <div class="dz-state blocked">
+            <h4>ESTADO 1 – BLOQUEADA</h4>
+            <p><b>Cor:</b> cinza esfumaçado / cobre apagado</p>
+            <p><b>Causa:</b> poluição atmosférica, gases de efeito estufa, ar irrespirável</p>
+            <p><b>No jogo:</b> estado inicial – o visitante deve restaurar o vento</p>
+          </div>
+          <div class="dz-state full-vento">
+            <h4>ESTADO 2 – PLENA</h4>
+            <p><b>Cor:</b> vinho vivo + cobre luminoso + dourado</p>
+            <p><b>Causa:</b> ar limpo restaurado, energia eólica em movimento</p>
+            <p><b>No jogo:</b> estado restaurado – recompensa das missões</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="dz-section">
+        <div class="section-heading">3. Referências Iconográficas</div>
+        <div class="dz-h2">Características Físicas e Visuais</div>
+        <div class="dz-media lg">
+          <figure class="dz-fig">
+            <img src="https://the-blue-city.github.io/exposicao/ref-04-adornos-buzios-presenca-frontal.png" alt="Adornos, búzios e presença frontal">
+            <figcaption>Adornos, búzios e presença frontal</figcaption>
+          </figure>
+          <div>
+            <p style="margin-top:0;">As referências visuais a seguir são representações de Oyá/Iansã na arte afro-brasileira – inspiração para o ilustrador sentir a presença, a paleta e os adornos, sempre adaptando à identidade própria de Afefé.</p>
+            <p style="margin-bottom:0;">Mulher jovem, pele negra, corpo esguio e alongado – silhueta que evoca leveza e velocidade, como o próprio vento. Cabelos crespos, soltos e volumosos, sempre em movimento, como se uma brisa constante os habitasse. Olhos expressivos com olhar de quem observa tudo e não revela tudo. Postura ereta, elegante – presença magnética mesmo em repouso.</p>
+          </div>
+        </div>
+
+        <div class="dz-media lg">
+          <figure class="dz-fig">
+            <img src="https://the-blue-city.github.io/exposicao/ref-02-saia-rodada-camadas-borboletas.png" alt="Saia rodada em camadas e borboletas">
+            <figcaption>Saia rodada em camadas e borboletas</figcaption>
+          </figure>
+          <div>
+            <div class="dz-h3" style="margin-top:0;">Roupa</div>
+            <p style="margin-bottom:0;">Tecidos longos e fluidos em várias camadas sobrepostas, criando a sensação de que o vento faz parte da roupa. As camadas têm comprimentos diferentes – algumas rasam o chão, outras voam. Tons de vinho, vermelho queimado, cobre e terracota, com detalhes dourados nas bordas. A roupa nunca parece estática: mesmo numa ilustração parada, os tecidos devem sugerir movimento.</p>
+          </div>
+        </div>
+
+        <div class="dz-h3">Acessórios</div>
+        <ul class="dz-list">
+          <li>Espada-de-são-jorge (Dracaena trifasciata) – planta sagrada profundamente associada a Oyá/Iansã na tradição afro-brasileira, usada para proteção, limpeza de energias e abertura de caminhos. No jogo, substitui a espada de metal: Afefé carrega a planta como seu objeto de poder, conectando o símbolo espiritual ao mundo natural. A espada-de-são-jorge também ocorre no Cerrado, reforçando a ligação com o bioma</li>
+          <li>Búzios – adornos em colares, pulseiras e bordados na roupa. Na tradição do Candomblé, os búzios são sagrados: servem para a comunicação com os orixás e são símbolos de identidade e pertencimento espiritual. Na roupa de Afefé aparecem como detalhes brancos contrastando com os tons vinho e cobre</li>
+          <li>Braceletes em cobre e dourado nos pulsos – referência aos adornos de Oyá</li>
+          <li>Borboletas vermelhas ao redor – símbolo de transformação e presença de Oyá; o Cerrado tem uma das maiores diversidades de borboletas do Brasil</li>
+          <li>Elementos do Cerrado integrados ao tecido ou ao cabelo: ipê amarelo, capim dourado</li>
+        </ul>
+        <div class="dz-imgrow">
+          <figure class="dz-fig">
+            <img src="https://the-blue-city.github.io/exposicao/ref-03-bufalo-espada-sao-jorge-eruexim.png" alt="Búfalo, espada-de-são-jorge e eruexim">
+            <figcaption>Búfalo, espada-de-são-jorge e eruexim</figcaption>
+          </figure>
+          <figure class="dz-fig">
+            <img src="https://the-blue-city.github.io/exposicao/ref-05-veu-borboletas-saia-buzios.png" alt="Véu, borboletas e saia com búzios">
+            <figcaption>Véu, borboletas e saia com búzios</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="dz-section">
+        <div class="section-heading">4. Paleta de Cores Sugerida</div>
+        <div class="dz-h2">Paleta Cromática de Afefé</div>
+        <p>A paleta evoca a força de Oyá, a terra do Cerrado e a eletricidade do vento antes da tempestade:</p>
+        <table class="dz-palette">
+          <thead><tr><th>Cor</th><th>Nome</th><th>Significado</th></tr></thead>
+          <tbody>
+            <tr><td><span class="dz-swatch" style="background:#6E1F2E;"></span></td><td><b>Vinho Oyá</b></td><td>Cor primária – força e transformação</td></tr>
+            <tr><td><span class="dz-swatch" style="background:#A93226;"></span></td><td><b>Vermelho Queimado</b></td><td>Tempestade e ruptura</td></tr>
+            <tr><td><span class="dz-swatch" style="background:#B87333;"></span></td><td><b>Cobre</b></td><td>Intensidade e calor do vento</td></tr>
+            <tr><td><span class="dz-swatch" style="background:#D4A017;"></span></td><td><b>Dourado Cerrado</b></td><td>Raios, eletricidade, capim dourado</td></tr>
+            <tr><td><span class="dz-swatch" style="background:#F1C40F;"></span></td><td><b>Amarelo Ipê</b></td><td>Bioma Cerrado – flor do ipê amarelo</td></tr>
+            <tr><td><span class="dz-swatch" style="background:#1A1A1A;"></span></td><td><b>Preto Tempestade</b></td><td>Contornos e sombras – ar pesado antes da chuva</td></tr>
+          </tbody>
+        </table>
+        <div class="dz-note vento"><b>Nota:</b> O vinho e o cobre são as cores dominantes – representam a força de Oyá e o vento pleno. O dourado aparece como acento de luz, evocando raios e o capim dourado do Cerrado.</div>
+      </div>
+
+      <div class="dz-section">
+        <div class="section-heading">5. Orientações para o Ilustrador</div>
+        <div class="dz-h2">Diretrizes de Representação</div>
+        <div class="dz-grid">
+          <div class="dz-card">
+            <h4>Silhueta e Postura</h4>
+            <p>Corpo esguio e alongado, em postura de movimento – mesmo que parada, a silhueta deve sugerir que está prestes a se deslocar. Os tecidos em camadas voam ao redor do corpo criando volume e dinamismo. A espada pode estar erguida ou apoiada no ombro. Os cabelos crespos e volumosos se expandem como uma coroa de vento.</p>
+          </div>
+          <div class="dz-card">
+            <h4>Expressão</h4>
+            <p>Olhar observador e penetrante – não agressivo, mas que não revela tudo. Expressão que transmite inteligência emocional profunda e autonomia. Adequada para público infantil: não deve aparentar violência, mas sim presença e poder sereno. A beleza dela é magnética e um pouco imprevisível.</p>
+          </div>
+          <div class="dz-card wide">
+            <h4>Elementos Visuais Essenciais</h4>
+            <ul class="dz-list">
+              <li>Cabelos crespos ao vento – elemento mais importante da silhueta</li>
+              <li>Tecidos em movimento em múltiplas camadas de tons vinho/cobre/dourado</li>
+              <li>Borboletas vermelhas ao redor – símbolo de transformação de Oyá</li>
+              <li>Espada-de-são-jorge carregada como objeto de poder – folhas longas, rígidas, verde-escuras com bordas amarelas</li>
+              <li>Búzios brancos nos colares, pulseiras e bordados da roupa – contraste com os tons escuros</li>
+              <li>Sensação de eletricidade no ambiente – como se o ar ao redor vibrasse</li>
+            </ul>
+          </div>
+          <div class="dz-card">
+            <h4>Bioma de Referência</h4>
+            <p>Cerrado brasileiro – chapadas abertas, céu amplo, árvores retorcidas que resistem ao vento. A luz deve ser quente e dourada, como no final da tarde no Cerrado. Ipê amarelo e capim dourado podem aparecer no cenário. Nuvens em formação, como antes de uma tempestade que ainda não chegou.</p>
+          </div>
+          <div class="dz-card">
+            <h4>O que Evitar</h4>
+            <p>Não retratar Afefé apenas como 'mulher explosiva' ou guerreira genérica. A sofisticação de Oyá está na inteligência emocional e espiritual – ela sente profundamente, mas não demonstra fragilidade de forma convencional. O amor dela aparece como proteção feroz e honestidade brutal. Evitar excesso de vermelho isolado – a paleta deve ser rica em camadas, não monocromática.</p>
+          </div>
+        </div>
+        <div class="dz-imgrow">
+          <figure class="dz-fig">
+            <img src="https://the-blue-city.github.io/exposicao/ref-07-movimento-eruexim.png" alt="Movimento e eruexim">
+            <figcaption>Movimento e eruexim</figcaption>
+          </figure>
+          <figure class="dz-fig">
+            <img src="https://the-blue-city.github.io/exposicao/ref-08-postura-guerreira-contas-longas.png" alt="Postura guerreira e contas longas">
+            <figcaption>Postura guerreira e contas longas</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="dz-section">
+        <div class="section-heading">6. Conexão com o Tema Central</div>
+        <div class="dz-h2">Afefé e a Redução de Gases de Efeito Estufa</div>
+        <div class="dz-grid">
+          <div class="dz-card" style="background:#fff8e7; border-color:#f0e3c0;">
+            <h4>Metáfora Mítica</h4>
+            <p>O ar poluído é o silenciamento de Afefé – quando os gases de efeito estufa bloqueiam o vento e sufocam o Mundo dos Ventos.</p>
+          </div>
+          <div class="dz-card" style="background:#d5e8f0; border-color:#b8d6e4;">
+            <h4>Missão no Jogo</h4>
+            <p>Guiar o jogador a descobrir fontes de energia eólica, reduzindo a dependência de combustíveis fósseis.</p>
+          </div>
+          <div class="dz-card" style="background:#ffe9cc; border-color:#f0d2a0;">
+            <h4>Poder de Limpeza</h4>
+            <p>Afefé limpa territórios sufocados pela poluição, revelando que o vento é agente de cura – tanto espiritual quanto climático.</p>
+          </div>
+          <div class="dz-card" style="background:#e8f5e9; border-color:#c8e6ca;">
+            <h4>Conhecimento Ancestral</h4>
+            <p>Transmite saberes da tradição iorubá sobre ciclos do vento, respeito à natureza e a relação entre equilíbrio espiritual e equilíbrio ambiental.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="dz-section">
+        <div class="section-heading">7. Validação Cultural</div>
+        <div class="dz-h2">Quem Orientou Esta Pesquisa</div>
+        <p>O personagem Afefé foi desenvolvido em diálogo com a tradição iorubá e o Candomblé brasileiro, garantindo autenticidade cultural e respeito às tradições representadas.</p>
+
+        <div class="dz-media" style="margin-top:24px;">
+          <figure class="dz-fig">
+            <img src="https://the-blue-city.github.io/exposicao/babalorixa.jpg" alt="José Neri – babalorixá">
+            <figcaption>José Neri</figcaption>
+          </figure>
+          <div>
+            <div class="dz-h3" style="margin-top:0; color:#000;">José Neri</div>
+            <p style="color:#000; font-weight:600; margin-bottom:10px;">Babalorixá</p>
+            <p style="color:#000;">Babalorixá consultado na pesquisa de Afefé. Sua orientação sobre Oyá/Iansã – em especial sobre os estados de calmaria e de tempestade da orixá e seu papel de travessia entre os mundos – fundamentou a construção espiritual do personagem.</p>
+          </div>
+        </div>
+      </div>
+
+<div class="dz-credit">
+        Dossiê elaborado por <b>Ester Menezes</b> · Pesquisadora Cultural<br>
+        Missão Termômetro Zero
+      </div>
+    </div>
+
+    <div class="page-nav">
+      <button class="nav-btn" onclick="goTo(13)">← Personagem U'acü</button>
+      <span class="page-indicator">Dossiê · <strong>Afefé</strong></span>
+      <button class="nav-btn next" onclick="goTo(8)">Os Personagens →</button>
+    </div>
+  </section>
+
+
 </main>
 
 <script>
-  const totalPages = 13;
+  const totalPages = 15;
   let current = 0;
 
   // ===== Menu mobile =====
@@ -1533,7 +2260,7 @@
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
     document.getElementById('page-' + index).classList.add('active');
-    document.querySelectorAll('.nav-item')[index].classList.add('active');
+    var _ni = document.querySelector('.nav-item[data-page="'+index+'"]'); if(_ni)_ni.classList.add('active');
     current = index;
     closeMenu();
     window.scrollTo({top:0,behavior:'smooth'});
@@ -1575,10 +2302,10 @@
     }).addTo(me);
     const schools = [
       { lat: -10.1992652, lng: -48.3123871, name: 'IFTO – Campus Palmas', note: 'Preferencial · Plano Diretor Sul', preferred: true },
+      { lat: -10.1800446, lng: -48.3627952, name: 'UFT – Campus Palmas', note: 'Preferencial · Plano Diretor Norte', preferred: true },
       { lat: -10.2330763, lng: -48.3215427, name: 'CEM Tiradentes', note: 'Plano Diretor Sul', preferred: false },
       { lat: -10.1650008, lng: -48.3451332, name: 'CEM Castro Alves', note: 'Plano Diretor Norte', preferred: false },
       { lat: -10.2524012, lng: -48.3219074, name: 'Colégio Est. São José', note: 'Plano Diretor Sul', preferred: false },
-      { lat: -10.3413293, lng: -48.2961564, name: 'Escola Est. Setor Sul', note: 'Taquaralto', preferred: false },
       { lat: -10.2073469, lng: -48.3362421, name: 'Escola Est. Profª Elizângela', note: 'Plano Diretor Sul', preferred: false }
     ];
     schools.forEach(s => {
@@ -1592,7 +2319,7 @@
       });
       L.marker([s.lat, s.lng], { icon })
         .addTo(me)
-        .bindPopup(`<b style="font-family:Montserrat,sans-serif;color:#1a2e3b;">${s.name}</b><br><small style="color:#6b7f95;">${s.note}</small>`);
+        .bindPopup(`<b style="font-family:Montserrat,sans-serif;color:#1a2e3b;">${s.name}</b><br><small style="color:#000;">${s.note}</small>`);
     });
     const sotreqIconSm = L.divIcon({
       className: '',
