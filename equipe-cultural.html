@@ -90,7 +90,7 @@
     cursor: pointer;
     transition: all 0.2s;
     border-left: 3px solid transparent;
-    color: rgba(255,255,255,0.55);
+    color: #ffffff;
     font-size: 12px;
     font-weight: 500;
     user-select: none;
@@ -98,7 +98,7 @@
 
   .nav-item:hover {
     background: rgba(255,255,255,0.05);
-    color: rgba(255,255,255,0.85);
+    color: #ffffff;
     border-left-color: rgba(95,182,112,0.4);
   }
 
@@ -122,7 +122,7 @@
     margin-left: auto;
     font-size: 10px;
     font-weight: 600;
-    color: rgba(255,255,255,0.5);
+    color: #ffffff;
   }
 
   .nav-item.active .nav-number { color: var(--green); }
@@ -130,7 +130,7 @@
   .nav-item.nav-sub {
     padding: 8px 24px 8px 44px;
     font-size: 11px;
-    color: rgba(255,255,255,0.45);
+    color: #ffffff;
   }
   .nav-item.nav-sub .nav-dot { width: 5px; height: 5px; }
 
@@ -337,6 +337,14 @@
 
   .feature-card h3 { font-size: 14px; font-weight: 700; color: var(--dark); }
   .feature-card p  { font-size: 13px; color: #000; line-height: 1.65; }
+
+  .feature-card.card-muted {
+    background: #f4f5f7; border-color: #e4e6ea; box-shadow: none;
+  }
+  .feature-card.card-muted:hover { box-shadow: none; transform: none; }
+  .feature-card.card-muted .feature-icon { background: #e6e8ec; filter: grayscale(1); opacity: 0.65; }
+  .feature-card.card-muted h3 { color: #9aa0aa; }
+  .feature-card.card-muted p  { color: #a2a8b2; }
 
   /* deliverable list */
   .deliverable-list { display: flex; flex-direction: column; gap: 10px; }
@@ -1662,17 +1670,6 @@
         <p style="font-size:12px; color:white; line-height:1.6;"><strong>Indicador de entrega:</strong> meta de mobilização de <strong>2.000 alunos</strong> inscritos no jogo até 15 de agosto, com acompanhamento contínuo até a entrega dos projetos em 1º de outubro.</p>
       </div>
 
-      <div class="section-heading">Escolas mapeadas em Palmas</div>
-      <div style="background:#f5f8fb; border-radius:12px; padding:18px 20px; margin-bottom:32px; display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
-        <div style="flex:1; min-width:280px;">
-          <p style="font-size:12px; color:#1a2e3b; line-height:1.6;"><strong>Público-alvo:</strong> estudantes de escolas técnicas do ensino público de Palmas (TO), entre 16 e 20 anos. A escola participante será definida na etapa de articulação territorial entre 6 escolas pré-mapeadas.</p>
-        </div>
-        <a href="https://the-blue-city.github.io/corporativo/sotreq.html?page=6" target="_blank" style="display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:700; color:#2858a0; text-decoration:none; background:white; border:1px solid #d6e4f7; border-radius:8px; padding:10px 16px; white-space:nowrap;">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          Ver mapa e detalhes das escolas
-        </a>
-      </div>
-
     </div>
 
     <div class="divider"></div>
@@ -1710,19 +1707,19 @@
           <div class="feature-card-header"><div class="feature-icon fi-green">⭐</div><h3>UFT – Campus Palmas</h3><span style="margin-left:auto;display:inline-flex;align-items:center;gap:5px;background:#e8f5e9;color:#2e9e4f;font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;white-space:nowrap;">✓ Aderiu</span></div>
           <p>Universidade Federal do Tocantins, principal instituição pública de ensino superior do estado – vocação ambiental (Engenharia Ambiental mais antiga do país) e perfil fortemente alinhado ao projeto através da Proex e da Inovato (Agência de Inovação da UFT).</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card card-muted">
           <div class="feature-card-header"><div class="feature-icon fi-blue">🏫</div><h3>CEM Tiradentes</h3></div>
           <p>Centro de Ensino Médio Tiradentes – escola estadual com ensino médio regular, localizada no Plano Diretor Sul.</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card card-muted">
           <div class="feature-card-header"><div class="feature-icon fi-blue">🏫</div><h3>CEM Castro Alves</h3></div>
           <p>Centro de Ensino Médio Castro Alves – escola estadual com ensino médio no Plano Diretor Norte.</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card card-muted">
           <div class="feature-card-header"><div class="feature-icon fi-teal">🏫</div><h3>Colégio Est. São José</h3></div>
           <p>Escola estadual no Plano Diretor Sul com oferta de ensino médio.</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card card-muted">
           <div class="feature-card-header"><div class="feature-icon fi-teal">🏫</div><h3>Escola Est. Profª Elizângela</h3></div>
           <p>Escola Est. Profª Elizângela Glória Cardoso – unidade pública de ensino médio no Plano Diretor Sul.</p>
         </div>
@@ -1828,7 +1825,7 @@
           <p class="nome">Carolina Ferrés</p>
           <p>Diretora The Blue City – <a href="https://thebluecity.app" target="_blank" rel="noopener" style="color:var(--blue); text-decoration:none;">thebluecity.app</a></p>
           <p>Diretora POK – <a href="https://pok.tech" target="_blank" rel="noopener" style="color:var(--blue); text-decoration:none;">pok.tech</a></p>
-          <p><a href="mailto:hello@thebluecity.app" style="color:var(--blue); text-decoration:none;">hello@thebluecity.app</a> • LinkedIn</p>
+          <p><a href="mailto:hello@thebluecity.app" style="color:var(--blue); text-decoration:none;">hello@thebluecity.app</a> • <a href="https://www.linkedin.com/in/carolinaferres/" target="_blank" style="color:var(--blue); text-decoration:none;">LinkedIn</a></p>
         </div>
 
         <div style="margin-top:28px; padding-top:22px; border-top:1px solid rgba(40,88,160,0.12); text-align:center;">
@@ -1940,7 +1937,7 @@
           <p class="nome">Carolina Ferrés</p>
           <p>Diretora The Blue City – <a href="https://thebluecity.app" target="_blank" rel="noopener" style="color:var(--blue); text-decoration:none;">thebluecity.app</a></p>
           <p>Diretora POK – <a href="https://pok.tech" target="_blank" rel="noopener" style="color:var(--blue); text-decoration:none;">pok.tech</a></p>
-          <p><a href="mailto:hello@thebluecity.app" style="color:var(--blue); text-decoration:none;">hello@thebluecity.app</a> • LinkedIn</p>
+          <p><a href="mailto:hello@thebluecity.app" style="color:var(--blue); text-decoration:none;">hello@thebluecity.app</a> • <a href="https://www.linkedin.com/in/carolinaferres/" target="_blank" style="color:var(--blue); text-decoration:none;">LinkedIn</a></p>
         </div>
 
         <div style="margin-top:28px; padding-top:22px; border-top:1px solid rgba(40,88,160,0.12); text-align:center;">
