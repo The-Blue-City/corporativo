@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jornadas – The Blue City</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue:   #2858a0;
+    --green:  #5fb670;
+    --teal:   #468182;
+    --gold:   #d9a520;
+    --ink:    #1a2e3b;
+    --muted:  #6b7f95;
+    --bg:     #f4f8fc;
+    --border: #e0e8f0;
+    --card:   #ffffff;
+
+    /* ➜ MÍDIA DO GAME NO HERO: troque o none pelo link de imagem, ex.:
+       --game-img: url('https://.../amazonia.jpg');  (ou use <iframe>/<video> no HTML) */
+    --game-img: none;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Montserrat', sans-serif; background: var(--bg); color: var(--ink); }
+  a { text-decoration: none; color: inherit; }
+  img { max-width: 100%; display: block; }
+
+  /* ============ TOPBAR (clara, fixa) ============ */
+  .topbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 13px 40px;
+    background: #ffffff;
+    border-bottom: 1px solid var(--border);
+    transition: box-shadow .25s, padding .25s;
+  }
+  .topbar.scrolled { box-shadow: 0 2px 14px rgba(20,50,80,0.08); }
+  .brand { display: flex; align-items: center; gap: 10px; }
+  .brand-logo { height: 30px; width: auto; }
+  .topbar-nav { display: flex; gap: 26px; }
+  .topbar-nav a { font-size: 13px; color: #000000; font-weight: 500; transition: color .15s; }
+  .topbar-nav a:hover, .topbar-nav a.active { color: var(--blue); font-weight: 700; }
+  .topbar-user {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 13px; color: var(--blue); font-weight: 600;
+    background: #e8f3ec; padding: 7px 16px; border-radius: 20px;
+  }
+
+  /* ============ HERO: GAME EM DESTAQUE ============ */
+  .jhero { background: var(--bg); padding-top: 58px; }
+  .game-view {
+    position: relative; width: 100%;
+    aspect-ratio: 21 / 9; max-height: 72vh;
+    background: #0e1a14; overflow: hidden;
+  }
+  .game-view iframe, .game-view video, .game-view img { width: 100%; height: 100%; object-fit: cover; display: block; border: 0; }
+  .game-ph {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+    color: rgba(255,255,255,0.8);
+    background:
+      linear-gradient(135deg, rgba(18,40,28,0.6), rgba(28,58,66,0.6)),
+      var(--game-img),
+      linear-gradient(135deg, #14311f, #1c3a42);
+    background-size: cover, cover, cover;
+    background-position: center, center, center;
+  }
+  .game-ph span { font-size: 20px; font-weight: 800; letter-spacing: 0.4px; }
+  .game-ph small { font-size: 12px; color: rgba(255,255,255,0.6); }
+
+  .jhero-row {
+    max-width: 1200px; margin: 0 auto; padding: 36px 40px 52px;
+    display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 40px; align-items: center;
+  }
+  .jhero-title {
+    font-size: 28px; font-weight: 800; line-height: 1.2; margin-bottom: 12px;
+    background: linear-gradient(90deg, var(--blue) 0%, var(--green) 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
+  .jhero-desc { font-size: 14.5px; line-height: 1.6; color: #000; margin-bottom: 22px; max-width: 460px; }
+
+  .jhero-howto { text-align: center; }
+  .howto-h { font-size: 22px; font-weight: 800; color: var(--ink); margin-bottom: 8px; }
+  .howto-p { font-size: 13.5px; line-height: 1.5; color: #000; margin-bottom: 20px; }
+  .howto-steps { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; }
+  .howto-steps .step { display: flex; align-items: center; gap: 10px; }
+  .howto-steps .num {
+    width: 30px; height: 30px; border-radius: 50%; color: #fff;
+    font-size: 13px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .num-gold1 { background: #c9a12a; }
+  .num-gold3 { background: #e2ba3c; }
+  .num-grey  { background: #6b7683; }
+  .howto-steps .txt { font-size: 13.5px; font-weight: 400; color: var(--ink); white-space: nowrap; }
+  .howto-line { width: 22px; height: 2px; background: var(--border); margin: 0 10px; }
+
+  /* ============ BOTÕES ============ */
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 600;
+    padding: 12px 24px; border-radius: 8px; cursor: pointer; border: none;
+    transition: transform .15s, background .15s, border-color .15s;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--blue); color: #fff; }
+  .btn-primary:hover { background: #204a87; }
+  .btn-outline { background: #fff; color: var(--ink); border: 1.5px solid var(--border); }
+  .btn-outline:hover { border-color: var(--blue); color: var(--blue); }
+  .jhero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  /* ============ SEÇÃO ============ */
+  .section { padding: 64px 40px; }
+  .section-head { text-align: center; max-width: 720px; margin: 0 auto 40px; }
+  .section-head h2 { font-size: 30px; font-weight: 800; color: var(--ink); margin-bottom: 12px; }
+  .section-head h2 em {
+    font-style: normal;
+    background: linear-gradient(90deg, var(--blue) 0%, var(--green) 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
+  .section-head p { font-size: 15px; line-height: 1.6; color: #000; }
+
+  /* ============ GRID DE JORNADAS ============ */
+  .grid-jornadas { max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .mission {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    overflow: hidden; display: flex; flex-direction: column;
+    transition: box-shadow .2s, transform .2s;
+  }
+  .mission:hover { box-shadow: 0 8px 26px rgba(40,88,160,0.12); transform: translateY(-3px); }
+  .mission-thumb { position: relative; height: 150px; }
+  .mission-thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .th-clima  { background: linear-gradient(135deg, #3f7a4e, #6fae6a); }
+  .th-ocean  { background: linear-gradient(135deg, #2a6b8f, #4f9fbf); }
+  .th-finance{ background: linear-gradient(135deg, #b98a2e, #e0c060); }
+  .th-energy { background: linear-gradient(135deg, #c9772e, #edb552); }
+  .th-forest { background: linear-gradient(135deg, #2f7a45, #6ab86f); }
+  .th-social { background: linear-gradient(135deg, #386f8a, #6aa8b0); }
+  .mission-thumb .ovl {
+    position: absolute; top: 12px;
+    font-size: 10.5px; font-weight: 700; padding: 4px 11px; border-radius: 20px;
+  }
+  .ovl-left { left: 12px; }
+  .ovl-right { right: 12px; background: rgba(255,255,255,0.92); color: var(--ink); }
+  .lvl-avancado      { background: #e35a5a; color: #fff; }
+  .lvl-intermediario { background: #e0a63b; color: #fff; }
+
+  .mission-body { padding: 18px; display: flex; flex-direction: column; flex: 1; }
+  .mission-title { font-size: 15px; font-weight: 700; color: var(--ink); line-height: 1.35; margin-bottom: 10px; }
+  .pill-tema {
+    align-self: flex-start; font-size: 10.5px; font-weight: 700; color: #2a7a3a;
+    background: #d4f0d9; border-radius: 20px; padding: 3px 11px; margin-bottom: 10px;
+  }
+  .mission-desc { font-size: 12.5px; line-height: 1.55; color: #000; margin-bottom: 14px; }
+  .mission-meta { display: flex; gap: 16px; margin-bottom: 12px; }
+  .mission-meta span { display: flex; align-items: center; gap: 5px; font-size: 12px; color: #000; }
+  .badges-line { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; }
+  .badges-line .lbl { font-size: 12px; font-weight: 600; color: var(--ink); }
+  .badges-line .set { display: flex; gap: 3px; }
+  .mission-btn {
+    margin-top: auto; width: 100%;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--blue); color: #fff; border: none; border-radius: 8px;
+    font-family: 'Montserrat', sans-serif; font-size: 13.5px; font-weight: 600;
+    padding: 12px; cursor: pointer; transition: background .15s;
+  }
+  .mission-btn:hover { background: #204a87; }
+
+  /* ============ RODAPÉ ============ */
+  .footer { background: var(--blue); color: #fff; padding: 22px 40px; }
+  .footer-bottom { max-width: 1140px; margin: 0 auto; font-size: 12px; color: rgba(255,255,255,0.85); text-align: center; }
+
+  /* ============ RESPONSIVO ============ */
+  @media (max-width: 980px) {
+    .grid-jornadas { grid-template-columns: repeat(2, 1fr); }
+    .topbar-nav { display: none; }
+  }
+  @media (max-width: 900px) {
+    .jhero-row { grid-template-columns: 1fr; gap: 30px; }
+    .jhero-desc { max-width: none; }
+  }
+  @media (max-width: 640px) {
+    .topbar, .jhero-row, .section, .footer { padding-left: 20px; padding-right: 20px; }
+    .grid-jornadas { grid-template-columns: 1fr; }
+    .jhero-title { font-size: 24px; }
+    .howto-steps { flex-direction: column; align-items: center; gap: 12px; }
+    .howto-line { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= TOPBAR ================= -->
+<nav class="topbar">
+  <a href="home.html" class="brand">
+    <img class="brand-logo" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAyMTguNCA0NS42Ij4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLmNscy0xIHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudCk7CiAgICAgIH0KCiAgICAgIC5jbHMtMSwgLmNscy0yLCAuY2xzLTMsIC5jbHMtNCwgLmNscy01LCAuY2xzLTYsIC5jbHMtNywgLmNscy04LCAuY2xzLTksIC5jbHMtMTAsIC5jbHMtMTEsIC5jbHMtMTIsIC5jbHMtMTMsIC5jbHMtMTQgewogICAgICAgIHN0cm9rZS13aWR0aDogMHB4OwogICAgICB9CgogICAgICAuY2xzLTIgewogICAgICAgIGZpbGw6ICMwYzllZDk7CiAgICAgIH0KCiAgICAgIC5jbHMtMyB7CiAgICAgICAgZmlsbDogdXJsKCNsaW5lYXItZ3JhZGllbnQtMTEpOwogICAgICB9CgogICAgICAuY2xzLTQgewogICAgICAgIGZpbGw6IHVybCgjbGluZWFyLWdyYWRpZW50LTEwKTsKICAgICAgfQoKICAgICAgLmNscy01IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC00KTsKICAgICAgfQoKICAgICAgLmNscy02IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC0yKTsKICAgICAgfQoKICAgICAgLmNscy03IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC0zKTsKICAgICAgfQoKICAgICAgLmNscy04IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC04KTsKICAgICAgfQoKICAgICAgLmNscy05IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC05KTsKICAgICAgfQoKICAgICAgLmNscy0xMCB7CiAgICAgICAgZmlsbDogdXJsKCNsaW5lYXItZ3JhZGllbnQtNyk7CiAgICAgIH0KCiAgICAgIC5jbHMtMTEgewogICAgICAgIGZpbGw6IHVybCgjbGluZWFyLWdyYWRpZW50LTUpOwogICAgICB9CgogICAgICAuY2xzLTEyIHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC02KTsKICAgICAgfQoKICAgICAgLmNscy0xMyB7CiAgICAgICAgZmlsbDogIzAwMTUyMjsKICAgICAgfQoKICAgICAgLmNscy0xNCB7CiAgICAgICAgZmlsbDogI2ZmZjsKICAgICAgfQogICAgPC9zdHlsZT4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50IiB4MT0iNDguOCIgeTE9IjI1LjciIHgyPSIyMTEuOCIgeTI9IjI1LjciIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0OCkgc2NhbGUoMSAtMSkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMDA2MTg4Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzk1Y2ZhMCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTIiIHkxPSIyNS45IiB5Mj0iMjUuOSIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtMyIgeTE9IjIzLjEiIHkyPSIyMy4xIiB4bGluazpocmVmPSIjbGluZWFyLWdyYWRpZW50Ii8+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC00IiB5MT0iMjUuNyIgeTI9IjI1LjciIHhsaW5rOmhyZWY9IiNsaW5lYXItZ3JhZGllbnQiLz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTUiIHkxPSIyNS44IiB5Mj0iMjUuOCIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtNiIgeTE9IjIzIiB5Mj0iMjMiIHhsaW5rOmhyZWY9IiNsaW5lYXItZ3JhZGllbnQiLz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTciIHkxPSIyMy4xIiB5Mj0iMjMuMSIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtOCIgeTE9IjI1LjgiIHkyPSIyNS44IiB4bGluazpocmVmPSIjbGluZWFyLWdyYWRpZW50Ii8+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC05IiB5MT0iMjYiIHkyPSIyNiIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtMTAiIHkxPSIyNS4zIiB5Mj0iMjUuMyIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtMTEiIHkxPSIyMC4zIiB5Mj0iMjAuMyIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogIDwvZGVmcz4KICA8Zz4KICAgIDxjaXJjbGUgY2xhc3M9ImNscy0xMyIgY3g9IjI2LjEiIGN5PSIyMi43IiByPSIxOC40Ii8+CiAgICA8Zz4KICAgICAgPHJlY3QgY2xhc3M9ImNscy0xNCIgeD0iMTUuNSIgeT0iMTcuNSIgd2lkdGg9IjIwLjgiIGhlaWdodD0iMy4yIi8+CiAgICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTM1LDIzbC0uMi4yYy0xLjMsMS4xLTIuNCwyLjEtNC4xLDIuMXMtMi41LS40LTQuMS0xLjNjLTIuMS0xLjEtMy45LTEuNy01LjYtMS43LTIuOCwwLTQuNiwxLjYtNiwyLjlsLS4yLjIsMiwyLjQuMi0uMmMxLjMtMS4xLDIuNC0yLjEsNC4xLTIuMXMyLjUuNCw0LjEsMS4zYzIuMSwxLjEsMy45LDEuNyw1LjYsMS43aDBjMi43LDAsNC41LTEuNiw1LjktMi45bC4yLS4yLTItMi40aDBaIi8+CiAgICA8L2c+CiAgPC9nPgogIDxnPgogICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNjQuNSwxNi44aC01Ljd2MTQuOWgtNC4zdi0xNC45aC01Ljd2LTMuOGgxNS43djMuOFoiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtNiIgZD0iTTc5LjEsMzEuNmgtNC4ydi03LjZjMC0uOS0uMi0xLjUtLjYtMS45cy0uOS0uNi0xLjQtLjYtLjcsMC0xLjEuM2MtLjQuMi0uOC41LTEuMS44LS4zLjQtLjYuOC0uNywxLjJ2Ny44aC00LjJWMTIuNWg0LjJ2Ny45Yy41LS44LDEuMi0xLjUsMi0xLjlzMS44LS42LDIuOC0uNiwxLjcuMiwyLjIuNWMuNi4zLDEsLjcsMS4zLDEuMnMuNSwxLC42LDEuN2MwLC42LjIsMS4yLjIsMS44djguNy0uMloiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtNyIgZD0iTTg3LjksMzEuOWMtMS4yLDAtMi4yLS4yLTMuMS0uNnMtMS43LS45LTIuMy0xLjVjLS42LS42LTEuMS0xLjQtMS41LTIuMi0uMy0uOC0uNS0xLjctLjUtMi42LDAtMS4zLjMtMi41LjktMy42czEuNC0xLjksMi41LTIuNiwyLjQtMSw0LTEsMi45LjMsNCwxLDEuOSwxLjUsMi41LDIuNi45LDIuMi45LDMuNSwwLC41LDAsLjd2LjZoLTEwLjJjMCwuNi4yLDEuMS41LDEuNXMuNy43LDEuMS45Yy41LjIuOS4zLDEuNC4zczEuMi0uMSwxLjgtLjRjLjYtLjMuOS0uNywxLjEtMS4ybDMuNiwxYy0uNC43LS44LDEuMy0xLjUsMS45LS42LjUtMS40LDEtMi4yLDEuMy0uOS4zLTEuOC41LTIuOS41aC0uMVpNODQuOSwyMy41aDZjMC0uNi0uMi0xLS41LTEuNS0uMy0uNC0uNi0uNy0xLjEtMXMtLjktLjMtMS41LS4zLTEsLjEtMS40LjNjLS40LjItLjguNS0xLjEuOS0uMy40LS40LjktLjUsMS41aDBaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTUiIGQ9Ik0xMTgsMjYuOGMwLDEuMS0uMywyLS44LDIuNy0uNi43LTEuMywxLjItMi4zLDEuNnMtMiwuNS0zLjIuNWgtOS4xVjEzaDEwLjRjLjksMCwxLjYuMiwyLjMuNy42LjUsMS4xLDEuMSwxLjUsMS44LjMuNy41LDEuNS41LDIuM3MtLjIsMS43LS43LDIuNWMtLjQuOC0xLjEsMS40LTIsMS44LDEuMS4zLDEuOS45LDIuNSwxLjcuNi44LjksMS44LjksMy4xaDBaTTEwNi45LDE2Ljd2My45aDQuMmMuMywwLC42LDAsLjktLjIuMy0uMS41LS40LjctLjYuMi0uMy4yLS42LjItMS4xczAtLjgtLjItMS4xYzAtLjMtLjMtLjUtLjYtLjYtLjItLjEtLjUtLjItLjktLjJoLTQuNC4xWk0xMTMuNywyNmMwLS40LDAtLjctLjItMS4xLS4yLS4zLS40LS42LS42LS43cy0uNi0uMy0uOS0uM2gtNC45djQuMWg0LjhjLjQsMCwuNywwLDEtLjMuMy0uMi41LS40LjctLjcuMi0uMy4yLS42LjItMWgwWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xMSIgZD0iTTExOS43LDEyLjVoNC4ydjE0LjNjMCwuNiwwLDEsLjMsMS4yLjIuMi41LjQuOS40cy41LDAsLjgtLjFjLjMsMCwuNS0uMi43LS4zbC42LDMuMmMtLjUuMi0xLjEuNC0xLjguNi0uNy4yLTEuMy4yLTEuOS4yLTEuMiwwLTIuMS0uMy0yLjgtMS0uNi0uNi0xLTEuNi0xLTIuN3YtMTUuN2gwWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xMiIgZD0iTTEyNy45LDI2Ljh2LTguOGg0LjJ2Ny44YzAsLjguMiwxLjQuNSwxLjkuMy40LjguNywxLjQuN3MuOCwwLDEuMS0uMmMuNC0uMS43LS4zLDEtLjZzLjYtLjcuOS0xLjF2LTguNGg0LjJ2OWMwLC40LDAsLjcuMi45LjEuMi40LjMuNy4zdjMuNWMtLjQsMC0uNy4xLTEsLjJzLS41LDAtLjgsMGMtLjcsMC0xLjMtLjEtMS44LS40LS40LS4zLS43LS43LS44LTEuM3YtLjhjLS43LjktMS41LDEuNi0yLjQsMnMtMiwuNi0zLjIuNi0yLjUtLjQtMy4yLTEuMy0xLjEtMi4yLTEuMS0zLjh2LS4yWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xMCIgZD0iTTE1MC42LDMxLjljLTEuMiwwLTIuMi0uMi0zLjEtLjYtLjktLjQtMS43LS45LTIuMy0xLjVzLTEuMS0xLjQtMS41LTIuMmMtLjMtLjgtLjUtMS43LS41LTIuNiwwLTEuMy4zLTIuNS45LTMuNi42LTEuMSwxLjQtMS45LDIuNS0yLjZzMi40LTEsNC0xLDIuOS4zLDQsMWMxLjEuNiwxLjksMS41LDIuNSwyLjZzLjksMi4yLjksMy41LDAsLjUsMCwuN3YuNmgtMTAuMmMwLC42LjIsMS4xLjUsMS41cy43LjcsMS4xLjljLjUuMi45LjMsMS40LjNzMS4yLS4xLDEuOC0uNC45LS43LDEuMS0xLjJsMy42LDFjLS40LjctLjgsMS4zLTEuNSwxLjktLjYuNS0xLjQsMS0yLjIsMS4zLS45LjMtMS44LjUtMi45LjVoLS4xWk0xNDcuNSwyMy41aDZjMC0uNi0uMi0xLS41LTEuNS0uMy0uNC0uNi0uNy0xLjEtMS0uNC0uMi0uOS0uMy0xLjUtLjNzLTEsLjEtMS40LjNjLS40LjItLjguNS0xLjEuOXMtLjQuOS0uNSwxLjVoLjFaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTgiIGQ9Ik0xNjQuMiwyMi4xYzAtMS4xLjItMi4yLjYtMy4zLjQtMS4xLDEtMi4xLDEuOC0zczEuOC0xLjYsMy0yLjJjMS4yLS41LDIuNS0uOCwzLjktLjhzMy4zLjQsNC42LDEuMSwyLjMsMS43LDIuOSwyLjlsLTMuMywyLjNjLS4zLS43LS42LTEuMi0xLjEtMS42cy0xLS42LTEuNS0uOGMtLjYtLjEtMS4xLS4yLTEuNi0uMi0uOCwwLTEuNS4yLTIuMS41cy0xLjEuOC0xLjUsMS4zLS43LDEuMS0uOSwxLjhjLS4yLjctLjMsMS4zLS4zLDJzLjEsMS41LjQsMi4yYy4yLjcuNiwxLjMsMSwxLjhzLjkuOSwxLjYsMS4yYy42LjMsMS4zLjUsMiwuNXMxLjEsMCwxLjYtLjIsMS0uNCwxLjUtLjguOC0uOSwxLjEtMS41bDMuNSwyLjFjLS40LjktMSwxLjctMS44LDIuMy0uOC42LTEuOCwxLjEtMi44LDEuNXMtMi4xLjUtMy4yLjUtMi42LS4zLTMuNy0uOGMtMS4xLS42LTIuMS0xLjMtMi45LTIuMi0uOC0uOS0xLjUtMi0xLjktMy4xcy0uNy0yLjMtLjctMy41aC0uMloiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtOSIgZD0iTTE4Mi41LDE2LjN2LTMuOGg0LjJ2My44aC00LjJaTTE4Mi41LDMxLjZ2LTEzLjhoNC4ydjEzLjhzLTQuMiwwLTQuMiwwWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy00IiBkPSJNMTk4LDMwLjljLS40LjItLjguMy0xLjIuNS0uNS4yLS45LjMtMS40LjQtLjUsMC0xLC4xLTEuNS4xcy0xLjMtLjEtMS45LS4zLTEtLjYtMS40LTEuMi0uNS0xLjItLjUtMi4xdi03LjFoLTEuOHYtMy4yaDEuOHYtNC40aDQuMnY0LjRoMi44djMuMmgtMi44djUuNmMwLC41LjEuOC4zLDFzLjUuMy45LjMuNiwwLDEtLjJjLjMtLjEuNi0uMi45LS4zbC44LDMuM2gtLjJaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik0xOTkuMSwzMy43Yy40LDAsLjcuMiwxLC4yaC44Yy40LDAsLjYsMCwuOS0uMnMuNC0uNC42LS44Yy4yLS40LjMtLjguNS0xLjRsLTUuMi0xMy43aDQuM2wzLjIsOS40LDIuNy05LjRoMy45bC01LjMsMTUuOWMtLjIuNy0uNiwxLjQtMS4xLDJzLTEuMSwxLTEuOSwxLjRjLS43LjMtMS41LjUtMi40LjVoLTEuMWMtLjQsMC0uNy0uMi0xLjEtLjN2LTMuNmguMloiLz4KICA8L2c+Cjwvc3ZnPg==" alt="The Blue City">
+  </a>
+  <div class="topbar-nav">
+    <a href="jornadas.html" class="active">Jornadas</a>
+    <a href="minha-galeria.html">Minha Galeria</a>
+    <a href="galeria-projetos.html">Galeria de Projetos</a>
+    <a href="galeria-eventos.html">Galeria de Eventos</a>
+    <a href="performance-jogadores.html">Performance dos Jogadores</a>
+  </div>
+  <div class="topbar-user">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    João Silva
+  </div>
+</nav>
+
+<!-- ================= HERO: GAME EM DESTAQUE ================= -->
+<section class="jhero">
+  <div class="game-view">
+    <!-- ➜ Cole aqui o embed do game, um <video autoplay muted loop> ou um <img>.
+         Enquanto não vem, fica o placeholder abaixo. -->
+    <div class="game-ph">
+      <span>Amazônia Game</span>
+      <small>Espaço para o embed / vídeo do game</small>
+    </div>
+  </div>
+
+  <div class="jhero-row">
+    <div class="jhero-journey">
+      <h1 class="jhero-title">Termômetro Zero</h1>
+      <p class="jhero-desc">No Termômetro Zero, seu desafio é cortar as emissões de gases de efeito estufa e descobrir como cada decisão ajuda a esfriar o planeta e a construir cidades mais resilientes.</p>
+      <div class="jhero-cta">
+        <a class="btn btn-primary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Iniciar Jornada
+        </a>
+      </div>
+    </div>
+
+    <div class="jhero-howto">
+      <h2 class="howto-h">Como funciona a jornada?</h2>
+      <p class="howto-p">Complete as 3 etapas e transforme-se em um agente ESG certificado</p>
+      <div class="howto-steps">
+        <div class="step"><span class="num num-gold1">1</span><span class="txt">Jogue e Aprenda</span></div>
+        <div class="howto-line"></div>
+        <div class="step"><span class="num num-grey">2</span><span class="txt">Aplique na Prática</span></div>
+        <div class="howto-line"></div>
+        <div class="step"><span class="num num-gold3">3</span><span class="txt">Receba Certificação</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ESCOLHA SUA JORNADA COP30 ================= -->
+<section class="section" id="jornadas">
+  <div class="section-head">
+    <h2>Escolha sua <em>Jornada Ambiental</em></h2>
+    <p>Cada missão oferece uma experiência imersiva com desafios reais e certificações que agregam valor ao seu desenvolvimento profissional.</p>
+  </div>
+
+  <div class="grid-jornadas">
+
+    <!-- Card 1 -->
+    <div class="mission">
+      <div class="mission-thumb th-clima">
+      </div>
+      <div class="mission-body">
+        <div class="mission-title">Redução de Emissões de Gases de Efeito Estufa</div>
+        <span class="pill-tema">Clima</span>
+        <p class="mission-desc">Entre no desafio de cortar emissões e descubra como suas escolhas reduzem o impacto no planeta.</p>
+        <div class="mission-meta">
+          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 25 min</span>
+          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> 1.247 colaboradores</span>
+        </div>
+        <div class="badges-line">
+          <span class="lbl">Badges disponíveis:</span>
+          <span class="set">
+            <svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#d9a520"/><circle cx="12" cy="10" r="3.6" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M9.6 13 8.4 18l3.6-2.1 3.6 2.1-1.2-5" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#9ba4ad"/><circle cx="12" cy="10" r="3.6" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M9.6 13 8.4 18l3.6-2.1 3.6 2.1-1.2-5" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#d9a520"/><circle cx="12" cy="10" r="3.6" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M9.6 13 8.4 18l3.6-2.1 3.6 2.1-1.2-5" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </div>
+        <a href="jornada.html" class="mission-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Iniciar Missão</a>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="mission">
+      <div class="mission-thumb th-ocean">
+      </div>
+      <div class="mission-body">
+        <div class="mission-title">Adaptação às Mudanças Climáticas</div>
+        <span class="pill-tema">Adaptação</span>
+        <p class="mission-desc">Jogue para fortalecer comunidades e aprender estratégias que tornam o futuro mais resiliente.</p>
+        <div class="mission-meta">
+          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 30 min</span>
+          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> 923 colaboradores</span>
+        </div>
+        <div class="badges-line">
+          <span class="lbl">Badges disponíveis:</span>
+          <span class="set">
+            <svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#d9a520"/><circle cx="12" cy="10" r="3.6" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M9.6 13 8.4 18l3.6-2.1 3.6 2.1-1.2-5" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#9ba4ad"/><circle cx="12" cy="10" r="3.6" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M9.6 13 8.4 18l3.6-2.1 3.6 2.1-1.2-5" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#d9a520"/><circle cx="12" cy="10" r="3.6" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M9.6 13 8.4 18l3.6-2.1 3.6 2.1-1.2-5" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </div>
+        <a href="jornada.html" class="mission-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Iniciar Missão</a>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="mission">
+      <div class="mission-thumb th-finance">
+      </div>
+      <div class="mission-body">
+        <div class="mission-title">Financiamento Climático para Países em Desenvolvimento</div>
+        <span class="pill-tema">Financiamento</span>
+        <p class="mission-desc">Assuma a missão de mobilizar recursos e apoiar soluções climáticas onde elas são mais urgentes.</p>
+        <div class="mission-meta">
+          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 35 min</span>
+          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> 678 colaboradores</span>
+        </div>
+        <div class="badges-line">
+          <span class="lbl">Badges disponíveis:</span>
+          <span class="set">
+            <svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#d9a520"/><circle cx="12" cy="10" r="3.6" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M9.6 13 8.4 18l3.6-2.1 3.6 2.1-1.2-5" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#9ba4ad"/><circle cx="12" cy="10" r="3.6" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M9.6 13 8.4 18l3.6-2.1 3.6 2.1-1.2-5" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#d9a520"/><circle cx="12" cy="10" r="3.6" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M9.6 13 8.4 18l3.6-2.1 3.6 2.1-1.2-5" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </div>
+        <a href="jornada.html" class="mission-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Iniciar Missão</a>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="mission">
+      <div class="mission-thumb th-energy">
+      </div>
+      <div class="mission-body">
+        <div class="mission-title">Tecnologias de Energia Renovável e Soluções de Baixo Carbono</div>
+        <span class="pill-tema">Energia</span>
+        <p class="mission-desc">Explore inovações limpas e ajude a acelerar a transição para uma economia de baixo carbono.</p>
+        <div class="mission-meta">
+          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 28 min</span>
+          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> 1.156 colaboradores</span>
+        </div>
+        <div class="badges-line">
+          <span class="lbl">Badges disponíveis:</span>
+          <span class="set">
+            <svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#d9a520"/><circle cx="12" cy="10" r="3.6" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M9.6 13 8.4 18l3.6-2.1 3.6 2.1-1.2-5" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#9ba4ad"/><circle cx="12" cy="10" r="3.6" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M9.6 13 8.4 18l3.6-2.1 3.6 2.1-1.2-5" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#d9a520"/><circle cx="12" cy="10" r="3.6" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M9.6 13 8.4 18l3.6-2.1 3.6 2.1-1.2-5" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </div>
+        <a href="jornada.html" class="mission-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Iniciar Missão</a>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="mission">
+      <div class="mission-thumb th-forest">
+      </div>
+      <div class="mission-body">
+        <div class="mission-title">Preservação de Florestas e Biodiversidade</div>
+        <span class="pill-tema">Biodiversidade</span>
+        <p class="mission-desc">Defenda as florestas e proteja a vida em todas as suas formas em uma jornada pela biodiversidade.</p>
+        <div class="mission-meta">
+          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 32 min</span>
+          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> 1.389 colaboradores</span>
+        </div>
+        <div class="badges-line">
+          <span class="lbl">Badges disponíveis:</span>
+          <span class="set">
+            <svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#d9a520"/><circle cx="12" cy="10" r="3.6" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M9.6 13 8.4 18l3.6-2.1 3.6 2.1-1.2-5" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#9ba4ad"/><circle cx="12" cy="10" r="3.6" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M9.6 13 8.4 18l3.6-2.1 3.6 2.1-1.2-5" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#d9a520"/><circle cx="12" cy="10" r="3.6" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M9.6 13 8.4 18l3.6-2.1 3.6 2.1-1.2-5" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </div>
+        <a href="jornada.html" class="mission-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Iniciar Missão</a>
+      </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="mission">
+      <div class="mission-thumb th-social">
+      </div>
+      <div class="mission-body">
+        <div class="mission-title">Justiça Climática e Impactos Sociais</div>
+        <span class="pill-tema">Justiça Social</span>
+        <p class="mission-desc">Descubra como garantir que a transição climática seja justa, inclusiva e beneficie a todos.</p>
+        <div class="mission-meta">
+          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 33 min</span>
+          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> 845 colaboradores</span>
+        </div>
+        <div class="badges-line">
+          <span class="lbl">Badges disponíveis:</span>
+          <span class="set">
+            <svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#d9a520"/><circle cx="12" cy="10" r="3.6" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M9.6 13 8.4 18l3.6-2.1 3.6 2.1-1.2-5" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#9ba4ad"/><circle cx="12" cy="10" r="3.6" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M9.6 13 8.4 18l3.6-2.1 3.6 2.1-1.2-5" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#d9a520"/><circle cx="12" cy="10" r="3.6" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M9.6 13 8.4 18l3.6-2.1 3.6 2.1-1.2-5" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </div>
+        <a href="jornada.html" class="mission-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Iniciar Missão</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= RODAPÉ ================= -->
+<footer class="footer">
+  <div class="footer-bottom">© 2026 The Blue City · Missão Cidade Azul. Todos os direitos reservados.</div>
+</footer>
+
+<script>
+  (function () {
+    var topbar = document.querySelector('.topbar');
+    function onScroll() { topbar.classList.toggle('scrolled', window.scrollY > 4); }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
+
+</body>
+</html>
