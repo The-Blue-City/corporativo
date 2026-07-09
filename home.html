@@ -20,7 +20,7 @@
 
     /* ➜ IMAGEM DE FUNDO DO HERO: troque o none pelo link, ex.:
        --hero-img: url('https://.../floresta.jpg');            */
-    --hero-img: none;
+    --hero-img: url('https://the-blue-city.github.io/content/OChamado-Imagem.png');
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -64,7 +64,7 @@
     overflow: hidden;
     /* camadas: véu escuro p/ legibilidade  +  IMAGEM (--hero-img)  +  degradê de reserva */
     background-image:
-      linear-gradient(180deg, rgba(10,34,28,0.55) 0%, rgba(15,45,55,0.38) 45%, rgba(20,55,74,0.52) 100%),
+      linear-gradient(135deg, rgba(16,54,48,0.82) 0%, rgba(22,64,68,0.78) 45%, rgba(20,50,80,0.84) 100%),
       var(--hero-img),
       linear-gradient(135deg, #1e5a44 0%, #2a6b6b 45%, #274b6e 100%);
     background-size: cover, cover, cover;
@@ -101,7 +101,7 @@
     gap: 18px; max-width: 720px; margin: 0 auto;
   }
   .hstat {
-    background: rgba(20,52,55,0.42);
+    background: rgba(72,152,108,0.42);
     border: 1px solid rgba(255,255,255,0.22);
     border-radius: 12px; padding: 18px 20px;
     backdrop-filter: blur(3px);
