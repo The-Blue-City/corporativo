@@ -1,0 +1,1845 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Empregabilidade · POK</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+:root {
+  --purple: #5123a4;
+  --purple-dark: #3a1878;
+  --purple-light: #e4dcf7;
+  --purple-faint: #F3EFF9;
+  --ink: #000000;
+  --ink-muted: #5E4E7A;
+  --ink-faint: #A899C2;
+  --border: #D8CEF0;
+  --white: #fff;
+  --radius-lg: 20px;
+  --radius-md: 12px;
+  --green: #1D9E75;
+  --green-light: #E2F4EB;
+  --green-dark: #0f6e56;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Poppins', sans-serif; background: var(--purple-faint); color: var(--ink); min-height: 100vh; }
+
+.hero { background: var(--purple-dark); padding: 44px 64px 16px; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; top: -80px; right: -80px; width: 340px; height: 340px; border-radius: 50%; background: rgba(123,79,207,0.25); pointer-events: none; }
+.hero::after { content: ''; position: absolute; bottom: -100px; left: 20%; width: 240px; height: 240px; border-radius: 50%; background: rgba(255,255,255,0.04); pointer-events: none; }
+.hero-inner { max-width: 960px; position: relative; z-index: 1; }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,214,0,0.15); border: 1px solid rgba(255,214,0,0.35); border-radius: 99px; padding: 5px 14px; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #FFD600; margin-bottom: 14px; }
+.hero-eyebrow span { width: 6px; height: 6px; border-radius: 50%; background: #FFD600; display: inline-block; }
+.hero-title { font-size: clamp(20px, 2.4vw, 32px); white-space: nowrap; font-weight: 900; line-height: 1.15; color: #fff; letter-spacing: -0.02em; margin-bottom: 10px; }
+.hero-subtitle { font-size: 13px; color: #ffffff; line-height: 1.7; font-weight: 400; }
+
+.filters-bar { background: var(--white); border-bottom: none; border-top: none; padding: 20px 64px; display: flex; align-items: center; gap: 8px; flex-wrap: nowrap; }
+.filter-select { font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 500; padding: 6px 26px 6px 11px; border: 1.5px solid var(--border); border-radius: 99px; background: var(--white); color: var(--ink); cursor: pointer; outline: none; appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235123a4' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; transition: border-color 0.15s; }
+.filter-select:hover { border-color: var(--purple); }
+.date-btn { font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 500; padding: 6px 12px; border: 1.5px solid var(--border); border-radius: 99px; background: var(--white); color: var(--ink); cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: border-color 0.15s; }
+.date-btn:hover { border-color: var(--purple); }
+.date-btn svg { width: 15px; height: 15px; color: var(--purple); flex-shrink: 0; }
+
+.content { max-width: 1120px; margin: 0 auto; padding: 40px 32px 72px; }
+
+.section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+.section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+/* FUNIL */
+.funnel-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px 32px; margin-bottom: 24px; }
+.funnel-card h3 { font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+.funnel-card > p { font-size: 12px; color: var(--ink); line-height: 1.5; margin-bottom: 20px; }
+.funnel-steps { display: flex; align-items: center; }
+.funnel-step { flex: 1; text-align: center; }
+.funnel-bar { height: 52px; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; border-radius: var(--radius-md); margin: 0 3px; color: #fff; }
+.funnel-step-label { font-size: 10px; color: var(--ink); margin-top: 8px; line-height: 1.4; font-weight: 500; }
+.funnel-step-pct { font-size: 10px; color: var(--ink-faint); margin-top: 3px; font-weight: 600; }
+.funnel-arrow { color: var(--ink-faint); font-size: 16px; flex-shrink: 0; padding: 0 2px 30px; }
+
+/* KPIs */
+.kpi-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 24px; }
+.kpi-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px 22px; position: relative; }
+.kpi-card.highlight { border-left: 4px solid var(--purple); }
+.kpi-value { font-size: 30px; font-weight: 800; color: var(--ink); line-height: 1; margin-bottom: 6px; }
+.kpi-value.purple { color: var(--purple); }
+.kpi-label { font-size: 12px; color: var(--ink); line-height: 1.4; font-weight: 500; padding-right: 24px; }
+
+/* CHART CARD */
+.chart-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px 32px; margin-bottom: 24px; }
+.chart-card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 20px; flex-wrap: wrap; }
+.chart-card-header h3 { font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+.chart-card-header p { font-size: 12px; color: var(--ink); line-height: 1.5; }
+.chart-metric-select { font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 600; padding: 8px 32px 8px 14px; border: 1.5px solid var(--purple-light); border-radius: 99px; background: var(--purple-faint); color: var(--purple); cursor: pointer; outline: none; appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235123a4' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; white-space: nowrap; flex-shrink: 0; }
+.chart-metric-select:hover { border-color: var(--purple); }
+
+/* axis zone labels */
+.chart-zone-labels { display: flex; margin-bottom: 6px; }
+.zone-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; border-radius: 99px; }
+.zone-label.past { background: #f0edf8; color: var(--ink-faint); }
+.zone-label.future { background: var(--purple-light); color: var(--purple); margin-left: auto; }
+.zone-divider { flex: 1; }
+
+/* TABLE */
+.table-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); }
+.table-toolbar { display: flex; align-items: center; gap: 10px; padding: 16px 20px; border-bottom: 1px solid var(--border); flex-wrap: wrap; background: var(--purple-faint); border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+.table-toolbar input[type="text"] { font-family: 'Poppins', sans-serif; font-size: 12px; padding: 6px 12px; border: 1.5px solid var(--border); border-radius: 99px; background: var(--white); color: var(--ink); outline: none; flex: 1; min-width: 160px; }
+.table-toolbar input[type="text"]:focus { border-color: var(--purple); }
+.table-toolbar select { font-family: 'Poppins', sans-serif; font-size: 12px; padding: 6px 26px 6px 11px; border: 1.5px solid var(--border); border-radius: 99px; background: var(--white); color: var(--ink); outline: none; appearance: none; background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235123a4' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; }
+.toggle-label { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--ink); cursor: pointer; user-select: none; margin-left: auto; font-weight: 500; }
+table { width: 100%; border-collapse: collapse; font-size: 11px; }
+thead th { padding: 9px 8px; text-align: left; font-size: 9px; font-weight: 700; color: var(--ink); letter-spacing: 0.06em; text-transform: uppercase; border-bottom: 1px solid var(--border); background: var(--white); }
+.th-inner { display: flex; align-items: center; gap: 4px; }
+tbody tr { border-bottom: 1px solid var(--border); transition: background 0.12s; }
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: var(--purple-faint); }
+tbody td { padding: 10px 8px; color: var(--ink); vertical-align: middle; font-size: 11px; }
+.td-muted { color: var(--ink) !important; font-size: 11px; }
+.badge { display: inline-flex; align-items: center; font-size: 9px; font-weight: 400; padding: 3px 7px; border-radius: 5px; letter-spacing: 0.03em; text-transform: uppercase; }
+.badge-novo { background: var(--green-light); color: var(--green-dark); }
+.badge-promo { background: var(--purple-light); color: var(--purple); }
+.badge-none { background: #f0edf8; color: var(--ink-faint); }
+.social-icons { display: flex; gap: 4px; }
+.social-btn { width: 28px; height: 28px; border-radius: 8px; border: 1.5px solid #c2dff7; display: flex; align-items: center; justify-content: center; cursor: pointer; background: #e8f4fd; }
+.social-btn.active { background: #e8f4fd; border-color: #5123a4; }
+.social-btn.inactive { background: #f0edf8; border-color: #D8CEF0; }
+
+/* TOOLTIP */
+.info-btn { width: 15px; height: 15px; border-radius: 50%; border: 1.5px solid var(--border); display: inline-flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; color: var(--ink-faint); cursor: pointer; font-family: 'Poppins', sans-serif; background: transparent; flex-shrink: 0; vertical-align: middle; padding: 0; transition: border-color 0.12s, color 0.12s; }
+.info-btn:hover { border-color: var(--purple); color: var(--purple); }
+#gtip { position: fixed; z-index: 9999; background: var(--ink); color: #fff; font-family: 'Poppins', sans-serif; font-size: 11px; font-weight: 400; padding: 9px 13px; border-radius: 10px; line-height: 1.6; max-width: 220px; pointer-events: none; display: none; box-shadow: 0 4px 16px rgba(30,18,48,0.3); }
+#gtip-arrow { position: fixed; z-index: 9998; width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 7px solid #1E1230; pointer-events: none; display: none; }
+#emptyState { display: none; padding: 2.5rem; text-align: center; color: var(--ink-faint); font-size: 13px; font-weight: 500; }
+
+/* CALENDAR */
+.cal-overlay { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(30,18,48,0.4); align-items: center; justify-content: center; }
+.cal-overlay.open { display: flex; }
+.cal-box { background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 28px 32px; min-width: 660px; max-width: 92vw; box-shadow: 0 24px 64px rgba(81,35,164,0.18); }
+.cal-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+.cal-top-title { font-size: 15px; font-weight: 700; color: var(--ink); }
+.cal-nav { display: flex; gap: 8px; }
+.cal-nav button { background: var(--white); border: 1px solid var(--border); border-radius: 8px; width: 32px; height: 32px; cursor: pointer; color: var(--purple); font-size: 16px; display: flex; align-items: center; justify-content: center; font-family: 'Poppins', sans-serif; }
+.cal-nav button:hover { background: var(--purple-faint); }
+.cal-months { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+.cal-month-title { font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 12px; text-transform: capitalize; }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+.cal-dh { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-faint); text-align: center; padding: 4px 0 6px; }
+.cal-d { font-size: 13px; text-align: center; padding: 7px 4px; border-radius: 8px; cursor: pointer; color: var(--ink); font-weight: 500; }
+.cal-d:hover { background: var(--purple-light); }
+.cal-d.today { color: var(--purple); font-weight: 800; }
+.cal-d.selected { background: var(--purple) !important; color: #fff !important; }
+.cal-d.in-range { background: var(--purple-light); color: var(--purple); }
+.cal-d.empty { cursor: default; pointer-events: none; }
+.cal-actions { display: flex; justify-content: flex-end; gap: 12px; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); }
+.cal-cancel { font-family: 'Poppins', sans-serif; background: none; border: none; color: var(--purple); font-size: 14px; font-weight: 600; cursor: pointer; padding: 9px 18px; border-radius: 8px; }
+.cal-cancel:hover { background: var(--purple-faint); }
+.cal-apply { font-family: 'Poppins', sans-serif; background: var(--purple); color: #fff; border: none; font-size: 14px; font-weight: 700; cursor: pointer; padding: 10px 28px; border-radius: 10px; }
+.cal-apply:hover { background: var(--purple-dark); }
+
+.site-footer { text-align: center; padding: 36px 32px 48px; border-top: 1px solid var(--border); margin-top: 20px; }
+.footer-logo { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 8px; }
+.footer-logo-icon { width: 28px; height: 28px; border: 2px solid var(--purple); border-radius: 7px; display: flex; align-items: center; justify-content: center; }
+.footer-logo-text { font-size: 18px; font-weight: 800; color: var(--purple); }
+.site-footer p { font-size: 12px; color: var(--ink); }
+
+@media (max-width: 900px) {
+  .hero { padding: 36px 24px 28px; }
+  .filters-bar { padding: 12px 24px; flex-wrap: wrap; gap: 8px; }
+  .content { padding: 28px 16px 48px; }
+  .kpi-grid { grid-template-columns: 1fr 1fr; }
+  .cal-months { grid-template-columns: 1fr; }
+  .cal-box { min-width: unset; }
+  .funnel-steps { overflow-x: auto; padding-bottom: 8px; -webkit-overflow-scrolling: touch; }
+}
+
+@media (max-width: 600px) {
+  .hero { padding: 28px 16px 24px; }
+  .hero-title { font-size: 28px; }
+  .hero-subtitle { font-size: 12px; }
+  .filters-bar { padding: 10px 16px; flex-direction: column; align-items: stretch; gap: 8px; }
+  .filter-select { width: 100%; }
+  .date-btn { width: 100%; justify-content: flex-start; }
+  #lang-toggle { }
+  .kpi-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .kpi-card { padding: 16px; }
+  .kpi-value { font-size: 28px; }
+  .funnel-card { padding: 20px 16px; }
+  .funnel-steps { display: flex; flex-direction: row; overflow-x: auto; gap: 6px; padding-bottom: 12px; -webkit-overflow-scrolling: touch; scroll-snap-type: x mandatory; }
+  .funnel-step { scroll-snap-align: start; min-width: 90px; flex-shrink: 0; }
+  .funnel-box { width: 72px; height: 72px; font-size: 22px; }
+  .funnel-arrow { font-size: 12px; margin: 0 2px; }
+  .chart-card { padding: 20px 16px; }
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .table-toolbar { flex-wrap: wrap; gap: 8px; }
+  .section-label { padding: 0 16px; }
+  .content { padding: 20px 12px 48px; }
+  .drawer { width: 100vw; }
+}
+/* ─── DRAWER ─────────────────────────────────────────────────────────────── */
+.drawer-overlay { position: fixed; inset: 0; z-index: 300; background: rgba(30,18,48,0.45); opacity: 0; pointer-events: none; transition: opacity 0.25s; }
+.drawer-overlay.open { opacity: 1; pointer-events: all; }
+.drawer { position: fixed; top: 0; right: 0; height: 100vh; width: min(520px, 96vw); background: var(--white); z-index: 301; transform: translateX(100%); transition: transform 0.3s cubic-bezier(0.4,0,0.2,1); display: flex; flex-direction: column; box-shadow: -8px 0 40px rgba(81,35,164,0.15); }
+.drawer.open { transform: translateX(0); }
+.drawer-head { padding: 22px 24px 18px; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+.drawer-head-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 4px; }
+.drawer-name { font-size: 17px; font-weight: 800; color: var(--ink); }
+.drawer-close { background: none; border: none; cursor: pointer; color: var(--ink-faint); padding: 4px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.drawer-close:hover { background: var(--purple-faint); color: var(--purple); }
+.drawer-meta { font-size: 12px; color: var(--ink-muted); display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+.drawer-meta-item { display: flex; align-items: center; gap: 5px; }
+.drawer-cert-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--purple-faint); border: 1px solid var(--purple-light); border-radius: 99px; padding: 4px 12px; font-size: 11px; font-weight: 600; color: var(--purple); margin-top: 10px; }
+.drawer-cert-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--purple); }
+.drawer-body { flex: 1; overflow-y: auto; padding: 24px 24px 32px; }
+.drawer-section { margin-bottom: 28px; }
+.drawer-section-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-faint); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+.drawer-section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+/* timeline */
+.timeline { position: relative; padding-left: 20px; }
+.timeline::before { content: ''; position: absolute; left: 6px; top: 6px; bottom: 6px; width: 1.5px; background: var(--border); }
+.tl-item { position: relative; margin-bottom: 18px; }
+.tl-item:last-child { margin-bottom: 0; }
+.tl-dot { position: absolute; left: -20px; top: 5px; width: 13px; height: 13px; border-radius: 50%; border: 2px solid var(--white); box-shadow: 0 0 0 1.5px var(--border); background: var(--white); }
+.tl-dot.before { background: var(--ink-faint); box-shadow: 0 0 0 1.5px var(--ink-faint); }
+.tl-dot.cert { background: var(--purple); box-shadow: 0 0 0 2px var(--purple-light); width: 15px; height: 15px; left: -21px; top: 3px; }
+.tl-dot.after { background: var(--green); box-shadow: 0 0 0 1.5px var(--green); }
+.tl-card { background: var(--purple-faint); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
+.tl-card.cert-marker { background: var(--purple); border-color: var(--purple); }
+.tl-card.cert-marker .tl-card-title { color: #fff; }
+.tl-card.cert-marker .tl-card-sub { color: #fff; }
+.tl-card.after-cert { border-left: 3px solid var(--green); }
+.tl-card-period { font-size: 10px; font-weight: 700; color: var(--ink-faint); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 4px; }
+.tl-card.cert-marker .tl-card-period { color: #fff; }
+.tl-card-title { font-size: 13px; font-weight: 700; color: var(--ink); line-height: 1.3; }
+.tl-card-sub { font-size: 12px; color: var(--ink); margin-top: 2px; }
+.tl-card-type { display: inline-flex; margin-top: 6px; font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 99px; }
+.type-full { background: var(--green-light); color: var(--green-dark); }
+.type-intern { background: var(--purple-light); color: var(--purple); }
+.type-part { background: #fff3cd; color: #856404; }
+
+/* skills chips */
+.skills-wrap { display: flex; flex-wrap: wrap; gap: 6px; }
+.skill-chip { font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 99px; background: var(--purple-faint); border: 1px solid var(--border); color: var(--ink); }
+
+/* education */
+.edu-item { display: flex; gap: 12px; margin-bottom: 14px; }
+.edu-icon { width: 34px; height: 34px; border-radius: 8px; background: var(--purple-faint); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.edu-body .edu-degree { font-size: 13px; font-weight: 700; color: var(--ink); }
+.edu-body .edu-school { font-size: 12px; color: var(--ink-muted); }
+.edu-body .edu-period { font-size: 11px; color: var(--ink-faint); margin-top: 2px; }
+
+/* dev notes */
+.dev-note { background: #0f1117; border-radius: 12px; padding: 18px 20px; margin-top: 28px; }
+.dev-note-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #6B7280; margin-bottom: 12px; }
+.dev-note-row { display: flex; gap: 10px; margin-bottom: 8px; font-size: 11px; line-height: 1.5; }
+.dev-note-field { color: #a78bf0; font-family: monospace; white-space: nowrap; flex-shrink: 0; }
+.dev-note-desc { color: #9CA3AF; }
+
+
+@media (max-width: 900px) {
+  /* Three boxes hero grid */
+  div[style*="grid-template-columns:1fr 1fr 1fr"] { grid-template-columns: 1fr !important; }
+  /* POK Score main grid */
+  div[style*="grid-template-columns:280px 1fr"] { grid-template-columns: 1fr !important; }
+  /* Serasa and Público 4-box grids */
+  div[style*="grid-template-columns:repeat(4,1fr)"] { grid-template-columns: 1fr 1fr !important; }
+  /* Ranking grid */
+  div[style*="grid-template-columns:40px 1fr 80px 120px 80px"] { grid-template-columns: 32px 1fr 60px 80px !important; }
+  /* Hero padding */
+  section[style*="padding:56px 64px"] { padding: 36px 24px 40px !important; }
+  /* Filters bar nowrap fix */
+  .filters-bar { flex-wrap: wrap !important; }
+}
+
+@media (max-width: 600px) {
+  /* Three boxes stack to 1 col */
+  div[style*="grid-template-columns:1fr 1fr 1fr"] { grid-template-columns: 1fr !important; }
+  /* Serasa/Público 4 boxes stack to 1 col */
+  div[style*="grid-template-columns:repeat(4,1fr)"] { grid-template-columns: 1fr !important; }
+  /* Ranking hide last 2 cols */
+  div[style*="grid-template-columns:40px 1fr 80px 120px 80px"] { grid-template-columns: 28px 1fr 50px !important; }
+  /* Hero boxes padding */
+  div[style*="background:var(--purple-dark); padding:8px 64px"] { padding: 8px 16px 24px !important; }
+  /* Chart card header flex */
+  .chart-card-header { flex-direction: column !important; }
+}
+</style>
+</head>
+<body>
+
+<div id="gtip"></div>
+<div id="gtip-arrow"></div>
+
+
+
+<header class="hero">
+  <div class="hero-inner" style="position:relative;">
+    <div id="lang-toggle" style="position:absolute; top:0; right:0; display:flex; border:1.5px solid rgba(228,220,247,0.4); border-radius:8px; overflow:hidden; font-size:12px; font-weight:700; box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+      <button id="btn-pt" onclick="setLang('pt')" style="padding:5px 14px; background:var(--purple); color:#fff; border:none; cursor:pointer; font-family:'Poppins',sans-serif; font-weight:700;">PT</button>
+      <button id="btn-es" onclick="setLang('es')" style="padding:5px 14px; background:rgba(255,255,255,0.15); color:rgba(255,255,255,0.7); border:none; cursor:pointer; font-family:'Poppins',sans-serif; font-weight:700;">ES</button>
+    </div>
+    <svg style="height:36px; width:auto; margin-bottom:28px; display:block;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 197.3"><defs><style>.cls-1{fill:#fff;stroke-width:0px;}</style></defs><path class="cls-1" d="M131.4,27.2c0-5.4-4.4-9.9-9.9-9.9H5.9c-3.3,0-5.9,2.6-5.9,5.9v115.6c0,5.5,4.4,9.9,9.9,9.9s9.9-4.4,9.9-9.9V42.3c0-2.9,2.3-5.2,5.2-5.2h96.6c5.3,0,9.8-4.4,9.8-9.9ZM164.8,60.6c-5.4,0-9.9,4.4-9.9,9.9v96.6c0,2.9-2.3,5.2-5.2,5.2H53.1c-5.4,0-9.9,4.4-9.9,9.9s4.4,9.9,9.9,9.9h115.6c3.3,0,5.9-2.6,5.9-5.9v-115.7c0-5.5-4.4-9.9-9.8-9.9ZM103.7,76l-23.9,35.8c-.9,1.4-2.8,1.6-4,.4l-9.9-9.9c-3.5-3.5-9.1-3.5-12.5,0-3.5,3.5-3.5,9.1,0,12.5l20.1,20.1c3.8,3.8,10.1,3.2,13.1-1.3l31.9-47.8c2.7-4.1,1.6-9.6-2.5-12.3-4.1-2.6-9.6-1.5-12.3,2.5ZM329.1,49.1c-7.4-4.8-15.9-7.2-25.5-7.2-6,0-11.9,1.2-17.5,3.5-5.5,2.3-10.1,5.3-14,9-1.1,1-2,2.1-2.9,3.2l-.2-13.9h-24.7v153.6h25.3v-58.3c.5.5.9,1,1.4,1.5,4,4,8.8,7.2,14.6,9.7,5.9,2.5,12,3.7,18.3,3.7,9.5,0,17.9-2.4,25.3-7.2,7.5-4.9,13.4-11.6,17.7-19.9,4.2-8.5,6.4-18.2,6.4-29s-2.2-20.4-6.6-28.8c-4.1-8.4-10-15.1-17.6-19.9ZM325.2,115.3c-2.6,5.1-6.2,9-10.7,11.9s-9.7,4.3-15.4,4.3c-6,0-11.3-1.4-15.8-4.3-4.5-2.9-8.1-6.9-10.7-11.9-2.6-5.1-3.9-10.9-3.9-17.5s1.3-12.4,3.9-17.5,6.2-9,10.7-11.9,9.8-4.3,15.8-4.3,11.1,1.5,15.6,4.5c4.5,2.9,8,6.9,10.5,11.9,2.6,4.9,3.9,10.7,3.9,17.3s-1.3,12.5-3.9,17.5ZM449.9,48.9c-8.5-4.9-18.1-7.4-28.8-7.4s-20.5,2.5-29,7.4c-8.5,4.8-15.2,11.4-20.1,19.9-4.8,8.5-7.2,18.2-7.2,29s2.4,20.5,7.2,29c4.9,8.5,11.6,15.2,20.1,20.1,8.5,4.8,18.2,7.2,29,7.2s20.3-2.4,28.8-7.2c8.5-4.9,15.1-11.6,19.9-20.1,4.9-8.5,7.4-18.2,7.4-29s-2.5-20.5-7.4-29c-4.7-8.4-11.4-15.1-19.9-19.9ZM447.9,115.3c-2.6,5.1-6.2,9.1-10.9,12.1-4.7,2.9-9.9,4.3-15.8,4.3s-11.2-1.4-16-4.3c-4.7-3-8.3-7.1-10.9-12.1-2.6-5.2-3.9-11-3.9-17.5s1.3-12.2,3.9-17.3c2.6-5.2,6.2-9.3,10.9-12.1,4.8-3,10.1-4.5,16-4.5s11.2,1.4,15.8,4.3c4.7,2.9,8.3,6.9,10.9,12.1,2.7,5.1,4,10.9,3.9,17.5.1,6.5-1.2,12.3-3.9,17.5ZM548.8,91.2l50.6-47.5h-33.5l-45,45V0h-25.1v152.1h25.1v-34.6l10.9-10.2,37,44.9h31.2l-51.2-61Z"/></svg>
+    <div class="hero-eyebrow" id="t-eyebrow"><span></span> Painel de Empregabilidade Ensino Superior</div>
+    <h1 class="hero-title"><span id="t-title">Trajetórias de Impacto</span></h1>
+    <p class="hero-subtitle"><span id="t-subtitle">Painel de leitura de dados de empregabilidade por Instituição e por curso a partir da emissão de certificados, badges e microcredenciais POK</span></p>
+  </div>
+</header>
+
+<div style="background:var(--purple-dark); padding:8px 64px 32px;">
+  <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-top:20px;">
+
+    <!-- Box 1: Campanha Egressos -->
+    <div style="background:#8267be; border:none; border-radius:16px; padding:22px 24px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;">
+      <div style="font-size:13px; font-weight:700; color:#fff; margin-bottom:10px;">Campanha Egressos</div>
+      <div style="font-size:44px; font-weight:900; color:#fff; line-height:1; margin-bottom:10px;">50.000</div>
+      <div style="font-size:12px; color:#fff; line-height:1.7;">certificados para egressos enviados de uma vez só, com CPF gravado no certificado blockchain, para captura de dados de várias naturezas</div>
+
+    </div>
+
+    <!-- Box 2: Núcleo -->
+    <div style="background:#5123a4; border-radius:16px; padding:22px 24px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:14px;">
+      <div style="font-size:9px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#e6c24a;">Núcleo</div>
+      <div style="font-size:13px; font-weight:700; color:#fff; line-height:1.3;">Credencial Blockchain POK</div>
+      <div style="background:#e6c24a; border-radius:12px; padding:8px 16px; font-size:14px; font-weight:800; color:#5123a4;">POK</div>
+      <div style="font-size:11px; color:#fff; line-height:1.6;">Conexão com LinkedIn + CPF transforma o certificado no elo entre captura e empregabilidade</div>
+    </div>
+
+    <!-- Box 3: Empregabilidade -->
+    <div style="background:#8267be; border:none; border-radius:16px; padding:22px 24px;">
+      <div style="font-size:13px; font-weight:700; color:#fff; margin-bottom:14px;">Empregabilidade</div>
+      <div style="font-size:12px; font-weight:700; color:#fff; margin-bottom:4px;">Métricas LinkedIn</div>
+      <div style="font-size:11px; color:#fff; line-height:1.6; margin-bottom:4px;">Dados autodeclarados e públicos do portador do certificado</div>
+      <div style="font-size:18px; color:#e6c24a; margin:6px 0 12px;">+</div>
+      <div style="font-size:12px; font-weight:700; color:#fff; margin-bottom:4px;">Métricas Serasa</div>
+      <div style="font-size:11px; color:#fff; line-height:1.6; margin-bottom:12px;">Dados financeiros fazem leitura indireta de empregabilidade</div>
+      <div style="font-size:18px; color:#e6c24a; margin:6px 0 12px;">+</div>
+      <div style="font-size:12px; font-weight:700; color:#fff; margin-bottom:4px;">Métricas Públicas e Semi-públicas</div>
+      <div style="font-size:11px; color:#fff; line-height:1.6;">Base CAGED, Base Rais, Base CNIS, Base eSocial, SINE / Portal Emprega Brasil, Plataforma Lattes – CNPq, CIEE / IEL / Nube</div>
+
+    </div>
+
+  </div>
+</div>
+<div class="filters-bar" style="justify-content:flex-start; flex-direction:column; align-items:flex-start; padding-top:20px; padding-bottom:20px;">
+  <h2 style="font-size:22px; font-weight:800; color:var(--ink); margin-bottom:0;">Painel de Empregabilidade</h2>
+  <p id="t-painel-intro" style="font-size:12px; color:var(--ink); line-height:1.7; margin-bottom:20px; max-width:960px;">Filtre por trilha, curso, competência e/ou período, e o painel recorta a base de portadores conforme a seleção. Trilha, curso e competência são recortes independentes, então é possível acompanhar uma mesma competência certificada em portadores vindos de cursos diferentes. Isso permite ler a empregabilidade por aquilo que a pessoa sabe fazer, e não apenas pela trilha ou curso – abrindo comparações que o recorte por trilha e curso sozinho não mostra.</p>
+  <div style="display:flex; align-items:center; gap:8px; flex-wrap:nowrap; width:100%;">
+
+  <div style="display:flex;align-items:center;gap:6px;">
+    <select class="filter-select" id="filterTrilha">
+      <option value="" id="t-f5">Todas as trilhas</option>
+      <option>Trilha de Dados</option>
+      <option>Trilha de Gestão</option>
+      <option>Trilha Financeira</option>
+    </select>
+    <button class="info-btn" data-tip="Filtra pela trilha formativa – o encadeamento de badges e certificados intermediários que compõem o curso até a credencial final. É o recorte que melhor mede a empregabilidade, por refletir o percurso completo.">i</button>
+  </div>
+
+  <div style="display:flex;align-items:center;gap:6px;">
+    <select class="filter-select" id="filterCert">
+      <option value="" id="t-f1">Todos os cursos</option>
+      <option>Tecnologia da Informação</option>
+      <option>Administração</option>
+      <option>Ciências Contábeis</option>
+      <option>Estatística</option>
+    </select>
+    <button class="info-btn" data-tip="Filtra pelo curso de origem do portador.">i</button>
+  </div>
+
+  <div style="display:flex;align-items:center;gap:6px;">
+    <select class="filter-select" id="filterTitulo">
+      <option value="" id="t-f4">Todas as competências</option>
+      <option selected>Analista de Dados</option>
+    </select>
+    <button class="info-btn" data-tip="Filtra pela competência certificada pela POK, que pode ser emitida por diferentes cursos.">i</button>
+  </div>
+
+  <div style="display:flex;align-items:center;gap:6px;">
+    <button class="date-btn" onclick="openCal('emissao')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      <span id="labelEmissao"><span id="t-f2">Data de emissão</span></span>
+    </button>
+    <button class="info-btn" data-tip="Filtra pelo período em que o certificado foi emitido pela instituição.">i</button>
+  </div>
+
+  <div style="display:flex;align-items:center;gap:6px;">
+    <button class="date-btn" onclick="openCal('compartilhamento')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      <span id="labelCompartilhamento"><span id="t-f3">Data de compartilhamento</span></span>
+    </button>
+    <button class="info-btn" data-tip="Filtra pelo período em que o portador compartilhou o certificado no LinkedIn.">i</button>
+  </div>
+
+
+  </div>
+</div>
+
+<main class="content">
+
+<div style="display:flex; align-items:center; gap:12px; margin-bottom:16px; margin-top:0;">
+    <div style="width:3px; height:36px; background:#5123a4; border-radius:2px; flex-shrink:0;"></div>
+    <div style="width:32px; height:32px; flex-shrink:0;">
+      <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="8" fill="#0A66C2"/><path fill="#fff" d="M11.06 24.5H7.4V12.9h3.66V24.5ZM9.23 11.3a2.12 2.12 0 1 1 0-4.25 2.12 2.12 0 0 1 0 4.25ZM24.6 24.5h-3.65v-5.65c0-1.35-.03-3.08-1.88-3.08-1.88 0-2.17 1.47-2.17 2.98v5.75H13.25V12.9h3.5v1.59h.05c.49-.92 1.68-1.9 3.46-1.9 3.7 0 4.38 2.44 4.38 5.6V24.5Z"/></svg>
+    </div>
+    <span style="font-size:18px; font-weight:700; color:var(--ink);">LinkedIn</span>
+  </div>
+  <div style="background:var(--white); border:1px solid var(--border); border-radius:var(--radius-lg); padding:40px 32px; text-align:left; color:var(--ink); font-size:12px; line-height:1.8; margin-bottom:16px;">A partir do compartilhamento do certificado no LinkedIn (tornando a informação pública) a POK levanta dados por curso ou por competência, como novos empregos, promoções e o tempo de impacto dessas mudanças.</div>
+  </div>
+  <div class="section-label"><span id="t-sl1">Funil de engajamento</span></div>
+  <div class="funnel-card">
+    <h3><span id="t-funnel-title">Do certificado à mudança real</span></h3>
+    <p><span id="t-funnel-desc">Acompanhe, etapa a etapa, quantos egressos compartilharam o certificado, publicaram, adicionaram ao perfil e chegaram a uma mudança de carreira – novo emprego ou promoção. O funil mostra onde o engajamento se sustenta ou se perde ao longo do caminho, revelando quanto do potencial de cada turma se converte em impacto.</span></p>
+    <div class="funnel-steps">
+      <div class="funnel-step"><div class="funnel-bar" style="background:#3a1878;">56</div><div class="funnel-step-label"><span id="t-fn1">Compartilhamentos<br>no LinkedIn</span></div><div class="funnel-step-pct">100%</div></div>
+      <div class="funnel-arrow">›</div>
+      <div class="funnel-step"><div class="funnel-bar" style="background:#5123a4;">25</div><div class="funnel-step-label"><span id="t-fn2">Publicações<br>detectadas</span></div><div class="funnel-step-pct">45%</div></div>
+      <div class="funnel-arrow">›</div>
+      <div class="funnel-step"><div class="funnel-bar" style="background:#6b45bb;">17</div><div class="funnel-step-label"><span id="t-fn3">Adicionado<br>ao perfil</span></div><div class="funnel-step-pct">30%</div></div>
+      <div class="funnel-arrow">›</div>
+      <div class="funnel-step"><div class="funnel-bar" style="background:#8f76cc;">10</div><div class="funnel-step-label"><span id="t-fn4">Alguma mudança<br>detectada</span></div><div class="funnel-step-pct">18%</div></div>
+      <div class="funnel-arrow">›</div>
+      <div class="funnel-step"><div class="funnel-bar" style="background:#1D9E75;">5</div><div class="funnel-step-label"><span id="t-fn5">Novo<br>emprego</span></div><div class="funnel-step-pct">9%</div></div>
+      <div class="funnel-arrow">›</div>
+      <div class="funnel-step"><div class="funnel-bar" style="background:#5DCAA5;">5</div><div class="funnel-step-label"><span id="t-fn6">Promoção<br>detectada</span></div><div class="funnel-step-pct">9%</div></div>
+    </div>
+  </div>
+
+  <div class="section-label"><span id="t-sl2">Métricas principais</span></div>
+  <h3 id="t-metricas-sub" style="font-size:15px; font-weight:700; color:var(--ink); margin-bottom:4px;">O desempenho do recorte em números</h3>
+  <p id="t-metricas-desc" style="font-size:12px; color:var(--ink); line-height:1.7; margin:0 0 16px; max-width:960px;">Leia as métricas agregadas do recorte: o tempo médio até a mudança, a taxa de conversão dos que compartilharam, e a quantidade de novos empregos e promoções. É uma leitura comparável do desempenho de uma trilha, curso ou competência, útil para avaliação institucional e para comunicação com o mercado.</p>
+  <div class="kpi-grid">
+    <div class="kpi-card highlight">
+      <div class="kpi-value purple">76 dias</div>
+      <div class="kpi-label"><span id="t-kpi1">Tempo médio até a mudança</span></div>
+      <button class="info-btn" data-tip="Média de dias entre o compartilhamento do certificado e a primeira mudança detectada no perfil (novo emprego ou promoção).">i</button>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value purple">18%</div>
+      <div class="kpi-label"><span id="t-kpi2">Taxa de conversão geral</span></div>
+      <button class="info-btn" data-tip="Percentual de portadores de certificados que compartilharam o certificado e tiveram alguma mudança detectada no período selecionado.">i</button>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value purple">5</div>
+      <div class="kpi-label"><span id="t-kpi3">Novos empregos detectados</span></div>
+      <button class="info-btn" data-tip="Novos vínculos empregatícios detectados após o compartilhamento do certificado.">i</button>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value purple">5</div>
+      <div class="kpi-label"><span id="t-kpi4">Promoções detectadas</span></div>
+      <button class="info-btn" data-tip="Mudanças de cargo detectadas na mesma empresa após o compartilhamento do certificado.">i</button>
+    </div>
+  </div>
+
+  <!-- HYBRID CHART -->
+  <div class="section-label"><span id="t-sl3">Evolução do perfil dos portadores de certificados</span></div>
+  <div class="chart-card">
+    <div class="chart-card-header">
+      <div>
+        <h3><span id="t-chart-title">Trajetória agregada – mudanças de carreira acumuladas</span></h3>
+        <p id="chartDesc"><span id="t-chart-desc">Acompanhe a curva de trajetória: de um lado do marco do compartilhamento, o histórico de carreira reconstruído; do outro, a evolução observada ao longo do tempo nas leituras periódicas. Cada novo emprego ou promoção conta como uma mudança. A curva situa a credencial na linha do tempo da carreira e mostra como o grupo evolui a partir do momento em que conquistou a competência.</span></p>
+      </div>
+    </div>
+
+    <div class="chart-zone-labels">
+      <span class="zone-label past"><span id="t-zone-past">← Antes do compartilhamento</span></span>
+      <span class="zone-divider"></span>
+      <span class="zone-label future"><span id="t-zone-future">Após o compartilhamento →</span></span>
+    </div>
+
+    <div style="position:relative; width:100%; height:280px;">
+      <canvas id="hybridChart" role="img" aria-label="Gráfico de evolução do perfil dos portadores de certificados antes e depois do compartilhamento do certificado"></canvas>
+    </div>
+
+    <div style="display:flex; align-items:center; justify-content:center; gap:6px; margin-top:14px; font-size:11px; color:var(--ink);">
+      <div style="width:24px; height:2px; background:var(--purple); border-radius:1px;"></div>
+      Média dos portadores de certificados
+      <div style="width:1px; height:12px; background:var(--border); margin:0 8px;"></div>
+      <div style="width:2px; height:16px; background:var(--ink); border-radius:1px; opacity:0.3;"></div>
+      Marco do compartilhamento
+    </div>
+  </div>
+
+  <!-- TABLE -->
+  <div class="section-label"><span id="t-sl4">Portadores individuais</span></div>
+  <h3 id="t-portadores-sub" style="font-size:15px; font-weight:700; color:var(--ink); margin-bottom:4px;">Do agregado ao caso a caso</h3>
+  <p style="font-size:12px; color:var(--ink); line-height:1.7; margin:0 0 14px; max-width:960px;"><span id="t-tbl-ctx">Desça ao caso a caso: para cada egresso, veja a trilha e o curso de origem, a competência certificada, o cargo atual detectado, o tipo de mudança e o tempo até ela acontecer. Busque ou filtre para ver as linhas correspondentes e acessar o perfil de cada pessoa no LinkedIn. A tabela leva a leitura do plano abstrato ao caso concreto, permitindo verificar histórias individuais e sustentar os números agregados com evidência. Nesta visão, o filtro de competência está aplicado em <strong>Analista de Dados</strong>.</span></p>
+
+  <div style="display:flex; align-items:center; gap:10px; margin:20px 0 4px;">
+    <div style="width:28px;height:28px;border-radius:8px;border:1.5px solid #5123a4;display:flex;align-items:center;justify-content:center;background:#fff;flex-shrink:0;">
+      <svg width="16" height="16" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="13" width="3" height="4" rx="0.5" fill="#5123a4"/><rect x="9.5" y="9" width="3" height="8" rx="0.5" fill="#5123a4"/><rect x="14" y="5" width="3" height="12" rx="0.5" fill="#5123a4"/></svg>
+    </div>
+    <h3 id="t-traj-sub" style="font-size:13px; font-weight:700; color:var(--ink); margin:0;">Trajetória do portador</h3>
+  </div>
+  <p id="t-traj-desc" style="font-size:11px; color:var(--ink); line-height:1.7; margin:0 0 14px; max-width:960px;">Clique no ícone de trajetória de um portador e veja seu percurso completo: a linha do tempo profissional, com cada cargo situado antes ou após o compartilhamento, além da formação e das habilidades declaradas. É o retrato completo de um egresso num só lugar, conectando formação, competência e evolução de carreira – a prova, no nível da pessoa, de que a credencial acompanha um percurso real.</p>
+
+  <div class="table-card">
+    <div class="table-toolbar">
+      <input type="text" id="searchInput" placeholder="Buscar por curso, competência ou portador..." oninput="filterTable()" />
+      <select id="impactFilter" onchange="filterTable()">
+        <option value="">Todas as mudanças</option>
+        <option value="novo">Novo emprego</option>
+        <option value="promo">Promoção</option>
+        <option value="none">Sem mudança ainda</option>
+      </select>
+      <label class="toggle-label"><input type="checkbox" id="sharedOnly" onchange="filterTable()" /> <span id="t-shared">Ver só com postagem compartilhada</span></label>
+    </div>
+    <div style="overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:88px;"><div class="th-inner"><span id="t-th3" style="font-size:9px; letter-spacing:0.02em;">Data de compartilhamento</span> <button class="info-btn" data-tip="Data em que o portador compartilhou o certificado no LinkedIn.">i</button></div></th>
+            <th><div class="th-inner"><span id="t-th-trilha">Trilha</span> <button class="info-btn" data-tip="Trilha formativa do portador – o encadeamento de badges e certificados que compõem o curso até a credencial final.">i</button></div></th>
+            <th><div class="th-inner"><span id="t-th2">Curso</span> <button class="info-btn" data-tip="Curso de origem do portador.">i</button></div></th>
+            <th><div class="th-inner"><span id="t-th-comp">Competência</span> <button class="info-btn" data-tip="Competência certificada pela POK. A mesma competência pode ser emitida por diferentes cursos.">i</button></div></th>
+            <th><div class="th-inner">Portador <button class="info-btn" data-tip="Nome do profissional que recebeu e compartilhou o certificado.">i</button></div></th>
+            <th><div class="th-inner">Cargo detectado <button class="info-btn" data-tip="Cargo e empresa registrados no campo Experience do LinkedIn no momento do compartilhamento ou em leitura posterior.">i</button></div></th>
+            <th><div class="th-inner"><span id="t-th4">Mudança</span> <button class="info-btn" data-tip="Tipo de mudança detectada: novo emprego (troca de empresa) ou promoção (mesmo empregador, cargo mais sênior).">i</button></div></th>
+            <th><div class="th-inner"><span id="t-th5" style="white-space:nowrap;">Dias até a<br>mudança</span> <button class="info-btn" data-tip="Número de dias entre o compartilhamento e a detecção da mudança no perfil.">i</button></div></th>
+            <th><div class="th-inner">LinkedIn <button class="info-btn" data-tip="Ícone de perfil: acessa o LinkedIn do portador. Ícone de postagem: indica se foi detectada uma publicação sobre o certificado no feed.">i</button></div></th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+    <div id="emptyState">Nenhum portador encontrado com os filtros aplicados.</div>
+  </div>
+
+
+  <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px; margin-top:40px;">
+    <div style="width:3px; height:36px; background:#5123a4; border-radius:2px; flex-shrink:0;"></div>
+    <div style="width:32px; height:32px; flex-shrink:0;">
+      <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="8" fill="#e5006d"/><rect x="8.5" y="9.5" width="6" height="6" rx="1.8" fill="#fff"/><rect x="14.8" y="5.2" width="4.6" height="4.6" rx="1.4" fill="#fff"/><rect x="20.4" y="8.2" width="3" height="3" rx="1" fill="#fff"/><rect x="8.6" y="17.4" width="3" height="3" rx="1" fill="#fff"/><rect x="12.6" y="21.4" width="4.2" height="4.2" rx="1.3" fill="#fff"/><path fill="#fff" d="M23.1 13.0c-.7-.7-1.9-1.2-3.2-1.2-2.1 0-3.7 1.2-3.7 2.9 0 1.7 1.3 2.3 3 2.7 1.4.3 2 .6 2 1.2 0 .6-.6 1-1.6 1-1.1 0-2.1-.5-2.8-1.3l-1.2 1.6c.9.9 2.3 1.5 4 1.5 2.3 0 3.8-1.2 3.8-3 0-1.7-1.4-2.4-3.2-2.8-1.3-.3-1.8-.5-1.8-1.1 0-.5.5-.8 1.3-.8 1 0 1.9.4 2.5 1.1l1.2-1.6Z"/></svg>
+    </div>
+    <span style="font-size:18px; font-weight:700; color:var(--ink);">Serasa</span>
+  </div>
+  <div style="background:var(--white); border:1px solid var(--border); border-radius:var(--radius-lg); padding:40px 32px; text-align:left; color:var(--ink); font-size:12px; line-height:1.8;">
+    Através da parceria POK e Serasa Experian, a POK verifica vínculos formais de emprego, histórico de renda, identidade e trajetória financeira do portador a partir do CPF gravado no certificado. Esses dados fornecem uma leitura objetiva e verificável da empregabilidade.
+  </div>
+  <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:20px;">
+
+    <div style="background:var(--white); border:1px solid var(--border); border-left:3px solid var(--purple); border-radius:var(--radius-lg); padding:20px 20px 16px;">
+      <div style="font-size:10px; font-weight:700; color:var(--purple); letter-spacing:0.08em; margin-bottom:8px;">01</div>
+      <div style="font-size:13px; font-weight:700; color:var(--ink); margin-bottom:10px; line-height:1.3;">Empreendedorismo pós-credencial</div>
+      <div style="font-size:12px; color:var(--ink); line-height:1.6; margin-bottom:12px;">Portadores que abriram MEI ou se tornaram sócios de empresa após receberem a credencial – identificados via cruzamento CPF × CNPJ. Especialmente relevante para trilhas com vocação empreendedora.</div>
+      
+    </div>
+
+    <div style="background:var(--white); border:1px solid var(--border); border-left:3px solid var(--purple); border-radius:var(--radius-lg); padding:20px 20px 16px;">
+      <div style="font-size:10px; font-weight:700; color:var(--purple); letter-spacing:0.08em; margin-bottom:8px;">02</div>
+      <div style="font-size:13px; font-weight:700; color:var(--ink); margin-bottom:10px; line-height:1.3;">Estabilidade financeira como dimensão de bem-estar</div>
+      <div style="font-size:12px; color:var(--ink); line-height:1.6; margin-bottom:12px;">Indicadores agregados de estabilidade financeira da base de portadores pós-credencial – saída de negativação, evolução de score, regularidade de pagamentos. Compõe leitura de empregabilidade com dimensão de qualidade de vida financeira.</div>
+      
+    </div>
+
+    <div style="background:var(--white); border:1px solid var(--border); border-left:3px solid var(--purple); border-radius:var(--radius-lg); padding:20px 20px 16px;">
+      <div style="font-size:10px; font-weight:700; color:var(--purple); letter-spacing:0.08em; margin-bottom:8px;">03</div>
+      <div style="font-size:13px; font-weight:700; color:var(--ink); margin-bottom:10px; line-height:1.3;">Variação de renda antes e depois da credencial</div>
+      <div style="font-size:12px; color:var(--ink); line-height:1.6; margin-bottom:12px;">Faixa de renda estimada do aluno ou egresso comparada nos períodos pré e pós-emissão. A Serasa comercializa o Renda 4.0, modelo proprietário de estimativa de renda mensal – a leitura longitudinal pré/pós é estruturada como consolidação sobre esse atributo.</div>
+      
+    </div>
+
+    <div style="background:var(--white); border:1px solid var(--border); border-left:3px solid var(--purple); border-radius:var(--radius-lg); padding:20px 20px 16px;">
+      <div style="font-size:10px; font-weight:700; color:var(--purple); letter-spacing:0.08em; margin-bottom:8px;">04</div>
+      <div style="font-size:13px; font-weight:700; color:var(--ink); margin-bottom:10px; line-height:1.3;">Mobilidade geográfica pós-credencial</div>
+      <div style="font-size:12px; color:var(--ink); line-height:1.6; margin-bottom:12px;">Mudança de município ou estado capturada via endereço atualizado na base Serasa, frequentemente associada a oportunidades profissionais ascendentes. Ganha mais potência quando cruzada com outras leituras (renda, ocupação).</div>
+      
+    </div>
+
+  </div>
+
+  <div class="chart-card" style="margin-top:24px;">
+    <div class="chart-card-header">
+      <div>
+        <h3>Trajetória agregada – métricas Serasa</h3>
+        <p>Evolução média dos portadores do curso selecionado. À esquerda da emissão: histórico na base Serasa. À direita: evolução após a emissão do certificado.</p>
+      </div>
+      <select class="filter-select" id="serasaMetricSelect" onchange="updateSerasaChart()">
+        <option value="renda">Variação de renda (faixa média)</option>
+        <option value="score">Score de crédito médio</option>
+        <option value="negativacao">% com negativação ativa</option>
+        <option value="empreendedorismo">% com CNPJ aberto</option>
+      </select>
+    </div>
+    <div class="chart-zone-labels">
+      <span class="zone-label past">← Antes da emissão</span>
+      <span class="zone-divider"></span>
+      <span class="zone-label future">Após a emissão →</span>
+    </div>
+    <div style="position:relative; width:100%; height:260px;">
+      <canvas id="serasaChart" role="img" aria-label="Gráfico Serasa"></canvas>
+    </div>
+    <div style="display:flex; align-items:center; justify-content:center; gap:6px; margin-top:14px; font-size:11px; color:var(--ink);">
+      <div style="width:24px; height:2px; background:var(--purple); border-radius:1px;"></div>
+      Média dos portadores
+      <div style="width:1px; height:12px; background:var(--border); margin:0 8px;"></div>
+      <div style="width:2px; height:16px; background:var(--ink); border-radius:1px; opacity:0.3;"></div>
+      Marco da emissão
+    </div>
+  </div>
+
+
+
+  <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px; margin-top:40px;">
+    <div style="width:3px; height:36px; background:#5123a4; border-radius:2px; flex-shrink:0;"></div>
+    <div style="width:32px; height:32px; flex-shrink:0;">
+      <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><defs><clipPath id="govr"><rect width="32" height="32" rx="8"/></clipPath></defs><g clip-path="url(#govr)"><rect width="32" height="32" fill="#1351B4"/><path d="M0 0 L11 0 L0 13 Z" fill="#FFCD07"/><path d="M0 32 L0 20 L9 32 Z" fill="#0a3d8f"/><path d="M32 0 L20 0 L32 12 Z" fill="#168821"/><path d="M32 32 L32 21 L22 32 Z" fill="#2a6bd4"/><circle cx="22" cy="9" r="4" fill="#2a6bd4" opacity="0.55"/><text x="16" y="21" text-anchor="middle" font-family="Poppins, Arial, sans-serif" font-size="13" font-weight="800" letter-spacing="-0.4" fill="#fff">BR</text></g></svg>
+    </div>
+    <span style="font-size:18px; font-weight:700; color:var(--ink);">Público e Semi-Público</span>
+  </div>
+  <div style="background:var(--white); border:1px solid var(--border); border-radius:var(--radius-lg); padding:40px 32px; text-align:left; color:var(--ink); font-size:12px; line-height:1.8;">
+    Através de acesso a bases como CAGED, Rais, CNIS, eSocial e SINE, a POK registra admissões, demissões e movimentações formais no mercado de trabalho. Já pela Plataforma Lattes – CNPq e CIEE / IEL / Nube, a POK mapeia a trajetória acadêmica e de estágio do portador. Juntas, essas fontes permitem cruzar o impacto do certificado com dados estruturais de mercado.
+  </div>
+  <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:20px;">
+
+    <div style="background:var(--white); border:1px solid var(--border); border-left:3px solid var(--purple); border-radius:var(--radius-lg); padding:20px 20px 16px;">
+      <div style="font-size:10px; font-weight:700; color:var(--purple); letter-spacing:0.08em; margin-bottom:8px;">01</div>
+      <div style="font-size:13px; font-weight:700; color:var(--ink); margin-bottom:10px; line-height:1.3;">Vínculo formal de emprego</div>
+      <div style="font-size:12px; color:var(--ink); line-height:1.6;">CAGED, Rais e eSocial registram admissões e demissões com data, cargo e CNPJ do empregador. Permitem confirmar se o portador obteve ou manteve vínculo formal após a credencial.</div>
+    </div>
+
+    <div style="background:var(--white); border:1px solid var(--border); border-left:3px solid var(--purple); border-radius:var(--radius-lg); padding:20px 20px 16px;">
+      <div style="font-size:10px; font-weight:700; color:var(--purple); letter-spacing:0.08em; margin-bottom:8px;">02</div>
+      <div style="font-size:13px; font-weight:700; color:var(--ink); margin-bottom:10px; line-height:1.3;">Histórico previdenciário</div>
+      <div style="font-size:12px; color:var(--ink); line-height:1.6;">A base CNIS consolida o histórico de contribuições previdenciárias do portador ao longo da vida, incluindo períodos de informalidade, desemprego e reingresso no mercado.</div>
+    </div>
+
+    <div style="background:var(--white); border:1px solid var(--border); border-left:3px solid var(--purple); border-radius:var(--radius-lg); padding:20px 20px 16px;">
+      <div style="font-size:10px; font-weight:700; color:var(--purple); letter-spacing:0.08em; margin-bottom:8px;">03</div>
+      <div style="font-size:13px; font-weight:700; color:var(--ink); margin-bottom:10px; line-height:1.3;">Intermediação e recolocação</div>
+      <div style="font-size:12px; color:var(--ink); line-height:1.6;">SINE e Portal Emprega Brasil registram buscas ativas por emprego e encaminhamentos. Cruzar com a data da credencial revela se o portador estava em situação de desemprego ativo antes ou depois da emissão.</div>
+    </div>
+
+    <div style="background:var(--white); border:1px solid var(--border); border-left:3px solid var(--purple); border-radius:var(--radius-lg); padding:20px 20px 16px;">
+      <div style="font-size:10px; font-weight:700; color:var(--purple); letter-spacing:0.08em; margin-bottom:8px;">04</div>
+      <div style="font-size:13px; font-weight:700; color:var(--ink); margin-bottom:10px; line-height:1.3;">Trajetória acadêmica e estágio</div>
+      <div style="font-size:12px; color:var(--ink); line-height:1.6;">Plataforma Lattes – CNPq mapeia a produção acadêmica e científica do portador. CIEE e IEL / Nube registram contratos de estágio, permitindo identificar inserção profissional antes da formalização do emprego.</div>
+    </div>
+
+  </div>
+
+  <div class="chart-card" style="margin-top:24px;">
+    <div class="chart-card-header">
+      <div>
+        <h3>Trajetória agregada – bases públicas</h3>
+        <p>Evolução média dos portadores do curso selecionado. À esquerda da emissão: histórico nas bases públicas. À direita: evolução após a emissão do certificado.</p>
+      </div>
+      <select class="filter-select" id="publicoMetricSelect" onchange="updatePublicoChart()">
+        <option value="vinculo">% com vínculo formal ativo</option>
+        <option value="sine">% inscrito no SINE</option>
+        <option value="contribuicao">Meses médios de contribuição previdenciária</option>
+        <option value="estagio">% com contrato de estágio ativo</option>
+      </select>
+    </div>
+    <div class="chart-zone-labels">
+      <span class="zone-label past">← Antes da emissão</span>
+      <span class="zone-divider"></span>
+      <span class="zone-label future">Após a emissão →</span>
+    </div>
+    <div style="position:relative; width:100%; height:260px;">
+      <canvas id="publicoChart" role="img" aria-label="Gráfico bases públicas"></canvas>
+    </div>
+    <div style="display:flex; align-items:center; justify-content:center; gap:6px; margin-top:14px; font-size:11px; color:var(--ink);">
+      <div style="width:24px; height:2px; background:var(--purple); border-radius:1px;"></div>
+      Média dos portadores
+      <div style="width:1px; height:12px; background:var(--border); margin:0 8px;"></div>
+      <div style="width:2px; height:16px; background:var(--ink); border-radius:1px; opacity:0.3;"></div>
+      Marco da emissão
+    </div>
+  </div>
+
+
+</main>
+
+<section style="background:var(--purple-dark); padding:56px 64px 64px; position:relative; overflow:hidden;">
+  <div style="position:absolute;top:-80px;right:-80px;width:340px;height:340px;border-radius:50%;background:rgba(123,79,207,0.2);pointer-events:none;"></div>
+  <div style="max-width:1120px; margin:0 auto; position:relative; z-index:1;">
+
+    <!-- Header -->
+    <div style="margin-bottom:40px;">
+      <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(230,194,74,0.15); border:1px solid rgba(230,194,74,0.3); border-radius:99px; padding:5px 14px; font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#e6c24a; margin-bottom:16px;">
+        <span style="width:6px;height:6px;border-radius:50%;background:#e6c24a;display:inline-block;"></span>
+        Índice de Impacto POK
+      </div>
+      <h2 style="font-size:28px; font-weight:900; color:#fff; letter-spacing:-0.02em; margin-bottom:10px;">POK Score</h2>
+      <p style="font-size:14px; color:#fff; line-height:1.7;">Índice ponderado de empregabilidade por curso ou competência, construído a partir de três fontes de dados — LinkedIn, Serasa e bases públicas — convergindo pelo CPF gravado no certificado.</p>
+    </div>
+
+    <!-- Score card principal -->
+    <div style="display:grid; grid-template-columns:280px 1fr; gap:24px; margin-bottom:32px;">
+
+      <!-- Score número -->
+      <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:32px 28px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;">
+        <div style="font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#e6c24a; margin-bottom:12px;">Score atual</div>
+        <div style="font-size:72px; font-weight:900; color:#fff; line-height:1; margin-bottom:4px;" id="scoreTotal">74</div>
+        <div style="font-size:13px; color:#fff; margin-bottom:20px;">de 100 pontos</div>
+        <div style="width:100%; height:8px; background:rgba(255,255,255,0.1); border-radius:99px; overflow:hidden;">
+          <div id="scoreTotalBar" style="height:100%; width:74%; background:linear-gradient(90deg,#e6c24a,#f0a500); border-radius:99px; transition:width 0.8s ease;"></div>
+        </div>
+        <div style="font-size:11px; color:#fff; margin-top:10px;">Direito · 2025</div>
+      </div>
+
+      <!-- Dimensões -->
+      <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:28px 32px;">
+        <div style="font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#fff; margin-bottom:20px;">Composição do score</div>
+        <div style="display:flex; flex-direction:column; gap:16px;" id="dimensoesContainer">
+
+          <div class="dim-row">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+              <div style="font-size:13px; font-weight:600; color:#fff;">Inserção <span style="font-size:11px; font-weight:400; color:#fff;">· LinkedIn + CAGED + SINE</span></div>
+              <div style="font-size:13px; font-weight:700; color:#e6c24a;"><span class="dim-score">82</span><span style="font-size:10px; color:#fff; font-weight:400;"> /100 · peso 30%</span></div>
+            </div>
+            <div style="height:6px; background:rgba(255,255,255,0.1); border-radius:99px; overflow:hidden;"><div style="height:100%; width:82%; background:#5DCAA5; border-radius:99px;"></div></div>
+          </div>
+
+          <div class="dim-row">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+              <div style="font-size:13px; font-weight:600; color:#fff;">Progressão <span style="font-size:11px; font-weight:400; color:#fff;">· LinkedIn + Serasa Renda</span></div>
+              <div style="font-size:13px; font-weight:700; color:#e6c24a;"><span class="dim-score">71</span><span style="font-size:10px; color:#fff; font-weight:400;"> /100 · peso 30%</span></div>
+            </div>
+            <div style="height:6px; background:rgba(255,255,255,0.1); border-radius:99px; overflow:hidden;"><div style="height:100%; width:71%; background:#8267be; border-radius:99px;"></div></div>
+          </div>
+
+          <div class="dim-row">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+              <div style="font-size:13px; font-weight:600; color:#fff;">Estabilidade <span style="font-size:11px; font-weight:400; color:#fff;">· Serasa + CNIS</span></div>
+              <div style="font-size:13px; font-weight:700; color:#e6c24a;"><span class="dim-score">68</span><span style="font-size:10px; color:#fff; font-weight:400;"> /100 · peso 20%</span></div>
+            </div>
+            <div style="height:6px; background:rgba(255,255,255,0.1); border-radius:99px; overflow:hidden;"><div style="height:100%; width:68%; background:#5123a4; border-radius:99px;"></div></div>
+          </div>
+
+          <div class="dim-row">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+              <div style="font-size:13px; font-weight:600; color:#fff;">Velocidade <span style="font-size:11px; font-weight:400; color:#fff;">· LinkedIn · dias até a mudança</span></div>
+              <div style="font-size:13px; font-weight:700; color:#e6c24a;"><span class="dim-score">79</span><span style="font-size:10px; color:#fff; font-weight:400;"> /100 · peso 10%</span></div>
+            </div>
+            <div style="height:6px; background:rgba(255,255,255,0.1); border-radius:99px; overflow:hidden;"><div style="height:100%; width:79%; background:#4a6bc0; border-radius:99px;"></div></div>
+          </div>
+
+          <div class="dim-row">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+              <div style="font-size:13px; font-weight:600; color:#fff;">Empreendedorismo <span style="font-size:11px; font-weight:400; color:#fff;">· Serasa CPF × CNPJ</span></div>
+              <div style="font-size:13px; font-weight:700; color:#e6c24a;"><span class="dim-score">55</span><span style="font-size:10px; color:#fff; font-weight:400;"> /100 · peso 10%</span></div>
+            </div>
+            <div style="height:6px; background:rgba(255,255,255,0.1); border-radius:99px; overflow:hidden;"><div style="height:100%; width:55%; background:#e6c24a; border-radius:99px;"></div></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Ranking de cursos -->
+    <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:28px 32px; margin-bottom:32px;">
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; flex-wrap:wrap; gap:12px;">
+        <div style="font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#fff;">Ranking por curso</div>
+        <div style="font-size:12px; color:#fff;">Mostrando todos os cursos · ordenados por POK Score</div>
+      </div>
+
+      <!-- Header da tabela -->
+      <div style="display:grid; grid-template-columns:40px 1fr 80px 120px 80px; gap:0; padding:8px 16px; border-bottom:1px solid rgba(255,255,255,0.1); margin-bottom:4px;">
+        <div style="font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#fff;">#</div>
+        <div style="font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#fff;">Curso</div>
+        <div style="font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#fff; text-align:center;">Score</div>
+        <div style="font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#fff; text-align:center;">Variação</div>
+        <div style="font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#fff; text-align:center;">Inserção</div>
+      </div>
+
+      <!-- Ranking rows scrollável -->
+      <div id="rankingList" style="max-height:320px; overflow-y:auto; display:flex; flex-direction:column; gap:2px;"></div>
+
+      <div style="font-size:11px; color:#fff; margin-top:14px; text-align:center;" id="rankingFooter"></div>
+    </div>
+
+    <!-- Nota metodológica -->
+    <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:22px 28px; display:flex; gap:16px; align-items:flex-start;">
+      <div style="font-size:18px; flex-shrink:0; margin-top:2px;">📐</div>
+      <div>
+        <div style="font-size:12px; font-weight:700; color:#fff; margin-bottom:6px;">Metodologia do POK Score</div>
+        <div style="font-size:12px; color:#fff; line-height:1.7;">Score ponderado de 0 a 100, calculado a partir de métricas das três fontes de dados POK. Os pesos padrão são: Inserção 30% · Progressão 30% · Estabilidade 20% · Velocidade 10% · Empreendedorismo 10%. O score é calculado sobre portadores que compartilharam o certificado no LinkedIn, com CPF verificado nas bases externas.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<footer class="site-footer">
+  </div>
+  <p>Muito mais que certificados digitais · <a href="https://pok.tech" target="_blank" style="color:var(--purple);font-weight:600;text-decoration:none;">pok.tech</a></p>
+</footer>
+
+<div class="cal-overlay" id="calOverlay">
+  <div class="cal-box">
+    <div class="cal-top">
+      <span class="cal-top-title" id="t-cal-title">Selecionar período</span>
+      <div class="cal-nav"><button onclick="shiftMonths(-1)">‹</button><button onclick="shiftMonths(1)">›</button></div>
+    </div>
+    <div class="cal-months">
+      <div><div class="cal-month-title" id="leftTitle"></div><div class="cal-grid" id="leftGrid"></div></div>
+      <div><div class="cal-month-title" id="rightTitle"></div><div class="cal-grid" id="rightGrid"></div></div>
+    </div>
+    <div class="cal-actions">
+      <button class="cal-cancel" onclick="closeCal()">Cancelar</button>
+      <button class="cal-apply" onclick="applyCal()">Aplicar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─── CHART DATA ───────────────────────────────────────────────────────────────
+// X axis: labels split into two zones
+// Past zone: real historical dates (read from LinkedIn at moment of sharing)
+// Future zone: relative post-sharing intervals
+const pastLabels  = ['2018','2019','2020','2021','2022','2023','2024','2025'];
+const futureLabels = ['2 meses','4 meses','6 meses','8 meses','10 meses','12 meses'];
+const allLabels   = [...pastLabels, 'Compartilhamento', ...futureLabels];
+const shareIndex  = pastLabels.length; // index of the vertical marker
+
+const datasets = {
+  cargos: {
+    label: 'Nº médio de mudanças de carreira acumuladas',
+    past:   [1, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3.0],
+    share:  3.1,
+    future: [3.2, 3.3, 3.35, 3.4, 3.5, 3.6],
+    yLabel: 'Mudanças acumuladas',
+    yMax: 6
+  }
+};
+
+let chartInstance = null;
+
+function buildChartData(key) {
+  const d = datasets[key || 'cargos'];
+  const values = [...d.past, d.share, ...d.future];
+  // Segment colors: past = faint purple, future = purple
+  const pointBg = allLabels.map((_, i) => {
+    if (i === shareIndex) return '#5123a4';
+    if (i < shareIndex) return '#1E1230';
+    return '#5123a4';
+  });
+  const pointR = allLabels.map((_, i) => i === shareIndex ? 7 : 4);
+  return { values, pointBg, pointR, d };
+}
+
+function updateChart() {
+  const { values, pointBg, pointR, d } = buildChartData('cargos');
+
+  if (chartInstance) chartInstance.destroy();
+
+  const ctx = document.getElementById('hybridChart').getContext('2d');
+
+  // Gradient: past = faint, share onwards = purple
+  const grad = ctx.createLinearGradient(0, 0, ctx.canvas.width, 0);
+  grad.addColorStop(0, 'rgba(168,153,194,0.5)');
+  grad.addColorStop(shareIndex / (allLabels.length - 1), 'rgba(81,35,164,0.5)');
+  grad.addColorStop(1, 'rgba(81,35,164,0.9)');
+
+  chartInstance = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: allLabels,
+      datasets: [{
+        label: d.label,
+        data: values,
+        borderColor: grad,
+        borderWidth: 2.5,
+        pointBackgroundColor: pointBg,
+        pointBorderColor: '#fff',
+        pointBorderWidth: 2,
+        pointRadius: pointR,
+        pointHoverRadius: 7,
+        tension: 0,
+        fill: false
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      layout: { padding: { top: 36 } },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            title: ctx => ctx[0].label,
+            label: ctx => `${d.yLabel}: ${ctx.parsed.y}`
+          },
+          bodyFont: { family: 'Poppins', size: 12 },
+          titleFont: { family: 'Poppins', size: 12, weight: '600' }
+        },
+        // Vertical line at share index
+        annotation: false
+      },
+      scales: {
+        x: {
+          ticks: {
+            font: { size: 11, family: 'Poppins' },
+            color: ctx => {
+              const i = ctx.index;
+              if (i === shareIndex) return '#5123a4';
+              if (i < shareIndex) return '#1E1230';
+              return '#1E1230';
+            },
+            maxRotation: 0
+          },
+          grid: { color: 'rgba(216,206,240,0.5)' }
+        },
+        y: {
+          min: 0,
+          max: d.yMax,
+          title: { display: true, text: d.yLabel, font: { size: 11, family: 'Poppins' }, color: '#1E1230' },
+          ticks: { font: { size: 11, family: 'Poppins' }, color: '#1E1230', stepSize: 1 },
+          grid: { color: 'rgba(216,206,240,0.4)' }
+        }
+      }
+    },
+    plugins: [{
+      // Draw vertical dashed line at share index + shaded zones
+      id: 'shareMarker',
+      afterDraw(chart) {
+        const { ctx, chartArea, scales } = chart;
+        const xScale = scales.x;
+        const shareX = xScale.getPixelForValue(shareIndex);
+
+        // Past zone shading
+        ctx.save();
+        ctx.fillStyle = 'rgba(243,239,249,0.5)';
+        ctx.fillRect(chartArea.left, chartArea.top, shareX - chartArea.left, chartArea.bottom - chartArea.top);
+
+        // Future zone shading
+        ctx.fillStyle = 'rgba(225,220,247,0.18)';
+        ctx.fillRect(shareX, chartArea.top, chartArea.right - shareX, chartArea.bottom - chartArea.top);
+
+        // Vertical line
+        ctx.beginPath();
+        ctx.setLineDash([5, 4]);
+        ctx.strokeStyle = 'rgba(81,35,164,0.5)';
+        ctx.lineWidth = 1.5;
+        ctx.moveTo(shareX, chartArea.top);
+        ctx.lineTo(shareX, chartArea.bottom);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        // Pill label above line
+        const pillText = 'Compartilhamento';
+        ctx.font = '600 11px Poppins, sans-serif';
+        ctx.textAlign = 'center';
+        const pillW = ctx.measureText(pillText).width + 20;
+        const pillH = 22;
+        const pillX = shareX - pillW / 2;
+        const pillY = chartArea.top - pillH - 6;
+
+        // Pill background
+        ctx.fillStyle = '#5123a4';
+        ctx.beginPath();
+        ctx.roundRect(pillX, pillY, pillW, pillH, 6);
+        ctx.fill();
+
+        // Pill text
+        ctx.fillStyle = '#ffffff';
+        ctx.fillText(pillText, shareX, pillY + 15);
+
+        // Small triangle pointer
+        ctx.beginPath();
+        ctx.moveTo(shareX - 6, pillY + pillH);
+        ctx.lineTo(shareX + 6, pillY + pillH);
+        ctx.lineTo(shareX, pillY + pillH + 6);
+        ctx.closePath();
+        ctx.fillStyle = '#5123a4';
+        ctx.fill();
+
+        ctx.restore();
+      }
+    }]
+  });
+}
+
+updateChart();
+
+// ─── TABLE ────────────────────────────────────────────────────────────────────
+let currentLang = 'pt';
+const VMAP = {
+  'Trilha de Dados':'Ruta de Datos',
+  'Trilha de Gestão':'Ruta de Gestión',
+  'Trilha Financeira':'Ruta Financiera',
+  'Tecnologia da Informação':'Tecnología de la Información',
+  'Administração':'Administración',
+  'Ciências Contábeis':'Ciencias Contables',
+  'Estatística':'Estadística',
+  'Analista de Dados':'Analista de Datos',
+  'Analista de BI Sênior':'Analista de BI Sénior',
+  'Analista de Dados Financeiros':'Analista de Datos Financieros',
+  'Cientista de Dados Jr':'Científico de Datos Jr'
+};
+function trVal(v){ return (currentLang==='es' && v && VMAP[v]) ? VMAP[v] : v; }
+const rows = [
+  {date:'10/30/25',program:'Tecnologia da Informação',trilha:'Trilha de Dados',competencia:'Analista de Dados',name:'Guilherme Carbonari',cargo:'Data Analyst',empresa:'Capgemini',impact:'novo',dias:32,shared:true,hasPost:true},
+  {date:'10/30/25',program:'Tecnologia da Informação',trilha:'Trilha de Dados',competencia:'Analista de Dados',name:'Yuri Oliveira',cargo:null,empresa:null,impact:'none',dias:null,shared:false,hasPost:true},
+  {date:'12/01/25',program:'Administração',trilha:'Trilha de Dados',competencia:'Analista de Dados',name:'André Baptista Vio',cargo:'Analista de BI Sênior',empresa:'Edenred Pay Brasil',impact:'promo',dias:31,shared:true,hasPost:true},
+  {date:'12/01/25',program:'Administração',trilha:'Trilha de Dados',competencia:'Analista de Dados',name:'Izabella Adamuccio',cargo:null,empresa:null,impact:'none',dias:null,shared:false,hasPost:true},
+  {date:'08/28/25',program:'Ciências Contábeis',trilha:'Trilha de Dados',competencia:'Analista de Dados',name:'Diogo Baum',cargo:'Analista de Dados Financeiros',empresa:'Serasa Experian',impact:'novo',dias:45,shared:true,hasPost:true},
+  {date:'08/28/25',program:'Ciências Contábeis',trilha:'Trilha de Dados',competencia:'Analista de Dados',name:'Carlos Geraldo',cargo:null,empresa:null,impact:'none',dias:null,shared:false,hasPost:true},
+  {date:'10/30/25',program:'Estatística',trilha:'Trilha de Dados',competencia:'Analista de Dados',name:'Danilo Pires',cargo:'Cientista de Dados Jr',empresa:'Itaú Unibanco',impact:'promo',dias:58,shared:true,hasPost:true},
+  {date:'10/30/25',program:'Estatística',trilha:'Trilha de Dados',competencia:'Analista de Dados',name:'Carolina Ferrés',cargo:null,empresa:null,impact:'none',dias:null,shared:false,hasPost:true},
+  {date:'08/28/25',program:'Tecnologia da Informação',trilha:'Trilha de Dados',competencia:'Analista de Dados',name:'Bruno Reis de Arruda Alves',cargo:null,empresa:null,impact:'none',dias:null,shared:false,hasPost:false},
+  {date:'12/01/25',program:'Administração',trilha:'Trilha de Dados',competencia:'Analista de Dados',name:'Jeferson Faes Bertolini',cargo:null,empresa:null,impact:'none',dias:null,shared:false,hasPost:false},
+];
+
+function badge(i){
+  var es = currentLang === 'es';
+  if(i==='novo') return '<span class="badge badge-novo">'+(es?'Nuevo empleo':'Novo emprego')+'</span>';
+  if(i==='promo') return '<span class="badge badge-promo">'+(es?'Ascenso':'Promoção')+'</span>';
+  return '<span class="badge badge-none">'+(es?'Sin cambio aún':'Sem mudança ainda')+'</span>';
+}
+
+function renderTable(data){
+  const tb=document.getElementById('tableBody'),em=document.getElementById('emptyState');
+  if(!data.length){tb.innerHTML='';em.style.display='block';return;}
+  em.style.display='none';
+  tb.innerHTML=data.map(r=>`<tr>
+    <td class="td-muted">${r.date}</td>
+    <td class="td-muted">${trVal(r.trilha)}</td>
+    <td class="td-muted">${trVal(r.program)}</td>
+    <td><span class="td-muted">${trVal(r.competencia)}</span></td>
+    <td>${r.name}</td>
+    <td>${r.cargo?`${trVal(r.cargo)}<br><span class="td-muted">${r.empresa}</span>`:'<span class="td-muted">–</span>'}</td>
+    <td>${badge(r.impact)}</td>
+    <td>${r.dias?`${r.dias} dias`:'<span class="td-muted">–</span>'}</td>
+    <td><div class="social-icons">
+      <div data-tip="${r.hasPost?(currentLang==='es'?'Abrir el perfil del portador en LinkedIn':'Abrir o perfil do portador no LinkedIn'):(currentLang==='es'?'Perfil del portador no localizado en LinkedIn':'Perfil do portador não localizado no LinkedIn')}" style="width:28px;height:28px;border-radius:8px;border:1.5px solid ${r.hasPost?'#5123a4':'#D8CEF0'};display:flex;align-items:center;justify-content:center;cursor:pointer;background:${r.hasPost?'#dff0fd':'#f5f3fc'};">
+        <svg width="16" height="16" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="20" height="20" rx="5" stroke="${r.hasPost?'#5123a4':'#D8CEF0'}" stroke-width="1.5" fill="${r.hasPost?'#dff0fd':'#f5f3fc'}"/>
+          <circle cx="11" cy="8.5" r="3" stroke="${r.hasPost?'#5123a4':'#D8CEF0'}" stroke-width="1.5" fill="none"/>
+          <path d="M5.5 17.5c0-3 2.5-5 5.5-5s5.5 2 5.5 5" stroke="${r.hasPost?'#5123a4':'#D8CEF0'}" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+      <div data-tip="${r.shared?(currentLang==='es'?'Publicación sobre el certificado detectada en el feed de LinkedIn':'Publicação sobre o certificado detectada no feed do LinkedIn'):(currentLang==='es'?'Ninguna publicación sobre el certificado detectada en el feed':'Nenhuma publicação sobre o certificado detectada no feed')}" style="width:28px;height:28px;border-radius:8px;border:1.5px solid ${r.shared?'#5123a4':'#D8CEF0'};display:flex;align-items:center;justify-content:center;cursor:pointer;background:${r.shared?'#dff0fd':'#f5f3fc'};">
+        <svg width="16" height="16" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="20" height="20" rx="5" stroke="${r.shared?'#5123a4':'#D8CEF0'}" stroke-width="1.5" fill="${r.shared?'#dff0fd':'#f5f3fc'}"/>
+          <rect x="5" y="7" width="12" height="1.5" rx="0.75" fill="${r.shared?'#5123a4':'#D8CEF0'}"/>
+          <rect x="5" y="10.5" width="8" height="1.5" rx="0.75" fill="${r.shared?'#5123a4':'#D8CEF0'}"/>
+          <rect x="5" y="14" width="10" height="1.5" rx="0.75" fill="${r.shared?'#5123a4':'#D8CEF0'}"/>
+        </svg>
+      </div>
+      <div class="social-btn" data-tip="${currentLang==='es'?'Ver la trayectoria completa del portador':'Ver a trajetória completa do portador'}" onclick="openDrawer('${r.name}','${r.program}','${r.date}','${r.impact}')" style="cursor:pointer;">
+        <svg width="16" height="16" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="20" height="20" rx="4" stroke="#5123a4" stroke-width="1.5" fill="white"/>
+          <rect x="5" y="13" width="3" height="4" rx="0.5" fill="#5123a4"/>
+          <rect x="9.5" y="9" width="3" height="8" rx="0.5" fill="#5123a4"/>
+          <rect x="14" y="5" width="3" height="12" rx="0.5" fill="#5123a4"/>
+        </svg>
+      </div>
+    </div></td>
+  </tr>`).join('');
+}
+
+function filterTable(){
+  const q=document.getElementById('searchInput').value.toLowerCase();
+  const imp=document.getElementById('impactFilter').value;
+  const so=document.getElementById('sharedOnly').checked;
+  renderTable(rows.filter(r=>{
+    if(q){
+      const hay=[r.name,r.program,r.competencia,r.trilha,trVal(r.program),trVal(r.competencia),trVal(r.trilha)]
+        .filter(Boolean).join(' ').toLowerCase();
+      if(!hay.includes(q))return false;
+    }
+    if(imp&&r.impact!==imp)return false;
+    if(so&&!r.shared)return false;
+    return true;
+  }));
+}
+renderTable(rows);
+
+// ─── TOOLTIP ─────────────────────────────────────────────────────────────────
+const gtip=document.getElementById('gtip');
+const garrow=document.getElementById('gtip-arrow');
+document.addEventListener('mouseover',e=>{
+  const el=e.target.closest('[data-tip]');
+  if(!el) return;
+  gtip.textContent=el.getAttribute('data-tip');
+  gtip.style.display='block'; garrow.style.display='block';
+  positionTip(el);
+});
+document.addEventListener('mouseout',e=>{
+  const el=e.target.closest('[data-tip]');
+  if(!el) return;
+  gtip.style.display='none'; garrow.style.display='none';
+});
+function positionTip(btn){
+  const r=btn.getBoundingClientRect(), tw=220, th=gtip.offsetHeight||60;
+  let left=r.left+r.width/2-tw/2;
+  left=Math.max(8,Math.min(left,window.innerWidth-tw-8));
+  gtip.style.left=left+'px'; gtip.style.top=(r.top-th-10)+'px'; gtip.style.width=tw+'px';
+  garrow.style.left=(r.left+r.width/2-6)+'px'; garrow.style.top=(r.top-10)+'px';
+}
+
+// ─── CALENDAR ─────────────────────────────────────────────────────────────────
+const MONTHS=['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+const DAYS=['seg','ter','qua','qui','sex','sáb','dom'];
+let calBase=new Date(2026,3),selStart=null,selEnd=null;
+let calContext = 'emissao';
+function openCal(ctx){
+  calContext = ctx || 'emissao';
+  document.getElementById('calOverlay').classList.add('open');
+  const titles = {
+    'emissao': document.getElementById('btn-pt') && document.getElementById('btn-pt').style.background !== 'var(--purple)' ? 'Seleccionar período – Fecha de emisión' : 'Selecionar período – Data de emissão',
+    'compartilhamento': 'Selecionar período – Data de compartilhamento'
+  };
+  document.querySelector('.cal-top-title').textContent = titles[calContext] || 'Selecionar período';
+  renderCal();
+}
+function closeCal(){document.getElementById('calOverlay').classList.remove('open');}
+function shiftMonths(d){calBase=new Date(calBase.getFullYear(),calBase.getMonth()+d);renderCal();}
+function renderCal(){
+  const L=new Date(calBase),R=new Date(calBase.getFullYear(),calBase.getMonth()+1);
+  document.getElementById('leftTitle').textContent=MONTHS[L.getMonth()]+' '+L.getFullYear();
+  document.getElementById('rightTitle').textContent=MONTHS[R.getMonth()]+' '+R.getFullYear();
+  renderMonth('leftGrid',L); renderMonth('rightGrid',R);
+}
+function renderMonth(id,date){
+  const g=document.getElementById(id); g.innerHTML='';
+  DAYS.forEach(d=>{const h=document.createElement('div');h.className='cal-dh';h.textContent=d;g.appendChild(h);});
+  const first=new Date(date.getFullYear(),date.getMonth(),1);
+  let dow=first.getDay(); dow=dow===0?6:dow-1;
+  for(let i=0;i<dow;i++){const e=document.createElement('div');e.className='cal-d empty';g.appendChild(e);}
+  const days=new Date(date.getFullYear(),date.getMonth()+1,0).getDate();
+  const today=new Date();
+  for(let d=1;d<=days;d++){
+    const el=document.createElement('div');
+    const curr=new Date(date.getFullYear(),date.getMonth(),d);
+    let cls='cal-d';
+    if(curr.toDateString()===today.toDateString())cls+=' today';
+    if(selStart&&curr.toDateString()===selStart.toDateString())cls+=' selected';
+    if(selEnd&&curr.toDateString()===selEnd.toDateString())cls+=' selected';
+    if(selStart&&selEnd&&curr>selStart&&curr<selEnd)cls+=' in-range';
+    el.className=cls; el.textContent=d;
+    el.onclick=()=>selectDay(new Date(date.getFullYear(),date.getMonth(),d));
+    g.appendChild(el);
+  }
+}
+function selectDay(d){
+  if(!selStart||(selStart&&selEnd)){selStart=d;selEnd=null;}
+  else{if(d<selStart){selEnd=selStart;selStart=d;}else{selEnd=d;}}
+  renderCal();
+}
+function applyCal(){
+  if(selStart){
+    const fmt=d=>d.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'2-digit'});
+    const label = selEnd ? fmt(selStart)+' – '+fmt(selEnd) : fmt(selStart);
+    const targetId = calContext === 'compartilhamento' ? 'labelCompartilhamento' : 'labelEmissao';
+    document.getElementById(targetId).textContent = label;
+  }
+  closeCal();
+}
+document.getElementById('calOverlay').addEventListener('click',function(e){if(e.target===this)closeCal();});
+</script>
+
+<!-- ─── DRAWER ─────────────────────────────────────────────────────────────── -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-head">
+    <div class="drawer-head-top">
+      <div>
+        <div class="drawer-name" id="drawerName">–</div>
+        <div class="drawer-meta">
+          <span class="drawer-meta-item" id="drawerLocation">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Los Angeles, CA
+          </span>
+          <span class="drawer-meta-item" id="drawerConnections">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            261 conexões
+          </span>
+        </div>
+      </div>
+      <button class="drawer-close" onclick="closeDrawer()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="drawer-cert-badge" id="drawerCertBadge">
+      <span class="dot"></span>
+      <span id="drawerCertName">–</span>
+      <span style="color:var(--ink-faint); font-weight:400;">· compartilhado em</span>
+      <span id="drawerCertDate">–</span>
+    </div>
+  </div>
+
+  <div class="drawer-body">
+
+    <!-- GRÁFICO INDIVIDUAL -->
+    <div class="drawer-section">
+      <div class="drawer-section-title"><span id="t-d1">Mudanças de carreira acumuladas</span></div>
+      <div style="position:relative; height:160px; margin-bottom:4px;">
+        <canvas id="drawerChart"></canvas>
+      </div>
+      <p style="font-size:11px; color:var(--ink); line-height:1.5; margin-top:6px;">Novos empregos e promoções acumulados deste portador – antes e após o compartilhamento do certificado. Antes: histórico anual reconstruído do perfil. Depois: detecção em leituras bimestrais.</p>
+    </div>
+
+    <!-- TRAJETÓRIA PROFISSIONAL -->
+    <div class="drawer-section">
+      <div class="drawer-section-title"><span id="t-d2">Trajetória profissional</span></div>
+      <div class="timeline">
+
+        <!-- BEFORE CERT: older jobs -->
+        <div class="tl-item">
+          <div class="tl-dot before"></div>
+          <div class="tl-card">
+            <div class="tl-card-period"><span id="t-tl-before">Antes do certificado</span> · Set 2011 – Abr 2013</div>
+            <div class="tl-card-title">Application Scientist</div>
+            <div class="tl-card-sub">Bio-Xin Pvt. Ltd. · Dhaka, Bangladesh</div>
+            <span class="tl-card-type type-full">Full-time</span>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot before"></div>
+          <div class="tl-card">
+            <div class="tl-card-period">Set 2015 – Nov 2018 · <span class="tl-before-label">Antes do certificado</span></div>
+            <div class="tl-card-title">Certified Pharmacy Technician</div>
+            <div class="tl-card-sub">CVS Health · Los Angeles, CA</div>
+            <span class="tl-card-type type-part">Part-time</span>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot before"></div>
+          <div class="tl-card">
+            <div class="tl-card-period">Nov 2018 – Nov 2022 · <span class="tl-before-label">Antes do certificado</span></div>
+            <div class="tl-card-title">Intern Pharmacist</div>
+            <div class="tl-card-sub">CVS Health · Los Angeles, CA</div>
+            <span class="tl-card-type type-intern">Internship</span>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot before"></div>
+          <div class="tl-card">
+            <div class="tl-card-period">Nov 2022 – Dez 2023 · <span class="tl-before-label">Antes do certificado</span></div>
+            <div class="tl-card-title">Support Pharmacist</div>
+            <div class="tl-card-sub">CVS Health · Los Angeles, CA</div>
+            <span class="tl-card-type type-full">Full-time</span>
+          </div>
+        </div>
+
+        <!-- CERT MARKER -->
+        <div class="tl-item">
+          <div class="tl-dot cert"></div>
+          <div class="tl-card cert-marker">
+            <div class="tl-card-period" id="drawerCertDateTl">Out 2025</div>
+            <div class="tl-card-title" id="drawerCertNameTl"><span id="t-cert-marker">Certificado POK compartilhado</span></div>
+            <div class="tl-card-sub" id="drawerCertProgramTl">AI Bootcamp 2025</div>
+          </div>
+        </div>
+
+        <!-- AFTER CERT -->
+        <div class="tl-item">
+          <div class="tl-dot after"></div>
+          <div class="tl-card after-cert">
+            <div class="tl-card-period">Jan 2024 – Presente · <span class="tl-after-label">Após o certificado</span></div>
+            <div class="tl-card-title">Staff Pharmacist</div>
+            <div class="tl-card-sub">CVS Health · Thousand Oaks, CA</div>
+            <span class="tl-card-type type-full">Full-time · On-site</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FORMAÇÃO -->
+    <div class="drawer-section">
+      <div class="drawer-section-title"><span id="t-d3">Formação acadêmica</span></div>
+      <div class="edu-item">
+        <div class="edu-icon">🎓</div>
+        <div class="edu-body">
+          <div class="edu-degree">Doctor of Pharmacy (PharmD)</div>
+          <div class="edu-school">Western University of Health Sciences</div>
+          <div class="edu-period">Ago 2018 – Mai 2022</div>
+        </div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-icon">🎓</div>
+        <div class="edu-body">
+          <div class="edu-degree">Master of Science · Biotechnology</div>
+          <div class="edu-school">KTH Royal Institute of Technology</div>
+          <div class="edu-period">Ago 2007 – Jan 2011</div>
+        </div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-icon">🎓</div>
+        <div class="edu-body">
+          <div class="edu-degree">Bachelor of Science · Biotechnology and Genetic Engineering</div>
+          <div class="edu-school">Khulna University</div>
+          <div class="edu-period">Ago 2001 – Mai 2005</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HABILIDADES -->
+    <div class="drawer-section">
+      <div class="drawer-section-title"><span id="t-d4">Habilidades declaradas no LinkedIn</span></div>
+      <div class="skills-wrap">
+        <span class="skill-chip">Pharmacology</span>
+        <span class="skill-chip">Drug Therapy Optimization</span>
+        <span class="skill-chip">Medication Safety</span>
+        <span class="skill-chip">Drug Utilization Review</span>
+        <span class="skill-chip">Regulatory Compliance</span>
+        <span class="skill-chip">Patient Counseling</span>
+        <span class="skill-chip">Project Management</span>
+        <span class="skill-chip">Scientific Communications</span>
+        <span class="skill-chip">Healthcare Compliance</span>
+        <span class="skill-chip">Data Analysis</span>
+        <span class="skill-chip">Clinical Research</span>
+        <span class="skill-chip">Collaborative Problem Solving</span>
+      </div>
+    </div>
+
+    <!-- DEV NOTES -->
+    
+
+  </div>
+</div>
+
+<script>
+let drawerChartInstance = null;
+
+function openDrawer(name, program, date, impact) {
+  document.getElementById('drawerName').textContent = name;
+  document.getElementById('drawerCertName').textContent = program;
+  document.getElementById('drawerCertNameTl').textContent = program + ' · Certificado POK';
+  document.getElementById('drawerCertDate').textContent = date;
+  document.getElementById('drawerCertDateTl').textContent = date;
+  document.getElementById('drawer').classList.add('open');
+  document.getElementById('drawerOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  // Build individual chart
+  setTimeout(() => {
+    const ctx = document.getElementById('drawerChart').getContext('2d');
+    if (drawerChartInstance) drawerChartInstance.destroy();
+
+    const pastLabels  = ['2018','2019','2020','2021','2022','2023','2024','2025'];
+    const futureLabels = ['2 meses','4 meses','6 meses','8 meses','10 meses','12 meses'];
+    const allLabels   = [...pastLabels, 'Compartilhamento', ...futureLabels];
+    const shareIdx    = pastLabels.length;
+
+    // Example individual data – in production, replace with portador's real data
+    const pastData   = [0, 0, 1, 1, 2, 2, 3, 3];
+    const shareVal   = 3;
+    const futureData = [3, 4, 4, 4, 5, 5];
+    const values     = [...pastData, shareVal, ...futureData];
+
+    const pointBg = values.map((_, i) => i === shareIdx ? '#5123a4' : '#fff');
+    const pointR  = values.map((_, i) => i === shareIdx ? 6 : 4);
+
+    const purple = '#5123a4';
+    const sharePlugin = {
+      id: 'drawerShareLine',
+      afterDraw(chart) {
+        const { ctx, chartArea, scales } = chart;
+        const x = scales.x.getPixelForValue(shareIdx);
+        ctx.save();
+        ctx.setLineDash([4, 3]);
+        ctx.strokeStyle = purple;
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(x, chartArea.top);
+        ctx.lineTo(x, chartArea.bottom);
+        ctx.stroke();
+        ctx.restore();
+      }
+    };
+
+    drawerChartInstance = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: allLabels,
+        datasets: [{
+          data: values,
+          borderColor: purple,
+          backgroundColor: 'rgba(81,35,164,0.08)',
+          borderWidth: 2,
+          pointBackgroundColor: pointBg,
+          pointBorderColor: purple,
+          pointRadius: pointR,
+          pointHoverRadius: 6,
+          tension: 0,
+          fill: true
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        layout: { padding: { top: 8 } },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: ctx => ctx.parsed.y + ' mudança(s)'
+            }
+          }
+        },
+        scales: {
+          x: {
+            ticks: { font: { size: 9, family: 'Poppins' }, color: '#1E1230', maxRotation: 45 },
+            grid: { color: 'rgba(216,206,240,0.4)' }
+          },
+          y: {
+            beginAtZero: true,
+            ticks: { font: { size: 9, family: 'Poppins' }, color: '#1E1230', stepSize: 1 },
+            grid: { color: 'rgba(216,206,240,0.4)' },
+            title: { display: true, text: 'Mudanças', font: { size: 9 }, color: '#1E1230' }
+          }
+        }
+      },
+      plugins: [sharePlugin]
+    });
+  }, 100);
+}
+function closeDrawer() {
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('drawerOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+</script>
+
+
+<script>
+const translations = {
+  pt: {
+    'eyebrow': 'Painel de Empregabilidade Ensino Superior',
+    'title': 'Empregabilidade',
+    'subtitle': 'Painel de leitura de dados de empregabilidade por Instituição e por curso a partir da emissão de certificados, badges e microcredenciais POK',
+    'f1': 'Todos os cursos',
+    'f2': 'Data de emissão',
+    'f3': 'Data de compartilhamento',
+    'f4': 'Todas as competências',
+    'f5': 'Todas as trilhas',
+    'fn1': 'Compartilhamentos<br>no LinkedIn',
+    'fn2': 'Publicações<br>detectadas',
+    'fn3': 'Adicionado<br>ao perfil',
+    'fn4': 'Alguma mudança<br>detectada',
+    'fn5': 'Novo<br>emprego',
+    'fn6': 'Promoção<br>detectada',
+    'kpi1': 'Tempo médio até a mudança',
+    'kpi2': 'Taxa de conversão geral',
+    'kpi3': 'Novos empregos detectados',
+    'kpi4': 'Promoções detectadas',
+    'sl1': 'Funil de engajamento',
+    'sl2': 'Métricas principais',
+    'metricas-sub': 'O desempenho do recorte em números',
+    'portadores-sub': 'Do agregado ao caso a caso',
+    'traj-sub': 'Trajetória do portador',
+    'shared': 'Ver só com postagem compartilhada',
+    'traj-desc': 'Clique no ícone de trajetória de um portador e veja seu percurso completo: a linha do tempo profissional, com cada cargo situado antes ou após o compartilhamento, além da formação e das habilidades declaradas. É o retrato completo de um egresso num só lugar, conectando formação, competência e evolução de carreira – a prova, no nível da pessoa, de que a credencial acompanha um percurso real.',
+    'metricas-desc': 'Leia as métricas agregadas do recorte: o tempo médio até a mudança, a taxa de conversão dos que compartilharam, e a quantidade de novos empregos e promoções. É uma leitura comparável do desempenho de uma trilha, curso ou competência, útil para avaliação institucional e para comunicação com o mercado.',
+    'sl3': 'Evolução do perfil dos portadores de certificados',
+    'sl4': 'Portadores individuais',
+    'funnel-title': 'Do certificado à mudança real',
+    'funnel-desc': 'Acompanhe, etapa a etapa, quantos egressos compartilharam o certificado, publicaram, adicionaram ao perfil e chegaram a uma mudança de carreira – novo emprego ou promoção. O funil mostra onde o engajamento se sustenta ou se perde ao longo do caminho, revelando quanto do potencial de cada turma se converte em impacto.',
+    'chart-desc': 'Acompanhe a curva de trajetória: de um lado do marco do compartilhamento, o histórico de carreira reconstruído; do outro, a evolução observada ao longo do tempo nas leituras periódicas. Cada novo emprego ou promoção conta como uma mudança. A curva situa a credencial na linha do tempo da carreira e mostra como o grupo evolui a partir do momento em que conquistou a competência.',
+    'th3': 'Data de compartilhamento',
+    'th2': 'Curso',
+    'th-trilha': 'Trilha',
+    'painel-intro': 'Filtre por trilha, curso, competência e/ou período, e o painel recorta a base de portadores conforme a seleção. Trilha, curso e competência são recortes independentes, então é possível acompanhar uma mesma competência certificada em portadores vindos de cursos diferentes. Isso permite ler a empregabilidade por aquilo que a pessoa sabe fazer, e não apenas pela trilha ou curso – abrindo comparações que o recorte por trilha e curso sozinho não mostra.',
+    'th-comp': 'Competência',
+    'tbl-ctx': 'Desça ao caso a caso: para cada egresso, veja a trilha e o curso de origem, a competência certificada, o cargo atual detectado, o tipo de mudança e o tempo até ela acontecer. Busque ou filtre para ver as linhas correspondentes e acessar o perfil de cada pessoa no LinkedIn. A tabela leva a leitura do plano abstrato ao caso concreto, permitindo verificar histórias individuais e sustentar os números agregados com evidência. Nesta visão, o filtro de competência está aplicado em <strong>Analista de Dados</strong>.',
+    'th6': 'Ações',
+    'dev-title': 'O que este dashboard coleta e como',
+    'dev-warn-label': '⚠ Aviso importante',
+    'dev-trigger-label': 'Gatilho de coleta',
+    'dev-fields-note': 'Os campos descritos nos quadros abaixo foram detalhados conforme o material enviado sobre a captura de dados que a POK realiza no LinkedIn.',
+    'dev-identity': 'Identidade do portador',
+    'dev-warn-text': 'A leitura do perfil de um portador <strong style="color:#fff;">não é interrompida quando ele compartilha um novo certificado</strong> – de nenhum curso ou instituição. A leitura continua indefinidamente, de forma bimestral (ou qualquer outro intervalo definido pela POK), a partir do momento em que o primeiro certificado é compartilhado. Cada novo certificado compartilhado cria um novo marco na linha do tempo do portador, mas não encerra a leitura associada aos certificados anteriores. Todos os eventos de carreira detectados após o compartilhamento de um certificado continuam sendo associados a ele.',
+    'dev-future': 'Futuramente, esta análise será complementada com dados de <strong style="color:#fff;">outras bases além do LinkedIn</strong>, lidas a partir do CPF do portador. Por isso, no Brasil, é essencial que todo certificado seja emitido com o número de CPF no campo ID.',
+    'dev-trigger-text': 'A coleta é iniciada quando o portador <strong style="color:#fff;">compartilha o certificado POK no LinkedIn</strong>. Neste momento, a POK identifica o portador e lê o perfil público completo – incluindo todo o histórico retroativo já presente no perfil (Experience, Education, Certifications com suas datas originais). A partir daí, leituras bimestrais automáticas são agendadas e mantidas indefinidamente.',
+    'dev-exp-used': 'Usado em: cargo na tabela · linha do tempo do drawer · detecção de novo emprego e promoção · gráfico de mudanças de carreira acumuladas',
+    'dev-edu-used': 'Usado em: seção de formação no drawer · filtro por título',
+    'dev-cert-used': 'Usado em: verificação se o certificado POK foi adicionado ao perfil · ícone de post na tabela',
+    'dev-skills-used': 'Usado em: chips de habilidades no drawer',
+    'dev-identity-used': 'Usado em: cabeçalho do drawer · distribuição geográfica futura',
+    'dev-lang-used': 'Disponível para uso futuro – não utilizado no dashboard atual',
+    'dn1': 'Título do cargo em cada item da linha do tempo',
+    'dn2': 'Nome da empresa em cada item da linha do tempo',
+    'dn3': 'Badge de tipo de vínculo (Full-time, Part-time, Internship)',
+    'dn4': 'Período exibido em cada item; comparado com data do certificado POK para classificar como "antes" ou "após"',
+    'dn5': 'Grau e área exibidos na seção de formação',
+    'dn6': 'Nome da instituição na seção de formação',
+    'dn7': 'Período da formação',
+    'dn8': 'Chips de habilidades declaradas',
+    'dn9': 'Nome exibido no cabeçalho do drawer',
+    'dn10': 'Cidade e país exibidos abaixo do nome',
+    'dn11': 'Número de conexões exibido no cabeçalho',
+    'dn-title': '⚙ Orientação ao desenvolvedor – campos LinkedIn utilizados',
+    'dn-logic-label': 'Lógica antes/após',
+    'dn-logic': 'experience[].startDate é comparado com a data de compartilhamento do certificado POK (armazenada na plataforma). Experiências cujo startDate é anterior ao compartilhamento são classificadas como "antes"; posteriores como "após". Experiências em andamento (endDate ausente) na data do compartilhamento aparecem como "em curso no momento".',
+    'cert-marker': 'Certificado POK compartilhado',
+    'tl-before': 'Antes do certificado',
+    'g-exp1': '<code style="color:#a78bf0;">position</code> – título do cargo (texto livre)',
+    'g-exp2': '<code style="color:#a78bf0;">companyName</code> – nome da empresa',
+    'g-exp3': '<code style="color:#a78bf0;">employmentType</code> – Full-time, Part-time, Internship',
+    'g-exp4': '<code style="color:#a78bf0;">startDate + endDate</code> – período do vínculo',
+    'g-exp5': '<code style="color:#a78bf0;">workplaceType</code> – On-site, Remote, Hybrid',
+    'g-exp6': '<code style="color:#a78bf0;">location</code> – cidade e país do vínculo',
+    'g-edu1': '<code style="color:#a78bf0;">schoolName</code> – nome da instituição',
+    'g-edu2': '<code style="color:#a78bf0;">degree</code> – grau de formação',
+    'g-edu3': '<code style="color:#a78bf0;">fieldOfStudy</code> – área de estudo',
+    'g-edu4': '<code style="color:#a78bf0;">startDate + endDate</code> – período',
+    'g-cert1': '<code style="color:#a78bf0;">title</code> – nome do certificado',
+    'g-cert2': '<code style="color:#a78bf0;">issuedBy</code> – organização emissora',
+    'g-cert3': '<code style="color:#a78bf0;">issuedAt</code> – data de emissão',
+    'g-sk1': '<code style="color:#a78bf0;">name</code> – nome da habilidade',
+    'g-sk2': '<code style="color:#a78bf0;">endorsements</code> – número de endorsements (quando presente)',
+    'g-id1': '<code style="color:#a78bf0;">firstName + lastName</code> – nome completo',
+    'g-id2': '<code style="color:#a78bf0;">location.parsed</code> – cidade e país',
+    'g-id3': '<code style="color:#a78bf0;">connectionsCount</code> – número de conexões',
+    'g-id4': '<code style="color:#a78bf0;">openToWork</code> – booleano: está buscando emprego',
+    'g-id5': '<code style="color:#a78bf0;">verified</code> – conta verificada pelo LinkedIn (não é dado de empregabilidade)',
+    'g-lang1': '<code style="color:#a78bf0;">name</code> – idioma',
+    'g-lang2': '<code style="color:#a78bf0;">proficiency</code> – nível declarado',
+    'cal-title': 'Selecionar período',
+    'dn9': 'Nombre mostrado en el encabezado del panel',
+    'dn10': 'Ciudad y país mostrados debajo del nombre',
+    'dn11': 'Número de conexiones mostrado en el encabezado',
+    'dn-title': '⚙ Orientación al desarrollador – campos de LinkedIn utilizados',
+    'dn-logic-label': 'Lógica antes/después',
+    'dn-logic': 'experience[].startDate se compara con la fecha de compartición del certificado POK (almacenada en la plataforma). Las experiencias cuyo startDate es anterior a la compartición se clasifican como "antes"; las posteriores como "después". Las experiencias en curso (endDate ausente) en la fecha de compartición aparecen como "en curso en ese momento".',
+    'cert-marker': 'Certificado POK compartilhado',
+    'tl-before': 'Antes del certificado',
+    'g-exp1': '<code style="color:#a78bf0;">position</code> – título del cargo (texto libre)',
+    'g-exp2': '<code style="color:#a78bf0;">companyName</code> – nombre de la empresa',
+    'g-exp3': '<code style="color:#a78bf0;">employmentType</code> – Full-time, Part-time, Internship',
+    'g-exp4': '<code style="color:#a78bf0;">startDate + endDate</code> – período del vínculo',
+    'g-exp5': '<code style="color:#a78bf0;">workplaceType</code> – On-site, Remote, Hybrid',
+    'g-exp6': '<code style="color:#a78bf0;">location</code> – ciudad y país del vínculo',
+    'g-edu1': '<code style="color:#a78bf0;">schoolName</code> – nombre de la institución',
+    'g-edu2': '<code style="color:#a78bf0;">degree</code> – grado de formación',
+    'g-edu3': '<code style="color:#a78bf0;">fieldOfStudy</code> – área de estudio',
+    'g-edu4': '<code style="color:#a78bf0;">startDate + endDate</code> – período',
+    'g-cert1': '<code style="color:#a78bf0;">title</code> – nombre del certificado',
+    'g-cert2': '<code style="color:#a78bf0;">issuedBy</code> – organización emisora',
+    'g-cert3': '<code style="color:#a78bf0;">issuedAt</code> – fecha de emisión',
+    'g-sk1': '<code style="color:#a78bf0;">name</code> – nombre de la habilidad',
+    'g-sk2': '<code style="color:#a78bf0;">endorsements</code> – número de endorsements (cuando está presente)',
+    'g-id1': '<code style="color:#a78bf0;">firstName + lastName</code> – nombre completo',
+    'g-id2': '<code style="color:#a78bf0;">location.parsed</code> – ciudad y país',
+    'g-id3': '<code style="color:#a78bf0;">connectionsCount</code> – número de conexiones',
+    'g-id4': '<code style="color:#a78bf0;">openToWork</code> – booleano: está buscando empleo',
+    'g-id5': '<code style="color:#a78bf0;">verified</code> – cuenta verificada por LinkedIn (no es dato de empleabilidad)',
+    'g-lang1': '<code style="color:#a78bf0;">name</code> – idioma',
+    'g-lang2': '<code style="color:#a78bf0;">proficiency</code> – nivel declarado',
+    'cal-title': 'Seleccionar período',
+    'chart-title': 'Trajetória agregada – mudanças de carreira acumuladas',
+    'zone-past': '← Antes do compartilhamento',
+    'zone-future': 'Após o compartilhamento →',
+    'th1': 'Portador',
+    'th2': 'Curso',
+    'th3': 'Compartilhamento',
+    'th4': 'Mudança',
+    'th5': 'Dias até a<br>mudança',
+    'th6': 'Ações',
+    'd1': 'Mudanças de carreira acumuladas',
+    'd2': 'Trajetória profissional',
+    'd3': 'Formação acadêmica',
+    'd4': 'Habilidades declaradas no LinkedIn',
+  },
+  es: {
+    'eyebrow': 'Painel de Empregabilidade Ensino Superior',
+    'title': 'Empleabilidad',
+    'subtitle': 'Cuando un portador comparte su certificado en LinkedIn, POK lee el historial completo del perfil y monitorea los cambios de carrera a lo largo del tiempo – nuevos empleos, ascensos y evolución de habilidades.',
+    'f1': 'Todos los cursos',
+    'f2': 'Fecha de emisión',
+    'f3': 'Fecha de compartición',
+    'f4': 'Todas las competencias',
+    'f5': 'Todas las rutas',
+    'fn1': 'Compartidos<br>en LinkedIn',
+    'fn2': 'Publicaciones<br>detectadas',
+    'fn3': 'Agregado<br>al perfil',
+    'fn4': 'Algún cambio<br>detectado',
+    'fn5': 'Nuevo<br>empleo',
+    'fn6': 'Ascenso<br>detectado',
+    'kpi1': 'Tiempo promedio hasta el cambio',
+    'kpi2': 'Tasa de conversión general',
+    'kpi3': 'Nuevos empleos detectados',
+    'kpi4': 'Ascensos detectados',
+    'sl1': 'Embudo de participación',
+    'sl2': 'Métricas principales',
+    'metricas-sub': 'El desempeño del recorte en números',
+    'portadores-sub': 'Del agregado al caso a caso',
+    'traj-sub': 'Trayectoria del portador',
+    'shared': 'Ver solo con publicación compartida',
+    'traj-desc': 'Haga clic en el ícono de trayectoria de un portador y vea su recorrido completo: la línea de tiempo profesional, con cada cargo situado antes o después de la compartición, además de la formación y las habilidades declaradas. Es el retrato completo de un egresado en un solo lugar, conectando formación, competencia y evolución de carrera – la prueba, a nivel de la persona, de que la credencial acompaña un recorrido real.',
+    'metricas-desc': 'Lea las métricas agregadas del recorte: el tiempo promedio hasta el cambio, la tasa de conversión de quienes compartieron, y la cantidad de nuevos empleos y ascensos. Es una lectura comparable del desempeño de una ruta, curso o competencia, útil para la evaluación institucional y para la comunicación con el mercado.',
+    'sl3': 'Evolución del perfil de los portadores de certificados',
+    'sl4': 'Portadores individuales',
+    'funnel-title': 'Del certificado al cambio real',
+    'funnel-desc': 'Acompañe, etapa por etapa, cuántos egresados compartieron el certificado, publicaron, lo agregaron al perfil y llegaron a un cambio de carrera – nuevo empleo o ascenso. El embudo muestra dónde el engagement se sostiene o se pierde a lo largo del camino, revelando cuánto del potencial de cada promoción se convierte en impacto.',
+    'chart-desc': 'Acompañe la curva de trayectoria: de un lado del hito de la compartición, el historial de carrera reconstruido; del otro, la evolución observada a lo largo del tiempo en las lecturas periódicas. Cada nuevo empleo o ascenso cuenta como un cambio. La curva sitúa la credencial en la línea de tiempo de la carrera y muestra cómo el grupo evoluciona a partir del momento en que conquistó la competencia.',
+    'th3': 'Fecha de compartición',
+    'th2': 'Curso',
+    'th-trilha': 'Ruta',
+    'painel-intro': 'Filtre por ruta, curso, competencia y/o período, y el panel recorta la base de portadores según la selección. Ruta, curso y competencia son recortes independientes, por lo que es posible acompañar una misma competencia certificada en portadores provenientes de cursos diferentes. Esto permite leer la empleabilidad por aquello que la persona sabe hacer, y no solo por la ruta o curso – abriendo comparaciones que el recorte por ruta y curso por sí solo no muestra.',
+    'th-comp': 'Competencia',
+    'tbl-ctx': 'Baje al caso a caso: para cada egresado, vea la ruta y el curso de origen, la competencia certificada, el cargo actual detectado, el tipo de cambio y el tiempo hasta que ocurre. Busque o filtre para ver las líneas correspondientes y acceder al perfil de cada persona en LinkedIn. La tabla lleva la lectura del plano abstracto al caso concreto, permitiendo verificar historias individuales y sostener los números agregados con evidencia. En esta vista, el filtro de competencia está aplicado en <strong>Analista de Datos</strong>.',
+    'th6': 'Acciones',
+    'chart-title': 'Trayectoria agregada – cambios de carrera acumulados',
+    'zone-past': '← Antes de la compartición',
+    'zone-future': 'Después de la compartición →',
+    'th1': 'Portador',
+    'th2': 'Curso',
+    'th3': 'Compartición',
+    'th4': 'Cambio',
+    'th5': 'Días hasta<br>el cambio',
+    'th6': 'Acciones',
+    'd1': 'Cambios de carrera acumulados',
+    'd2': 'Trayectoria profesional',
+    'd3': 'Formación académica',
+    'd4': 'Habilidades declaradas en LinkedIn',
+    'dev-title': 'Qué recopila este dashboard y cómo',
+    'dev-warn-label': '⚠ Aviso importante',
+    'dev-trigger-label': 'Disparador de recopilación',
+    'dev-fields-note': 'Los campos descritos en los cuadros a continuación fueron detallados según el material enviado sobre la captura de datos que POK realiza en LinkedIn.',
+    'dev-identity': 'Identidad del portador',
+    'dev-warn-text': 'La lectura del perfil de un portador <strong style="color:#fff;">no se interrumpe cuando comparte un nuevo certificado</strong> – de ningún curso o institución. La lectura continúa indefinidamente, de forma bimestral (o cualquier otro intervalo definido por POK), a partir del momento en que se comparte el primer certificado. Cada nuevo certificado compartido crea un nuevo hito en la línea de tiempo del portador, pero no cierra la lectura asociada a los certificados anteriores. Todos los eventos de carrera detectados después de la compartición de un certificado continúan siendo asociados a él.',
+    'dev-future': 'En el futuro, este análisis será complementado con datos de <strong style="color:#fff;">otras bases además de LinkedIn</strong>, leídos a partir del CPF del portador. Por eso, en Brasil, es esencial que todo certificado sea emitido con el número de CPF en el campo ID.',
+    'dev-trigger-text': 'La recopilación se inicia cuando el portador <strong style="color:#fff;">comparte el certificado POK en LinkedIn</strong>. En ese momento, POK identifica al portador y lee el perfil público completo – incluyendo todo el historial retroactivo ya presente en el perfil (Experience, Education, Certifications con sus fechas originales). A partir de ahí, se programan lecturas bimestrales automáticas y se mantienen indefinidamente.',
+    'dev-exp-used': 'Usado en: cargo en la tabla · línea de tiempo del panel · detección de nuevo empleo y ascenso · gráfico de cambios de carrera acumulados',
+    'dev-edu-used': 'Usado en: sección de formación en el panel · filtro por título',
+    'dev-cert-used': 'Usado en: verificación si el certificado POK fue agregado al perfil · ícono de publicación en la tabla',
+    'dev-skills-used': 'Usado en: chips de habilidades en el panel',
+    'dev-identity-used': 'Usado en: encabezado del panel · distribución geográfica futura',
+    'dev-lang-used': 'Disponible para uso futuro – no utilizado en el dashboard actual',
+    'dn1': 'Título del cargo en cada ítem de la línea de tiempo',
+    'dn2': 'Nombre de la empresa en cada ítem de la línea de tiempo',
+    'dn3': 'Badge de tipo de vínculo (Full-time, Part-time, Internship)',
+    'dn4': 'Período mostrado en cada ítem; comparado con la fecha del certificado POK para clasificar como "antes" o "después"',
+    'dn5': 'Grado y área mostrados en la sección de formación',
+    'dn6': 'Nombre de la institución en la sección de formación',
+    'dn7': 'Período de la formación',
+    'dn8': 'Chips de habilidades declaradas',
+    'dn9': 'Nombre mostrado en el encabezado del panel',
+    'dn10': 'Ciudad y país mostrados debajo del nombre',
+    'dn11': 'Número de conexiones mostrado en el encabezado',
+    'dn-title': '⚙ Orientación al desarrollador – campos de LinkedIn utilizados',
+    'dn-logic-label': 'Lógica antes/después',
+    'dn-logic': 'experience[].startDate se compara con la fecha de compartición del certificado POK (almacenada en la plataforma). Las experiencias cuyo startDate es anterior a la compartición se clasifican como "antes"; las posteriores como "después". Las experiencias en curso (endDate ausente) en la fecha de compartición aparecen como "en curso en ese momento".',
+    'cert-marker': 'Certificado POK compartido',
+    'tl-before': 'Antes del certificado',
+    'g-exp1': '<code style="color:#a78bf0;">position</code> – título del cargo (texto libre)',
+    'g-exp2': '<code style="color:#a78bf0;">companyName</code> – nombre de la empresa',
+    'g-exp3': '<code style="color:#a78bf0;">employmentType</code> – Full-time, Part-time, Internship',
+    'g-exp4': '<code style="color:#a78bf0;">startDate + endDate</code> – período del vínculo',
+    'g-exp5': '<code style="color:#a78bf0;">workplaceType</code> – On-site, Remote, Hybrid',
+    'g-exp6': '<code style="color:#a78bf0;">location</code> – ciudad y país del vínculo',
+    'g-edu1': '<code style="color:#a78bf0;">schoolName</code> – nombre de la institución',
+    'g-edu2': '<code style="color:#a78bf0;">degree</code> – grado de formación',
+    'g-edu3': '<code style="color:#a78bf0;">fieldOfStudy</code> – área de estudio',
+    'g-edu4': '<code style="color:#a78bf0;">startDate + endDate</code> – período',
+    'g-cert1': '<code style="color:#a78bf0;">title</code> – nombre del certificado',
+    'g-cert2': '<code style="color:#a78bf0;">issuedBy</code> – organización emisora',
+    'g-cert3': '<code style="color:#a78bf0;">issuedAt</code> – fecha de emisión',
+    'g-sk1': '<code style="color:#a78bf0;">name</code> – nombre de la habilidad',
+    'g-sk2': '<code style="color:#a78bf0;">endorsements</code> – número de endorsements (cuando está presente)',
+    'g-id1': '<code style="color:#a78bf0;">firstName + lastName</code> – nombre completo',
+    'g-id2': '<code style="color:#a78bf0;">location.parsed</code> – ciudad y país',
+    'g-id3': '<code style="color:#a78bf0;">connectionsCount</code> – número de conexiones',
+    'g-id4': '<code style="color:#a78bf0;">openToWork</code> – booleano: está buscando empleo',
+    'g-id5': '<code style="color:#a78bf0;">verified</code> – cuenta verificada por LinkedIn (no es dato de empleabilidad)',
+    'g-lang1': '<code style="color:#a78bf0;">name</code> – idioma',
+    'g-lang2': '<code style="color:#a78bf0;">proficiency</code> – nivel declarado',
+    'cal-title': 'Seleccionar período',
+  }
+};
+
+function setLang(lang) {
+  currentLang = lang;
+  const t = translations[lang];
+  Object.keys(t).forEach(key => {
+    const el = document.getElementById('t-' + key);
+    if (el) el.innerHTML = t[key];
+  });
+
+  // UI controls not covered by the t- span dictionary
+  var isEs = lang === 'es';
+  var si = document.getElementById('searchInput');
+  if (si) si.placeholder = isEs ? 'Buscar por curso, competencia o portador...' : 'Buscar por curso, competência ou portador...';
+  var em = document.getElementById('emptyState');
+  if (em) em.textContent = isEs ? 'Ningún portador encontrado con los filtros aplicados.' : 'Nenhum portador encontrado com os filtros aplicados.';
+  function setOptTexts(id, ptArr, esArr, startIdx){
+    var sel = document.getElementById(id); if (!sel) return;
+    var arr = isEs ? esArr : ptArr;
+    for (var i = 0; i < arr.length; i++){ var o = sel.options[i + (startIdx||0)]; if (o) o.textContent = arr[i]; }
+  }
+  setOptTexts('impactFilter',
+    ['Todas as mudanças','Novo emprego','Promoção','Sem mudança ainda'],
+    ['Todos los cambios','Nuevo empleo','Ascenso','Sin cambio aún'], 0);
+  setOptTexts('filterTrilha',
+    ['Trilha de Dados','Trilha de Gestão','Trilha Financeira'],
+    ['Ruta de Datos','Ruta de Gestión','Ruta Financiera'], 1);
+  setOptTexts('filterCert',
+    ['Tecnologia da Informação','Administração','Ciências Contábeis','Estatística'],
+    ['Tecnología de la Información','Administración','Ciencias Contables','Estadística'], 1);
+  setOptTexts('filterTitulo',
+    ['Analista de Dados'],
+    ['Analista de Datos'], 1);
+
+  if (typeof filterTable === 'function') filterTable();
+  // Translate class-based labels
+  document.querySelectorAll('.tl-before-label').forEach(el => {
+    el.innerHTML = lang === 'es' ? 'Antes del certificado' : 'Antes do certificado';
+  });
+  document.querySelectorAll('.tl-after-label').forEach(el => {
+    el.innerHTML = lang === 'es' ? 'Después del certificado' : 'Após o certificado';
+  });
+  document.getElementById('btn-pt').style.background = lang === 'pt' ? 'var(--purple)' : 'var(--white)';
+  document.getElementById('btn-pt').style.color = lang === 'pt' ? '#fff' : 'var(--ink-muted)';
+  document.getElementById('btn-es').style.background = lang === 'es' ? 'var(--purple)' : 'var(--white)';
+  document.getElementById('btn-es').style.color = lang === 'es' ? '#fff' : 'var(--ink-muted)';
+}
+
+// ─── SERASA CHART ─────────────────────────────────────────────────────────────
+const serasaDatasets = {
+  renda: { label: 'Faixa de renda média (1=E … 5=A)', past: [1.8,1.9,2.0,2.0,2.1,2.2,2.3,2.4], share: 2.4, future: [2.5,2.6,2.8,3.0,3.1,3.2], yLabel: 'Faixa de renda', yMax: 5 },
+  score: { label: 'Score de crédito médio', past: [510,520,530,535,540,550,560,570], share: 575, future: [585,600,615,625,635,640], yLabel: 'Score Serasa', yMax: 1000 },
+  negativacao: { label: '% com negativação ativa', past: [38,36,35,34,33,31,29,27], share: 26, future: [24,21,18,16,15,14], yLabel: '% negativados', yMax: 50 },
+  empreendedorismo: { label: '% com CNPJ aberto', past: [2,2,3,3,4,4,5,5], share: 6, future: [7,8,10,11,12,13], yLabel: '% com CNPJ', yMax: 20 }
+};
+
+let serasaChart = null;
+
+function buildExtraChart(canvasId, datasets, key, labelOverride) {
+  const d = datasets[key];
+  const values = [...d.past, d.share, ...d.future];
+  const pastL = ['2018','2019','2020','2021','2022','2023','2024','2025'];
+  const futureL = ['2 meses','4 meses','6 meses','8 meses','10 meses','12 meses'];
+  const labels = [...pastL, 'Emissão', ...futureL];
+  const si = pastL.length;
+
+  const pointBg = labels.map((_, i) => i === si ? '#5123a4' : '#A899C2');
+  const pointR = labels.map((_, i) => i === si ? 7 : 4);
+
+  const canvas = document.getElementById(canvasId);
+  if (!canvas) return null;
+  const ctx = canvas.getContext('2d');
+  const grad = ctx.createLinearGradient(0, 0, ctx.canvas.width, 0);
+  grad.addColorStop(0, 'rgba(168,153,194,0.5)');
+  grad.addColorStop(si / (labels.length - 1), 'rgba(81,35,164,0.5)');
+  grad.addColorStop(1, 'rgba(81,35,164,0.9)');
+
+  return new Chart(ctx, {
+    type: 'line',
+    data: { labels, datasets: [{ label: d.label, data: values, borderColor: grad, borderWidth: 2.5, pointBackgroundColor: pointBg, pointBorderColor: '#fff', pointBorderWidth: 2, pointRadius: pointR, pointHoverRadius: 7, tension: 0, fill: false }] },
+    options: {
+      responsive: true, maintainAspectRatio: false, layout: { padding: { top: 36 } },
+      plugins: { legend: { display: false }, tooltip: { callbacks: { title: c => c[0].label, label: c => `${d.yLabel}: ${c.parsed.y}` }, bodyFont: { family: 'Poppins', size: 12 }, titleFont: { family: 'Poppins', size: 12, weight: '600' } } },
+      scales: {
+        x: { ticks: { font: { size: 11, family: 'Poppins' }, color: '#1E1230', maxRotation: 0 }, grid: { color: 'rgba(216,206,240,0.5)' } },
+        y: { min: 0, max: d.yMax, title: { display: true, text: d.yLabel, font: { size: 11, family: 'Poppins' }, color: '#1E1230' }, ticks: { font: { size: 11, family: 'Poppins' }, color: '#1E1230' }, grid: { color: 'rgba(216,206,240,0.4)' } }
+      }
+    },
+    plugins: [{
+      id: 'emissaoMarker',
+      afterDraw(chart) {
+        const { ctx, chartArea, scales } = chart;
+        const shareX = scales.x.getPixelForValue(si);
+        ctx.save();
+        ctx.fillStyle = 'rgba(243,239,249,0.5)';
+        ctx.fillRect(chartArea.left, chartArea.top, shareX - chartArea.left, chartArea.bottom - chartArea.top);
+        ctx.fillStyle = 'rgba(225,220,247,0.18)';
+        ctx.fillRect(shareX, chartArea.top, chartArea.right - shareX, chartArea.bottom - chartArea.top);
+        ctx.beginPath(); ctx.setLineDash([5,4]); ctx.strokeStyle = 'rgba(81,35,164,0.5)'; ctx.lineWidth = 1.5;
+        ctx.moveTo(shareX, chartArea.top); ctx.lineTo(shareX, chartArea.bottom); ctx.stroke(); ctx.setLineDash([]);
+        const pillText = labelOverride || 'Emissão';
+        ctx.font = '600 11px Poppins, sans-serif'; ctx.textAlign = 'center';
+        const pillW = ctx.measureText(pillText).width + 20, pillH = 22;
+        const pillX = shareX - pillW / 2, pillY = chartArea.top - pillH - 6;
+        ctx.fillStyle = '#5123a4'; ctx.beginPath(); ctx.roundRect(pillX, pillY, pillW, pillH, 6); ctx.fill();
+        ctx.fillStyle = '#fff'; ctx.fillText(pillText, shareX, pillY + 15);
+        ctx.beginPath(); ctx.moveTo(shareX-6, pillY+pillH); ctx.lineTo(shareX+6, pillY+pillH); ctx.lineTo(shareX, pillY+pillH+6); ctx.closePath(); ctx.fillStyle = '#5123a4'; ctx.fill();
+        ctx.restore();
+      }
+    }]
+  });
+}
+
+function updateSerasaChart() {
+  const sel = document.getElementById('serasaMetricSelect'); if (!sel) return;
+  const key = sel.value;
+  if (serasaChart) serasaChart.destroy();
+  serasaChart = buildExtraChart('serasaChart', serasaDatasets, key, 'Emissão do certificado');
+}
+
+// ─── PÚBLICO CHART ────────────────────────────────────────────────────────────
+const publicoDatasets = {
+  vinculo: { label: '% com vínculo formal ativo', past: [42,44,46,47,48,50,52,54], share: 55, future: [58,62,65,67,68,70], yLabel: '% com vínculo', yMax: 100 },
+  sine: { label: '% inscrito no SINE', past: [28,26,25,24,23,22,20,19], share: 18, future: [16,13,11,9,8,7], yLabel: '% no SINE', yMax: 40 },
+  contribuicao: { label: 'Meses médios de contribuição previdenciária', past: [18,22,26,30,34,38,42,46], share: 48, future: [50,54,58,62,66,70], yLabel: 'Meses contrib.', yMax: 100 },
+  estagio: { label: '% com contrato de estágio ativo', past: [8,9,10,11,12,13,12,11], share: 10, future: [8,6,5,4,3,2], yLabel: '% em estágio', yMax: 20 }
+};
+
+let publicoChart = null;
+
+function updatePublicoChart() {
+  const sel = document.getElementById('publicoMetricSelect'); if (!sel) return;
+  const key = sel.value;
+  if (publicoChart) publicoChart.destroy();
+  publicoChart = buildExtraChart('publicoChart', publicoDatasets, key, 'Emissão do certificado');
+}
+
+
+// ─── POK SCORE RANKING ───────────────────────────────────────────────────────
+const rankingData = [
+  { curso: 'Tecnologia da Informação', score: 88, var: +12, insercao: 91 },
+  { curso: 'Enfermagem',               score: 79, var: +8,  insercao: 83 },
+  { curso: 'Direito',                  score: 74, var: +6,  insercao: 82 },
+  { curso: 'Pedagogia',                score: 61, var: +3,  insercao: 65 },
+  { curso: 'Administração',            score: 70, var: +5,  insercao: 72 },
+  { curso: 'Ciências Contábeis',       score: 67, var: +2,  insercao: 69 },
+  { curso: 'Engenharia Civil',         score: 81, var: +9,  insercao: 85 },
+  { curso: 'Medicina',                 score: 94, var: +4,  insercao: 97 },
+  { curso: 'Psicologia',               score: 72, var: +7,  insercao: 74 },
+  { curso: 'Marketing',                score: 66, var: +1,  insercao: 68 },
+].sort((a, b) => b.score - a.score);
+
+function renderRanking(selectedCurso) {
+  const list = document.getElementById('rankingList');
+  const footer = document.getElementById('rankingFooter');
+  if (!list) return;
+
+  list.innerHTML = rankingData.map(function(r, i) {
+    const isSelected = selectedCurso && r.curso.toLowerCase().indexOf(selectedCurso.toLowerCase()) >= 0;
+    const highlight = isSelected ? 'border:1px solid rgba(230,194,74,0.5); background:rgba(230,194,74,0.08);' : 'border:1px solid transparent;';
+    const varColor = r.var > 0 ? '#5DCAA5' : r.var < 0 ? '#f87171' : '#fff';
+    const varSign = r.var > 0 ? '↑ +' : r.var < 0 ? '↓ ' : '→ ';
+    return '<div style="display:grid; grid-template-columns:40px 1fr 80px 120px 80px; gap:0; padding:10px 16px; border-radius:10px; ' + highlight + ' align-items:center;">' +
+      '<div style="font-size:12px; font-weight:700; color:#fff;">' + (i+1) + '</div>' +
+      '<div style="font-size:13px; font-weight:' + (isSelected?'700':'500') + '; color:#fff;">' + r.curso + '</div>' +
+      '<div style="text-align:center;"><span style="font-size:18px; font-weight:900; color:#fff;">' + r.score + '</span></div>' +
+      '<div style="text-align:center; font-size:12px; color:' + varColor + '; font-weight:600;">' + varSign + Math.abs(r.var) + ' pts</div>' +
+      '<div style="text-align:center;">' +
+        '<div style="height:5px; background:rgba(255,255,255,0.1); border-radius:99px; overflow:hidden; width:60px; margin:0 auto;">' +
+          '<div style="height:100%; width:' + r.insercao + '%; background:#5DCAA5; border-radius:99px;"></div>' +
+        '</div>' +
+        '<div style="font-size:10px; color:#fff; margin-top:3px;">' + r.insercao + '%</div>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+
+  if (selectedCurso) {
+    const found = rankingData.find(function(r) { return r.curso.toLowerCase().indexOf(selectedCurso.toLowerCase()) >= 0; });
+    const pos = found ? rankingData.indexOf(found) + 1 : null;
+    if (footer) footer.textContent = found ? found.curso + ' ocupa a posição ' + pos + 'º de ' + rankingData.length + ' cursos' : '';
+  } else {
+    if (footer) footer.textContent = '';
+  }
+}
+
+renderRanking(null);
+
+// Init both — use window.onload to ensure Chart.js is ready
+window.addEventListener('load', function() {
+  if (document.getElementById('serasaChart')) updateSerasaChart();
+  if (document.getElementById('publicoChart')) updatePublicoChart();
+});
+
+</script>
+</body>
+</html>
