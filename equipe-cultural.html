@@ -446,7 +446,7 @@
   .carta .destinatario p { margin:0 0 2px; font-size:13.5px; color:#000; }
   .carta .destinatario .forte { font-weight:700; color:var(--dark); }
   .carta .dest-row { display:flex; align-items:center; justify-content:flex-start; gap:24px; margin-bottom:20px; }
-  .carta p { font-size:14px; line-height:1.7; color:#000; margin:0 0 14px; text-align:justify; }
+  .carta p { font-size:14px; line-height:1.7; color:#000; margin:0 0 14px; text-align:left; }
   .carta .saudacao { margin-bottom:16px; }
   .carta strong { font-weight:700; color:var(--dark); }
   .carta .bloco-titulo {
@@ -456,7 +456,7 @@
   .carta .ganhos { list-style:none; padding:0; margin:10px 0 4px; }
   .carta .ganhos li {
     position:relative; padding-left:24px; margin-bottom:12px;
-    font-size:14px; line-height:1.65; color:#000; text-align:justify;
+    font-size:14px; line-height:1.65; color:#000; text-align:left;
   }
   .carta .ganhos li::before { content:"•"; position:absolute; left:5px; top:0; color:var(--green); font-weight:700; }
   .carta .ganhos b { font-weight:700; color:var(--dark); }
@@ -1119,7 +1119,7 @@
     <div class="page-body single" style="max-width:100%; padding:36px 60px 0;">
 
       <div class="section-heading">O que você recebe</div>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:32px;">
+      <div style="display:grid; grid-template-columns:1fr; gap:16px; margin-bottom:32px;">
         <div class="feature-card">
           <div class="feature-card-header">
             <div class="feature-icon fi-blue">📄</div>
@@ -1137,17 +1137,10 @@
             </a>
           </div>
         </div>
-        <div class="feature-card">
-          <div class="feature-card-header">
-            <div class="feature-icon fi-teal">⚙️</div>
-            <h3>Requisitos Técnicos do Jogo</h3>
-          </div>
-          <p>Estilo low poly, máximo de 1.000 tris por personagem, textura flat color em PNG (512×512 ou 1024×1024 px), rig simples para animação de entrada, entrega final em FBX compatível com Unity.</p>
-        </div>
       </div>
 
       <div class="section-heading">Entregáveis</div>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:32px;">
+      <div style="display:grid; grid-template-columns:1fr; gap:16px; margin-bottom:32px;">
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:20px;">
           <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
             <div style="width:32px; height:32px; border-radius:50%; background:#d0e8e8; color:#468182; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0;">1</div>
@@ -1173,31 +1166,78 @@
             </div>
           </div>
         </div>
+
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:20px;">
           <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
             <div style="width:32px; height:32px; border-radius:50%; background:#d0e8e8; color:#468182; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0;">2</div>
             <div>
-              <p style="font-size:13px; font-weight:700; color:#1a2e3b; margin-bottom:2px;">Fase 2 – Modelagem 3D (FBX)</p>
-              <p style="font-size:11px; color:#468182; font-weight:600;">Após aprovação do concept art</p>
+              <p style="font-size:13px; font-weight:700; color:#1a2e3b; margin-bottom:2px;">Avatares dos personagens</p>
+              <p style="font-size:11px; color:#468182; font-weight:600;">Recortes para uso na plataforma e no jogo</p>
             </div>
           </div>
           <div class="deliverable-list" style="gap:10px;">
             <div class="deliverable-item">
               <div class="del-num teal">A</div>
               <div class="del-text">
-                <strong>Modelo 3D – Iansã</strong>
-                <span>Low poly, máx. 1.000 tris. Textura flat color PNG. Rig simples para animação de entrada. Entrega em .fbx compatível com Unity.</span>
-              </div>
-            </div>
-            <div class="deliverable-item">
-              <div class="del-num teal">B</div>
-              <div class="del-text">
-                <strong>Modelo 3D – U'acü</strong>
-                <span>Low poly, máx. 1.000 tris. Textura flat color PNG. Rig simples para animação de entrada. Entrega em .fbx compatível com Unity.</span>
+                <strong>Avatares – Afefé e U'acü</strong>
+                <span>Versões em busto de cada personagem, derivadas do concept art, para uso como avatar na plataforma e nas telas de diálogo do jogo. Formato PNG com fundo transparente.</span>
               </div>
             </div>
           </div>
         </div>
+      </div>
+
+      <div class="section-heading">Personagens entregues</div>
+      <div style="display:grid; grid-template-columns:1fr; gap:20px; margin-bottom:32px;">
+
+        <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:24px;">
+          <div style="display:inline-flex; align-items:center; gap:5px; font-size:10px; font-weight:700; color:#2a7a3a; background:#d4f0d9; border:1px solid #5fb670; border-radius:20px; padding:4px 10px; letter-spacing:0.5px; text-transform:uppercase; margin-bottom:14px;">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            Entregue
+          </div>
+          <p style="font-size:10px; font-weight:700; color:#468182; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;">Mundo do Sol</p>
+          <p style="font-size:15px; font-weight:800; color:#1a2e3b; margin-bottom:2px;">U'acü</p>
+          <p style="font-size:11px; font-weight:600; color:#2858a0; margin-bottom:14px;">Cosmologia Tikuna · Amazônia</p>
+          <img src="https://the-blue-city.github.io/content/ilustracao-uacu.png" alt="Ilustração do personagem U'acü" style="width:100%; display:block; border-radius:10px; margin-bottom:12px;">
+          <p style="font-size:11px; color:#000; line-height:1.65;">Concept art desenvolvido a partir do dossiê da pesquisadora cultural – pintura facial em urucum, veste de tururi com padrões geométricos, cocar em arco e maracá vermelho.</p>
+          <div style="margin-top:12px;">
+            <a href="#" onclick="event.preventDefault(); goTo(8);" style="display:inline-flex; align-items:center; gap:7px; font-size:11px; font-weight:700; color:#2858a0; text-decoration:none; background:#d6e4f7; border-radius:8px; padding:7px 12px;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Ver dossiê U'acü
+            </a>
+          </div>
+        </div>
+
+        <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:24px;">
+          <div style="display:inline-flex; align-items:center; gap:5px; font-size:10px; font-weight:700; color:#2a7a3a; background:#d4f0d9; border:1px solid #5fb670; border-radius:20px; padding:4px 10px; letter-spacing:0.5px; text-transform:uppercase; margin-bottom:14px;">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            Entregue
+          </div>
+          <p style="font-size:10px; font-weight:700; color:#468182; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;">Mundo dos Ventos</p>
+          <p style="font-size:15px; font-weight:800; color:#1a2e3b; margin-bottom:2px;">Afefé</p>
+          <p style="font-size:11px; font-weight:600; color:#2858a0; margin-bottom:14px;">Cultura Afro-Brasileira · Cerrado</p>
+          <img src="https://the-blue-city.github.io/content/ilustracao-afefe.png" alt="Ilustração do personagem Afefé" style="width:100%; display:block; border-radius:10px; margin-bottom:12px;">
+          <p style="font-size:11px; color:#000; line-height:1.65;">Concept art desenvolvido a partir do dossiê da pesquisadora cultural – tecidos em camadas nos tons vinho e cobre, búzios, espada-de-são-jorge e cabelos em movimento.</p>
+          <div style="margin-top:12px;">
+            <a href="#" onclick="event.preventDefault(); goTo(9);" style="display:inline-flex; align-items:center; gap:7px; font-size:11px; font-weight:700; color:#2858a0; text-decoration:none; background:#d6e4f7; border-radius:8px; padding:7px 12px;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Ver dossiê Afefé
+            </a>
+          </div>
+        </div>
+
+        <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:24px;">
+          <div style="display:inline-flex; align-items:center; gap:5px; font-size:10px; font-weight:700; color:#2a7a3a; background:#d4f0d9; border:1px solid #5fb670; border-radius:20px; padding:4px 10px; letter-spacing:0.5px; text-transform:uppercase; margin-bottom:14px;">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            Entregue
+          </div>
+          <p style="font-size:10px; font-weight:700; color:#468182; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;">Plataforma e jogo</p>
+          <p style="font-size:15px; font-weight:800; color:#1a2e3b; margin-bottom:2px;">Avatares</p>
+          <p style="font-size:11px; font-weight:600; color:#2858a0; margin-bottom:14px;">Afefé e U'acü</p>
+          <img src="https://the-blue-city.github.io/content/avatar.png" alt="Avatares dos personagens Afefé e U'acü" style="width:100%; display:block; border-radius:10px; margin-bottom:12px;">
+          <p style="font-size:11px; color:#000; line-height:1.65;">Avatares derivados do concept art de cada personagem, para uso na plataforma e nas telas de diálogo do jogo.</p>
+        </div>
+
       </div>
 
       <div class="section-heading">Como funciona</div>
@@ -1266,34 +1306,6 @@
         <img src="https://the-blue-city.github.io/content/CharacterSheetEx.png" alt="Exemplo de character sheet" style="width:100%; border-radius:10px; display:block; margin-bottom:10px;">
         <p style="font-size:10px; color:#000; font-style:italic; padding-top:10px; border-top:1px solid #e0e8f0;">* Imagem ilustrativa – não representa os personagens do projeto. Fonte: <a href="https://lexica.art/prompt/68a9c03b-bc36-4fd2-85d6-65ede5772412" target="_blank" style="color:#2858a0;">lexica.art</a></p>
       </div>
-
-      <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:24px; margin-bottom:20px;">
-        <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
-          <div style="width:28px; height:28px; border-radius:50%; background:#d0e8e8; color:#468182; font-size:11px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0;">2</div>
-          <div>
-            <p style="font-size:13px; font-weight:700; color:#1a2e3b; margin-bottom:2px;">Fase 2 – Modelagem 3D (FBX)</p>
-            <p style="font-size:11px; color:#468182; font-weight:600;">T-pose · low poly · textura flat color · rig simples</p>
-          </div>
-        </div>
-        <p style="font-size:12px; font-weight:700; color:#1a2e3b; margin-bottom:4px;">Yapu – Guarany Mbyá: Trovão</p>
-        <p style="font-size:11px; color:#468182; font-weight:600; margin-bottom:14px;">Modelo 3D Low Poly · Missão Saneamento</p>
-        <img src="https://the-blue-city.github.io/content/YapuEx.png" alt="Yapu T-pose modelo 3D" style="width:100%; display:block; margin-bottom:12px; border-radius:10px;">
-        <p style="font-size:10px; color:#000; font-style:italic; padding-top:10px; border-top:1px solid #e0e8f0;">* Exemplo real de entrega de Fase 2 – T-pose do modelo 3D do Yapu, produzido para a Missão Saneamento.</p>
-      </div>
-
-      <div style="background:#1a2e3b; border-radius:12px; overflow:hidden;">
-        <div style="padding:16px 20px; border-bottom:1px solid rgba(255,255,255,0.08);">
-          <p style="font-size:10px; font-weight:700; color:#5fb670; letter-spacing:1px; text-transform:uppercase; margin-bottom:4px;">Referência – material produzido posteriormente</p>
-          <p style="font-size:13px; font-weight:700; color:white;">Yapu em movimento – vídeo de apresentação</p>
-          <p style="font-size:11px; color:rgba(255,255,255,0.5); margin-top:4px;">Este vídeo é uma referência do material produzido em etapas posteriores à entrega do ilustrador.</p>
-        </div>
-        <div style="position:relative; cursor:pointer; border-radius:0 0 12px 12px; overflow:hidden;" onclick="window.open('https://youtu.be/QuWWPVR_PoM', '_blank')" id="yt-player">
-          <img src="https://the-blue-city.github.io/content/Yapu_Thumb.png" style="width:100%; display:block;">
-          <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:64px; height:64px; background:rgba(0,0,0,0.7); border-radius:50%; display:flex; align-items:center; justify-content:center;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="6,4 20,12 6,20"/></svg>
-          </div>
-        </div>
-      </div>
     </div>
 
     <div class="divider"></div>
@@ -1322,7 +1334,7 @@
     <div class="page-body single" style="max-width:100%; padding:36px 60px 0;">
 
       <div class="section-heading">O que você recebe</div>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:32px;">
+      <div style="display:grid; grid-template-columns:1fr; gap:16px; margin-bottom:32px;">
         <div class="feature-card">
           <div class="feature-card-header">
             <div class="feature-icon fi-blue">📋</div>
@@ -1333,19 +1345,6 @@
             <a href="https://the-blue-city.github.io/fabulus/03-fabulus_gdd_apresentacao_termometro.html" target="_blank" style="display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:700; color:#2858a0; text-decoration:none; background:#d6e4f7; border-radius:8px; padding:8px 14px;">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
               Ver game design document
-            </a>
-          </div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-card-header">
-            <div class="feature-icon fi-teal">🧍</div>
-            <h3>Personagens 3D do Ilustrador</h3>
-          </div>
-          <p>Dois modelos 3D em .fbx com textura flat color e rig simples – Iansã (Mundo dos Ventos) e U'acü (Mundo do Sol) – prontos para importação no Unity.</p>
-          <div style="margin-top:14px;">
-            <a href="#" onclick="event.preventDefault(); goTo(2);" style="display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:700; color:#468182; text-decoration:none; background:#d0e8e8; border-radius:8px; padding:8px 14px;">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
-              Ver página do Ilustrador
             </a>
           </div>
         </div>
@@ -1487,23 +1486,6 @@
 
     </div>
 
-    <div style="padding:0 60px 40px;">
-      <div class="section-heading">Exemplo de entrega</div>
-      <div style="background:#1a2e3b; border-radius:12px; overflow:hidden;">
-        <div style="padding:16px 20px; border-bottom:1px solid rgba(255,255,255,0.08);">
-          <p style="font-size:10px; font-weight:700; color:#5fb670; letter-spacing:1px; text-transform:uppercase; margin-bottom:4px;">Referência – material produzido anteriormente</p>
-          <p style="font-size:13px; font-weight:700; color:white;">Amazônia Game – exemplo de build WebGL</p>
-          <p style="font-size:11px; color:rgba(255,255,255,0.5); margin-top:4px;">Referência de entrega de um jogo desenvolvido em Unity para WebGL em projeto anterior.</p>
-        </div>
-        <div style="position:relative; cursor:pointer;" onclick="window.open('https://youtu.be/q6L-9AVkJLM', '_blank')">
-          <img src="https://the-blue-city.github.io/content/Game_Thumb.png" style="width:100%; display:block;">
-          <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:64px; height:64px; background:rgba(0,0,0,0.7); border-radius:50%; display:flex; align-items:center; justify-content:center;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="6,4 20,12 6,20"/></svg>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <div class="divider"></div>
     <div class="page-nav">
       <button class="nav-btn" onclick="goTo(2)">← Ilustrador</button>
@@ -1516,10 +1498,10 @@
   <section class="page" id="page-4">
     <div class="page-hero role-articulador">
       <div style="display:flex; align-items:center; gap:24px; margin-bottom:16px;">
-        <div style="width:80px; height:80px; border-radius:50%; background:#d4f0d9; display:flex; align-items:center; justify-content:center; font-size:28px; flex-shrink:0;">🏫</div>
+        <img src="https://the-blue-city.github.io/content/VitorCastro.jpg" alt="Vitor Artur Mendonça Rodolpho de Castro" style="width:80px; height:80px; border-radius:50%; object-fit:cover; object-position:top; border:3px solid #d4f0d9; flex-shrink:0;">
         <div>
           <div class="role-badge rb-green" style="margin-bottom:8px;">🏫 Articulador Educacional</div>
-          <p style="font-size:18px; font-weight:800; color:var(--dark); margin-bottom:2px;">[Nome do Articulador Educacional]</p>
+          <p style="font-size:18px; font-weight:800; color:var(--dark); margin-bottom:2px;">Vitor Artur Mendonça Rodolpho de Castro</p>
           <p style="font-size:12px; color:var(--muted);">Ponte com as Escolas · Mobilização de Estudantes · Adesão à Jornada</p>
         </div>
       </div>
@@ -1762,8 +1744,8 @@
 
       <div class="section-heading">Quem é o IFTO</div>
       <div class="ifto-intro">
-        <p>O <strong>Instituto Federal do Tocantins (IFTO)</strong> integra a Rede Federal de Educação Profissional, Científica e Tecnológica e oferta ensino técnico integrado ao ensino médio, cursos subsequentes, graduações e pós-graduação, articulando ensino, pesquisa e extensão em todo o estado. O <strong>Campus Palmas</strong> é a maior unidade do instituto e o ponto de ancoragem natural da jornada na capital.</p>
-        <p>A <strong>Diretoria de Inovação e Empreendedorismo (DIEM)</strong> e o <strong>Núcleo de Empreendedorismo e Desenvolvimento de Soluções (NEEDS)</strong> conduzem, dentro do campus, uma agenda voltada a desafios reais, cultura de soluções e gamificação no ensino – exatamente o terreno em que a Missão Termômetro Zero se inscreve.</p>
+        <p>O Instituto Federal do Tocantins (IFTO) integra a Rede Federal de Educação Profissional, Científica e Tecnológica e oferta ensino técnico integrado ao ensino médio, cursos subsequentes, graduações e pós-graduação, articulando ensino, pesquisa e extensão em todo o estado. O Campus Palmas é a maior unidade do instituto e o ponto de ancoragem natural da jornada na capital.</p>
+        <p>A Diretoria de Inovação e Empreendedorismo (DIEM) e o Núcleo de Empreendedorismo e Desenvolvimento de Soluções (NEEDS) conduzem, dentro do campus, uma agenda voltada a desafios reais, cultura de soluções e gamificação no ensino – exatamente o terreno em que a Missão Termômetro Zero se inscreve.</p>
       </div>
 
       <div class="ifto-stats">
@@ -1776,6 +1758,24 @@
           <div class="num">DIEM</div>
           <div class="lbl">Inovação e Empreendedorismo</div>
           <div class="desc">Diretoria parceira, com o NEEDS conectando estudantes a desafios reais de sustentabilidade</div>
+        </div>
+      </div>
+
+      <div class="section-heading">Contatos</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:36px;">
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <div class="feature-icon fi-blue">✉️</div>
+            <h3>DIEM – e-mail institucional</h3>
+          </div>
+          <p>Diretoria de Inovação e Empreendedorismo – Reitoria<br><a href="mailto:diem@ifto.edu.br" style="color:#2858a0; font-weight:600; text-decoration:none;">diem@ifto.edu.br</a></p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <div class="feature-icon fi-teal">👤</div>
+            <h3>Edmar Vinícius de Carvalho</h3>
+          </div>
+          <p>DIEM – Reitoria<br><a href="mailto:edmar.carvalho@ifto.edu.br" style="color:#468182; font-weight:600; text-decoration:none;">edmar.carvalho@ifto.edu.br</a></p>
         </div>
       </div>
 
@@ -1798,14 +1798,14 @@
 
         <p class="saudacao">Prezada equipe da Diretoria de Inovação e Empreendedorismo,</p>
 
-        <p>A <strong>The Blue City</strong> é uma iniciativa que conecta educação ambiental, tecnologia e cultura em jornadas educativas realizadas em territórios urbanos reais. Escrevemos para convidar formalmente o IFTO a integrar, como <strong>parceiro institucional</strong>, a <strong>Missão Termômetro Zero</strong> – jornada educativa, tecnológica e cultural que acontecerá em Palmas no segundo semestre de 2026, com o tema Redução de Emissões de Gases de Efeito Estufa.</p>
+        <p>A The Blue City é uma iniciativa que conecta educação ambiental, tecnologia e cultura em jornadas educativas realizadas em territórios urbanos reais. Escrevemos para convidar formalmente o IFTO a integrar, como parceiro institucional, a Missão Termômetro Zero – jornada educativa, tecnológica e cultural que acontecerá em Palmas no segundo semestre de 2026, com o tema Redução de Emissões de Gases de Efeito Estufa.</p>
 
-        <p>A jornada combina três frentes integradas: um <strong>jogo digital</strong> com missões temáticas jogadas pelos estudantes; <strong>certificações verificáveis em blockchain</strong> emitidas a cada etapa; e uma <strong>exposição cultural</strong> aberta à comunidade, na qual as ideias dos estudantes são traduzidas em obras por artistas locais. A realização é viabilizada através do patrocínio da Sotreq, <strong>sem qualquer custo para a instituição</strong>.</p>
+        <p>A jornada combina três frentes integradas: um jogo digital com missões temáticas jogadas pelos estudantes; certificações verificáveis em blockchain emitidas a cada etapa; e uma exposição cultural aberta à comunidade, na qual as ideias dos estudantes são traduzidas em obras por artistas locais. A realização é viabilizada através do patrocínio da Sotreq, sem qualquer custo para a instituição.</p>
 
         <p>A natureza do projeto – que une empreendedorismo, desenvolvimento de soluções para desafios reais de sustentabilidade e gamificação – dialoga diretamente com a missão da DIEM e com o trabalho do NEEDS, inclusive com a experiência da instituição em projetos de gamificação no ensino. Vemos o IFTO como o parceiro institucional ideal para ancorar essa jornada em Palmas.</p>
 
         <div class="bloco-titulo">O ganho para os estudantes</div>
-        <p>O projeto entrega ao estudante uma <strong>trajetória profissional comprovável</strong>. As credenciais da jornada são emitidas através da <strong>POK</strong> – plataforma internacional de certificação digital que registra <strong>badges, microcredenciais e certificados em blockchain</strong>, seguindo padrões internacionais como o Open Badge 3.0:</p>
+        <p>O projeto entrega ao estudante uma trajetória profissional comprovável. As credenciais da jornada são emitidas através da POK – plataforma internacional de certificação digital que registra badges, microcredenciais e certificados em blockchain, seguindo padrões internacionais como o Open Badge 3.0:</p>
         <ul class="ganhos">
           <li><b>Trilhas formativas</b>: a jornada organiza o aprendizado em etapas encadeadas, e cada etapa concluída se converte em uma credencial verificável, compondo uma trilha de competências em sustentabilidade, pensamento crítico e letramento digital.</li>
           <li><b>Badges e certificados POK</b>: emitidos em blockchain e ancorados em padrões internacionais (Open Badge 3.0), são verificáveis por qualquer terceiro, à prova de fraude e permanentes – não dependem da existência da plataforma para serem validados.</li>
@@ -1845,6 +1845,51 @@
 
       </div>
 
+      <div class="section-heading">Follow-up dos contatos</div>
+      <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:24px; margin-bottom:8px;">
+
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:22px; flex-wrap:wrap;">
+          <p style="font-size:12px; color:#5a7184;">Registro das interações com a DIEM sobre a formalização da parceria</p>
+          <span style="display:inline-flex; align-items:center; gap:6px; font-size:10px; font-weight:700; color:#8a5a1f; background:#fdf0dc; border:1px solid #e8b05f; border-radius:20px; padding:5px 12px; letter-spacing:0.5px; text-transform:uppercase;">
+            <span style="width:6px; height:6px; border-radius:50%; background:#e8940a; display:block;"></span>
+            Aguardando retorno
+          </span>
+        </div>
+
+        <div style="position:relative; padding-left:26px;">
+          <div style="position:absolute; left:5px; top:6px; bottom:6px; width:2px; background:#e0e8f0;"></div>
+
+          <div style="position:relative; margin-bottom:20px;">
+            <div style="position:absolute; left:-26px; top:3px; width:12px; height:12px; border-radius:50%; background:#2858a0; border:2px solid white; box-shadow:0 0 0 2px #d6e4f7;"></div>
+            <p style="font-size:10px; font-weight:700; color:#468182; letter-spacing:1px; text-transform:uppercase; margin-bottom:4px;">10 de junho de 2026 · enviado</p>
+            <p style="font-size:13px; font-weight:700; color:#1a2e3b; margin-bottom:4px;">Carta de parceria enviada à DIEM</p>
+            <p style="font-size:12px; color:#000; line-height:1.65;">Convite formal para o IFTO integrar a Missão Termômetro Zero como parceiro institucional.</p>
+          </div>
+
+          <div style="position:relative; margin-bottom:20px;">
+            <div style="position:absolute; left:-26px; top:3px; width:12px; height:12px; border-radius:50%; background:#5fb670; border:2px solid white; box-shadow:0 0 0 2px #d4f0d9;"></div>
+            <p style="font-size:10px; font-weight:700; color:#2a7a3a; letter-spacing:1px; text-transform:uppercase; margin-bottom:4px;">19 de junho de 2026 · resposta recebida</p>
+            <p style="font-size:13px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Edmar Vinícius de Carvalho – DIEM</p>
+            <p style="font-size:12px; color:#000; line-height:1.65; background:#f7faf8; border-left:3px solid #5fb670; border-radius:0 8px 8px 0; padding:10px 14px;">Já iniciamos os trâmites internos para análise do documento de parceria. Assim que finalizado pelo setor responsável, entraremos em contato novamente.</p>
+          </div>
+
+          <div style="position:relative; margin-bottom:20px;">
+            <div style="position:absolute; left:-26px; top:3px; width:12px; height:12px; border-radius:50%; background:#2858a0; border:2px solid white; box-shadow:0 0 0 2px #d6e4f7;"></div>
+            <p style="font-size:10px; font-weight:700; color:#468182; letter-spacing:1px; text-transform:uppercase; margin-bottom:4px;">22 de junho de 2026 · enviado</p>
+            <p style="font-size:13px; font-weight:700; color:#1a2e3b; margin-bottom:4px;">Follow-up por e-mail</p>
+            <p style="font-size:12px; color:#000; line-height:1.65;">Sem resposta até o momento.</p>
+          </div>
+
+          <div style="position:relative;">
+            <div style="position:absolute; left:-26px; top:3px; width:12px; height:12px; border-radius:50%; background:#2858a0; border:2px solid white; box-shadow:0 0 0 2px #d6e4f7;"></div>
+            <p style="font-size:10px; font-weight:700; color:#468182; letter-spacing:1px; text-transform:uppercase; margin-bottom:4px;">06 de julho de 2026 · enviado</p>
+            <p style="font-size:13px; font-weight:700; color:#1a2e3b; margin-bottom:4px;">Segundo follow-up por e-mail</p>
+            <p style="font-size:12px; color:#000; line-height:1.65;">Sem resposta até o momento.</p>
+          </div>
+
+        </div>
+      </div>
+
     </div>
 
     <div class="divider"></div>
@@ -1874,8 +1919,8 @@
 
       <div class="section-heading">Quem é a UFT</div>
       <div class="ifto-intro">
-        <p>A <strong>Universidade Federal do Tocantins (UFT)</strong>, criada em 2000, é a principal instituição pública de ensino superior do estado, com sede em Palmas e campi em diversas cidades. Oferta cursos de <strong>graduação e pós-graduação</strong> em todas as áreas do conhecimento, articulando ensino, pesquisa e extensão de forma indissociável. O <strong>Campus de Palmas</strong> é a sede e a maior unidade da universidade.</p>
-        <p>A <strong>Pró-Reitoria de Extensão, Cultura e Assuntos Comunitários (Proex)</strong> conduz a articulação entre a universidade e a sociedade – incluindo extensão tecnológica, tecnologia social e ação cultural – e, junto à <strong>Agência de Inovação da UFT (Inovato)</strong>, forma o terreno natural em que a Missão Termômetro Zero se inscreve. A vocação ambiental da UFT, que abriga o curso de Engenharia Ambiental mais antigo do país, reforça o alinhamento com o tema da jornada.</p>
+        <p>A Universidade Federal do Tocantins (UFT), criada em 2000, é a principal instituição pública de ensino superior do estado, com sede em Palmas e campi em diversas cidades. Oferta cursos de graduação e pós-graduação em todas as áreas do conhecimento, articulando ensino, pesquisa e extensão de forma indissociável. O Campus de Palmas é a sede e a maior unidade da universidade.</p>
+        <p>A Pró-Reitoria de Extensão, Cultura e Assuntos Comunitários (Proex) conduz a articulação entre a universidade e a sociedade – incluindo extensão tecnológica, tecnologia social e ação cultural – e, junto à Agência de Inovação da UFT (Inovato), forma o terreno natural em que a Missão Termômetro Zero se inscreve. A vocação ambiental da UFT, que abriga o curso de Engenharia Ambiental mais antigo do país, reforça o alinhamento com o tema da jornada.</p>
       </div>
 
       <div class="ifto-stats">
@@ -1888,6 +1933,24 @@
           <div class="num">Proex</div>
           <div class="lbl">Extensão, Cultura e Inovação</div>
           <div class="desc">Pró-Reitoria parceira, com a Inovato (Agência de Inovação da UFT) articulando a universidade à sociedade</div>
+        </div>
+      </div>
+
+      <div class="section-heading">Contatos</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:36px;">
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <div class="feature-icon fi-blue">✉️</div>
+            <h3>Inovato – Agência de Inovação da UFT</h3>
+          </div>
+          <p><a href="mailto:inovato@uft.edu.br" style="color:#2858a0; font-weight:600; text-decoration:none;">inovato@uft.edu.br</a></p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <div class="feature-icon fi-teal">👤</div>
+            <h3>Prof. Kleber Abreu</h3>
+          </div>
+          <p>Responde pela Inovato<br><a href="mailto:kleberabreu@mail.uft.edu.br" style="color:#468182; font-weight:600; text-decoration:none;">kleberabreu@mail.uft.edu.br</a></p>
         </div>
       </div>
 
@@ -1910,14 +1973,14 @@
 
         <p class="saudacao">Prezada equipe da Pró-Reitoria de Extensão, Cultura e Assuntos Comunitários,</p>
 
-        <p>A <strong>The Blue City</strong> é uma iniciativa que conecta educação ambiental, tecnologia e cultura em jornadas educativas realizadas em territórios urbanos reais. Escrevemos para convidar formalmente a UFT a integrar, como <strong>parceira institucional</strong>, a <strong>Missão Termômetro Zero</strong> – jornada educativa, tecnológica e cultural que acontecerá em Palmas no segundo semestre de 2026, com o tema Redução de Emissões de Gases de Efeito Estufa.</p>
+        <p>A The Blue City é uma iniciativa que conecta educação ambiental, tecnologia e cultura em jornadas educativas realizadas em territórios urbanos reais. Escrevemos para convidar formalmente a UFT a integrar, como parceira institucional, a Missão Termômetro Zero – jornada educativa, tecnológica e cultural que acontecerá em Palmas no segundo semestre de 2026, com o tema Redução de Emissões de Gases de Efeito Estufa.</p>
 
-        <p>A jornada combina três frentes integradas: um <strong>jogo digital</strong> com missões temáticas jogadas pelos estudantes; <strong>certificações verificáveis em blockchain</strong> emitidas a cada etapa; e uma <strong>exposição cultural</strong> aberta à comunidade, na qual as ideias dos estudantes são traduzidas em obras por artistas locais. A realização é viabilizada através do patrocínio da Sotreq, <strong>sem qualquer custo para a instituição</strong>.</p>
+        <p>A jornada combina três frentes integradas: um jogo digital com missões temáticas jogadas pelos estudantes; certificações verificáveis em blockchain emitidas a cada etapa; e uma exposição cultural aberta à comunidade, na qual as ideias dos estudantes são traduzidas em obras por artistas locais. A realização é viabilizada através do patrocínio da Sotreq, sem qualquer custo para a instituição.</p>
 
         <p>A natureza do projeto – que une extensão universitária, cultura, tecnologia social e gamificação em torno da sustentabilidade – dialoga diretamente com a missão da Proex e com a atuação da Inovato, somando-se à vocação ambiental da universidade. Vemos a UFT como a parceira institucional ideal para ancorar essa jornada em Palmas.</p>
 
         <div class="bloco-titulo">O ganho para os estudantes</div>
-        <p>O projeto entrega ao estudante uma <strong>trajetória profissional comprovável</strong>. As credenciais da jornada são emitidas através da <strong>POK</strong> – plataforma internacional de certificação digital que registra <strong>badges, microcredenciais e certificados em blockchain</strong>, seguindo padrões internacionais como o Open Badge 3.0:</p>
+        <p>O projeto entrega ao estudante uma trajetória profissional comprovável. As credenciais da jornada são emitidas através da POK – plataforma internacional de certificação digital que registra badges, microcredenciais e certificados em blockchain, seguindo padrões internacionais como o Open Badge 3.0:</p>
         <ul class="ganhos">
           <li><b>Trilhas formativas</b>: a jornada organiza o aprendizado em etapas encadeadas, e cada etapa concluída se converte em uma credencial verificável, compondo uma trilha de competências em sustentabilidade, pensamento crítico e letramento digital.</li>
           <li><b>Badges e certificados POK</b>: emitidos em blockchain e ancorados em padrões internacionais (Open Badge 3.0), são verificáveis por qualquer terceiro, à prova de fraude e permanentes – não dependem da existência da plataforma para serem validados.</li>
@@ -1957,6 +2020,37 @@
 
       </div>
 
+      <div class="section-heading">Follow-up dos contatos</div>
+      <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:24px; margin-bottom:8px;">
+
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:22px; flex-wrap:wrap;">
+          <p style="font-size:12px; color:#5a7184;">Registro das interações com a Inovato sobre a formalização da parceria</p>
+          <span style="display:inline-flex; align-items:center; gap:6px; font-size:10px; font-weight:700; color:#8a5a1f; background:#fdf0dc; border:1px solid #e8b05f; border-radius:20px; padding:5px 12px; letter-spacing:0.5px; text-transform:uppercase;">
+            <span style="width:6px; height:6px; border-radius:50%; background:#e8940a; display:block;"></span>
+            Aguardando retorno
+          </span>
+        </div>
+
+        <div style="position:relative; padding-left:26px;">
+          <div style="position:absolute; left:5px; top:6px; bottom:6px; width:2px; background:#e0e8f0;"></div>
+
+          <div style="position:relative; margin-bottom:20px;">
+            <div style="position:absolute; left:-26px; top:3px; width:12px; height:12px; border-radius:50%; background:#5fb670; border:2px solid white; box-shadow:0 0 0 2px #d4f0d9;"></div>
+            <p style="font-size:10px; font-weight:700; color:#2a7a3a; letter-spacing:1px; text-transform:uppercase; margin-bottom:4px;">Articulação prévia</p>
+            <p style="font-size:13px; font-weight:700; color:#1a2e3b; margin-bottom:4px;">Vitor Artur Mendonça Rodolpho de Castro</p>
+            <p style="font-size:12px; color:#000; line-height:1.65;">Aproximação com a Inovato conduzida pelo Articulador Educacional, abrindo o canal com a coordenação.</p>
+          </div>
+
+          <div style="position:relative;">
+            <div style="position:absolute; left:-26px; top:3px; width:12px; height:12px; border-radius:50%; background:#2858a0; border:2px solid white; box-shadow:0 0 0 2px #d6e4f7;"></div>
+            <p style="font-size:10px; font-weight:700; color:#468182; letter-spacing:1px; text-transform:uppercase; margin-bottom:4px;">29 de julho de 2026 · enviado</p>
+            <p style="font-size:13px; font-weight:700; color:#1a2e3b; margin-bottom:4px;">Carta de parceria enviada à Inovato</p>
+            <p style="font-size:12px; color:#000; line-height:1.65;">Convite formal para a UFT integrar a Missão Termômetro Zero como parceira institucional. Sem resposta até o momento.</p>
+          </div>
+
+        </div>
+      </div>
+
     </div>
 
     <div class="divider"></div>
@@ -1971,10 +2065,10 @@
   <section class="page" id="page-5">
     <div class="page-hero role-produtor">
       <div style="display:flex; align-items:center; gap:24px; margin-bottom:16px;">
-        <div style="width:80px; height:80px; border-radius:50%; background:#d6e4f7; display:flex; align-items:center; justify-content:center; font-size:28px; flex-shrink:0;">🎭</div>
+        <img src="https://the-blue-city.github.io/content/JairoFaria.jpg" alt="Jairo Faria" style="width:80px; height:80px; border-radius:50%; object-fit:cover; object-position:center top; border:3px solid #d6e4f7; flex-shrink:0;">
         <div>
           <div class="role-badge rb-blue" style="margin-bottom:8px;">🎭 Produtor Cultural</div>
-          <p style="font-size:18px; font-weight:800; color:var(--dark); margin-bottom:2px;">[Nome do Produtor Cultural]</p>
+          <p style="font-size:18px; font-weight:800; color:var(--dark); margin-bottom:2px;">Jairo Faria</p>
           <p style="font-size:12px; color:var(--muted);">Preparação Territorial · Curadoria · Conexão com Artistas · Exposição</p>
         </div>
       </div>
@@ -3208,11 +3302,7 @@
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap contributors', maxZoom: 19 }).addTo(me);
     var schools = [
       { lat: -10.1992652, lng: -48.3123871, name: 'IFTO – Campus Palmas', note: '✓ Aderiu · Plano Diretor Sul', preferred: true },
-      { lat: -10.1800446, lng: -48.3627952, name: 'UFT – Campus Palmas', note: '✓ Aderiu · Plano Diretor Norte', preferred: true },
-      { lat: -10.2330763, lng: -48.3215427, name: 'CEM Tiradentes', note: 'Plano Diretor Sul', preferred: false },
-      { lat: -10.1650008, lng: -48.3451332, name: 'CEM Castro Alves', note: 'Plano Diretor Norte', preferred: false },
-      { lat: -10.2524012, lng: -48.3219074, name: 'Colégio Est. São José', note: 'Plano Diretor Sul', preferred: false },
-      { lat: -10.2073469, lng: -48.3362421, name: 'Escola Est. Profª Elizângela', note: 'Plano Diretor Sul', preferred: false }
+      { lat: -10.1800446, lng: -48.3627952, name: 'UFT – Campus Palmas', note: '✓ Aderiu · Plano Diretor Norte', preferred: true }
     ];
     schools.forEach(function(s) {
       var color = s.preferred ? '#5fb670' : '#468182';
