@@ -70,8 +70,8 @@
   .btn-primary {
     display: inline-flex; align-items: center; gap: 7px;
     background: #2858a0; color: #fff; border: none;
-    border-radius: 8px; padding: 10px 18px;
-    font-size: 13px; font-weight: 600; cursor: pointer;
+    border-radius: 8px; padding: 7px 13px;
+    font-size: 11.5px; font-weight: 600; cursor: pointer;
     font-family: 'Montserrat', sans-serif; transition: background 0.2s;
   }
   .btn-primary:hover { background: #1a3a70; }
@@ -144,8 +144,8 @@
   .lg-2 { background: linear-gradient(135deg, #5fb670, #2a9a4a); }
   .lg-3 { background: linear-gradient(135deg, #7c5cbf, #5b3f9e); }
   .lg-4 { background: linear-gradient(135deg, #e8a13a, #c97f1e); }
-  .ent-name { font-weight: 700; color: #1a2e3b; }
-  .ent-slug { font-size: 11px; color: #000000; }
+  .ent-name { font-weight: 700; color: #1a2e3b; line-height: 1.45; }
+  .ent-slug { font-size: 11px; color: #000000; line-height: 1.6; }
   .sub-link { font-family: 'Montserrat', monospace; font-size: 12px; color: #2858a0; font-weight: 600; }
 
   .pill { font-size: 10px; font-weight: 700; padding: 4px 11px; border-radius: 20px; display: inline-block; }
@@ -166,31 +166,56 @@
   /* GAME LIBRARY */
   .game-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
   .game-card {
-    background: #fff; border: 1px solid #e0e8f0; border-radius: 12px; overflow: visible;
+    background: #fff; border: 1px solid #e0e8f0; border-radius: 14px; overflow: hidden;
     transition: box-shadow 0.2s, transform 0.2s;
   }
   .game-card:hover { box-shadow: 0 6px 20px rgba(40,88,160,0.1); transform: translateY(-2px); }
-  .game-cover { height: 92px; display: flex; align-items: center; justify-content: center; position: relative; }
-  .gc-1 { background: linear-gradient(135deg, #1a2e3b, #2858a0); }
-  .gc-2 { background: linear-gradient(135deg, #468182, #5fb670); }
-  .gc-3 { background: linear-gradient(135deg, #2858a0, #468182); }
+  .game-cover { height: 150px; display: flex; align-items: center; justify-content: center; position: relative; border-radius: 13px 13px 0 0; }
+  .game-cover img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .th-clima   { background: linear-gradient(135deg, #3f7a4e, #6fae6a); }
+  .th-ocean   { background: linear-gradient(135deg, #2a6b8f, #4f9fbf); }
+  .th-finance { background: linear-gradient(135deg, #b98a2e, #e0c060); }
+  .th-energy  { background: linear-gradient(135deg, #c9772e, #edb552); }
+  .th-forest  { background: linear-gradient(135deg, #2f7a45, #6ab86f); }
+  .th-social  { background: linear-gradient(135deg, #386f8a, #6aa8b0); }
   .game-cover .status-dot {
     position: absolute; top: 10px; right: 10px;
     font-size: 9px; font-weight: 700; padding: 3px 9px; border-radius: 20px;
-    background: rgba(255,255,255,0.92);
+    background: rgba(255,255,255,0.92); z-index: 2;
   }
   .sd-active { color: #2a7a3a; }
   .sd-inactive { color: #8a93a0; }
   .game-body { padding: 14px 16px; }
   .game-title { font-size: 13px; font-weight: 700; color: #1a2e3b; }
-  .game-theme { font-size: 11px; color: #468182; font-weight: 600; margin-top: 2px; }
+  .game-theme {
+    display: inline-block; font-size: 10.5px; font-weight: 700; color: #2a7a3a;
+    background: #d4f0d9; border-radius: 20px; padding: 3px 11px; margin-top: 8px;
+  }
   .game-meta { font-size: 11px; color: #000000; margin-top: 8px; line-height: 1.5; }
   .game-foot {
     border-top: 1px solid #f0f4f8; margin-top: 12px; padding-top: 10px;
     display: flex; align-items: center; justify-content: space-between;
   }
   .game-foot .campaigns { font-size: 11px; color: #000000; }
+  .game-toggle { width: 26px; height: 26px; }
   .game-foot .campaigns strong { color: #1a2e3b; }
+
+  /* ESTADO: JOGO AINDA NÃO DISPONÍVEL - mesma atenuação da home */
+  .game-card[data-status="inativo"] { background: #fcfdfe; border-color: #eaf0f6; }
+  .game-card[data-status="inativo"]:hover { box-shadow: none; transform: none; }
+  .game-card[data-status="inativo"] .game-cover::after {
+    content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0.62);
+  }
+  .game-card[data-status="inativo"] .game-title { color: #8b9db0; }
+  .game-card[data-status="inativo"] .game-meta,
+  .game-card[data-status="inativo"] .game-foot .campaigns { color: #9aabbb; }
+  .game-card[data-status="inativo"] .game-foot .campaigns strong { color: #8b9db0; }
+  .game-card[data-status="inativo"] .game-theme { background: #eef2f7; color: #93a4b4; }
+  .game-card[data-status="inativo"] .game-foot { border-top-color: #f4f7fa; }
+
+  .roteiro { font-size: 13px; font-weight: 700; color: #000000; line-height: 1.6; margin: 30px 0 6px; }
+  .roteiro .rot-list { margin: 6px 0 0; padding-left: 20px; }
+  .roteiro .rot-list li { line-height: 1.8; font-weight: 400; }
 
   /* GOVERNANCE PANELS */
   .gov-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
@@ -257,16 +282,16 @@
   .btn-ghost {
     display: inline-flex; align-items: center; gap: 7px;
     background: transparent; color: #2858a0; border: 1px solid #cdd9e6;
-    border-radius: 8px; padding: 9px 16px;
-    font-size: 13px; font-weight: 600; cursor: pointer;
+    border-radius: 8px; padding: 7px 13px;
+    font-size: 11.5px; font-weight: 600; cursor: pointer;
     font-family: 'Montserrat', sans-serif; transition: all 0.18s;
   }
   .btn-ghost:hover { border-color: #2858a0; background: #f4f8fc; }
   .btn-danger {
     display: inline-flex; align-items: center; gap: 7px;
     background: #c0392b; color: #fff; border: none;
-    border-radius: 8px; padding: 10px 18px;
-    font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600;
+    border-radius: 8px; padding: 7px 13px;
+    font-family: 'Montserrat', sans-serif; font-size: 11.5px; font-weight: 600;
     cursor: pointer; transition: background 0.18s;
   }
   .btn-danger:hover { background: #a5311f; }
@@ -421,7 +446,7 @@
     background: #dde5ee; color: #000000; display: flex; align-items: center; justify-content: center;
   }
   .chip .chip-x:hover { background: #c0392b; color: #fff; }
-  .add-inline { display: flex; gap: 8px; }
+  .add-inline { display: flex; gap: 8px; align-items: center; }
   .add-inline input { flex: 1; }
 
   /* PRODUTOR LIST */
@@ -489,8 +514,8 @@
   .acomp-funnel { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-bottom: 14px; }
   .fstep { background: #fff; border: 1px solid #e0e8f0; border-radius: 14px; padding: 16px 12px; text-align: center; }
   .fstep .fs-val { font-size: 22px; font-weight: 800; color: #1a2e3b; line-height: 1; margin-bottom: 5px; }
-  .fstep .fs-lbl { font-size: 11px; color: #000000; font-weight: 600; line-height: 1.3; }
-  .fstep .fs-pct { font-size: 10px; color: #000000; font-weight: 700; margin-top: 5px; }
+  .fstep .fs-lbl { font-size: 11px; color: #000000; font-weight: 400; line-height: 1.3; }
+  .fstep .fs-pct { font-size: 13px; color: #000000; font-weight: 700; margin-top: 6px; }
   .fstep.f-blue   { background: #eef4fc; border-color: #dbe6f6; } .fstep.f-blue .fs-val { color: #2858a0; }
   .fstep.f-teal   { background: #eaf5f5; border-color: #d3e7e7; } .fstep.f-teal .fs-val { color: #468182; }
   .fstep.f-bronze { background: #f7eee1; border-color: #ebdcc6; } .fstep.f-bronze .fs-val { color: #a9763e; }
@@ -507,14 +532,14 @@
   .emit-card { border: 1px solid #e0e8f0; border-radius: 14px; padding: 18px; background: #fff; display: flex; flex-direction: column; }
   .emit-top { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #1a2e3b; }
   .emit-dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
-  .emit-cert { font-size: 9.5px; font-weight: 700; color: #a8862a; background: #fff; border: 1px solid #f0e4b8; padding: 2px 7px; border-radius: 20px; margin-left: auto; }
+  .emit-cert { font-size: 11px; font-weight: 700; color: #a8862a; background: #fff; border: 1px solid #f0e4b8; padding: 4px 11px; border-radius: 20px; margin-left: auto; }
   .emit-num { font-size: 30px; font-weight: 800; line-height: 1; margin: 14px 0 3px; }
-  .emit-sub { font-size: 11.5px; color: #000000; font-weight: 600; }
-  .emit-cols { font-size: 10.5px; color: #000000; font-weight: 600; margin: 12px 0 14px; padding-top: 12px; border-top: 1px dashed rgba(0,0,0,0.1); line-height: 1.5; }
-  .emit-meta { font-size: 10.5px; color: #000000; font-weight: 600; margin-top: 4px; display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
-  .emit-lastdate { display: inline-flex; align-items: center; gap: 6px; padding: 6px 11px; background: #fff; border: 1px solid #e0e8f0; border-radius: 8px; font-size: 11.5px; font-weight: 700; color: #1a2e3b; }
+  .emit-sub { font-size: 11.5px; color: #000000; font-weight: 400; }
+  .emit-cols { font-size: 10.5px; color: #000000; font-weight: 400; margin: 12px 0 14px; padding-top: 12px; line-height: 1.5; }
+  .emit-meta { font-size: 10.5px; color: #000000; font-weight: 400; margin-top: 4px; display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+  .emit-lastdate { display: inline-flex; align-items: center; gap: 6px; padding: 6px 11px; background: #fff; border: 1px solid #e0e8f0; border-radius: 8px; font-size: 11.5px; font-weight: 400; color: #1a2e3b; }
   .emit-lastdate svg { opacity: 0.6; flex-shrink: 0; }
-  .emit-lastdate strong { font-weight: 800; }
+  .emit-lastdate strong { font-weight: 400; }
   .emit-actions { display: flex; flex-direction: column; gap: 8px; margin-top: auto; }
   .emit-card .emit-actions .btn-ghost { background: #fff; }
   .emit-card .emit-actions .btn-ghost, .emit-card .emit-actions .btn-primary { width: 100%; justify-content: center; }
@@ -557,13 +582,13 @@
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
       Produtores
     </a>
-    <a href="#gov-institucional" class="nav-item">
-      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-      Gov. Institucional
-    </a>
     <a href="#acompanhamento" class="nav-item">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-      Acompanhamento
+      Acomp. de Jogadores
+    </a>
+    <a href="#acomp-produtores" class="nav-item">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg>
+      Acomp. de Produtores
     </a>
     <a href="#emissao" class="nav-item">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
@@ -591,44 +616,51 @@
         <div class="kpi">
           <div class="kpi-top">
             <div class="kpi-icon ic-blue"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2858a0" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg></div>
-            <span class="kpi-delta delta-up">+1</span>
           </div>
-          <div class="val v-blue">4</div>
+          <div class="val v-blue">2</div>
           <div class="lbl tip" data-tip="Total de empresas com ambiente provisionado na plataforma.">Empresas provisionadas<span class="tip-info">i</span></div>
         </div>
         <div class="kpi">
           <div class="kpi-top">
-            <div class="kpi-icon ic-teal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#468182" stroke-width="2"><polygon points="6 3 20 12 6 21 6 3"/></svg></div>
-            <span class="kpi-delta delta-up">+2</span>
+            <div class="kpi-icon ic-purple"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7c5cbf" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
           </div>
-          <div class="val v-teal">7</div>
+          <div class="val v-purple">2</div>
+          <div class="lbl tip" data-tip="Territórios alcançados - cidades ou unidades corporativas com campanha ativada.">Cidades / unidades<span class="tip-info">i</span></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-top">
+            <div class="kpi-icon ic-teal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#468182" stroke-width="2"><polygon points="6 3 20 12 6 21 6 3"/></svg></div>
+          </div>
+          <div class="val v-teal">6</div>
           <div class="lbl tip" data-tip="Jogos cadastrados na biblioteca, disponíveis para criação de campanhas (ativos e inativos).">Jogos no catálogo<span class="tip-info">i</span></div>
         </div>
         <div class="kpi">
           <div class="kpi-top">
             <div class="kpi-icon ic-green"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2a9a4a" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-            <span class="kpi-delta delta-up">+3</span>
           </div>
-          <div class="val v-green">12</div>
+          <div class="val v-green">1</div>
           <div class="lbl tip" data-tip="Campanhas em andamento - ativações territoriais de um jogo em uma cidade e suas escolas.">Campanhas ativas<span class="tip-info">i</span></div>
         </div>
-        <div class="kpi">
-          <div class="kpi-top">
-            <div class="kpi-icon ic-purple"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7c5cbf" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-            <span class="kpi-delta delta-up">+5</span>
-          </div>
-          <div class="val v-purple">18</div>
-          <div class="lbl tip" data-tip="Territórios alcançados - cidades ou unidades corporativas com campanha ativada.">Cidades / unidades<span class="tip-info">i</span></div>
-        </div>
+      </div>
+
+
+      <div class="roteiro">
+        <div class="rot-line">O operador de Painel Master:</div>
+        <ul class="rot-list">
+          <li>Cadastra empresa(s), tema de Jogo(s), cidade(s), jogo(s) e produtor(es)</li>
+          <li>Acompanha jogadores e produtores</li>
+          <li>Faz a emissão de credenciais</li>
+          <li>Monitora a performance</li>
+        </ul>
       </div>
 
       <!-- EMPRESAS -->
       <div class="section-heading section-heading--noline" id="empresas">
         <span>Empresas Provisionadas</span>
         <span style="flex:1; height:1px; background:rgba(70,129,130,0.2);"></span>
-        <button class="btn-primary" onclick="openModal('modal-empresa')">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          Cadastrar nova empresa
+        <button class="btn-primary" onclick="openModal('modal-empresa')" style="gap:6px;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Cadastrar empresa
         </button>
       </div>
       <div class="table-card">
@@ -653,7 +685,7 @@
               <td><div class="ent-cell"><div class="ent-logo lg-1">SO</div><div><div class="ent-name">Sotreq</div></div></div></td>
               <td><span class="sub-link">sotreq.thebluecity.app</span></td>
               <td><span class="pill pill-cultural tip" data-tip="Modo Cultural: a jornada virtual termina com uma exposição artística pública, onde artistas transformam os projetos dos alunos em obras.">Cultural</span></td>
-              <td>5</td>
+              <td>1</td>
               <td><span class="pill pill-active">Ativa</span></td>
               <td style="width:120px; text-align:right;"><div class="row-actions" style="justify-content:flex-end;">
                 <button class="icon-btn" onclick="openModal('modal-institucional')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg></button>
@@ -661,32 +693,10 @@
               </div></td>
             </tr>
             <tr>
-              <td><div class="ent-cell"><div class="ent-logo lg-2">ML</div><div><div class="ent-name">Mercado Livre</div></div></div></td>
-              <td><span class="sub-link">mercadolivre.thebluecity.app</span></td>
+              <td><div class="ent-cell"><div class="ent-logo lg-2">VG</div><div><div class="ent-name">Valgroup</div></div></div></td>
+              <td><span class="sub-link">valgroup.thebluecity.app</span></td>
               <td><span class="pill pill-cultural tip" data-tip="Modo Cultural: a jornada virtual termina com uma exposição artística pública, onde artistas transformam os projetos dos alunos em obras.">Cultural</span></td>
-              <td>4</td>
-              <td><span class="pill pill-active">Ativa</span></td>
-              <td style="width:120px; text-align:right;"><div class="row-actions" style="justify-content:flex-end;">
-                <button class="icon-btn" onclick="openModal('modal-institucional')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg></button>
-                <button class="icon-btn" onclick="openModal('modal-status')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg></button>
-              </div></td>
-            </tr>
-            <tr>
-              <td><div class="ent-cell"><div class="ent-logo lg-3">AE</div><div><div class="ent-name">Aegea</div></div></div></td>
-              <td><span class="sub-link">aegea.thebluecity.app</span></td>
-              <td><span class="pill pill-corp tip" data-tip="Modo Corporativo: a jornada termina com um evento interno, onde os melhores projetos dos colaboradores são apresentados na empresa.">Corporativa</span></td>
-              <td>3</td>
-              <td><span class="pill pill-active">Ativa</span></td>
-              <td style="width:120px; text-align:right;"><div class="row-actions" style="justify-content:flex-end;">
-                <button class="icon-btn" onclick="openModal('modal-institucional')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg></button>
-                <button class="icon-btn" onclick="openModal('modal-status')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg></button>
-              </div></td>
-            </tr>
-            <tr>
-              <td><div class="ent-cell"><div class="ent-logo lg-4">BA</div><div><div class="ent-name">BASF</div></div></div></td>
-              <td><span class="sub-link">basf.thebluecity.app</span></td>
-              <td><span class="pill pill-corp tip" data-tip="Modo Corporativo: a jornada termina com um evento interno, onde os melhores projetos dos colaboradores são apresentados na empresa.">Corporativa</span></td>
-              <td>0</td>
+              <td>1</td>
               <td><span class="pill pill-inactive">Inativa</span></td>
               <td style="width:120px; text-align:right;"><div class="row-actions" style="justify-content:flex-end;">
                 <button class="icon-btn" onclick="openModal('modal-institucional')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg></button>
@@ -709,7 +719,7 @@
         <div class="table-card table-sm" style="margin-bottom:0;">
           <div class="table-head" style="display:flex; align-items:center; justify-content:space-between;">
             <div><h3>Temas</h3></div>
-            <button class="btn-ghost" style="padding:5px 11px;font-size:11px;" onclick="openModal('modal-categorias')">Adicionar tema</button>
+            <button class="btn-primary" style="gap:6px;" onclick="openModal('modal-categorias')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Cadastrar tema</button>
           </div>
           <table>
             <thead>
@@ -722,28 +732,40 @@
             </thead>
             <tbody>
               <tr>
-                <td><span style="font-size:12px; font-weight:600; color:#1a2e3b;">Clima · GEE</span></td>
-                <td style="text-align:center;">2 jogos</td>
-                <td style="text-align:center;">5</td>
-                <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn" onclick="pedirExclusao(this,'tema','Clima · GEE')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
-              </tr>
-              <tr>
-                <td><span style="font-size:12px; font-weight:600; color:#1a2e3b;">Clima · Água</span></td>
+                <td><span style="font-size:12px; font-weight:600; color:#1a2e3b;">Clima</span></td>
                 <td style="text-align:center;">1 jogo</td>
                 <td style="text-align:center;">2</td>
-                <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn" onclick="pedirExclusao(this,'tema','Clima · Água')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
+                <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn" onclick="pedirExclusao(this,'tema','Clima')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
+              </tr>
+              <tr>
+                <td><span style="font-size:12px; font-weight:600; color:#1a2e3b;">Adaptação</span></td>
+                <td style="text-align:center;">1 jogo</td>
+                <td style="text-align:center;">0</td>
+                <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn" onclick="pedirExclusao(this,'tema','Adaptação')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
+              </tr>
+              <tr>
+                <td><span style="font-size:12px; font-weight:600; color:#1a2e3b;">Financiamento</span></td>
+                <td style="text-align:center;">1 jogo</td>
+                <td style="text-align:center;">0</td>
+                <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn" onclick="pedirExclusao(this,'tema','Financiamento')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
               </tr>
               <tr>
                 <td><span style="font-size:12px; font-weight:600; color:#1a2e3b;">Energia</span></td>
-                <td style="text-align:center;">2 jogos</td>
-                <td style="text-align:center;">3</td>
+                <td style="text-align:center;">1 jogo</td>
+                <td style="text-align:center;">0</td>
                 <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn" onclick="pedirExclusao(this,'tema','Energia')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
               </tr>
               <tr>
                 <td><span style="font-size:12px; font-weight:600; color:#1a2e3b;">Biodiversidade</span></td>
-                <td style="text-align:center;">2 jogos</td>
-                <td style="text-align:center;">2</td>
+                <td style="text-align:center;">1 jogo</td>
+                <td style="text-align:center;">0</td>
                 <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn" onclick="pedirExclusao(this,'tema','Biodiversidade')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
+              </tr>
+              <tr>
+                <td><span style="font-size:12px; font-weight:600; color:#1a2e3b;">Justiça Social</span></td>
+                <td style="text-align:center;">1 jogo</td>
+                <td style="text-align:center;">0</td>
+                <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn" onclick="pedirExclusao(this,'tema','Justiça Social')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
               </tr>
             </tbody>
           </table>
@@ -753,7 +775,7 @@
         <div class="table-card table-sm" style="margin-bottom:0;">
           <div class="table-head" style="display:flex; align-items:center; justify-content:space-between;">
             <div><h3>Cidades</h3></div>
-            <button class="btn-ghost" style="padding:5px 11px;font-size:11px;" onclick="openModal('modal-cidades')">Adicionar cidade</button>
+            <button class="btn-primary" style="gap:6px;" onclick="openModal('modal-cidades')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Cadastrar cidade</button>
           </div>
           <table>
             <thead>
@@ -768,26 +790,14 @@
               <tr>
                 <td><span style="font-size:12px; font-weight:600; color:#1a2e3b;">Palmas</span></td>
                 <td style="text-align:center;">TO</td>
-                <td style="text-align:center;">3</td>
+                <td style="text-align:center;">1</td>
                 <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn" onclick="pedirExclusao(this,'cidade','Palmas – TO')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
               </tr>
               <tr>
-                <td><span style="font-size:12px; font-weight:600; color:#1a2e3b;">São Paulo</span></td>
-                <td style="text-align:center;">SP</td>
-                <td style="text-align:center;">2</td>
-                <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn" onclick="pedirExclusao(this,'cidade','São Paulo – SP')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
-              </tr>
-              <tr>
-                <td><span style="font-size:12px; font-weight:600; color:#1a2e3b;">Belém</span></td>
-                <td style="text-align:center;">PA</td>
+                <td><span style="font-size:12px; font-weight:600; color:#1a2e3b;">Manaus</span></td>
+                <td style="text-align:center;">AM</td>
                 <td style="text-align:center;">1</td>
-                <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn" onclick="pedirExclusao(this,'cidade','Belém – PA')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
-              </tr>
-              <tr>
-                <td><span style="font-size:12px; font-weight:600; color:#1a2e3b;">Recife</span></td>
-                <td style="text-align:center;">PE</td>
-                <td style="text-align:center;">0</td>
-                <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn" onclick="pedirExclusao(this,'cidade','Recife – PE')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
+                <td style="text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn" onclick="pedirExclusao(this,'cidade','Manaus – AM')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
               </tr>
             </tbody>
           </table>
@@ -801,9 +811,9 @@
         <span style="flex:1; height:1px; background:rgba(70,129,130,0.2);"></span>
         <div style="display:flex; align-items:center; gap:8px;">
           <button class="btn-filter-bib active" id="bib-todos" onclick="filtrarBib('todos')">Todos (6)</button>
-          <button class="btn-filter-bib" id="bib-ativos" onclick="filtrarBib('ativo')">Ativos (5)</button>
-          <button class="btn-filter-bib" id="bib-inativos" onclick="filtrarBib('inativo')">Inativos (1)</button>
-          <button class="btn-primary" onclick="openModal('modal-jogo')" style="margin-left:8px;">
+          <button class="btn-filter-bib" id="bib-ativos" onclick="filtrarBib('ativo')">Ativos (1)</button>
+          <button class="btn-filter-bib" id="bib-inativos" onclick="filtrarBib('inativo')">Inativos (5)</button>
+          <button class="btn-primary" onclick="openModal('modal-jogo')" style="margin-left:8px; gap:6px;">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
             Cadastrar jogo
           </button>
@@ -812,75 +822,70 @@
 
       <div class="game-grid" id="game-grid">
         <div class="game-card" data-status="ativo">
-          <div class="game-cover gc-1">
+          <div class="game-cover th-clima">
+            <img src="https://the-blue-city.github.io/content/TermometroZero1.jpg" alt="Termômetro Zero" loading="lazy">
             <span class="status-dot sd-active">● Ativo</span>
-            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 13a3 3 0 1 0 6 0"/></svg>
           </div>
           <div class="game-body">
             <div class="game-title">Termômetro Zero</div>
-            <div class="game-theme">Clima · Redução de GEE</div>
+            <div class="game-theme">Clima</div>
             <div class="game-meta">Build Unity v1.4 · 3 etapas · 5.700–6.000 pts</div>
-            <div class="game-foot"><span class="campaigns"><strong>5</strong> campanhas</span></div>
-          </div>
-        </div>
-        <div class="game-card" data-status="ativo">
-          <div class="game-cover gc-2">
-            <span class="status-dot sd-active">● Ativo</span>
-            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.4"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/></svg>
-          </div>
-          <div class="game-body">
-            <div class="game-title">Ciclo da Água</div>
-            <div class="game-theme">Recursos Hídricos</div>
-            <div class="game-meta">Build Unity v1.1 · 3 etapas · 5.700–6.000 pts</div>
-            <div class="game-foot"><span class="campaigns"><strong>4</strong> campanhas</span></div>
+            <div class="game-foot"><span class="campaigns"><strong>2</strong> campanhas</span><button class="icon-btn game-toggle" title="Ativar ou desativar jogo" onclick="abrirStatusJogo(this,'Termômetro Zero')"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg></button></div>
           </div>
         </div>
         <div class="game-card" data-status="inativo">
-          <div class="game-cover gc-3">
+          <div class="game-cover th-ocean">
             <span class="status-dot sd-inactive">● Inativo</span>
-            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.4"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
           </div>
           <div class="game-body">
-            <div class="game-title">Mobilidade Urbana</div>
-            <div class="game-theme">Mobilidade</div>
+            <div class="game-title">Linha d'Água</div>
+            <div class="game-theme">Adaptação</div>
             <div class="game-meta">Em revisão · build aguardando upload</div>
-            <div class="game-foot"><span class="campaigns"><strong>0</strong> campanhas</span></div>
+            <div class="game-foot"><span class="campaigns"><strong>0</strong> campanhas</span><button class="icon-btn game-toggle" title="Ativar ou desativar jogo" onclick="abrirStatusJogo(this,'Linha d'Água')"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg></button></div>
           </div>
         </div>
-        <div class="game-card" data-status="ativo">
-          <div class="game-cover gc-1">
-            <span class="status-dot sd-active">● Ativo</span>
-            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.4"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        <div class="game-card" data-status="inativo">
+          <div class="game-cover th-finance">
+            <span class="status-dot sd-inactive">● Inativo</span>
           </div>
           <div class="game-body">
-            <div class="game-title">Energia Limpa</div>
+            <div class="game-title">Cofre Aberto</div>
+            <div class="game-theme">Financiamento</div>
+            <div class="game-meta">Em revisão · build aguardando upload</div>
+            <div class="game-foot"><span class="campaigns"><strong>0</strong> campanhas</span><button class="icon-btn game-toggle" title="Ativar ou desativar jogo" onclick="abrirStatusJogo(this,'Cofre Aberto')"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg></button></div>
+          </div>
+        </div>
+        <div class="game-card" data-status="inativo">
+          <div class="game-cover th-energy">
+            <span class="status-dot sd-inactive">● Inativo</span>
+          </div>
+          <div class="game-body">
+            <div class="game-title">Corrente Limpa</div>
             <div class="game-theme">Energia</div>
-            <div class="game-meta">Build Unity v1.2 · 3 etapas · 5.700–6.000 pts</div>
-            <div class="game-foot"><span class="campaigns"><strong>3</strong> campanhas</span></div>
+            <div class="game-meta">Em revisão · build aguardando upload</div>
+            <div class="game-foot"><span class="campaigns"><strong>0</strong> campanhas</span><button class="icon-btn game-toggle" title="Ativar ou desativar jogo" onclick="abrirStatusJogo(this,'Corrente Limpa')"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg></button></div>
           </div>
         </div>
-        <div class="game-card" data-status="ativo">
-          <div class="game-cover gc-2">
-            <span class="status-dot sd-active">● Ativo</span>
-            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.4"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+        <div class="game-card" data-status="inativo">
+          <div class="game-cover th-forest">
+            <span class="status-dot sd-inactive">● Inativo</span>
           </div>
           <div class="game-body">
-            <div class="game-title">Resíduo Zero</div>
-            <div class="game-theme">Gestão de Resíduos</div>
-            <div class="game-meta">Build Unity v1.0 · 3 etapas · 5.700–6.000 pts</div>
-            <div class="game-foot"><span class="campaigns"><strong>2</strong> campanhas</span></div>
-          </div>
-        </div>
-        <div class="game-card" data-status="ativo">
-          <div class="game-cover gc-3">
-            <span class="status-dot sd-active">● Ativo</span>
-            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.4"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg>
-          </div>
-          <div class="game-body">
-            <div class="game-title">Florestas Vivas</div>
+            <div class="game-title">Copa Cheia</div>
             <div class="game-theme">Biodiversidade</div>
-            <div class="game-meta">Build Unity v1.0 · 3 etapas · 5.700–6.000 pts</div>
-            <div class="game-foot"><span class="campaigns"><strong>1</strong> campanhas</span></div>
+            <div class="game-meta">Em revisão · build aguardando upload</div>
+            <div class="game-foot"><span class="campaigns"><strong>0</strong> campanhas</span><button class="icon-btn game-toggle" title="Ativar ou desativar jogo" onclick="abrirStatusJogo(this,'Copa Cheia')"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg></button></div>
+          </div>
+        </div>
+        <div class="game-card" data-status="inativo">
+          <div class="game-cover th-social">
+            <span class="status-dot sd-inactive">● Inativo</span>
+          </div>
+          <div class="game-body">
+            <div class="game-title">Ponto Cego</div>
+            <div class="game-theme">Justiça Social</div>
+            <div class="game-meta">Em revisão · build aguardando upload</div>
+            <div class="game-foot"><span class="campaigns"><strong>0</strong> campanhas</span><button class="icon-btn game-toggle" title="Ativar ou desativar jogo" onclick="abrirStatusJogo(this,'Ponto Cego')"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg></button></div>
           </div>
         </div>
       </div>
@@ -898,7 +903,7 @@
       <div class="section-heading section-heading--noline" id="governanca">
         <span>Produtores Culturais / Corporativos</span>
         <span style="flex:1; height:1px; background:rgba(70,129,130,0.2);"></span>
-        <button class="btn-ghost" style="padding:5px 11px;font-size:11px;" onclick="openModal('modal-produtores')">Adicionar produtor</button>
+        <button class="btn-primary" style="gap:6px;" onclick="openModal('modal-produtores')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Cadastrar produtor</button>
       </div>
       <div class="table-card" id="produtores">
         <div class="table-head">
@@ -917,84 +922,12 @@
           </thead>
           <tbody>
             <tr>
-              <td><div class="ent-cell"><div class="ent-logo lg-2">AM</div><div><div class="ent-name">Ana Martins</div><div class="ent-slug">ana.martins@sotreq.com</div><div class="ent-slug" style="color:#000000;">(63) 99801-2345</div></div></div></td>
+              <td><div class="ent-cell"><div class="ent-logo lg-2">VC</div><div><div class="ent-name" style="font-weight:500;">Vitor Artur Mendonça Rodolpho de Castro</div><div class="ent-slug">vitor.nd157@gmail.com</div><div class="ent-slug" style="color:#000000;">+55 63 9242-2391</div></div></div></td>
               <td><span class="sub-link">Sotreq</span></td>
-              <td>3</td>
+              <td>1</td>
               <td>hoje</td>
               <td><span class="pill pill-active">Ativo</span></td>
-              <td style="width:120px; text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn" onclick="openModal('modal-status-produtor')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg></button><button class="icon-btn" onclick="pedirExclusao(this,'produtor','Ana Martins')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
-            </tr>
-            <tr>
-              <td><div class="ent-cell"><div class="ent-logo lg-3">RC</div><div><div class="ent-name">Rafael Costa</div><div class="ent-slug">rafael.costa@sotreq.com</div><div class="ent-slug" style="color:#000000;">(63) 99802-3456</div></div></div></td>
-              <td><span class="sub-link">Sotreq</span></td>
-              <td>2</td>
-              <td>ontem</td>
-              <td><span class="pill pill-active">Ativo</span></td>
-              <td style="width:120px; text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn" onclick="openModal('modal-status-produtor')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg></button><button class="icon-btn" onclick="pedirExclusao(this,'produtor','Rafael Costa')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
-            </tr>
-            <tr>
-              <td><div class="ent-cell"><div class="ent-logo lg-1">JS</div><div><div class="ent-name">Julia Santos</div><div class="ent-slug">julia.santos@mercadolivre.com</div><div class="ent-slug" style="color:#000000;">(11) 99803-4567</div></div></div></td>
-              <td><span class="sub-link">Mercado Livre</span></td>
-              <td>2</td>
-              <td>3 dias atrás</td>
-              <td><span class="pill pill-active">Ativo</span></td>
-              <td style="width:120px; text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn" onclick="openModal('modal-status-produtor')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg></button><button class="icon-btn" onclick="pedirExclusao(this,'produtor','Julia Santos')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
-            </tr>
-            <tr>
-              <td><div class="ent-cell"><div class="ent-logo lg-4">MO</div><div><div class="ent-name">Marcos Oliveira</div><div class="ent-slug">marcos.oliveira@aegea.com.br</div><div class="ent-slug" style="color:#000000;">(61) 99804-5678</div></div></div></td>
-              <td><span class="sub-link">Aegea</span></td>
-              <td>1</td>
-              <td>1 semana atrás</td>
-              <td><span class="pill pill-active">Ativo</span></td>
-              <td style="width:120px; text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn" onclick="openModal('modal-status-produtor')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg></button><button class="icon-btn" onclick="pedirExclusao(this,'produtor','Marcos Oliveira')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- GOVERNANÇA INSTITUCIONAL -->
-      <div class="section-heading section-heading--noline" id="gov-institucional" style="margin-top:28px;">
-        <span>Governança Institucional</span>
-        <span style="flex:1; height:1px; background:rgba(70,129,130,0.2);"></span>
-      </div>
-
-<div class="table-card" style="margin-top:16px;">
-        <div class="table-head">
-          <div><h3>Governança Institucional</h3></div>
-        </div>
-        <table>
-          <thead>
-            <tr>
-              <th style="width:35%;"><span class="tip tip-right" data-tip="Empresa provisionada sob este Painel Master.">Empresa<span class="tip-info">i</span></span></th>
-              <th style="width:20%;"><span class="tip tip-right" data-tip="Status do subdomínio da empresa.">Status<span class="tip-info">i</span></span></th>
-              <th style="width:20%; text-align:center;"><span class="tip tip-right" data-tip="Total de campanhas criadas dentro do ambiente da empresa.">Campanhas<span class="tip-info">i</span></span></th>
-              <th style="width:25%; text-align:right;"><span class="tip tip-end" data-tip="Total de cidades ou unidades com campanha ativa na empresa.">Cidades / unidades<span class="tip-info">i</span></span></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><div class="ent-cell"><div class="ent-logo lg-1">SO</div><div><div class="ent-name">Sotreq</div></div></div></td>
-              <td><span class="pill pill-active">Ativa</span></td>
-              <td style="text-align:center;">5</td>
-              <td style="text-align:right;">8 cidades</td>
-            </tr>
-            <tr>
-              <td><div class="ent-cell"><div class="ent-logo lg-2">ML</div><div><div class="ent-name">Mercado Livre</div></div></div></td>
-              <td><span class="pill pill-active">Ativa</span></td>
-              <td style="text-align:center;">4</td>
-              <td style="text-align:right;">6 cidades</td>
-            </tr>
-            <tr>
-              <td><div class="ent-cell"><div class="ent-logo lg-3">AE</div><div><div class="ent-name">Aegea</div></div></div></td>
-              <td><span class="pill pill-active">Ativa</span></td>
-              <td style="text-align:center;">3</td>
-              <td style="text-align:right;">4 cidades</td>
-            </tr>
-            <tr>
-              <td><div class="ent-cell"><div class="ent-logo lg-4">BA</div><div><div class="ent-name">BASF</div></div></div></td>
-              <td><span class="pill pill-inactive">Inativa</span></td>
-              <td style="text-align:center;">0</td>
-              <td style="text-align:right;">—</td>
+              <td style="width:120px; text-align:right;"><div class="row-actions" style="justify-content:flex-end;"><button class="icon-btn" onclick="openModal('modal-status-produtor')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg></button><button class="icon-btn" onclick="pedirExclusao(this,'produtor','Vitor Artur Mendonça Rodolpho de Castro')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></div></td>
             </tr>
           </tbody>
         </table>
@@ -1002,31 +935,26 @@
 
       <!-- ACOMPANHAMENTO DOS JOGADORES -->
       <div class="section-heading section-heading--noline" id="acompanhamento">
-        <span>Acompanhamento dos Jogadores</span>
+        <span>Acompanhamento de Jogadores</span>
         <span style="flex:1; height:1px; background:rgba(70,129,130,0.2);"></span>
       </div>
 
       <div class="acomp-funnel">
-        <div class="fstep f-blue"><div class="fs-val">9.840</div><div class="fs-lbl">Contas criadas</div><div class="fs-pct">100%</div></div>
-        <div class="fstep f-teal"><div class="fs-val">9.210</div><div class="fs-lbl">Começaram a jogar</div><div class="fs-pct">94%</div></div>
-        <div class="fstep f-bronze"><div class="fs-val">8.110</div><div class="fs-lbl">Nível 1 · Bronze</div><div class="fs-pct">82%</div></div>
-        <div class="fstep f-prata"><div class="fs-val">5.940</div><div class="fs-lbl">Nível 2 · Prata</div><div class="fs-pct">60%</div></div>
-        <div class="fstep f-ouro"><div class="fs-val">4.180</div><div class="fs-lbl">Nível 3 · Certificado</div><div class="fs-pct">42%</div></div>
-        <div class="fstep f-roxo"><div class="fs-val">3.020</div><div class="fs-lbl">Projeto enviado</div><div class="fs-pct">31%</div></div>
+        <div class="fstep f-blue"><div class="fs-val">1.150</div><div class="fs-lbl">Contas criadas</div><div class="fs-pct">100%</div></div>
+        <div class="fstep f-teal"><div class="fs-val">1.080</div><div class="fs-lbl">Começaram a jogar</div><div class="fs-pct">94%</div></div>
+        <div class="fstep f-bronze"><div class="fs-val">940</div><div class="fs-lbl">Nível 1 · Bronze</div><div class="fs-pct">82%</div></div>
+        <div class="fstep f-prata"><div class="fs-val">690</div><div class="fs-lbl">Nível 2 · Prata</div><div class="fs-pct">60%</div></div>
+        <div class="fstep f-ouro"><div class="fs-val">530</div><div class="fs-lbl">Nível 3 · Certificado</div><div class="fs-pct">46%</div></div>
+        <div class="fstep f-roxo"><div class="fs-val">380</div><div class="fs-lbl">Projeto enviado</div><div class="fs-pct">33%</div></div>
       </div>
 
-      <div class="acomp-note">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0; margin-top:1px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-        <span>Visão de governança, agregada por produtor e campanha. Nenhum dado individual de aluno é exibido, e as ações de reengajamento (lembretes) são executadas no Painel do Produtor.</span>
+      <!-- ACOMPANHAMENTO DE PRODUTORES -->
+      <div class="section-heading section-heading--noline" id="acomp-produtores" style="margin-top:28px;">
+        <span>Acompanhamento de Produtores</span>
+        <span style="flex:1; height:1px; background:rgba(70,129,130,0.2);"></span>
       </div>
 
-      <div class="table-card table-card--open">
-        <div class="table-head">
-          <div>
-            <h3>Funil por produtor</h3>
-            <p style="font-size:11px; color:#000000; margin-top:4px;">Comparação entre os produtores do ecossistema</p>
-          </div>
-        </div>
+      <div class="table-card table-card--open" style="margin-top:16px;">
         <table>
           <thead>
             <tr>
@@ -1040,36 +968,12 @@
           </thead>
           <tbody>
             <tr>
-              <td><div class="ent-cell"><div class="ent-logo lg-2">AM</div><div><div class="ent-name">Ana Martins</div><div class="ent-slug">Sotreq</div></div></div></td>
-              <td style="text-align:center;">3</td>
-              <td style="text-align:center;">3.450</td>
-              <td style="text-align:center;">46%</td>
-              <td style="text-align:center;">1.580</td>
-              <td style="text-align:right;">1.120</td>
-            </tr>
-            <tr>
-              <td><div class="ent-cell"><div class="ent-logo lg-3">RC</div><div><div class="ent-name">Rafael Costa</div><div class="ent-slug">Sotreq</div></div></div></td>
-              <td style="text-align:center;">2</td>
-              <td style="text-align:center;">2.380</td>
-              <td style="text-align:center;">45%</td>
-              <td style="text-align:center;">1.060</td>
-              <td style="text-align:right;">760</td>
-            </tr>
-            <tr>
-              <td><div class="ent-cell"><div class="ent-logo lg-1">JS</div><div><div class="ent-name">Julia Santos</div><div class="ent-slug">Mercado Livre</div></div></div></td>
-              <td style="text-align:center;">2</td>
-              <td style="text-align:center;">2.610</td>
-              <td style="text-align:center;">44%</td>
-              <td style="text-align:center;">1.150</td>
-              <td style="text-align:right;">840</td>
-            </tr>
-            <tr>
-              <td><div class="ent-cell"><div class="ent-logo lg-4">MO</div><div><div class="ent-name">Marcos Oliveira</div><div class="ent-slug">Aegea</div></div></div></td>
+              <td><div class="ent-cell"><div class="ent-logo lg-2">VC</div><div><div class="ent-name" style="font-weight:500;">Vitor Artur Mendonça Rodolpho de Castro</div><div class="ent-slug">Sotreq</div></div></div></td>
               <td style="text-align:center;">1</td>
-              <td style="text-align:center;">1.400</td>
-              <td style="text-align:center;">28%</td>
-              <td style="text-align:center;">390</td>
-              <td style="text-align:right;">300</td>
+              <td style="text-align:center;">1.150</td>
+              <td style="text-align:center;">46%</td>
+              <td style="text-align:center;">530</td>
+              <td style="text-align:right;">380</td>
             </tr>
           </tbody>
         </table>
@@ -1082,11 +986,10 @@
       </div>
 
       <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px; flex-wrap:wrap;">
-        <span style="font-size:11px; font-weight:600; color:#000000;">Campanha:</span>
-        <select id="emit-campanha" onchange="updateEmit()" style="font-family:'Montserrat',sans-serif; font-size:12px; font-weight:600; color:#1a2e3b; background:white; border:1.5px solid #dde4ef; border-radius:8px; padding:7px 14px; cursor:pointer;">
+        <span style="font-size:11px; font-weight:400; color:#000000;">Campanha:</span>
+        <select id="emit-campanha" onchange="updateEmit()" style="font-family:'Montserrat',sans-serif; font-size:12px; font-weight:400; color:#1a2e3b; background:white; border:1.5px solid #dde4ef; border-radius:8px; padding:7px 14px; cursor:pointer;">
           <option>Termômetro Zero · Palmas, TO</option>
-          <option>Ciclo da Água · Belém, PA</option>
-          <option>Energia Limpa · Salvador, BA</option>
+          <option>Termômetro Zero · Manaus, AM</option>
         </select>
       </div>
 
@@ -1142,21 +1045,19 @@
 
       <!-- Filtros: empresa + período -->
       <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px; flex-wrap:wrap;">
-        <span style="font-size:11px; font-weight:600; color:#000000;">Empresa:</span>
-        <select id="empresa-filter" onchange="filtrarEmpresa()" style="font-family:'Montserrat',sans-serif; font-size:12px; font-weight:600; color:#1a2e3b; background:white; border:1.5px solid #dde4ef; border-radius:8px; padding:7px 14px; cursor:pointer;">
+        <span style="font-size:11px; font-weight:700; color:#000000;">Empresa:</span>
+        <select id="empresa-filter" onchange="filtrarEmpresa()" style="font-family:'Montserrat',sans-serif; font-size:12px; font-weight:400; color:#1a2e3b; background:white; border:1.5px solid #dde4ef; border-radius:8px; padding:7px 14px; cursor:pointer;">
           <option value="todas">Todas as empresas</option>
           <option value="sotreq">Sotreq</option>
-          <option value="mercadolivre">Mercado Livre</option>
-          <option value="aegea">Aegea</option>
-          <option value="basf">BASF</option>
+          <option value="valgroup">Valgroup</option>
         </select>
         <div style="width:1px; height:24px; background:#e0e8f0;"></div>
-        <span style="font-size:11px; font-weight:600; color:#000000;">Período:</span>
+        <span style="font-size:11px; font-weight:700; color:#000000;">Período:</span>
 
         <!-- Dropdown trigger -->
         <div style="position:relative;" id="periodo-wrapper">
           <button onclick="togglePeriodoDropdown()" id="periodo-trigger"
-            style="font-family:'Montserrat',sans-serif; font-size:12px; font-weight:600; color:#1a2e3b; background:white; border:1.5px solid #dde4ef; border-radius:8px; padding:7px 14px; cursor:pointer; display:flex; align-items:center; gap:8px; min-width:180px; justify-content:space-between;">
+            style="font-family:'Montserrat',sans-serif; font-size:12px; font-weight:400; color:#1a2e3b; background:white; border:1.5px solid #dde4ef; border-radius:8px; padding:7px 14px; cursor:pointer; display:flex; align-items:center; gap:8px; min-width:180px; justify-content:space-between;">
             <span id="periodo-trigger-label">Selecionar período</span>
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
@@ -1241,7 +1142,7 @@
 
       <!-- Botão imprimir -->
       <div id="print-btn-wrapper" style="display:flex; justify-content:flex-end; margin-top:24px;">
-        <button onclick="imprimirPerformance()" style="font-family:'Montserrat',sans-serif; font-size:13px; font-weight:600; color:#2858a0; background:white; border:1.5px solid #2858a0; border-radius:8px; padding:10px 20px; cursor:pointer; display:flex; align-items:center; gap:8px;">
+        <button onclick="imprimirPerformance()" style="font-family:'Montserrat',sans-serif; font-size:11.5px; font-weight:600; color:#2858a0; background:white; border:1.5px solid #2858a0; border-radius:8px; padding:7px 13px; cursor:pointer; display:flex; align-items:center; gap:8px;">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
           Imprimir relatório de performance
         </button>
@@ -1259,8 +1160,7 @@
     <div class="modal">
       <div class="modal-head">
         <div>
-          <h2>Cadastrar nova empresa</h2>
-          <p>Etapa 0 · Provisionamento de uma nova empresa</p>
+          <h2>Cadastrar empresa</h2>
         </div>
         <button class="modal-close" onclick="closeModal('modal-empresa')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
       </div>
@@ -1425,7 +1325,7 @@
       <div class="modal-head">
         <div>
           <h2>Status do produtor</h2>
-          <p>Ana Martins · Sotreq</p>
+          <p>Vitor Artur Mendonça Rodolpho de Castro · Sotreq</p>
         </div>
         <button class="modal-close" onclick="closeModal('modal-status-produtor')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
       </div>
@@ -1451,12 +1351,12 @@
   </div>
 
 
-  <!-- MODAL: Adicionar cidade -->
+  <!-- MODAL: Cadastrar cidade -->
   <div class="modal-overlay" id="modal-cidades">
     <div class="modal" style="max-width:420px;">
       <div class="modal-head">
         <div>
-          <h2>Adicionar cidade</h2>
+          <h2>Cadastrar cidade</h2>
           <p>Cidades disponíveis globalmente na plataforma</p>
         </div>
         <button class="modal-close" onclick="closeModal('modal-cidades')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
@@ -1488,13 +1388,44 @@
     </div>
   </div>
 
+  <!-- MODAL: Ativar / desativar jogo -->
+  <div class="modal-overlay" id="modal-status-jogo">
+    <div class="modal" style="max-width:440px;">
+      <div class="modal-head">
+        <div>
+          <h2>Status do jogo</h2>
+          <p id="sj-nome">–</p>
+        </div>
+        <button class="modal-close" onclick="closeModal('modal-status-jogo')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      </div>
+      <div class="modal-body">
+        <div class="toggle-row">
+          <div>
+            <div class="tr-title">Ativo para campanhas</div>
+            <div class="tr-desc" id="sj-desc">Ativo · pode ser usado em novas campanhas</div>
+          </div>
+          <label class="switch"><input type="checkbox" id="sj-switch"><span class="track"></span></label>
+        </div>
+        <ul class="hint" style="font-size:11px; line-height:1.8; padding-left:18px; margin-top:14px;">
+          <li>Ativar exige build Unity enviada e os 3 checkpoints funcionando</li>
+          <li>Ao desativar, o jogo some da criação de campanhas</li>
+          <li>As campanhas em andamento e o histórico são preservados</li>
+        </ul>
+      </div>
+      <div class="modal-foot">
+        <button class="btn-ghost" onclick="closeModal('modal-status-jogo')">Cancelar</button>
+        <div class="spacer"></div>
+        <button class="btn-primary" onclick="aplicarStatusJogo()">Aplicar</button>
+      </div>
+    </div>
+  </div>
+
   <!-- MODAL: Cadastrar jogo + upload Unity -->
   <div class="modal-overlay" id="modal-jogo">
     <div class="modal">
       <div class="modal-head">
         <div>
           <h2>Cadastrar jogo na biblioteca</h2>
-          <p>Fases 2 e 3 · Registro do jogo, upload do build Unity e disponibilização</p>
         </div>
         <button class="modal-close" onclick="closeModal('modal-jogo')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
       </div>
@@ -1504,20 +1435,24 @@
           <input type="text" placeholder="Ex.: Termômetro Zero">
         </div>
         <div class="field">
-          <label>Categoria / tema <span class="req">*</span></label>
+          <label>Tema <span class="req">*</span></label>
           <select>
             <option>Clima</option>
+            <option>Adaptação</option>
+            <option>Financiamento</option>
             <option>Energia</option>
             <option>Biodiversidade</option>
-            <option>Mobilidade</option>
-            <option>Gestão de Resíduos</option>
-            <option>Recursos Hídricos</option>
-            <option>Agricultura</option>
+            <option>Justiça Social</option>
           </select>
         </div>
         <div class="field">
+          <label>Duração do jogo <span class="req">*</span></label>
+          <input type="text" placeholder="Ex.: 20 min">
+          <div class="hint" style="font-size:10.5px; margin-top:5px;">Tempo estimado de jogo, exibido ao jogador antes de iniciar</div>
+        </div>
+        <div class="field">
           <label>Descrição</label>
-          <textarea placeholder="Descrição exibida no front-end do jogo"></textarea>
+          <textarea placeholder="Descrição exibida na home"></textarea>
         </div>
         <div class="field">
           <label>Imagem de capa</label>
@@ -1537,7 +1472,7 @@
         </div>
         <div class="toggle-row">
           <div>
-            <div class="tr-title">Disponibilizar para campanhas</div>
+            <div class="tr-title">Ativar para campanhas</div>
             <div class="tr-desc">Ativar permite criar campanhas com este jogo</div>
           </div>
           <label class="switch"><input type="checkbox"><span class="track"></span></label>
@@ -1551,24 +1486,23 @@
     </div>
   </div>
 
-  <!-- MODAL: Categorias e Temas -->
+  <!-- MODAL: Temas -->
   <div class="modal-overlay" id="modal-categorias">
     <div class="modal">
       <div class="modal-head">
         <div>
-          <h2>Categorias e Temas</h2>
-          <p>Fase 4 · Organização da biblioteca de jogos por tema</p>
+          <h2>Temas</h2>
         </div>
         <button class="modal-close" onclick="closeModal('modal-categorias')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
       </div>
       <div class="modal-body">
         <div class="chip-list" id="chip-list">
           <span class="chip">Clima <button class="chip-x" onclick="this.parentElement.remove()">×</button></span>
+          <span class="chip">Adaptação <button class="chip-x" onclick="this.parentElement.remove()">×</button></span>
+          <span class="chip">Financiamento <button class="chip-x" onclick="this.parentElement.remove()">×</button></span>
           <span class="chip">Energia <button class="chip-x" onclick="this.parentElement.remove()">×</button></span>
           <span class="chip">Biodiversidade <button class="chip-x" onclick="this.parentElement.remove()">×</button></span>
-          <span class="chip">Mobilidade <button class="chip-x" onclick="this.parentElement.remove()">×</button></span>
-          <span class="chip">Gestão de Resíduos <button class="chip-x" onclick="this.parentElement.remove()">×</button></span>
-          <span class="chip">Recursos Hídricos <button class="chip-x" onclick="this.parentElement.remove()">×</button></span>
+          <span class="chip">Justiça Social <button class="chip-x" onclick="this.parentElement.remove()">×</button></span>
         </div>
         <div class="field" style="margin-bottom:0;">
           <label>Adicionar novo tema</label>
@@ -1591,7 +1525,7 @@
     <div class="modal" style="max-width:460px;">
       <div class="modal-head">
         <div>
-          <h2>Adicionar produtor</h2>
+          <h2>Cadastrar produtor</h2>
           <p>Novo acesso ao Painel do Produtor Cultural / Gestor Corporativo</p>
         </div>
         <button class="modal-close" onclick="closeModal('modal-produtores')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
@@ -1599,7 +1533,7 @@
       <div class="modal-body">
         <div class="field">
           <label>Nome completo <span style="color:#e05a2b;">*</span></label>
-          <input type="text" placeholder="Ex.: Ana Martins" style="width:100%; border:1.5px solid #dde4ef; border-radius:9px; padding:10px 13px; font-size:13px; font-family:'Montserrat',sans-serif; color:#1a2e3b;">
+          <input type="text" placeholder="Ex.: Vitor Castro" style="width:100%; border:1.5px solid #dde4ef; border-radius:9px; padding:10px 13px; font-size:13px; font-family:'Montserrat',sans-serif; color:#1a2e3b;">
         </div>
         <div class="field">
           <label>E-mail <span style="color:#e05a2b;">*</span></label>
@@ -1614,16 +1548,14 @@
           <select style="width:100%; border:1.5px solid #dde4ef; border-radius:9px; padding:10px 13px; font-size:13px; font-family:'Montserrat',sans-serif; color:#1a2e3b; background:white;">
             <option value="">Selecionar empresa</option>
             <option>Sotreq</option>
-            <option>Mercado Livre</option>
-            <option>Aegea</option>
-            <option>BASF</option>
+            <option>Valgroup</option>
           </select>
         </div>
       </div>
       <div class="modal-foot">
         <button class="btn-ghost" onclick="closeModal('modal-produtores')">Cancelar</button>
         <div class="spacer"></div>
-        <button class="btn-primary">Adicionar produtor</button>
+        <button class="btn-primary">Cadastrar produtor</button>
       </div>
     </div>
   </div>
@@ -1670,9 +1602,8 @@
 
     // Emissão de credenciais (POK) - dados por campanha
     var emitData = {
-      'Termômetro Zero · Palmas, TO': { cidade: 'Palmas, TO', escolas: ['ETEC Palmas','Colégio Girassol','CEM Taquaralto','EE Aurora'], n: { bronze:[180,2310], prata:[140,1620], ouro:[95,1150] } },
-      'Ciclo da Água · Belém, PA':    { cidade: 'Belém, PA',   escolas: ['EE Tapajós','Colégio Amazônia','ETE Belém'],                 n: { bronze:[210,1980], prata:[160,1340], ouro:[110,910] } },
-      'Energia Limpa · Salvador, BA': { cidade: 'Salvador, BA',escolas: ['Colégio Bahia','EE Pelourinho','CETEP Salvador'],            n: { bronze:[150,1620], prata:[120,1100], ouro:[80,720] } }
+      'Termômetro Zero · Palmas, TO':  { cidade: 'Palmas, TO', escolas: ['IFTO Palmas','UFT Palmas','CEM Taquaralto','EE Aurora'], n: { bronze:[90,940], prata:[70,690], ouro:[50,530] } },
+      'Termômetro Zero · Manaus, AM':  { cidade: 'Manaus, AM', escolas: ['EE Amazonas','Colégio Rio Negro','IFAM Manaus'],           n: { bronze:[95,1070], prata:[75,780], ouro:[55,570] } }
     };
     var emitRuntime = {};
     var CAL_ICON = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>';
@@ -1771,7 +1702,7 @@
         p.classList.toggle('active', +p.dataset.pane===empCur);
       });
       document.getElementById('emp-back').style.visibility = empCur===1 ? 'hidden' : 'visible';
-      document.getElementById('emp-next').textContent = empCur===3 ? 'Provisionar empresa' : 'Continuar';
+      document.getElementById('emp-next').textContent = empCur===3 ? 'Cadastrar' : 'Continuar';
     }
     function pickType(el, type){
       el.parentElement.querySelectorAll('.radio-card').forEach(function(c){ c.classList.remove('sel'); });
@@ -1926,6 +1857,38 @@
 </script>
 
 <script>
+  let jogoAlvo = null;
+
+  function abrirStatusJogo(btn, nome) {
+    jogoAlvo = btn.closest('.game-card');
+    const ativo = jogoAlvo.getAttribute('data-status') === 'ativo';
+    document.getElementById('sj-nome').textContent = nome;
+    document.getElementById('sj-switch').checked = ativo;
+    document.getElementById('sj-desc').textContent = ativo
+      ? 'Ativo · pode ser usado em novas campanhas'
+      : 'Inativo · indisponível para novas campanhas';
+    openModal('modal-status-jogo');
+  }
+
+  function aplicarStatusJogo() {
+    if (!jogoAlvo) return;
+    const ativo = document.getElementById('sj-switch').checked;
+    jogoAlvo.setAttribute('data-status', ativo ? 'ativo' : 'inativo');
+    const pill = jogoAlvo.querySelector('.status-dot');
+    pill.className = 'status-dot ' + (ativo ? 'sd-active' : 'sd-inactive');
+    pill.textContent = ativo ? '● Ativo' : '● Inativo';
+    atualizarContadoresBib();
+    closeModal('modal-status-jogo');
+  }
+
+  function atualizarContadoresBib() {
+    const cards = document.querySelectorAll('#game-grid .game-card');
+    const ativos = [...cards].filter(c => c.getAttribute('data-status') === 'ativo').length;
+    document.getElementById('bib-todos').textContent = 'Todos (' + cards.length + ')';
+    document.getElementById('bib-ativos').textContent = 'Ativos (' + ativos + ')';
+    document.getElementById('bib-inativos').textContent = 'Inativos (' + (cards.length - ativos) + ')';
+  }
+
   function filtrarBib(filtro) {
     document.querySelectorAll('#game-grid .game-card').forEach(c => {
       c.style.display = (filtro === 'todos' || c.getAttribute('data-status') === filtro) ? '' : 'none';
@@ -1957,7 +1920,7 @@
     #periodo-clear-btn, #empresa-filter,
     #print-btn-wrapper, .pag-btn, .pagination,
     #empresas, #catalogo, #biblioteca, #governanca,
-    #gov-institucional { display: none !important; }
+    #acomp-produtores { display: none !important; }
     .canvas { padding: 8px 24px; }
     .gov-card { break-inside: avoid; border: 1px solid #ccc; }
     .main { margin: 0; width: 100%; }

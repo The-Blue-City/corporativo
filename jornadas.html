@@ -162,6 +162,13 @@
   .badges-line { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; }
   .badges-line .lbl { font-size: 12px; font-weight: 600; color: var(--ink); }
   .badges-line .set { display: flex; gap: 3px; }
+  .mission:has([data-tip]:hover) { overflow: visible; }
+  .mission-thumb[data-tip]::after { bottom: auto; top: 50%; transform: translate(-50%, -50%); }
+  .game-view[data-tip]::after { bottom: auto; top: 50%; transform: translate(-50%, -50%); }
+  .game-view[data-tip]::before { display: none; }
+  .mission-thumb[data-tip]::before { display: none; }
+  .mission-title[data-tip] { display: inline-block; }
+
   .mission-btn {
     margin-top: auto; width: 100%;
     display: flex; align-items: center; justify-content: center; gap: 8px;
@@ -280,7 +287,7 @@
 
 <!-- ================= HERO: GAME EM DESTAQUE ================= -->
 <section class="jhero">
-  <div class="game-view">
+  <div class="game-view" data-tip="Jogo “puxado” do cadastro do jogo no Painel Master (Build Unity)">
     <img src="https://the-blue-city.github.io/content/TermometroZero1.jpg" alt="Termômetro Zero">
   </div>
 
@@ -321,16 +328,15 @@
 
     <!-- Card 1 -->
     <div class="mission">
-      <div class="mission-thumb th-clima">
+      <div class="mission-thumb th-clima" data-tip="Imagem “puxada” do cadastro do jogo no Painel Master (imagem da capa)">
         <img src="https://the-blue-city.github.io/content/TermometroZero1.jpg" alt="Termômetro Zero" loading="lazy">
       </div>
       <div class="mission-body">
-        <div class="mission-title">Termômetro Zero</div>
-        <span class="pill-tema">Clima</span>
-        <p class="mission-desc">No Termômetro Zero, seu desafio é cortar as emissões de gases de efeito estufa e descobrir como cada decisão ajuda a esfriar o planeta e a construir cidades mais resilientes.</p>
+        <div class="mission-title" data-tip="Nome do jogo “puxado” do cadastro do jogo no Painel Master (título do jogo)">Termômetro Zero</div>
+        <span class="pill-tema" data-tip="Tema do jogo “puxado” do cadastro do jogo no Painel Master (tema)">Clima</span>
+        <p class="mission-desc" data-tip="Descrição do jogo “puxada” do cadastro do jogo no Painel Master (descrição)">No Termômetro Zero, seu desafio é cortar as emissões de gases de efeito estufa e descobrir como cada decisão ajuda a esfriar o planeta e a construir cidades mais resilientes.</p>
         <div class="mission-meta">
-          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 20 min de jogo</span>
-          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> 0 jogadores</span>
+          <span data-tip="Duração de jogo “puxada” do cadastro do jogo no Painel Master (duração de jogo)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 20 min de jogo</span>
         </div>
         <div class="badges-line">
           <span class="lbl">Badges disponíveis:</span>
@@ -356,7 +362,6 @@
         <p class="mission-desc">Na Linha d'Água, seu desafio é preparar a cidade para o que já está chegando e descobrir como cada obra, cada árvore e cada alerta muda o destino de quem vive nas áreas de risco.</p>
         <div class="mission-meta">
           <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 30 min</span>
-          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> 0 jogadores</span>
         </div>
         <div class="badges-line">
           <span class="lbl">Badges disponíveis:</span>
@@ -382,7 +387,6 @@
         <p class="mission-desc">No Cofre Aberto, seu desafio é destravar recursos para quem sente o clima primeiro e descobrir como cada decisão de investimento define quais soluções saem do papel.</p>
         <div class="mission-meta">
           <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 35 min</span>
-          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> 0 jogadores</span>
         </div>
         <div class="badges-line">
           <span class="lbl">Badges disponíveis:</span>
@@ -408,7 +412,6 @@
         <p class="mission-desc">Na Corrente Limpa, seu desafio é trocar a matriz energética sem apagar as luzes e descobrir como cada escolha de tecnologia acelera a transição para uma economia de baixo carbono.</p>
         <div class="mission-meta">
           <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 28 min</span>
-          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> 0 jogadores</span>
         </div>
         <div class="badges-line">
           <span class="lbl">Badges disponíveis:</span>
@@ -434,7 +437,6 @@
         <p class="mission-desc">Na Copa Cheia, seu desafio é conter o avanço sobre a floresta e descobrir como cada espécie protegida sustenta o equilíbrio de todo o sistema.</p>
         <div class="mission-meta">
           <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 32 min</span>
-          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> 0 jogadores</span>
         </div>
         <div class="badges-line">
           <span class="lbl">Badges disponíveis:</span>
@@ -460,7 +462,6 @@
         <p class="mission-desc">No Ponto Cego, seu desafio é enxergar quem a transição climática deixa para trás e descobrir como distribuir custos e benefícios de forma que ninguém pague a conta sozinho.</p>
         <div class="mission-meta">
           <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 33 min</span>
-          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> 0 jogadores</span>
         </div>
         <div class="badges-line">
           <span class="lbl">Badges disponíveis:</span>
