@@ -150,8 +150,30 @@
   .periodo-quick-gal.active { background: #2858a0; color: white; border-color: #2858a0; }
 
   /* RODAPÉ */
-  .footer { background: #2858a0; color: #fff; padding: 22px 40px; }
-  .footer-bottom { max-width: 1140px; margin: 0 auto; font-size: 12px; color: rgba(255,255,255,0.85); text-align: center; }
+  .footer { background: #2858a0; color: #fff; padding: 40px 40px 28px; }
+  .credits-inner {
+    max-width: 1140px; margin: 0 auto 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 26px; flex-wrap: wrap;
+  }
+  .credit-item { display: flex; align-items: center; gap: 12px; }
+  .credit-item .rot {
+    font-size: 10.5px; font-weight: 700; letter-spacing: 0.8px;
+    text-transform: uppercase; color: #ffffff; white-space: nowrap;
+  }
+  .credit-item img { height: 30px; width: auto; display: block; }
+  .credit-item .tbc { height: 26px; }
+  .credit-item .rouanet { height: 46px; }
+  .credit-sep { width: 1px; height: 34px; background: rgba(255,255,255,0.28); }
+  .footer-bottom {
+    max-width: 1140px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap;
+    font-size: 12px; color: rgba(255,255,255,0.85);
+    border-top: 1px solid rgba(255,255,255,0.18); padding-top: 20px;
+  }
+  .footer-bottom a { color: #ffffff; font-weight: 600; }
+  .footer-bottom a:hover { text-decoration: underline; }
 
   /* RESPONSIVO */
   @media (max-width: 980px) {
@@ -189,8 +211,8 @@
   <h1>Galeria de <em>Projetos</em></h1>
   <p class="hero-sub">Projetos reais enviados por participantes das jornadas The Blue City</p>
   <div class="stats-row">
-    <div class="stat-box"><div class="val val-blue">2.000</div><div class="lbl">Participantes</div></div>
-    <div class="stat-box"><div class="val val-purple">1.800</div><div class="lbl">Jornadas concluídas</div></div>
+    <div class="stat-box"><div class="val val-blue">2.000</div><div class="lbl">Jogadores Ativos</div></div>
+    <div class="stat-box"><div class="val val-purple">1.300</div><div class="lbl">Jornadas concluídas</div></div>
     <div class="stat-box"><div class="val val-green">105</div><div class="lbl">Projetos publicados</div></div>
     <div class="stat-box"><div class="val val-teal">1</div><div class="lbl">Cidade</div></div>
   </div>
@@ -214,7 +236,7 @@
     <div style="width:1px; height:24px; background:#e0e8f0;"></div>
     <div style="position:relative;" id="periodo-wrapper-gal">
       <button onclick="togglePeriodoGal()" id="periodo-trigger-gal"
-        style="font-family:'Montserrat',sans-serif; font-size:12px; font-weight:600; color:#1a2e3b; background:white; border:1.5px solid #dde4ef; border-radius:8px; padding:7px 14px; cursor:pointer; display:flex; align-items:center; gap:8px; min-width:170px; justify-content:space-between;">
+        style="font-family:'Montserrat',sans-serif; font-size:12px; font-weight:400; color:#1a2e3b; background:white; border:1.5px solid #dde4ef; border-radius:8px; padding:7px 14px; cursor:pointer; display:flex; align-items:center; gap:8px; min-width:170px; justify-content:space-between;">
         <span id="periodo-label-gal">Selecionar período</span>
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
       </button>
@@ -428,7 +450,37 @@
 
 
 <footer class="footer">
-  <div class="footer-bottom">© 2026 The Blue City · Missão Cidade Azul. Todos os direitos reservados.</div>
+  <div class="credits-inner">
+
+    <div class="credit-item">
+      <img class="rouanet" src="https://the-blue-city.github.io/content/logo-rouanet-positivo.png" alt="Lei Rouanet">
+    </div>
+
+    <div class="credit-sep"></div>
+
+    <div class="credit-item">
+      <span class="rot">Patrocínio</span>
+      <img src="https://the-blue-city.github.io/content/logo-sotreq.png" alt="Sotreq">
+    </div>
+
+    <div class="credit-sep"></div>
+
+    <div class="credit-item">
+      <span class="rot">Realização</span>
+      <img class="tbc" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAyMDQuMSAzNi44Ij4KICA8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMzAuNi4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogMi4xLjQgQnVpbGQgMTA5KSAgLS0+CiAgPGRlZnM+CiAgICA8c3R5bGU+CiAgICAgIC5zdDAgewogICAgICAgIGZpbGw6ICNmZmY7CiAgICAgIH0KCiAgICAgIC5zdDEgewogICAgICAgIGZpbGw6ICMwMDE1MjI7CiAgICAgIH0KCiAgICAgIC5zdDIgewogICAgICAgIGZpbGw6ICMwYzllZDk7CiAgICAgIH0KICAgIDwvc3R5bGU+CiAgPC9kZWZzPgogIDxnPgogICAgPGNpcmNsZSBjbGFzcz0ic3QxIiBjeD0iMTguNCIgY3k9IjE4LjQiIHI9IjE4LjQiLz4KICAgIDxnPgogICAgICA8cmVjdCBjbGFzcz0ic3QwIiB4PSI3LjgiIHk9IjEzLjIiIHdpZHRoPSIyMC44IiBoZWlnaHQ9IjMuMiIvPgogICAgICA8cGF0aCBjbGFzcz0ic3QyIiBkPSJNMjcuMywxOC43bC0uMi4yYy0xLjMsMS4xLTIuNCwyLjEtNC4xLDIuMXMtMi41LS40LTQuMS0xLjNjLTIuMS0xLjEtMy45LTEuNy01LjYtMS43LTIuOCwwLTQuNiwxLjYtNiwyLjlsLS4yLjIsMiwyLjQuMi0uMmMxLjMtMS4xLDIuNC0yLjEsNC4xLTIuMXMyLjUuNCw0LjEsMS4zYzIuMSwxLjEsMy45LDEuNyw1LjYsMS43aDBjMi43LDAsNC41LTEuNiw1LjktMi45bC4yLS4yLTItMi40aDBaIi8+CiAgICA8L2c+CiAgPC9nPgogIDxnPgogICAgPHBhdGggY2xhc3M9InN0MCIgZD0iTTU2LjgsMTIuNWgtNS43djE0LjloLTQuM3YtMTQuOWgtNS43di0zLjhoMTUuN3YzLjhaIi8+CiAgICA8cGF0aCBjbGFzcz0ic3QwIiBkPSJNNzEuNCwyNy4zaC00LjJ2LTcuNmMwLS45LS4yLTEuNS0uNi0xLjlzLS45LS42LTEuNC0uNi0uNywwLTEuMS4zYy0uNC4yLS44LjUtMS4xLjgtLjMuNC0uNi44LS43LDEuMnY3LjhoLTQuMlY4LjJoNC4ydjcuOWMuNS0uOCwxLjItMS41LDItMS45czEuOC0uNiwyLjgtLjYsMS43LjIsMi4yLjVjLjYuMywxLC43LDEuMywxLjJzLjUsMSwuNiwxLjdjMCwuNi4yLDEuMi4yLDEuOHY4LjdzMC0uMiwwLS4yWiIvPgogICAgPHBhdGggY2xhc3M9InN0MCIgZD0iTTgwLjIsMjcuNmMtMS4yLDAtMi4yLS4yLTMuMS0uNnMtMS43LS45LTIuMy0xLjVjLS42LS42LTEuMS0xLjQtMS41LTIuMi0uMy0uOC0uNS0xLjctLjUtMi42LDAtMS4zLjMtMi41LjktMy42czEuNC0xLjksMi41LTIuNiwyLjQtMSw0LTEsMi45LjMsNCwxLDEuOSwxLjUsMi41LDIuNi45LDIuMi45LDMuNSwwLC41LDAsLjd2LjZoLTEwLjJjMCwuNi4yLDEuMS41LDEuNXMuNy43LDEuMS45Yy41LjIuOS4zLDEuNC4zczEuMi0uMSwxLjgtLjRjLjYtLjMuOS0uNywxLjEtMS4ybDMuNiwxYy0uNC43LS44LDEuMy0xLjUsMS45LS42LjUtMS40LDEtMi4yLDEuMy0uOS4zLTEuOC41LTIuOS41aC0uMVpNNzcuMiwxOS4yaDZjMC0uNi0uMi0xLS41LTEuNS0uMy0uNC0uNi0uNy0xLjEtMXMtLjktLjMtMS41LS4zLTEsLjEtMS40LjNjLS40LjItLjguNS0xLjEuOS0uMy40LS40LjktLjUsMS41aDBaIi8+CiAgICA8cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTEwLjMsMjIuNWMwLDEuMS0uMywyLS44LDIuNy0uNi43LTEuMywxLjItMi4zLDEuNnMtMiwuNS0zLjIuNWgtOS4xVjguN2gxMC40Yy45LDAsMS42LjIsMi4zLjcuNi41LDEuMSwxLjEsMS41LDEuOC4zLjcuNSwxLjUuNSwyLjNzLS4yLDEuNy0uNywyLjVjLS40LjgtMS4xLDEuNC0yLDEuOCwxLjEuMywxLjkuOSwyLjUsMS43LjYuOC45LDEuOC45LDMuMWgwWk05OS4yLDEyLjR2My45aDQuMmMuMywwLC42LDAsLjktLjIuMy0uMS41LS40LjctLjYuMi0uMy4yLS42LjItMS4xczAtLjgtLjItMS4xYzAtLjMtLjMtLjUtLjYtLjYtLjItLjEtLjUtLjItLjktLjJoLTQuNC4xWk0xMDYsMjEuN2MwLS40LDAtLjctLjItMS4xLS4yLS4zLS40LS42LS42LS43cy0uNi0uMy0uOS0uM2gtNC45djQuMWg0LjhjLjQsMCwuNywwLDEtLjMuMy0uMi41LS40LjctLjcuMi0uMy4yLS42LjItMWgwWiIvPgogICAgPHBhdGggY2xhc3M9InN0MCIgZD0iTTExMiw4LjJoNC4ydjE0LjNjMCwuNiwwLDEsLjMsMS4yLjIuMi41LjQuOS40cy41LDAsLjgtLjFjLjMsMCwuNS0uMi43LS4zbC42LDMuMmMtLjUuMi0xLjEuNC0xLjguNi0uNy4yLTEuMy4yLTEuOS4yLTEuMiwwLTIuMS0uMy0yLjgtMS0uNi0uNi0xLTEuNi0xLTIuN3YtMTUuN2gwWiIvPgogICAgPHBhdGggY2xhc3M9InN0MCIgZD0iTTEyMC4yLDIyLjV2LTguOGg0LjJ2Ny44YzAsLjguMiwxLjQuNSwxLjkuMy40LjguNywxLjQuN3MuOCwwLDEuMS0uMmMuNC0uMS43LS4zLDEtLjZzLjYtLjcuOS0xLjF2LTguNGg0LjJ2OWMwLC40LDAsLjcuMi45LjEuMi40LjMuNy4zdjMuNWMtLjQsMC0uNy4xLTEsLjJzLS41LDAtLjgsMGMtLjcsMC0xLjMtLjEtMS44LS40LS40LS4zLS43LS43LS44LTEuM3YtLjhjLS43LjktMS41LDEuNi0yLjQsMnMtMiwuNi0zLjIuNi0yLjUtLjQtMy4yLTEuMy0xLjEtMi4yLTEuMS0zLjh2LS4yaC4xWiIvPgogICAgPHBhdGggY2xhc3M9InN0MCIgZD0iTTE0Mi45LDI3LjZjLTEuMiwwLTIuMi0uMi0zLjEtLjYtLjktLjQtMS43LS45LTIuMy0xLjVzLTEuMS0xLjQtMS41LTIuMmMtLjMtLjgtLjUtMS43LS41LTIuNiwwLTEuMy4zLTIuNS45LTMuNi42LTEuMSwxLjQtMS45LDIuNS0yLjZzMi40LTEsNC0xLDIuOS4zLDQsMWMxLjEuNiwxLjksMS41LDIuNSwyLjZzLjksMi4yLjksMy41LDAsLjUsMCwuN3YuNmgtMTAuMmMwLC42LjIsMS4xLjUsMS41cy43LjcsMS4xLjljLjUuMi45LjMsMS40LjNzMS4yLS4xLDEuOC0uNC45LS43LDEuMS0xLjJsMy42LDFjLS40LjctLjgsMS4zLTEuNSwxLjktLjYuNS0xLjQsMS0yLjIsMS4zLS45LjMtMS44LjUtMi45LjVoLS4xWk0xMzkuOCwxOS4yaDZjMC0uNi0uMi0xLS41LTEuNS0uMy0uNC0uNi0uNy0xLjEtMS0uNC0uMi0uOS0uMy0xLjUtLjNzLTEsLjEtMS40LjNjLS40LjItLjguNS0xLjEuOXMtLjQuOS0uNSwxLjVoLjFaIi8+CiAgICA8cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTU2LjUsMTcuOGMwLTEuMS4yLTIuMi42LTMuMy40LTEuMSwxLTIuMSwxLjgtM3MxLjgtMS42LDMtMi4yYzEuMi0uNSwyLjUtLjgsMy45LS44czMuMy40LDQuNiwxLjEsMi4zLDEuNywyLjksMi45bC0zLjMsMi4zYy0uMy0uNy0uNi0xLjItMS4xLTEuNnMtMS0uNi0xLjUtLjhjLS42LS4xLTEuMS0uMi0xLjYtLjItLjgsMC0xLjUuMi0yLjEuNXMtMS4xLjgtMS41LDEuMy0uNywxLjEtLjksMS44Yy0uMi43LS4zLDEuMy0uMywycy4xLDEuNS40LDIuMmMuMi43LjYsMS4zLDEsMS44cy45LjksMS42LDEuMmMuNi4zLDEuMy41LDIsLjVzMS4xLDAsMS42LS4yLDEtLjQsMS41LS44LjgtLjksMS4xLTEuNWwzLjUsMi4xYy0uNC45LTEsMS43LTEuOCwyLjMtLjguNi0xLjgsMS4xLTIuOCwxLjVzLTIuMS41LTMuMi41LTIuNi0uMy0zLjctLjhjLTEuMS0uNi0yLjEtMS4zLTIuOS0yLjItLjgtLjktMS41LTItMS45LTMuMXMtLjctMi4zLS43LTMuNWgtLjJaIi8+CiAgICA8cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTc0LjgsMTJ2LTMuOGg0LjJ2My44aC00LjJaTTE3NC44LDI3LjN2LTEzLjhoNC4ydjEzLjhzLTQuMiwwLTQuMiwwWiIvPgogICAgPHBhdGggY2xhc3M9InN0MCIgZD0iTTE5MC4zLDI2LjZjLS40LjItLjguMy0xLjIuNS0uNS4yLS45LjMtMS40LjQtLjUsMC0xLC4xLTEuNS4xcy0xLjMtLjEtMS45LS4zLTEtLjYtMS40LTEuMi0uNS0xLjItLjUtMi4xdi03LjFoLTEuOHYtMy4yaDEuOHYtNC40aDQuMnY0LjRoMi44djMuMmgtMi44djUuNmMwLC41LjEuOC4zLDFzLjUuMy45LjMuNiwwLDEtLjJjLjMtLjEuNi0uMi45LS4zbC44LDMuM2gtLjJaIi8+CiAgICA8cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTkxLjQsMjkuNGMuNCwwLC43LjIsMSwuMmguOGMuNCwwLC42LDAsLjktLjJzLjQtLjQuNi0uOGMuMi0uNC4zLS44LjUtMS40bC01LjItMTMuN2g0LjNsMy4yLDkuNCwyLjctOS40aDMuOWwtNS4zLDE1LjljLS4yLjctLjYsMS40LTEuMSwycy0xLjEsMS0xLjksMS40Yy0uNy4zLTEuNS41LTIuNC41aC0xLjFjLS40LDAtLjctLjItMS4xLS4zdi0zLjZoLjJaIi8+CiAgPC9nPgo8L3N2Zz4=" alt="The Blue City">
+    </div>
+
+    <div class="credit-sep"></div>
+
+    <div class="credit-item">
+      <img src="https://the-blue-city.github.io/content/logo-minc.png" alt="Ministério da Cultura">
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <span>Contato: <a href="mailto:contato@thebluecity.app">contato@thebluecity.app</a></span>
+    <span>© 2026 The Blue City · Missão Cidade Azul. Todos os direitos reservados.</span>
+  </div>
 </footer>
 
 <script>
