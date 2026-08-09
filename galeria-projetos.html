@@ -11,37 +11,31 @@
 
   /* TOPBAR */
   .topbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 13px 40px;
     background: #ffffff;
     border-bottom: 1px solid #e0e8f0;
-    padding: 14px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    transition: box-shadow .25s, padding .25s;
   }
-  .topbar-logo { display: flex; align-items: center; gap: 10px; }
-  .topbar-logo span { font-size: 15px; font-weight: 800; color: #1a2e3b; }
-  .topbar-logo span em { font-style: normal; color: #5fb670; }
-  .topbar-nav { display: flex; gap: 28px; }
-  .topbar-nav a { font-size: 13px; color: #6b7f95; text-decoration: none; font-weight: 500; }
-  .topbar-nav a.active { color: #2858a0; font-weight: 700; }
-  .topbar-user { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #2858a0; font-weight: 600; }
+  .topbar.scrolled { box-shadow: 0 2px 14px rgba(20,50,80,0.08); }
+  .brand { display: flex; align-items: center; gap: 10px; }
+  .brand-logo { height: 30px; width: auto; }
+  .topbar-nav { display: flex; gap: 26px; }
+  .topbar-nav a { font-size: 13px; color: #000000; text-decoration: none; font-weight: 500; transition: color .15s; }
+  .topbar-nav a:hover, .topbar-nav a.active { color: #2858a0; font-weight: 700; }
+  .topbar-user {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 13px; color: #2858a0; font-weight: 600;
+    background: #e8f3ec; padding: 7px 16px; border-radius: 20px;
+  }
 
-  /* BREADCRUMB */
-  .breadcrumb-bar {
-    background: #fff;
-    padding: 10px 40px;
-    border-bottom: 1px solid #e0e8f0;
-    display: flex; align-items: center; gap: 10px;
-  }
-  .breadcrumb-bar a { font-size: 12px; color: #2858a0; font-weight: 600; text-decoration: none; }
-  .breadcrumb-bar a:hover { text-decoration: underline; }
-  .breadcrumb-bar span { color: #c0c8d4; font-size: 12px; }
-  .breadcrumb-bar strong { font-size: 12px; color: #1a2e3b; }
 
   /* HERO – light gradient like the platform */
   .hero {
+    margin-top: 57px;
     background: linear-gradient(135deg, #e8f0f8 0%, #e2f0e2 100%);
-    padding: 36px 40px 28px;
+    padding: 36px max(40px, calc((100% - 1140px) / 2)) 28px;
     text-align: center;
   }
   .hero-tags { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 14px; }
@@ -49,10 +43,10 @@
   .tag-blue  { background: #d6e4f7; color: #2858a0; }
   .tag-green { background: #d4f0d9; color: #2a7a3a; }
   .tag-active { background: #d4f0d9; color: #2a7a3a; }
-  .hero-loc { display: flex; align-items: center; gap: 5px; font-size: 12px; color: #6b7f95; }
+  .hero-loc { display: flex; align-items: center; gap: 5px; font-size: 12px; color: #000000; }
   .hero h1 { font-size: 26px; font-weight: 800; color: #2858a0; margin-bottom: 4px; }
   .hero h1 em { font-style: normal; color: #5fb670; }
-  .hero-sub { font-size: 13px; color: #6b7f95; margin-bottom: 24px; }
+  .hero-sub { font-size: 13px; color: #000000; margin-bottom: 24px; }
 
   /* STATS ROW */
   .stats-row {
@@ -72,16 +66,16 @@
   .val-teal   { color: #468182; }
   .val-green  { color: #5fb670; }
   .val-purple { color: #7c5cbf; }
-  .stat-box .lbl { font-size: 11px; color: #6b7f95; font-weight: 500; }
+  .stat-box .lbl { font-size: 11px; color: #000000; font-weight: 500; }
 
   /* CONTENT */
-  .content { padding: 28px 40px 48px; }
+  .content { max-width: 1220px; margin: 0 auto; padding: 28px 40px 48px; }
   .content-header {
     display: flex; align-items: center;
     justify-content: space-between; margin-bottom: 20px;
   }
   .content-header h2 { font-size: 16px; font-weight: 700; color: #1a2e3b; margin-bottom: 2px; }
-  .content-header p { font-size: 12px; color: #6b7f95; }
+  .content-header p { font-size: 12px; color: #000000; }
   .content-header select {
     font-size: 12px; padding: 7px 14px;
     border-radius: 8px; border: 1px solid #e0e8f0;
@@ -111,77 +105,94 @@
   .thumb-green { background: #d4f0d9; }
 
   .card-body { padding: 14px; }
-  .card-title { font-size: 13px; font-weight: 700; color: #1a2e3b; margin-bottom: 3px; line-height: 1.4; }
-  .card-author { font-size: 11px; color: #6b7f95; margin-bottom: 10px; }
+  .card-title { font-size: 13.5px; font-weight: 700; color: #1a2e3b; margin-bottom: 8px; line-height: 1.4; }
+  .card-author { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; font-size: 11px; color: #000000; margin-bottom: 10px; }
+  .card-author .ai { display: flex; align-items: center; gap: 5px; }
+  .card-author .ai svg { flex-shrink: 0; color: #2858a0; }
+  .card-data { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #000000; font-weight: 400; margin-bottom: 10px; }
+  .card-data svg { flex-shrink: 0; color: #2858a0; }
   .card-footer {
     border-top: 1px solid #f0f4f8;
-    padding-top: 8px;
-    display: flex; align-items: center; gap: 14px;
+    padding-top: 10px;
+    display: flex; align-items: center; justify-content: flex-end;
   }
   .card-footer span {
     display: flex; align-items: center; gap: 4px;
-    font-size: 11px; color: #6b7f95;
+    font-size: 11px; color: #000000;
   }
 
   .share-btn {
     display: flex; align-items: center; gap: 6px;
     background: #fff; border: 1px solid #e0e8f0;
     border-radius: 20px; padding: 6px 14px;
-    font-size: 12px; color: #6b7f95; font-weight: 500;
+    font-size: 12px; color: #000000; font-weight: 500;
     cursor: pointer; font-family: 'Montserrat', sans-serif;
     margin-left: auto;
   }
 
   .footer-note {
-    font-size: 12px; color: #6b7f95;
+    font-size: 12px; color: #000000;
     text-align: center; margin-top: 28px;
     font-style: italic;
   }
 
-  .card-game { font-size: 10px; font-weight: 700; color: #2858a0; background: #eef2fb; border-radius: 20px; padding: 2px 9px; display: inline-block; margin-bottom: 5px; }
+  .card-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 9px; }
+  .pill-jogo { font-size: 10.5px; font-weight: 700; color: #2858a0; background: #eef2fb; border-radius: 20px; padding: 3px 11px; }
+  .pill-tema { font-size: 10.5px; font-weight: 700; color: #2a7a3a; background: #d4f0d9; border-radius: 20px; padding: 3px 11px; }
 
 
   .periodo-quick-gal {
     font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600;
     padding: 5px 12px; border-radius: 20px; border: 1.5px solid #dde4ef;
-    background: white; color: #6b7f95; cursor: pointer; transition: all 0.15s;
+    background: white; color: #000000; cursor: pointer; transition: all 0.15s;
   }
   .periodo-quick-gal:hover { border-color: #2858a0; color: #2858a0; }
   .periodo-quick-gal.active { background: #2858a0; color: white; border-color: #2858a0; }
 
+  /* RODAPÉ */
+  .footer { background: #2858a0; color: #fff; padding: 22px 40px; }
+  .footer-bottom { max-width: 1140px; margin: 0 auto; font-size: 12px; color: rgba(255,255,255,0.85); text-align: center; }
+
+  /* RESPONSIVO */
+  @media (max-width: 980px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+    .topbar-nav { display: none; }
+  }
+  @media (max-width: 640px) {
+    .topbar, .content, .footer { padding-left: 20px; padding-right: 20px; }
+    .grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
 
 <!-- TOPBAR -->
 <nav class="topbar">
-  <div class="topbar-logo">
-<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAyMTguNCA0NS42Ij4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLmNscy0xIHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudCk7CiAgICAgIH0KCiAgICAgIC5jbHMtMSwgLmNscy0yLCAuY2xzLTMsIC5jbHMtNCwgLmNscy01LCAuY2xzLTYsIC5jbHMtNywgLmNscy04LCAuY2xzLTksIC5jbHMtMTAsIC5jbHMtMTEsIC5jbHMtMTIsIC5jbHMtMTMsIC5jbHMtMTQgewogICAgICAgIHN0cm9rZS13aWR0aDogMHB4OwogICAgICB9CgogICAgICAuY2xzLTIgewogICAgICAgIGZpbGw6ICMwYzllZDk7CiAgICAgIH0KCiAgICAgIC5jbHMtMyB7CiAgICAgICAgZmlsbDogdXJsKCNsaW5lYXItZ3JhZGllbnQtMTEpOwogICAgICB9CgogICAgICAuY2xzLTQgewogICAgICAgIGZpbGw6IHVybCgjbGluZWFyLWdyYWRpZW50LTEwKTsKICAgICAgfQoKICAgICAgLmNscy01IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC00KTsKICAgICAgfQoKICAgICAgLmNscy02IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC0yKTsKICAgICAgfQoKICAgICAgLmNscy03IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC0zKTsKICAgICAgfQoKICAgICAgLmNscy04IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC04KTsKICAgICAgfQoKICAgICAgLmNscy05IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC05KTsKICAgICAgfQoKICAgICAgLmNscy0xMCB7CiAgICAgICAgZmlsbDogdXJsKCNsaW5lYXItZ3JhZGllbnQtNyk7CiAgICAgIH0KCiAgICAgIC5jbHMtMTEgewogICAgICAgIGZpbGw6IHVybCgjbGluZWFyLWdyYWRpZW50LTUpOwogICAgICB9CgogICAgICAuY2xzLTEyIHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC02KTsKICAgICAgfQoKICAgICAgLmNscy0xMyB7CiAgICAgICAgZmlsbDogIzAwMTUyMjsKICAgICAgfQoKICAgICAgLmNscy0xNCB7CiAgICAgICAgZmlsbDogI2ZmZjsKICAgICAgfQogICAgPC9zdHlsZT4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50IiB4MT0iNDguOCIgeTE9IjI1LjciIHgyPSIyMTEuOCIgeTI9IjI1LjciIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0OCkgc2NhbGUoMSAtMSkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMDA2MTg4Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzk1Y2ZhMCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTIiIHkxPSIyNS45IiB5Mj0iMjUuOSIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtMyIgeTE9IjIzLjEiIHkyPSIyMy4xIiB4bGluazpocmVmPSIjbGluZWFyLWdyYWRpZW50Ii8+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC00IiB5MT0iMjUuNyIgeTI9IjI1LjciIHhsaW5rOmhyZWY9IiNsaW5lYXItZ3JhZGllbnQiLz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTUiIHkxPSIyNS44IiB5Mj0iMjUuOCIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtNiIgeTE9IjIzIiB5Mj0iMjMiIHhsaW5rOmhyZWY9IiNsaW5lYXItZ3JhZGllbnQiLz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTciIHkxPSIyMy4xIiB5Mj0iMjMuMSIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtOCIgeTE9IjI1LjgiIHkyPSIyNS44IiB4bGluazpocmVmPSIjbGluZWFyLWdyYWRpZW50Ii8+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC05IiB5MT0iMjYiIHkyPSIyNiIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtMTAiIHkxPSIyNS4zIiB5Mj0iMjUuMyIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtMTEiIHkxPSIyMC4zIiB5Mj0iMjAuMyIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogIDwvZGVmcz4KICA8Zz4KICAgIDxjaXJjbGUgY2xhc3M9ImNscy0xMyIgY3g9IjI2LjEiIGN5PSIyMi43IiByPSIxOC40Ii8+CiAgICA8Zz4KICAgICAgPHJlY3QgY2xhc3M9ImNscy0xNCIgeD0iMTUuNSIgeT0iMTcuNSIgd2lkdGg9IjIwLjgiIGhlaWdodD0iMy4yIi8+CiAgICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTM1LDIzbC0uMi4yYy0xLjMsMS4xLTIuNCwyLjEtNC4xLDIuMXMtMi41LS40LTQuMS0xLjNjLTIuMS0xLjEtMy45LTEuNy01LjYtMS43LTIuOCwwLTQuNiwxLjYtNiwyLjlsLS4yLjIsMiwyLjQuMi0uMmMxLjMtMS4xLDIuNC0yLjEsNC4xLTIuMXMyLjUuNCw0LjEsMS4zYzIuMSwxLjEsMy45LDEuNyw1LjYsMS43aDBjMi43LDAsNC41LTEuNiw1LjktMi45bC4yLS4yLTItMi40aDBaIi8+CiAgICA8L2c+CiAgPC9nPgogIDxnPgogICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNjQuNSwxNi44aC01Ljd2MTQuOWgtNC4zdi0xNC45aC01Ljd2LTMuOGgxNS43djMuOFoiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtNiIgZD0iTTc5LjEsMzEuNmgtNC4ydi03LjZjMC0uOS0uMi0xLjUtLjYtMS45cy0uOS0uNi0xLjQtLjYtLjcsMC0xLjEuM2MtLjQuMi0uOC41LTEuMS44LS4zLjQtLjYuOC0uNywxLjJ2Ny44aC00LjJWMTIuNWg0LjJ2Ny45Yy41LS44LDEuMi0xLjUsMi0xLjlzMS44LS42LDIuOC0uNiwxLjcuMiwyLjIuNWMuNi4zLDEsLjcsMS4zLDEuMnMuNSwxLC42LDEuN2MwLC42LjIsMS4yLjIsMS44djguNy0uMloiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtNyIgZD0iTTg3LjksMzEuOWMtMS4yLDAtMi4yLS4yLTMuMS0uNnMtMS43LS45LTIuMy0xLjVjLS42LS42LTEuMS0xLjQtMS41LTIuMi0uMy0uOC0uNS0xLjctLjUtMi42LDAtMS4zLjMtMi41LjktMy42czEuNC0xLjksMi41LTIuNiwyLjQtMSw0LTEsMi45LjMsNCwxLDEuOSwxLjUsMi41LDIuNi45LDIuMi45LDMuNSwwLC41LDAsLjd2LjZoLTEwLjJjMCwuNi4yLDEuMS41LDEuNXMuNy43LDEuMS45Yy41LjIuOS4zLDEuNC4zczEuMi0uMSwxLjgtLjRjLjYtLjMuOS0uNywxLjEtMS4ybDMuNiwxYy0uNC43LS44LDEuMy0xLjUsMS45LS42LjUtMS40LDEtMi4yLDEuMy0uOS4zLTEuOC41LTIuOS41aC0uMVpNODQuOSwyMy41aDZjMC0uNi0uMi0xLS41LTEuNS0uMy0uNC0uNi0uNy0xLjEtMXMtLjktLjMtMS41LS4zLTEsLjEtMS40LjNjLS40LjItLjguNS0xLjEuOS0uMy40LS40LjktLjUsMS41aDBaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTUiIGQ9Ik0xMTgsMjYuOGMwLDEuMS0uMywyLS44LDIuNy0uNi43LTEuMywxLjItMi4zLDEuNnMtMiwuNS0zLjIuNWgtOS4xVjEzaDEwLjRjLjksMCwxLjYuMiwyLjMuNy42LjUsMS4xLDEuMSwxLjUsMS44LjMuNy41LDEuNS41LDIuM3MtLjIsMS43LS43LDIuNWMtLjQuOC0xLjEsMS40LTIsMS44LDEuMS4zLDEuOS45LDIuNSwxLjcuNi44LjksMS44LjksMy4xaDBaTTEwNi45LDE2Ljd2My45aDQuMmMuMywwLC42LDAsLjktLjIuMy0uMS41LS40LjctLjYuMi0uMy4yLS42LjItMS4xczAtLjgtLjItMS4xYzAtLjMtLjMtLjUtLjYtLjYtLjItLjEtLjUtLjItLjktLjJoLTQuNC4xWk0xMTMuNywyNmMwLS40LDAtLjctLjItMS4xLS4yLS4zLS40LS42LS42LS43cy0uNi0uMy0uOS0uM2gtNC45djQuMWg0LjhjLjQsMCwuNywwLDEtLjMuMy0uMi41LS40LjctLjcuMi0uMy4yLS42LjItMWgwWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xMSIgZD0iTTExOS43LDEyLjVoNC4ydjE0LjNjMCwuNiwwLDEsLjMsMS4yLjIuMi41LjQuOS40cy41LDAsLjgtLjFjLjMsMCwuNS0uMi43LS4zbC42LDMuMmMtLjUuMi0xLjEuNC0xLjguNi0uNy4yLTEuMy4yLTEuOS4yLTEuMiwwLTIuMS0uMy0yLjgtMS0uNi0uNi0xLTEuNi0xLTIuN3YtMTUuN2gwWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xMiIgZD0iTTEyNy45LDI2Ljh2LTguOGg0LjJ2Ny44YzAsLjguMiwxLjQuNSwxLjkuMy40LjguNywxLjQuN3MuOCwwLDEuMS0uMmMuNC0uMS43LS4zLDEtLjZzLjYtLjcuOS0xLjF2LTguNGg0LjJ2OWMwLC40LDAsLjcuMi45LjEuMi40LjMuNy4zdjMuNWMtLjQsMC0uNy4xLTEsLjJzLS41LDAtLjgsMGMtLjcsMC0xLjMtLjEtMS44LS40LS40LS4zLS43LS43LS44LTEuM3YtLjhjLS43LjktMS41LDEuNi0yLjQsMnMtMiwuNi0zLjIuNi0yLjUtLjQtMy4yLTEuMy0xLjEtMi4yLTEuMS0zLjh2LS4yWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xMCIgZD0iTTE1MC42LDMxLjljLTEuMiwwLTIuMi0uMi0zLjEtLjYtLjktLjQtMS43LS45LTIuMy0xLjVzLTEuMS0xLjQtMS41LTIuMmMtLjMtLjgtLjUtMS43LS41LTIuNiwwLTEuMy4zLTIuNS45LTMuNi42LTEuMSwxLjQtMS45LDIuNS0yLjZzMi40LTEsNC0xLDIuOS4zLDQsMWMxLjEuNiwxLjksMS41LDIuNSwyLjZzLjksMi4yLjksMy41LDAsLjUsMCwuN3YuNmgtMTAuMmMwLC42LjIsMS4xLjUsMS41cy43LjcsMS4xLjljLjUuMi45LjMsMS40LjNzMS4yLS4xLDEuOC0uNC45LS43LDEuMS0xLjJsMy42LDFjLS40LjctLjgsMS4zLTEuNSwxLjktLjYuNS0xLjQsMS0yLjIsMS4zLS45LjMtMS44LjUtMi45LjVoLS4xWk0xNDcuNSwyMy41aDZjMC0uNi0uMi0xLS41LTEuNS0uMy0uNC0uNi0uNy0xLjEtMS0uNC0uMi0uOS0uMy0xLjUtLjNzLTEsLjEtMS40LjNjLS40LjItLjguNS0xLjEuOXMtLjQuOS0uNSwxLjVoLjFaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTgiIGQ9Ik0xNjQuMiwyMi4xYzAtMS4xLjItMi4yLjYtMy4zLjQtMS4xLDEtMi4xLDEuOC0zczEuOC0xLjYsMy0yLjJjMS4yLS41LDIuNS0uOCwzLjktLjhzMy4zLjQsNC42LDEuMSwyLjMsMS43LDIuOSwyLjlsLTMuMywyLjNjLS4zLS43LS42LTEuMi0xLjEtMS42cy0xLS42LTEuNS0uOGMtLjYtLjEtMS4xLS4yLTEuNi0uMi0uOCwwLTEuNS4yLTIuMS41cy0xLjEuOC0xLjUsMS4zLS43LDEuMS0uOSwxLjhjLS4yLjctLjMsMS4zLS4zLDJzLjEsMS41LjQsMi4yYy4yLjcuNiwxLjMsMSwxLjhzLjkuOSwxLjYsMS4yYy42LjMsMS4zLjUsMiwuNXMxLjEsMCwxLjYtLjIsMS0uNCwxLjUtLjguOC0uOSwxLjEtMS41bDMuNSwyLjFjLS40LjktMSwxLjctMS44LDIuMy0uOC42LTEuOCwxLjEtMi44LDEuNXMtMi4xLjUtMy4yLjUtMi42LS4zLTMuNy0uOGMtMS4xLS42LTIuMS0xLjMtMi45LTIuMi0uOC0uOS0xLjUtMi0xLjktMy4xcy0uNy0yLjMtLjctMy41aC0uMloiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtOSIgZD0iTTE4Mi41LDE2LjN2LTMuOGg0LjJ2My44aC00LjJaTTE4Mi41LDMxLjZ2LTEzLjhoNC4ydjEzLjhzLTQuMiwwLTQuMiwwWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy00IiBkPSJNMTk4LDMwLjljLS40LjItLjguMy0xLjIuNS0uNS4yLS45LjMtMS40LjQtLjUsMC0xLC4xLTEuNS4xcy0xLjMtLjEtMS45LS4zLTEtLjYtMS40LTEuMi0uNS0xLjItLjUtMi4xdi03LjFoLTEuOHYtMy4yaDEuOHYtNC40aDQuMnY0LjRoMi44djMuMmgtMi44djUuNmMwLC41LjEuOC4zLDFzLjUuMy45LjMuNiwwLDEtLjJjLjMtLjEuNi0uMi45LS4zbC44LDMuM2gtLjJaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik0xOTkuMSwzMy43Yy40LDAsLjcuMiwxLC4yaC44Yy40LDAsLjYsMCwuOS0uMnMuNC0uNC42LS44Yy4yLS40LjMtLjguNS0xLjRsLTUuMi0xMy43aDQuM2wzLjIsOS40LDIuNy05LjRoMy45bC01LjMsMTUuOWMtLjIuNy0uNiwxLjQtMS4xLDJzLTEuMSwxLTEuOSwxLjRjLS43LjMtMS41LjUtMi40LjVoLTEuMWMtLjQsMC0uNy0uMi0xLjEtLjN2LTMuNmguMloiLz4KICA8L2c+Cjwvc3ZnPg==" alt="The Blue City" style="height:32px; width:auto;">
-  </div>
+  <a href="home.html" class="brand">
+    <img class="brand-logo" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAyMTguNCA0NS42Ij4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLmNscy0xIHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudCk7CiAgICAgIH0KCiAgICAgIC5jbHMtMSwgLmNscy0yLCAuY2xzLTMsIC5jbHMtNCwgLmNscy01LCAuY2xzLTYsIC5jbHMtNywgLmNscy04LCAuY2xzLTksIC5jbHMtMTAsIC5jbHMtMTEsIC5jbHMtMTIsIC5jbHMtMTMsIC5jbHMtMTQgewogICAgICAgIHN0cm9rZS13aWR0aDogMHB4OwogICAgICB9CgogICAgICAuY2xzLTIgewogICAgICAgIGZpbGw6ICMwYzllZDk7CiAgICAgIH0KCiAgICAgIC5jbHMtMyB7CiAgICAgICAgZmlsbDogdXJsKCNsaW5lYXItZ3JhZGllbnQtMTEpOwogICAgICB9CgogICAgICAuY2xzLTQgewogICAgICAgIGZpbGw6IHVybCgjbGluZWFyLWdyYWRpZW50LTEwKTsKICAgICAgfQoKICAgICAgLmNscy01IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC00KTsKICAgICAgfQoKICAgICAgLmNscy02IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC0yKTsKICAgICAgfQoKICAgICAgLmNscy03IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC0zKTsKICAgICAgfQoKICAgICAgLmNscy04IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC04KTsKICAgICAgfQoKICAgICAgLmNscy05IHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC05KTsKICAgICAgfQoKICAgICAgLmNscy0xMCB7CiAgICAgICAgZmlsbDogdXJsKCNsaW5lYXItZ3JhZGllbnQtNyk7CiAgICAgIH0KCiAgICAgIC5jbHMtMTEgewogICAgICAgIGZpbGw6IHVybCgjbGluZWFyLWdyYWRpZW50LTUpOwogICAgICB9CgogICAgICAuY2xzLTEyIHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudC02KTsKICAgICAgfQoKICAgICAgLmNscy0xMyB7CiAgICAgICAgZmlsbDogIzAwMTUyMjsKICAgICAgfQoKICAgICAgLmNscy0xNCB7CiAgICAgICAgZmlsbDogI2ZmZjsKICAgICAgfQogICAgPC9zdHlsZT4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50IiB4MT0iNDguOCIgeTE9IjI1LjciIHgyPSIyMTEuOCIgeTI9IjI1LjciIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCA0OCkgc2NhbGUoMSAtMSkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMDA2MTg4Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzk1Y2ZhMCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTIiIHkxPSIyNS45IiB5Mj0iMjUuOSIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtMyIgeTE9IjIzLjEiIHkyPSIyMy4xIiB4bGluazpocmVmPSIjbGluZWFyLWdyYWRpZW50Ii8+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC00IiB5MT0iMjUuNyIgeTI9IjI1LjciIHhsaW5rOmhyZWY9IiNsaW5lYXItZ3JhZGllbnQiLz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTUiIHkxPSIyNS44IiB5Mj0iMjUuOCIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtNiIgeTE9IjIzIiB5Mj0iMjMiIHhsaW5rOmhyZWY9IiNsaW5lYXItZ3JhZGllbnQiLz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTciIHkxPSIyMy4xIiB5Mj0iMjMuMSIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtOCIgeTE9IjI1LjgiIHkyPSIyNS44IiB4bGluazpocmVmPSIjbGluZWFyLWdyYWRpZW50Ii8+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC05IiB5MT0iMjYiIHkyPSIyNiIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtMTAiIHkxPSIyNS4zIiB5Mj0iMjUuMyIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtMTEiIHkxPSIyMC4zIiB5Mj0iMjAuMyIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPgogIDwvZGVmcz4KICA8Zz4KICAgIDxjaXJjbGUgY2xhc3M9ImNscy0xMyIgY3g9IjI2LjEiIGN5PSIyMi43IiByPSIxOC40Ii8+CiAgICA8Zz4KICAgICAgPHJlY3QgY2xhc3M9ImNscy0xNCIgeD0iMTUuNSIgeT0iMTcuNSIgd2lkdGg9IjIwLjgiIGhlaWdodD0iMy4yIi8+CiAgICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTM1LDIzbC0uMi4yYy0xLjMsMS4xLTIuNCwyLjEtNC4xLDIuMXMtMi41LS40LTQuMS0xLjNjLTIuMS0xLjEtMy45LTEuNy01LjYtMS43LTIuOCwwLTQuNiwxLjYtNiwyLjlsLS4yLjIsMiwyLjQuMi0uMmMxLjMtMS4xLDIuNC0yLjEsNC4xLTIuMXMyLjUuNCw0LjEsMS4zYzIuMSwxLjEsMy45LDEuNyw1LjYsMS43aDBjMi43LDAsNC41LTEuNiw1LjktMi45bC4yLS4yLTItMi40aDBaIi8+CiAgICA8L2c+CiAgPC9nPgogIDxnPgogICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNjQuNSwxNi44aC01Ljd2MTQuOWgtNC4zdi0xNC45aC01Ljd2LTMuOGgxNS43djMuOFoiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtNiIgZD0iTTc5LjEsMzEuNmgtNC4ydi03LjZjMC0uOS0uMi0xLjUtLjYtMS45cy0uOS0uNi0xLjQtLjYtLjcsMC0xLjEuM2MtLjQuMi0uOC41LTEuMS44LS4zLjQtLjYuOC0uNywxLjJ2Ny44aC00LjJWMTIuNWg0LjJ2Ny45Yy41LS44LDEuMi0xLjUsMi0xLjlzMS44LS42LDIuOC0uNiwxLjcuMiwyLjIuNWMuNi4zLDEsLjcsMS4zLDEuMnMuNSwxLC42LDEuN2MwLC42LjIsMS4yLjIsMS44djguNy0uMloiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtNyIgZD0iTTg3LjksMzEuOWMtMS4yLDAtMi4yLS4yLTMuMS0uNnMtMS43LS45LTIuMy0xLjVjLS42LS42LTEuMS0xLjQtMS41LTIuMi0uMy0uOC0uNS0xLjctLjUtMi42LDAtMS4zLjMtMi41LjktMy42czEuNC0xLjksMi41LTIuNiwyLjQtMSw0LTEsMi45LjMsNCwxLDEuOSwxLjUsMi41LDIuNi45LDIuMi45LDMuNSwwLC41LDAsLjd2LjZoLTEwLjJjMCwuNi4yLDEuMS41LDEuNXMuNy43LDEuMS45Yy41LjIuOS4zLDEuNC4zczEuMi0uMSwxLjgtLjRjLjYtLjMuOS0uNywxLjEtMS4ybDMuNiwxYy0uNC43LS44LDEuMy0xLjUsMS45LS42LjUtMS40LDEtMi4yLDEuMy0uOS4zLTEuOC41LTIuOS41aC0uMVpNODQuOSwyMy41aDZjMC0uNi0uMi0xLS41LTEuNS0uMy0uNC0uNi0uNy0xLjEtMXMtLjktLjMtMS41LS4zLTEsLjEtMS40LjNjLS40LjItLjguNS0xLjEuOS0uMy40LS40LjktLjUsMS41aDBaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTUiIGQ9Ik0xMTgsMjYuOGMwLDEuMS0uMywyLS44LDIuNy0uNi43LTEuMywxLjItMi4zLDEuNnMtMiwuNS0zLjIuNWgtOS4xVjEzaDEwLjRjLjksMCwxLjYuMiwyLjMuNy42LjUsMS4xLDEuMSwxLjUsMS44LjMuNy41LDEuNS41LDIuM3MtLjIsMS43LS43LDIuNWMtLjQuOC0xLjEsMS40LTIsMS44LDEuMS4zLDEuOS45LDIuNSwxLjcuNi44LjksMS44LjksMy4xaDBaTTEwNi45LDE2Ljd2My45aDQuMmMuMywwLC42LDAsLjktLjIuMy0uMS41LS40LjctLjYuMi0uMy4yLS42LjItMS4xczAtLjgtLjItMS4xYzAtLjMtLjMtLjUtLjYtLjYtLjItLjEtLjUtLjItLjktLjJoLTQuNC4xWk0xMTMuNywyNmMwLS40LDAtLjctLjItMS4xLS4yLS4zLS40LS42LS42LS43cy0uNi0uMy0uOS0uM2gtNC45djQuMWg0LjhjLjQsMCwuNywwLDEtLjMuMy0uMi41LS40LjctLjcuMi0uMy4yLS42LjItMWgwWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xMSIgZD0iTTExOS43LDEyLjVoNC4ydjE0LjNjMCwuNiwwLDEsLjMsMS4yLjIuMi41LjQuOS40cy41LDAsLjgtLjFjLjMsMCwuNS0uMi43LS4zbC42LDMuMmMtLjUuMi0xLjEuNC0xLjguNi0uNy4yLTEuMy4yLTEuOS4yLTEuMiwwLTIuMS0uMy0yLjgtMS0uNi0uNi0xLTEuNi0xLTIuN3YtMTUuN2gwWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xMiIgZD0iTTEyNy45LDI2Ljh2LTguOGg0LjJ2Ny44YzAsLjguMiwxLjQuNSwxLjkuMy40LjguNywxLjQuN3MuOCwwLDEuMS0uMmMuNC0uMS43LS4zLDEtLjZzLjYtLjcuOS0xLjF2LTguNGg0LjJ2OWMwLC40LDAsLjcuMi45LjEuMi40LjMuNy4zdjMuNWMtLjQsMC0uNy4xLTEsLjJzLS41LDAtLjgsMGMtLjcsMC0xLjMtLjEtMS44LS40LS40LS4zLS43LS43LS44LTEuM3YtLjhjLS43LjktMS41LDEuNi0yLjQsMnMtMiwuNi0zLjIuNi0yLjUtLjQtMy4yLTEuMy0xLjEtMi4yLTEuMS0zLjh2LS4yWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xMCIgZD0iTTE1MC42LDMxLjljLTEuMiwwLTIuMi0uMi0zLjEtLjYtLjktLjQtMS43LS45LTIuMy0xLjVzLTEuMS0xLjQtMS41LTIuMmMtLjMtLjgtLjUtMS43LS41LTIuNiwwLTEuMy4zLTIuNS45LTMuNi42LTEuMSwxLjQtMS45LDIuNS0yLjZzMi40LTEsNC0xLDIuOS4zLDQsMWMxLjEuNiwxLjksMS41LDIuNSwyLjZzLjksMi4yLjksMy41LDAsLjUsMCwuN3YuNmgtMTAuMmMwLC42LjIsMS4xLjUsMS41cy43LjcsMS4xLjljLjUuMi45LjMsMS40LjNzMS4yLS4xLDEuOC0uNC45LS43LDEuMS0xLjJsMy42LDFjLS40LjctLjgsMS4zLTEuNSwxLjktLjYuNS0xLjQsMS0yLjIsMS4zLS45LjMtMS44LjUtMi45LjVoLS4xWk0xNDcuNSwyMy41aDZjMC0uNi0uMi0xLS41LTEuNS0uMy0uNC0uNi0uNy0xLjEtMS0uNC0uMi0uOS0uMy0xLjUtLjNzLTEsLjEtMS40LjNjLS40LjItLjguNS0xLjEuOXMtLjQuOS0uNSwxLjVoLjFaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTgiIGQ9Ik0xNjQuMiwyMi4xYzAtMS4xLjItMi4yLjYtMy4zLjQtMS4xLDEtMi4xLDEuOC0zczEuOC0xLjYsMy0yLjJjMS4yLS41LDIuNS0uOCwzLjktLjhzMy4zLjQsNC42LDEuMSwyLjMsMS43LDIuOSwyLjlsLTMuMywyLjNjLS4zLS43LS42LTEuMi0xLjEtMS42cy0xLS42LTEuNS0uOGMtLjYtLjEtMS4xLS4yLTEuNi0uMi0uOCwwLTEuNS4yLTIuMS41cy0xLjEuOC0xLjUsMS4zLS43LDEuMS0uOSwxLjhjLS4yLjctLjMsMS4zLS4zLDJzLjEsMS41LjQsMi4yYy4yLjcuNiwxLjMsMSwxLjhzLjkuOSwxLjYsMS4yYy42LjMsMS4zLjUsMiwuNXMxLjEsMCwxLjYtLjIsMS0uNCwxLjUtLjguOC0uOSwxLjEtMS41bDMuNSwyLjFjLS40LjktMSwxLjctMS44LDIuMy0uOC42LTEuOCwxLjEtMi44LDEuNXMtMi4xLjUtMy4yLjUtMi42LS4zLTMuNy0uOGMtMS4xLS42LTIuMS0xLjMtMi45LTIuMi0uOC0uOS0xLjUtMi0xLjktMy4xcy0uNy0yLjMtLjctMy41aC0uMloiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtOSIgZD0iTTE4Mi41LDE2LjN2LTMuOGg0LjJ2My44aC00LjJaTTE4Mi41LDMxLjZ2LTEzLjhoNC4ydjEzLjhzLTQuMiwwLTQuMiwwWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy00IiBkPSJNMTk4LDMwLjljLS40LjItLjguMy0xLjIuNS0uNS4yLS45LjMtMS40LjQtLjUsMC0xLC4xLTEuNS4xcy0xLjMtLjEtMS45LS4zLTEtLjYtMS40LTEuMi0uNS0xLjItLjUtMi4xdi03LjFoLTEuOHYtMy4yaDEuOHYtNC40aDQuMnY0LjRoMi44djMuMmgtMi44djUuNmMwLC41LjEuOC4zLDFzLjUuMy45LjMuNiwwLDEtLjJjLjMtLjEuNi0uMi45LS4zbC44LDMuM2gtLjJaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik0xOTkuMSwzMy43Yy40LDAsLjcuMiwxLC4yaC44Yy40LDAsLjYsMCwuOS0uMnMuNC0uNC42LS44Yy4yLS40LjMtLjguNS0xLjRsLTUuMi0xMy43aDQuM2wzLjIsOS40LDIuNy05LjRoMy45bC01LjMsMTUuOWMtLjIuNy0uNiwxLjQtMS4xLDJzLTEuMSwxLTEuOSwxLjRjLS43LjMtMS41LjUtMi40LjVoLTEuMWMtLjQsMC0uNy0uMi0xLjEtLjN2LTMuNmguMloiLz4KICA8L2c+Cjwvc3ZnPg==" alt="The Blue City">
+  </a>
   <div class="topbar-nav">
     <a href="jornadas.html">Jornadas</a>
+    <a href="minha-galeria.html">Minha Galeria</a>
     <a href="galeria-projetos.html" class="active">Galeria de Projetos</a>
     <a href="galeria-eventos.html">Galeria de Eventos</a>
     <a href="performance-jogadores.html">Performance dos Jogadores</a>
   </div>
   <div class="topbar-user">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2858a0" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
     João Silva
   </div>
 </nav>
-
-<!-- BREADCRUMB -->
-
 
 <!-- HERO -->
 <div class="hero">
   <h1>Galeria de <em>Projetos</em></h1>
   <p class="hero-sub">Projetos reais enviados por participantes das jornadas The Blue City</p>
   <div class="stats-row">
-    <div class="stat-box"><div class="val val-blue">3.847</div><div class="lbl">Participantes</div></div>
-    <div class="stat-box"><div class="val val-purple">3.847</div><div class="lbl">Jornadas concluídas</div></div>
-    <div class="stat-box"><div class="val val-green">1.204</div><div class="lbl">Projetos publicados</div></div>
-    <div class="stat-box"><div class="val val-teal">12</div><div class="lbl">Cidades</div></div>
+    <div class="stat-box"><div class="val val-blue">2.000</div><div class="lbl">Participantes</div></div>
+    <div class="stat-box"><div class="val val-purple">1.800</div><div class="lbl">Jornadas concluídas</div></div>
+    <div class="stat-box"><div class="val val-green">105</div><div class="lbl">Projetos publicados</div></div>
+    <div class="stat-box"><div class="val val-teal">1</div><div class="lbl">Cidade</div></div>
   </div>
 </div>
 
@@ -189,16 +200,16 @@
 <div class="content">
   <!-- FILTERS -->
   <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding: 18px 0 20px; border-bottom: 1px solid #e0e8f0; margin-bottom:24px;">
-    <label style="font-size:11px; font-weight:700; color:#6b7f95; letter-spacing:0.5px;">Filtrar por</label>
+    <label style="font-size:11px; font-weight:700; color:#000000; letter-spacing:0.5px;">Filtrar por</label>
     <select style="font-family:'Montserrat',sans-serif; font-size:12px; padding:7px 12px; border-radius:8px; border:1.5px solid #dde4ef; background:#fff; color:#1a2e3b; cursor:pointer;">
-      <option>Todos os temas</option><option>Clima · GEE</option><option>Clima · Água</option><option>Energia</option><option>Biodiversidade</option>
+      <option>Todos os temas</option><option>Clima</option><option>Adaptação</option><option>Financiamento</option><option>Energia</option><option>Biodiversidade</option><option>Justiça Social</option>
     </select>
     <select style="font-family:'Montserrat',sans-serif; font-size:12px; padding:7px 12px; border-radius:8px; border:1.5px solid #dde4ef; background:#fff; color:#1a2e3b; cursor:pointer;">
-      <option>Todos os jogos</option><option>Termômetro Zero</option><option>Ciclo da Água</option><option>Energia Limpa</option><option>Mata Atlântica</option>
+      <option>Todos os jogos</option><option>Termômetro Zero</option><option>Linha d'Água</option><option>Cofre Aberto</option><option>Corrente Limpa</option><option>Copa Cheia</option><option>Ponto Cego</option>
     </select>
     <div style="width:1px; height:24px; background:#e0e8f0;"></div>
     <select style="font-family:'Montserrat',sans-serif; font-size:12px; padding:7px 12px; border-radius:8px; border:1.5px solid #dde4ef; background:#fff; color:#1a2e3b; cursor:pointer;">
-      <option>Todas as cidades</option><option>Palmas, TO</option><option>São Paulo, SP</option><option>Belém, PA</option><option>Recife, PE</option>
+      <option>Todas as cidades</option><option>Palmas, TO</option>
     </select>
     <div style="width:1px; height:24px; background:#e0e8f0;"></div>
     <div style="position:relative;" id="periodo-wrapper-gal">
@@ -208,35 +219,30 @@
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
       </button>
       <div id="periodo-dropdown-gal" style="display:none; position:absolute; top:calc(100% + 6px); left:0; background:white; border:1.5px solid #dde4ef; border-radius:12px; padding:16px; box-shadow:0 8px 24px rgba(16,42,63,0.12); z-index:200; min-width:280px;">
-        <div style="font-size:10px; font-weight:700; color:#94a4b6; letter-spacing:0.8px; text-transform:uppercase; margin-bottom:10px;">Atalhos</div>
+        <div style="font-size:10px; font-weight:700; color:#000000; letter-spacing:0.8px; text-transform:uppercase; margin-bottom:10px;">Atalhos</div>
         <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:14px;">
           <button class="periodo-quick-gal" onclick="aplicarAtalhoGal(30)">30 dias</button>
           <button class="periodo-quick-gal" onclick="aplicarAtalhoGal(90)">3 meses</button>
           <button class="periodo-quick-gal" onclick="aplicarAtalhoGal(180)">6 meses</button>
           <button class="periodo-quick-gal" onclick="aplicarAtalhoGal(365)">1 ano</button>
         </div>
-        <div style="font-size:10px; font-weight:700; color:#94a4b6; letter-spacing:0.8px; text-transform:uppercase; margin-bottom:10px;">Intervalo personalizado</div>
+        <div style="font-size:10px; font-weight:700; color:#000000; letter-spacing:0.8px; text-transform:uppercase; margin-bottom:10px;">Intervalo personalizado</div>
         <div style="display:flex; align-items:center; gap:8px;">
           <div style="flex:1;">
-            <label style="font-size:10px; color:#94a4b6; font-weight:600; display:block; margin-bottom:3px;">Início</label>
+            <label style="font-size:10px; color:#000000; font-weight:600; display:block; margin-bottom:3px;">Início</label>
             <input type="date" id="periodo-inicio-gal" style="width:100%; font-family:'Montserrat',sans-serif; font-size:12px; color:#1a2e3b; border:1.5px solid #dde4ef; border-radius:8px; padding:6px 8px; box-sizing:border-box;">
           </div>
-          <span style="font-size:14px; color:#94a4b6; margin-top:14px;">→</span>
+          <span style="font-size:14px; color:#000000; margin-top:14px;">→</span>
           <div style="flex:1;">
-            <label style="font-size:10px; color:#94a4b6; font-weight:600; display:block; margin-bottom:3px;">Fim</label>
+            <label style="font-size:10px; color:#000000; font-weight:600; display:block; margin-bottom:3px;">Fim</label>
             <input type="date" id="periodo-fim-gal" style="width:100%; font-family:'Montserrat',sans-serif; font-size:12px; color:#1a2e3b; border:1.5px solid #dde4ef; border-radius:8px; padding:6px 8px; box-sizing:border-box;">
           </div>
         </div>
         <div style="display:flex; gap:8px; margin-top:14px;">
-          <button onclick="limparPeriodoGal()" style="font-family:'Montserrat',sans-serif; font-size:11px; font-weight:600; color:#6b7f95; background:white; border:1.5px solid #dde4ef; border-radius:8px; padding:7px 14px; cursor:pointer; flex:1;">Limpar</button>
+          <button onclick="limparPeriodoGal()" style="font-family:'Montserrat',sans-serif; font-size:11px; font-weight:600; color:#000000; background:white; border:1.5px solid #dde4ef; border-radius:8px; padding:7px 14px; cursor:pointer; flex:1;">Limpar</button>
           <button onclick="aplicarPeriodoGal()" style="font-family:'Montserrat',sans-serif; font-size:11px; font-weight:700; color:white; background:#2858a0; border:1.5px solid #2858a0; border-radius:8px; padding:7px 14px; cursor:pointer; flex:1;">Aplicar</button>
         </div>
       </div>
-    </div>
-    <div style="margin-left:auto;">
-      <select style="font-family:'Montserrat',sans-serif; font-size:12px; padding:7px 12px; border-radius:8px; border:1.5px solid #dde4ef; background:#fff; color:#1a2e3b; cursor:pointer;">
-        <option>Mais recentes</option><option>Mais curtidos</option><option>Mais visualizados</option>
-      </select>
     </div>
   </div>
 
@@ -247,13 +253,15 @@
         <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#468182" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
       </div>
       <div class="card-body">
-        <span class="card-game">Termômetro Zero</span>
-        <p class="card-title">Plantio de mudas nativas</p>
-        <p class="card-author">João Silva · Palmas, TO</p>
+        <p class="card-title">Plano de arborização da quadra</p>
+        <div class="card-pills">
+          <span class="pill-tema">Clima</span>
+          <span class="pill-jogo">Termômetro Zero</span>
+        </div>
+        <p class="card-author"><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> LordeVerde</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Palmas, TO</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg> IFTO</span></p>
+        <div class="card-data"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Projeto enviado em 30/10/2026</div>
         <div class="card-footer">
-          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> 58</span>
-          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 210</span>
-          <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Compartilhar</button>
+          <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Visualizar</button>
         </div>
       </div>
     </div></a>
@@ -263,13 +271,15 @@
         <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#2858a0" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
       </div>
       <div class="card-body">
-        <span class="card-game">Termômetro Zero</span>
-        <p class="card-title">Plano de redução de emissões</p>
-        <p class="card-author">Maria Oliveira · Palmas, TO</p>
+        <p class="card-title">Redução de emissões do campus</p>
+        <div class="card-pills">
+          <span class="pill-tema">Clima</span>
+          <span class="pill-jogo">Termômetro Zero</span>
+        </div>
+        <p class="card-author"><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> MaiaVerde</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Palmas, TO</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg> IFTO</span></p>
+        <div class="card-data"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Projeto enviado em 30/10/2026</div>
         <div class="card-footer">
-          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> 34</span>
-          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 128</span>
-          <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Compartilhar</button>
+          <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Visualizar</button>
         </div>
       </div>
     </div></a>
@@ -279,13 +289,15 @@
         <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#5fb670" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
       </div>
       <div class="card-body">
-        <span class="card-game">Ciclo da Água</span>
-        <p class="card-title">Horta comunitária escolar</p>
-        <p class="card-author">Carlos Mendes · Palmas, TO</p>
+        <p class="card-title">Carona solidária na escola</p>
+        <div class="card-pills">
+          <span class="pill-tema">Clima</span>
+          <span class="pill-jogo">Termômetro Zero</span>
+        </div>
+        <p class="card-author"><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> CarlosTO</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Palmas, TO</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg> IFTO</span></p>
+        <div class="card-data"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Projeto enviado em 30/10/2026</div>
         <div class="card-footer">
-          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> 21</span>
-          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 95</span>
-          <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Compartilhar</button>
+          <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Visualizar</button>
         </div>
       </div>
     </div></a>
@@ -295,13 +307,15 @@
         <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#468182" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
       </div>
       <div class="card-body">
-        <span class="card-game">Termômetro Zero</span>
-        <p class="card-title">Compostagem em condomínio</p>
-        <p class="card-author">Ana Ferreira · Palmas, TO</p>
+        <p class="card-title">Compostagem do refeitório</p>
+        <div class="card-pills">
+          <span class="pill-tema">Clima</span>
+          <span class="pill-jogo">Termômetro Zero</span>
+        </div>
+        <p class="card-author"><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> AnaCerrado</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Palmas, TO</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg> IFTO</span></p>
+        <div class="card-data"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Projeto enviado em 30/10/2026</div>
         <div class="card-footer">
-          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> 44</span>
-          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 176</span>
-          <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Compartilhar</button>
+          <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Visualizar</button>
         </div>
       </div>
     </div></a>
@@ -311,13 +325,15 @@
         <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#2858a0" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
       </div>
       <div class="card-body">
-        <span class="card-game">Energia Limpa</span>
-        <p class="card-title">Auditoria energética do escritório</p>
-        <p class="card-author">Pedro Costa · Palmas, TO</p>
+        <p class="card-title">Diagnóstico de energia da escola</p>
+        <div class="card-pills">
+          <span class="pill-tema">Clima</span>
+          <span class="pill-jogo">Termômetro Zero</span>
+        </div>
+        <p class="card-author"><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> PedroWatt</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Palmas, TO</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg> IFTO</span></p>
+        <div class="card-data"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Projeto enviado em 30/10/2026</div>
         <div class="card-footer">
-          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> 29</span>
-          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 112</span>
-          <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Compartilhar</button>
+          <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Visualizar</button>
         </div>
       </div>
     </div></a>
@@ -327,13 +343,15 @@
         <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#5fb670" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
       </div>
       <div class="card-body">
-        <span class="card-game">Biodiversidade</span>
-        <p class="card-title">Trilha de ciclismo sustentável</p>
-        <p class="card-author">Luana Ramos · Palmas, TO</p>
+        <p class="card-title">Bicicleta no lugar do carro</p>
+        <div class="card-pills">
+          <span class="pill-tema">Clima</span>
+          <span class="pill-jogo">Termômetro Zero</span>
+        </div>
+        <p class="card-author"><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> LuaRamos</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Palmas, TO</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg> IFTO</span></p>
+        <div class="card-data"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Projeto enviado em 30/10/2026</div>
         <div class="card-footer">
-          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> 67</span>
-          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 243</span>
-          <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Compartilhar</button>
+          <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Visualizar</button>
         </div>
       </div>
     </div></a>
@@ -343,13 +361,15 @@
         <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#468182" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
       </div>
       <div class="card-body">
-        <span class="card-game">Ciclo da Água</span>
-        <p class="card-title">Reflorestamento do córrego</p>
-        <p class="card-author">Marcos Lima · Palmas, TO</p>
+        <p class="card-title">Menos lixo, menos metano</p>
+        <div class="card-pills">
+          <span class="pill-tema">Clima</span>
+          <span class="pill-jogo">Termômetro Zero</span>
+        </div>
+        <p class="card-author"><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> MarcosLima</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Palmas, TO</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg> IFTO</span></p>
+        <div class="card-data"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Projeto enviado em 30/10/2026</div>
         <div class="card-footer">
-          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> 81</span>
-          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 320</span>
-          <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Compartilhar</button>
+          <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Visualizar</button>
         </div>
       </div>
     </div></a>
@@ -359,12 +379,15 @@
         <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#2858a0" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
       </div>
       <div class="card-body">
-        <p class="card-title">Captação de água da chuva</p>
-        <p class="card-author">Sofia Nunes · Palmas, TO</p>
+        <p class="card-title">Cardápio de baixo carbono</p>
+        <div class="card-pills">
+          <span class="pill-tema">Clima</span>
+          <span class="pill-jogo">Termômetro Zero</span>
+        </div>
+        <p class="card-author"><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> SofiaNunes</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Palmas, TO</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg> IFTO</span></p>
+        <div class="card-data"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Projeto enviado em 30/10/2026</div>
         <div class="card-footer">
-          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> 15</span>
-          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 67</span>
-          <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Compartilhar</button>
+          <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Visualizar</button>
         </div>
       </div>
     </div></a>
@@ -374,12 +397,15 @@
         <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#5fb670" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
       </div>
       <div class="card-body">
-        <p class="card-title">Mapeamento de emissões locais</p>
-        <p class="card-author">Rafael Torres · Palmas, TO</p>
+        <p class="card-title">Mapa de emissões do bairro</p>
+        <div class="card-pills">
+          <span class="pill-tema">Clima</span>
+          <span class="pill-jogo">Termômetro Zero</span>
+        </div>
+        <p class="card-author"><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> RafaTorres</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Palmas, TO</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg> IFTO</span></p>
+        <div class="card-data"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Projeto enviado em 30/10/2026</div>
         <div class="card-footer">
-          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> 38</span>
-          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 149</span>
-          <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Compartilhar</button>
+          <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Visualizar</button>
         </div>
       </div>
     </div></a>
@@ -388,18 +414,22 @@
 
   <!-- PAGINAÇÃO -->
   <div style="display:flex; align-items:center; justify-content:center; gap:6px; margin-top:28px; margin-bottom:8px;">
-    <button class="pag-btn arrow" disabled style="opacity:0.35; cursor:default; font-family:'Montserrat',sans-serif; font-size:12px; font-weight:600; height:34px; border-radius:8px; border:1.5px solid #dde4ef; background:white; color:#6b7f95; padding:0 12px;">← Anterior</button>
+    <button class="pag-btn arrow" disabled style="opacity:0.35; cursor:default; font-family:'Montserrat',sans-serif; font-size:12px; font-weight:600; height:34px; border-radius:8px; border:1.5px solid #dde4ef; background:white; color:#000000; padding:0 12px;">← Anterior</button>
     <button class="pag-btn active" style="font-family:'Montserrat',sans-serif; font-size:12px; font-weight:600; width:34px; height:34px; border-radius:8px; border:1.5px solid #2858a0; background:#2858a0; color:white; cursor:pointer;">1</button>
-    <button class="pag-btn" style="font-family:'Montserrat',sans-serif; font-size:12px; font-weight:600; width:34px; height:34px; border-radius:8px; border:1.5px solid #dde4ef; background:white; color:#6b7f95; cursor:pointer;">2</button>
-    <button class="pag-btn" style="font-family:'Montserrat',sans-serif; font-size:12px; font-weight:600; width:34px; height:34px; border-radius:8px; border:1.5px solid #dde4ef; background:white; color:#6b7f95; cursor:pointer;">3</button>
-    <span style="font-size:12px; color:#94a4b6;">...</span>
-    <button class="pag-btn" style="font-family:'Montserrat',sans-serif; font-size:12px; font-weight:600; width:34px; height:34px; border-radius:8px; border:1.5px solid #dde4ef; background:white; color:#6b7f95; cursor:pointer;">28</button>
-    <button class="pag-btn arrow" style="font-family:'Montserrat',sans-serif; font-size:12px; font-weight:600; height:34px; border-radius:8px; border:1.5px solid #dde4ef; background:white; color:#6b7f95; cursor:pointer; padding:0 12px;">Próxima →</button>
+    <button class="pag-btn" style="font-family:'Montserrat',sans-serif; font-size:12px; font-weight:600; width:34px; height:34px; border-radius:8px; border:1.5px solid #dde4ef; background:white; color:#000000; cursor:pointer;">2</button>
+    <button class="pag-btn" style="font-family:'Montserrat',sans-serif; font-size:12px; font-weight:600; width:34px; height:34px; border-radius:8px; border:1.5px solid #dde4ef; background:white; color:#000000; cursor:pointer;">3</button>
+    <span style="font-size:12px; color:#000000;">...</span>
+    <button class="pag-btn" style="font-family:'Montserrat',sans-serif; font-size:12px; font-weight:600; width:34px; height:34px; border-radius:8px; border:1.5px solid #dde4ef; background:white; color:#000000; cursor:pointer;">12</button>
+    <button class="pag-btn arrow" style="font-family:'Montserrat',sans-serif; font-size:12px; font-weight:600; height:34px; border-radius:8px; border:1.5px solid #dde4ef; background:white; color:#000000; cursor:pointer; padding:0 12px;">Próxima →</button>
   </div>
 
-  <p class="footer-note">Exibindo 9 de 247 projetos</p>
+  <p class="footer-note">Exibindo 9 de 105 projetos</p>
 </div>
 
+
+<footer class="footer">
+  <div class="footer-bottom">© 2026 The Blue City · Missão Cidade Azul. Todos os direitos reservados.</div>
+</footer>
 
 <script>
   function togglePeriodoGal() {
@@ -435,5 +465,14 @@
     document.querySelectorAll('.periodo-quick-gal').forEach(b => b.classList.remove('active'));
   }
 </script>
+<script>
+  (function () {
+    var topbar = document.querySelector('.topbar');
+    function onScroll() { topbar.classList.toggle('scrolled', window.scrollY > 4); }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
+
 </body>
 </html>
