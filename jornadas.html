@@ -171,6 +171,25 @@
   }
   .mission-btn:hover { background: #204a87; }
 
+  /* ============ ESTADO: JORNADA AINDA NÃO DISPONÍVEL ============ */
+  .mission.soon { background: #fcfdfe; border-color: #eaf0f6; }
+  .mission.soon:hover { box-shadow: none; transform: none; }
+  .mission.soon .mission-thumb::after {
+    content: ''; position: absolute; inset: 0;
+    background: rgba(255,255,255,0.62);
+  }
+  .mission.soon .mission-title { color: #8b9db0; }
+  .mission.soon .mission-desc,
+  .mission.soon .mission-meta span { color: #9aabbb; }
+  .mission.soon .pill-tema { background: #eef2f7; color: #93a4b4; }
+  .mission.soon .badges-line .lbl { color: #9aabbb; }
+  .mission.soon .badges-line .set { opacity: 0.38; }
+  .mission.soon .mission-btn {
+    background: #eaf0f6; color: #93a4b4; cursor: not-allowed;
+  }
+  .mission.soon .mission-btn:hover { background: #eaf0f6; }
+
+
   /* ============ RODAPÉ ============ */
   .footer { background: var(--blue); color: #fff; padding: 22px 40px; }
   .footer-bottom { max-width: 1140px; margin: 0 auto; font-size: 12px; color: rgba(255,255,255,0.85); text-align: center; }
@@ -257,14 +276,15 @@
     <!-- Card 1 -->
     <div class="mission">
       <div class="mission-thumb th-clima">
+        <img src="https://the-blue-city.github.io/content/TermometroZero1.jpg" alt="Termômetro Zero" loading="lazy">
       </div>
       <div class="mission-body">
-        <div class="mission-title">Redução de Emissões de Gases de Efeito Estufa</div>
+        <div class="mission-title">Termômetro Zero</div>
         <span class="pill-tema">Clima</span>
-        <p class="mission-desc">Entre no desafio de cortar emissões e descubra como suas escolhas reduzem o impacto no planeta.</p>
+        <p class="mission-desc">No Termômetro Zero, seu desafio é cortar as emissões de gases de efeito estufa e descobrir como cada decisão ajuda a esfriar o planeta e a construir cidades mais resilientes.</p>
         <div class="mission-meta">
-          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 25 min</span>
-          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> 1.247 colaboradores</span>
+          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 20 min de jogo</span>
+          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> 0 jogadores</span>
         </div>
         <div class="badges-line">
           <span class="lbl">Badges disponíveis:</span>
@@ -274,21 +294,23 @@
             <svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#d9a520"/><circle cx="12" cy="10" r="3.6" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M9.6 13 8.4 18l3.6-2.1 3.6 2.1-1.2-5" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </div>
-        <a href="jornada.html" class="mission-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Iniciar Missão</a>
+        <a href="jornada.html" class="mission-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Iniciar Jornada
+        </a>
       </div>
     </div>
 
     <!-- Card 2 -->
-    <div class="mission">
+    <div class="mission soon">
       <div class="mission-thumb th-ocean">
       </div>
       <div class="mission-body">
-        <div class="mission-title">Adaptação às Mudanças Climáticas</div>
+        <div class="mission-title">Linha d'Água</div>
         <span class="pill-tema">Adaptação</span>
-        <p class="mission-desc">Jogue para fortalecer comunidades e aprender estratégias que tornam o futuro mais resiliente.</p>
+        <p class="mission-desc">Na Linha d'Água, seu desafio é preparar a cidade para o que já está chegando e descobrir como cada obra, cada árvore e cada alerta muda o destino de quem vive nas áreas de risco.</p>
         <div class="mission-meta">
           <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 30 min</span>
-          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> 923 colaboradores</span>
+          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> 0 jogadores</span>
         </div>
         <div class="badges-line">
           <span class="lbl">Badges disponíveis:</span>
@@ -298,21 +320,23 @@
             <svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#d9a520"/><circle cx="12" cy="10" r="3.6" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M9.6 13 8.4 18l3.6-2.1 3.6 2.1-1.2-5" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </div>
-        <a href="jornada.html" class="mission-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Iniciar Missão</a>
+        <span class="mission-btn" role="button" aria-disabled="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Iniciar Jornada
+        </span>
       </div>
     </div>
 
     <!-- Card 3 -->
-    <div class="mission">
+    <div class="mission soon">
       <div class="mission-thumb th-finance">
       </div>
       <div class="mission-body">
-        <div class="mission-title">Financiamento Climático para Países em Desenvolvimento</div>
+        <div class="mission-title">Cofre Aberto</div>
         <span class="pill-tema">Financiamento</span>
-        <p class="mission-desc">Assuma a missão de mobilizar recursos e apoiar soluções climáticas onde elas são mais urgentes.</p>
+        <p class="mission-desc">No Cofre Aberto, seu desafio é destravar recursos para quem sente o clima primeiro e descobrir como cada decisão de investimento define quais soluções saem do papel.</p>
         <div class="mission-meta">
           <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 35 min</span>
-          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> 678 colaboradores</span>
+          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> 0 jogadores</span>
         </div>
         <div class="badges-line">
           <span class="lbl">Badges disponíveis:</span>
@@ -322,21 +346,23 @@
             <svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#d9a520"/><circle cx="12" cy="10" r="3.6" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M9.6 13 8.4 18l3.6-2.1 3.6 2.1-1.2-5" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </div>
-        <a href="jornada.html" class="mission-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Iniciar Missão</a>
+        <span class="mission-btn" role="button" aria-disabled="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Iniciar Jornada
+        </span>
       </div>
     </div>
 
     <!-- Card 4 -->
-    <div class="mission">
+    <div class="mission soon">
       <div class="mission-thumb th-energy">
       </div>
       <div class="mission-body">
-        <div class="mission-title">Tecnologias de Energia Renovável e Soluções de Baixo Carbono</div>
+        <div class="mission-title">Corrente Limpa</div>
         <span class="pill-tema">Energia</span>
-        <p class="mission-desc">Explore inovações limpas e ajude a acelerar a transição para uma economia de baixo carbono.</p>
+        <p class="mission-desc">Na Corrente Limpa, seu desafio é trocar a matriz energética sem apagar as luzes e descobrir como cada escolha de tecnologia acelera a transição para uma economia de baixo carbono.</p>
         <div class="mission-meta">
           <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 28 min</span>
-          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> 1.156 colaboradores</span>
+          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> 0 jogadores</span>
         </div>
         <div class="badges-line">
           <span class="lbl">Badges disponíveis:</span>
@@ -346,21 +372,23 @@
             <svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#d9a520"/><circle cx="12" cy="10" r="3.6" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M9.6 13 8.4 18l3.6-2.1 3.6 2.1-1.2-5" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </div>
-        <a href="jornada.html" class="mission-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Iniciar Missão</a>
+        <span class="mission-btn" role="button" aria-disabled="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Iniciar Jornada
+        </span>
       </div>
     </div>
 
     <!-- Card 5 -->
-    <div class="mission">
+    <div class="mission soon">
       <div class="mission-thumb th-forest">
       </div>
       <div class="mission-body">
-        <div class="mission-title">Preservação de Florestas e Biodiversidade</div>
+        <div class="mission-title">Copa Cheia</div>
         <span class="pill-tema">Biodiversidade</span>
-        <p class="mission-desc">Defenda as florestas e proteja a vida em todas as suas formas em uma jornada pela biodiversidade.</p>
+        <p class="mission-desc">Na Copa Cheia, seu desafio é conter o avanço sobre a floresta e descobrir como cada espécie protegida sustenta o equilíbrio de todo o sistema.</p>
         <div class="mission-meta">
           <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 32 min</span>
-          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> 1.389 colaboradores</span>
+          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> 0 jogadores</span>
         </div>
         <div class="badges-line">
           <span class="lbl">Badges disponíveis:</span>
@@ -370,21 +398,23 @@
             <svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#d9a520"/><circle cx="12" cy="10" r="3.6" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M9.6 13 8.4 18l3.6-2.1 3.6 2.1-1.2-5" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </div>
-        <a href="jornada.html" class="mission-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Iniciar Missão</a>
+        <span class="mission-btn" role="button" aria-disabled="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Iniciar Jornada
+        </span>
       </div>
     </div>
 
     <!-- Card 6 -->
-    <div class="mission">
+    <div class="mission soon">
       <div class="mission-thumb th-social">
       </div>
       <div class="mission-body">
-        <div class="mission-title">Justiça Climática e Impactos Sociais</div>
+        <div class="mission-title">Ponto Cego</div>
         <span class="pill-tema">Justiça Social</span>
-        <p class="mission-desc">Descubra como garantir que a transição climática seja justa, inclusiva e beneficie a todos.</p>
+        <p class="mission-desc">No Ponto Cego, seu desafio é enxergar quem a transição climática deixa para trás e descobrir como distribuir custos e benefícios de forma que ninguém pague a conta sozinho.</p>
         <div class="mission-meta">
           <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 33 min</span>
-          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> 845 colaboradores</span>
+          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> 0 jogadores</span>
         </div>
         <div class="badges-line">
           <span class="lbl">Badges disponíveis:</span>
@@ -394,7 +424,9 @@
             <svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#d9a520"/><circle cx="12" cy="10" r="3.6" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M9.6 13 8.4 18l3.6-2.1 3.6 2.1-1.2-5" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </div>
-        <a href="jornada.html" class="mission-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Iniciar Missão</a>
+        <span class="mission-btn" role="button" aria-disabled="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Iniciar Jornada
+        </span>
       </div>
     </div>
 
