@@ -176,6 +176,30 @@
   .brief-note { font-size: 12px; color: #000000; line-height: 1.6; background: #f4f8fc; border-radius: 9px; padding: 12px 14px; }
 
   /* RODAPÉ */
+  /* ============ TOOLTIPS PARA O DESENVOLVEDOR ============ */
+  [data-tip] { position: relative; }
+  .tip-wrap { display: inline-flex; align-items: center; }
+  [data-tip]::after {
+    content: attr(data-tip);
+    position: absolute; bottom: calc(100% + 10px); left: 50%; transform: translateX(-50%);
+    background: #f5a623; color: #000000;
+    font-size: 12px; font-weight: 600; line-height: 1.4; text-align: center;
+    padding: 8px 12px; border-radius: 8px;
+    width: max-content; max-width: 240px;
+    box-shadow: 0 4px 14px rgba(20,50,80,0.22);
+    opacity: 0; visibility: hidden; transition: opacity .15s;
+    pointer-events: none; z-index: 300;
+  }
+  [data-tip]::before {
+    content: ''; position: absolute; bottom: calc(100% + 4px); left: 50%; transform: translateX(-50%);
+    border: 6px solid transparent; border-top-color: #f5a623;
+    opacity: 0; visibility: hidden; transition: opacity .15s;
+    pointer-events: none; z-index: 300;
+  }
+  [data-tip]:hover::after, [data-tip]:hover::before { opacity: 1; visibility: visible; }
+  .footer [data-tip]::after { bottom: auto; top: calc(100% + 10px); }
+  .footer [data-tip]::before { bottom: auto; top: calc(100% + 4px); border-top-color: transparent; border-bottom-color: #f5a623; }
+
   .footer { background: #2858a0; color: #fff; padding: 40px 40px 28px; }
   .credits-inner {
     max-width: 1140px; margin: 0 auto 28px;
@@ -329,7 +353,7 @@
 
     <div class="credit-item">
       <span class="rot">Patrocínio</span>
-      <img src="https://the-blue-city.github.io/content/logo-sotreq.png" alt="Sotreq">
+      <span class="tip-wrap" data-tip="Imagem “puxada” do cadastro da empresa no Painel Master"><img src="https://the-blue-city.github.io/content/logo-sotreq.png" alt="Sotreq"></span>
     </div>
 
     <div class="credit-sep"></div>
