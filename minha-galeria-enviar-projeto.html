@@ -160,6 +160,8 @@
   }
   /* BRIEFING DO PROJETO FINAL */
   .brief-wrap { max-width: 1220px; margin: 26px auto 0; padding: 0 40px; }
+  .brief-card[data-tip]::after { bottom: auto; top: 40px; }
+  .brief-card[data-tip]::before { bottom: auto; top: 34px; border-top-color: transparent; border-bottom-color: #f5a623; }
   .brief-card {
     background: #fff; border: 1px solid #e0e8f0; border-left: 4px solid #5123a4;
     border-radius: 16px; padding: 30px 40px;
@@ -183,7 +185,7 @@
     content: attr(data-tip);
     position: absolute; bottom: calc(100% + 10px); left: 50%; transform: translateX(-50%);
     background: #f5a623; color: #000000;
-    font-size: 12px; font-weight: 600; line-height: 1.4; text-align: center;
+    font-size: 12px; font-weight: 400; line-height: 1.4; text-align: center;
     padding: 8px 12px; border-radius: 8px;
     width: max-content; max-width: 240px;
     box-shadow: 0 4px 14px rgba(20,50,80,0.22);
@@ -260,7 +262,7 @@
 
 <!-- BRIEFING -->
 <div class="brief-wrap">
-  <div class="brief-card">
+  <div class="brief-card" data-tip="Texto “puxado” do cadastro do jogo no Painel Master (etapa projeto final)">
     <div class="brief-eyebrow">Projeto final · Termômetro Zero</div>
     <h2>Desenvolver um plano de redução de gases</h2>
     <p>Na jornada você aprendeu de onde vêm as emissões de gases de efeito estufa e como cada decisão cotidiana aquece ou esfria o planeta. Agora o desafio sai da tela: escolha um lugar real que você conheça bem – sua escola, sua casa, seu bairro ou seu local de trabalho – e proponha um plano concreto para reduzir as emissões daquele lugar.</p>

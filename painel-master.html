@@ -446,6 +446,12 @@
     background: #dde5ee; color: #000000; display: flex; align-items: center; justify-content: center;
   }
   .chip .chip-x:hover { background: #c0392b; color: #fff; }
+  .modal-divider { display: flex; align-items: center; gap: 10px; margin: 24px 0 12px; }
+  .modal-divider span { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #468182; white-space: nowrap; }
+  .modal-divider::after { content: ''; flex: 1; height: 1px; background: rgba(70,129,130,0.2); }
+  .fmt-row { display: flex; flex-wrap: wrap; gap: 16px; }
+  .fmt-item { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 400; color: #1a2e3b; cursor: pointer; }
+  .fmt-item input { width: auto; margin: 0; }
   .add-inline { display: flex; gap: 8px; align-items: center; }
   .add-inline input { flex: 1; }
 
@@ -1430,6 +1436,13 @@
         <button class="modal-close" onclick="closeModal('modal-jogo')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
       </div>
       <div class="modal-body">
+        <div class="stepper">
+          <div class="step active" data-step="1"><div class="step-dot">1</div><span class="step-label">Jogo</span></div>
+          <div class="step-line"></div>
+          <div class="step" data-step="2"><div class="step-dot">2</div><span class="step-label">Projeto final</span></div>
+        </div>
+
+        <div class="step-pane active" data-pane="1">
         <div class="field">
           <label>Título do jogo <span class="req">*</span></label>
           <input type="text" placeholder="Ex.: Termômetro Zero">
@@ -1470,18 +1483,52 @@
             <div class="uz-sub">Pacote WebGL · o jogo deve enviar 3 checkpoints (bronze, prata, ouro)</div>
           </div>
         </div>
-        <div class="toggle-row">
+        </div>
+
+        <div class="step-pane" data-pane="2">
+        <p class="hint" style="margin:0 0 16px;">Desafio liberado quando o jogador conclui as 3 etapas e recebe o certificado. Aparece em Minha Galeria e orienta o projeto que o produtor vai avaliar</p>
+
+        <div class="field">
+          <label>Título do desafio <span class="req">*</span></label>
+          <input type="text" placeholder="Ex.: Desenvolver um plano de redução de gases">
+        </div>
+        <div class="field">
+          <label>Enunciado do desafio <span class="req">*</span></label>
+          <textarea rows="10" placeholder="Retome o que o jogador aprendeu na jornada, descreva o que ele deve fazer no mundo real e liste os critérios da entrega"></textarea>
+        </div>
+
+        <div class="field">
+          <label>Formatos aceitos no envio</label>
+          <div class="fmt-row">
+            <label class="fmt-item"><input type="checkbox" checked> PDF</label>
+            <label class="fmt-item"><input type="checkbox" checked> JPG</label>
+            <label class="fmt-item"><input type="checkbox" checked> PNG</label>
+            <label class="fmt-item"><input type="checkbox" checked> MP4</label>
+          </div>
+        </div>
+        <div class="field">
+          <label>Tamanho máximo do arquivo</label>
+          <select>
+            <option>3 MB</option>
+            <option>5 MB</option>
+            <option>10 MB</option>
+            <option>25 MB</option>
+          </select>
+        </div>
+
+        <div class="toggle-row" style="margin-top:18px;">
           <div>
             <div class="tr-title">Ativar para campanhas</div>
             <div class="tr-desc">Ativar permite criar campanhas com este jogo</div>
           </div>
           <label class="switch"><input type="checkbox"><span class="track"></span></label>
         </div>
+        </div>
       </div>
       <div class="modal-foot">
-        <button class="btn-ghost" onclick="closeModal('modal-jogo')">Cancelar</button>
+        <button class="btn-ghost" id="jogo-back" onclick="jogoStep(-1)" style="visibility:hidden;">Voltar</button>
         <div class="spacer"></div>
-        <button class="btn-primary">Salvar jogo</button>
+        <button class="btn-primary" id="jogo-next" onclick="jogoStep(1)">Continuar</button>
       </div>
     </div>
   </div>
@@ -1676,7 +1723,10 @@
     initRuntime();
     updateEmit();
 
-    function openModal(id){ document.getElementById(id).classList.add('open'); document.body.style.overflow='hidden'; }
+    function openModal(id){
+      document.getElementById(id).classList.add('open'); document.body.style.overflow='hidden';
+      if(id==='modal-jogo' && typeof jogoCur !== 'undefined'){ jogoCur = 1; renderJogoStep(); }
+    }
     function closeModal(id){ document.getElementById(id).classList.remove('open'); document.body.style.overflow=''; }
     document.querySelectorAll('.modal-overlay').forEach(function(o){
       o.addEventListener('click', function(e){ if(e.target===o){ o.classList.remove('open'); document.body.style.overflow=''; } });
@@ -1720,6 +1770,26 @@
       var v = document.getElementById('emp-slug').value.trim();
       if(v.length<2){ st.style.color='#c0392b'; st.innerHTML='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Slug muito curto'; }
       else { st.style.color='#2a9a4a'; st.innerHTML='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg> Subdomínio disponível'; }
+    }
+    var jogoCur = 1;
+    function jogoStep(dir){
+      var next = jogoCur + dir;
+      if(next < 1) return;
+      if(next > 2){ closeModal('modal-jogo'); jogoCur = 1; renderJogoStep(); return; }
+      jogoCur = next; renderJogoStep();
+    }
+    function renderJogoStep(){
+      document.querySelectorAll('#modal-jogo .step').forEach(function(s){
+        var n = +s.dataset.step;
+        s.classList.toggle('active', n===jogoCur);
+        s.classList.toggle('done', n<jogoCur);
+      });
+      document.querySelectorAll('#modal-jogo .step-pane').forEach(function(p){
+        p.classList.toggle('active', +p.dataset.pane===jogoCur);
+      });
+      document.getElementById('jogo-back').style.visibility = jogoCur===1 ? 'hidden' : 'visible';
+      document.getElementById('jogo-next').textContent = jogoCur===2 ? 'Salvar' : 'Continuar';
+      document.querySelector('#modal-jogo .modal-body').scrollTop = 0;
     }
     function addTema(){
       var inp = document.getElementById('novo-tema');
