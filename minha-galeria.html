@@ -33,6 +33,8 @@
   /* HEADER */
   .mg-header { margin-top: 57px; background: linear-gradient(135deg, #e8f0f8 0%, #e2f0e2 100%); padding: 32px max(40px, calc((100% - 1140px) / 2)); display: grid; grid-template-columns: 1fr 440px; gap: 30px; align-items: center; }
   .mg-title { font-size: 30px; font-weight: 800; line-height: 1; margin-bottom: 14px; background: linear-gradient(90deg, #2858a0, #5fb670); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .mg-profile[data-tip]::after { bottom: auto; top: calc(100% + 10px); }
+  .mg-profile[data-tip]::before { bottom: auto; top: calc(100% + 4px); border-top-color: transparent; border-bottom-color: #f5a623; }
   .mg-profile { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 12px; }
   .mg-profile .pi { display: flex; align-items: center; gap: 7px; font-size: 13px; color: #1a2e3b; font-weight: 600; }
   .mg-profile .pi svg { color: #2858a0; }
@@ -61,6 +63,9 @@
     transition: box-shadow .2s, transform .2s;
   }
   .game-card:hover { box-shadow: 0 8px 26px rgba(40,88,160,0.12); transform: translateY(-3px); }
+  .game-card:has([data-tip]:hover) { overflow: visible; }
+  .game-thumb[data-tip]::after { bottom: auto; top: calc(100% + 10px); }
+  .game-thumb[data-tip]::before { bottom: auto; top: calc(100% + 4px); border-top-color: transparent; border-bottom-color: #f5a623; }
   .game-thumb { height: 150px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #cdd9e6, #b9c6d6); position: relative; }
   .game-thumb svg { color: #6b7f95; opacity: 0.85; }
   .game-thumb.locked { background: linear-gradient(135deg, #3a4654, #20272f); }
@@ -95,6 +100,7 @@
 
   .lock-tag { position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.92); color: #000000; font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 20px; }
   .game-body { padding: 18px; display: flex; flex-direction: column; flex: 1; }
+  .game-title[data-tip] { display: inline-block; }
   .game-title { font-size: 15px; font-weight: 700; color: #1a2e3b; margin-bottom: 10px; line-height: 1.35; }
   .tag { font-size: 10.5px; font-weight: 700; padding: 3px 11px; border-radius: 20px; display: inline-block; }
   .tag-green { background: #d4f0d9; color: #2a7a3a; }
@@ -109,11 +115,16 @@
   .game-badges { display: flex; gap: 5px; }
   .gb { width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
   .gb-bronze { background: #e8d3b0; } .gb-silver { background: #d8dee6; } .gb-gold { background: #f3dd92; }
+  .game-badges { display: flex; gap: 5px; }
+  .gb { width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .gb-bronze { background: #e8d3b0; } .gb-silver { background: #d8dee6; } .gb-gold { background: #f3dd92; }
+  .gb-locked { background: #eef2f7; }
   .next-box { background: #f4f8fc; border: 1px solid #e7eef6; border-radius: 9px; padding: 10px 12px; margin: 10px 0; }
   .next-box .nl { font-size: 11px; font-weight: 700; color: #2858a0; margin-bottom: 2px; }
   .next-box .nt { font-size: 12px; color: #000000; line-height: 1.4; }
   .cert-box { background: #e8f6ec; border: 1px solid #c4e6cd; border-radius: 9px; padding: 10px 12px; margin: 10px 0; display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; color: #2a7a3a; }
-  .last-seen { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #000000; margin: 10px 0; }
+  .last-seen[data-tip] { display: inline-flex; }
+  .last-seen { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #000000; margin: 10px 0 16px; }
   .btn { margin-top: auto; width: 100%; border: none; border-radius: 8px; padding: 10px 20px; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: background .15s; }
   .btn-blue:hover { background: #204a87; }
   .btn-blue { background: #2858a0; color: #fff; }
@@ -194,6 +205,10 @@
     pointer-events: none; z-index: 300;
   }
   [data-tip]:hover::after, [data-tip]:hover::before { opacity: 1; visibility: visible; }
+  .tip-todo[data-tip]::after { background: #d8f43c; }
+  .tip-todo[data-tip]::before { border-top-color: #d8f43c; }
+  .tip-new[data-tip]::after { background: #6fdc8c; }
+  .tip-new[data-tip]::before { border-top-color: #6fdc8c; }
   .footer [data-tip]::after { bottom: auto; top: calc(100% + 10px); }
   .footer [data-tip]::before { bottom: auto; top: calc(100% + 4px); border-top-color: transparent; border-bottom-color: #f5a623; }
 
@@ -247,7 +262,7 @@
 <div class="mg-header">
   <div>
     <h1 class="mg-title">Minha Galeria</h1>
-    <div class="mg-profile">
+    <div class="mg-profile" data-tip="Informações “puxadas” do cadastro do usuário">
       <span class="pi"><span class="mg-avatar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span> LordeVerde</span>
       <span class="pi"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Palmas, TO</span>
       <span class="pi"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg> Instituto Federal do Tocantins (IFTO)</span>
@@ -256,22 +271,22 @@
   </div>
 
   <div class="kpi-grid">
-    <div class="kpi-card">
+    <div class="kpi-card" data-tip="Informações “puxadas” do jogo">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
       <div class="kpi-val">0</div>
       <div class="kpi-lbl">Pontos Totais</div>
     </div>
-    <div class="kpi-card">
+    <div class="kpi-card" data-tip="Informações “puxadas” do jogo">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg>
       <div class="kpi-val">0</div>
       <div class="kpi-lbl">Badges NFT</div>
     </div>
-    <div class="kpi-card">
+    <div class="kpi-card" data-tip="Informações “puxadas” do jogo">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 3h16v13H4z"/><path d="M8 20h8"/><path d="M12 16v4"/><circle cx="12" cy="9" r="2.5"/></svg>
       <div class="kpi-val">0</div>
       <div class="kpi-lbl">Certificado NFT</div>
     </div>
-    <div class="kpi-card">
+    <div class="kpi-card tip-new" data-tip="Criar campo no Painel Master para inserir projeto de cada jogo">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
       <div class="kpi-val">0</div>
       <div class="kpi-lbl">Projetos enviados</div>
@@ -289,19 +304,20 @@
     <div class="games-grid">
       <!-- Termômetro Zero (ativa) -->
       <div class="game-card" data-status="ativo">
-        <div class="game-thumb th-clima">
+        <div class="game-thumb th-clima" data-tip="Imagem “puxada” do cadastro do jogo no Painel Master (imagem da capa)">
           <img src="https://the-blue-city.github.io/content/TermometroZero1.jpg" alt="Termômetro Zero" loading="lazy">
         </div>
         <div class="game-body">
-          <div class="game-title">Termômetro Zero</div>
-          <span class="pill-tema">Clima</span>
+          <div class="game-title" data-tip="Nome do jogo “puxado” do cadastro do jogo no Painel Master (título do jogo)">Termômetro Zero</div>
+          <span class="pill-tema" data-tip="Tema do jogo “puxado” do cadastro do jogo no Painel Master (tema)">Clima</span>
           <div class="prog-row"><span>Progresso</span><span>0/3</span></div>
           <div class="mg-bar"><div style="width:0%;"></div></div>
           <div class="game-pts">
             <span class="pts"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 0 pts</span>
+            <span class="game-badges" data-tip="Informações “puxadas” do jogo"><span class="gb gb-locked"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#b6c2ce" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg></span><span class="gb gb-locked"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#b6c2ce" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg></span><span class="gb gb-locked"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#b6c2ce" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg></span></span>
           </div>
-          <div class="next-box"><div class="nl">Projeto Final</div><div class="nt">Desenvolver um plano de redução de gases</div></div>
-          <div class="last-seen"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 20 min de jogo</div>
+          <div class="next-box tip-todo" data-tip="Criar campo no Painel Master para inserir projeto de cada jogo"><div class="nl">Projeto Final</div><div class="nt">Desenvolver um plano de redução de gases</div></div>
+          <div class="last-seen" data-tip="Duração de jogo “puxada” do cadastro do jogo no Painel Master (duração de jogo)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 20 min de jogo</div>
           <button class="btn btn-blue" onclick="location.href='jornadas.html'"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg> Iniciar Jornada</button>
         </div>
       </div>
@@ -316,6 +332,7 @@
           <div class="mg-bar"><div style="width:0%;"></div></div>
           <div class="game-pts">
             <span class="pts"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 0 pts</span>
+            <span class="game-badges"><span class="gb gb-locked"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#b6c2ce" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg></span><span class="gb gb-locked"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#b6c2ce" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg></span><span class="gb gb-locked"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#b6c2ce" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg></span></span>
           </div>
           <div class="next-box"><div class="nl">Projeto Final</div><div class="nt">Plano de adaptação para uma área de risco</div></div>
           <div class="last-seen"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 30 min</div>
@@ -333,6 +350,7 @@
           <div class="mg-bar"><div style="width:0%;"></div></div>
           <div class="game-pts">
             <span class="pts"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 0 pts</span>
+            <span class="game-badges"><span class="gb gb-locked"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#b6c2ce" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg></span><span class="gb gb-locked"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#b6c2ce" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg></span><span class="gb gb-locked"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#b6c2ce" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg></span></span>
           </div>
           <div class="next-box"><div class="nl">Projeto Final</div><div class="nt">Proposta de captação para um projeto local</div></div>
           <div class="last-seen"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 35 min</div>
@@ -350,6 +368,7 @@
           <div class="mg-bar"><div style="width:0%;"></div></div>
           <div class="game-pts">
             <span class="pts"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 0 pts</span>
+            <span class="game-badges"><span class="gb gb-locked"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#b6c2ce" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg></span><span class="gb gb-locked"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#b6c2ce" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg></span><span class="gb gb-locked"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#b6c2ce" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg></span></span>
           </div>
           <div class="next-box"><div class="nl">Projeto Final</div><div class="nt">Estudo de transição energética da escola</div></div>
           <div class="last-seen"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 28 min</div>
@@ -367,6 +386,7 @@
           <div class="mg-bar"><div style="width:0%;"></div></div>
           <div class="game-pts">
             <span class="pts"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 0 pts</span>
+            <span class="game-badges"><span class="gb gb-locked"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#b6c2ce" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg></span><span class="gb gb-locked"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#b6c2ce" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg></span><span class="gb gb-locked"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#b6c2ce" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg></span></span>
           </div>
           <div class="next-box"><div class="nl">Projeto Final</div><div class="nt">Mapeamento de espécies da região</div></div>
           <div class="last-seen"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 32 min</div>
@@ -384,6 +404,7 @@
           <div class="mg-bar"><div style="width:0%;"></div></div>
           <div class="game-pts">
             <span class="pts"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 0 pts</span>
+            <span class="game-badges"><span class="gb gb-locked"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#b6c2ce" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg></span><span class="gb gb-locked"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#b6c2ce" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg></span><span class="gb gb-locked"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#b6c2ce" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg></span></span>
           </div>
           <div class="next-box"><div class="nl">Projeto Final</div><div class="nt">Diagnóstico de vulnerabilidade climática</div></div>
           <div class="last-seen"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 33 min</div>
@@ -400,7 +421,7 @@
     <!-- Termômetro Zero -->
     <div class="ach-game">
       <div class="ach-game-head"><h3>Termômetro Zero</h3><span class="pill-tema">Clima</span></div>
-      <div class="conq-grid">
+      <div class="conq-grid" data-tip="Informações “puxadas” do jogo">
         <div class="conq-tile locked">
           <div class="conq-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/></svg></div>
           <h4>Bronze</h4><div class="cl">Nível 1 · NFT</div>
@@ -466,9 +487,9 @@
     <div class="section-row"><h2>3. Meus Projetos</h2></div>
 
     <div class="mission-row">
-      <div class="mission-main">
+      <div class="mission-main tip-todo" data-tip="Criar campo no Painel Master para inserir projeto de cada jogo">
         <div class="mission-head"><h3>Termômetro Zero</h3><span class="tag tag-orange">A enviar</span></div>
-        <p class="mission-desc">Desenvolver um plano de redução de gases. Conclua os 3 níveis da jornada e envie seu projeto do mundo real.</p>
+        <p class="mission-desc">Desenvolver um plano de redução de gases. Conclua os 3 níveis da jornada e envie seu projeto final.</p>
       </div>
       <button class="btn" style="width:auto; padding:10px 20px; background:#eaf0f6; color:#93a4b4; cursor:not-allowed;"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg> Enviar vídeo ou projeto</button>
     </div>

@@ -96,21 +96,24 @@
   }
   .card:hover { box-shadow: 0 6px 20px rgba(40,88,160,0.1); transform: translateY(-2px); }
 
+  .card:has([data-tip]:hover) { overflow: visible; }
+  .card-thumb[data-tip]::after { bottom: auto; top: 50%; transform: translate(-50%, -50%); }
+  .card-thumb[data-tip]::before { display: none; }
   .card-thumb { height: 150px; }
   .thumb-teal  { background: #d0e8e8; }
   .thumb-blue  { background: #d6e4f7; }
   .thumb-green { background: #d4f0d9; }
 
   .card-body { padding: 14px; }
+  .card-title[data-tip] { display: inline-block; }
   .card-title { font-size: 13.5px; font-weight: 700; color: #1a2e3b; margin-bottom: 8px; line-height: 1.4; }
-  .card-author { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; font-size: 11px; color: #000000; margin-bottom: 10px; }
+  .card-author { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; font-size: 11px; line-height: 1.5; color: #000000; margin-bottom: 6px; }
   .card-author .ai { display: flex; align-items: center; gap: 5px; }
   .card-author .ai svg { flex-shrink: 0; color: #2858a0; }
-  .card-data { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #000000; font-weight: 400; margin-bottom: 10px; }
+  .card-data { display: flex; align-items: center; gap: 6px; font-size: 11px; line-height: 1.5; color: #000000; font-weight: 400; margin-bottom: 10px; }
   .card-data svg { flex-shrink: 0; color: #2858a0; }
   .card-footer {
-    border-top: 1px solid #f0f4f8;
-    padding-top: 10px;
+    padding-top: 2px;
     display: flex; align-items: center; justify-content: flex-end;
   }
   .card-footer span {
@@ -232,10 +235,10 @@
   <h1>Galeria de <em>Projetos</em></h1>
   <p class="hero-sub">Projetos reais enviados por participantes das jornadas The Blue City</p>
   <div class="stats-row">
-    <div class="stat-box"><div class="val val-blue">2.000</div><div class="lbl">Jogadores Ativos</div></div>
-    <div class="stat-box"><div class="val val-purple">1.300</div><div class="lbl">Jornadas concluídas</div></div>
-    <div class="stat-box"><div class="val val-green">105</div><div class="lbl">Projetos publicados</div></div>
-    <div class="stat-box"><div class="val val-teal">1</div><div class="lbl">Cidade</div></div>
+    <div class="stat-box" data-tip="Informações “puxadas” da página Performance dos Jogadores"><div class="val val-blue">2.000</div><div class="lbl">Jogadores Ativos</div></div>
+    <div class="stat-box" data-tip="Informações “puxadas” da página Performance dos Jogadores"><div class="val val-purple">1.300</div><div class="lbl">Jornadas concluídas</div></div>
+    <div class="stat-box" data-tip="Informações “puxadas” da página Performance dos Jogadores"><div class="val val-green">105</div><div class="lbl">Projetos publicados</div></div>
+    <div class="stat-box" data-tip="Informações “puxadas” da página Performance dos Jogadores"><div class="val val-teal">1</div><div class="lbl">Cidade</div></div>
   </div>
 </div>
 
@@ -244,16 +247,16 @@
   <!-- FILTERS -->
   <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding: 18px 0 20px; border-bottom: 1px solid #e0e8f0; margin-bottom:24px;">
     <label style="font-size:11px; font-weight:700; color:#000000; letter-spacing:0.5px;">Filtrar por</label>
-    <select style="font-family:'Montserrat',sans-serif; font-size:12px; padding:7px 12px; border-radius:8px; border:1.5px solid #dde4ef; background:#fff; color:#1a2e3b; cursor:pointer;">
-      <option>Todos os temas</option><option>Clima</option><option>Adaptação</option><option>Financiamento</option><option>Energia</option><option>Biodiversidade</option><option>Justiça Social</option>
-    </select>
-    <select style="font-family:'Montserrat',sans-serif; font-size:12px; padding:7px 12px; border-radius:8px; border:1.5px solid #dde4ef; background:#fff; color:#1a2e3b; cursor:pointer;">
-      <option>Todos os jogos</option><option>Termômetro Zero</option><option>Linha d'Água</option><option>Cofre Aberto</option><option>Corrente Limpa</option><option>Copa Cheia</option><option>Ponto Cego</option>
-    </select>
+    <span class="tip-wrap" data-tip="Informações “puxadas” dos cadastros no Painel Master"><select style="font-family:'Montserrat',sans-serif; font-size:12px; padding:7px 12px; border-radius:8px; border:1.5px solid #dde4ef; background:#fff; color:#1a2e3b; cursor:pointer;">
+        <option>Todos os temas</option><option>Clima</option><option>Adaptação</option><option>Financiamento</option><option>Energia</option><option>Biodiversidade</option><option>Justiça Social</option>
+      </select></span>
+    <span class="tip-wrap" data-tip="Informações “puxadas” dos cadastros no Painel Master"><select style="font-family:'Montserrat',sans-serif; font-size:12px; padding:7px 12px; border-radius:8px; border:1.5px solid #dde4ef; background:#fff; color:#1a2e3b; cursor:pointer;">
+        <option>Todos os jogos</option><option>Termômetro Zero</option><option>Linha d'Água</option><option>Cofre Aberto</option><option>Corrente Limpa</option><option>Copa Cheia</option><option>Ponto Cego</option>
+      </select></span>
     <div style="width:1px; height:24px; background:#e0e8f0;"></div>
-    <select style="font-family:'Montserrat',sans-serif; font-size:12px; padding:7px 12px; border-radius:8px; border:1.5px solid #dde4ef; background:#fff; color:#1a2e3b; cursor:pointer;">
-      <option>Todas as cidades</option><option>Palmas, TO</option>
-    </select>
+    <span class="tip-wrap" data-tip="Informações “puxadas” dos cadastros no Painel Master"><select style="font-family:'Montserrat',sans-serif; font-size:12px; padding:7px 12px; border-radius:8px; border:1.5px solid #dde4ef; background:#fff; color:#1a2e3b; cursor:pointer;">
+        <option>Todas as cidades</option><option>Palmas, TO</option>
+      </select></span>
     <div style="width:1px; height:24px; background:#e0e8f0;"></div>
     <div style="position:relative;" id="periodo-wrapper-gal">
       <button onclick="togglePeriodoGal()" id="periodo-trigger-gal"
@@ -292,14 +295,14 @@
   <div class="grid">
 
     <a href="galeria-projeto-detalhe.html" style="text-decoration:none; color:inherit; display:block;"><div class="card">
-      <div class="card-thumb thumb-teal"></div>
+      <div class="card-thumb thumb-teal" data-tip="Imagem “puxada” do formulário de envio de projeto (entrega de projeto)"></div>
       <div class="card-body">
-        <p class="card-title">Plano de arborização da quadra</p>
+        <p class="card-title" data-tip="Nome do projeto “puxado” do formulário de envio de projeto (título do projeto)">Plano de arborização da quadra</p>
         <div class="card-pills">
-          <span class="pill-tema">Clima</span>
-          <span class="pill-jogo">Termômetro Zero</span>
+          <span class="pill-tema" data-tip="Tema do jogo “puxado” do cadastro do jogo no Painel Master (tema)">Clima</span>
+          <span class="pill-jogo" data-tip="Nome do jogo “puxado” do cadastro do jogo no Painel Master (título do jogo)">Termômetro Zero</span>
         </div>
-        <p class="card-author"><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> LordeVerde</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Palmas, TO</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg> Instituto Federal do Tocantins (IFTO)</span></p>
+        <p class="card-author" data-tip="Informações “puxadas” do cadastro do usuário"><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> LordeVerde</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Palmas, TO</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg> Instituto Federal do Tocantins (IFTO)</span></p>
         <div class="card-data"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Projeto enviado em 30/10/2026</div>
         <div class="card-footer">
           <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Visualizar</button>
@@ -308,14 +311,14 @@
     </div></a>
 
     <a href="galeria-projeto-detalhe.html" style="text-decoration:none; color:inherit; display:block;"><div class="card">
-      <div class="card-thumb thumb-blue"></div>
+      <div class="card-thumb thumb-blue" data-tip="Imagem “puxada” do formulário de envio de projeto (entrega de projeto)"></div>
       <div class="card-body">
-        <p class="card-title">Redução de emissões do campus</p>
+        <p class="card-title" data-tip="Nome do projeto “puxado” do formulário de envio de projeto (título do projeto)">Redução de emissões do campus</p>
         <div class="card-pills">
-          <span class="pill-tema">Clima</span>
-          <span class="pill-jogo">Termômetro Zero</span>
+          <span class="pill-tema" data-tip="Tema do jogo “puxado” do cadastro do jogo no Painel Master (tema)">Clima</span>
+          <span class="pill-jogo" data-tip="Nome do jogo “puxado” do cadastro do jogo no Painel Master (título do jogo)">Termômetro Zero</span>
         </div>
-        <p class="card-author"><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> MaiaVerde</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Palmas, TO</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg> Instituto Federal do Tocantins (IFTO)</span></p>
+        <p class="card-author" data-tip="Informações “puxadas” do cadastro do usuário"><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> MaiaVerde</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Palmas, TO</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg> Instituto Federal do Tocantins (IFTO)</span></p>
         <div class="card-data"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Projeto enviado em 30/10/2026</div>
         <div class="card-footer">
           <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Visualizar</button>
@@ -324,14 +327,14 @@
     </div></a>
 
     <a href="galeria-projeto-detalhe.html" style="text-decoration:none; color:inherit; display:block;"><div class="card">
-      <div class="card-thumb thumb-green"></div>
+      <div class="card-thumb thumb-green" data-tip="Imagem “puxada” do formulário de envio de projeto (entrega de projeto)"></div>
       <div class="card-body">
-        <p class="card-title">Carona solidária na escola</p>
+        <p class="card-title" data-tip="Nome do projeto “puxado” do formulário de envio de projeto (título do projeto)">Carona solidária na escola</p>
         <div class="card-pills">
-          <span class="pill-tema">Clima</span>
-          <span class="pill-jogo">Termômetro Zero</span>
+          <span class="pill-tema" data-tip="Tema do jogo “puxado” do cadastro do jogo no Painel Master (tema)">Clima</span>
+          <span class="pill-jogo" data-tip="Nome do jogo “puxado” do cadastro do jogo no Painel Master (título do jogo)">Termômetro Zero</span>
         </div>
-        <p class="card-author"><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> CarlosTO</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Palmas, TO</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg> Instituto Federal do Tocantins (IFTO)</span></p>
+        <p class="card-author" data-tip="Informações “puxadas” do cadastro do usuário"><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> CarlosTO</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Palmas, TO</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg> Instituto Federal do Tocantins (IFTO)</span></p>
         <div class="card-data"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Projeto enviado em 30/10/2026</div>
         <div class="card-footer">
           <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Visualizar</button>
@@ -340,14 +343,14 @@
     </div></a>
 
     <a href="galeria-projeto-detalhe.html" style="text-decoration:none; color:inherit; display:block;"><div class="card">
-      <div class="card-thumb thumb-teal"></div>
+      <div class="card-thumb thumb-teal" data-tip="Imagem “puxada” do formulário de envio de projeto (entrega de projeto)"></div>
       <div class="card-body">
-        <p class="card-title">Compostagem do refeitório</p>
+        <p class="card-title" data-tip="Nome do projeto “puxado” do formulário de envio de projeto (título do projeto)">Compostagem do refeitório</p>
         <div class="card-pills">
-          <span class="pill-tema">Clima</span>
-          <span class="pill-jogo">Termômetro Zero</span>
+          <span class="pill-tema" data-tip="Tema do jogo “puxado” do cadastro do jogo no Painel Master (tema)">Clima</span>
+          <span class="pill-jogo" data-tip="Nome do jogo “puxado” do cadastro do jogo no Painel Master (título do jogo)">Termômetro Zero</span>
         </div>
-        <p class="card-author"><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> AnaCerrado</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Palmas, TO</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg> Instituto Federal do Tocantins (IFTO)</span></p>
+        <p class="card-author" data-tip="Informações “puxadas” do cadastro do usuário"><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> AnaCerrado</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Palmas, TO</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg> Instituto Federal do Tocantins (IFTO)</span></p>
         <div class="card-data"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Projeto enviado em 30/10/2026</div>
         <div class="card-footer">
           <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Visualizar</button>
@@ -356,14 +359,14 @@
     </div></a>
 
     <a href="galeria-projeto-detalhe.html" style="text-decoration:none; color:inherit; display:block;"><div class="card">
-      <div class="card-thumb thumb-blue"></div>
+      <div class="card-thumb thumb-blue" data-tip="Imagem “puxada” do formulário de envio de projeto (entrega de projeto)"></div>
       <div class="card-body">
-        <p class="card-title">Diagnóstico de energia da escola</p>
+        <p class="card-title" data-tip="Nome do projeto “puxado” do formulário de envio de projeto (título do projeto)">Diagnóstico de energia da escola</p>
         <div class="card-pills">
-          <span class="pill-tema">Clima</span>
-          <span class="pill-jogo">Termômetro Zero</span>
+          <span class="pill-tema" data-tip="Tema do jogo “puxado” do cadastro do jogo no Painel Master (tema)">Clima</span>
+          <span class="pill-jogo" data-tip="Nome do jogo “puxado” do cadastro do jogo no Painel Master (título do jogo)">Termômetro Zero</span>
         </div>
-        <p class="card-author"><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> PedroWatt</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Palmas, TO</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg> Instituto Federal do Tocantins (IFTO)</span></p>
+        <p class="card-author" data-tip="Informações “puxadas” do cadastro do usuário"><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> PedroWatt</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Palmas, TO</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg> Instituto Federal do Tocantins (IFTO)</span></p>
         <div class="card-data"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Projeto enviado em 30/10/2026</div>
         <div class="card-footer">
           <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Visualizar</button>
@@ -372,14 +375,14 @@
     </div></a>
 
     <a href="galeria-projeto-detalhe.html" style="text-decoration:none; color:inherit; display:block;"><div class="card">
-      <div class="card-thumb thumb-green"></div>
+      <div class="card-thumb thumb-green" data-tip="Imagem “puxada” do formulário de envio de projeto (entrega de projeto)"></div>
       <div class="card-body">
-        <p class="card-title">Bicicleta no lugar do carro</p>
+        <p class="card-title" data-tip="Nome do projeto “puxado” do formulário de envio de projeto (título do projeto)">Bicicleta no lugar do carro</p>
         <div class="card-pills">
-          <span class="pill-tema">Clima</span>
-          <span class="pill-jogo">Termômetro Zero</span>
+          <span class="pill-tema" data-tip="Tema do jogo “puxado” do cadastro do jogo no Painel Master (tema)">Clima</span>
+          <span class="pill-jogo" data-tip="Nome do jogo “puxado” do cadastro do jogo no Painel Master (título do jogo)">Termômetro Zero</span>
         </div>
-        <p class="card-author"><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> LuaRamos</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Palmas, TO</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg> Instituto Federal do Tocantins (IFTO)</span></p>
+        <p class="card-author" data-tip="Informações “puxadas” do cadastro do usuário"><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> LuaRamos</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Palmas, TO</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg> Instituto Federal do Tocantins (IFTO)</span></p>
         <div class="card-data"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Projeto enviado em 30/10/2026</div>
         <div class="card-footer">
           <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Visualizar</button>
@@ -388,14 +391,14 @@
     </div></a>
 
     <a href="galeria-projeto-detalhe.html" style="text-decoration:none; color:inherit; display:block;"><div class="card">
-      <div class="card-thumb thumb-teal"></div>
+      <div class="card-thumb thumb-teal" data-tip="Imagem “puxada” do formulário de envio de projeto (entrega de projeto)"></div>
       <div class="card-body">
-        <p class="card-title">Menos lixo, menos metano</p>
+        <p class="card-title" data-tip="Nome do projeto “puxado” do formulário de envio de projeto (título do projeto)">Menos lixo, menos metano</p>
         <div class="card-pills">
-          <span class="pill-tema">Clima</span>
-          <span class="pill-jogo">Termômetro Zero</span>
+          <span class="pill-tema" data-tip="Tema do jogo “puxado” do cadastro do jogo no Painel Master (tema)">Clima</span>
+          <span class="pill-jogo" data-tip="Nome do jogo “puxado” do cadastro do jogo no Painel Master (título do jogo)">Termômetro Zero</span>
         </div>
-        <p class="card-author"><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> MarcosLima</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Palmas, TO</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg> Instituto Federal do Tocantins (IFTO)</span></p>
+        <p class="card-author" data-tip="Informações “puxadas” do cadastro do usuário"><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> MarcosLima</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Palmas, TO</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg> Instituto Federal do Tocantins (IFTO)</span></p>
         <div class="card-data"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Projeto enviado em 30/10/2026</div>
         <div class="card-footer">
           <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Visualizar</button>
@@ -404,14 +407,14 @@
     </div></a>
 
     <a href="galeria-projeto-detalhe.html" style="text-decoration:none; color:inherit; display:block;"><div class="card">
-      <div class="card-thumb thumb-blue"></div>
+      <div class="card-thumb thumb-blue" data-tip="Imagem “puxada” do formulário de envio de projeto (entrega de projeto)"></div>
       <div class="card-body">
-        <p class="card-title">Cardápio de baixo carbono</p>
+        <p class="card-title" data-tip="Nome do projeto “puxado” do formulário de envio de projeto (título do projeto)">Cardápio de baixo carbono</p>
         <div class="card-pills">
-          <span class="pill-tema">Clima</span>
-          <span class="pill-jogo">Termômetro Zero</span>
+          <span class="pill-tema" data-tip="Tema do jogo “puxado” do cadastro do jogo no Painel Master (tema)">Clima</span>
+          <span class="pill-jogo" data-tip="Nome do jogo “puxado” do cadastro do jogo no Painel Master (título do jogo)">Termômetro Zero</span>
         </div>
-        <p class="card-author"><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> SofiaNunes</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Palmas, TO</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg> Instituto Federal do Tocantins (IFTO)</span></p>
+        <p class="card-author" data-tip="Informações “puxadas” do cadastro do usuário"><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> SofiaNunes</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Palmas, TO</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg> Instituto Federal do Tocantins (IFTO)</span></p>
         <div class="card-data"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Projeto enviado em 30/10/2026</div>
         <div class="card-footer">
           <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Visualizar</button>
@@ -420,14 +423,14 @@
     </div></a>
 
     <a href="galeria-projeto-detalhe.html" style="text-decoration:none; color:inherit; display:block;"><div class="card">
-      <div class="card-thumb thumb-green"></div>
+      <div class="card-thumb thumb-green" data-tip="Imagem “puxada” do formulário de envio de projeto (entrega de projeto)"></div>
       <div class="card-body">
-        <p class="card-title">Mapa de emissões do bairro</p>
+        <p class="card-title" data-tip="Nome do projeto “puxado” do formulário de envio de projeto (título do projeto)">Mapa de emissões do bairro</p>
         <div class="card-pills">
-          <span class="pill-tema">Clima</span>
-          <span class="pill-jogo">Termômetro Zero</span>
+          <span class="pill-tema" data-tip="Tema do jogo “puxado” do cadastro do jogo no Painel Master (tema)">Clima</span>
+          <span class="pill-jogo" data-tip="Nome do jogo “puxado” do cadastro do jogo no Painel Master (título do jogo)">Termômetro Zero</span>
         </div>
-        <p class="card-author"><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> RafaTorres</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Palmas, TO</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg> Instituto Federal do Tocantins (IFTO)</span></p>
+        <p class="card-author" data-tip="Informações “puxadas” do cadastro do usuário"><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> RafaTorres</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Palmas, TO</span><span class="ai"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg> Instituto Federal do Tocantins (IFTO)</span></p>
         <div class="card-data"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Projeto enviado em 30/10/2026</div>
         <div class="card-footer">
           <button class="share-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Visualizar</button>
