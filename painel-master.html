@@ -446,6 +446,31 @@
     background: #dde5ee; color: #000000; display: flex; align-items: center; justify-content: center;
   }
   .chip .chip-x:hover { background: #c0392b; color: #fff; }
+  .dev-note {
+    display: flex; align-items: flex-start; gap: 8px;
+    background: #fdf3ea; border: 1px solid #f5d5b6; border-left: 3px solid #e8751a;
+    border-radius: 8px; padding: 10px 13px; margin-bottom: 14px;
+    font-size: 11.5px; line-height: 1.6; color: #000000;
+  }
+  .dev-note strong { color: #000000; }
+  .btn-locked, .btn-locked:hover {
+    background: #e8edf4; color: #8fa0b3; border-color: #e8edf4; cursor: default;
+  }
+  .dev-spec {
+    padding: 0; margin: 0 0 18px;
+    font-size: 11.5px; line-height: 1.7; color: #000000;
+  }
+  .dev-spec p { margin: 0 0 9px; }
+  .dev-spec .ds-title { font-weight: 700; margin-bottom: 10px; }
+  .dev-spec p:last-child { margin-bottom: 0; }
+  .lote-box {
+    background: #fff; border: 1px solid #e0e8f0; border-radius: 8px;
+    padding: 9px 11px; margin: 10px 0 0; font-size: 11px; line-height: 1.6;
+  }
+  .lote-box .lb-id { font-weight: 700; color: #1a2e3b; }
+  .lote-box .lb-open { color: #b8560f; }
+  .lote-box .lb-conf { color: #000000; font-weight: 700; }
+
   .modal-divider { display: flex; align-items: center; gap: 10px; margin: 24px 0 12px; }
   .modal-divider span { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #468182; white-space: nowrap; }
   .modal-divider::after { content: ''; flex: 1; height: 1px; background: rgba(70,129,130,0.2); }
@@ -541,11 +566,9 @@
   .emit-cert { font-size: 11px; font-weight: 700; color: #a8862a; background: #fff; border: 1px solid #f0e4b8; padding: 4px 11px; border-radius: 20px; margin-left: auto; }
   .emit-num { font-size: 30px; font-weight: 800; line-height: 1; margin: 14px 0 3px; }
   .emit-sub { font-size: 11.5px; color: #000000; font-weight: 400; }
-  .emit-cols { font-size: 10.5px; color: #000000; font-weight: 400; margin: 12px 0 14px; padding-top: 12px; line-height: 1.5; }
+  .emit-cols { font-size: 10.5px; color: #000000; font-weight: 400; margin: 12px 0 0; line-height: 1.5; }
+  .emit-cols .ec-title { display: block; font-weight: 700; margin-bottom: 3px; }
   .emit-meta { font-size: 10.5px; color: #000000; font-weight: 400; margin-top: 4px; display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
-  .emit-lastdate { display: inline-flex; align-items: center; gap: 6px; padding: 6px 11px; background: #fff; border: 1px solid #e0e8f0; border-radius: 8px; font-size: 11.5px; font-weight: 400; color: #1a2e3b; }
-  .emit-lastdate svg { opacity: 0.6; flex-shrink: 0; }
-  .emit-lastdate strong { font-weight: 400; }
   .emit-actions { display: flex; flex-direction: column; gap: 8px; margin-top: auto; }
   .emit-card .emit-actions .btn-ghost { background: #fff; }
   .emit-card .emit-actions .btn-ghost, .emit-card .emit-actions .btn-primary { width: 100%; justify-content: center; }
@@ -1007,39 +1030,49 @@
         <span class="emit-flow-step">3 · Badge enviada ao aluno</span>
       </div>
 
+      <div class="dev-spec">
+        <p class="ds-title">Enquanto não houver integração por API, o ciclo é baixar → subir na POK → confirmar aqui</p>
+        <p>Não existe integração por API com a POK, então o ciclo é manual: baixar o XLSX, subir na POK, voltar e confirmar. O que garante que ninguém receba a mesma badge duas vezes é o controle por registro individual. Cada par jogador+nível tem um registro com três estados possíveis: pendente, em lote e emitido. A fila do dia é sempre "quem está pendente", o que cobre também quem terminou na virada do dia e quem teve conclusão registrada retroativamente.</p>
+        <p>Ao baixar o arquivo, o sistema gera um lote_id, move todos os pendentes daquele nível para em lote e congela o conjunto: quem concluir depois entra no próximo lote. Enquanto o lote estiver aberto, rebaixar devolve o mesmo arquivo, e só existe um lote por vez em cada nível. O XLSX leva id_jogador e id_lote como colunas de controle antes dos dados que a POK usa.</p>
+        <p>A confirmação é o passo que marca o lote como emitido e tira aqueles jogadores da fila para sempre. Cada lote fechado guarda o id, a data e a quantidade, para rastrear o que foi enviado.</p>
+      </div>
+
       <div class="emit-grid">
         <div class="emit-card e-bronze">
           <div class="emit-top"><span class="emit-dot"></span>Bronze · Nível 1</div>
           <div class="emit-num" id="emit-num-bronze">0</div>
           <div class="emit-sub" id="emit-sub-bronze"></div>
           <div class="emit-meta" id="emit-meta-bronze"></div>
-          <div class="emit-cols">Nome · Sobrenome · E-mail · Documento · Escola · Cidade</div>
+          <div class="lote-box" id="emit-lote-bronze"></div>
           <div class="emit-actions">
             <button class="btn-ghost" id="emit-baixar-bronze" onclick="baixarXLSX('bronze')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="3" x2="12" y2="15"/></svg> Baixar XLSX</button>
-            <button class="btn-primary" id="emit-confirm-bronze" onclick="confirmarEmissao('bronze')" style="display:none;">Confirmar emissão na POK</button>
+            <button class="btn-primary" id="emit-confirm-bronze" onclick="abrirConfirmacao('bronze')">Confirmar emissão na POK</button>
           </div>
+          <div class="emit-cols"><span class="ec-title">Informações do xlsx:</span>Nome · Sobrenome · E-mail · Documento · Cidade · Escola</div>
         </div>
         <div class="emit-card e-prata">
           <div class="emit-top"><span class="emit-dot"></span>Prata · Nível 2</div>
           <div class="emit-num" id="emit-num-prata">0</div>
           <div class="emit-sub" id="emit-sub-prata"></div>
           <div class="emit-meta" id="emit-meta-prata"></div>
-          <div class="emit-cols">Nome · Sobrenome · E-mail · Documento · Escola · Cidade</div>
+          <div class="lote-box" id="emit-lote-prata"></div>
           <div class="emit-actions">
             <button class="btn-ghost" id="emit-baixar-prata" onclick="baixarXLSX('prata')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="3" x2="12" y2="15"/></svg> Baixar XLSX</button>
-            <button class="btn-primary" id="emit-confirm-prata" onclick="confirmarEmissao('prata')" style="display:none;">Confirmar emissão na POK</button>
+            <button class="btn-primary" id="emit-confirm-prata" onclick="abrirConfirmacao('prata')">Confirmar emissão na POK</button>
           </div>
+          <div class="emit-cols"><span class="ec-title">Informações do xlsx:</span>Nome · Sobrenome · E-mail · Documento · Cidade · Escola</div>
         </div>
         <div class="emit-card e-ouro">
           <div class="emit-top"><span class="emit-dot"></span>Ouro · Nível 3<span class="emit-cert">+ certificado automático</span></div>
           <div class="emit-num" id="emit-num-ouro">0</div>
           <div class="emit-sub" id="emit-sub-ouro"></div>
           <div class="emit-meta" id="emit-meta-ouro"></div>
-          <div class="emit-cols">Nome · Sobrenome · E-mail · Documento · Escola · Cidade</div>
+          <div class="lote-box" id="emit-lote-ouro"></div>
           <div class="emit-actions">
             <button class="btn-ghost" id="emit-baixar-ouro" onclick="baixarXLSX('ouro')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="3" x2="12" y2="15"/></svg> Baixar XLSX</button>
-            <button class="btn-primary" id="emit-confirm-ouro" onclick="confirmarEmissao('ouro')" style="display:none;">Confirmar emissão na POK</button>
+            <button class="btn-primary" id="emit-confirm-ouro" onclick="abrirConfirmacao('ouro')">Confirmar emissão na POK</button>
           </div>
+          <div class="emit-cols"><span class="ec-title">Informações do xlsx:</span>Nome · Sobrenome · E-mail · Documento · Cidade · Escola</div>
         </div>
       </div>
 
@@ -1533,6 +1566,27 @@
     </div>
   </div>
 
+  <!-- MODAL: Confirmar retorno do lote -->
+  <div class="modal-overlay" id="modal-confirmar-lote">
+    <div class="modal" style="max-width:440px;">
+      <div class="modal-head">
+        <div>
+          <h2>Confirmar emissão na POK</h2>
+          <p id="cf-lote">–</p>
+        </div>
+        <button class="modal-close" onclick="closeModal('modal-confirmar-lote')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size:12.5px; line-height:1.6; color:#000000; margin:0;">Confirme só depois que a POK processar o arquivo. É este passo que marca os jogadores como emitidos e os tira da fila</p>
+      </div>
+      <div class="modal-foot">
+        <button class="btn-ghost" onclick="closeModal('modal-confirmar-lote')">Cancelar</button>
+        <div class="spacer"></div>
+        <button class="btn-primary" onclick="aplicarConfirmacao()">Confirmar</button>
+      </div>
+    </div>
+  </div>
+
   <!-- MODAL: Temas -->
   <div class="modal-overlay" id="modal-categorias">
     <div class="modal">
@@ -1653,18 +1707,28 @@
       'Termômetro Zero · Manaus, AM':  { cidade: 'Manaus, AM', escolas: ['EE Amazonas','Colégio Rio Negro','IFAM Manaus'],           n: { bronze:[95,1070], prata:[75,780], ouro:[55,570] } }
     };
     var emitRuntime = {};
-    var CAL_ICON = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>';
     function initRuntime(){
       Object.keys(emitData).forEach(function(camp){
         emitRuntime[camp] = {};
         ['bronze','prata','ouro'].forEach(function(k){
           var pend = emitData[camp].n[k][0], eleg = emitData[camp].n[k][1];
-          emitRuntime[camp][k] = { pend: pend, eleg: eleg, issued: eleg - pend, last: '22/05/2026', downloaded: false };
+          emitRuntime[camp][k] = {
+            pend: pend,               // status = pendente
+            eleg: eleg,               // acumulado historico
+            issued: eleg - pend,      // status = emitido
+            last: '22/05/2026',
+            lote: null,               // lote aberto: {id, qtd, data}
+            seq: 6,                   // contador de lote_id da campanha/nivel
+            hist: []                  // lotes ja confirmados
+          };
         });
       });
     }
     function fmtBR(n){ return n.toLocaleString('pt-BR'); }
     function hojeBR(){ var d = new Date(), p = function(n){ return (n<10?'0':'')+n; }; return p(d.getDate())+'/'+p(d.getMonth()+1)+'/'+d.getFullYear(); }
+    function hojeISO(){ var d = new Date(), p = function(n){ return (n<10?'0':'')+n; }; return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate()); }
+    function nivelNum(k){ return k==='bronze' ? 1 : (k==='prata' ? 2 : 3); }
+
     function updateEmit(){
       var camp = document.getElementById('emit-campanha').value;
       var r = emitRuntime[camp]; if(!r) return;
@@ -1675,49 +1739,108 @@
         var sub = document.getElementById('emit-sub-'+k);
         var baixar = document.getElementById('emit-baixar-'+k);
         var confirmar = document.getElementById('emit-confirm-'+k);
+        var loteBox = document.getElementById('emit-lote-'+k);
+
         numEl.textContent = s.pend;
-        if(s.pend > 0){
+
+        // Lote aberto trava o download - dois lotes simultaneos duplicariam emissao
+        if(s.lote){
+          loteBox.style.display = '';
+          loteBox.innerHTML = '<span class="lb-id">' + fmtBR(s.lote.qtd) + ' registros congelados</span> · baixado em ' + s.lote.data +
+            '<br><span class="lb-open">Aguardando confirmação do retorno da POK</span>';
+          baixar.innerHTML = baixar.innerHTML.replace('Baixar XLSX','Rebaixar o mesmo lote');
+          confirmar.disabled = false;
+          confirmar.classList.remove('btn-locked');
+          confirmar.style.pointerEvents = '';
+          confirmar.title = '';
+        } else {
+          loteBox.style.display = '';
+          if(s.pend > 0){
+            loteBox.innerHTML = 'Nenhum lote aberto · baixe o XLSX para congelar os ' + fmtBR(s.pend) + ' pendentes e liberar a confirmação' +
+              (s.last ? '<br><span class="lb-conf">Última confirmação · ' + s.last + '</span>' : '');
+          } else {
+            loteBox.innerHTML = 'Fila zerada · todos os elegíveis já receberam a badge' +
+              (s.last ? '<br><span class="lb-conf">Última confirmação · ' + s.last + '</span>' : '');
+          }
+          confirmar.disabled = true;
+          confirmar.classList.add('btn-locked');
+          confirmar.style.pointerEvents = 'none';
+          confirmar.title = 'Baixe o lote para liberar a confirmação';
+          baixar.innerHTML = baixar.innerHTML.replace('Rebaixar o mesmo lote','Baixar XLSX');
+        }
+
+        if(s.pend > 0 || s.lote){
           sub.innerHTML = 'a emitir · de <span>'+fmtBR(s.eleg)+'</span> elegíveis';
-          baixar.disabled = false; baixar.style.opacity = ''; baixar.style.pointerEvents = '';
-          confirmar.style.display = s.downloaded ? '' : 'none';
+          baixar.disabled = false;
+          baixar.classList.remove('btn-locked'); baixar.style.pointerEvents = '';
           card.classList.remove('is-done');
         } else {
           sub.innerHTML = 'nada a emitir agora · '+fmtBR(s.eleg)+' elegíveis';
-          baixar.disabled = true; baixar.style.opacity = '0.45'; baixar.style.pointerEvents = 'none';
-          confirmar.style.display = 'none';
+          baixar.disabled = true; baixar.classList.add('btn-locked'); baixar.style.pointerEvents = 'none';
           card.classList.add('is-done');
         }
+
         document.getElementById('emit-meta-'+k).innerHTML =
-          '<span>Já emitidas: '+fmtBR(s.issued)+'</span>' +
-          '<span class="emit-lastdate">'+CAL_ICON+'Última emissão · <strong>'+(s.last || '–')+'</strong></span>';
+          '<span>Já emitidas: '+fmtBR(s.issued)+'</span>';
+
       });
     }
-    function confirmarEmissao(nivel){
-      var camp = document.getElementById('emit-campanha').value;
-      var s = emitRuntime[camp][nivel];
-      s.issued += s.pend; s.pend = 0; s.downloaded = false; s.last = hojeBR();
-      updateEmit();
-    }
+
+    // 1 - BAIXAR: congela o conjunto num lote_id. Rebaixar devolve o mesmo arquivo.
     function baixarXLSX(nivel){
       var camp = document.getElementById('emit-campanha').value;
       var d = emitData[camp]; if(!d) return;
-      if(typeof XLSX === 'undefined'){ alert('A biblioteca de planilha ainda está carregando. Tente novamente em instantes.'); return; }
+      var s = emitRuntime[camp][nivel];
+
+      // Abre o lote primeiro: a mudança de estado não pode depender da geração do arquivo
+      if(!s.lote){
+        if(s.pend === 0) return;
+        s.seq += 1;
+        s.lote = { id: 'L' + (s.seq < 10 ? '0' : '') + s.seq, qtd: s.pend, data: hojeBR() };
+        s.pend = 0; // pendentes viraram em_lote
+        updateEmit();
+      }
+
+      if(typeof XLSX === 'undefined'){
+        alert('O lote foi aberto, mas a biblioteca de planilha não carregou. Use "Rebaixar o mesmo lote" para gerar o arquivo.');
+        return;
+      }
+
       var nomes = ['Ana Beatriz Souza','Lucas Pereira','Mariana Lima','Pedro Henrique Alves','Júlia Fernandes','Gabriel Rocha','Larissa Martins','Rafael Cardoso'];
-      var aoa = [['first_name','last_name','email','document','Escola','Cidade']];
+      var aoa = [['id_jogador','id_lote','first_name','last_name','email','document','Cidade','Escola']];
       for(var i=0;i<6;i++){
         var nome = nomes[i % nomes.length];
         var parts = nome.split(' ');
         var first = parts.shift();
         var last = parts.join(' ');
         var email = nome.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ /g,'.') + '@aluno.exemplo.br';
-        aoa.push([first, last, email, '', d.escolas[i % d.escolas.length], d.cidade]);
+        aoa.push(['JG-' + (1000 + i), s.lote.id, first, last, email, '', d.cidade, d.escolas[i % d.escolas.length]]);
       }
       var ws = XLSX.utils.aoa_to_sheet(aoa);
       var wb = XLSX.utils.book_new();
       XLSX.utils.book_append_sheet(wb, ws, 'Jogadores');
       var slug = camp.split(' · ')[0].toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
-      XLSX.writeFile(wb, 'pok-'+nivel+'-'+slug+'.xlsx');
-      emitRuntime[camp][nivel].downloaded = true;
+      XLSX.writeFile(wb, 'pok-n' + nivelNum(nivel) + '-' + nivel + '-' + slug + '-' + hojeISO() + '-' + s.lote.id + '.xlsx');
+      updateEmit();
+    }
+
+    // 2 - CONFIRMAR: total ou parcial. Recusadas voltam para a fila.
+    var confAlvo = null;
+    function abrirConfirmacao(nivel){
+      var camp = document.getElementById('emit-campanha').value;
+      var s = emitRuntime[camp][nivel];
+      if(!s.lote) return;
+      confAlvo = nivel;
+      document.getElementById('cf-lote').textContent = fmtBR(s.lote.qtd) + ' registros · baixado em ' + s.lote.data;
+      openModal('modal-confirmar-lote');
+    }
+    function aplicarConfirmacao(){
+      var camp = document.getElementById('emit-campanha').value;
+      var s = emitRuntime[camp][confAlvo]; if(!s || !s.lote) return;
+      s.issued += s.lote.qtd;
+      s.last = hojeBR();
+      s.lote = null;
+      closeModal('modal-confirmar-lote');
       updateEmit();
     }
     initRuntime();
@@ -1897,18 +2020,22 @@
 <script>
   const jsTooltip = document.getElementById('js-tooltip');
 
-  document.querySelectorAll('[data-tip]').forEach(el => {
-    el.addEventListener('mouseenter', function(e) {
-      const tip = this.getAttribute('data-tip');
-      if (!tip) return;
-      jsTooltip.textContent = tip;
-      jsTooltip.style.display = 'block';
-      positionTooltip(e);
-    });
-    el.addEventListener('mousemove', positionTooltip);
-    el.addEventListener('mouseleave', function() {
-      jsTooltip.style.display = 'none';
-    });
+  // Delegação: cobre também elementos criados depois pelo JS
+  document.addEventListener('mouseover', function(e) {
+    const el = e.target.closest('[data-tip]');
+    if (!el) return;
+    const tip = el.getAttribute('data-tip');
+    if (!tip) return;
+    jsTooltip.textContent = tip;
+    jsTooltip.style.display = 'block';
+    positionTooltip(e);
+  });
+  document.addEventListener('mousemove', function(e) {
+    if (jsTooltip.style.display === 'block') positionTooltip(e);
+  });
+  document.addEventListener('mouseout', function(e) {
+    const el = e.target.closest('[data-tip]');
+    if (el) jsTooltip.style.display = 'none';
   });
 
   function positionTooltip(e) {
