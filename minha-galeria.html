@@ -220,11 +220,13 @@
   }
   .credit-item { display: flex; align-items: center; gap: 12px; }
   .credit-item .rot {
-    font-size: 10.5px; font-weight: 700; letter-spacing: 0.8px;
+    font-size: 10.5px; font-weight: 400; letter-spacing: 0.8px;
     text-transform: uppercase; color: #ffffff; white-space: nowrap;
   }
   .credit-item img { height: 30px; width: auto; display: block; }
+  .credit-item a { display: flex; align-items: center; }
   .credit-item .tbc { height: 26px; }
+  .credit-item .pok { height: 26px; }
   .credit-item .rouanet { height: 46px; }
   .credit-sep { width: 1px; height: 34px; background: rgba(255,255,255,0.28); }
   .footer-bottom {
@@ -548,7 +550,7 @@
 
     <div class="credit-item">
       <span class="rot">Patrocínio</span>
-      <span class="tip-wrap" data-tip="Imagem “puxada” do cadastro da empresa no Painel Master"><img src="https://the-blue-city.github.io/content/logo-sotreq.png" alt="Sotreq"></span>
+      <span class="tip-wrap" data-tip="Imagem “puxada” do cadastro da empresa no Painel Master"><a href="https://www.sotreq.com.br/" target="_blank" rel="noopener"><img src="https://the-blue-city.github.io/content/logo-sotreq.png" alt="Sotreq"></a></span>
     </div>
 
     <div class="credit-sep"></div>
@@ -561,7 +563,14 @@
     <div class="credit-sep"></div>
 
     <div class="credit-item">
-      <img src="https://the-blue-city.github.io/content/logo-minc.png" alt="Ministério da Cultura">
+      <span class="rot">Powered by</span>
+      <a href="https://pok.tech/" target="_blank" rel="noopener"><img class="pok" src="https://the-blue-city.github.io/content/pok-logo-branco-fundotransparente.svg" alt="POK"></a>
+    </div>
+
+    <div class="credit-sep"></div>
+
+    <div class="credit-item">
+      <a href="https://www.gov.br/cultura/pt-br" target="_blank" rel="noopener"><img src="https://the-blue-city.github.io/content/logo-minc.png" alt="Ministério da Cultura"></a>
     </div>
 
   </div>
