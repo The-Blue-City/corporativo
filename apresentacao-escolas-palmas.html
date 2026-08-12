@@ -35,7 +35,7 @@
     --teal-light: #d0e8e8;
     --green-light: #d4f0d9;
     --dark: #1a2e3b;
-    --text: #2c3e50;
+    --text: #000000;
     --muted: #000000;
     --bg: #f4f8fc;
     --bg-alt: #ffffff;
@@ -46,7 +46,7 @@
 
   /* ── TOPBAR ── */
   .topbar { position:sticky; top:0; z-index:100; background:rgba(18,30,51,0.96); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid rgba(255,255,255,0.08); }
-  .topbar-inner { position:relative; max-width:1180px; margin:0 auto; padding:14px 40px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+  .topbar-inner { position:relative; max-width:1180px; margin:0 auto; padding:14px clamp(22px, 7vw, 110px); display:flex; align-items:center; justify-content:space-between; gap:24px; }
   .topbar-brand { display:flex; align-items:center; gap:14px; color:white; }
   .topbar-logo { height:24px; width:auto; display:block; }
   .topbar-brand-sub { font-size:10px; font-weight:600; color:#ffffff; letter-spacing:0.8px; text-transform:uppercase; padding-left:14px; border-left:1px solid rgba(255,255,255,0.15); }
@@ -62,9 +62,9 @@
   .topbar-burger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
 
   /* ── SECTIONS BASE ── */
-  section { padding:72px 40px; position:relative; }
+  section { padding:72px clamp(22px, 7vw, 110px); position:relative; }
   section#contato { padding-top:24px; }
-  section.tight { padding:56px 40px; }
+  section.tight { padding:56px clamp(22px, 7vw, 110px); }
   .container { max-width:1180px; margin:0 auto; }
   .container-narrow { max-width:920px; margin:0 auto; }
   .section-alt { background:var(--bg); }
@@ -73,12 +73,12 @@
   .eyebrow { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--teal); margin-bottom:18px; display:inline-flex; align-items:center; gap:10px; }
   .eyebrow::before { content:''; width:24px; height:1.5px; background:var(--teal); }
 
-  h2.section-title { font-size:42px; font-weight:800; color:var(--dark); line-height:1.15; margin-bottom:18px; letter-spacing:-0.5px; }
-  h2.section-title.section-title-sm { font-size:32px; line-height:1.2; letter-spacing:-0.3px; }
-  .section-lead { font-size:17px; color:var(--text); line-height:1.65; margin-bottom:36px; }
+  h2.section-title { font-size:34px; font-weight:800; color:var(--dark); line-height:1.15; margin-bottom:18px; letter-spacing:-0.5px; }
+  h2.section-title.section-title-sm { font-size:28px; line-height:1.2; letter-spacing:-0.3px; }
+  .section-lead { font-size:15.5px; color:var(--text); line-height:1.65; margin-bottom:36px; }
 
   /* ── HERO ── */
-  .hero { background:linear-gradient(to bottom right,#1d4789 0%,#295b9c 35%,#468182 70%,#7fc596 100%); color:white; padding:120px 40px 100px; position:relative; overflow:hidden; }
+  .hero { background:linear-gradient(to bottom right,#1d4789 0%,#295b9c 35%,#468182 70%,#7fc596 100%); color:white; padding:120px clamp(22px, 7vw, 110px) 100px; position:relative; overflow:hidden; }
   .hero::before { content:''; position:absolute; top:0; left:0; right:0; height:5px; background:linear-gradient(90deg,var(--blue),var(--teal),var(--green)); }
   .hero::after { content:''; position:absolute; bottom:-60px; right:-60px; width:380px; height:380px; border-radius:50%; background:radial-gradient(circle,rgba(255,255,255,0.08) 0%,transparent 70%); pointer-events:none; }
   .hero-inner { max-width:1180px; margin:0 auto; position:relative; }
@@ -284,10 +284,10 @@
   /* ── CTA FINAL ── */
   .cta-block { background:linear-gradient(135deg,#1d4789 0%,#295b9c 50%,#468182 100%); border-radius:20px; padding:48px 44px; color:white; position:relative; overflow:hidden; }
   .cta-block::before { content:''; position:absolute; top:-40px; right:-40px; width:260px; height:260px; border-radius:50%; background:radial-gradient(circle,rgba(95,182,112,0.15) 0%,transparent 70%); pointer-events:none; }
-  .cta-eyebrow { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.75); margin-bottom:14px; display:inline-flex; align-items:center; gap:10px; position:relative; }
+  .cta-eyebrow { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#ffffff; margin-bottom:14px; display:inline-flex; align-items:center; gap:10px; position:relative; }
   .cta-eyebrow::before { content:''; width:24px; height:1.5px; background:rgba(255,255,255,0.5); }
-  .cta-title { font-size:32px; font-weight:800; line-height:1.2; margin-bottom:14px; max-width:720px; letter-spacing:-0.5px; position:relative; }
-  .cta-desc { font-size:15px; color:rgba(255,255,255,0.88); line-height:1.7; margin-bottom:28px; position:relative; }
+  .cta-title { font-size:34px; font-weight:800; line-height:1.2; margin-bottom:14px; max-width:720px; letter-spacing:-0.5px; position:relative; }
+  .cta-desc { font-size:15.5px; color:#ffffff; line-height:1.7; margin-bottom:28px; position:relative; }
   .cta-contact { display:flex; flex-wrap:wrap; gap:14px; position:relative; }
   .cta-contact-item { display:flex; align-items:center; gap:12px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); border-radius:10px; padding:14px 20px; transition:all 0.25s; }
   .cta-contact-item:hover { background:rgba(255,255,255,0.16); border-color:rgba(255,255,255,0.35); }
@@ -304,10 +304,12 @@
     gap:26px; flex-wrap:wrap;
   }
   .credit-item { display:flex; align-items:center; gap:12px; }
-  .credit-item .rot { font-size:10.5px; font-weight:700; letter-spacing:0.8px; text-transform:uppercase; color:#ffffff; white-space:nowrap; }
+  .credit-item .rot { font-size:10.5px; font-weight:400; letter-spacing:0.8px; text-transform:uppercase; color:#ffffff; white-space:nowrap; }
   .credit-item img { height:30px; width:auto; display:block; }
   .credit-item .rouanet { height:46px; }
   .credit-item .tbc { height:26px; }
+  .credit-item .pok { height:26px; }
+  .credit-item a { display:flex; align-items:center; }
   .credit-sep { width:1px; height:34px; background:rgba(255,255,255,0.28); }
 
   @media (max-width: 860px) {
@@ -316,7 +318,7 @@
   }
 
   /* ── FOOTER ── */
-  footer { background:var(--dark); color:white; padding:40px 40px 28px; }
+  footer { background:var(--dark); color:white; padding:40px clamp(22px, 7vw, 110px) 28px; }
   .footer-inner { max-width:1140px; margin:0 auto; }
   .footer-bottom {
     max-width:1140px; margin:0 auto;
@@ -364,7 +366,7 @@
     .context-title { font-size:20px; }
     .context-meta { grid-template-columns:1fr; gap:10px; }
     .cta-block { padding:32px 26px; }
-    .cta-title { font-size:24px; }
+    .cta-title { font-size:28px; }
     .compromisso-item { grid-template-columns:1fr; padding:18px 20px; gap:12px; }
     .topbar-inner { padding:12px 20px; gap:12px; }
     .topbar-brand-sub { display:none; }
@@ -929,7 +931,7 @@
           <div class="cta-contact-icon">✉️</div>
           <div>
             <div class="cta-contact-label">E-mail</div>
-            <div class="cta-contact-value"><a href="mailto:contato@thebluecity.app">contato@thebluecity.app</a></div>
+            <div class="cta-contact-value"><a href="mailto:hello@thebluecity.app">hello@thebluecity.app</a></div>
           </div>
         </div>
       </div>
@@ -950,7 +952,7 @@
 
     <div class="credit-item">
       <span class="rot">Patrocínio</span>
-      <img src="https://the-blue-city.github.io/content/logo-sotreq.png" alt="Sotreq">
+      <a href="https://www.sotreq.com.br/" target="_blank" rel="noopener"><img src="https://the-blue-city.github.io/content/logo-sotreq.png" alt="Sotreq"></a>
     </div>
 
     <div class="credit-sep"></div>
@@ -963,13 +965,20 @@
     <div class="credit-sep"></div>
 
     <div class="credit-item">
-      <img src="https://the-blue-city.github.io/content/logo-minc.png" alt="Ministério da Cultura">
+      <span class="rot">Powered by</span>
+      <a href="https://pok.tech/" target="_blank" rel="noopener"><img class="pok" src="https://the-blue-city.github.io/content/pok-logo-branco-fundotransparente.svg" alt="POK"></a>
+    </div>
+
+    <div class="credit-sep"></div>
+
+    <div class="credit-item">
+      <a href="https://www.gov.br/cultura/pt-br" target="_blank" rel="noopener"><img src="https://the-blue-city.github.io/content/logo-minc.png" alt="Ministério da Cultura"></a>
     </div>
 
   </div>
 
     <div class="footer-bottom">
-      <div>Contato: <a href="mailto:contato@thebluecity.app">contato@thebluecity.app</a></div>
+      <div>Contato: <a href="mailto:hello@thebluecity.app">hello@thebluecity.app</a></div>
       <div>© The Blue City · Missão Cidade Azul</div>
     </div>
   </div>
