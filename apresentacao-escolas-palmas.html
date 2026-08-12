@@ -85,7 +85,7 @@
   .hero-eyebrow { font-size:11px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:rgba(255,255,255,0.8); margin-bottom:24px; display:inline-flex; align-items:center; gap:12px; }
   .hero-eyebrow::before { content:''; width:32px; height:1.5px; background:rgba(255,255,255,0.6); }
   .hero-title { font-size:46px; font-weight:800; line-height:1.1; max-width:680px; margin-bottom:28px; letter-spacing:-1px; }
-  .hero-desc { font-size:16px; color:rgba(255,255,255,0.9); max-width:680px; line-height:1.7; margin-bottom:36px; }
+  .hero-desc { font-size:16px; color:#ffffff; max-width:680px; line-height:1.7; margin-bottom:36px; }
 
   /* Hero split layout */
   .hero-split { display:grid; grid-template-columns:1.15fr 1fr; gap:48px; align-items:center; margin-bottom:56px; }
@@ -148,7 +148,7 @@
   .hero-stat-box:hover { background:rgba(255,255,255,0.12); border-color:rgba(255,255,255,0.25); transform:translateY(-2px); }
   .hero-stat-icon { font-size:28px; line-height:1; margin-bottom:14px; }
   .hero-stat-title { font-size:14px; font-weight:700; color:white; letter-spacing:0.3px; margin-bottom:8px; line-height:1.2; }
-  .hero-stat-desc { font-size:12px; color:rgba(255,255,255,0.78); line-height:1.55; }
+  .hero-stat-desc { font-size:12px; color:#ffffff; line-height:1.55; }
 
   /* ── CARDS ── */
   .feature-card { background:white; border-radius:14px; padding:24px 26px; border:1px solid rgba(40,88,160,0.08); box-shadow:0 2px 12px rgba(0,0,0,0.04); transition:transform 0.25s,box-shadow 0.25s; }
@@ -229,10 +229,10 @@
   .cert-side-cards .benefit-card { min-height:240px; }
   .cert-side-cards .benefit-tag { margin-top:auto; }
   .cert-conheca { margin-top:32px; text-align:center; }
-  .cert-conheca-btn { display:inline-block; max-width:none; white-space:nowrap; background:#e7ddf7; color:#000000; font-size:14.5px; font-weight:500; line-height:1.5; text-decoration:none; text-align:center; padding:14px 30px; border-radius:12px; box-shadow:0 4px 14px rgba(81,35,164,0.16); transition:transform .15s ease, box-shadow .15s ease, background .15s ease; }
+  .cert-conheca-btn { display:inline-block; max-width:none; white-space:nowrap; background:#5123a4; color:#ffffff; font-size:12.5px; font-weight:500; line-height:1.5; text-decoration:none; text-align:center; padding:10px 20px; border-radius:10px; transition:background .15s ease; }
   .cert-conheca-btn strong { font-weight:600; }
-  .cert-conheca-btn::after { content:"\2192"; margin-left:8px; font-weight:800; font-size:17px; }
-  .cert-conheca-btn:hover { background:#d7c6f2; transform:translateY(-1px); box-shadow:0 8px 20px rgba(81,35,164,0.24); }
+  .cert-conheca-btn::after { content:"\2192"; margin-left:8px; font-weight:800; font-size:14px; }
+  .cert-conheca-btn:hover { background:#3f1b82; }
   .cert-group-head { display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin:0; }
   .cert-grouppill { font-size:11px; font-weight:800; letter-spacing:0.5px; text-transform:uppercase; padding:6px 14px; border-radius:20px; display:inline-flex; align-items:center; gap:7px; }
   .cert-grouppill-aluno { color:#2d7a3e; background:var(--green-light); }
@@ -254,7 +254,7 @@
   .context-block { background:var(--dark); border-radius:16px; padding:36px 40px; color:white; }
   .context-eyebrow { font-size:11px; font-weight:700; color:var(--green); letter-spacing:1.2px; text-transform:uppercase; margin-bottom:14px; }
   .context-title { font-size:24px; font-weight:800; line-height:1.25; margin-bottom:16px; color:white; }
-  .context-desc { font-size:14.5px; color:rgba(255,255,255,0.85); line-height:1.7; margin-bottom:24px; }
+  .context-desc { font-size:14.5px; color:#ffffff; line-height:1.7; margin-bottom:24px; }
   .context-meta { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
   .context-meta-item { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.08); border-radius:10px; padding:18px 20px; }
   .context-meta-label { font-size:10.5px; font-weight:700; color:var(--green); letter-spacing:0.8px; text-transform:uppercase; margin-bottom:6px; }
@@ -269,7 +269,7 @@
   .legacy-head-green { background:#38a349; }
   .legacy-icon { width:44px; height:44px; background:rgba(255,255,255,0.18); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:21px; flex-shrink:0; }
   .legacy-title { font-size:15px; font-weight:800; color:white; margin-bottom:3px; line-height:1.25; }
-  .legacy-sub { font-size:11.5px; color:rgba(255,255,255,0.78); line-height:1.4; }
+  .legacy-sub { font-size:11.5px; color:#ffffff; line-height:1.4; }
   .legacy-body { padding:22px 24px; display:flex; flex-direction:column; flex:1; }
   .legacy-body p { font-size:13px; color:var(--muted); line-height:1.7; flex:1; }
   .legacy-note { padding:13px 16px; background:var(--bg); border-radius:10px; margin-top:16px; }
@@ -279,15 +279,15 @@
   /* ── INFO/HIGHLIGHT BOX ── */
   .info-card { background:var(--dark); border-radius:14px; padding:32px 36px; color:white; border-left:4px solid var(--green); }
   .info-card-eyebrow { font-size:11px; font-weight:700; color:var(--green); letter-spacing:1.2px; text-transform:uppercase; margin-bottom:14px; }
-  .info-card p { font-size:15px; color:rgba(255,255,255,0.92); line-height:1.7; font-weight:400; }
+  .info-card p { font-size:15px; color:#ffffff; line-height:1.7; font-weight:400; }
 
   /* ── CTA FINAL ── */
   .cta-block { background:linear-gradient(135deg,#1d4789 0%,#295b9c 50%,#468182 100%); border-radius:20px; padding:48px 44px; color:white; position:relative; overflow:hidden; }
   .cta-block::before { content:''; position:absolute; top:-40px; right:-40px; width:260px; height:260px; border-radius:50%; background:radial-gradient(circle,rgba(95,182,112,0.15) 0%,transparent 70%); pointer-events:none; }
   .cta-eyebrow { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#ffffff; margin-bottom:14px; display:inline-flex; align-items:center; gap:10px; position:relative; }
   .cta-eyebrow::before { content:''; width:24px; height:1.5px; background:rgba(255,255,255,0.5); }
-  .cta-title { font-size:34px; font-weight:800; line-height:1.2; margin-bottom:14px; max-width:720px; letter-spacing:-0.5px; position:relative; }
-  .cta-desc { font-size:15.5px; color:#ffffff; line-height:1.7; margin-bottom:28px; position:relative; }
+  .cta-title { font-size:28px; font-weight:800; line-height:1.2; margin-bottom:14px; max-width:720px; letter-spacing:-0.5px; position:relative; }
+  .cta-desc { font-size:15.5px; color:#ffffff; line-height:1.7; max-width:640px; margin-bottom:28px; position:relative; }
   .cta-contact { display:flex; flex-wrap:wrap; gap:14px; position:relative; }
   .cta-contact-item { display:flex; align-items:center; gap:12px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); border-radius:10px; padding:14px 20px; transition:all 0.25s; }
   .cta-contact-item:hover { background:rgba(255,255,255,0.16); border-color:rgba(255,255,255,0.35); }
@@ -366,7 +366,7 @@
     .context-title { font-size:20px; }
     .context-meta { grid-template-columns:1fr; gap:10px; }
     .cta-block { padding:32px 26px; }
-    .cta-title { font-size:28px; }
+    .cta-title { font-size:24px; }
     .compromisso-item { grid-template-columns:1fr; padding:18px 20px; gap:12px; }
     .topbar-inner { padding:12px 20px; gap:12px; }
     .topbar-brand-sub { display:none; }
@@ -382,7 +382,7 @@
     .cert-side-cards { grid-template-columns:1fr; }
   }
   @media (max-width:560px) {
-    .cert-conheca-btn { white-space:normal; font-size:13.5px; padding:14px 20px; }
+    .cert-conheca-btn { white-space:normal; font-size:12px; padding:10px 16px; }
     .cert-two { grid-template-columns:1fr; gap:28px; }
     .cert-side-cards .benefit-card { min-height:0; }
     .cert-block { padding:24px 20px; }
@@ -450,7 +450,7 @@
       <div class="hero-text">
         <div class="hero-eyebrow">Convite institucional · Missão Termômetro Zero</div>
         <h1 class="hero-title">Educação ambiental, <br class="br-desktop">tecnologia e cultura <br class="br-desktop">chegam às escolas <br class="br-desktop">de Palmas em 2026</h1>
-        <p class="hero-desc">A Missão Termômetro Zero é uma jornada educativa, tecnológica e cultural que conecta seus estudantes a desafios reais de sustentabilidade – através de um jogo digital, certificações verificáveis em blockchain e uma exposição cultural aberta à comunidade. Sem custo para a escola.</p>
+        <p class="hero-desc">A Missão Termômetro Zero é uma jornada educativa, tecnológica e cultural que conecta seus estudantes a desafios reais de sustentabilidade – através de um jogo digital, certificações verificáveis em blockchain e uma exposição cultural aberta à comunidade.</p>
       </div>
       <div class="hero-map">
         <svg viewBox="0 0 1911.1 1854.6" xmlns="http://www.w3.org/2000/svg" aria-label="Globo terrestre destacando Palmas, Tocantins">
@@ -925,7 +925,7 @@
     <div class="cta-block">
       <div class="cta-eyebrow">Próximo passo</div>
       <h2 class="cta-title">Seja uma das escolas parceiras <br class="br-desktop">da Missão Termômetro Zero em Palmas</h2>
-      <p class="cta-desc">Estamos convidando escolas técnicas e de ensino médio e ensino superior de Palmas. Se a sua escola tem interesse em receber a jornada em 2026, mande um e-mail que nosso time agendará uma reunião institucional para apresentar o projeto com profundidade e responder dúvidas.</p>
+      <p class="cta-desc">Estamos convidando escolas técnicas, de ensino médio e de ensino superior de Palmas. Se a sua escola tem interesse em receber a jornada em 2026, mande um e-mail e nosso time agendará uma reunião institucional.</p>
       <div class="cta-contact">
         <div class="cta-contact-item">
           <div class="cta-contact-icon">✉️</div>
