@@ -130,6 +130,8 @@
     pointer-events: none; z-index: 300;
   }
   [data-tip]:hover::after, [data-tip]:hover::before { opacity: 1; visibility: visible; }
+  .tip-todo[data-tip]::after { background: #d8f43c; }
+  .tip-todo[data-tip]::before { border-top-color: #d8f43c; }
   .footer [data-tip]::after { bottom: auto; top: calc(100% + 10px); }
   .footer [data-tip]::before { bottom: auto; top: calc(100% + 4px); border-top-color: transparent; border-bottom-color: #f5a623; }
 
@@ -595,7 +597,7 @@
       </div>
 
       <div class="cert-actions">
-        <a class="btn btn-primary">
+        <a class="btn btn-primary tip-todo" data-tip="Vou preparar uma credencial da POK com a cara do jogo e trazer o link para colocar aqui">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.12"/></svg>
           Ver Certificado
         </a>
