@@ -62,7 +62,7 @@
   .main { flex: 1; min-width: 0; }
   .topbar {
     background: #fff; border-bottom: 1px solid #e0e8f0;
-    padding: 16px 32px; display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 56px; display: flex; align-items: center; justify-content: space-between;
   }
   .topbar h1 { font-size: 17px; font-weight: 800; color: #1a2e3b; }
   .topbar .crumb { font-size: 11px; color: #000000; margin-top: 2px; }
@@ -76,7 +76,7 @@
   }
   .btn-primary:hover { background: #1a3a70; }
 
-  .canvas { padding: 28px 32px 48px; }
+  .canvas { padding: 28px 56px 48px; }
 
   /* SECTION HEADING */
   .section-heading {
@@ -88,6 +88,12 @@
   .section-heading:first-child { margin-top: 0; }
   .section-heading::after { content: ''; flex: 1; height: 1px; background: rgba(70,129,130,0.2); }
   .section-heading--noline::after { display: none; }
+  .pill-verificar {
+    background: #d9f56b; color: #3d4d0a;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.4px;
+    text-transform: none; padding: 3px 10px; border-radius: 20px;
+    white-space: nowrap; flex-shrink: 0;
+  }
 
   /* KPI CARDS */
   .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
@@ -314,6 +320,10 @@
     box-shadow: 0 24px 60px rgba(16,42,63,0.3);
     animation: modalIn 0.22s ease; overflow: hidden;
   }
+  .modal-wide { max-width: 860px; }
+  /* pares de campos lado a lado, para encurtar a altura */
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
+  @media (max-width: 760px) { .modal-wide { max-width: 540px; } .field-row { grid-template-columns: 1fr; } }
   @keyframes modalIn { from { opacity: 0; transform: translateY(12px) scale(0.98); } to { opacity: 1; transform: none; } }
   .modal-head {
     padding: 22px 26px 18px; border-bottom: 1px solid #eef2f6;
@@ -396,16 +406,18 @@
   .radio-card .rc-desc { font-size: 11px; color: #000000; margin-top: 5px; line-height: 1.5; }
 
   .upload-zone {
-    border: 2px dashed #cdd9e6; border-radius: 12px; padding: 28px 20px;
-    text-align: center; cursor: pointer; transition: all 0.18s; background: #fafcfe;
+    border: 2px dashed #cdd9e6; border-radius: 12px; padding: 14px 18px;
+    text-align: left; cursor: pointer; transition: all 0.18s; background: #fafcfe;
+    display: flex; align-items: center; gap: 14px;
   }
   .upload-zone:hover { border-color: #2858a0; background: #f4f8fc; }
   .upload-zone .uz-icon {
-    width: 48px; height: 48px; border-radius: 12px; margin: 0 auto 12px;
+    width: 40px; height: 40px; border-radius: 10px; margin: 0; flex-shrink: 0;
     background: #e2ecf9; display: flex; align-items: center; justify-content: center;
   }
   .upload-zone .uz-title { font-size: 13px; font-weight: 700; color: #1a2e3b; }
-  .upload-zone .uz-sub { font-size: 11px; color: #000000; margin-top: 4px; }
+  .upload-zone .uz-sub { font-size: 11px; color: #000000; margin-top: 2px; }
+  .upload-zone .uz-text { min-width: 0; }
 
   .logo-upload { display: flex; align-items: center; gap: 14px; }
   .logo-preview {
@@ -503,6 +515,8 @@
   .prod-del:hover { border-color: #c0392b; color: #c0392b; background: #fdf2f1; }
 
   @media (max-width: 900px) {
+    .canvas { padding: 22px 20px 40px; }
+    .topbar { padding: 14px 20px; }
     .sidebar { display: none; }
     .kpi-row { grid-template-columns: repeat(2, 1fr); }
     .game-grid { grid-template-columns: 1fr; }
@@ -595,7 +609,15 @@
       </div>
     </div>
 
-    <a href="#empresas" class="nav-item active">
+    <a href="#roteiro" class="nav-item active">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11H3v10h6V11z"/><path d="M15 3H9v18h6V3z"/><path d="M21 7h-6v14h6V7z"/></svg>
+      Roteiro
+    </a>
+    <a href="#overview" class="nav-item">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+      Visão Geral
+    </a>
+    <a href="#empresas" class="nav-item">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg>
       Empresas
     </a>
@@ -640,7 +662,40 @@
 
     <div class="canvas">
 
-      <!-- KPIs -->
+      <!-- ROTEIRO -->
+      <div class="section-heading section-heading--noline" id="roteiro">
+        <span>Roteiro</span>
+        <span style="flex:1; height:1px; background:rgba(70,129,130,0.2);"></span>
+      </div>
+
+      <div class="roteiro">
+        <div class="rot-line">O operador de Painel Master:</div>
+        <ul class="rot-list">
+          <li>Cadastra empresa(s), tema de Jogo(s), cidade(s), jogo(s) e produtor(es)</li>
+          <li>Acompanha jogadores e produtores</li>
+          <li>Faz a emissão de credenciais</li>
+          <li>Monitora a performance da plataforma</li>
+        </ul>
+      </div>
+
+      <div class="roteiro">
+        <div class="rot-line">O operador de Painel do Articulador:</div>
+        <ul class="rot-list">
+          <li>Cadastra as escolas parceiras da cidade</li>
+          <li>Cria a campanha e vincula as escolas, gerando o QR code de cada uma</li>
+          <li>Acompanha a entrada dos estudantes e a evolução das jornadas</li>
+          <li>Avalia os projetos enviados e publica os aprovados na Galeria de Projetos</li>
+          <li>Seleciona os melhores projetos e os entrega ao Produtor Cultural</li>
+          <li>Publica o material da exposição na Galeria de Eventos</li>
+        </ul>
+      </div>
+
+      <!-- VISÃO GERAL -->
+      <div class="section-heading section-heading--noline" id="overview">
+        <span>Visão Geral</span>
+        <span style="flex:1; height:1px; background:rgba(70,129,130,0.2);"></span>
+      </div>
+
       <div class="kpi-row">
         <div class="kpi">
           <div class="kpi-top">
@@ -672,16 +727,6 @@
         </div>
       </div>
 
-
-      <div class="roteiro">
-        <div class="rot-line">O operador de Painel Master:</div>
-        <ul class="rot-list">
-          <li>Cadastra empresa(s), tema de Jogo(s), cidade(s), jogo(s) e produtor(es)</li>
-          <li>Acompanha jogadores e produtores</li>
-          <li>Faz a emissão de credenciais</li>
-          <li>Monitora a performance da plataforma</li>
-        </ul>
-      </div>
 
       <!-- EMPRESAS -->
       <div class="section-heading section-heading--noline" id="empresas">
@@ -965,16 +1010,17 @@
       <!-- ACOMPANHAMENTO DOS JOGADORES -->
       <div class="section-heading section-heading--noline" id="acompanhamento">
         <span>Acompanhamento de Jogadores</span>
+        <span class="pill-verificar">Falta verificar funcionamento</span>
         <span style="flex:1; height:1px; background:rgba(70,129,130,0.2);"></span>
       </div>
 
       <div class="acomp-funnel">
-        <div class="fstep f-blue"><div class="fs-val">1.150</div><div class="fs-lbl">Contas criadas</div><div class="fs-pct">100%</div></div>
-        <div class="fstep f-teal"><div class="fs-val">1.080</div><div class="fs-lbl">Começaram a jogar</div><div class="fs-pct">94%</div></div>
-        <div class="fstep f-bronze"><div class="fs-val">940</div><div class="fs-lbl">Nível 1 · Bronze</div><div class="fs-pct">82%</div></div>
-        <div class="fstep f-prata"><div class="fs-val">690</div><div class="fs-lbl">Nível 2 · Prata</div><div class="fs-pct">60%</div></div>
-        <div class="fstep f-ouro"><div class="fs-val">530</div><div class="fs-lbl">Nível 3 · Certificado</div><div class="fs-pct">46%</div></div>
-        <div class="fstep f-roxo"><div class="fs-val">380</div><div class="fs-lbl">Projeto enviado</div><div class="fs-pct">33%</div></div>
+        <div class="fstep f-blue"><div class="fs-val">2.150</div><div class="fs-lbl">Contas criadas</div><div class="fs-pct">100%</div></div>
+        <div class="fstep f-teal"><div class="fs-val">2.000</div><div class="fs-lbl">Jogadores ativos</div><div class="fs-pct">93%</div></div>
+        <div class="fstep f-bronze"><div class="fs-val">1.850</div><div class="fs-lbl">Nível 1 · Bronze</div><div class="fs-pct">86%</div></div>
+        <div class="fstep f-prata"><div class="fs-val">1.520</div><div class="fs-lbl">Nível 2 · Prata</div><div class="fs-pct">71%</div></div>
+        <div class="fstep f-ouro"><div class="fs-val">1.300</div><div class="fs-lbl">Nível 3 · Jornada concluída</div><div class="fs-pct">60%</div></div>
+        <div class="fstep f-roxo"><div class="fs-val">140</div><div class="fs-lbl">Projeto enviado</div><div class="fs-pct">7%</div></div>
       </div>
 
       <!-- ACOMPANHAMENTO DE PRODUTORES -->
@@ -999,10 +1045,10 @@
             <tr>
               <td><div class="ent-cell"><div class="ent-logo lg-2">VC</div><div><div class="ent-name" style="font-weight:500;">Vitor Artur Mendonça Rodolpho de Castro</div><div class="ent-slug">Sotreq</div></div></div></td>
               <td style="text-align:center;">1</td>
-              <td style="text-align:center;">1.150</td>
-              <td style="text-align:center;">46%</td>
-              <td style="text-align:center;">530</td>
-              <td style="text-align:right;">380</td>
+              <td style="text-align:center;">2.150</td>
+              <td style="text-align:center;">60%</td>
+              <td style="text-align:center;">1.300</td>
+              <td style="text-align:right;">140</td>
             </tr>
           </tbody>
         </table>
@@ -1461,7 +1507,7 @@
 
   <!-- MODAL: Cadastrar jogo + upload Unity -->
   <div class="modal-overlay" id="modal-jogo">
-    <div class="modal">
+    <div class="modal modal-wide">
       <div class="modal-head">
         <div>
           <h2>Cadastrar jogo na biblioteca</h2>
@@ -1504,32 +1550,53 @@
           <label>Imagem de capa</label>
           <div class="upload-zone">
             <div class="uz-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2858a0" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
-            <div class="uz-title">Enviar imagem de capa</div>
-            <div class="uz-sub">PNG ou JPG · proporção 16:9 recomendada</div>
+            <div class="uz-text"><div class="uz-title">Enviar imagem de capa</div>
+            <div class="uz-sub">PNG ou JPG · proporção 16:9 recomendada</div></div>
           </div>
         </div>
         <div class="field">
           <label>Build Unity <span class="req">*</span></label>
           <div class="upload-zone">
             <div class="uz-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2858a0" stroke-width="1.6"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
-            <div class="uz-title">Enviar build Unity</div>
-            <div class="uz-sub">Pacote WebGL · o jogo deve enviar 3 checkpoints (bronze, prata, ouro)</div>
+            <div class="uz-text"><div class="uz-title">Enviar build Unity</div>
+            <div class="uz-sub">Pacote WebGL · o jogo deve enviar 3 checkpoints (bronze, prata, ouro)</div></div>
           </div>
         </div>
         </div>
 
         <div class="step-pane" data-pane="2">
-        <p class="hint" style="margin:0 0 16px;">Desafio liberado quando o jogador conclui as 3 etapas e recebe o certificado. Aparece em Minha Galeria e orienta o projeto que o produtor vai avaliar</p>
-
-        <div class="field">
-          <label>Título do desafio <span class="req">*</span></label>
-          <input type="text" placeholder="Ex.: Desenvolver um plano de redução de gases">
+        <div class="field-row">
+          <div class="field">
+            <label>Título do desafio <span class="req">*</span></label>
+            <input type="text" placeholder="Ex.: Desenvolver um plano de redução de gases">
+          </div>
+          <div class="field">
+            <label>Observação final</label>
+            <input type="text" placeholder="Ex.: Não é preciso ter concluído todas as ações para enviar">
+            <p class="hint">Texto de fechamento, em caixa destacada ao final do desafio</p>
+          </div>
         </div>
         <div class="field">
-          <label>Enunciado do desafio <span class="req">*</span></label>
-          <textarea rows="10" placeholder="Retome o que o jogador aprendeu na jornada, descreva o que ele deve fazer no mundo real e liste os critérios da entrega"></textarea>
+          <label>Contexto do desafio <span class="req">*</span></label>
+          <textarea rows="3" placeholder="Retome o que o jogador aprendeu na jornada e descreva o que ele deve fazer no mundo real"></textarea>
         </div>
 
+        <div class="field">
+          <label>Critérios da entrega <span class="req">*</span></label>
+          <div id="criterios-list" style="display:flex; flex-direction:column; gap:10px; margin-bottom:10px;">
+            <div class="criterio-item" style="background:#f8fafd; border:1.5px solid #e0e8f0; border-radius:10px; padding:12px 14px; display:grid; grid-template-columns:200px 1fr; gap:10px;">
+              <input type="text" placeholder="Ex.: Diagnóstico" style="border:1.5px solid #dde4ef; border-radius:8px; padding:8px 10px; font-size:12px; font-family:'Montserrat',sans-serif; color:#1a2e3b;">
+              <input type="text" placeholder="Ex.: identifique as principais fontes de emissão do lugar escolhido" style="border:1.5px solid #dde4ef; border-radius:8px; padding:8px 10px; font-size:12px; font-family:'Montserrat',sans-serif; color:#1a2e3b;">
+            </div>
+          </div>
+          <button class="btn-ghost" type="button" onclick="addCriterio()">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Adicionar critério
+          </button>
+        </div>
+
+
+        <div class="field-row">
         <div class="field">
           <label>Formatos aceitos no envio</label>
           <div class="fmt-row">
@@ -1547,6 +1614,7 @@
             <option>10 MB</option>
             <option>25 MB</option>
           </select>
+        </div>
         </div>
 
         <div class="toggle-row" style="margin-top:18px;">
@@ -1703,7 +1771,7 @@
 
     // Emissão de credenciais (POK) - dados por campanha
     var emitData = {
-      'Termômetro Zero · Palmas, TO':  { cidade: 'Palmas, TO', escolas: ['IFTO Palmas','UFT Palmas','CEM Taquaralto','EE Aurora'], n: { bronze:[90,940], prata:[70,690], ouro:[50,530] } },
+      'Termômetro Zero · Palmas, TO':  { cidade: 'Palmas, TO', escolas: ['IFTO – Instituto Federal do Tocantins','UFT – Universidade Federal do Tocantins'], n: { bronze:[90,1850], prata:[70,1520], ouro:[50,1300] } },
       'Termômetro Zero · Manaus, AM':  { cidade: 'Manaus, AM', escolas: ['EE Amazonas','Colégio Rio Negro','IFAM Manaus'],           n: { bronze:[95,1070], prata:[75,780], ouro:[55,570] } }
     };
     var emitRuntime = {};
@@ -1942,6 +2010,15 @@
 
 
 <script>
+  function addCriterio() {
+    const list = document.getElementById('criterios-list');
+    const div = document.createElement('div');
+    div.className = 'criterio-item';
+    div.style.cssText = "background:#f8fafd; border:1.5px solid #e0e8f0; border-radius:10px; padding:12px 14px; display:grid; grid-template-columns:200px 1fr; gap:10px;";
+    div.innerHTML = '<input type="text" placeholder="Rótulo do critério" style="border:1.5px solid #dde4ef; border-radius:8px; padding:8px 10px; font-size:12px; font-family:\'Montserrat\',sans-serif; color:#1a2e3b;"><input type="text" placeholder="Descrição do critério" style="border:1.5px solid #dde4ef; border-radius:8px; padding:8px 10px; font-size:12px; font-family:\'Montserrat\',sans-serif; color:#1a2e3b;">';
+    list.appendChild(div);
+  }
+
   function togglePeriodoDropdown() {
     const dd = document.getElementById('periodo-dropdown');
     dd.style.display = dd.style.display === 'none' ? 'block' : 'none';
@@ -2116,7 +2193,7 @@
     #periodo-wrapper, .periodo-quick, #periodo-label,
     #periodo-clear-btn, #empresa-filter,
     #print-btn-wrapper, .pag-btn, .pagination,
-    #empresas, #catalogo, #biblioteca, #governanca,
+    #roteiro, #empresas, #catalogo, #biblioteca, #governanca,
     #acomp-produtores { display: none !important; }
     .canvas { padding: 8px 24px; }
     .gov-card { break-inside: avoid; border: 1px solid #ccc; }

@@ -36,14 +36,15 @@
     padding: 40px max(40px, calc((100% - 1140px) / 2)) 32px;
     text-align: center;
   }
-  .hero-tags { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 14px; }
-  .tag { font-size: 11px; font-weight: 600; padding: 4px 14px; border-radius: 20px; }
-  .tag-cultural  { background: #d6e4f7; color: #2858a0; }
-  .tag-done      { background: #d4f0d9; color: #2a7a3a; }
-  .hero-meta { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 12px; color: #000000; margin-bottom: 14px; }
-  .hero h1 { font-size: 26px; font-weight: 800; color: #2858a0; margin-bottom: 6px; }
-  .hero h1 em { font-style: normal; color: #5fb670; }
-  .hero-desc { font-size: 13px; color: #000000; max-width: 580px; margin: 0 auto 28px; line-height: 1.7; }
+  .hero h1 { font-size: 26px; font-weight: 800; color: #2858a0; margin-bottom: 10px; }
+  .hero-desc { font-size: 13px; color: #000000; max-width: 900px; margin: 0 auto 20px; line-height: 1.7; }
+  .hero-info {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+    gap: 8px 22px; font-size: 12px; color: #000000; margin: 22px auto 0; max-width: 820px;
+  }
+  .hero-info span { display: flex; align-items: center; gap: 6px; }
+  .hero-info svg { flex-shrink: 0; color: #2858a0; }
+  .hero-info strong { font-weight: 700; color: #1a2e3b; }
 
   .stats-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
   .stat-box {
@@ -78,17 +79,15 @@
     background: #1a2e3b;
     border-radius: 14px; overflow: hidden;
     display: flex; align-items: center; justify-content: center;
-    flex-direction: column; gap: 14px;
+    flex-direction: column; gap: 6px;
     border: 1px solid #e0e8f0;
   }
   .video-wrap iframe { width: 100%; height: 100%; border: none; }
-  .video-placeholder-icon {
-    width: 60px; height: 60px; border-radius: 50%;
-    background: rgba(255,255,255,0.12);
+  .video-play {
+    width: 68px; height: 68px; border-radius: 50%;
+    background: rgba(255,255,255,0.14);
     display: flex; align-items: center; justify-content: center;
   }
-  .video-wrap p { font-size: 13px; color: rgba(255,255,255,0.5); font-weight: 500; }
-  .video-wrap small { font-size: 11px; color: rgba(255,255,255,0.3); }
 
   /* FOTO GRID */
   .foto-block { margin-bottom: 40px; }
@@ -138,8 +137,15 @@
   .art-avatar {
     width: 64px; height: 64px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-size: 20px; font-weight: 800; flex-shrink: 0;
+    flex-shrink: 0; position: relative; overflow: hidden;
   }
+  .art-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .art-avatar[data-tip] { overflow: visible; }
+  .art-avatar[data-tip]::after { bottom: auto; top: 50%; transform: translate(-50%, -50%); }
+  .art-avatar[data-tip]::before { display: none; }
+  .art-city[data-tip], .art-bio[data-tip] { position: relative; }
+  .dep-quote[data-tip], .dep-name[data-tip], .dep-role[data-tip] { position: relative; }
+  .stat-box[data-tip] { position: relative; }
   .art-name { font-size: 13px; font-weight: 700; color: #1a2e3b; }
   .art-city { font-size: 11px; color: #468182; font-weight: 600; margin-top: -6px; }
   .art-bio  { font-size: 12px; color: #000000; line-height: 1.6; }
@@ -189,12 +195,22 @@
   /* RODAPÉ */
   /* ============ TOOLTIPS PARA O DESENVOLVEDOR ============ */
   [data-tip] { position: relative; }
+  .hero h1[data-tip] { display: inline-block; }
+  .hero-desc[data-tip] { display: inline-block; }
+  /* o player tem overflow oculto: o balão fica centralizado dentro dele */
+  .video-wrap[data-tip] { overflow: visible; }
+  .video-wrap[data-tip]::after { bottom: auto; top: 50%; transform: translate(-50%, -50%); }
+  .video-wrap[data-tip]::before { display: none; }
+  .foto-item[data-tip] { overflow: visible; }
+  .foto-item[data-tip]::after { bottom: auto; top: 50%; transform: translate(-50%, -50%); }
+  .foto-item[data-tip]::before { display: none; }
+  .foto-caption[data-tip] { position: relative; }
   .tip-wrap { display: inline-flex; align-items: center; }
   [data-tip]::after {
     content: attr(data-tip);
     position: absolute; bottom: calc(100% + 10px); left: 50%; transform: translateX(-50%);
     background: #f5a623; color: #000000;
-    font-size: 12px; font-weight: 600; line-height: 1.4; text-align: center;
+    font-size: 12px; font-weight: 400; font-style: normal; text-transform: none; letter-spacing: normal; line-height: 1.4; text-align: center;
     padding: 8px 12px; border-radius: 8px;
     width: max-content; max-width: 240px;
     box-shadow: 0 4px 14px rgba(20,50,80,0.22);
@@ -270,26 +286,19 @@
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-tags">
-    <span class="tag tag-cultural">Jornada Cultural</span>
-    <span class="tag tag-done">Realizado</span>
-  </div>
-  <div class="hero-meta">
-    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2858a0" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-    Palmas, TO
-    <span style="color:#c0c8d4;">·</span>
-    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2858a0" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-    março 2025
-    <span style="color:#c0c8d4;">·</span>
-    Sotreq
-  </div>
-  <h1>Termômetro <em>Zero</em> – Exposição</h1>
-  <p class="hero-desc">Uma exposição pública que transformou os projetos enviados pelos jogadores em obras artísticas, celebrando o engajamento da comunidade de Palmas com os temas de redução de gases de efeito estufa.</p>
+  <h1 data-tip="Nome do evento “puxado” do cadastro do evento no Painel do Articulador (nome do evento)">Exposição Termômetro Zero</h1>
+  <p class="hero-desc" data-tip="Texto “puxado” do cadastro do evento no Painel do Articulador (resumo)">Uma exposição pública que transformou os projetos enviados pelos jogadores em obras artísticas, celebrando o engajamento da comunidade de Palmas com os temas de redução de gases de efeito estufa.</p>
   <div class="stats-row">
-    <div class="stat-box"><div class="val val-blue">923</div><div class="lbl">Participantes</div></div>
-    <div class="stat-box"><div class="val val-green">1.240</div><div class="lbl">Visitantes</div></div>
-    <div class="stat-box"><div class="val val-teal">247</div><div class="lbl">Obras expostas</div></div>
-    <div class="stat-box"><div class="val val-purple">30 dias</div><div class="lbl">Duração</div></div>
+    <div class="stat-box" data-tip="Participantes “puxados” do cadastro do evento no Painel do Articulador (participantes)"><div class="val val-blue">30</div><div class="lbl">Participantes</div></div>
+    <div class="stat-box" data-tip="Visitantes “puxados” do cadastro do evento no Painel do Articulador (visitantes)"><div class="val val-green">1.320</div><div class="lbl">Visitantes</div></div>
+    <div class="stat-box" data-tip="Obras expostas “puxadas” do cadastro do evento no Painel do Articulador (obras expostas)"><div class="val val-teal">50</div><div class="lbl">Obras expostas</div></div>
+    <div class="stat-box" data-tip="Duração “puxada” do cadastro do evento no Painel do Articulador (duração)"><div class="val val-purple">7 dias</div><div class="lbl">Duração</div></div>
+  </div>
+  <div class="hero-info">
+    <span data-tip="Empresa “puxada” do cadastro da empresa no Painel Master"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><rect x="4" y="7" width="7" height="14"/><rect x="13" y="3" width="7" height="18"/><line x1="6.5" y1="11" x2="8.5" y2="11"/><line x1="6.5" y1="15" x2="8.5" y2="15"/><line x1="15.5" y1="7" x2="17.5" y2="7"/><line x1="15.5" y1="11" x2="17.5" y2="11"/><line x1="15.5" y1="15" x2="17.5" y2="15"/></svg> Empresa: <strong>Sotreq</strong></span>
+    <span data-tip="Cidade “puxada” do cadastro da cidade no Painel Master"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Palmas, TO</span>
+    <span data-tip="Escola “puxada” do cadastro da escola no Painel do Articulador"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg> UFT – Universidade Federal do Tocantins, Auditório Principal</span>
+    <span data-tip="Período “puxado” do cadastro do evento no Painel do Articulador (período do evento)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> De 22 a 28 de junho de 2025</span>
   </div>
 </div>
 
@@ -299,12 +308,10 @@
   <!-- VÍDEO -->
   <div class="video-block">
     <div class="section-heading">Vídeo do Evento</div>
-    <div class="video-wrap">
-      <div class="video-placeholder-icon">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.5"><polygon points="5,3 19,12 5,21"/></svg>
+    <div class="video-wrap" data-tip="Vídeo “puxado” do cadastro do evento no Painel do Articulador (vídeo do evento)">
+      <div class="video-play">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="rgba(255,255,255,0.8)"><polygon points="6,3 21,12 6,21"/></svg>
       </div>
-      <p>Insira aqui o vídeo do evento</p>
-      <small>Cole o embed do YouTube ou Vimeo</small>
     </div>
   </div>
 
@@ -313,34 +320,34 @@
     <div class="section-heading">Galeria de Fotos</div>
     <div class="foto-grid">
       <div class="foto-wrap large">
-        <div class="foto-item foto-bg-1">
+        <div class="foto-item foto-bg-1" data-tip="Foto “puxada” do cadastro do evento no Painel do Articulador (fotos)">
           <div class="foto-placeholder"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Foto de destaque</span></div>
         </div>
-        <div class="foto-caption">[Insira aqui a legenda da foto de destaque]</div>
+        <div class="foto-caption" data-tip="Legenda “puxada” do cadastro do evento no Painel do Articulador (fotos)">[Insira aqui a legenda da foto de destaque]</div>
       </div>
       <div class="foto-wrap">
-        <div class="foto-item foto-bg-2">
+        <div class="foto-item foto-bg-2" data-tip="Foto “puxada” do cadastro do evento no Painel do Articulador (fotos)">
           <div class="foto-placeholder"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Foto</span></div>
         </div>
-        <div class="foto-caption">[Insira aqui a legenda desta foto]</div>
+        <div class="foto-caption" data-tip="Legenda “puxada” do cadastro do evento no Painel do Articulador (fotos)">[Insira aqui a legenda desta foto]</div>
       </div>
       <div class="foto-wrap">
-        <div class="foto-item foto-bg-3">
+        <div class="foto-item foto-bg-3" data-tip="Foto “puxada” do cadastro do evento no Painel do Articulador (fotos)">
           <div class="foto-placeholder"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Foto</span></div>
         </div>
-        <div class="foto-caption">[Insira aqui a legenda desta foto]</div>
+        <div class="foto-caption" data-tip="Legenda “puxada” do cadastro do evento no Painel do Articulador (fotos)">[Insira aqui a legenda desta foto]</div>
       </div>
       <div class="foto-wrap">
-        <div class="foto-item foto-bg-4">
+        <div class="foto-item foto-bg-4" data-tip="Foto “puxada” do cadastro do evento no Painel do Articulador (fotos)">
           <div class="foto-placeholder"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Foto</span></div>
         </div>
-        <div class="foto-caption">[Insira aqui a legenda desta foto]</div>
+        <div class="foto-caption" data-tip="Legenda “puxada” do cadastro do evento no Painel do Articulador (fotos)">[Insira aqui a legenda desta foto]</div>
       </div>
       <div class="foto-wrap">
-        <div class="foto-item foto-bg-5">
+        <div class="foto-item foto-bg-5" data-tip="Foto “puxada” do cadastro do evento no Painel do Articulador (fotos)">
           <div class="foto-placeholder"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Foto</span></div>
         </div>
-        <div class="foto-caption">[Insira aqui a legenda desta foto]</div>
+        <div class="foto-caption" data-tip="Legenda “puxada” do cadastro do evento no Painel do Articulador (fotos)">[Insira aqui a legenda desta foto]</div>
       </div>
     </div>
     <p class="foto-note">📌 Insira aqui as fotos do evento</p>
@@ -351,22 +358,22 @@
     <div class="section-heading">Artistas</div>
     <div class="art-grid">
       <div class="art-card">
-        <div class="art-avatar av-blue">AB</div>
+        <div class="art-avatar av-blue" data-tip="Foto “puxada” do cadastro do evento no Painel do Articulador (foto do artista)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
         <p class="art-name">[Nome do Artista]</p>
-        <p class="art-city">[Cidade, Estado]</p>
-        <p class="art-bio">[Insira aqui uma bio curta do artista – formação, referências, trabalhos anteriores]</p>
+        <p class="art-city" data-tip="Cidade, Estado “puxados” do cadastro do evento no Painel do Articulador (cidade, estado)">[Cidade, Estado]</p>
+        <p class="art-bio" data-tip="Bio “puxada” do cadastro do evento no Painel do Articulador (bio do artista)">[Insira aqui uma bio curta do artista – formação, referências, trabalhos anteriores]</p>
       </div>
       <div class="art-card">
-        <div class="art-avatar av-teal">CD</div>
+        <div class="art-avatar av-teal" data-tip="Foto “puxada” do cadastro do evento no Painel do Articulador (foto do artista)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
         <p class="art-name">[Nome do Artista]</p>
-        <p class="art-city">[Cidade, Estado]</p>
-        <p class="art-bio">[Insira aqui uma bio curta do artista – formação, referências, trabalhos anteriores]</p>
+        <p class="art-city" data-tip="Cidade, Estado “puxados” do cadastro do evento no Painel do Articulador (cidade, estado)">[Cidade, Estado]</p>
+        <p class="art-bio" data-tip="Bio “puxada” do cadastro do evento no Painel do Articulador (bio do artista)">[Insira aqui uma bio curta do artista – formação, referências, trabalhos anteriores]</p>
       </div>
       <div class="art-card">
-        <div class="art-avatar av-green">EF</div>
+        <div class="art-avatar av-green" data-tip="Foto “puxada” do cadastro do evento no Painel do Articulador (foto do artista)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
         <p class="art-name">[Nome do Artista]</p>
-        <p class="art-city">[Cidade, Estado]</p>
-        <p class="art-bio">[Insira aqui uma bio curta do artista – formação, referências, trabalhos anteriores]</p>
+        <p class="art-city" data-tip="Cidade, Estado “puxados” do cadastro do evento no Painel do Articulador (cidade, estado)">[Cidade, Estado]</p>
+        <p class="art-bio" data-tip="Bio “puxada” do cadastro do evento no Painel do Articulador (bio do artista)">[Insira aqui uma bio curta do artista – formação, referências, trabalhos anteriores]</p>
       </div>
     </div>
   </div>
@@ -376,42 +383,42 @@
     <div class="section-heading">Depoimentos</div>
     <div class="dep-grid">
       <div class="dep-card">
-        <p class="dep-quote">"[Insira aqui o depoimento de um participante ou visitante do evento]"</p>
+        <p class="dep-quote" data-tip="Depoimento “puxado” do cadastro do evento no Painel do Articulador (depoimento)">"[Insira aqui o depoimento de um participante ou visitante do evento]"</p>
         <div class="dep-author">
           <div class="dep-avatar av-blue">JS</div>
           <div>
-            <p class="dep-name">João Silva</p>
-            <p class="dep-role">Participante · Palmas, TO</p>
+            <p class="dep-name" data-tip="Nome “puxado” do cadastro do evento no Painel do Articulador (nome)">João Silva</p>
+            <p class="dep-role" data-tip="Papel, Empresa “puxado” do cadastro do evento no Painel do Articulador (papel, empresa)">Participante · Palmas, TO</p>
           </div>
         </div>
       </div>
       <div class="dep-card">
-        <p class="dep-quote">"[Insira aqui o depoimento de um participante ou visitante do evento]"</p>
+        <p class="dep-quote" data-tip="Depoimento “puxado” do cadastro do evento no Painel do Articulador (depoimento)">"[Insira aqui o depoimento de um participante ou visitante do evento]"</p>
         <div class="dep-author">
           <div class="dep-avatar av-teal">MO</div>
           <div>
-            <p class="dep-name">Maria Oliveira</p>
-            <p class="dep-role">Visitante · Palmas, TO</p>
+            <p class="dep-name" data-tip="Nome “puxado” do cadastro do evento no Painel do Articulador (nome)">Maria Oliveira</p>
+            <p class="dep-role" data-tip="Papel, Empresa “puxado” do cadastro do evento no Painel do Articulador (papel, empresa)">Visitante · Palmas, TO</p>
           </div>
         </div>
       </div>
       <div class="dep-card">
-        <p class="dep-quote">"[Insira aqui o depoimento de um organizador ou representante da empresa parceira]"</p>
+        <p class="dep-quote" data-tip="Depoimento “puxado” do cadastro do evento no Painel do Articulador (depoimento)">"[Insira aqui o depoimento de um organizador ou representante da empresa parceira]"</p>
         <div class="dep-author">
           <div class="dep-avatar av-dark">CM</div>
           <div>
-            <p class="dep-name">Carlos Mendes</p>
-            <p class="dep-role">Representante Sotreq</p>
+            <p class="dep-name" data-tip="Nome “puxado” do cadastro do evento no Painel do Articulador (nome)">Carlos Mendes</p>
+            <p class="dep-role" data-tip="Papel, Empresa “puxado” do cadastro do evento no Painel do Articulador (papel, empresa)">Representante Sotreq</p>
           </div>
         </div>
       </div>
       <div class="dep-card">
-        <p class="dep-quote">"[Insira aqui o depoimento de um artista ou produtor cultural envolvido no evento]"</p>
+        <p class="dep-quote" data-tip="Depoimento “puxado” do cadastro do evento no Painel do Articulador (depoimento)">"[Insira aqui o depoimento de um artista ou produtor cultural envolvido no evento]"</p>
         <div class="dep-author">
           <div class="dep-avatar av-green">LR</div>
           <div>
-            <p class="dep-name">Luana Ramos</p>
-            <p class="dep-role">Artista · Produção Cultural</p>
+            <p class="dep-name" data-tip="Nome “puxado” do cadastro do evento no Painel do Articulador (nome)">Luana Ramos</p>
+            <p class="dep-role" data-tip="Papel, Empresa “puxado” do cadastro do evento no Painel do Articulador (papel, empresa)">Artista · Produção Cultural</p>
           </div>
         </div>
       </div>

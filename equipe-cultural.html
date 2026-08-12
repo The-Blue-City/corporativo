@@ -347,14 +347,17 @@
   .feature-card.card-muted p  { color: #a2a8b2; }
 
   /* deliverable list */
-  .deliverable-list { display: flex; flex-direction: column; gap: 10px; }
+  .deliverable-list { display: flex; flex-direction: column; gap: 0; }
 
   .deliverable-item {
     display: flex; align-items: flex-start; gap: 12px;
-    background: white; border-radius: 10px; padding: 14px 16px;
-    border: 1px solid rgba(40,88,160,0.08);
-    box-shadow: 0 1px 6px rgba(0,0,0,0.03);
+    background: transparent; border: none; box-shadow: none;
+    border-radius: 0; padding: 13px 0;
+    border-top: 1px solid rgba(40,88,160,0.10);
   }
+
+  .deliverable-item:first-child { border-top: none; padding-top: 0; }
+  .deliverable-item:last-child { padding-bottom: 0; }
 
   .del-num {
     width: 26px; height: 26px; border-radius: 50%;
@@ -1004,7 +1007,7 @@
         </div>
       </div>
 
-      <div class="section-heading">Como funciona</div>
+      <div class="section-heading">Como funciona o processo</div>
       <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-bottom:32px;">
         <div class="feature-card">
           <div class="feature-card-header">
@@ -1149,7 +1152,7 @@
               <p style="font-size:11px; color:#468182; font-weight:600;">Aprovação obrigatória antes do 3D</p>
             </div>
           </div>
-          <div class="deliverable-list" style="gap:10px;">
+          <div class="deliverable-list">
             <div class="deliverable-item">
               <div class="del-num teal">A</div>
               <div class="del-text">
@@ -1175,7 +1178,7 @@
               <p style="font-size:11px; color:#468182; font-weight:600;">Recortes para uso na plataforma e no jogo</p>
             </div>
           </div>
-          <div class="deliverable-list" style="gap:10px;">
+          <div class="deliverable-list">
             <div class="deliverable-item">
               <div class="del-num teal">A</div>
               <div class="del-text">
@@ -1240,7 +1243,7 @@
 
       </div>
 
-      <div class="section-heading">Como funciona</div>
+      <div class="section-heading">Como funciona o processo</div>
       <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-bottom:32px;">
         <div class="feature-card">
           <div class="feature-card-header">
@@ -1361,7 +1364,7 @@
               <p style="font-size:11px; color:#2858a0; font-weight:600;">Aprovação obrigatória antes da entrega final</p>
             </div>
           </div>
-          <div class="deliverable-list" style="gap:10px;">
+          <div class="deliverable-list">
             <div class="deliverable-item">
               <div class="del-num" style="background:#7fa3bf;">A</div>
               <div class="del-text">
@@ -1387,7 +1390,7 @@
               <p style="font-size:11px; color:#5fb670; font-weight:600;">Após aprovação da versão inicial</p>
             </div>
           </div>
-          <div class="deliverable-list" style="gap:10px;">
+          <div class="deliverable-list">
             <div class="deliverable-item">
               <div class="del-num" style="background:#80bf7f;">A</div>
               <div class="del-text">
@@ -1407,7 +1410,7 @@
 
       </div>
 
-      <div class="section-heading">Como funciona</div>
+      <div class="section-heading">Como funciona o processo</div>
       <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-bottom:32px;">
         <div class="feature-card">
           <div class="feature-card-header">
@@ -1502,11 +1505,11 @@
         <div>
           <div class="role-badge rb-green" style="margin-bottom:8px;">🏫 Articulador Educacional</div>
           <p style="font-size:18px; font-weight:800; color:var(--dark); margin-bottom:2px;">Vitor Artur Mendonça Rodolpho de Castro</p>
-          <p style="font-size:12px; color:var(--muted);">Ponte com as Escolas · Mobilização de Estudantes · Adesão à Jornada</p>
+          <p style="font-size:12px; color:var(--muted);">Ponte com as Escolas · Mobilização de Estudantes · Curadoria dos Projetos</p>
         </div>
       </div>
       <h1 class="page-title">Articulação com as Escolas</h1>
-      <p class="page-subtitle">O Articulador Educacional é a ponte com as escolas parceiras – apresenta o projeto à direção e à coordenação pedagógica e é responsável por envolver os estudantes na jornada, mobilizando a adesão ao jogo como atividade extracurricular.</p>
+      <p class="page-subtitle">O Articulador Educacional é a ponte com as escolas parceiras – apresenta o projeto à direção e à coordenação pedagógica e é responsável por envolver os estudantes na jornada, mobilizando a adesão ao jogo como atividade extracurricular. Ao final da jornada, avalia os projetos enviados pelos estudantes no Painel do Articulador e responde pela publicação nas galerias públicas da plataforma.</p>
     </div>
 
     <div class="page-body single" style="max-width:100%; padding:36px 60px 0;">
@@ -1527,24 +1530,24 @@
         <div class="feature-card">
           <div class="feature-card-header">
             <div class="feature-icon fi-teal">🎛️</div>
-            <h3>Painel Administrativo</h3>
+            <h3>Painel do Articulador</h3>
           </div>
-          <p>Acesso ao Painel Administrativo da plataforma para gerenciar a entrada e o engajamento dos estudantes ao longo de toda a jornada.</p>
+          <p>Acesso ao Painel do Articulador para gerenciar a entrada e o engajamento dos estudantes ao longo da jornada, avaliar os projetos enviados e publicar conteúdo nas galerias públicas da plataforma.</p>
           <span style="display:inline-flex; align-items:center; gap:7px; margin-top:14px; font-size:12px; font-weight:700; color:#a2a8b2; background:#f4f5f7; border:1px solid #e4e6ea; border-radius:8px; padding:10px 16px; cursor:default;">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            Ver painel administrativo
+            Ver painel do articulador
           </span>
         </div>
       </div>
 
-      <div class="section-heading">Como funciona</div>
+      <div class="section-heading">Como funciona o processo</div>
       <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-bottom:32px;">
         <div class="feature-card">
           <div class="feature-card-header">
             <div class="feature-icon fi-blue">🤝</div>
             <h3>Apresentação Institucional</h3>
           </div>
-          <p>Apresenta o projeto Missão Cidade Azul à direção e à coordenação pedagógica das escolas parceiras, apresentando o formato da jornada e os benefícios para a comunidade escolar.</p>
+          <p>Apresenta o projeto à direção e à coordenação pedagógica das escolas parceiras, apresentando o formato da jornada e os benefícios para a comunidade escolar.</p>
         </div>
         <div class="feature-card">
           <div class="feature-card-header">
@@ -1560,17 +1563,38 @@
           </div>
           <p>Responsável pela conversão da apresentação em participação efetiva – acompanha o processo até que turmas estejam formadas e prontas para iniciar a jornada na plataforma.</p>
         </div>
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <div class="feature-icon fi-blue">✅</div>
+            <h3>Avaliação dos Projetos</h3>
+          </div>
+          <p>Ao concluir a etapa virtual, cada jogador envia um projeto sobre o tema – em vídeo, PDF ou imagem. O Articulador avalia cada entrega dentro do Painel do Articulador, aprovando ou reprovando.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <div class="feature-icon fi-teal">🖼️</div>
+            <h3>Publicação e Seleção</h3>
+          </div>
+          <p>Os projetos aprovados são publicados na Galeria de Projetos. Entre eles, seleciona os melhores e os entrega ao Produtor Cultural para a exposição cultural.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header">
+            <div class="feature-icon fi-green">📸</div>
+            <h3>Galeria de Eventos</h3>
+          </div>
+          <p>Depois da exposição, publica o material do evento – fotos, depoimentos e textos – na Galeria de Eventos, registrando o legado do projeto no território.</p>
+        </div>
       </div>
 
       <div class="section-heading">Responsabilidades</div>
-      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-bottom:32px;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:32px;">
 
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:20px;">
           <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
             <div style="width:32px; height:32px; border-radius:50%; background:#2858a0; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0;">1</div>
             <p style="font-size:13px; font-weight:700; color:#1a2e3b;">Articular com secretaria e escolas</p>
           </div>
-          <div class="deliverable-list" style="gap:8px;">
+          <div class="deliverable-list">
             <div class="deliverable-item"><div class="del-num" style="background:#7fa3bf;">1.1</div><div class="del-text"><span>Articulação com órgãos públicos de educação (se necessário)</span></div></div>
             <div class="deliverable-item"><div class="del-num" style="background:#7fa3bf;">1.2</div><div class="del-text"><span>Reunião com a direção das instituições e firma de carta de parceria</span></div></div>
             <div class="deliverable-item"><div class="del-num" style="background:#7fa3bf;">1.3</div><div class="del-text"><span>Comunicar os benefícios institucionais: certificados para a instituição e badges e certificados para os alunos</span></div></div>
@@ -1582,7 +1606,7 @@
             <div style="width:32px; height:32px; border-radius:50%; background:#5fb670; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0;">2</div>
             <p style="font-size:13px; font-weight:700; color:#1a2e3b;">Mobilizar estudantes para a adesão</p>
           </div>
-          <div class="deliverable-list" style="gap:8px;">
+          <div class="deliverable-list">
             <div class="deliverable-item"><div class="del-num" style="background:#80bf7f;">2.1</div><div class="del-text"><span>Apresentar a jornada aos estudantes em sala ou auditório</span></div></div>
             <div class="deliverable-item"><div class="del-num" style="background:#80bf7f;">2.2</div><div class="del-text"><span>Posicionar o jogo como atividade extracurricular e explicar o sistema de badges, certificados e exposição final</span></div></div>
             <div class="deliverable-item"><div class="del-num" style="background:#80bf7f;">2.3</div><div class="del-text"><span>Criar peças gráficas para colocar nas instituições convidando os alunos</span></div></div>
@@ -1594,17 +1618,30 @@
             <div style="width:32px; height:32px; border-radius:50%; background:#468182; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0;">3</div>
             <p style="font-size:13px; font-weight:700; color:#1a2e3b;">Acompanhar e fazer a ponte</p>
           </div>
-          <div class="deliverable-list" style="gap:8px;">
+          <div class="deliverable-list">
             <div class="deliverable-item"><div class="del-num" style="background:#7fb6bf;">3.1</div><div class="del-text"><span>Usar os painéis da plataforma para gerenciar a entrada dos estudantes no jogo</span></div></div>
             <div class="deliverable-item"><div class="del-num" style="background:#7fb6bf;">3.2</div><div class="del-text"><span>Acompanhar o engajamento e o progresso na jornada</span></div></div>
             <div class="deliverable-item"><div class="del-num" style="background:#7fb6bf;">3.3</div><div class="del-text"><span>Coletar os projetos entregues pelos estudantes ao fim da jornada</span></div></div>
           </div>
         </div>
 
+        <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:20px;">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+            <div style="width:32px; height:32px; border-radius:50%; background:#1a2e3b; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0;">4</div>
+            <p style="font-size:13px; font-weight:700; color:#1a2e3b;">Avaliar, publicar e selecionar</p>
+          </div>
+          <div class="deliverable-list">
+            <div class="deliverable-item"><div class="del-num" style="background:#8a98a5;">4.1</div><div class="del-text"><span>Avaliar no Painel do Articulador os projetos enviados pelos estudantes – vídeo, PDF ou imagem – aprovando ou reprovando cada entrega</span></div></div>
+            <div class="deliverable-item"><div class="del-num" style="background:#8a98a5;">4.2</div><div class="del-text"><span>Publicar os projetos aprovados na Galeria de Projetos</span></div></div>
+            <div class="deliverable-item"><div class="del-num" style="background:#8a98a5;">4.3</div><div class="del-text"><span>Selecionar os melhores projetos e entregá-los ao Produtor Cultural para a exposição cultural</span></div></div>
+            <div class="deliverable-item"><div class="del-num" style="background:#8a98a5;">4.4</div><div class="del-text"><span>Publicar o material da exposição – fotos, depoimentos e textos – na Galeria de Eventos</span></div></div>
+          </div>
+        </div>
+
       </div>
 
-      <div class="section-heading">Pipeline da articulação</div>
-      <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-bottom:32px;">
+      <div class="section-heading">Sequência da articulação</div>
+      <div style="display:grid; grid-template-columns:repeat(6,1fr); gap:14px; margin-bottom:32px;">
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:16px; text-align:center;">
           <div style="width:36px; height:36px; border-radius:50%; background:#2858a0; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">1</div>
           <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Articulação territorial</p>
@@ -1622,13 +1659,18 @@
         </div>
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:16px; text-align:center;">
           <div style="width:36px; height:36px; border-radius:50%; background:#468182; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">4</div>
-          <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Recebimento dos projetos</p>
-          <p style="font-size:10px; color:#000; line-height:1.5;">Coleta e curadoria preliminar das entregas dos estudantes ao final da jornada</p>
+          <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Avaliação dos projetos</p>
+          <p style="font-size:10px; color:#000; line-height:1.5;">Aprovação ou reprovação de cada entrega no painel e publicação dos aprovados na Galeria de Projetos</p>
         </div>
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:16px; text-align:center;">
           <div style="width:36px; height:36px; border-radius:50%; background:#5fb670; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">5</div>
           <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Ponte com Produtor Cultural</p>
-          <p style="font-size:10px; color:#000; line-height:1.5;">Entrega dos projetos como inspiração para os artistas locais e a exposição</p>
+          <p style="font-size:10px; color:#000; line-height:1.5;">Seleção dos melhores projetos e entrega ao Produtor Cultural para a exposição cultural</p>
+        </div>
+        <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:16px; text-align:center;">
+          <div style="width:36px; height:36px; border-radius:50%; background:#38a349; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">6</div>
+          <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Registro da exposição</p>
+          <p style="font-size:10px; color:#000; line-height:1.5;">Publicação de fotos, depoimentos e textos do evento na Galeria de Eventos</p>
         </div>
       </div>
 
@@ -1652,7 +1694,7 @@
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:18px; text-align:center;">
           <p style="font-size:10px; font-weight:700; color:#5fb670; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;">Marco 4</p>
           <p style="font-size:15px; font-weight:800; color:#1a2e3b; margin-bottom:8px;">1º de outubro</p>
-          <p style="font-size:11px; color:#000; line-height:1.5;">Entrega dos projetos ao Produtor Cultural, que gerencia a conexão com os artistas locais.</p>
+          <p style="font-size:11px; color:#000; line-height:1.5;">Entrega dos projetos selecionados ao Produtor Cultural, que gerencia a conexão com os artistas locais.</p>
         </div>
       </div>
       <div style="background:#1a2e3b; border-radius:10px; padding:14px 18px; margin-bottom:40px; display:flex; align-items:center; gap:12px;">
@@ -2069,11 +2111,11 @@
         <div>
           <div class="role-badge rb-blue" style="margin-bottom:8px;">🎭 Produtor Cultural</div>
           <p style="font-size:18px; font-weight:800; color:var(--dark); margin-bottom:2px;">Jairo Faria</p>
-          <p style="font-size:12px; color:var(--muted);">Preparação Territorial · Curadoria · Conexão com Artistas · Exposição</p>
+          <p style="font-size:12px; color:var(--muted);">Preparação Territorial · Curadoria Expográfica · Conexão com Artistas · Exposição</p>
         </div>
       </div>
       <h1 class="page-title">Curadoria, Artistas e Exposição</h1>
-      <p class="page-subtitle">Conduz a produção cultural do projeto – da preparação do território à realização da exposição. Trabalha em paralelo ao Articulador Educacional e, a partir de 1º de outubro, recebe os projetos dos estudantes para curadoria e produção das obras.</p>
+      <p class="page-subtitle">Conduz a produção cultural do projeto – da preparação do território à realização da exposição. Trabalha em paralelo ao Articulador Educacional e, a partir de 1º de outubro, recebe dele os projetos já avaliados e selecionados, transformando-os em obras e em montagem expográfica.</p>
     </div>
 
     <div class="page-body single" style="max-width:100%; padding:36px 60px 0;">
@@ -2094,17 +2136,17 @@
         <div class="feature-card">
           <div class="feature-card-header">
             <div class="feature-icon fi-teal">🎛️</div>
-            <h3>Painel Administrativo</h3>
+            <h3>Painel do Produtor</h3>
           </div>
-          <p>Acesso ao Painel Administrativo da plataforma para gerenciar a entrada e o engajamento dos estudantes ao longo de toda a jornada.</p>
+          <p>Acesso ao Painel do Produtor para consultar os projetos selecionados pelo Articulador Educacional e organizar as informações da produção e da exposição.</p>
           <span style="display:inline-flex; align-items:center; gap:7px; margin-top:14px; font-size:12px; font-weight:700; color:#a2a8b2; background:#f4f5f7; border:1px solid #e4e6ea; border-radius:8px; padding:10px 16px; cursor:default;">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            Ver painel administrativo
+            Ver painel do produtor
           </span>
         </div>
       </div>
 
-      <div class="section-heading">Como funciona</div>
+      <div class="section-heading">Como funciona o processo</div>
       <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-bottom:32px;">
         <div class="feature-card">
           <div class="feature-card-header">
@@ -2118,26 +2160,26 @@
             <div class="feature-icon fi-teal">🎨</div>
             <h3>Curadoria e Produção</h3>
           </div>
-          <p>Recebe os projetos entregues pelos estudantes. Pode fazer a curadoria direta das próprias entregas para a exposição, ou conectar artistas locais para produzir obras derivadas inspiradas nos projetos.</p>
+          <p>Recebe do Articulador Educacional os projetos já avaliados e selecionados. Define quais entram diretamente na exposição e quais servem de matéria-prima para obras derivadas de artistas locais.</p>
         </div>
         <div class="feature-card">
           <div class="feature-card-header">
             <div class="feature-icon fi-green">🏛️</div>
             <h3>Exposição e Documentação</h3>
           </div>
-          <p>Organiza a montagem da exposição no território, realiza o evento aberto à comunidade escolar e ao público, registra fotograficamente e publica a documentação na Memória Institucional da plataforma.</p>
+          <p>Organiza a montagem da exposição no território, realiza o evento aberto à comunidade escolar e ao público e produz o registro do evento – fotos, depoimentos e textos – entregue ao Articulador Educacional para publicação na Galeria de Eventos.</p>
         </div>
       </div>
 
       <div class="section-heading">Responsabilidades</div>
-      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-bottom:12px;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:32px;">
 
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:20px;">
           <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
             <div style="width:32px; height:32px; border-radius:50%; background:#2858a0; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0;">1</div>
             <p style="font-size:13px; font-weight:700; color:#1a2e3b;">Preparar o território</p>
           </div>
-          <div class="deliverable-list" style="gap:8px;">
+          <div class="deliverable-list">
             <div class="deliverable-item"><div class="del-num" style="background:#7fa3bf;">1.1</div><div class="del-text"><span>Mapear espaços culturais disponíveis para a exposição</span></div></div>
             <div class="deliverable-item"><div class="del-num" style="background:#7fa3bf;">1.2</div><div class="del-text"><span>Identificar artistas locais com perfil para o projeto</span></div></div>
             <div class="deliverable-item"><div class="del-num" style="background:#7fa3bf;">1.3</div><div class="del-text"><span>Dimensionar a montagem expográfica e o cronograma de produção</span></div></div>
@@ -2149,9 +2191,9 @@
             <div style="width:32px; height:32px; border-radius:50%; background:#5fb670; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0;">2</div>
             <p style="font-size:13px; font-weight:700; color:#1a2e3b;">Curadoria e conexão com artistas</p>
           </div>
-          <div class="deliverable-list" style="gap:8px;">
-            <div class="deliverable-item"><div class="del-num" style="background:#80bf7f;">2.1</div><div class="del-text"><span>Acessar e selecionar os projetos enviados pelos estudantes na Galeria de Projetos</span></div></div>
-            <div class="deliverable-item"><div class="del-num" style="background:#80bf7f;">2.2</div><div class="del-text"><span>Convidar e briefar artistas locais para interpretar os projetos selecionados</span></div></div>
+          <div class="deliverable-list">
+            <div class="deliverable-item"><div class="del-num" style="background:#80bf7f;">2.1</div><div class="del-text"><span>Receber do Articulador Educacional os projetos selecionados e consultar a Galeria de Projetos como referência</span></div></div>
+            <div class="deliverable-item"><div class="del-num" style="background:#80bf7f;">2.2</div><div class="del-text"><span>Convidar e briefar artistas locais para interpretar os projetos recebidos</span></div></div>
             <div class="deliverable-item"><div class="del-num" style="background:#80bf7f;">2.3</div><div class="del-text"><span>Acompanhar a produção das obras derivadas</span></div></div>
           </div>
         </div>
@@ -2161,28 +2203,28 @@
             <div style="width:32px; height:32px; border-radius:50%; background:#468182; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0;">3</div>
             <p style="font-size:13px; font-weight:700; color:#1a2e3b;">Realizar a exposição</p>
           </div>
-          <div class="deliverable-list" style="gap:8px;">
+          <div class="deliverable-list">
             <div class="deliverable-item"><div class="del-num" style="background:#7fb6bf;">3.1</div><div class="del-text"><span>Confirmar e preparar o local da exposição</span></div></div>
             <div class="deliverable-item"><div class="del-num" style="background:#7fb6bf;">3.2</div><div class="del-text"><span>Organizar a montagem expográfica</span></div></div>
             <div class="deliverable-item"><div class="del-num" style="background:#7fb6bf;">3.3</div><div class="del-text"><span>Realizar o evento de abertura e o período expositivo</span></div></div>
           </div>
         </div>
 
+        <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:20px;">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+            <div style="width:32px; height:32px; border-radius:50%; background:#1a2e3b; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0;">4</div>
+            <p style="font-size:13px; font-weight:700; color:#1a2e3b;">Documentar e registrar</p>
+          </div>
+          <div class="deliverable-list">
+            <div class="deliverable-item"><div class="del-num" style="background:#8a98a5;">4.1</div><div class="del-text"><span>Registrar fotos, vídeos e entrevistas da exposição</span></div></div>
+            <div class="deliverable-item"><div class="del-num" style="background:#8a98a5;">4.2</div><div class="del-text"><span>Entregar fotos, depoimentos e textos ao Articulador Educacional para publicação na Galeria de Eventos</span></div></div>
+            <div class="deliverable-item"><div class="del-num" style="background:#8a98a5;">4.3</div><div class="del-text"><span>Consolidar a documentação que comprova realização e impactos</span></div></div>
+          </div>
+        </div>
+
       </div>
 
-      <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:20px; margin-bottom:32px;">
-        <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
-          <div style="width:32px; height:32px; border-radius:50%; background:#2858a0; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0;">4</div>
-          <p style="font-size:13px; font-weight:700; color:#1a2e3b;">Documentar e registrar</p>
-        </div>
-        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px;">
-          <div class="deliverable-item"><div class="del-num" style="background:#7fa3bf;">4.1</div><div class="del-text"><span>Registrar fotos, vídeos e entrevistas da exposição</span></div></div>
-          <div class="deliverable-item"><div class="del-num" style="background:#7fa3bf;">4.2</div><div class="del-text"><span>Publicar registros na Memória Institucional da plataforma</span></div></div>
-          <div class="deliverable-item"><div class="del-num" style="background:#7fa3bf;">4.3</div><div class="del-text"><span>Consolidar a documentação que comprova realização e impactos</span></div></div>
-        </div>
-      </div>
-
-            <div class="section-heading">Pipeline da produção cultural</div>
+            <div class="section-heading">Sequência da produção cultural</div>
       <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-bottom:40px;">
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:16px; text-align:center;">
           <div style="width:36px; height:36px; border-radius:50%; background:#2858a0; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">1</div>
@@ -2191,8 +2233,8 @@
         </div>
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:16px; text-align:center;">
           <div style="width:36px; height:36px; border-radius:50%; background:#468182; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">2</div>
-          <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Receber e selecionar</p>
-          <p style="font-size:10px; color:#000; line-height:1.5;">Recebe os projetos do Articulador e faz a curadoria</p>
+          <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Receber os selecionados</p>
+          <p style="font-size:10px; color:#000; line-height:1.5;">Recebe do Articulador os projetos já avaliados e selecionados</p>
         </div>
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:16px; text-align:center;">
           <div style="width:36px; height:36px; border-radius:50%; background:#468182; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">3</div>
@@ -2207,7 +2249,7 @@
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:16px; text-align:center;">
           <div style="width:36px; height:36px; border-radius:50%; background:#729b35; color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">5</div>
           <p style="font-size:11px; font-weight:700; color:#1a2e3b; margin-bottom:6px;">Documentar</p>
-          <p style="font-size:10px; color:#000; line-height:1.5;">Registros publicados na Memória Institucional da plataforma</p>
+          <p style="font-size:10px; color:#000; line-height:1.5;">Registro do evento entregue para publicação na Galeria de Eventos</p>
         </div>
       </div>
 
@@ -2221,7 +2263,7 @@
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:18px; text-align:center;">
           <p style="font-size:10px; font-weight:700; color:#468182; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;">Marco 2</p>
           <p style="font-size:15px; font-weight:800; color:#1a2e3b; margin-bottom:8px;">1º de outubro</p>
-          <p style="font-size:11px; color:#000; line-height:1.5;">Recebimento dos projetos do Articulador. Início da curadoria e da articulação com artistas locais.</p>
+          <p style="font-size:11px; color:#000; line-height:1.5;">Recebimento dos projetos selecionados pelo Articulador. Início da curadoria expográfica e da articulação com artistas locais.</p>
         </div>
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:18px; text-align:center;">
           <p style="font-size:10px; font-weight:700; color:#468182; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;">Marco 3</p>
@@ -2231,12 +2273,12 @@
         <div style="background:white; border-radius:12px; border:1px solid #e0e8f0; padding:18px; text-align:center;">
           <p style="font-size:10px; font-weight:700; color:#5fb670; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;">Marco 4</p>
           <p style="font-size:15px; font-weight:800; color:#1a2e3b; margin-bottom:8px;">Novembro</p>
-          <p style="font-size:11px; color:#000; line-height:1.5;">Realização da exposição, registro fotográfico e publicação na Memória Institucional.</p>
+          <p style="font-size:11px; color:#000; line-height:1.5;">Realização da exposição, registro fotográfico e entrega do material para a Galeria de Eventos.</p>
         </div>
       </div>
       <div style="background:#1a2e3b; border-radius:10px; padding:14px 18px; margin-bottom:40px; display:flex; align-items:center; gap:12px;">
         <div style="font-size:20px;">🎯</div>
-        <p style="font-size:12px; color:white; line-height:1.6;"><strong>Indicador de entrega:</strong> exposição realizada no território com obras derivadas dos projetos dos alunos, registro fotográfico publicado e documentação consolidada na plataforma.</p>
+        <p style="font-size:12px; color:white; line-height:1.6;"><strong>Indicador de entrega:</strong> exposição realizada no território com obras derivadas dos projetos dos alunos, registro fotográfico entregue para a Galeria de Eventos e documentação consolidada.</p>
       </div>
 
     </div>
@@ -2364,7 +2406,7 @@
             <div style="width:32px; height:32px; border-radius:50%; background:#e0e8f0; color:#000; font-size:16px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">📷</div>
             <p style="font-size:13px; font-weight:700; color:#000;">Registro e Documentação</p>
           </div>
-          <p style="font-size:12px; color:#000; line-height:1.6;">O registro fotográfico e audiovisual da exposição será realizado durante e após o evento, e publicado na Memória Institucional da plataforma.</p>
+          <p style="font-size:12px; color:#000; line-height:1.6;">O registro fotográfico e audiovisual da exposição será realizado durante e após o evento, e publicado na Galeria de Eventos da plataforma.</p>
         </div>
       </div>
 
@@ -2729,12 +2771,12 @@
         <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:#f9fbfd;border-bottom:1px solid rgba(40,88,160,0.07);">
           <div style="font-size:12px;font-weight:700;color:#5fb670;">Outubro</div>
           <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Curadoria</div>
-          <div style="font-size:11px;color:#000;line-height:1.65;"><strong>Articulador Educacional:</strong> coleta dos projetos.<br><strong>Produtor Cultural:</strong> curadoria e conexão com artistas.<br><strong>Assessoria de Imprensa:</strong> pré-divulgação da exposição.</div>
+          <div style="font-size:11px;color:#000;line-height:1.65;"><strong>Articulador Educacional:</strong> avaliação dos projetos no painel e publicação dos aprovados na Galeria de Projetos.<br><strong>Produtor Cultural:</strong> curadoria e conexão com artistas.<br><strong>Assessoria de Imprensa:</strong> pré-divulgação da exposição.</div>
         </div>
         <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:white;border-bottom:1px solid rgba(40,88,160,0.07);">
           <div style="font-size:12px;font-weight:700;color:#38a349;">Novembro</div>
           <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Exposição</div>
-          <div style="font-size:11px;color:#000;line-height:1.65;"><strong>Articulador Educacional:</strong> encerramento da articulação.<br><strong>Produtor Cultural:</strong> realização da exposição.<br><strong>Assessoria de Imprensa:</strong> lançamento da exposição.</div>
+          <div style="font-size:11px;color:#000;line-height:1.65;"><strong>Articulador Educacional:</strong> encerramento da articulação e publicação do material da exposição na Galeria de Eventos.<br><strong>Produtor Cultural:</strong> realização da exposição.<br><strong>Assessoria de Imprensa:</strong> lançamento da exposição.</div>
         </div>
         <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:#f9fbfd;">
           <div style="font-size:12px;font-weight:700;color:#1a2e3b;">Dezembro</div>

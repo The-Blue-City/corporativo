@@ -160,8 +160,6 @@
   }
   /* BRIEFING DO PROJETO FINAL */
   .brief-wrap { max-width: 1220px; margin: 26px auto 0; padding: 0 40px; }
-  .brief-card[data-tip]::after { bottom: auto; top: 40px; }
-  .brief-card[data-tip]::before { bottom: auto; top: 34px; border-top-color: transparent; border-bottom-color: #f5a623; }
   .brief-card {
     background: #fff; border: 1px solid #e0e8f0; border-left: 4px solid #5123a4;
     border-radius: 16px; padding: 30px 40px;
@@ -180,12 +178,18 @@
   /* RODAPÉ */
   /* ============ TOOLTIPS PARA O DESENVOLVEDOR ============ */
   [data-tip] { position: relative; }
+  .mg-profile[data-tip] { display: inline-flex; }
+  .brief-card h2[data-tip] { display: inline-block; }
+  .brief-card > p[data-tip] { position: relative; }
+  .brief-list[data-tip] { position: relative; }
+  .brief-note[data-tip] { position: relative; }
+  .brief-eyebrow span[data-tip] { position: relative; }
   .tip-wrap { display: inline-flex; align-items: center; }
   [data-tip]::after {
     content: attr(data-tip);
     position: absolute; bottom: calc(100% + 10px); left: 50%; transform: translateX(-50%);
     background: #f5a623; color: #000000;
-    font-size: 12px; font-weight: 400; line-height: 1.4; text-align: center;
+    font-size: 12px; font-weight: 400; font-style: normal; text-transform: none; letter-spacing: normal; line-height: 1.4; text-align: center;
     padding: 8px 12px; border-radius: 8px;
     width: max-content; max-width: 240px;
     box-shadow: 0 4px 14px rgba(20,50,80,0.22);
@@ -252,7 +256,7 @@
 <!-- HEADER -->
 <div class="mg-header">
   <h1 class="mg-title">Minha Galeria: enviar projeto</h1>
-  <div class="mg-profile">
+  <div class="mg-profile" data-tip="Informações “puxadas” do cadastro do usuário">
     <span class="pi"><span class="mg-avatar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span> LordeVerde</span>
     <span class="pi"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Palmas, TO</span>
     <span class="pi"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg> Instituto Federal do Tocantins (IFTO)</span>
@@ -262,17 +266,17 @@
 
 <!-- BRIEFING -->
 <div class="brief-wrap">
-  <div class="brief-card" data-tip="Texto “puxado” do cadastro do jogo no Painel Master (etapa projeto final)">
-    <div class="brief-eyebrow">Projeto final · Termômetro Zero</div>
-    <h2>Desenvolver um plano de redução de gases</h2>
-    <p>Na jornada você aprendeu de onde vêm as emissões de gases de efeito estufa e como cada decisão cotidiana aquece ou esfria o planeta. Agora o desafio sai da tela: escolha um lugar real que você conheça bem – sua escola, sua casa, seu bairro ou seu local de trabalho – e proponha um plano concreto para reduzir as emissões daquele lugar.</p>
-    <ul class="brief-list">
+  <div class="brief-card">
+    <div class="brief-eyebrow">Projeto final · <span data-tip="Nome do jogo “puxado” do cadastro do jogo no Painel Master (título do jogo)">Termômetro Zero</span></div>
+    <h2 data-tip="Título “puxado” do cadastro do jogo no Painel Master, na etapa projeto final (título do desafio)">Desenvolver um plano de redução de gases</h2>
+    <p data-tip="Texto “puxado” do cadastro do jogo no Painel Master, na etapa projeto final (contexto do desafio)">Na jornada você aprendeu de onde vêm as emissões de gases de efeito estufa e como cada decisão cotidiana aquece ou esfria o planeta. Agora o desafio sai da tela: escolha um lugar real que você conheça bem – sua escola, sua casa, seu bairro ou seu local de trabalho – e proponha um plano concreto para reduzir as emissões daquele lugar.</p>
+    <ul class="brief-list" data-tip="Texto “puxado” do cadastro do jogo no Painel Master, na etapa projeto final (critérios de entrega)">
       <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Diagnóstico</strong> – identifique as principais fontes de emissão do lugar escolhido: transporte, energia, resíduos, alimentação.</span></li>
       <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Proposta</strong> – descreva de duas a quatro ações realizáveis, com os recursos e as pessoas necessárias para cada uma.</span></li>
       <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Resultado esperado</strong> – estime o que muda com o plano, mesmo que de forma aproximada: menos viagens de carro, menos lixo, menos consumo de energia.</span></li>
       <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Evidência</strong> – anexe uma foto, um vídeo ou um documento que mostre o plano ou a ação já em andamento.</span></li>
     </ul>
-    <p class="brief-note">Não é preciso ter concluído todas as ações para enviar. O que será avaliado é a clareza do diagnóstico, a viabilidade da proposta e a ligação com o que você aprendeu na jornada.</p>
+    <p class="brief-note" data-tip="Texto “puxado” do cadastro do jogo no Painel Master, na etapa projeto final (observação final)">Não é preciso ter concluído todas as ações para enviar. O que será avaliado é a clareza do diagnóstico, a viabilidade da proposta e a ligação com o que você aprendeu na jornada.</p>
   </div>
 </div>
 
