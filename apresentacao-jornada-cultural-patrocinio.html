@@ -74,7 +74,7 @@
   .section-dark .eyebrow { color:var(--green); }
   .section-dark .eyebrow::before { background:var(--green); }
 
-  h2.section-title { font-size:34px; font-weight:800; color:var(--dark); line-height:1.2; margin-bottom:18px; letter-spacing:-0.3px; }
+  h2.section-title { font-size:28px; font-weight:800; color:var(--dark); line-height:1.2; margin-bottom:18px; letter-spacing:-0.3px; }
   .section-dark h2.section-title { color:white; }
   .section-lead { font-size:15.5px; color:var(--muted); line-height:1.65; margin-bottom:36px; }
   .section-dark .section-lead { color:#ffffff; }
@@ -382,7 +382,7 @@
     .hero-stat-icon { font-size:24px; margin-bottom:10px; }
     .hero-stat-title { font-size:13px; margin-bottom:6px; }
     .hero-stat-desc { font-size:11.5px; line-height:1.45; }
-    h2.section-title { font-size:28px; }
+    h2.section-title { font-size:24px; }
     .section-lead { font-size:14px; margin-bottom:32px; }
     .grid-2, .grid-3, .grid-4 { grid-template-columns:1fr; gap:16px; }
     .benefit-grid-top, .benefit-grid-bottom { grid-template-columns:1fr; gap:14px; }
@@ -448,12 +448,12 @@
   .cert-grouppill-aluno { color:#2d7a3e; background:var(--green-light); }
   .cert-group-sub { font-size:12.5px; color:var(--muted); font-weight:600; }
   .cert-conheca { margin-top:32px; text-align:center; }
-  .cert-conheca-btn { display:inline-block; max-width:none; white-space:nowrap; background:#e7ddf7; color:#000000; font-size:14.5px; font-weight:500; line-height:1.5; text-decoration:none; text-align:center; padding:14px 30px; border-radius:12px; box-shadow:0 4px 14px rgba(81,35,164,0.16); transition:transform .15s ease, box-shadow .15s ease, background .15s ease; }
+  .cert-conheca-btn { display:inline-block; max-width:none; white-space:nowrap; background:#5123a4; color:#ffffff; font-size:12.5px; font-weight:500; line-height:1.5; text-decoration:none; text-align:center; padding:10px 20px; border-radius:10px; transition:background .15s ease; }
   .cert-conheca-btn strong { font-weight:600; }
-  .cert-conheca-btn::after { content:"\2192"; margin-left:8px; font-weight:800; font-size:17px; }
-  .cert-conheca-btn:hover { background:#d7c6f2; transform:translateY(-1px); box-shadow:0 8px 20px rgba(81,35,164,0.24); }
+  .cert-conheca-btn::after { content:"\2192"; margin-left:8px; font-weight:800; font-size:14px; }
+  .cert-conheca-btn:hover { background:#3f1b82; }
   @media (max-width:900px) { .cert-side-cards { grid-template-columns:1fr; } }
-  @media (max-width:560px) { .cert-two { grid-template-columns:1fr; gap:28px; } .cert-side-cards .benefit-card { min-height:0; } .cert-conheca-btn { white-space:normal; font-size:13.5px; padding:14px 20px; } }
+  @media (max-width:560px) { .cert-two { grid-template-columns:1fr; gap:28px; } .cert-side-cards .benefit-card { min-height:0; } .cert-conheca-btn { white-space:normal; font-size:12px; padding:10px 16px; } }
 </style>
 </head>
 <body>
@@ -823,7 +823,7 @@
         <div class="actor-body">
           <h3 data-i18n="atores.a2.h">Estudantes</h3>
           <div class="actor-role" data-i18n="atores.a2.r">Protagonistas</div>
-          <p data-i18n="atores.a2.p">Estudantes entre 16 e 20 anos jogam, completam missões e enviam projetos sobre o tema ambiental. Cada participação gera badges e certificados verificáveis em blockchain, que somam como experiência profissional comprovável na sua jornada de educação.</p>
+          <p data-i18n="atores.a2.p">Estudantes entre 16 e 20 anos jogam, completam missões e enviam projetos sobre o tema ambiental. Cada participação gera badges e credenciais verificáveis em blockchain, que somam como experiência profissional comprovável na sua jornada de educação.</p>
           <span class="actor-deliv" data-i18n="atores.a2.d">Recebe: badges + NFT verificáveis · projeto exposto · LinkedIn-ready</span>
         </div>
       </div>
@@ -874,7 +874,7 @@
           <h3 data-i18n="atores.a7.h">Patrocinador</h3>
           <div class="actor-role" data-i18n="atores.a7.r">Viabilizador estratégico</div>
           <p data-i18n="atores.a7.p">Marca pública ou privada que viabiliza a jornada via Lei Rouanet ou recursos diretos. O patrocinador define o eixo temático da jornada, pode sugerir a cidade-alvo, e tem sua marca presente nas certificações, na plataforma e na exposição física.</p>
-          <p class="actor-extra-body" data-i18n="atores.a7.extra">Toda interação – adesão da escola, jogadas dos alunos, envio de projetos, encomenda dos artistas, registro da exposição – passa por um mesmo ambiente digital, que documenta tudo de forma pública e acessível. É esse registro contínuo que dá ao patrocinador a prestação de contas, ao estudante os certificados verificáveis, e à comunidade o legado permanente.</p>
+          <p class="actor-extra-body" data-i18n="atores.a7.extra">Toda interação – adesão da escola, jogadas dos alunos, envio de projetos, encomenda dos artistas, registro da exposição – passa por um mesmo ambiente digital, que documenta tudo de forma pública e acessível. É esse registro contínuo que dá ao patrocinador a prestação de contas, ao estudante as credenciais verificáveis, e à comunidade o legado permanente.</p>
         </div>
       </div>
 
@@ -887,7 +887,7 @@
   <div class="container">
     <div class="eyebrow" data-i18n="ganhos.eyebrow">05 · Para a escola, para o estudante</div>
     <h2 class="section-title" data-i18n="ganhos.title">O que cada jornada entrega a quem participa</h2>
-    <p class="section-lead" data-i18n="ganhos.lead">A cada edição do modelo, escolas e estudantes recebem entregas concretas – reconhecimento institucional para o território de origem e certificações verificáveis em blockchain para o aluno – além de uma exposição cultural pública, alinhamento curricular e legado permanente na plataforma.</p>
+    <p class="section-lead" data-i18n="ganhos.lead">A cada edição do modelo, escolas e estudantes recebem entregas concretas – reconhecimento institucional para o território de origem e credenciais verificáveis em blockchain para o aluno – além de uma exposição cultural pública, alinhamento curricular e legado permanente na plataforma.</p>
 
     <div class="benefit-grid-top">
 
@@ -937,9 +937,9 @@
         <div class="benefit-card-body">
           <div class="benefit-card-head">
             <div class="benefit-icon">🎓</div>
-            <h3 data-i18n="ganhos.estudante.h">Estudantes com certificações verificáveis</h3>
+            <h3 data-i18n="ganhos.estudante.h">Estudantes com credenciais verificáveis</h3>
           </div>
-          <p data-i18n="ganhos.estudante.p">Cada estudante que participa recebe badges e certificados em blockchain – válidos como experiência comprovável em currículos, processos seletivos e LinkedIn. Uma diferenciação real na transição para o mercado e o ensino superior.</p>
+          <p data-i18n="ganhos.estudante.p">Cada estudante que participa recebe badges e credenciais em blockchain – válidos como experiência comprovável em currículos, processos seletivos e LinkedIn. Uma diferenciação real na transição para o mercado e o ensino superior.</p>
           <span class="benefit-tag" data-i18n="ganhos.estudante.tag">Educação ambiental + trajetória profissional</span>
         </div>
         <div class="benefit-image-slot">
@@ -1034,7 +1034,7 @@
             </div>
             <div class="benefit-card cert-card-escola">
               <div class="benefit-card-head"><div class="benefit-icon">🛡️</div><h3 data-i18n="cert.e2.h">Conformidade e segurança certificadas</h3></div>
-              <p data-i18n="cert.e2.p">Certificados no padrão W3C Verifiable Credentials e European Learning Model (Europass), com segurança certificada ISO 27001 e SOC 2.</p>
+              <p data-i18n="cert.e2.p">Credenciais no padrão W3C Verifiable Credentials e European Learning Model (Europass), com segurança certificada ISO 27001 e SOC 2.</p>
               <span class="benefit-tag" data-i18n="cert.e2.tag">Conformidade e segurança</span>
             </div>
             <div class="benefit-card cert-card-escola">
@@ -1094,14 +1094,14 @@
             <div class="benefit-card cert-card-aluno">
               <div class="benefit-card-head"><div class="benefit-icon">🧩</div><h3 data-i18n="cert.a6.h">Educação Continuada</h3></div>
               <p data-i18n="cert.a6.p">Cada jogo gera um certificado que se acumula ao longo da jornada, criando uma cadeia de educação continuada através da certificação.</p>
-              <span class="benefit-tag" data-i18n="cert.a6.tag">Microcertificados</span>
+              <span class="benefit-tag" data-i18n="cert.a6.tag">Microcredenciais</span>
             </div>
           </div>
         </div>
 
       </div>
 
-      <p class="cert-conheca"><a class="cert-conheca-btn" href="https://pok.tech" target="_blank" rel="noopener" data-i18n-html="cert.conheca">Conheça a <strong>plataforma POK</strong> de certificações, microcredenciais e badges em blockchain</a></p>
+      <p class="cert-conheca"><a class="cert-conheca-btn" href="https://pok.tech" target="_blank" rel="noopener" data-i18n-html="cert.conheca">Conheça a <strong>plataforma POK</strong> de certificações, credenciais e badges em blockchain</a></p>
 
   </div>
 </section>
@@ -1355,7 +1355,7 @@
         <span class="cota-tier cota-bronze">BRONZE</span>
         <div class="cota-info">
           <div class="cota-title" data-i18n="apoio.bronze.t">1 cidade · até 2.000 pessoas · R$ 200.000</div>
-          <div class="cota-desc" data-i18n="apoio.bronze.d">Logotipo em materiais, site e certificados · 1 menção em imprensa · 4 posts · vídeo de resultados · Certificado NFT</div>
+          <div class="cota-desc" data-i18n="apoio.bronze.d">Logotipo em materiais, site e credenciais · 1 menção em imprensa · 4 posts · vídeo de resultados · Certificado NFT</div>
         </div>
         <a href="contrapartidas.html#page-0" class="cota-link" data-i18n="apoio.link">Ver contrapartidas →</a>
       </div>
@@ -1630,7 +1630,7 @@
       'atores.a1.d': 'Recebe: reconhecimento como escola parceira · selo institucional na plataforma · exposição aberta à sua comunidade',
       'atores.a2.h': 'Estudantes',
       'atores.a2.r': 'Protagonistas',
-      'atores.a2.p': 'Estudantes entre 16 e 20 anos jogam, completam missões e enviam projetos sobre o tema ambiental. Cada participação gera badges e certificados verificáveis em blockchain, que somam como experiência profissional comprovável na sua jornada de educação.',
+      'atores.a2.p': 'Estudantes entre 16 e 20 anos jogam, completam missões e enviam projetos sobre o tema ambiental. Cada participação gera badges e credenciais verificáveis em blockchain, que somam como experiência profissional comprovável na sua jornada de educação.',
       'atores.a2.d': 'Recebe: badges + NFT verificáveis · projeto exposto · LinkedIn-ready',
       'atores.a3.h': 'Articulador Educacional',
       'atores.a3.r': 'Ponte com as escolas',
@@ -1651,16 +1651,16 @@
       'atores.a7.h': 'Patrocinador',
       'atores.a7.r': 'Viabilizador estratégico',
       'atores.a7.p': 'Marca pública ou privada que viabiliza a jornada via Lei Rouanet ou recursos diretos. O patrocinador define o eixo temático da jornada, pode sugerir a cidade-alvo, e tem sua marca presente nas certificações, na plataforma e na exposição física.',
-      'atores.a7.extra': 'Toda interação – adesão da escola, jogadas dos alunos, envio de projetos, encomenda dos artistas, registro da exposição – passa por um mesmo ambiente digital, que documenta tudo de forma pública e acessível. É esse registro contínuo que dá ao patrocinador a prestação de contas, ao estudante os certificados verificáveis, e à comunidade o legado permanente.',
+      'atores.a7.extra': 'Toda interação – adesão da escola, jogadas dos alunos, envio de projetos, encomenda dos artistas, registro da exposição – passa por um mesmo ambiente digital, que documenta tudo de forma pública e acessível. É esse registro contínuo que dá ao patrocinador a prestação de contas, ao estudante as credenciais verificáveis, e à comunidade o legado permanente.',
       // ── GANHOS (escola + estudante)
       'ganhos.eyebrow': '05 · Para a escola, para o estudante',
       'ganhos.title': 'O que cada jornada entrega a quem participa',
-      'ganhos.lead': 'A cada edição do modelo, escolas e estudantes recebem entregas concretas – reconhecimento institucional para o território de origem e certificações verificáveis em blockchain para o aluno – além de uma exposição cultural pública, alinhamento curricular e legado permanente na plataforma.',
+      'ganhos.lead': 'A cada edição do modelo, escolas e estudantes recebem entregas concretas – reconhecimento institucional para o território de origem e credenciais verificáveis em blockchain para o aluno – além de uma exposição cultural pública, alinhamento curricular e legado permanente na plataforma.',
       'ganhos.escola.h': 'Reconhecimento como escola parceira',
       'ganhos.escola.p': 'O nome da escola fica registrado como parceira institucional da jornada – na plataforma, nos materiais públicos do projeto, na cobertura de imprensa e nos créditos da exposição cultural.',
       'ganhos.escola.tag': 'Selo institucional permanente',
-      'ganhos.estudante.h': 'Estudantes com certificações verificáveis',
-      'ganhos.estudante.p': 'Cada estudante que participa recebe badges e certificados em blockchain – válidos como experiência comprovável em currículos, processos seletivos e LinkedIn. Uma diferenciação real na transição para o mercado e o ensino superior.',
+      'ganhos.estudante.h': 'Estudantes com credenciais verificáveis',
+      'ganhos.estudante.p': 'Cada estudante que participa recebe badges e credenciais em blockchain – válidos como experiência comprovável em currículos, processos seletivos e LinkedIn. Uma diferenciação real na transição para o mercado e o ensino superior.',
       'ganhos.estudante.tag': 'Educação ambiental + trajetória profissional',
       'ganhos.exp.h': 'Exposição cultural aberta à comunidade',
       'ganhos.exp.p': 'A exposição cultural é gratuita e aberta a toda a comunidade da escola – estudantes, famílias, professores, vizinhança. As ideias dos alunos viram obras de arte assinadas por artistas locais.',
@@ -1680,7 +1680,7 @@
       'cert.e1.p': 'A escola oferece a mesma infraestrutura de certificação usada por mais de 1.200 universidades, empresas e governos – sem contratar nem pagar nada.',
       'cert.e1.tag': 'Zero custo',
       'cert.e2.h': 'Conformidade e segurança certificadas',
-      'cert.e2.p': 'Certificados no padrão W3C Verifiable Credentials e European Learning Model (Europass), com segurança certificada ISO 27001 e SOC 2.',
+      'cert.e2.p': 'Credenciais no padrão W3C Verifiable Credentials e European Learning Model (Europass), com segurança certificada ISO 27001 e SOC 2.',
       'cert.e2.tag': 'Conformidade e segurança',
       'cert.e3.h': 'Diferenciação institucional real',
       'cert.e3.p': 'Entrega ao aluno um certificado verificável, reforçando o posicionamento em inovação e empregabilidade.',
@@ -1711,8 +1711,8 @@
       'cert.a5.tag': 'Currículo e LinkedIn',
       'cert.a6.h': 'Educação Continuada',
       'cert.a6.p': 'Cada jogo gera um certificado que se acumula ao longo da jornada, criando uma cadeia de educação continuada através da certificação.',
-      'cert.a6.tag': 'Microcertificados',
-      'cert.conheca': 'Conheça a <strong>plataforma POK</strong> de certificações, microcredenciais e badges em blockchain',
+      'cert.a6.tag': 'Microcredenciais',
+      'cert.conheca': 'Conheça a <strong>plataforma POK</strong> de certificações, credenciais e badges em blockchain',
       'ganhos.legado.h': 'Legado permanente na plataforma',
       'ganhos.legado.p': 'Tudo o que os estudantes produzem fica registrado em galerias públicas na plataforma The Blue City – um acervo vivo que documenta o engajamento, os projetos e a exposição final. A escola continua acessível como parte do programa mesmo após o evento.',
       'ganhos.legado.tag': 'Visibilidade contínua',
@@ -1800,7 +1800,7 @@
       'apoio.stat3': 'Gratuito ao público',
       'apoio.heading': 'Cotas · LIC IR Rouanet · PRONAC 237809',
       'apoio.bronze.t': '1 cidade · até 2.000 pessoas · R$ 200.000',
-      'apoio.bronze.d': 'Logotipo em materiais, site e certificados · 1 menção em imprensa · 4 posts · vídeo de resultados · Certificado NFT',
+      'apoio.bronze.d': 'Logotipo em materiais, site e credenciais · 1 menção em imprensa · 4 posts · vídeo de resultados · Certificado NFT',
       'apoio.prata.tier': 'PRATA',
       'apoio.prata.t': '2 cidades · até 4.000 pessoas · R$ 380.000',
       'apoio.prata.d': 'Logotipo em destaque no site e galeria · 2 menções · 4 posts · 1 vídeo exclusivo · Certificado NFT',
@@ -1949,7 +1949,7 @@
       'atores.a1.d': 'Recibe: reconocimiento como escuela aliada · sello institucional en la plataforma · exposición abierta a su comunidad',
       'atores.a2.h': 'Estudiantes',
       'atores.a2.r': 'Protagonistas',
-      'atores.a2.p': 'Estudiantes entre 16 y 20 años juegan, completan misiones y envían proyectos sobre el tema ambiental. Cada participación genera badges y certificados verificables en blockchain, que cuentan como experiencia profesional comprobable en su trayectoria educativa.',
+      'atores.a2.p': 'Estudiantes entre 16 y 20 años juegan, completan misiones y envían proyectos sobre el tema ambiental. Cada participación genera badges y credenciales verificables en blockchain, que cuentan como experiencia profesional comprobable en su trayectoria educativa.',
       'atores.a2.d': 'Recibe: badges + NFT verificables · proyecto expuesto · LinkedIn-ready',
       'atores.a3.h': 'Articulador Educativo',
       'atores.a3.r': 'Puente con las escuelas',
@@ -1970,16 +1970,16 @@
       'atores.a7.h': 'Patrocinador',
       'atores.a7.r': 'Habilitador estratégico',
       'atores.a7.p': 'Marca pública o privada que viabiliza la jornada mediante la Lei Rouanet (ley brasileña de incentivo cultural) o con recursos directos. El patrocinador define el eje temático de la jornada, puede sugerir la ciudad-objetivo, y tiene su marca presente en las certificaciones, en la plataforma y en la exposición física.',
-      'atores.a7.extra': 'Toda interacción – adhesión de la escuela, partidas de los alumnos, envío de proyectos, encargo a los artistas, registro de la exposición – pasa por un mismo entorno digital, que documenta todo de forma pública y accesible. Es ese registro continuo el que da al patrocinador la rendición de cuentas, al estudiante los certificados verificables, y a la comunidad el legado permanente.',
+      'atores.a7.extra': 'Toda interacción – adhesión de la escuela, partidas de los alumnos, envío de proyectos, encargo a los artistas, registro de la exposición – pasa por un mismo entorno digital, que documenta todo de forma pública y accesible. Es ese registro continuo el que da al patrocinador la rendición de cuentas, al estudiante las credenciales verificables, y a la comunidad el legado permanente.',
       // ── GANHOS (escuela + estudiante)
       'ganhos.eyebrow': '05 · Para la escuela, para el estudiante',
       'ganhos.title': 'Lo que cada jornada entrega a quien participa',
-      'ganhos.lead': 'En cada edición del modelo, escuelas y estudiantes reciben entregas concretas – reconocimiento institucional para el territorio de origen y certificaciones verificables en blockchain para el alumno – además de una exposición cultural pública, alineamiento curricular y legado permanente en la plataforma.',
+      'ganhos.lead': 'En cada edición del modelo, escuelas y estudiantes reciben entregas concretas – reconocimiento institucional para el territorio de origen y credenciales verificables en blockchain para el alumno – además de una exposición cultural pública, alineamiento curricular y legado permanente en la plataforma.',
       'ganhos.escola.h': 'Reconocimiento como escuela aliada',
       'ganhos.escola.p': 'El nombre de la escuela queda registrado como aliada institucional de la jornada – en la plataforma, en los materiales públicos del proyecto, en la cobertura de prensa y en los créditos de la exposición cultural.',
       'ganhos.escola.tag': 'Sello institucional permanente',
-      'ganhos.estudante.h': 'Estudiantes con certificaciones verificables',
-      'ganhos.estudante.p': 'Cada estudiante que participa recibe insignias y certificados en blockchain – válidos como experiencia comprobable en currículums, procesos selectivos y LinkedIn. Una diferenciación real en la transición al mercado y a la educación superior.',
+      'ganhos.estudante.h': 'Estudiantes con credenciales verificables',
+      'ganhos.estudante.p': 'Cada estudiante que participa recibe insignias y credenciales en blockchain – válidos como experiencia comprobable en currículums, procesos selectivos y LinkedIn. Una diferenciación real en la transición al mercado y a la educación superior.',
       'ganhos.estudante.tag': 'Educación ambiental + trayectoria profesional',
       'ganhos.exp.h': 'Exposición cultural abierta a la comunidad',
       'ganhos.exp.p': 'La exposición cultural es gratuita y abierta a toda la comunidad de la escuela – estudiantes, familias, profesores, vecinos. Las ideas de los alumnos se convierten en obras de arte firmadas por artistas locales.',
@@ -1999,7 +1999,7 @@
       'cert.e1.p': 'La escuela ofrece la misma infraestructura de certificación usada por más de 1.200 universidades, empresas y gobiernos – sin contratar ni pagar nada.',
       'cert.e1.tag': 'Cero costo',
       'cert.e2.h': 'Conformidad y seguridad certificadas',
-      'cert.e2.p': 'Certificados en el estándar W3C Verifiable Credentials y European Learning Model (Europass), con seguridad certificada ISO 27001 y SOC 2.',
+      'cert.e2.p': 'Credenciales en el estándar W3C Verifiable Credentials y European Learning Model (Europass), con seguridad certificada ISO 27001 y SOC 2.',
       'cert.e2.tag': 'Conformidad y seguridad',
       'cert.e3.h': 'Diferenciación institucional real',
       'cert.e3.p': 'Entrega al alumno un certificado verificable, reforzando el posicionamiento en innovación y empleabilidad.',
@@ -2030,8 +2030,8 @@
       'cert.a5.tag': 'Currículo y LinkedIn',
       'cert.a6.h': 'Educación Continua',
       'cert.a6.p': 'Cada juego genera un certificado que se acumula a lo largo de la jornada, creando una cadena de educación continua a través de la certificación.',
-      'cert.a6.tag': 'Microcertificados',
-      'cert.conheca': 'Conocé la <strong>plataforma POK</strong> de certificaciones, microcredenciales y badges en blockchain',
+      'cert.a6.tag': 'Microcredenciais',
+      'cert.conheca': 'Conocé la <strong>plataforma POK</strong> de certificaciones, credenciales y badges en blockchain',
       'ganhos.legado.h': 'Legado permanente en la plataforma',
       'ganhos.legado.p': 'Todo lo que producen los estudiantes queda registrado en galerías públicas en la plataforma The Blue City – un acervo vivo que documenta el compromiso, los proyectos y la exposición final. La escuela sigue accesible como parte del programa incluso después del evento.',
       'ganhos.legado.tag': 'Visibilidad continua',
@@ -2119,7 +2119,7 @@
       'apoio.stat3': 'Gratuito al público',
       'apoio.heading': 'Cuotas · LIC IR Rouanet · PRONAC 237809',
       'apoio.bronze.t': '1 ciudad · hasta 2.000 personas · R$ 200.000',
-      'apoio.bronze.d': 'Logotipo en materiales, sitio y certificados · 1 mención en prensa · 4 posts · video de resultados · Certificado NFT',
+      'apoio.bronze.d': 'Logotipo en materiales, sitio y credenciales · 1 mención en prensa · 4 posts · video de resultados · Certificado NFT',
       'apoio.prata.tier': 'PLATA',
       'apoio.prata.t': '2 ciudades · hasta 4.000 personas · R$ 380.000',
       'apoio.prata.d': 'Logotipo destacado en el sitio y galería · 2 menciones · 4 posts · 1 video exclusivo · Certificado NFT',
@@ -2350,7 +2350,7 @@
       'cert.a6.h': "Continuing Education",
       'cert.a6.p': "Each game generates a certificate that accumulates throughout the journey, creating a chain of continuing education through certification.",
       'cert.a6.tag': "Microcredentials",
-      'cert.conheca': "Explore the <strong>POK platform</strong> for blockchain certifications, microcredentials and badges",
+      'cert.conheca': "Explore the <strong>POK platform</strong> for blockchain certifications, credentials and badges",
       'ganhos.legado.h': 'Permanent legacy on the platform',
       'ganhos.legado.p': 'Everything students produce is recorded in public galleries on The Blue City platform – a living archive that documents engagement, projects and the final exhibition. The school stays accessible as part of the programme even after the event.',
       'ganhos.legado.tag': 'Continuous visibility',
