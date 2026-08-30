@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pesquisa Cultural Afefé – The Blue City · Sotreq</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Pesquisa Cultural Afefé – The Blue City · Sotreq">
+<meta property="og:description" content="Pesquisa cultural completa do personagem Afefé, guia do Mundo dos Ventos – Missão Cidade Azul, Palmas TO.">
+<meta property="og:image" content="https://the-blue-city.github.io/content/TBC_OGApresentacaoSotreq.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #2858a0;
+    --teal: #468182;
+    --green: #5fb670;
+    --blue-light: #d6e4f7;
+    --teal-light: #d0e8e8;
+    --green-light: #d4f0d9;
+    --dark: #1a2e3b;
+    --text: #2c3e50;
+    --muted: #000;
+    --bg: #f4f8fc;
+    --sidebar-w: 280px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    width: var(--sidebar-w);
+    min-height: 100vh;
+    background: #121e33;
+    position: fixed;
+    left: 0; top: 0;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    border-right: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .sidebar-logo {
+    padding: 28px 24px 22px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .sidebar-label {
+    padding: 20px 24px 10px;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .sidebar-label.section {
+    margin-top: 8px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 18px;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 24px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 500;
+    user-select: none;
+  }
+
+  .nav-item:hover {
+    background: rgba(255,255,255,0.05);
+    color: #ffffff;
+    border-left-color: rgba(95,182,112,0.4);
+  }
+
+  .nav-item.active {
+    background: rgba(0,0,0,0.2);
+    color: #ffffff;
+    border-left-color: var(--green);
+  }
+
+  .nav-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    flex-shrink: 0;
+    transition: background 0.2s;
+  }
+
+  .nav-item.active .nav-dot { background: var(--green); }
+
+  .nav-number {
+    margin-left: auto;
+    font-size: 10px;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .nav-item.active .nav-number { color: var(--green); }
+
+  .nav-item.nav-sub {
+    padding: 8px 24px 8px 44px;
+    font-size: 11px;
+    color: #ffffff;
+  }
+  .nav-item.nav-sub .nav-dot { width: 5px; height: 5px; }
+
+  .sidebar-footer {
+    margin-top: auto;
+    padding: 20px 24px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    font-size: 11px;
+    color: #ffffff;
+    line-height: 1.6;
+  }
+
+  /* ── MAIN ── */
+  .main { margin-left: var(--sidebar-w); flex: 1; min-height: 100vh; }
+
+  .page {
+    overflow-x: hidden; display: none; min-height: 100vh; animation: fadeIn 0.35s ease; }
+  .page.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── INTRO ── */
+  .intro-hero {
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #295b9c, #90dba3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 64px 80px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .intro-hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--blue), var(--teal), var(--green));
+  }
+
+  .intro-top {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .intro-logo { margin-bottom: 36px; }
+
+  .intro-eyebrow {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(255,255,255,0.85); margin-bottom: 16px;
+  }
+
+  .intro-headline {
+    font-size: 40px; font-weight: 800;
+    color: #ffffff; line-height: 1.2;
+    margin-bottom: 16px; max-width: 680px;
+  }
+
+  .intro-desc {
+    font-size: 16px; color: rgba(255,255,255,0.9);
+    max-width: 520px; line-height: 1.7; margin-bottom: 36px;
+  }
+
+  .intro-start-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 32px;
+    background: rgba(255,255,255,0.2);
+    color: white; border: 2px solid rgba(255,255,255,0.5);
+    border-radius: 8px; font-size: 14px; font-weight: 700;
+    cursor: pointer; transition: all 0.2s;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .intro-start-btn:hover {
+    background: rgba(255,255,255,0.35);
+    border-color: white; transform: translateY(-2px);
+  }
+
+  .intro-chips {
+    display: flex; gap: 8px; flex-wrap: wrap;
+    justify-content: center; max-width: 860px; width: 100%;
+    margin-top: 48px;
+  }
+
+  .prev-chip {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.9);
+    font-size: 12px; font-weight: 600;
+    padding: 6px 14px; border-radius: 20px;
+  }
+
+  /* ── PAGE HERO ── */
+  .page-hero {
+    padding: 48px 0;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(40,88,160,0.08);
+    position: relative; overflow: hidden;
+  }
+  .page-hero-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 60px;
+  }
+
+  .page-hero::after {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 4px;
+  }
+
+  /* role color accents */
+  .page-hero.role-pesquisadora::after { background: none; }
+  .page-hero.role-ilustrador::after   { background: linear-gradient(90deg, #468182, #5fb670); }
+  .page-hero.role-gamedesigner::after { background: linear-gradient(90deg, #5fb670, #2858a0); }
+  .page-hero.role-produtor::after     { background: linear-gradient(90deg, #2858a0, #90dba3); }
+  .page-hero.role-articulador::after  { background: linear-gradient(90deg, #5fb670, #2858a0); }
+
+  .page-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--green-light);
+    border: 1px solid rgba(95,182,112,0.3);
+    color: #38a349; font-size: 11px; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase;
+    padding: 5px 12px; border-radius: 20px; margin-bottom: 14px;
+  }
+
+  .role-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 14px; border-radius: 20px;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.5px; margin-bottom: 14px;
+  }
+
+  .rb-blue  { background: var(--blue-light); color: var(--blue); }
+  .rb-teal  { background: var(--teal-light); color: var(--teal); }
+  .rb-green { background: var(--green-light); color: #38a349; }
+
+  .page-title {
+    font-size: 32px; font-weight: 800;
+    color: var(--dark); line-height: 1.2; margin-bottom: 12px;
+  }
+
+  .page-subtitle {
+    font-size: 15px; color: #1a2e3b;
+    max-width: 900px; line-height: 1.65;
+  }
+
+  /* ── CONTENT ── */
+  .page-body {
+    padding: 44px 60px;
+    max-width: 1120px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px; align-items: start;
+  }
+
+  .page-body.single { grid-template-columns: 1fr; }
+
+  .content-section { display: flex; flex-direction: column; gap: 20px; }
+
+  .section-heading {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 1.2px; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  .section-heading::after {
+    content: ''; flex: 1; height: 1px;
+    background: rgba(70,129,130,0.2);
+  }
+
+  .feature-card {
+    background: white; border-radius: 12px;
+    padding: 20px 22px;
+    border: 1px solid rgba(40,88,160,0.08);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .feature-card:hover {
+    box-shadow: 0 6px 20px rgba(40,88,160,0.1);
+    transform: translateY(-2px);
+  }
+
+  .feature-card-header {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 10px;
+  }
+
+  .feature-icon {
+    width: 36px; height: 36px; border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; flex-shrink: 0;
+  }
+
+  .fi-blue  { background: var(--blue-light); }
+  .fi-teal  { background: var(--teal-light); }
+  .fi-green { background: var(--green-light); }
+
+  .feature-card h3 { font-size: 14px; font-weight: 700; color: var(--dark); }
+  .feature-card p  { font-size: 13px; color: #000; line-height: 1.65; }
+
+  .feature-card.card-muted {
+    background: #f4f5f7; border-color: #e4e6ea; box-shadow: none;
+  }
+  .feature-card.card-muted:hover { box-shadow: none; transform: none; }
+  .feature-card.card-muted .feature-icon { background: #e6e8ec; filter: grayscale(1); opacity: 0.65; }
+  .feature-card.card-muted h3 { color: #9aa0aa; }
+  .feature-card.card-muted p  { color: #a2a8b2; }
+
+  /* deliverable list */
+  .deliverable-list { display: flex; flex-direction: column; gap: 0; }
+
+  .deliverable-item {
+    display: flex; align-items: flex-start; gap: 12px;
+    background: transparent; border: none; box-shadow: none;
+    border-radius: 0; padding: 13px 0;
+    border-top: 1px solid rgba(40,88,160,0.10);
+  }
+
+  .deliverable-item:first-child { border-top: none; padding-top: 0; }
+  .deliverable-item:last-child { padding-bottom: 0; }
+
+  .del-num {
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--blue); color: white;
+    font-size: 11px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 1px;
+  }
+
+  .del-num.teal  { background: var(--teal); }
+  .del-num.green { background: var(--green); }
+
+  .del-text strong { font-size: 13px; font-weight: 700; color: var(--dark); display: block; margin-bottom: 3px; }
+  .del-text span   { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+  /* placeholder screen */
+  .placeholder-screen {
+    background: linear-gradient(135deg, var(--blue-light) 0%, var(--teal-light) 100%);
+    border-radius: 14px; padding: 60px 40px; text-align: center;
+    border: 2px dashed rgba(40,88,160,0.2); min-height: 280px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 12px;
+  }
+
+  .placeholder-screen .ph-icon { font-size: 44px; opacity: 0.5; }
+  .placeholder-screen .ph-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--teal); }
+  .placeholder-screen p { font-size: 13px; color: var(--blue); opacity: 0.7; max-width: 220px; line-height: 1.6; }
+
+  /* nav footer */
+  .divider { height: 1px; background: rgba(40,88,160,0.07); margin: 0 60px; }
+
+  .page-nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 60px 36px;
+  }
+
+  .nav-btn {
+    display: flex; align-items: center; gap: 8px;
+    padding: 10px 20px; border-radius: 8px;
+    border: 1.5px solid rgba(40,88,160,0.15);
+    background: white; color: var(--blue);
+    font-size: 13px; font-weight: 600;
+    cursor: pointer; transition: all 0.2s;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .nav-btn:hover { background: var(--blue); color: white; border-color: var(--blue); }
+  .nav-btn:disabled { opacity: 0.3; pointer-events: none; }
+  .nav-btn.next { background: var(--blue); color: white; border-color: var(--blue); }
+  .nav-btn.next:hover { background: var(--dark); border-color: var(--dark); }
+
+  .page-indicator { font-size: 12px; color: var(--muted); font-weight: 500; }
+  .page-indicator strong { color: var(--blue); }
+
+  .img-note {
+    background: rgba(40,88,160,0.06);
+    border: 1.5px dashed rgba(40,88,160,0.2);
+    border-radius: 8px; padding: 10px 14px;
+    font-size: 12px; color: var(--blue);
+    text-align: center; margin-top: 8px;
+  }
+
+  /* ── IFTO: cartões de estatística ── */
+  .ifto-stats {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 16px; margin-bottom: 36px;
+  }
+  .ifto-stat {
+    background: white; border-radius: 12px;
+    border: 1px solid rgba(40,88,160,0.08);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    padding: 22px 22px;
+  }
+  .ifto-stat .num {
+    font-size: 30px; font-weight: 800; color: var(--blue);
+    line-height: 1; margin-bottom: 6px;
+  }
+  .ifto-stat .lbl {
+    font-size: 12.5px; color: #1a2e3b; font-weight: 700; margin-bottom: 4px;
+  }
+  .ifto-stat .desc { font-size: 11.5px; color: var(--muted); line-height: 1.5; }
+  .ifto-intro p { font-size: 14px; line-height: 1.7; color: #2c3e50; margin-bottom: 14px; }
+  .ifto-intro p strong { color: var(--dark); font-weight: 700; }
+
+  /* ── CARTA EM FORMATO CARTA, integrada ao conteúdo ── */
+  .carta { margin: 4px 0 36px; background:#fff; padding:32px 36px; }
+  .carta .data { color:#000; font-size:13px; margin-bottom:20px; }
+  .carta .destinatario { margin-bottom:20px; }
+  .carta .destinatario p { margin:0 0 2px; font-size:13.5px; color:#000; }
+  .carta .destinatario .forte { font-weight:700; color:var(--dark); }
+  .carta .dest-row { display:flex; align-items:center; justify-content:flex-start; gap:24px; margin-bottom:20px; }
+  .carta p { font-size:14px; line-height:1.7; color:#000; margin:0 0 14px; text-align:left; }
+  .carta .saudacao { margin-bottom:16px; }
+  .carta strong { font-weight:700; color:var(--dark); }
+  .carta .bloco-titulo {
+    font-size:16px; font-weight:700; color:var(--blue);
+    margin:26px 0 8px;
+  }
+  .carta .ganhos { list-style:none; padding:0; margin:10px 0 4px; }
+  .carta .ganhos li {
+    position:relative; padding-left:24px; margin-bottom:12px;
+    font-size:14px; line-height:1.65; color:#000; text-align:left;
+  }
+  .carta .ganhos li::before { content:"•"; position:absolute; left:5px; top:0; color:var(--green); font-weight:700; }
+  .carta .ganhos b { font-weight:700; color:var(--dark); }
+  .carta .assinatura { margin-top:30px; }
+  .carta .assinatura p { margin:0 0 2px; font-size:13.5px; color:#000; }
+  .carta .assinatura .nome { font-weight:700; color:var(--dark); font-size:16px; margin-bottom:2px; }
+  @media (max-width:640px){
+    .ifto-stats { grid-template-columns:1fr; }
+    .carta p, .carta .ganhos li { text-align:left; }
+    .carta .dest-row { flex-direction:column; align-items:flex-start; gap:14px; }
+  }
+</style>
+<style>
+  /* ── DOSSIÊS DOS PERSONAGENS ── */
+  .dz-research {
+    background: var(--bg); border: 1px solid #e0e8f0;
+    border-radius: 10px; padding: 14px 18px; margin-top: 20px;
+  }
+  .dz-research strong {
+    display: block; font-size: 10px; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 6px;
+  }
+  .dz-research p { font-size: 12px; color: #1a1a1a; line-height: 1.6; }
+  .dz-quote {
+    border-radius: 10px; padding: 18px 22px; margin-top: 16px;
+    font-size: 13px; color: #000; line-height: 1.75;
+  }
+  .dz-quote.sol   { background: #fdf8ef; border: 1px solid #f0e2c8; }
+  .dz-quote.vento { background: #faf2f3; border: 1px solid #ecd5d9; }
+  .dz-h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 21px; font-weight: 800;
+    color: #1a1a1a; line-height: 1.25; margin-bottom: 14px;
+  }
+  .dz-h3 { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 600; color: #000; margin: 22px 0 8px; }
+  .dz-section { margin-bottom: 44px; }
+  .dz-section > p, .dz-media p { font-size: 13px; color: #1a1a1a; margin-bottom: 12px; line-height: 1.7; }
+  .dz-list { list-style: none; margin: 0 0 12px; padding: 0; }
+  .dz-list li {
+    font-size: 13px; color: #1a1a1a;
+    padding-left: 18px; position: relative; margin-bottom: 7px; line-height: 1.6;
+  }
+  .dz-list li::before { content: '•'; position: absolute; left: 4px; color: var(--teal); font-weight: 700; }
+  .dz-fig {
+    background: white; border: 1px solid #e0e8f0;
+    border-radius: 12px; overflow: hidden; margin: 0;
+  }
+  .dz-fig img { display: block; width: 100%; height: auto; }
+  .dz-fig .dz-ph {
+    aspect-ratio: 3/4;
+    background: #fdf2e6; border-bottom: 2px dashed #e07b20;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; color: #e07b20; font-weight: 600; text-align: center;
+    line-height: 1.5; padding: 16px;
+  }
+  .dz-fig figcaption {
+    padding: 8px 12px; font-size: 11px;
+    color: #1a1a1a; font-weight: 600; text-align: center;
+  }
+  .dz-media { display: grid; grid-template-columns: 250px 1fr; gap: 24px; align-items: start; margin: 18px 0; }
+  .dz-media.rev { grid-template-columns: 1fr 250px; }
+  .dz-media .dz-h3:first-child { margin-top: 0; }
+  .dz-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .dz-media.lg { grid-template-columns: 420px 1fr; }
+  .dz-imgrow { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0 8px; align-items: start; }
+  .dz-imgrow .dz-ph { aspect-ratio: 4/3; }
+  .dz-imgsingle { max-width: 460px; margin: 16px auto 8px; }
+  .dz-states { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px; }
+  .dz-state { border-radius: 12px; padding: 20px 22px; border: 1px solid #e0e8f0; background: white; }
+  .dz-state h4 { font-size: 12px; font-weight: 800; letter-spacing: 0.8px; margin-bottom: 12px; }
+  .dz-state p { font-size: 12px; margin-bottom: 6px; color: #1a1a1a; line-height: 1.6; }
+  .dz-state p b { color: #1a1a1a; font-weight: 700; }
+  .dz-state.blocked { background: #f2f4f6; }
+  .dz-state.blocked h4 { color: #1a1a1a; }
+  .dz-state.full-sol   { background: #fdf2d4; border-color: #f3dca0; }
+  .dz-state.full-sol h4 { color: #C0392B; }
+  .dz-state.full-vento { background: #faf2f3; border-color: #e3c3ca; }
+  .dz-state.full-vento h4 { color: #6E1F2E; }
+  .dz-palette { width: 100%; border-collapse: collapse; margin-top: 16px; background: white; border-radius: 12px; overflow: hidden; border: 1px solid #e0e8f0; }
+  .dz-palette th {
+    text-align: left; padding: 10px 14px;
+    background: var(--dark); color: white;
+    font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+  }
+  .dz-palette td { padding: 10px 14px; border-bottom: 1px solid #eef2f6; font-size: 12px; color: #1a1a1a; }
+  .dz-palette tr:last-child td { border-bottom: none; }
+  .dz-palette td b { color: #1a1a1a; font-weight: 700; }
+  .dz-swatch { width: 38px; height: 24px; border-radius: 6px; border: 1px solid rgba(0,0,0,0.12); display: block; }
+  .dz-palette code { font-family: 'Courier New', monospace; font-size: 11px; color: #1a1a1a; }
+  .dz-note {
+    margin-top: 14px; background: white; border: 1px solid #e0e8f0;
+    border-radius: 0 10px 10px 0; padding: 14px 18px;
+    font-size: 12px; color: #1a1a1a; line-height: 1.7;
+  }
+  .dz-note.sol   { border-left: 3px solid #F5A623; }
+  .dz-note.vento { border-left: 3px solid #6E1F2E; }
+  .dz-note b { color: #1a1a1a; }
+  .dz-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; }
+  .dz-card {
+    background: white; border: 1px solid #e0e8f0;
+    border-radius: 12px; padding: 18px 20px;
+  }
+  .dz-card h4 { font-size: 13px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px; }
+  .dz-card p { font-size: 12px; color: #1a1a1a; line-height: 1.65; margin-bottom: 0; }
+  .dz-card.wide { grid-column: 1 / -1; }
+  .dz-card .dz-list li { font-size: 12px; color: #1a1a1a; }
+  .dz-mood { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px; align-items: start; }
+  .dz-credit {
+    margin-top: 40px; padding-top: 20px;
+    border-top: 1px solid #e0e8f0;
+    text-align: center; font-size: 12px; color: #1a1a1a;
+  }
+  .dz-credit b { color: #1a1a1a; }
+  @media (max-width: 680px) {
+    .dz-media, .dz-media.rev, .dz-media.lg, .dz-imgrow { grid-template-columns: 1fr; }
+    .dz-states, .dz-grid, .dz-mood { grid-template-columns: 1fr; }
+    .dz-palette { font-size: 11px; }
+    .dz-palette th, .dz-palette td { padding: 8px 9px; }
+    .dz-imgsingle, .dz-media.lg figure.dz-fig { max-width: 100%; }
+  }
+
+  /* ── LAYOUT BASE ── */
+  .main {
+    margin-left: var(--sidebar-w);
+    width: calc(100% - var(--sidebar-w));
+    min-height: 100vh;
+  }
+
+  /* ── TABLET ── */
+  @media (max-width: 900px) {
+    :root { --sidebar-w: 200px; }
+    .page-title { font-size: 26px !important; }
+    div[style*="grid-template-columns:1fr 1fr 1fr"],
+    div[style*="grid-template-columns: 1fr 1fr 1fr"] {
+      grid-template-columns: 1fr 1fr !important;
+    }
+    div[style*="grid-template-columns:repeat(4"],
+    div[style*="grid-template-columns:repeat(5"],
+    div[style*="grid-template-columns:repeat(6"] {
+      grid-template-columns: 1fr 1fr !important;
+    }
+    div[style*="padding:0 60px"],
+    div[style*="padding:36px 60px"] {
+      padding-left: 24px !important;
+      padding-right: 24px !important;
+    }
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 640px) {
+    :root { --sidebar-w: 0px; }
+
+    body { overflow-x: hidden; }
+
+    #mobile-topbar { display: flex !important; }
+
+    .sidebar {
+      position: fixed !important;
+      top: 0; left: 0;
+      width: 260px !important;
+      height: 100vh !important;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      z-index: 150;
+      overflow-y: auto;
+    }
+
+    .sidebar.open {
+      transform: translateX(0);
+    }
+
+    .main {
+      margin-left: 0 !important;
+      width: 100% !important;
+    }
+
+    .page-hero { padding: 20px 16px !important; }
+    .page-title { font-size: 20px !important; }
+    .page-subtitle { font-size: 12px !important; }
+
+    div[style*="padding:0 60px"],
+    div[style*="padding:36px 60px"],
+    div[style*="padding:0 60px 40px"],
+    div[style*="padding:0 60px 32px"] {
+      padding: 16px !important;
+    }
+
+    div[style*="grid-template-columns:1fr 1fr"],
+    div[style*="grid-template-columns: 1fr 1fr"],
+    div[style*="grid-template-columns:1fr 1fr 1fr"],
+    div[style*="grid-template-columns: 1fr 1fr 1fr"],
+    div[style*="grid-template-columns:repeat(3"],
+    div[style*="grid-template-columns:repeat(4"],
+    div[style*="grid-template-columns:repeat(5"],
+    div[style*="grid-template-columns:repeat(6"] {
+      grid-template-columns: 1fr !important;
+    }
+
+    .page-nav {
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 10px !important;
+      padding: 16px !important;
+    }
+
+    .feature-card { padding: 14px !important; }
+
+    div[style*="display:flex; align-items:center; gap:24px"] {
+      flex-wrap: wrap !important;
+      gap: 12px !important;
+    }
+
+    img[style*="width:160px"] {
+      width: 100% !important;
+      max-width: 200px !important;
+    }
+
+    /* Cards de personagem (U'acü, Yapu) – empilha imagem/placeholder e texto */
+    div[style*="gap:24px; align-items:flex-start"] {
+      flex-direction: column !important;
+      align-items: stretch !important;
+      gap: 16px !important;
+    }
+
+    /* Placeholder de imagem do U'acü (div, não img) */
+    div[style*="width:160px; height:200px"] {
+      width: 100% !important;
+      max-width: 200px !important;
+      margin: 0 auto !important;
+    }
+  }
+
+  /* ── CRONOGRAMA RESPONSIVO ── */
+  .schedule-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .schedule-table-inner {
+    min-width: 500px;
+  }
+
+  @media (max-width: 640px) {
+    .cronograma-timeline {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .cronograma-timeline svg {
+      min-width: 700px;
+    }
+
+    .schedule-table-inner {
+      min-width: 480px;
+    }
+
+    .schedule-table-inner > div {
+      grid-template-columns: 70px 130px 1fr !important;
+      padding: 10px 12px !important;
+      gap: 10px !important;
+    }
+
+    .organograma-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .organograma-wrapper svg {
+      min-width: 800px;
+    }
+  }
+
+</style>
+
+<style>
+  .page { display:block !important; animation:none; }
+  body { background:var(--bg); }
+  /* ====== TOP NAV ====== */
+  :root { --nav-h: 68px; }
+  .topnav { position:sticky; top:0; left:0; right:0; z-index:200; background:#121e33; border-bottom:1px solid rgba(255,255,255,0.08); }
+  .topnav-inner { max-width:1280px; margin:0 auto; display:flex; align-items:center; gap:28px; padding:0 32px; }
+  .topnav-logo { display:flex; align-items:center; flex-shrink:0; }
+  .topnav-logo svg { height:26px; width:auto; display:block; }
+  .topnav-links { display:flex; align-items:center; gap:4px; margin-left:12px; overflow-x:auto; scrollbar-width:none; }
+  .topnav-links::-webkit-scrollbar { display:none; }
+  .back-link { display:inline-flex; align-items:center; gap:8px; color:#ffffff; text-decoration:none; font-size:12.5px; font-weight:600; }
+  .back-link:hover { color:#fff; }
+  .hero { background:linear-gradient(to bottom,#295b9c,#90dba3); padding:64px 32px 56px; position:relative; }
+  .hero::before { content:''; position:absolute; top:0; left:0; right:0; height:5px; background:linear-gradient(90deg,#2858a0,#468182,#5fb670); }
+  .hero-inner { max-width:1000px; width:100%; margin:0 auto; display:flex; flex-direction:column; align-items:center; text-align:center; box-sizing:border-box; }
+  .client-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.2); border:1px solid rgba(255,255,255,0.4); color:white; font-size:12px; font-weight:700; padding:7px 18px; border-radius:20px; margin-bottom:18px; letter-spacing:0.5px; }
+  .hero-eyebrow { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.85); margin-bottom:14px; }
+  .hero-headline { font-size:38px; font-weight:800; color:#fff; line-height:1.2; margin-bottom:16px; max-width:700px; width:100%; overflow-wrap:break-word; }
+
+  .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+
+  .footer { background:#2858a0; color:#fff; padding:40px 32px 28px; }
+  .credits-inner { max-width:1140px; margin:0 auto 28px; display:flex; align-items:center; justify-content:space-between; gap:26px; flex-wrap:wrap; }
+  .credit-item { display:flex; align-items:center; gap:12px; }
+  .credit-item .rot { font-size:10.5px; font-weight:400; letter-spacing:0.8px; text-transform:uppercase; color:#ffffff; white-space:nowrap; }
+  .credit-item img { height:30px; width:auto; display:block; }
+  .credit-item a { display:flex; align-items:center; }
+  .credit-item .tbc { height:26px; }
+  .credit-item .pok { height:26px; }
+  .credit-item .rouanet { height:46px; }
+  .credit-sep { width:1px; height:34px; background:rgba(255,255,255,0.28); }
+  .footer-bottom { max-width:1140px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:12px; color:rgba(255,255,255,0.85); border-top:1px solid rgba(255,255,255,0.18); padding-top:20px; }
+  .footer-bottom a { color:#ffffff; font-weight:600; }
+  .footer-bottom a:hover { text-decoration:underline; }
+  @media (max-width:860px) {
+    .credits-inner { justify-content:center; gap:18px; }
+    .credit-sep { display:none; }
+    .footer-bottom { justify-content:center; text-align:center; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <div class="topnav-logo">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 218.4 45.6">
+  <defs>
+    <style>
+      .nav-logo-cls-1 { fill: url(#nav-logo-gradient); stroke-width:0px; }
+      .nav-logo-cls-2 { fill: #ffffff; stroke-width:0px; }
+      .nav-logo-cls-3 { fill: #001522; stroke-width:0px; }
+      .nav-logo-cls-4 { fill: #0c9ed9; stroke-width:0px; }
+      .nav-logo-cls-5 { fill: #fff; stroke-width:0px; }
+    </style>
+    <linearGradient id="nav-logo-gradient" x1="48.8" y1="25.1" x2="211.8" y2="25.1" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#006188"/>
+      <stop offset="1" stop-color="#95cfa0"/>
+    </linearGradient>
+  </defs>
+  <g>
+    <circle class="nav-logo-cls-3" cx="26.1" cy="22.7" r="18.4"/>
+    <g>
+      <rect class="nav-logo-cls-5" x="15.5" y="17.5" width="20.8" height="3.2"/>
+      <path class="nav-logo-cls-4" d="M35,23l-.2.2c-1.3,1.1-2.4,2.1-4.1,2.1s-2.5-.4-4.1-1.3c-2.1-1.1-3.9-1.7-5.6-1.7-2.8,0-4.6,1.6-6,2.9l-.2.2,2,2.4.2-.2c1.3-1.1,2.4-2.1,4.1-2.1s2.5.4,4.1,1.3c2.1,1.1,3.9,1.7,5.6,1.7h0c2.7,0,4.5-1.6,5.9-2.9l.2-.2-2-2.4Z"/>
+    </g>
+  </g>
+  <g>
+    <g>
+      <path class="nav-logo-cls-2" d="M64.5,16.8h-5.7v14.9h-4.3v-14.9h-5.7v-3.8h15.7v3.8Z"/>
+      <path class="nav-logo-cls-2" d="M79.1,31.6h-4.2v-7.6c0-.9-.2-1.5-.6-1.9-.4-.4-.9-.6-1.4-.6s-.7,0-1.1.3c-.4.2-.8.5-1.1.8-.3.4-.6.8-.7,1.2v7.8h-4.2V12.5h4.2v7.9c.5-.8,1.2-1.5,2-1.9.8-.4,1.8-.6,2.8-.6s1.7.2,2.2.5c.6.3,1,.7,1.3,1.2.3.5.5,1,.6,1.7.1.6.2,1.2.2,1.8v8.7Z"/>
+      <path class="nav-logo-cls-2" d="M87.9,31.9c-1.2,0-2.2-.2-3.1-.6s-1.7-.9-2.3-1.5c-.6-.6-1.1-1.4-1.5-2.2-.3-.8-.5-1.7-.5-2.6,0-1.3.3-2.5.9-3.6.6-1.1,1.4-1.9,2.5-2.6s2.4-1,4-1,2.9.3,4,1,1.9,1.5,2.5,2.6c.6,1.1.9,2.2.9,3.5s0,.5,0,.7,0,.4,0,.6h-10.2c0,.6.2,1.1.5,1.5.3.4.7.7,1.1.9.5.2.9.3,1.4.3s1.2-.1,1.8-.4c.6-.3.9-.7,1.1-1.2l3.6,1c-.4.7-.8,1.3-1.5,1.9-.6.5-1.4,1-2.2,1.3-.9.3-1.8.5-2.9.5ZM84.9,23.5h6c0-.6-.2-1-.5-1.5-.3-.4-.6-.7-1.1-1s-.9-.3-1.5-.3-1,.1-1.4.3c-.4.2-.8.5-1.1.9-.3.4-.4.9-.5,1.5Z"/>
+      <path class="nav-logo-cls-2" d="M118,26.8c0,1.1-.3,2-.8,2.7-.6.7-1.3,1.2-2.3,1.6-1,.4-2,.5-3.2.5h-9.1V13h10.4c.9,0,1.6.2,2.3.7.6.5,1.1,1.1,1.5,1.8.3.7.5,1.5.5,2.3s-.2,1.7-.7,2.5c-.4.8-1.1,1.4-2,1.8,1.1.3,1.9.9,2.5,1.7.6.8.9,1.8.9,3.1ZM106.9,16.7v3.9h4.2c.3,0,.6,0,.9-.2.3-.1.5-.4.7-.6.2-.3.2-.6.2-1.1s0-.8-.2-1.1c-.1-.3-.3-.5-.6-.6-.2-.1-.5-.2-.9-.2h-4.4ZM113.7,26c0-.4,0-.7-.2-1.1-.2-.3-.4-.6-.6-.7s-.6-.3-.9-.3h-4.9v4.1h4.8c.4,0,.7,0,1-.3.3-.2.5-.4.7-.7.2-.3.2-.6.2-1Z"/>
+      <path class="nav-logo-cls-2" d="M119.7,12.5h4.2v14.3c0,.6.1,1,.3,1.2.2.2.5.4.9.4s.5,0,.8-.1c.3,0,.5-.2.7-.3l.6,3.2c-.5.2-1.1.4-1.8.6-.7.2-1.3.2-1.9.2-1.2,0-2.1-.3-2.8-1-.6-.6-1-1.6-1-2.7v-15.7Z"/>
+      <path class="nav-logo-cls-2" d="M127.9,26.8v-8.8h4.2v7.8c0,.8.2,1.4.5,1.9.3.4.8.7,1.4.7s.8,0,1.1-.2c.4-.1.7-.3,1-.6s.6-.7.9-1.1v-8.4h4.2v9c0,.4,0,.7.2.9.1.2.4.3.7.3v3.5c-.4,0-.7.1-1,.2s-.5,0-.8,0c-.7,0-1.3-.1-1.8-.4-.4-.3-.7-.7-.8-1.3v-.8c-.7.9-1.5,1.6-2.4,2-.9.4-2,.6-3.2.6s-2.5-.4-3.2-1.3c-.7-.9-1.1-2.2-1.1-3.8Z"/>
+      <path class="nav-logo-cls-2" d="M150.6,31.9c-1.2,0-2.2-.2-3.1-.6-.9-.4-1.7-.9-2.3-1.5-.6-.6-1.1-1.4-1.5-2.2-.3-.8-.5-1.7-.5-2.6,0-1.3.3-2.5.9-3.6.6-1.1,1.4-1.9,2.5-2.6,1.1-.7,2.4-1,4-1s2.9.3,4,1c1.1.6,1.9,1.5,2.5,2.6.6,1.1.9,2.2.9,3.5s0,.5,0,.7,0,.4,0,.6h-10.2c0,.6.2,1.1.5,1.5s.7.7,1.1.9c.5.2.9.3,1.4.3s1.2-.1,1.8-.4c.6-.3.9-.7,1.1-1.2l3.6,1c-.4.7-.8,1.3-1.5,1.9-.6.5-1.4,1-2.2,1.3-.9.3-1.8.5-2.9.5ZM147.5,23.5h6c0-.6-.2-1-.5-1.5-.3-.4-.6-.7-1.1-1-.4-.2-.9-.3-1.5-.3s-1,.1-1.4.3c-.4.2-.8.5-1.1.9-.3.4-.4.9-.5,1.5Z"/>
+      <path class="nav-logo-cls-2" d="M164.2,22.1c0-1.1.2-2.2.6-3.3.4-1.1,1-2.1,1.8-3,.8-.9,1.8-1.6,3-2.2,1.2-.5,2.5-.8,3.9-.8s3.3.4,4.6,1.1,2.3,1.7,2.9,2.9l-3.3,2.3c-.3-.7-.6-1.2-1.1-1.6-.5-.4-1-.6-1.5-.8-.6-.1-1.1-.2-1.6-.2-.8,0-1.5.2-2.1.5-.6.3-1.1.8-1.5,1.3-.4.5-.7,1.1-.9,1.8-.2.7-.3,1.3-.3,2s.1,1.5.4,2.2c.2.7.6,1.3,1,1.8.4.5.9.9,1.6,1.2.6.3,1.3.5,2,.5s1.1,0,1.6-.2c.5-.2,1-.4,1.5-.8.5-.4.8-.9,1.1-1.5l3.5,2.1c-.4.9-1,1.7-1.8,2.3-.8.6-1.8,1.1-2.8,1.5s-2.1.5-3.2.5-2.6-.3-3.7-.8c-1.1-.6-2.1-1.3-2.9-2.2-.8-.9-1.5-2-1.9-3.1-.4-1.1-.7-2.3-.7-3.5Z"/>
+      <path class="nav-logo-cls-2" d="M182.5,16.3v-3.8h4.2v3.8h-4.2ZM182.5,31.6v-13.8h4.2v13.8h-4.2Z"/>
+      <path class="nav-logo-cls-2" d="M198,30.9c-.4.2-.8.3-1.2.5-.5.2-.9.3-1.4.4-.5,0-1,.1-1.5.1s-1.3-.1-1.9-.3-1-.6-1.4-1.2-.5-1.2-.5-2.1v-7.1h-1.8v-3.2h1.8v-4.4h4.2v4.4h2.8v3.2h-2.8v5.6c0,.5.1.8.3,1,.2.2.5.3.9.3s.6,0,1-.2c.3-.1.6-.2.9-.3l.8,3.3Z"/>
+      <path class="nav-logo-cls-2" d="M199.1,33.7c.4.1.7.2,1,.2.3,0,.6,0,.8,0,.4,0,.6,0,.9-.2s.4-.4.6-.8c.2-.4.3-.8.5-1.4l-5.2-13.7h4.3l3.2,9.4,2.7-9.4h3.9l-5.3,15.9c-.2.7-.6,1.4-1.1,2-.5.6-1.1,1-1.9,1.4-.7.3-1.5.5-2.4.5-.4,0-.7,0-1.1,0-.4,0-.7-.2-1.1-.3v-3.6Z"/>
+    </g>
+    <g>
+      <path class="nav-logo-cls-1" d="M64.5,16.8h-5.7v14.9h-4.3v-14.9h-5.7v-3.8h15.7v3.8Z"/>
+      <path class="nav-logo-cls-1" d="M79.1,31.6h-4.2v-7.6c0-.9-.2-1.5-.6-1.9-.4-.4-.9-.6-1.4-.6s-.7,0-1.1.3c-.4.2-.8.5-1.1.8-.3.4-.6.8-.7,1.2v7.8h-4.2V12.5h4.2v7.9c.5-.8,1.2-1.5,2-1.9.8-.4,1.8-.6,2.8-.6s1.7.2,2.2.5c.6.3,1,.7,1.3,1.2.3.5.5,1,.6,1.7.1.6.2,1.2.2,1.8v8.7Z"/>
+      <path class="nav-logo-cls-1" d="M87.9,31.9c-1.2,0-2.2-.2-3.1-.6s-1.7-.9-2.3-1.5c-.6-.6-1.1-1.4-1.5-2.2-.3-.8-.5-1.7-.5-2.6,0-1.3.3-2.5.9-3.6.6-1.1,1.4-1.9,2.5-2.6s2.4-1,4-1,2.9.3,4,1,1.9,1.5,2.5,2.6c.6,1.1.9,2.2.9,3.5s0,.5,0,.7,0,.4,0,.6h-10.2c0,.6.2,1.1.5,1.5.3.4.7.7,1.1.9.5.2.9.3,1.4.3s1.2-.1,1.8-.4c.6-.3.9-.7,1.1-1.2l3.6,1c-.4.7-.8,1.3-1.5,1.9-.6.5-1.4,1-2.2,1.3-.9.3-1.8.5-2.9.5ZM84.9,23.5h6c0-.6-.2-1-.5-1.5-.3-.4-.6-.7-1.1-1s-.9-.3-1.5-.3-1,.1-1.4.3c-.4.2-.8.5-1.1.9-.3.4-.4.9-.5,1.5Z"/>
+      <path class="nav-logo-cls-1" d="M118,26.8c0,1.1-.3,2-.8,2.7-.6.7-1.3,1.2-2.3,1.6-1,.4-2,.5-3.2.5h-9.1V13h10.4c.9,0,1.6.2,2.3.7.6.5,1.1,1.1,1.5,1.8.3.7.5,1.5.5,2.3s-.2,1.7-.7,2.5c-.4.8-1.1,1.4-2,1.8,1.1.3,1.9.9,2.5,1.7.6.8.9,1.8.9,3.1ZM106.9,16.7v3.9h4.2c.3,0,.6,0,.9-.2.3-.1.5-.4.7-.6.2-.3.2-.6.2-1.1s0-.8-.2-1.1c-.1-.3-.3-.5-.6-.6-.2-.1-.5-.2-.9-.2h-4.4ZM113.7,26c0-.4,0-.7-.2-1.1-.2-.3-.4-.6-.6-.7s-.6-.3-.9-.3h-4.9v4.1h4.8c.4,0,.7,0,1-.3.3-.2.5-.4.7-.7.2-.3.2-.6.2-1Z"/>
+      <path class="nav-logo-cls-1" d="M119.7,12.5h4.2v14.3c0,.6.1,1,.3,1.2.2.2.5.4.9.4s.5,0,.8-.1c.3,0,.5-.2.7-.3l.6,3.2c-.5.2-1.1.4-1.8.6-.7.2-1.3.2-1.9.2-1.2,0-2.1-.3-2.8-1-.6-.6-1-1.6-1-2.7v-15.7Z"/>
+      <path class="nav-logo-cls-1" d="M127.9,26.8v-8.8h4.2v7.8c0,.8.2,1.4.5,1.9.3.4.8.7,1.4.7s.8,0,1.1-.2c.4-.1.7-.3,1-.6s.6-.7.9-1.1v-8.4h4.2v9c0,.4,0,.7.2.9.1.2.4.3.7.3v3.5c-.4,0-.7.1-1,.2s-.5,0-.8,0c-.7,0-1.3-.1-1.8-.4-.4-.3-.7-.7-.8-1.3v-.8c-.7.9-1.5,1.6-2.4,2-.9.4-2,.6-3.2.6s-2.5-.4-3.2-1.3c-.7-.9-1.1-2.2-1.1-3.8Z"/>
+      <path class="nav-logo-cls-1" d="M150.6,31.9c-1.2,0-2.2-.2-3.1-.6-.9-.4-1.7-.9-2.3-1.5-.6-.6-1.1-1.4-1.5-2.2-.3-.8-.5-1.7-.5-2.6,0-1.3.3-2.5.9-3.6.6-1.1,1.4-1.9,2.5-2.6,1.1-.7,2.4-1,4-1s2.9.3,4,1c1.1.6,1.9,1.5,2.5,2.6.6,1.1.9,2.2.9,3.5s0,.5,0,.7,0,.4,0,.6h-10.2c0,.6.2,1.1.5,1.5s.7.7,1.1.9c.5.2.9.3,1.4.3s1.2-.1,1.8-.4c.6-.3.9-.7,1.1-1.2l3.6,1c-.4.7-.8,1.3-1.5,1.9-.6.5-1.4,1-2.2,1.3-.9.3-1.8.5-2.9.5ZM147.5,23.5h6c0-.6-.2-1-.5-1.5-.3-.4-.6-.7-1.1-1-.4-.2-.9-.3-1.5-.3s-1,.1-1.4.3c-.4.2-.8.5-1.1.9-.3.4-.4.9-.5,1.5Z"/>
+      <path class="nav-logo-cls-1" d="M164.2,22.1c0-1.1.2-2.2.6-3.3.4-1.1,1-2.1,1.8-3,.8-.9,1.8-1.6,3-2.2,1.2-.5,2.5-.8,3.9-.8s3.3.4,4.6,1.1,2.3,1.7,2.9,2.9l-3.3,2.3c-.3-.7-.6-1.2-1.1-1.6-.5-.4-1-.6-1.5-.8-.6-.1-1.1-.2-1.6-.2-.8,0-1.5.2-2.1.5-.6.3-1.1.8-1.5,1.3-.4.5-.7,1.1-.9,1.8-.2.7-.3,1.3-.3,2s.1,1.5.4,2.2c.2.7.6,1.3,1,1.8.4.5.9.9,1.6,1.2.6.3,1.3.5,2,.5s1.1,0,1.6-.2c.5-.2,1-.4,1.5-.8.5-.4.8-.9,1.1-1.5l3.5,2.1c-.4.9-1,1.7-1.8,2.3-.8.6-1.8,1.1-2.8,1.5s-2.1.5-3.2.5-2.6-.3-3.7-.8c-1.1-.6-2.1-1.3-2.9-2.2-.8-.9-1.5-2-1.9-3.1-.4-1.1-.7-2.3-.7-3.5Z"/>
+      <path class="nav-logo-cls-1" d="M182.5,16.3v-3.8h4.2v3.8h-4.2ZM182.5,31.6v-13.8h4.2v13.8h-4.2Z"/>
+      <path class="nav-logo-cls-1" d="M198,30.9c-.4.2-.8.3-1.2.5-.5.2-.9.3-1.4.4-.5,0-1,.1-1.5.1s-1.3-.1-1.9-.3-1-.6-1.4-1.2-.5-1.2-.5-2.1v-7.1h-1.8v-3.2h1.8v-4.4h4.2v4.4h2.8v3.2h-2.8v5.6c0,.5.1.8.3,1,.2.2.5.3.9.3s.6,0,1-.2c.3-.1.6-.2.9-.3l.8,3.3Z"/>
+      <path class="nav-logo-cls-1" d="M199.1,33.7c.4.1.7.2,1,.2.3,0,.6,0,.8,0,.4,0,.6,0,.9-.2s.4-.4.6-.8c.2-.4.3-.8.5-1.4l-5.2-13.7h4.3l3.2,9.4,2.7-9.4h3.9l-5.3,15.9c-.2.7-.6,1.4-1.1,2-.5.6-1.1,1-1.9,1.4-.7.3-1.5.5-2.4.5-.4,0-.7,0-1.1,0-.4,0-.7-.2-1.1-.3v-3.6Z"/>
+    </g>
+  </g>
+</svg>
+    </div>
+    <div class="topnav-links" style="margin-left:16px;">
+      <a class="back-link" href="sotreq-personagens.html">← Voltar aos Personagens</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="client-badge">🎭 Sotreq · Palmas, TO</div>
+    <div class="hero-eyebrow">Missão Cidade Azul · Jornada Cultural</div>
+    <h1 class="hero-headline">Pesquisa Cultural de Personagens</h1>
+  </div>
+</header>
+
+<main>
+<div class="page-hero role-pesquisadora">
+    <div class="page-hero-inner">
+      <h1 class="page-title">Afefé</h1>
+      <p class="page-subtitle">Vento na língua Iorubá · Cultura Afro-Brasileira · Guia do Mundo dos Ventos</p>
+      <div class="dz-quote vento">
+        Personagem feminina que representa o elemento Vento e é a guia do Mundo dos Ventos. Inspirada em Oyá/Iansã – orixá dos ventos, tempestades e transformações na tradição iorubá e no Candomblé brasileiro – cuja energia é movimento, ruptura e passagem. Afefé anuncia a mudança antes mesmo da tempestade chegar, guiando o visitante pelo Mundo dos Ventos e ensinando que o ar limpo é um direito e um território a ser defendido.
+      </div>
+    </div>
+    </div>
+
+    <div class="page-body single" style="padding:36px 60px 8px;">
+
+      <div class="dz-section">
+        <div class="section-heading">1. Figura Mítica Aprofundada</div>
+        <div class="dz-h2">Afefé e a Energia de Oyá</div>
+        <p>Afefé é uma palavra de origem iorubá que significa vento, brisa ou ar. Na cultura afro-brasileira – especialmente no Candomblé e na Umbanda – o termo está profundamente associado a Oyá (também conhecida como Iansã), o orixá que preside os ventos, as tempestades, os raios e os processos de transformação. Oyá é uma das divindades mais complexas do panteão iorubá: guerreira, protetora, mãe dos eguns (espíritos dos ancestrais) e senhora dos limiares entre o mundo dos vivos e o mundo dos mortos.</p>
+        <p>O nome Afefé foi escolhido para o personagem porque carrega em si o próprio elemento que ela representa: não é apenas o nome da divindade, mas o nome do fenômeno. Isso cria uma identidade própria ao personagem – ela não é Oyá, mas é feita da mesma substância.</p>
+
+        <div class="dz-media lg">
+          <figure class="dz-fig">
+            <img src="https://the-blue-city.github.io/exposicao/ref-01-movimento-turbante-buzios.png" alt="Movimento, turbante e búzios">
+            <figcaption>Movimento, turbante e búzios</figcaption>
+          </figure>
+          <div>
+            <div class="dz-h3" style="margin-top:0;">Oyá – Movimento e Travessia</div>
+            <p>Na cosmologia iorubá e no Candomblé brasileiro, Oyá não é uma energia de permanência – ela é travessia, deslocamento, transformação constante. Existe sempre uma intensidade nela, mesmo quando aparentemente está calma. Segundo o babalorixá José Neri, Oyá é o vento que anuncia a mudança antes mesmo da tempestade chegar.</p>
+            <p>Em estado de calmaria, Oyá se manifesta como presença observadora, silenciosa e estratégica. Não é uma calmaria passiva – é como o ar pesado antes da chuva: existe tensão, percepção aguçada e inteligência emocional muito forte. Elegante, magnética e nunca totalmente previsível.</p>
+            <p style="margin-bottom:0;">Em estado de tempestade, Oyá é ruptura. É a força que desmonta estruturas que já não servem mais – impulsiva, feroz, extremamente protetora. Mas não é destruição vazia: existe sempre um propósito de limpeza, transformação e abertura de caminho. A tempestade de Oyá não surge por capricho; ela vem depois de acúmulos, silenciamentos e injustiças.</p>
+          </div>
+        </div>
+
+        <div class="dz-media lg">
+          <figure class="dz-fig">
+            <img src="https://the-blue-city.github.io/exposicao/ref-06-bufalo-simbolo-oya.png" alt="Búfalo como símbolo de Oyá">
+            <figcaption>Búfalo como símbolo de Oyá</figcaption>
+          </figure>
+          <div>
+            <div class="dz-h3" style="margin-top:0;">A Relação com os Ancestrais</div>
+            <p style="margin-bottom:0;">Um dos aspectos mais singulares de Oyá é sua relação com os eguns – os espíritos dos ancestrais. Em muitas tradições, ela é a única orixá que transita entre o mundo dos vivos e o mundo dos mortos, acompanhando as almas em seu processo de passagem. Isso confere ao personagem Afefé uma dimensão espiritual muito profunda: alguém que 'morre e renasce' muitas vezes ao longo da narrativa, que muda de pele constantemente e que entende a transformação não como perda, mas como caminho.</p>
+          </div>
+        </div>
+
+        <div style="background:#faf2f3; border:1px solid #e3c3ca; border-left:4px solid #6E1F2E; border-radius:10px; padding:18px 22px; margin-top:22px;">
+          <div class="dz-h3" style="margin-top:0; color:#6E1F2E;">Conexão com o Tema do Jogo</div>
+          <p style="margin-bottom:0; font-size:13px; line-height:1.7; color:#000;">O ar poluído é o grande silenciamento de Afefé – é quando o vento perde força, quando a brisa não chega e a tempestade que deveria limpar não consegue se formar. A poluição atmosférica, os gases de efeito estufa e o desmatamento são o 'feitiço' lançado sobre o Mundo dos Ventos. Afefé guia o visitante para restaurar o ar limpo, descobrir fontes de energia eólica e compreender que o vento é um recurso vivo, espiritual e climático ao mesmo tempo.</p>
+        </div>
+      </div>
+
+      <div class="dz-section">
+        <div class="section-heading">2. Os Dois Estados de Afefé</div>
+        <div class="dz-h2">Arco Narrativo do Personagem</div>
+        <p>Assim como Oyá existe em estados distintos – da brisa silenciosa à tempestade transformadora – Afefé no jogo apresenta dois estados visuais que refletem o equilíbrio ou desequilíbrio do Mundo dos Ventos:</p>
+        <div class="dz-states">
+          <div class="dz-state blocked">
+            <h4>ESTADO 1 – BLOQUEADA</h4>
+            <p><b>Cor:</b> cinza esfumaçado / cobre apagado</p>
+            <p><b>Causa:</b> poluição atmosférica, gases de efeito estufa, ar irrespirável</p>
+            <p><b>No jogo:</b> estado inicial – o visitante deve restaurar o vento</p>
+          </div>
+          <div class="dz-state full-vento">
+            <h4>ESTADO 2 – PLENA</h4>
+            <p><b>Cor:</b> vinho vivo + cobre luminoso + dourado</p>
+            <p><b>Causa:</b> ar limpo restaurado, energia eólica em movimento</p>
+            <p><b>No jogo:</b> estado restaurado – recompensa das missões</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="dz-section">
+        <div class="section-heading">3. Referências Iconográficas</div>
+        <div class="dz-h2">Características Físicas e Visuais</div>
+        <div class="dz-media lg">
+          <figure class="dz-fig">
+            <img src="https://the-blue-city.github.io/exposicao/ref-04-adornos-buzios-presenca-frontal.png" alt="Adornos, búzios e presença frontal">
+            <figcaption>Adornos, búzios e presença frontal</figcaption>
+          </figure>
+          <div>
+            <p style="margin-top:0;">As referências visuais a seguir são representações de Oyá/Iansã na arte afro-brasileira – inspiração para o ilustrador sentir a presença, a paleta e os adornos, sempre adaptando à identidade própria de Afefé.</p>
+            <p style="margin-bottom:0;">Mulher jovem, pele negra, corpo esguio e alongado – silhueta que evoca leveza e velocidade, como o próprio vento. Cabelos crespos, soltos e volumosos, sempre em movimento, como se uma brisa constante os habitasse. Olhos expressivos com olhar de quem observa tudo e não revela tudo. Postura ereta, elegante – presença magnética mesmo em repouso.</p>
+          </div>
+        </div>
+
+        <div class="dz-media lg">
+          <figure class="dz-fig">
+            <img src="https://the-blue-city.github.io/exposicao/ref-02-saia-rodada-camadas-borboletas.png" alt="Saia rodada em camadas e borboletas">
+            <figcaption>Saia rodada em camadas e borboletas</figcaption>
+          </figure>
+          <div>
+            <div class="dz-h3" style="margin-top:0;">Roupa</div>
+            <p style="margin-bottom:0;">Tecidos longos e fluidos em várias camadas sobrepostas, criando a sensação de que o vento faz parte da roupa. As camadas têm comprimentos diferentes – algumas rasam o chão, outras voam. Tons de vinho, vermelho queimado, cobre e terracota, com detalhes dourados nas bordas. A roupa nunca parece estática: mesmo numa ilustração parada, os tecidos devem sugerir movimento.</p>
+          </div>
+        </div>
+
+        <div class="dz-h3">Acessórios</div>
+        <ul class="dz-list">
+          <li>Espada-de-são-jorge (Dracaena trifasciata) – planta sagrada profundamente associada a Oyá/Iansã na tradição afro-brasileira, usada para proteção, limpeza de energias e abertura de caminhos. No jogo, substitui a espada de metal: Afefé carrega a planta como seu objeto de poder, conectando o símbolo espiritual ao mundo natural. A espada-de-são-jorge também ocorre no Cerrado, reforçando a ligação com o bioma</li>
+          <li>Búzios – adornos em colares, pulseiras e bordados na roupa. Na tradição do Candomblé, os búzios são sagrados: servem para a comunicação com os orixás e são símbolos de identidade e pertencimento espiritual. Na roupa de Afefé aparecem como detalhes brancos contrastando com os tons vinho e cobre</li>
+          <li>Braceletes em cobre e dourado nos pulsos – referência aos adornos de Oyá</li>
+          <li>Borboletas vermelhas ao redor – símbolo de transformação e presença de Oyá; o Cerrado tem uma das maiores diversidades de borboletas do Brasil</li>
+          <li>Elementos do Cerrado integrados ao tecido ou ao cabelo: ipê amarelo, capim dourado</li>
+        </ul>
+        <div class="dz-imgrow">
+          <figure class="dz-fig">
+            <img src="https://the-blue-city.github.io/exposicao/ref-03-bufalo-espada-sao-jorge-eruexim.png" alt="Búfalo, espada-de-são-jorge e eruexim">
+            <figcaption>Búfalo, espada-de-são-jorge e eruexim</figcaption>
+          </figure>
+          <figure class="dz-fig">
+            <img src="https://the-blue-city.github.io/exposicao/ref-05-veu-borboletas-saia-buzios.png" alt="Véu, borboletas e saia com búzios">
+            <figcaption>Véu, borboletas e saia com búzios</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="dz-section">
+        <div class="section-heading">4. Paleta de Cores Sugerida</div>
+        <div class="dz-h2">Paleta Cromática de Afefé</div>
+        <p>A paleta evoca a força de Oyá, a terra do Cerrado e a eletricidade do vento antes da tempestade:</p>
+        <table class="dz-palette">
+          <thead><tr><th>Cor</th><th>Nome</th><th>Significado</th></tr></thead>
+          <tbody>
+            <tr><td><span class="dz-swatch" style="background:#6E1F2E;"></span></td><td><b>Vinho Oyá</b></td><td>Cor primária – força e transformação</td></tr>
+            <tr><td><span class="dz-swatch" style="background:#A93226;"></span></td><td><b>Vermelho Queimado</b></td><td>Tempestade e ruptura</td></tr>
+            <tr><td><span class="dz-swatch" style="background:#B87333;"></span></td><td><b>Cobre</b></td><td>Intensidade e calor do vento</td></tr>
+            <tr><td><span class="dz-swatch" style="background:#D4A017;"></span></td><td><b>Dourado Cerrado</b></td><td>Raios, eletricidade, capim dourado</td></tr>
+            <tr><td><span class="dz-swatch" style="background:#F1C40F;"></span></td><td><b>Amarelo Ipê</b></td><td>Bioma Cerrado – flor do ipê amarelo</td></tr>
+            <tr><td><span class="dz-swatch" style="background:#1A1A1A;"></span></td><td><b>Preto Tempestade</b></td><td>Contornos e sombras – ar pesado antes da chuva</td></tr>
+          </tbody>
+        </table>
+        <div class="dz-note vento"><b>Nota:</b> O vinho e o cobre são as cores dominantes – representam a força de Oyá e o vento pleno. O dourado aparece como acento de luz, evocando raios e o capim dourado do Cerrado.</div>
+      </div>
+
+      <div class="dz-section">
+        <div class="section-heading">5. Orientações para o Ilustrador</div>
+        <div class="dz-h2">Diretrizes de Representação</div>
+        <div class="dz-grid">
+          <div class="dz-card">
+            <h4>Silhueta e Postura</h4>
+            <p>Corpo esguio e alongado, em postura de movimento – mesmo que parada, a silhueta deve sugerir que está prestes a se deslocar. Os tecidos em camadas voam ao redor do corpo criando volume e dinamismo. A espada pode estar erguida ou apoiada no ombro. Os cabelos crespos e volumosos se expandem como uma coroa de vento.</p>
+          </div>
+          <div class="dz-card">
+            <h4>Expressão</h4>
+            <p>Olhar observador e penetrante – não agressivo, mas que não revela tudo. Expressão que transmite inteligência emocional profunda e autonomia. Adequada para público infantil: não deve aparentar violência, mas sim presença e poder sereno. A beleza dela é magnética e um pouco imprevisível.</p>
+          </div>
+          <div class="dz-card wide">
+            <h4>Elementos Visuais Essenciais</h4>
+            <ul class="dz-list">
+              <li>Cabelos crespos ao vento – elemento mais importante da silhueta</li>
+              <li>Tecidos em movimento em múltiplas camadas de tons vinho/cobre/dourado</li>
+              <li>Borboletas vermelhas ao redor – símbolo de transformação de Oyá</li>
+              <li>Espada-de-são-jorge carregada como objeto de poder – folhas longas, rígidas, verde-escuras com bordas amarelas</li>
+              <li>Búzios brancos nos colares, pulseiras e bordados da roupa – contraste com os tons escuros</li>
+              <li>Sensação de eletricidade no ambiente – como se o ar ao redor vibrasse</li>
+            </ul>
+          </div>
+          <div class="dz-card">
+            <h4>Bioma de Referência</h4>
+            <p>Cerrado brasileiro – chapadas abertas, céu amplo, árvores retorcidas que resistem ao vento. A luz deve ser quente e dourada, como no final da tarde no Cerrado. Ipê amarelo e capim dourado podem aparecer no cenário. Nuvens em formação, como antes de uma tempestade que ainda não chegou.</p>
+          </div>
+          <div class="dz-card">
+            <h4>O que Evitar</h4>
+            <p>Não retratar Afefé apenas como 'mulher explosiva' ou guerreira genérica. A sofisticação de Oyá está na inteligência emocional e espiritual – ela sente profundamente, mas não demonstra fragilidade de forma convencional. O amor dela aparece como proteção feroz e honestidade brutal. Evitar excesso de vermelho isolado – a paleta deve ser rica em camadas, não monocromática.</p>
+          </div>
+        </div>
+        <div class="dz-imgrow">
+          <figure class="dz-fig">
+            <img src="https://the-blue-city.github.io/exposicao/ref-07-movimento-eruexim.png" alt="Movimento e eruexim">
+            <figcaption>Movimento e eruexim</figcaption>
+          </figure>
+          <figure class="dz-fig">
+            <img src="https://the-blue-city.github.io/exposicao/ref-08-postura-guerreira-contas-longas.png" alt="Postura guerreira e contas longas">
+            <figcaption>Postura guerreira e contas longas</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="dz-section">
+        <div class="section-heading">6. Conexão com o Tema Central</div>
+        <div class="dz-h2">Afefé e a Redução de Gases de Efeito Estufa</div>
+        <div class="dz-grid">
+          <div class="dz-card" style="background:#fff8e7; border-color:#f0e3c0;">
+            <h4>Metáfora Mítica</h4>
+            <p>O ar poluído é o silenciamento de Afefé – quando os gases de efeito estufa bloqueiam o vento e sufocam o Mundo dos Ventos.</p>
+          </div>
+          <div class="dz-card" style="background:#d5e8f0; border-color:#b8d6e4;">
+            <h4>Missão no Jogo</h4>
+            <p>Guiar o jogador a descobrir fontes de energia eólica, reduzindo a dependência de combustíveis fósseis.</p>
+          </div>
+          <div class="dz-card" style="background:#ffe9cc; border-color:#f0d2a0;">
+            <h4>Poder de Limpeza</h4>
+            <p>Afefé limpa territórios sufocados pela poluição, revelando que o vento é agente de cura – tanto espiritual quanto climático.</p>
+          </div>
+          <div class="dz-card" style="background:#e8f5e9; border-color:#c8e6ca;">
+            <h4>Conhecimento Ancestral</h4>
+            <p>Transmite saberes da tradição iorubá sobre ciclos do vento, respeito à natureza e a relação entre equilíbrio espiritual e equilíbrio ambiental.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="dz-section">
+        <div class="section-heading">7. Validação Cultural</div>
+        <div class="dz-h2">Quem Orientou Esta Pesquisa</div>
+        <p>O personagem Afefé foi desenvolvido em diálogo com a tradição iorubá e o Candomblé brasileiro, garantindo autenticidade cultural e respeito às tradições representadas.</p>
+
+        <div style="display:flex; align-items:center; gap:14px; margin-top:20px; margin-bottom:24px;">
+          <img src="https://the-blue-city.github.io/content/ester.jpg" alt="Ester Menezes" style="width:52px; height:52px; border-radius:50%; object-fit:cover; object-position:top; border:2px solid #d6e4f7; flex-shrink:0;">
+          <div>
+            <p style="font-size:14px; font-weight:800; color:var(--dark); margin-bottom:1px;">Ester Menezes</p>
+            <p style="font-size:12px; color:var(--muted);">Pesquisadora Cultural · Artesã · Artista Híbrida</p>
+          </div>
+        </div>
+
+        <div class="dz-media" style="grid-template-columns:200px 1fr;">
+          <figure class="dz-fig">
+            <img src="https://the-blue-city.github.io/exposicao/babalorixa.jpg" alt="José Neri – babalorixá">
+            <figcaption>José Neri</figcaption>
+          </figure>
+          <div>
+            <div class="dz-h3" style="margin-top:0;">José Neri – Babalorixá</div>
+            <p style="margin-bottom:0;">Babalorixá consultado na pesquisa de Afefé. Sua orientação sobre Oyá/Iansã – em especial sobre os estados de calmaria e de tempestade da orixá e seu papel de travessia entre os mundos – fundamentou a construção espiritual do personagem.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+<footer class="footer">
+  <div class="credits-inner">
+
+    <div class="credit-item">
+      <img class="rouanet" src="https://the-blue-city.github.io/content/logo-rouanet-positivo.png" alt="Lei Rouanet">
+    </div>
+
+    <div class="credit-sep"></div>
+
+    <div class="credit-item">
+      <span class="rot">Patrocínio</span>
+      <a href="https://www.sotreq.com.br/" target="_blank" rel="noopener"><img src="https://the-blue-city.github.io/content/logo-sotreq.png" alt="Sotreq"></a>
+    </div>
+
+    <div class="credit-sep"></div>
+
+    <div class="credit-item">
+      <span class="rot">Realização</span>
+      <img class="tbc" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAyMDQuMSAzNi44Ij4KICA8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMzAuNi4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogMi4xLjQgQnVpbGQgMTA5KSAgLS0+CiAgPGRlZnM+CiAgICA8c3R5bGU+CiAgICAgIC5zdDAgewogICAgICAgIGZpbGw6ICNmZmY7CiAgICAgIH0KCiAgICAgIC5zdDEgewogICAgICAgIGZpbGw6ICMwMDE1MjI7CiAgICAgIH0KCiAgICAgIC5zdDIgewogICAgICAgIGZpbGw6ICMwYzllZDk7CiAgICAgIH0KICAgIDwvc3R5bGU+CiAgPC9kZWZzPgogIDxnPgogICAgPGNpcmNsZSBjbGFzcz0ic3QxIiBjeD0iMTguNCIgY3k9IjE4LjQiIHI9IjE4LjQiLz4KICAgIDxnPgogICAgICA8cmVjdCBjbGFzcz0ic3QwIiB4PSI3LjgiIHk9IjEzLjIiIHdpZHRoPSIyMC44IiBoZWlnaHQ9IjMuMiIvPgogICAgICA8cGF0aCBjbGFzcz0ic3QyIiBkPSJNMjcuMywxOC43bC0uMi4yYy0xLjMsMS4xLTIuNCwyLjEtNC4xLDIuMXMtMi41LS40LTQuMS0xLjNjLTIuMS0xLjEtMy45LTEuNy01LjYtMS43LTIuOCwwLTQuNiwxLjYtNiwyLjlsLS4yLjIsMiwyLjQuMi0uMmMxLjMtMS4xLDIuNC0yLjEsNC4xLTIuMXMyLjUuNCw0LjEsMS4zYzIuMSwxLjEsMy45LDEuNyw1LjYsMS43aDBjMi43LDAsNC41LTEuNiw1LjktMi45bC4yLS4yLTItMi40aDBaIi8+CiAgICA8L2c+CiAgPC9nPgogIDxnPgogICAgPHBhdGggY2xhc3M9InN0MCIgZD0iTTU2LjgsMTIuNWgtNS43djE0LjloLTQuM3YtMTQuOWgtNS43di0zLjhoMTUuN3YzLjhaIi8+CiAgICA8cGF0aCBjbGFzcz0ic3QwIiBkPSJNNzEuNCwyNy4zaC00LjJ2LTcuNmMwLS45LS4yLTEuNS0uNi0xLjlzLS45LS42LTEuNC0uNi0uNywwLTEuMS4zYy0uNC4yLS44LjUtMS4xLjgtLjMuNC0uNi44LS43LDEuMnY3LjhoLTQuMlY4LjJoNC4ydjcuOWMuNS0uOCwxLjItMS41LDItMS45czEuOC0uNiwyLjgtLjYsMS43LjIsMi4yLjVjLjYuMywxLC43LDEuMywxLjJzLjUsMSwuNiwxLjdjMCwuNi4yLDEuMi4yLDEuOHY4LjdzMC0uMiwwLS4yWiIvPgogICAgPHBhdGggY2xhc3M9InN0MCIgZD0iTTgwLjIsMjcuNmMtMS4yLDAtMi4yLS4yLTMuMS0uNnMtMS43LS45LTIuMy0xLjVjLS42LS42LTEuMS0xLjQtMS41LTIuMi0uMy0uOC0uNS0xLjctLjUtMi42LDAtMS4zLjMtMi41LjktMy42czEuNC0xLjksMi41LTIuNiwyLjQtMSw0LTEsMi45LjMsNCwxLDEuOSwxLjUsMi41LDIuNi45LDIuMi45LDMuNSwwLC41LDAsLjd2LjZoLTEwLjJjMCwuNi4yLDEuMS41LDEuNXMuNy43LDEuMS45Yy41LjIuOS4zLDEuNC4zczEuMi0uMSwxLjgtLjRjLjYtLjMuOS0uNywxLjEtMS4ybDMuNiwxYy0uNC43LS44LDEuMy0xLjUsMS45LS42LjUtMS40LDEtMi4yLDEuMy0uOS4zLTEuOC41LTIuOS41aC0uMVpNNzcuMiwxOS4yaDZjMC0uNi0uMi0xLS41LTEuNS0uMy0uNC0uNi0uNy0xLjEtMXMtLjktLjMtMS41LS4zLTEsLjEtMS40LjNjLS40LjItLjguNS0xLjEuOS0uMy40LS40LjktLjUsMS41aDBaIi8+CiAgICA8cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTEwLjMsMjIuNWMwLDEuMS0uMywyLS44LDIuNy0uNi43LTEuMywxLjItMi4zLDEuNnMtMiwuNS0zLjIuNWgtOS4xVjguN2gxMC40Yy45LDAsMS42LjIsMi4zLjcuNi41LDEuMSwxLjEsMS41LDEuOC4zLjcuNSwxLjUuNSwyLjNzLS4yLDEuNy0uNywyLjVjLS40LjgtMS4xLDEuNC0yLDEuOCwxLjEuMywxLjkuOSwyLjUsMS43LjYuOC45LDEuOC45LDMuMWgwWk05OS4yLDEyLjR2My45aDQuMmMuMywwLC42LDAsLjktLjIuMy0uMS41LS40LjctLjYuMi0uMy4yLS42LjItMS4xczAtLjgtLjItMS4xYzAtLjMtLjMtLjUtLjYtLjYtLjItLjEtLjUtLjItLjktLjJoLTQuNC4xWk0xMDYsMjEuN2MwLS40LDAtLjctLjItMS4xLS4yLS4zLS40LS42LS42LS43cy0uNi0uMy0uOS0uM2gtNC45djQuMWg0LjhjLjQsMCwuNywwLDEtLjMuMy0uMi41LS40LjctLjcuMi0uMy4yLS42LjItMWgwWiIvPgogICAgPHBhdGggY2xhc3M9InN0MCIgZD0iTTExMiw4LjJoNC4ydjE0LjNjMCwuNiwwLDEsLjMsMS4yLjIuMi41LjQuOS40cy41LDAsLjgtLjFjLjMsMCwuNS0uMi43LS4zbC42LDMuMmMtLjUuMi0xLjEuNC0xLjguNi0uNy4yLTEuMy4yLTEuOS4yLTEuMiwwLTIuMS0uMy0yLjgtMS0uNi0uNi0xLTEuNi0xLTIuN3YtMTUuN2gwWiIvPgogICAgPHBhdGggY2xhc3M9InN0MCIgZD0iTTEyMC4yLDIyLjV2LTguOGg0LjJ2Ny44YzAsLjguMiwxLjQuNSwxLjkuMy40LjguNywxLjQuN3MuOCwwLDEuMS0uMmMuNC0uMS43LS4zLDEtLjZzLjYtLjcuOS0xLjF2LTguNGg0LjJ2OWMwLC40LDAsLjcuMi45LjEuMi40LjMuNy4zdjMuNWMtLjQsMC0uNy4xLTEsLjJzLS41LDAtLjgsMGMtLjcsMC0xLjMtLjEtMS44LS40LS40LS4zLS43LS43LS44LTEuM3YtLjhjLS43LjktMS41LDEuNi0yLjQsMnMtMiwuNi0zLjIuNi0yLjUtLjQtMy4yLTEuMy0xLjEtMi4yLTEuMS0zLjh2LS4yaC4xWiIvPgogICAgPHBhdGggY2xhc3M9InN0MCIgZD0iTTE0Mi45LDI3LjZjLTEuMiwwLTIuMi0uMi0zLjEtLjYtLjktLjQtMS43LS45LTIuMy0xLjVzLTEuMS0xLjQtMS41LTIuMmMtLjMtLjgtLjUtMS43LS41LTIuNiwwLTEuMy4zLTIuNS45LTMuNi42LTEuMSwxLjQtMS45LDIuNS0yLjZzMi40LTEsNC0xLDIuOS4zLDQsMWMxLjEuNiwxLjksMS41LDIuNSwyLjZzLjksMi4yLjksMy41LDAsLjUsMCwuN3YuNmgtMTAuMmMwLC42LjIsMS4xLjUsMS41cy43LjcsMS4xLjljLjUuMi45LjMsMS40LjNzMS4yLS4xLDEuOC0uNC45LS43LDEuMS0xLjJsMy42LDFjLS40LjctLjgsMS4zLTEuNSwxLjktLjYuNS0xLjQsMS0yLjIsMS4zLS45LjMtMS44LjUtMi45LjVoLS4xWk0xMzkuOCwxOS4yaDZjMC0uNi0uMi0xLS41LTEuNS0uMy0uNC0uNi0uNy0xLjEtMS0uNC0uMi0uOS0uMy0xLjUtLjNzLTEsLjEtMS40LjNjLS40LjItLjguNS0xLjEuOXMtLjQuOS0uNSwxLjVoLjFaIi8+CiAgICA8cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTU2LjUsMTcuOGMwLTEuMS4yLTIuMi42LTMuMy40LTEuMSwxLTIuMSwxLjgtM3MxLjgtMS42LDMtMi4yYzEuMi0uNSwyLjUtLjgsMy45LS44czMuMy40LDQuNiwxLjEsMi4zLDEuNywyLjksMi45bC0zLjMsMi4zYy0uMy0uNy0uNi0xLjItMS4xLTEuNnMtMS0uNi0xLjUtLjhjLS42LS4xLTEuMS0uMi0xLjYtLjItLjgsMC0xLjUuMi0yLjEuNXMtMS4xLjgtMS41LDEuMy0uNywxLjEtLjksMS44Yy0uMi43LS4zLDEuMy0uMywycy4xLDEuNS40LDIuMmMuMi43LjYsMS4zLDEsMS44cy45LjksMS42LDEuMmMuNi4zLDEuMy41LDIsLjVzMS4xLDAsMS42LS4yLDEtLjQsMS41LS44LjgtLjksMS4xLTEuNWwzLjUsMi4xYy0uNC45LTEsMS43LTEuOCwyLjMtLjguNi0xLjgsMS4xLTIuOCwxLjVzLTIuMS41LTMuMi41LTIuNi0uMy0zLjctLjhjLTEuMS0uNi0yLjEtMS4zLTIuOS0yLjItLjgtLjktMS41LTItMS45LTMuMXMtLjctMi4zLS43LTMuNWgtLjJaIi8+CiAgICA8cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTc0LjgsMTJ2LTMuOGg0LjJ2My44aC00LjJaTTE3NC44LDI3LjN2LTEzLjhoNC4ydjEzLjhzLTQuMiwwLTQuMiwwWiIvPgogICAgPHBhdGggY2xhc3M9InN0MCIgZD0iTTE5MC4zLDI2LjZjLS40LjItLjguMy0xLjIuNS0uNS4yLS45LjMtMS40LjQtLjUsMC0xLC4xLTEuNS4xcy0xLjMtLjEtMS45LS4zLTEtLjYtMS40LTEuMi0uNS0xLjItLjUtMi4xdi03LjFoLTEuOHYtMy4yaDEuOHYtNC40aDQuMnY0LjRoMi44djMuMmgtMi44djUuNmMwLC41LjEuOC4zLDFzLjUuMy45LjMuNiwwLDEtLjJjLjMtLjEuNi0uMi45LS4zbC44LDMuM2gtLjJaIi8+CiAgICA8cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTkxLjQsMjkuNGMuNCwwLC43LjIsMSwuMmguOGMuNCwwLC42LDAsLjktLjJzLjQtLjQuNi0uOGMuMi0uNC4zLS44LjUtMS40bC01LjItMTMuN2g0LjNsMy4yLDkuNCwyLjctOS40aDMuOWwtNS4zLDE1LjljLS4yLjctLjYsMS40LTEuMSwycy0xLjEsMS0xLjksMS40Yy0uNy4zLTEuNS41LTIuNC41aC0xLjFjLS40LDAtLjctLjItMS4xLS4zdi0zLjZoLjJaIi8+CiAgPC9nPgo8L3N2Zz4=" alt="The Blue City">
+    </div>
+
+    <div class="credit-sep"></div>
+
+    <div class="credit-item">
+      <span class="rot">Powered by</span>
+      <a href="https://pok.tech/" target="_blank" rel="noopener"><img class="pok" src="https://the-blue-city.github.io/content/pok-logo-branco-fundotransparente.svg" alt="POK"></a>
+    </div>
+
+    <div class="credit-sep"></div>
+
+    <div class="credit-item">
+      <a href="https://www.gov.br/cultura/pt-br" target="_blank" rel="noopener"><img src="https://the-blue-city.github.io/content/logo-minc.png" alt="Ministério da Cultura"></a>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <span>Contato: <a href="mailto:contato@thebluecity.app">contato@thebluecity.app</a></span>
+    <span>© 2026 The Blue City · Missão Cidade Azul. Todos os direitos reservados.</span>
+  </div>
+</footer>
+
+</body>
+</html>
