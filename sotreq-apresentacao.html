@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Blue City – Apresentação Sotreq</title>
+
+<!-- Open Graph / Facebook / WhatsApp / LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Blue City – Apresentação Sotreq">
+<meta property="og:description" content="Missão Cidade Azul · Palmas, TO – Jornada Cultural Sotreq: plataforma, jogo, certificado, personagens, público-alvo, parcerias, divulgação, exposição e cronograma. PRONAC 237809.">
+<meta property="og:image" content="https://the-blue-city.github.io/content/TBC_OGApresentacaoSotreq.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Blue City – Apresentação Sotreq">
+<meta name="twitter:description" content="Missão Cidade Azul · Palmas, TO – Jornada Cultural Sotreq: plataforma, jogo, certificado, personagens, público-alvo, parcerias, divulgação, exposição e cronograma. PRONAC 237809.">
+<meta name="twitter:image" content="https://the-blue-city.github.io/content/TBC_OGApresentacaoSotreq.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  :root {
+    --blue: #2858a0;
+    --teal: #468182;
+    --green: #5fb670;
+    --blue-light: #d6e4f7;
+    --teal-light: #d0e8e8;
+    --green-light: #d4f0d9;
+    --dark: #1a2e3b;
+    --mid: #1e3a5f;
+    --text: #2c3e50;
+    --muted: #000000;
+    --bg: #f4f8fc;
+    --white: #ffffff;
+    --nav-h: 68px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; overflow-wrap:break-word; word-break:normal; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Montserrat',sans-serif; background:#f4f8fc; color:#2c3e50; }
+
+  /* ====== TOP NAV ====== */
+  .topnav { position:sticky; top:0; left:0; right:0; z-index:200; background:#121e33; border-bottom:1px solid rgba(255,255,255,0.08); }
+  .topnav-inner { max-width:1280px; margin:0 auto; display:flex; align-items:center; gap:28px; padding:0 32px; height:var(--nav-h); }
+  .topnav-logo { display:flex; align-items:center; flex-shrink:0; }
+  .topnav-logo svg { height:26px; width:auto; display:block; }
+  .topnav-badge { font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:rgba(255,255,255,0.55); border:1px solid rgba(255,255,255,0.18); padding:4px 10px; border-radius:20px; white-space:nowrap; }
+  .topnav-links { display:flex; align-items:center; gap:4px; margin-left:12px; overflow-x:auto; scrollbar-width:none; }
+  .topnav-links::-webkit-scrollbar { display:none; }
+  .topnav-link { font-size:12.5px; font-weight:600; color:#ffffff; text-decoration:none; padding:9px 14px; border-radius:8px; white-space:nowrap; transition:all 0.2s; border-bottom:2px solid transparent; }
+  .topnav-link:hover { color:#fff; background:rgba(255,255,255,0.06); }
+  .topnav-link.active { color:#fff; border-bottom-color:#5fb670; }
+  .menu-toggle { display:none; width:38px; height:38px; background:rgba(255,255,255,0.06); border:none; border-radius:8px; cursor:pointer; flex-direction:column; align-items:center; justify-content:center; gap:5px; flex-shrink:0; margin-left:auto; }
+  .menu-toggle span { display:block; width:18px; height:2px; background:#fff; border-radius:2px; transition:all 0.25s; }
+  .menu-toggle.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+  .menu-toggle.open span:nth-child(2) { opacity:0; }
+  .menu-toggle.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+  /* ====== HERO ====== */
+  .hero { background:linear-gradient(to bottom,#295b9c,#90dba3); padding:64px 32px 56px; position:relative; }
+  .hero::before { content:''; position:absolute; top:0; left:0; right:0; height:5px; background:linear-gradient(90deg,#2858a0,#468182,#5fb670); }
+  .hero-inner { max-width:1000px; width:100%; margin:0 auto; display:flex; flex-direction:column; align-items:center; text-align:center; box-sizing:border-box; }
+  .client-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.2); border:1px solid rgba(255,255,255,0.4); color:white; font-size:12px; font-weight:700; padding:7px 18px; border-radius:20px; margin-bottom:18px; letter-spacing:0.5px; }
+  .hero-eyebrow { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.85); margin-bottom:14px; }
+  .hero-headline { font-size:38px; font-weight:800; color:#fff; line-height:1.2; margin-bottom:16px; max-width:700px; width:100%; overflow-wrap:break-word; }
+  .hero-desc { font-size:15px; color:#ffffff; max-width:820px; width:100%; line-height:1.7; margin-bottom:14px; overflow-wrap:break-word; }
+  .hero-meta { font-size:12px; color:#ffffff; font-weight:600; letter-spacing:0.5px; margin-bottom:0; }
+  .hero-chips { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; max-width:820px; }
+  .hero-chip { background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); color:rgba(255,255,255,0.92); font-size:12px; font-weight:600; padding:6px 14px; border-radius:20px; text-decoration:none; transition:all 0.2s; }
+  .hero-chip:hover { background:rgba(255,255,255,0.28); }
+
+  /* ====== SECTION ====== */
+  .section { scroll-margin-top:var(--nav-h); border-bottom:1px solid rgba(40,88,160,0.08); background:#fff; }
+  main .section:nth-of-type(even) { background:#f4f8fc; }
+  .section-hero { padding:48px 32px 36px; background:transparent; position:relative; }
+  .section-hero-inner { max-width:1120px; width:100%; margin:0 auto; box-sizing:border-box; }
+  .section-tag { display:inline-flex; align-items:center; gap:6px; background:#d4f0d9; border:1px solid rgba(95,182,112,0.3); color:#38a349; font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:5px 12px; border-radius:20px; margin-bottom:14px; }
+  .section-title { font-size:30px; font-weight:800; color:#1a2e3b; line-height:1.2; margin-bottom:10px; overflow-wrap:break-word; }
+  .section-subtitle { font-size:15px; color:#1a2e3b; max-width:1000px; width:100%; line-height:1.65; overflow-wrap:break-word; }
+
+  .section-body { max-width:1120px; margin:0 auto; padding:40px 32px 56px; display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:start; }
+  .section-body.single { grid-template-columns:1fr; }
+  .content-col { display:flex; flex-direction:column; gap:16px; }
+  .content-heading { font-size:11px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:#468182; margin-bottom:2px; display:flex; align-items:center; gap:8px; }
+  .content-heading::after { content:''; flex:1; height:1px; background:rgba(70,129,130,0.2); }
+
+  .feature-card { background:white; border-radius:12px; padding:20px 22px; border:1px solid rgba(40,88,160,0.08); box-shadow:0 2px 10px rgba(0,0,0,0.04); transition:box-shadow 0.2s,transform 0.2s; }
+  .feature-card:hover { box-shadow:0 6px 20px rgba(40,88,160,0.1); transform:translateY(-2px); }
+  .feature-card-header { display:flex; align-items:center; gap:12px; margin-bottom:10px; }
+  .feature-icon { width:36px; height:36px; border-radius:9px; display:flex; align-items:center; justify-content:center; font-size:17px; flex-shrink:0; }
+  .fi-blue { background:#d6e4f7; } .fi-teal { background:#d0e8e8; } .fi-green { background:#d4f0d9; }
+  .feature-card h3 { font-size:14px; font-weight:700; color:#1a2e3b; }
+  .feature-card p { font-size:13px; color:#000000; line-height:1.65; }
+
+  .info-card { background:#2858a0; border-radius:12px; padding:24px 28px; color:white; }
+  .info-card h3 { font-size:16px; font-weight:800; margin-bottom:6px; }
+  .info-card p { font-size:13px; color:rgba(255,255,255,0.85); line-height:1.6; }
+  .info-card.teal { background:#468182; }
+  .info-card.green { background:#38a349; }
+  .info-card.dark { background:#1a2e3b; }
+
+  .stats-row { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+  .stat-card { background:white; border-radius:10px; padding:18px 16px; text-align:center; border:1px solid rgba(40,88,160,0.08); box-shadow:0 2px 8px rgba(0,0,0,0.03); }
+  .stat-value { font-size:26px; font-weight:800; color:#2858a0; line-height:1; margin-bottom:6px; }
+  .stat-value.teal { color:#468182; } .stat-value.green { color:#5fb670; }
+  .stat-label { font-size:11px; color:#000000; font-weight:500; line-height:1.4; }
+
+  .link-card { background:white; border-radius:12px; padding:22px 24px; border:2px solid rgba(40,88,160,0.15); display:flex; align-items:center; gap:16px; transition:all 0.2s; cursor:pointer; text-decoration:none; }
+  .link-card:hover { border-color:#2858a0; box-shadow:0 4px 16px rgba(40,88,160,0.12); transform:translateY(-2px); }
+  .link-icon { width:48px; height:48px; background:#d6e4f7; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+  .link-card-text strong { font-size:14px; font-weight:700; color:#1a2e3b; display:block; margin-bottom:4px; }
+  .link-card-text span { font-size:12px; color:#000000; }
+
+  .cta-btn { display:inline-flex; align-items:center; justify-content:center; gap:10px; background:#2858a0; color:#ffffff; font-size:13px; font-weight:700; padding:12px 22px; border-radius:8px; text-decoration:none; transition:all 0.2s; box-shadow:0 2px 10px rgba(40,88,160,0.2); width:fit-content; justify-self:center; margin-left:auto; margin-right:auto; }
+  .cta-btn:hover { background:#1a2e3b; transform:translateY(-2px); box-shadow:0 6px 18px rgba(40,88,160,0.28); }
+
+  .img-placeholder { width:100%; background:linear-gradient(135deg,#e8eef5 0%,#dde6f0 100%); border-radius:12px; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:8px; color:#9aabb8; border:2px dashed rgba(40,88,160,0.15); }
+  .img-placeholder .ph-icon { font-size:28px; opacity:0.6; }
+  .img-placeholder .ph-label { font-size:12px; font-weight:600; letter-spacing:0.5px; }
+
+  .badge-pill { display:inline-flex; align-items:center; gap:6px; background:white; border:1.5px solid rgba(40,88,160,0.15); color:#1a2e3b; font-size:12px; font-weight:700; padding:8px 16px; border-radius:20px; }
+
+  .stats-mini { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin:16px 0; padding:14px 0; border-top:1px solid rgba(40,88,160,0.08); border-bottom:1px solid rgba(40,88,160,0.08); }
+  .stats-mini .stat .num { font-size:19px; font-weight:800; color:#2858a0; margin-bottom:2px; }
+  .stats-mini .stat .lbl { font-size:12px; font-weight:700; color:#1a2e3b; margin-bottom:2px; }
+  .stats-mini .stat .desc { font-size:11px; color:#000000; line-height:1.45; }
+  .instituicao-block { background:white; border-radius:14px; padding:24px 26px; border:1px solid rgba(40,88,160,0.1); box-shadow:0 2px 12px rgba(0,0,0,0.04); margin-bottom:16px; }
+  .instituicao-block-header { display:flex; align-items:center; gap:12px; margin-bottom:10px; }
+  .instituicao-block-header h3 { font-size:16px; font-weight:800; color:#1a2e3b; }
+  .instituicao-block p.desc-text { font-size:13px; color:#000; line-height:1.6; margin-bottom:10px; }
+  .contatos-mini { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:16px; }
+  .contatos-mini .contato-lbl { font-size:11.5px; font-weight:700; color:#1a2e3b; margin-bottom:2px; }
+  .contatos-mini .contato-sub { font-size:11.5px; color:#000000; margin-bottom:2px; }
+  .contatos-mini a { font-size:12px; font-weight:600; text-decoration:none; }
+
+  .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+
+  .footer { background:#2858a0; color:#fff; padding:40px 32px 28px; }
+  .credits-inner { max-width:1140px; margin:0 auto 28px; display:flex; align-items:center; justify-content:space-between; gap:26px; flex-wrap:wrap; }
+  .credit-item { display:flex; align-items:center; gap:12px; }
+  .credit-item .rot { font-size:10.5px; font-weight:400; letter-spacing:0.8px; text-transform:uppercase; color:#ffffff; white-space:nowrap; }
+  .credit-item img { height:30px; width:auto; display:block; }
+  .credit-item a { display:flex; align-items:center; }
+  .credit-item .tbc { height:26px; }
+  .credit-item .pok { height:26px; }
+  .credit-item .rouanet { height:46px; }
+  .credit-sep { width:1px; height:34px; background:rgba(255,255,255,0.28); }
+  .footer-bottom { max-width:1140px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:12px; color:rgba(255,255,255,0.85); border-top:1px solid rgba(255,255,255,0.18); padding-top:20px; }
+  .footer-bottom a { color:#ffffff; font-weight:600; }
+  .footer-bottom a:hover { text-decoration:underline; }
+  @media (max-width:860px) {
+    .credits-inner { justify-content:center; gap:18px; }
+    .credit-sep { display:none; }
+    .footer-bottom { justify-content:center; text-align:center; }
+  }
+
+  /* ====== TABLET (≤1024px) ====== */
+  @media (max-width: 1024px) {
+    .section-body { grid-template-columns:1fr !important; gap:26px; padding:32px 28px 44px; }
+    .section-hero { padding:56px 28px 30px; }
+    .section-title { font-size:25px; }
+    .hero { padding:76px 28px 44px; }
+    .hero-headline { font-size:30px; }
+    .stats-row { grid-template-columns:repeat(2,1fr); }
+    .grid-3 { grid-template-columns:1fr 1fr; }
+  }
+
+  /* ====== MOBILE (≤768px) ====== */
+  @media (max-width: 768px) {
+    .topnav-links { display:none; flex-direction:column; align-items:stretch; position:fixed; top:var(--nav-h); left:0; right:0; background:#121e33; padding:8px 12px 16px; box-shadow:0 8px 24px rgba(0,0,0,0.3); max-height:calc(100vh - var(--nav-h)); overflow-y:auto; }
+    .topnav-links.open { display:flex; }
+    .topnav-link { border-bottom:none; border-left:2px solid transparent; padding:12px 14px; }
+    .topnav-link.active { border-left-color:#5fb670; background:rgba(255,255,255,0.06); }
+    .menu-toggle { display:flex; }
+
+    .section-hero { padding:48px 20px 26px; }
+    .section-title { font-size:21px; line-height:1.25; }
+    .section-subtitle { font-size:13.5px; }
+    .section-body { padding:26px 20px 40px; gap:20px; }
+
+    .hero { padding:60px 20px 36px; }
+    .hero-headline { font-size:24px; }
+    .hero-desc { font-size:13.5px; }
+    .hero-chips { gap:6px; }
+    .hero-chip { font-size:11px; padding:5px 10px; }
+
+    .grid-3, .grid-2 { grid-template-columns:1fr; }
+    .stats-row { grid-template-columns:1fr 1fr; gap:10px; }
+    .feature-card { padding:16px 18px; }
+    .info-card { padding:18px 20px; }
+    .stat-card { padding:14px 12px; }
+    .stat-value { font-size:22px; }
+
+    .schedule-table-wrapper { overflow-x:auto; -webkit-overflow-scrolling:touch; border-radius:12px; }
+    .schedule-table-wrapper .schedule-table-inner { min-width:560px; }
+    .cronograma-timeline { overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:8px; }
+    .cronograma-timeline svg { min-width:900px; }
+  }
+
+  @media (max-width: 480px) {
+    .section-title { font-size:19px; }
+    .hero-headline { font-size:21px; }
+    .stats-row { grid-template-columns:1fr !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ====== TOP NAV ====== -->
+<nav class="topnav">
+  <div class="topnav-inner">
+    <div class="topnav-logo">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 218.4 45.6">
+  <defs>
+    <style>
+      .nav-logo-cls-1 { fill: url(#nav-logo-gradient); stroke-width:0px; }
+      .nav-logo-cls-2 { fill: #ffffff; stroke-width:0px; }
+      .nav-logo-cls-3 { fill: #001522; stroke-width:0px; }
+      .nav-logo-cls-4 { fill: #0c9ed9; stroke-width:0px; }
+      .nav-logo-cls-5 { fill: #fff; stroke-width:0px; }
+    </style>
+    <linearGradient id="nav-logo-gradient" x1="48.8" y1="25.1" x2="211.8" y2="25.1" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#006188"/>
+      <stop offset="1" stop-color="#95cfa0"/>
+    </linearGradient>
+  </defs>
+  <g>
+    <circle class="nav-logo-cls-3" cx="26.1" cy="22.7" r="18.4"/>
+    <g>
+      <rect class="nav-logo-cls-5" x="15.5" y="17.5" width="20.8" height="3.2"/>
+      <path class="nav-logo-cls-4" d="M35,23l-.2.2c-1.3,1.1-2.4,2.1-4.1,2.1s-2.5-.4-4.1-1.3c-2.1-1.1-3.9-1.7-5.6-1.7-2.8,0-4.6,1.6-6,2.9l-.2.2,2,2.4.2-.2c1.3-1.1,2.4-2.1,4.1-2.1s2.5.4,4.1,1.3c2.1,1.1,3.9,1.7,5.6,1.7h0c2.7,0,4.5-1.6,5.9-2.9l.2-.2-2-2.4Z"/>
+    </g>
+  </g>
+  <g>
+    <g>
+      <path class="nav-logo-cls-2" d="M64.5,16.8h-5.7v14.9h-4.3v-14.9h-5.7v-3.8h15.7v3.8Z"/>
+      <path class="nav-logo-cls-2" d="M79.1,31.6h-4.2v-7.6c0-.9-.2-1.5-.6-1.9-.4-.4-.9-.6-1.4-.6s-.7,0-1.1.3c-.4.2-.8.5-1.1.8-.3.4-.6.8-.7,1.2v7.8h-4.2V12.5h4.2v7.9c.5-.8,1.2-1.5,2-1.9.8-.4,1.8-.6,2.8-.6s1.7.2,2.2.5c.6.3,1,.7,1.3,1.2.3.5.5,1,.6,1.7.1.6.2,1.2.2,1.8v8.7Z"/>
+      <path class="nav-logo-cls-2" d="M87.9,31.9c-1.2,0-2.2-.2-3.1-.6s-1.7-.9-2.3-1.5c-.6-.6-1.1-1.4-1.5-2.2-.3-.8-.5-1.7-.5-2.6,0-1.3.3-2.5.9-3.6.6-1.1,1.4-1.9,2.5-2.6s2.4-1,4-1,2.9.3,4,1,1.9,1.5,2.5,2.6c.6,1.1.9,2.2.9,3.5s0,.5,0,.7,0,.4,0,.6h-10.2c0,.6.2,1.1.5,1.5.3.4.7.7,1.1.9.5.2.9.3,1.4.3s1.2-.1,1.8-.4c.6-.3.9-.7,1.1-1.2l3.6,1c-.4.7-.8,1.3-1.5,1.9-.6.5-1.4,1-2.2,1.3-.9.3-1.8.5-2.9.5ZM84.9,23.5h6c0-.6-.2-1-.5-1.5-.3-.4-.6-.7-1.1-1s-.9-.3-1.5-.3-1,.1-1.4.3c-.4.2-.8.5-1.1.9-.3.4-.4.9-.5,1.5Z"/>
+      <path class="nav-logo-cls-2" d="M118,26.8c0,1.1-.3,2-.8,2.7-.6.7-1.3,1.2-2.3,1.6-1,.4-2,.5-3.2.5h-9.1V13h10.4c.9,0,1.6.2,2.3.7.6.5,1.1,1.1,1.5,1.8.3.7.5,1.5.5,2.3s-.2,1.7-.7,2.5c-.4.8-1.1,1.4-2,1.8,1.1.3,1.9.9,2.5,1.7.6.8.9,1.8.9,3.1ZM106.9,16.7v3.9h4.2c.3,0,.6,0,.9-.2.3-.1.5-.4.7-.6.2-.3.2-.6.2-1.1s0-.8-.2-1.1c-.1-.3-.3-.5-.6-.6-.2-.1-.5-.2-.9-.2h-4.4ZM113.7,26c0-.4,0-.7-.2-1.1-.2-.3-.4-.6-.6-.7s-.6-.3-.9-.3h-4.9v4.1h4.8c.4,0,.7,0,1-.3.3-.2.5-.4.7-.7.2-.3.2-.6.2-1Z"/>
+      <path class="nav-logo-cls-2" d="M119.7,12.5h4.2v14.3c0,.6.1,1,.3,1.2.2.2.5.4.9.4s.5,0,.8-.1c.3,0,.5-.2.7-.3l.6,3.2c-.5.2-1.1.4-1.8.6-.7.2-1.3.2-1.9.2-1.2,0-2.1-.3-2.8-1-.6-.6-1-1.6-1-2.7v-15.7Z"/>
+      <path class="nav-logo-cls-2" d="M127.9,26.8v-8.8h4.2v7.8c0,.8.2,1.4.5,1.9.3.4.8.7,1.4.7s.8,0,1.1-.2c.4-.1.7-.3,1-.6s.6-.7.9-1.1v-8.4h4.2v9c0,.4,0,.7.2.9.1.2.4.3.7.3v3.5c-.4,0-.7.1-1,.2s-.5,0-.8,0c-.7,0-1.3-.1-1.8-.4-.4-.3-.7-.7-.8-1.3v-.8c-.7.9-1.5,1.6-2.4,2-.9.4-2,.6-3.2.6s-2.5-.4-3.2-1.3c-.7-.9-1.1-2.2-1.1-3.8Z"/>
+      <path class="nav-logo-cls-2" d="M150.6,31.9c-1.2,0-2.2-.2-3.1-.6-.9-.4-1.7-.9-2.3-1.5-.6-.6-1.1-1.4-1.5-2.2-.3-.8-.5-1.7-.5-2.6,0-1.3.3-2.5.9-3.6.6-1.1,1.4-1.9,2.5-2.6,1.1-.7,2.4-1,4-1s2.9.3,4,1c1.1.6,1.9,1.5,2.5,2.6.6,1.1.9,2.2.9,3.5s0,.5,0,.7,0,.4,0,.6h-10.2c0,.6.2,1.1.5,1.5s.7.7,1.1.9c.5.2.9.3,1.4.3s1.2-.1,1.8-.4c.6-.3.9-.7,1.1-1.2l3.6,1c-.4.7-.8,1.3-1.5,1.9-.6.5-1.4,1-2.2,1.3-.9.3-1.8.5-2.9.5ZM147.5,23.5h6c0-.6-.2-1-.5-1.5-.3-.4-.6-.7-1.1-1-.4-.2-.9-.3-1.5-.3s-1,.1-1.4.3c-.4.2-.8.5-1.1.9-.3.4-.4.9-.5,1.5Z"/>
+      <path class="nav-logo-cls-2" d="M164.2,22.1c0-1.1.2-2.2.6-3.3.4-1.1,1-2.1,1.8-3,.8-.9,1.8-1.6,3-2.2,1.2-.5,2.5-.8,3.9-.8s3.3.4,4.6,1.1,2.3,1.7,2.9,2.9l-3.3,2.3c-.3-.7-.6-1.2-1.1-1.6-.5-.4-1-.6-1.5-.8-.6-.1-1.1-.2-1.6-.2-.8,0-1.5.2-2.1.5-.6.3-1.1.8-1.5,1.3-.4.5-.7,1.1-.9,1.8-.2.7-.3,1.3-.3,2s.1,1.5.4,2.2c.2.7.6,1.3,1,1.8.4.5.9.9,1.6,1.2.6.3,1.3.5,2,.5s1.1,0,1.6-.2c.5-.2,1-.4,1.5-.8.5-.4.8-.9,1.1-1.5l3.5,2.1c-.4.9-1,1.7-1.8,2.3-.8.6-1.8,1.1-2.8,1.5s-2.1.5-3.2.5-2.6-.3-3.7-.8c-1.1-.6-2.1-1.3-2.9-2.2-.8-.9-1.5-2-1.9-3.1-.4-1.1-.7-2.3-.7-3.5Z"/>
+      <path class="nav-logo-cls-2" d="M182.5,16.3v-3.8h4.2v3.8h-4.2ZM182.5,31.6v-13.8h4.2v13.8h-4.2Z"/>
+      <path class="nav-logo-cls-2" d="M198,30.9c-.4.2-.8.3-1.2.5-.5.2-.9.3-1.4.4-.5,0-1,.1-1.5.1s-1.3-.1-1.9-.3-1-.6-1.4-1.2-.5-1.2-.5-2.1v-7.1h-1.8v-3.2h1.8v-4.4h4.2v4.4h2.8v3.2h-2.8v5.6c0,.5.1.8.3,1,.2.2.5.3.9.3s.6,0,1-.2c.3-.1.6-.2.9-.3l.8,3.3Z"/>
+      <path class="nav-logo-cls-2" d="M199.1,33.7c.4.1.7.2,1,.2.3,0,.6,0,.8,0,.4,0,.6,0,.9-.2s.4-.4.6-.8c.2-.4.3-.8.5-1.4l-5.2-13.7h4.3l3.2,9.4,2.7-9.4h3.9l-5.3,15.9c-.2.7-.6,1.4-1.1,2-.5.6-1.1,1-1.9,1.4-.7.3-1.5.5-2.4.5-.4,0-.7,0-1.1,0-.4,0-.7-.2-1.1-.3v-3.6Z"/>
+    </g>
+    <g>
+      <path class="nav-logo-cls-1" d="M64.5,16.8h-5.7v14.9h-4.3v-14.9h-5.7v-3.8h15.7v3.8Z"/>
+      <path class="nav-logo-cls-1" d="M79.1,31.6h-4.2v-7.6c0-.9-.2-1.5-.6-1.9-.4-.4-.9-.6-1.4-.6s-.7,0-1.1.3c-.4.2-.8.5-1.1.8-.3.4-.6.8-.7,1.2v7.8h-4.2V12.5h4.2v7.9c.5-.8,1.2-1.5,2-1.9.8-.4,1.8-.6,2.8-.6s1.7.2,2.2.5c.6.3,1,.7,1.3,1.2.3.5.5,1,.6,1.7.1.6.2,1.2.2,1.8v8.7Z"/>
+      <path class="nav-logo-cls-1" d="M87.9,31.9c-1.2,0-2.2-.2-3.1-.6s-1.7-.9-2.3-1.5c-.6-.6-1.1-1.4-1.5-2.2-.3-.8-.5-1.7-.5-2.6,0-1.3.3-2.5.9-3.6.6-1.1,1.4-1.9,2.5-2.6s2.4-1,4-1,2.9.3,4,1,1.9,1.5,2.5,2.6c.6,1.1.9,2.2.9,3.5s0,.5,0,.7,0,.4,0,.6h-10.2c0,.6.2,1.1.5,1.5.3.4.7.7,1.1.9.5.2.9.3,1.4.3s1.2-.1,1.8-.4c.6-.3.9-.7,1.1-1.2l3.6,1c-.4.7-.8,1.3-1.5,1.9-.6.5-1.4,1-2.2,1.3-.9.3-1.8.5-2.9.5ZM84.9,23.5h6c0-.6-.2-1-.5-1.5-.3-.4-.6-.7-1.1-1s-.9-.3-1.5-.3-1,.1-1.4.3c-.4.2-.8.5-1.1.9-.3.4-.4.9-.5,1.5Z"/>
+      <path class="nav-logo-cls-1" d="M118,26.8c0,1.1-.3,2-.8,2.7-.6.7-1.3,1.2-2.3,1.6-1,.4-2,.5-3.2.5h-9.1V13h10.4c.9,0,1.6.2,2.3.7.6.5,1.1,1.1,1.5,1.8.3.7.5,1.5.5,2.3s-.2,1.7-.7,2.5c-.4.8-1.1,1.4-2,1.8,1.1.3,1.9.9,2.5,1.7.6.8.9,1.8.9,3.1ZM106.9,16.7v3.9h4.2c.3,0,.6,0,.9-.2.3-.1.5-.4.7-.6.2-.3.2-.6.2-1.1s0-.8-.2-1.1c-.1-.3-.3-.5-.6-.6-.2-.1-.5-.2-.9-.2h-4.4ZM113.7,26c0-.4,0-.7-.2-1.1-.2-.3-.4-.6-.6-.7s-.6-.3-.9-.3h-4.9v4.1h4.8c.4,0,.7,0,1-.3.3-.2.5-.4.7-.7.2-.3.2-.6.2-1Z"/>
+      <path class="nav-logo-cls-1" d="M119.7,12.5h4.2v14.3c0,.6.1,1,.3,1.2.2.2.5.4.9.4s.5,0,.8-.1c.3,0,.5-.2.7-.3l.6,3.2c-.5.2-1.1.4-1.8.6-.7.2-1.3.2-1.9.2-1.2,0-2.1-.3-2.8-1-.6-.6-1-1.6-1-2.7v-15.7Z"/>
+      <path class="nav-logo-cls-1" d="M127.9,26.8v-8.8h4.2v7.8c0,.8.2,1.4.5,1.9.3.4.8.7,1.4.7s.8,0,1.1-.2c.4-.1.7-.3,1-.6s.6-.7.9-1.1v-8.4h4.2v9c0,.4,0,.7.2.9.1.2.4.3.7.3v3.5c-.4,0-.7.1-1,.2s-.5,0-.8,0c-.7,0-1.3-.1-1.8-.4-.4-.3-.7-.7-.8-1.3v-.8c-.7.9-1.5,1.6-2.4,2-.9.4-2,.6-3.2.6s-2.5-.4-3.2-1.3c-.7-.9-1.1-2.2-1.1-3.8Z"/>
+      <path class="nav-logo-cls-1" d="M150.6,31.9c-1.2,0-2.2-.2-3.1-.6-.9-.4-1.7-.9-2.3-1.5-.6-.6-1.1-1.4-1.5-2.2-.3-.8-.5-1.7-.5-2.6,0-1.3.3-2.5.9-3.6.6-1.1,1.4-1.9,2.5-2.6,1.1-.7,2.4-1,4-1s2.9.3,4,1c1.1.6,1.9,1.5,2.5,2.6.6,1.1.9,2.2.9,3.5s0,.5,0,.7,0,.4,0,.6h-10.2c0,.6.2,1.1.5,1.5s.7.7,1.1.9c.5.2.9.3,1.4.3s1.2-.1,1.8-.4c.6-.3.9-.7,1.1-1.2l3.6,1c-.4.7-.8,1.3-1.5,1.9-.6.5-1.4,1-2.2,1.3-.9.3-1.8.5-2.9.5ZM147.5,23.5h6c0-.6-.2-1-.5-1.5-.3-.4-.6-.7-1.1-1-.4-.2-.9-.3-1.5-.3s-1,.1-1.4.3c-.4.2-.8.5-1.1.9-.3.4-.4.9-.5,1.5Z"/>
+      <path class="nav-logo-cls-1" d="M164.2,22.1c0-1.1.2-2.2.6-3.3.4-1.1,1-2.1,1.8-3,.8-.9,1.8-1.6,3-2.2,1.2-.5,2.5-.8,3.9-.8s3.3.4,4.6,1.1,2.3,1.7,2.9,2.9l-3.3,2.3c-.3-.7-.6-1.2-1.1-1.6-.5-.4-1-.6-1.5-.8-.6-.1-1.1-.2-1.6-.2-.8,0-1.5.2-2.1.5-.6.3-1.1.8-1.5,1.3-.4.5-.7,1.1-.9,1.8-.2.7-.3,1.3-.3,2s.1,1.5.4,2.2c.2.7.6,1.3,1,1.8.4.5.9.9,1.6,1.2.6.3,1.3.5,2,.5s1.1,0,1.6-.2c.5-.2,1-.4,1.5-.8.5-.4.8-.9,1.1-1.5l3.5,2.1c-.4.9-1,1.7-1.8,2.3-.8.6-1.8,1.1-2.8,1.5s-2.1.5-3.2.5-2.6-.3-3.7-.8c-1.1-.6-2.1-1.3-2.9-2.2-.8-.9-1.5-2-1.9-3.1-.4-1.1-.7-2.3-.7-3.5Z"/>
+      <path class="nav-logo-cls-1" d="M182.5,16.3v-3.8h4.2v3.8h-4.2ZM182.5,31.6v-13.8h4.2v13.8h-4.2Z"/>
+      <path class="nav-logo-cls-1" d="M198,30.9c-.4.2-.8.3-1.2.5-.5.2-.9.3-1.4.4-.5,0-1,.1-1.5.1s-1.3-.1-1.9-.3-1-.6-1.4-1.2-.5-1.2-.5-2.1v-7.1h-1.8v-3.2h1.8v-4.4h4.2v4.4h2.8v3.2h-2.8v5.6c0,.5.1.8.3,1,.2.2.5.3.9.3s.6,0,1-.2c.3-.1.6-.2.9-.3l.8,3.3Z"/>
+      <path class="nav-logo-cls-1" d="M199.1,33.7c.4.1.7.2,1,.2.3,0,.6,0,.8,0,.4,0,.6,0,.9-.2s.4-.4.6-.8c.2-.4.3-.8.5-1.4l-5.2-13.7h4.3l3.2,9.4,2.7-9.4h3.9l-5.3,15.9c-.2.7-.6,1.4-1.1,2-.5.6-1.1,1-1.9,1.4-.7.3-1.5.5-2.4.5-.4,0-.7,0-1.1,0-.4,0-.7-.2-1.1-.3v-3.6Z"/>
+    </g>
+  </g>
+</svg>
+    </div>
+    <div class="topnav-links" id="topnavLinks">
+      <a class="topnav-link" href="#plataforma">Plataforma</a>
+      <a class="topnav-link" href="#jogo">Jogo</a>
+      <a class="topnav-link" href="#certificado">Certificado</a>
+      <a class="topnav-link" href="#publico-parcerias">Público-alvo &amp; Parcerias</a>
+      <a class="topnav-link" href="#exposicao">Exposição</a>
+      <a class="topnav-link" href="#divulgacao">Divulgação</a>
+      <a class="topnav-link" href="#cronograma">Cronograma</a>
+      <a class="topnav-link" href="#proxima-cidade">Sugestão de Patrocínio</a>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- ====== HERO ====== -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="client-badge">🏗️ Sotreq · Palmas, TO</div>
+    <div class="hero-eyebrow">Missão Cidade Azul · Jornada Cultural</div>
+    <h1 class="hero-headline">Arte, cultura e tecnologia pela regeneração do planeta</h1>
+    <p class="hero-desc">Termômetro Zero – a jornada cultural híbrida que a Sotreq leva a Palmas: jogo educativo digital, certificação em blockchain e exposição cultural pública, conectando redução de emissões de gases de efeito estufa à comunidade estudantil da capital do Tocantins.</p>
+    <p class="hero-meta">Projeto de Incentivo à Cultura · PRONAC 237809</p>
+  </div>
+</header>
+
+<main>
+
+  <!-- ====== 1. PLATAFORMA ====== -->
+  <section class="section" id="plataforma">
+    <div class="section-hero">
+      <div class="section-hero-inner">
+        <div class="section-tag">01 · Plataforma</div>
+        <h1 class="section-title">A Plataforma Missão Cidade Azul</h1>
+        <p class="section-subtitle">Missão Cidade Azul é uma plataforma de jornadas gamificadas que engaja estudantes, colaboradores e comunidade e une o mundo virtual ao mundo real.</p>
+      </div>
+    </div>
+    <div class="section-body single">
+      <div class="grid-3">
+        <div class="feature-card">
+          <div class="feature-card-header"><div class="feature-icon fi-blue">🎮</div><h3>Jornadas Gamificadas</h3></div>
+          <p>A plataforma transforma temas em jornadas gamificadas com diferentes temas, desafios progressivos e narrativas que engajam estudantes e comunidades em práticas reais de sustentabilidade.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header"><div class="feature-icon fi-teal">🏆</div><h3>Certificação Blockchain</h3></div>
+          <p>Ao concluir as jornadas, as instituições e os participantes recebem certificações verificáveis em blockchain – compartilháveis no LinkedIn e vinculadas ao patrocinador.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header"><div class="feature-icon fi-green">🌍</div><h3>Impacto no Mundo Real</h3></div>
+          <p>O jogo não termina na tela: as ideias geradas pelos participantes alimentam exposições culturais, transformando instituições em espaços de reflexão climática.</p>
+        </div>
+      </div>
+      <a href="https://sotreq.thebluecity.app" target="_blank" class="cta-btn" style="margin-top:20px;">
+        Conheça a Plataforma · Sotreq <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ====== 2. JOGO ====== -->
+  <section class="section" id="jogo">
+    <div class="section-hero">
+      <div class="section-hero-inner">
+        <div class="section-tag">02 · Jogo</div>
+        <h1 class="section-title">Termômetro Zero</h1>
+        <p class="section-subtitle">Redução de Emissões de Gases de Efeito Estufa – o tema escolhido pela Sotreq para guiar toda a experiência em Palmas.</p>
+      </div>
+    </div>
+    <div style="max-width:1120px;margin:0 auto;padding:0 32px;">
+      <div style="border-radius:12px;overflow:hidden;border:1px solid #e0e8f0;box-shadow:0 2px 12px rgba(0,0,0,0.04);">
+        <img src="https://the-blue-city.github.io/content/cover-jogo.png" alt="Termômetro Zero – Redução de GEE" style="width:100%;height:auto;display:block;">
+      </div>
+    </div>
+    <div class="section-body single">
+      <div class="content-col">
+        <div class="grid-3">
+          <div class="feature-card">
+            <div class="feature-card-header"><div class="feature-icon fi-blue">🌡️</div><h3>Redução de Emissões de GEE</h3></div>
+            <p>O jogo aborda de forma narrativa e gamificada como as escolhas individuais e coletivas afetam o clima urbano – transporte, energia, resíduos e consumo são transformados em missões e desafios progressivos dentro da plataforma.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card-header"><div class="feature-icon fi-teal">⚡</div><h3>Foco em Energia</h3></div>
+            <p>Com personagens inspirados no Mundo dos Ventos e no Mundo do Sol, o jogo conecta o tema climático ao universo de atuação da Sotreq – tornando a narrativa relevante e autêntica para o contexto da empresa e para os estudantes de Palmas.</p>
+          </div>
+          <a href="sotreq-personagens.html" class="feature-card" style="text-decoration:none;display:block;">
+            <div class="feature-card-header"><div class="feature-icon fi-green">🎭</div><h3>Personagens Culturais</h3></div>
+            <p>Dois personagens inéditos, desenvolvidos a partir de cosmologias afro-brasileiras e indígenas, guiam os jogadores pela jornada – com curadoria de Ester Menezes, artista híbrida e produtora cultural responsável pela pesquisa e conceituação. <strong style="color:#2858a0;">Conheça os personagens →</strong></p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== 3. CERTIFICADO ====== -->
+  <section class="section" id="certificado">
+    <div class="section-hero">
+      <div class="section-hero-inner">
+        <div class="section-tag">03 · Certificado</div>
+        <h1 class="section-title">Credencial Verificável em Blockchain</h1>
+        <p class="section-subtitle">Certificação digital verificável em blockchain, vinculada à marca Sotreq – o registro formal da conclusão da jornada para cada participante, e do apoio institucional da empresa.</p>
+      </div>
+    </div>
+    <div class="section-body single">
+      <div class="content-col">
+        <div class="grid-3">
+          <div class="feature-card">
+            <div class="feature-card-header"><div class="feature-icon fi-blue">🏆</div><h3>Padrão internacional</h3></div>
+            <p>Certificações verificáveis em blockchain, nos padrões Open Badge 3.0 e Europass – reconhecidas internacionalmente e à prova de fraude.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card-header"><div class="feature-icon fi-teal">🔗</div><h3>Vinculado à Sotreq</h3></div>
+            <p>Cada certificado emitido ao concluir a jornada traz o nome e a marca da Sotreq como patrocinadora – associando a empresa diretamente à conquista do estudante.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card-header"><div class="feature-icon fi-green">💼</div><h3>Compartilhável</h3></div>
+            <p>O participante pode publicar o certificado no LinkedIn, com verificação pública – ampliando organicamente a visibilidade da marca Sotreq entre jovens e suas redes.</p>
+          </div>
+        </div>
+        <a href="https://view.pok.tech/c/97249f96-141c-4358-a02f-d134d11433b1" target="_blank" class="cta-btn" style="margin-top:20px;">
+          Veja o certificado <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== 4. PÚBLICO-ALVO & PARCERIAS ====== -->
+  <section class="section" id="publico-parcerias">
+    <div class="section-hero" style="padding-bottom:16px;">
+      <div class="section-hero-inner">
+        <div class="section-tag">04 · Público-alvo &amp; Parcerias</div>
+        <h1 class="section-title">Público-alvo &amp; Parcerias</h1>
+        <p class="section-subtitle">Estudantes de escolas técnicas e ensino superior de Palmas, Tocantins, com idades entre 16 e 20 anos.</p>
+      </div>
+    </div>
+    <div class="section-body single" style="padding-top:8px;">
+      <div id="map-escolas" style="width:100%;height:420px;border-radius:12px;overflow:hidden;border:1px solid rgba(40,88,160,0.12);margin-bottom:24px;"></div>
+      <div class="instituicao-block">
+        <div class="instituicao-block-header">
+          <div class="feature-icon fi-green">⭐</div>
+          <h3>IFTO – Campus Palmas</h3>
+          <span style="margin-left:auto;display:inline-flex;align-items:center;gap:5px;background:#e8f5e9;color:#2e9e4f;font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;white-space:nowrap;">✓ Aderiu</span>
+        </div>
+        <p class="desc-text">O Instituto Federal do Tocantins (IFTO) integra a Rede Federal de Educação Profissional, Científica e Tecnológica e oferta ensino técnico integrado ao ensino médio, cursos subsequentes, graduações e pós-graduação, articulando ensino, pesquisa e extensão em todo o estado. O Campus Palmas é a maior unidade do instituto e o ponto de ancoragem natural da jornada na capital.</p>
+        <p class="desc-text">A Diretoria de Inovação e Empreendedorismo (DIEM) e o Núcleo de Empreendedorismo e Desenvolvimento de Soluções (NEEDS) conduzem, dentro do campus, uma agenda voltada a desafios reais, cultura de soluções e gamificação no ensino – exatamente o terreno em que a jornada se inscreve.</p>
+        <div class="stats-mini">
+          <div class="stat">
+            <div class="num">6.000</div>
+            <div class="lbl">Estudantes em Palmas</div>
+            <div class="desc">Público potencial no Campus Palmas – ensino técnico, graduação e egressos</div>
+          </div>
+          <div class="stat">
+            <div class="num">DIEM</div>
+            <div class="lbl">Inovação e Empreendedorismo</div>
+            <div class="desc">Diretoria parceira, com o NEEDS conectando estudantes a desafios reais</div>
+          </div>
+        </div>
+        <div class="contatos-mini">
+          <div>
+            <div class="contato-lbl">DIEM – e-mail institucional</div>
+            <div class="contato-sub">Diretoria de Inovação e Empreendedorismo</div>
+            <a href="mailto:diem@ifto.edu.br" style="color:#2858a0;">diem@ifto.edu.br</a>
+          </div>
+          <div>
+            <div class="contato-lbl">Edmar Vinícius de Carvalho</div>
+            <div class="contato-sub">DIEM – Reitoria</div>
+            <a href="mailto:edmar.carvalho@ifto.edu.br" style="color:#468182;">edmar.carvalho@ifto.edu.br</a>
+          </div>
+        </div>
+        <a href="sotreq-ifto.html" class="cta-btn" style="background:#468182;font-size:12px;padding:9px 16px;display:inline-flex;font-weight:400;">Ver carta de parceria <span aria-hidden="true">→</span></a>
+      </div>
+
+      <div class="instituicao-block">
+        <div class="instituicao-block-header">
+          <div class="feature-icon fi-green">⭐</div>
+          <h3>UFT – Campus Palmas</h3>
+          <span style="margin-left:auto;display:inline-flex;align-items:center;gap:5px;background:#e8f5e9;color:#2e9e4f;font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;white-space:nowrap;">✓ Aderiu</span>
+        </div>
+        <p class="desc-text">A Universidade Federal do Tocantins (UFT), criada em 2000, é a principal instituição pública de ensino superior do estado, com sede em Palmas e campi em diversas cidades. O Campus de Palmas é a sede e a maior unidade da universidade.</p>
+        <p class="desc-text">A Pró-Reitoria de Extensão, Cultura e Assuntos Comunitários (Proex), junto à Agência de Inovação da UFT (Inovato), forma o terreno natural em que a jornada se inscreve. A vocação ambiental da UFT, que abriga o curso de Engenharia Ambiental mais antigo do país, reforça o alinhamento com o tema da jornada.</p>
+        <div class="stats-mini">
+          <div class="stat">
+            <div class="num">6.000</div>
+            <div class="lbl">Estudantes em Palmas</div>
+            <div class="desc">Público potencial no Campus de Palmas – graduação, pós-graduação e egressos</div>
+          </div>
+          <div class="stat">
+            <div class="num">Proex</div>
+            <div class="lbl">Extensão, Cultura e Inovação</div>
+            <div class="desc">Pró-Reitoria parceira, com a Inovato articulando universidade e sociedade</div>
+          </div>
+        </div>
+        <div class="contatos-mini">
+          <div>
+            <div class="contato-lbl">Inovato – Agência de Inovação da UFT</div>
+            <a href="mailto:inovato@uft.edu.br" style="color:#2858a0;">inovato@uft.edu.br</a>
+          </div>
+          <div>
+            <div class="contato-lbl">Prof. Kleber Abreu</div>
+            <div class="contato-sub">Responde pela Inovato</div>
+            <a href="mailto:kleberabreu@mail.uft.edu.br" style="color:#468182;">kleberabreu@mail.uft.edu.br</a>
+          </div>
+        </div>
+        <a href="sotreq-uft.html" class="cta-btn" style="background:#468182;font-size:12px;padding:9px 16px;display:inline-flex;font-weight:400;">Ver carta de parceria <span aria-hidden="true">→</span></a>
+      </div>
+
+      <div class="instituicao-block" style="border-left:3px solid #d9a441;">
+        <div class="instituicao-block-header">
+          <div class="feature-icon fi-blue">🏫</div>
+          <h3>ULBRA – Campus Palmas</h3>
+          <span style="margin-left:auto;display:inline-flex;align-items:center;gap:5px;background:#fff8e6;color:#b8860b;font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;white-space:nowrap;">⏳ Pendente</span>
+        </div>
+        <p class="desc-text" style="margin-bottom:0;">Centro Universitário Luterano de Palmas (CEULP/ULBRA), Plano Diretor Sul – instituição privada de ensino superior com ampla infraestrutura e forte presença na comunidade acadêmica local. Adesão em articulação.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ====== 5. EXPOSIÇÃO ====== -->
+  <section class="section" id="exposicao">
+    <div class="section-hero">
+      <div class="section-hero-inner">
+        <div class="section-tag">05 · Exposição</div>
+        <h1 class="section-title">Exposição Termômetro Zero</h1>
+        <p class="section-subtitle">A exposição é a materialização da última etapa da Jornada, onde o jogo virtual encontra o mundo físico. As ideias dos estudantes se transformam em obras de arte expostas publicamente no entorno da instituição, junto com obras de artistas locais.</p>
+      </div>
+    </div>
+    <div style="max-width:1120px;margin:0 auto;padding:0 32px;">
+      <p style="font-size:15px;font-weight:800;color:#1a2e3b;margin-bottom:6px;">1ª possibilidade: Lobby da Reitoria da UFT</p>
+      <p style="font-size:13px;color:#000000;margin-bottom:16px;">Fluxo de 2 a 3 mil pessoas por semana. É o coração da universidade.</p>
+      <div class="grid-2">
+        <div style="border-radius:12px;overflow:hidden;border:1px solid #e0e8f0;box-shadow:0 2px 12px rgba(0,0,0,0.04);height:220px;">
+          <img src="https://the-blue-city.github.io/content/UFT-Hall-2.jpg" alt="Lobby da Reitoria da UFT" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <div style="border-radius:12px;overflow:hidden;border:1px solid #e0e8f0;box-shadow:0 2px 12px rgba(0,0,0,0.04);height:220px;">
+          <img src="https://the-blue-city.github.io/content/UFT-Hall-3.jpg" alt="Lobby da Reitoria da UFT" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+      </div>
+
+      <p style="font-size:15px;font-weight:800;color:#1a2e3b;margin-top:28px;margin-bottom:6px;">2ª possibilidade: IFTO</p>
+      <p style="font-size:13px;color:#000000;margin-bottom:16px;">Localização mais próxima à Sotreq. Fluxo de 2 a 3 mil pessoas por semana.</p>
+      <div style="border-radius:12px;overflow:hidden;border:1px solid #e0e8f0;box-shadow:0 2px 12px rgba(0,0,0,0.04);background:#f4f8fc;max-width:520px;">
+        <img src="https://the-blue-city.github.io/content/IFTO-Entrada.jpg" alt="Entrada do IFTO" style="width:100%;height:auto;display:block;">
+      </div>
+    </div>
+    <div class="section-body single">
+      <div class="grid-3">
+        <div class="feature-card">
+          <div class="feature-card-header"><div class="feature-icon fi-blue">🎨</div><h3>Arte e inovação em um só lugar</h3></div>
+          <p>Após finalizar o jogo, os estudantes enviam ideias endereçando o tema da redução de Gases de Efeito Estufa, que podem ser expostos junto com peças artísticas criadas por artistas locais – obras que conectam o aprendizado digital à comunidade de Palmas.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header"><div class="feature-icon fi-teal">📍</div><h3>Espaço Público dentro da Instituição</h3></div>
+          <p>A exposição ocupa áreas da instituição participante – painéis externos com personagens e QR codes, obras de artistas locais, trabalhos de estudantes. Tudo em torno do mesmo tema do Termômetro Zero.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header"><div class="feature-icon fi-green">♿</div><h3>Acessível e gratuita</h3></div>
+          <p>Toda a programação é gratuita – garantindo acesso aos estudantes, à pessoas com deficiência e à toda a comunidade do entorno.</p>
+        </div>
+      </div>
+    </div>
+    <div style="max-width:1120px;margin:0 auto;padding:0 32px 48px;">
+      <div style="background:white;padding:24px 24px 48px 24px;border-radius:12px;border:1px solid #e0e8f0;box-shadow:0 2px 12px rgba(0,0,0,0.04);">
+        <img src="https://the-blue-city.github.io/content/mapa-expografico.png" alt="Mapa Expográfico – vista esquemática do quarteirão e espaço interno da exposição" style="width:100%;height:auto;display:block;">
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== 6. DIVULGAÇÃO ====== -->
+  <section class="section" id="divulgacao">
+    <div class="section-hero" style="padding-bottom:16px;">
+      <div class="section-hero-inner">
+        <div class="section-tag">06 · Divulgação</div>
+        <h1 class="section-title">Peças de Divulgação</h1>
+        <p class="section-subtitle">Ações que dão visibilidade à jornada e à marca Sotreq antes, durante e depois da experiência em Palmas.</p>
+      </div>
+    </div>
+    <div class="section-body single" style="padding-top:8px;">
+      <div class="grid-3">
+        <div class="feature-card">
+          <div class="feature-card-header"><div class="feature-icon fi-blue">🎮</div><h3>Plataforma</h3></div>
+          <p style="margin-bottom:8px;">Plataforma será acessada por aproximadamente 6.000 estudantes, considerando a circulação estimada dos espaços da exposição e campanhas de engajamento.</p>
+          <p><a href="https://sotreq.thebluecity.app" target="_blank" style="color:#2858a0;font-weight:600;text-decoration:none;">Ver Plataforma →</a></p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header"><div class="feature-icon fi-teal">🏆</div><h3>Certificado</h3></div>
+          <p style="margin-bottom:8px;">Certificado será recebido por aproximadamente 2.000 estudantes, com índice de compartilhamento de <strong>50%</strong> e engajamento em redes sociais de <strong>500%</strong>.</p>
+          <p><a href="https://view.pok.tech/c/97249f96-141c-4358-a02f-d134d11433b1" target="_blank" style="color:#2858a0;font-weight:600;text-decoration:none;">Ver Certificado →</a></p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header"><div class="feature-icon fi-green">🤝</div><h3>Cartas de Parceria</h3></div>
+          <p style="margin-bottom:4px;">Cartas entregues à</p>
+          <p style="margin-bottom:2px;">• IFTO: DIEM – Inovação e Empreendedorismo</p>
+          <p style="margin-bottom:8px;"><a href="sotreq-ifto.html" target="_blank" style="color:#2858a0;font-weight:600;text-decoration:none;">Ver Carta IFTO →</a></p>
+          <p style="margin-bottom:2px;">• UFT: Proex e Inovato.</p>
+          <p><a href="sotreq-uft.html" target="_blank" style="color:#2858a0;font-weight:600;text-decoration:none;">Ver Carta UFT →</a></p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header"><div class="feature-icon fi-blue">📣</div><h3>Flyers de Engajamento no Jogo</h3></div>
+          <p>Material em Produção</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header"><div class="feature-icon fi-teal">🖼️</div><h3>Painéis na Exposição</h3></div>
+          <p>Material em Produção</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header"><div class="feature-icon fi-green">📰</div><h3>Assessoria de Imprensa</h3></div>
+          <p>Material em Produção</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header"><div class="feature-icon fi-blue">📷</div><h3>Fotos do Evento</h3></div>
+          <p>Material em Produção</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header"><div class="feature-icon fi-teal">🎥</div><h3>Vídeos do Evento</h3></div>
+          <p>Material em Produção</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== 7. CRONOGRAMA ====== -->
+  <section class="section" id="cronograma">
+    <div class="section-hero">
+      <div class="section-hero-inner">
+        <div class="section-tag">07 · Cronograma</div>
+        <h1 class="section-title">Cronograma de Lançamento</h1>
+        <p class="section-subtitle">O projeto acontece de maio a dezembro de 2026 – da produção ao encerramento, com as ações com o público concentradas no segundo semestre em Palmas, TO.</p>
+      </div>
+    </div>
+    <div class="section-body single" style="padding-top:8px;">
+
+      <div class="cronograma-timeline" style="margin-bottom:32px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1132 600" style="width:100%;height:auto;display:block;font-family:'Montserrat',sans-serif;">
+  <rect width="1132" height="600" fill="#ffffff" rx="12"/>
+  <g transform="translate(0,-70)">
+  <line x1="30" y1="110" x2="1102" y2="110" stroke="#e0e8f0" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- MAI -->
+  <line x1="85" y1="110" x2="85" y2="125" stroke="#000" stroke-width="1"/>
+  <circle cx="85" cy="110" r="5" fill="#1a2e3b" stroke="white" stroke-width="2"/>
+  <text x="85" y="96" text-anchor="middle" font-size="9" font-weight="800" fill="#1a2e3b">MAI</text>
+  <rect x="35" y="125" width="100" height="20" rx="4" fill="#2858a0"/>
+  <text x="85" y="139" text-anchor="middle" font-size="8" font-weight="800" fill="white">Produção</text>
+  <rect x="35" y="153" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="85" y="175" text-anchor="middle" font-size="16">🔍</text>
+  <text x="85" y="199" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Pesquisadora</text>
+  <text x="85" y="215" text-anchor="middle" font-size="7" fill="#000">Conceituação</text>
+  <text x="85" y="227" text-anchor="middle" font-size="7" fill="#000">dos personagens</text>
+  <rect x="35" y="261" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="85" y="283" text-anchor="middle" font-size="16">🎮</text>
+  <text x="85" y="307" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Game Designer</text>
+  <text x="85" y="323" text-anchor="middle" font-size="7" fill="#000">Início da</text>
+  <text x="85" y="335" text-anchor="middle" font-size="7" fill="#000">produção do jogo</text>
+
+  <!-- JUN -->
+  <line x1="221" y1="110" x2="221" y2="125" stroke="#000" stroke-width="1"/>
+  <circle cx="221" cy="110" r="5" fill="#1a2e3b" stroke="white" stroke-width="2"/>
+  <text x="221" y="96" text-anchor="middle" font-size="9" font-weight="800" fill="#1a2e3b">JUN</text>
+  <rect x="171" y="125" width="100" height="20" rx="4" fill="#2858a0"/>
+  <text x="221" y="139" text-anchor="middle" font-size="8" font-weight="800" fill="white">Produção</text>
+  <rect x="171" y="153" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="221" y="175" text-anchor="middle" font-size="16">🎨</text>
+  <text x="221" y="199" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Ilustrador</text>
+  <text x="221" y="215" text-anchor="middle" font-size="7" fill="#000">Ilustração dos</text>
+  <text x="221" y="227" text-anchor="middle" font-size="7" fill="#000">personagens</text>
+  <rect x="171" y="261" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="221" y="283" text-anchor="middle" font-size="16">🎮</text>
+  <text x="221" y="307" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Game Designer</text>
+  <text x="221" y="323" text-anchor="middle" font-size="7" fill="#000">Finalização</text>
+  <text x="221" y="335" text-anchor="middle" font-size="7" fill="#000">do jogo</text>
+  <rect x="171" y="369" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="221" y="391" text-anchor="middle" font-size="16">🏫</text>
+  <text x="221" y="415" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Articulador Educ.</text>
+  <text x="221" y="431" text-anchor="middle" font-size="7" fill="#000">Contato com</text>
+  <text x="221" y="443" text-anchor="middle" font-size="7" fill="#000">secretarias e escolas</text>
+
+  <!-- JUL -->
+  <line x1="357" y1="110" x2="357" y2="125" stroke="#000" stroke-width="1"/>
+  <circle cx="357" cy="110" r="5" fill="#1a2e3b" stroke="white" stroke-width="2"/>
+  <text x="357" y="96" text-anchor="middle" font-size="9" font-weight="800" fill="#1a2e3b">JUL</text>
+  <rect x="307" y="125" width="100" height="20" rx="4" fill="#2858a0"/>
+  <text x="357" y="139" text-anchor="middle" font-size="8" font-weight="800" fill="white">Produção</text>
+  <rect x="307" y="153" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="357" y="175" text-anchor="middle" font-size="16">🎮</text>
+  <text x="357" y="199" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Game Designer</text>
+  <text x="357" y="215" text-anchor="middle" font-size="7" fill="#000">Testes do jogo</text>
+  <rect x="307" y="261" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="357" y="283" text-anchor="middle" font-size="16">🏫</text>
+  <text x="357" y="307" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Articulador Educ.</text>
+  <text x="357" y="323" text-anchor="middle" font-size="7" fill="#000">Treinamento</text>
+  <text x="357" y="335" text-anchor="middle" font-size="7" fill="#000">na plataforma</text>
+  <rect x="307" y="369" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="357" y="391" text-anchor="middle" font-size="16">🎭</text>
+  <text x="357" y="415" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Produtor Cultural</text>
+  <text x="357" y="431" text-anchor="middle" font-size="7" fill="#000">Treinamento</text>
+  <text x="357" y="443" text-anchor="middle" font-size="7" fill="#000">na plataforma</text>
+
+  <!-- AGO -->
+  <line x1="493" y1="110" x2="493" y2="125" stroke="#000" stroke-width="1"/>
+  <circle cx="493" cy="110" r="5" fill="#1a2e3b" stroke="white" stroke-width="2"/>
+  <text x="493" y="96" text-anchor="middle" font-size="9" font-weight="800" fill="#1a2e3b">AGO</text>
+  <rect x="443" y="125" width="100" height="20" rx="4" fill="#2858a0"/>
+  <text x="493" y="139" text-anchor="middle" font-size="8" font-weight="800" fill="white">Mobilização</text>
+  <rect x="443" y="153" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="493" y="175" text-anchor="middle" font-size="16">🏫</text>
+  <text x="493" y="199" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Articulador Educ.</text>
+  <text x="493" y="215" text-anchor="middle" font-size="7" fill="#000">Apresentação às</text>
+  <text x="493" y="227" text-anchor="middle" font-size="7" fill="#000">escolas e turmas</text>
+  <rect x="443" y="261" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="493" y="283" text-anchor="middle" font-size="16">🏫</text>
+  <text x="493" y="307" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Articulador Educ.</text>
+  <text x="493" y="323" text-anchor="middle" font-size="7" fill="#000">Fechamento da</text>
+  <text x="493" y="335" text-anchor="middle" font-size="7" fill="#000">mobilização</text>
+
+  <!-- SET -->
+  <line x1="629" y1="110" x2="629" y2="125" stroke="#000" stroke-width="1"/>
+  <circle cx="629" cy="110" r="5" fill="#1a2e3b" stroke="white" stroke-width="2"/>
+  <text x="629" y="96" text-anchor="middle" font-size="9" font-weight="800" fill="#1a2e3b">SET</text>
+  <rect x="579" y="125" width="100" height="20" rx="4" fill="#2858a0"/>
+  <text x="629" y="139" text-anchor="middle" font-size="8" font-weight="800" fill="white">Mobilização</text>
+  <rect x="579" y="153" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="629" y="175" text-anchor="middle" font-size="16">🏫</text>
+  <text x="629" y="199" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Articulador Educ.</text>
+  <text x="629" y="215" text-anchor="middle" font-size="7" fill="#000">Apresentação às</text>
+  <text x="629" y="227" text-anchor="middle" font-size="7" fill="#000">escolas e turmas</text>
+  <rect x="579" y="261" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="629" y="283" text-anchor="middle" font-size="16">🏫</text>
+  <text x="629" y="307" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Articulador Educ.</text>
+  <text x="629" y="323" text-anchor="middle" font-size="7" fill="#000">Fechamento da</text>
+  <text x="629" y="335" text-anchor="middle" font-size="7" fill="#000">mobilização</text>
+  <rect x="579" y="369" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="629" y="391" text-anchor="middle" font-size="16">🎭</text>
+  <text x="629" y="415" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Produtor Cultural</text>
+  <text x="629" y="431" text-anchor="middle" font-size="7" fill="#000">Preparação</text>
+  <text x="629" y="443" text-anchor="middle" font-size="7" fill="#000">territorial</text>
+
+  <!-- OUT -->
+  <line x1="765" y1="110" x2="765" y2="125" stroke="#000" stroke-width="1"/>
+  <circle cx="765" cy="110" r="5" fill="#1a2e3b" stroke="white" stroke-width="2"/>
+  <text x="765" y="96" text-anchor="middle" font-size="9" font-weight="800" fill="#1a2e3b">OUT</text>
+  <rect x="715" y="125" width="100" height="20" rx="4" fill="#2858a0"/>
+  <text x="765" y="139" text-anchor="middle" font-size="6.8" font-weight="800" fill="white">Jornada e Curadoria</text>
+  <rect x="715" y="153" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="765" y="175" text-anchor="middle" font-size="16">🏫</text>
+  <text x="765" y="199" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Articulador Educ.</text>
+  <text x="765" y="215" text-anchor="middle" font-size="7" fill="#000">Acompanhamento</text>
+  <text x="765" y="227" text-anchor="middle" font-size="7" fill="#000">da jornada</text>
+  <rect x="715" y="261" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="765" y="283" text-anchor="middle" font-size="16">🏫</text>
+  <text x="765" y="307" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Articulador Educ.</text>
+  <text x="765" y="323" text-anchor="middle" font-size="7" fill="#000">Coleta dos</text>
+  <text x="765" y="335" text-anchor="middle" font-size="7" fill="#000">projetos</text>
+  <rect x="715" y="369" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="765" y="391" text-anchor="middle" font-size="16">🎭</text>
+  <text x="765" y="415" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Produtor Cultural</text>
+  <text x="765" y="431" text-anchor="middle" font-size="7" fill="#000">Curadoria e</text>
+  <text x="765" y="443" text-anchor="middle" font-size="7" fill="#000">conexão com artistas</text>
+  <rect x="715" y="477" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="765" y="499" text-anchor="middle" font-size="16">📰</text>
+  <text x="765" y="523" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Assessoria Impr.</text>
+  <text x="765" y="539" text-anchor="middle" font-size="7" fill="#000">Pré-divulgação</text>
+  <text x="765" y="551" text-anchor="middle" font-size="7" fill="#000">da exposição</text>
+
+  <!-- NOV -->
+  <line x1="901" y1="110" x2="901" y2="125" stroke="#000" stroke-width="1"/>
+  <circle cx="901" cy="110" r="5" fill="#1a2e3b" stroke="white" stroke-width="2"/>
+  <text x="901" y="96" text-anchor="middle" font-size="9" font-weight="800" fill="#1a2e3b">NOV</text>
+  <rect x="851" y="125" width="100" height="20" rx="4" fill="#2858a0"/>
+  <text x="901" y="139" text-anchor="middle" font-size="8" font-weight="800" fill="white">Exposição</text>
+  <rect x="851" y="153" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="901" y="175" text-anchor="middle" font-size="16">🏫</text>
+  <text x="901" y="199" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Articulador Educ.</text>
+  <text x="901" y="215" text-anchor="middle" font-size="7" fill="#000">Encerramento da</text>
+  <text x="901" y="227" text-anchor="middle" font-size="7" fill="#000">articulação</text>
+  <rect x="851" y="261" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="901" y="283" text-anchor="middle" font-size="16">🎭</text>
+  <text x="901" y="307" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Produtor Cultural</text>
+  <text x="901" y="323" text-anchor="middle" font-size="7" fill="#000">Realização da</text>
+  <text x="901" y="335" text-anchor="middle" font-size="7" fill="#000">exposição e</text>
+  <text x="901" y="347" text-anchor="middle" font-size="7" fill="#000">desmontagem</text>
+  <rect x="851" y="369" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="901" y="391" text-anchor="middle" font-size="16">📰</text>
+  <text x="901" y="415" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Assessoria Impr.</text>
+  <text x="901" y="431" text-anchor="middle" font-size="7" fill="#000">Lançamento</text>
+  <text x="901" y="443" text-anchor="middle" font-size="7" fill="#000">da exposição</text>
+
+  <!-- DEZ -->
+  <line x1="1037" y1="110" x2="1037" y2="125" stroke="#000" stroke-width="1"/>
+  <circle cx="1037" cy="110" r="5" fill="#1a2e3b" stroke="white" stroke-width="2"/>
+  <text x="1037" y="96" text-anchor="middle" font-size="9" font-weight="800" fill="#1a2e3b">DEZ</text>
+  <rect x="987" y="125" width="100" height="20" rx="4" fill="#2858a0"/>
+  <text x="1037" y="139" text-anchor="middle" font-size="8" font-weight="800" fill="white">Pós-produção</text>
+  <rect x="987" y="153" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="1037" y="175" text-anchor="middle" font-size="16">🎭</text>
+  <text x="1037" y="199" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Produtor Cultural</text>
+  <text x="1037" y="215" text-anchor="middle" font-size="7" fill="#000">Documentação</text>
+  <rect x="987" y="261" width="100" height="100" rx="6" fill="white" stroke="#e0e8f0" stroke-width="1"/>
+  <text x="1037" y="283" text-anchor="middle" font-size="16">📰</text>
+  <text x="1037" y="307" text-anchor="middle" font-size="7.5" font-weight="800" fill="#1a2e3b">Assessoria Impr.</text>
+  <text x="1037" y="323" text-anchor="middle" font-size="7" fill="#000">Cobertura</text>
+  <text x="1037" y="335" text-anchor="middle" font-size="7" fill="#000">pós-evento</text>
+
+  <!-- LEGENDA -->
+  <line x1="100" y1="608" x2="1032" y2="608" stroke="#e8eef4" stroke-width="1"/>
+  <text x="155" y="638" text-anchor="middle" font-size="11">🔍</text>
+  <text x="175" y="642" font-size="9" fill="#000">Pesquisadora Cultural</text>
+  <text x="345" y="638" text-anchor="middle" font-size="11">🎨</text>
+  <text x="365" y="642" font-size="9" fill="#000">Ilustrador</text>
+  <text x="475" y="638" text-anchor="middle" font-size="11">🎮</text>
+  <text x="495" y="642" font-size="9" fill="#000">Game Designer</text>
+  <text x="620" y="638" text-anchor="middle" font-size="11">🏫</text>
+  <text x="640" y="642" font-size="9" fill="#000">Articulador Educacional</text>
+  <text x="800" y="638" text-anchor="middle" font-size="11">🎭</text>
+  <text x="820" y="642" font-size="9" fill="#000">Produtor Cultural</text>
+  <text x="945" y="638" text-anchor="middle" font-size="11">📰</text>
+  <text x="965" y="642" font-size="9" fill="#000">Assessoria de Imprensa</text>
+  </g>
+</svg>
+      </div>
+
+      <div class="schedule-table-wrapper">
+        <div class="schedule-table-inner" style="display:flex;flex-direction:column;gap:0;border:1px solid rgba(40,88,160,0.1);border-radius:12px;overflow:hidden;">
+
+        <div style="display:grid;grid-template-columns:90px 200px 1fr;background:#1a2e3b;padding:12px 20px;gap:16px;">
+          <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.7);">Período</div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.7);">Etapa</div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.7);">Atividades principais</div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:white;border-bottom:1px solid rgba(40,88,160,0.07);">
+          <div style="font-size:12px;font-weight:700;color:#468182;">Maio</div>
+          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção</div>
+          <div style="font-size:11px;color:#000;line-height:1.65;"><strong>Pesquisadora Cultural:</strong> conceituação dos personagens.<br><strong>Game Designer:</strong> início da produção do jogo.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:#f9fbfd;border-bottom:1px solid rgba(40,88,160,0.07);">
+          <div style="font-size:12px;font-weight:700;color:#468182;">Junho</div>
+          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção</div>
+          <div style="font-size:11px;color:#000;line-height:1.65;"><strong>Ilustrador:</strong> ilustração dos personagens.<br><strong>Game Designer:</strong> finalização do jogo.<br><strong>Articulador Educacional:</strong> contato com secretarias e escolas.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:white;border-bottom:1px solid rgba(40,88,160,0.07);">
+          <div style="font-size:12px;font-weight:700;color:#468182;">Julho</div>
+          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Produção</div>
+          <div style="font-size:11px;color:#000;line-height:1.65;"><strong>Game Designer:</strong> testes do jogo.<br><strong>Articulador Educacional:</strong> treinamento na plataforma.<br><strong>Produtor Cultural:</strong> treinamento na plataforma.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:#f9fbfd;border-bottom:1px solid rgba(40,88,160,0.07);">
+          <div style="font-size:12px;font-weight:700;color:#5fb670;">Agosto</div>
+          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Mobilização</div>
+          <div style="font-size:11px;color:#000;line-height:1.65;"><strong>Articulador Educacional:</strong> apresentação às escolas e turmas.<br><strong>Articulador Educacional:</strong> fechamento da mobilização.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:white;border-bottom:1px solid rgba(40,88,160,0.07);">
+          <div style="font-size:12px;font-weight:700;color:#5fb670;">Setembro</div>
+          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Mobilização</div>
+          <div style="font-size:11px;color:#000;line-height:1.65;"><strong>Articulador Educacional:</strong> apresentação às escolas e turmas; fechamento da mobilização.<br><strong>Produtor Cultural:</strong> preparação territorial.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:#f9fbfd;border-bottom:1px solid rgba(40,88,160,0.07);">
+          <div style="font-size:12px;font-weight:700;color:#5fb670;">Outubro</div>
+          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Jornada e Curadoria</div>
+          <div style="font-size:11px;color:#000;line-height:1.65;"><strong>Articulador Educacional:</strong> acompanhamento da jornada; avaliação dos projetos no painel e publicação dos aprovados na Galeria de Projetos.<br><strong>Produtor Cultural:</strong> curadoria e conexão com artistas.<br><strong>Assessoria de Imprensa:</strong> pré-divulgação da exposição.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:white;border-bottom:1px solid rgba(40,88,160,0.07);">
+          <div style="font-size:12px;font-weight:700;color:#38a349;">Novembro</div>
+          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Exposição</div>
+          <div style="font-size:11px;color:#000;line-height:1.65;"><strong>Articulador Educacional:</strong> encerramento da articulação e publicação do material da exposição na Galeria de Eventos.<br><strong>Produtor Cultural:</strong> realização da exposição e desmontagem.<br><strong>Assessoria de Imprensa:</strong> lançamento da exposição.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:90px 200px 1fr;padding:14px 20px;gap:16px;background:#f9fbfd;">
+          <div style="font-size:12px;font-weight:700;color:#1a2e3b;">Dezembro</div>
+          <div style="font-size:11px;font-weight:700;color:#1a2e3b;line-height:1.4;">Pós-produção</div>
+          <div style="font-size:11px;color:#000;line-height:1.65;"><strong>Produtor Cultural:</strong> documentação.<br><strong>Assessoria de Imprensa:</strong> cobertura pós-evento.</div>
+        </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== 8. SUGESTÃO DE NOVA CIDADE ====== -->
+  <section class="section" id="proxima-cidade" style="border-bottom:none;">
+    <div class="section-hero">
+      <div class="section-hero-inner">
+        <div class="section-tag">08 · Sugestão de Patrocínio</div>
+        <h1 class="section-title">Sugestão de Patrocínio</h1>
+        <p class="section-subtitle">Após a edição em Palmas, propomos uma segunda jornada Missão Cidade Azul em parceria com a Sotreq – em uma cidade onde a empresa já tem presença consolidada e perfil socioeconômico análogo. Nossa recomendação é Marabá (PA).</p>
+      </div>
+    </div>
+    <div class="section-body single" style="padding-top:8px;">
+
+      <!-- DESTAQUE: MARABÁ -->
+      <div style="margin-bottom:24px;">
+
+        <h2 style="font-size:17px;font-weight:800;margin-bottom:10px;letter-spacing:-0.5px;color:#1a2e3b;white-space:nowrap;">Marabá · Pará</h2>
+        <p style="font-size:14px;color:#000;line-height:1.65;max-width:none;margin-bottom:24px;">Cidade-polo da Região Norte, hub logístico no eixo Belém-Brasília, com filial Sotreq consolidada e um ecossistema institucional, educacional e de infraestrutura que espelha&nbsp;– e em alguns aspectos amplifica&nbsp;– o perfil de Palmas.</p>
+
+        <div class="grid-3">
+          <div style="background:#2858a0;border-radius:10px;padding:14px 16px;color:white;">
+            <div style="font-size:10px;color:rgba(255,255,255,0.7);letter-spacing:0.8px;font-weight:700;margin-bottom:6px;">FILIAL SOTREQ</div>
+            <div style="font-size:13px;font-weight:700;line-height:1.4;">Nova Marabá<br><span style="font-size:11px;font-weight:500;color:rgba(255,255,255,0.75);">BR-230 · Folha 30</span></div>
+          </div>
+          <div style="background:#468182;border-radius:10px;padding:14px 16px;color:white;">
+            <div style="font-size:10px;color:rgba(255,255,255,0.7);letter-spacing:0.8px;font-weight:700;margin-bottom:6px;">POPULAÇÃO</div>
+            <div style="font-size:13px;font-weight:700;line-height:1.4;">~283 mil<br><span style="font-size:11px;font-weight:500;color:rgba(255,255,255,0.75);">3ª maior do PA</span></div>
+          </div>
+          <div style="background:#38a349;border-radius:10px;padding:14px 16px;color:white;">
+            <div style="font-size:10px;color:rgba(255,255,255,0.7);letter-spacing:0.8px;font-weight:700;margin-bottom:6px;">INSTITUIÇÕES</div>
+            <div style="font-size:13px;font-weight:700;line-height:1.4;">Unifesspa · IFPA<br><span style="font-size:11px;font-weight:500;color:rgba(255,255,255,0.75);">Univ. Federal do Sul e Sudeste do Pará · Instituto Federal do Pará</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- POR QUE MARABÁ -->
+      <div class="grid-2" style="margin-bottom:16px;">
+        <div class="feature-card">
+          <div class="feature-card-header"><div class="feature-icon fi-blue">🏭</div><h3>Filial Sotreq consolidada</h3></div>
+          <p>A unidade Nova Marabá (BR-230, Km 5,5) é uma das filiais Sotreq mais estabelecidas no Norte, atendendo construção, mineração e infraestrutura no sudeste paraense. A presença operacional já existe – falta a presença institucional e cultural.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header"><div class="feature-icon fi-teal">🎓</div><h3>Ecossistema educacional forte</h3></div>
+          <p>Sede da Universidade Federal do Sul e Sudeste do Pará (Unifesspa) e do Instituto Federal do Pará (IFPA · Campus Marabá), além de uma rede consolidada de escolas estaduais – base sólida para parcerias na Jornada Cultural.</p>
+        </div>
+      </div>
+
+      <!-- LISTA: CIDADES SOTREQ NA REGIÃO NORTE -->
+      <p style="font-size:15px;font-weight:800;color:#1a2e3b;margin-bottom:8px;">Outras Sugestões de Cidades:</p>
+
+      <div style="background:white;border-radius:14px;border:1px solid rgba(40,88,160,0.1);overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.04);">
+
+        <!-- PARÁ -->
+        <div style="background:#2858a0;padding:14px 24px;display:flex;align-items:center;gap:12px;">
+          <div style="font-size:18px;">📍</div>
+          <div style="font-size:14px;font-weight:800;color:white;letter-spacing:0.5px;">Pará (PA)</div>
+        </div>
+        <div style="padding:18px 24px;border-bottom:1px solid rgba(40,88,160,0.08);">
+          <div class="grid-2">
+            <div style="padding:10px 14px;background:#f4f8fc;border-radius:8px;border-left:3px solid #2858a0;">
+              <div style="font-size:13px;font-weight:700;color:#1a2e3b;">Belém</div>
+              <div style="font-size:11px;color:#000;">Av. Almirante Barroso, 3864 – Souza</div>
+            </div>
+            <div style="padding:10px 14px;background:#f4f8fc;border-radius:8px;border-left:3px solid #5fb670;">
+              <div style="font-size:13px;font-weight:700;color:#1a2e3b;">Marabá ★</div>
+              <div style="font-size:11px;color:#000;">BR-230, Km 5,5 – Nova Marabá</div>
+            </div>
+            <div style="padding:10px 14px;background:#f4f8fc;border-radius:8px;border-left:3px solid #2858a0;">
+              <div style="font-size:13px;font-weight:700;color:#1a2e3b;">Parauapebas</div>
+              <div style="font-size:11px;color:#000;">PA-275 · Polo de mineração · ~48 mil m²</div>
+            </div>
+            <div style="padding:10px 14px;background:#f4f8fc;border-radius:8px;border-left:3px solid #2858a0;">
+              <div style="font-size:13px;font-weight:700;color:#1a2e3b;">Canaã dos Carajás</div>
+              <div style="font-size:11px;color:#000;">Setor de mineração · sudeste do Pará</div>
+            </div>
+            <div style="padding:10px 14px;background:#f4f8fc;border-radius:8px;border-left:3px solid #2858a0;">
+              <div style="font-size:13px;font-weight:700;color:#1a2e3b;">Vitória do Xingu</div>
+              <div style="font-size:11px;color:#000;">Filial estratégica · entorno Belo Monte</div>
+            </div>
+            <div style="padding:10px 14px;background:#f4f8fc;border-radius:8px;border-left:3px solid #2858a0;">
+              <div style="font-size:13px;font-weight:700;color:#1a2e3b;">Altamira</div>
+              <div style="font-size:11px;color:#000;">Rod. Transamazônica, Km 3 – Floresta</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- AMAPÁ -->
+        <div style="background:#468182;padding:14px 24px;display:flex;align-items:center;gap:12px;">
+          <div style="font-size:18px;">📍</div>
+          <div style="font-size:14px;font-weight:800;color:white;letter-spacing:0.5px;">Amapá (AP)</div>
+        </div>
+        <div style="padding:18px 24px;border-bottom:1px solid rgba(40,88,160,0.08);">
+          <div style="padding:10px 14px;background:#f4f8fc;border-radius:8px;border-left:3px solid #468182;">
+            <div style="font-size:13px;font-weight:700;color:#1a2e3b;">Macapá</div>
+            <div style="font-size:11px;color:#000;">Atendimento Cat® no estado do Amapá</div>
+          </div>
+        </div>
+
+        <!-- RONDÔNIA / AMAZONAS / ACRE / RORAIMA -->
+        <div style="background:#38a349;padding:14px 24px;display:flex;align-items:center;gap:12px;">
+          <div style="font-size:18px;">📍</div>
+          <div style="font-size:14px;font-weight:800;color:white;letter-spacing:0.5px;">Amazônia Ocidental · RO · AM · AC · RR</div>
+        </div>
+        <div style="padding:18px 24px;">
+          <div class="grid-2">
+            <div style="padding:10px 14px;background:#f4f8fc;border-radius:8px;border-left:3px solid #38a349;">
+              <div style="font-size:13px;font-weight:700;color:#1a2e3b;">Porto Velho · RO</div>
+              <div style="font-size:11px;color:#000;">Capital · hub logístico amazônico</div>
+            </div>
+            <div style="padding:10px 14px;background:#f4f8fc;border-radius:8px;border-left:3px solid #38a349;">
+              <div style="font-size:13px;font-weight:700;color:#1a2e3b;">Manaus · AM</div>
+              <div style="font-size:11px;color:#000;">Capital · Polo Industrial · maior cidade do Norte</div>
+            </div>
+            <div style="padding:10px 14px;background:#f4f8fc;border-radius:8px;border-left:3px solid #38a349;">
+              <div style="font-size:13px;font-weight:700;color:#1a2e3b;">Rio Branco · AC</div>
+              <div style="font-size:11px;color:#000;">Capital · atendimento Cat® no Acre</div>
+            </div>
+            <div style="padding:10px 14px;background:#f4f8fc;border-radius:8px;border-left:3px solid #38a349;">
+              <div style="font-size:13px;font-weight:700;color:#1a2e3b;">Boa Vista · RR</div>
+              <div style="font-size:11px;color:#000;">Capital · atendimento Cat® em Roraima</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+</main>
+
+<footer class="footer">
+  <div class="credits-inner">
+
+    <div class="credit-item">
+      <img class="rouanet" src="https://the-blue-city.github.io/content/logo-rouanet-positivo.png" alt="Lei Rouanet">
+    </div>
+
+    <div class="credit-sep"></div>
+
+    <div class="credit-item">
+      <span class="rot">Patrocínio</span>
+      <a href="https://www.sotreq.com.br/" target="_blank" rel="noopener"><img src="https://the-blue-city.github.io/content/logo-sotreq.png" alt="Sotreq"></a>
+    </div>
+
+    <div class="credit-sep"></div>
+
+    <div class="credit-item">
+      <span class="rot">Realização</span>
+      <img class="tbc" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAyMDQuMSAzNi44Ij4KICA8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMzAuNi4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogMi4xLjQgQnVpbGQgMTA5KSAgLS0+CiAgPGRlZnM+CiAgICA8c3R5bGU+CiAgICAgIC5zdDAgewogICAgICAgIGZpbGw6ICNmZmY7CiAgICAgIH0KCiAgICAgIC5zdDEgewogICAgICAgIGZpbGw6ICMwMDE1MjI7CiAgICAgIH0KCiAgICAgIC5zdDIgewogICAgICAgIGZpbGw6ICMwYzllZDk7CiAgICAgIH0KICAgIDwvc3R5bGU+CiAgPC9kZWZzPgogIDxnPgogICAgPGNpcmNsZSBjbGFzcz0ic3QxIiBjeD0iMTguNCIgY3k9IjE4LjQiIHI9IjE4LjQiLz4KICAgIDxnPgogICAgICA8cmVjdCBjbGFzcz0ic3QwIiB4PSI3LjgiIHk9IjEzLjIiIHdpZHRoPSIyMC44IiBoZWlnaHQ9IjMuMiIvPgogICAgICA8cGF0aCBjbGFzcz0ic3QyIiBkPSJNMjcuMywxOC43bC0uMi4yYy0xLjMsMS4xLTIuNCwyLjEtNC4xLDIuMXMtMi41LS40LTQuMS0xLjNjLTIuMS0xLjEtMy45LTEuNy01LjYtMS43LTIuOCwwLTQuNiwxLjYtNiwyLjlsLS4yLjIsMiwyLjQuMi0uMmMxLjMtMS4xLDIuNC0yLjEsNC4xLTIuMXMyLjUuNCw0LjEsMS4zYzIuMSwxLjEsMy45LDEuNyw1LjYsMS43aDBjMi43LDAsNC41LTEuNiw1LjktMi45bC4yLS4yLTItMi40aDBaIi8+CiAgICA8L2c+CiAgPC9nPgogIDxnPgogICAgPHBhdGggY2xhc3M9InN0MCIgZD0iTTU2LjgsMTIuNWgtNS43djE0LjloLTQuM3YtMTQuOWgtNS43di0zLjhoMTUuN3YzLjhaIi8+CiAgICA8cGF0aCBjbGFzcz0ic3QwIiBkPSJNNzEuNCwyNy4zaC00LjJ2LTcuNmMwLS45LS4yLTEuNS0uNi0xLjlzLS45LS42LTEuNC0uNi0uNywwLTEuMS4zYy0uNC4yLS44LjUtMS4xLjgtLjMuNC0uNi44LS43LDEuMnY3LjhoLTQuMlY4LjJoNC4ydjcuOWMuNS0uOCwxLjItMS41LDItMS45czEuOC0uNiwyLjgtLjYsMS43LjIsMi4yLjVjLjYuMywxLC43LDEuMywxLjJzLjUsMSwuNiwxLjdjMCwuNi4yLDEuMi4yLDEuOHY4LjdzMC0uMiwwLS4yWiIvPgogICAgPHBhdGggY2xhc3M9InN0MCIgZD0iTTgwLjIsMjcuNmMtMS4yLDAtMi4yLS4yLTMuMS0uNnMtMS43LS45LTIuMy0xLjVjLS42LS42LTEuMS0xLjQtMS41LTIuMi0uMy0uOC0uNS0xLjctLjUtMi42LDAtMS4zLjMtMi41LjktMy42czEuNC0xLjksMi41LTIuNiwyLjQtMSw0LTEsMi45LjMsNCwxLDEuOSwxLjUsMi41LDIuNi45LDIuMi45LDMuNSwwLC41LDAsLjd2LjZoLTEwLjJjMCwuNi4yLDEuMS41LDEuNXMuNy43LDEuMS45Yy41LjIuOS4zLDEuNC4zczEuMi0uMSwxLjgtLjRjLjYtLjMuOS0uNywxLjEtMS4ybDMuNiwxYy0uNC43LS44LDEuMy0xLjUsMS45LS42LjUtMS40LDEtMi4yLDEuMy0uOS4zLTEuOC41LTIuOS41aC0uMVpNNzcuMiwxOS4yaDZjMC0uNi0uMi0xLS41LTEuNS0uMy0uNC0uNi0uNy0xLjEtMXMtLjktLjMtMS41LS4zLTEsLjEtMS40LjNjLS40LjItLjguNS0xLjEuOS0uMy40LS40LjktLjUsMS41aDBaIi8+CiAgICA8cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTEwLjMsMjIuNWMwLDEuMS0uMywyLS44LDIuNy0uNi43LTEuMywxLjItMi4zLDEuNnMtMiwuNS0zLjIuNWgtOS4xVjguN2gxMC40Yy45LDAsMS42LjIsMi4zLjcuNi41LDEuMSwxLjEsMS41LDEuOC4zLjcuNSwxLjUuNSwyLjNzLS4yLDEuNy0uNywyLjVjLS40LjgtMS4xLDEuNC0yLDEuOCwxLjEuMywxLjkuOSwyLjUsMS43LjYuOC45LDEuOC45LDMuMWgwWk05OS4yLDEyLjR2My45aDQuMmMuMywwLC42LDAsLjktLjIuMy0uMS41LS40LjctLjYuMi0uMy4yLS42LjItMS4xczAtLjgtLjItMS4xYzAtLjMtLjMtLjUtLjYtLjYtLjItLjEtLjUtLjItLjktLjJoLTQuNC4xWk0xMDYsMjEuN2MwLS40LDAtLjctLjItMS4xLS4yLS4zLS40LS42LS42LS43cy0uNi0uMy0uOS0uM2gtNC45djQuMWg0LjhjLjQsMCwuNywwLDEtLjMuMy0uMi41LS40LjctLjcuMi0uMy4yLS42LjItMWgwWiIvPgogICAgPHBhdGggY2xhc3M9InN0MCIgZD0iTTExMiw4LjJoNC4ydjE0LjNjMCwuNiwwLDEsLjMsMS4yLjIuMi41LjQuOS40cy41LDAsLjgtLjFjLjMsMCwuNS0uMi43LS4zbC42LDMuMmMtLjUuMi0xLjEuNC0xLjguNi0uNy4yLTEuMy4yLTEuOS4yLTEuMiwwLTIuMS0uMy0yLjgtMS0uNi0uNi0xLTEuNi0xLTIuN3YtMTUuN2gwWiIvPgogICAgPHBhdGggY2xhc3M9InN0MCIgZD0iTTEyMC4yLDIyLjV2LTguOGg0LjJ2Ny44YzAsLjguMiwxLjQuNSwxLjkuMy40LjguNywxLjQuN3MuOCwwLDEuMS0uMmMuNC0uMS43LS4zLDEtLjZzLjYtLjcuOS0xLjF2LTguNGg0LjJ2OWMwLC40LDAsLjcuMi45LjEuMi40LjMuNy4zdjMuNWMtLjQsMC0uNy4xLTEsLjJzLS41LDAtLjgsMGMtLjcsMC0xLjMtLjEtMS44LS40LS40LS4zLS43LS43LS44LTEuM3YtLjhjLS43LjktMS41LDEuNi0yLjQsMnMtMiwuNi0zLjIuNi0yLjUtLjQtMy4yLTEuMy0xLjEtMi4yLTEuMS0zLjh2LS4yaC4xWiIvPgogICAgPHBhdGggY2xhc3M9InN0MCIgZD0iTTE0Mi45LDI3LjZjLTEuMiwwLTIuMi0uMi0zLjEtLjYtLjktLjQtMS43LS45LTIuMy0xLjVzLTEuMS0xLjQtMS41LTIuMmMtLjMtLjgtLjUtMS43LS41LTIuNiwwLTEuMy4zLTIuNS45LTMuNi42LTEuMSwxLjQtMS45LDIuNS0yLjZzMi40LTEsNC0xLDIuOS4zLDQsMWMxLjEuNiwxLjksMS41LDIuNSwyLjZzLjksMi4yLjksMy41LDAsLjUsMCwuN3YuNmgtMTAuMmMwLC42LjIsMS4xLjUsMS41cy43LjcsMS4xLjljLjUuMi45LjMsMS40LjNzMS4yLS4xLDEuOC0uNC45LS43LDEuMS0xLjJsMy42LDFjLS40LjctLjgsMS4zLTEuNSwxLjktLjYuNS0xLjQsMS0yLjIsMS4zLS45LjMtMS44LjUtMi45LjVoLS4xWk0xMzkuOCwxOS4yaDZjMC0uNi0uMi0xLS41LTEuNS0uMy0uNC0uNi0uNy0xLjEtMS0uNC0uMi0uOS0uMy0xLjUtLjNzLTEsLjEtMS40LjNjLS40LjItLjguNS0xLjEuOXMtLjQuOS0uNSwxLjVoLjFaIi8+CiAgICA8cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTU2LjUsMTcuOGMwLTEuMS4yLTIuMi42LTMuMy40LTEuMSwxLTIuMSwxLjgtM3MxLjgtMS42LDMtMi4yYzEuMi0uNSwyLjUtLjgsMy45LS44czMuMy40LDQuNiwxLjEsMi4zLDEuNywyLjksMi45bC0zLjMsMi4zYy0uMy0uNy0uNi0xLjItMS4xLTEuNnMtMS0uNi0xLjUtLjhjLS42LS4xLTEuMS0uMi0xLjYtLjItLjgsMC0xLjUuMi0yLjEuNXMtMS4xLjgtMS41LDEuMy0uNywxLjEtLjksMS44Yy0uMi43LS4zLDEuMy0uMywycy4xLDEuNS40LDIuMmMuMi43LjYsMS4zLDEsMS44cy45LjksMS42LDEuMmMuNi4zLDEuMy41LDIsLjVzMS4xLDAsMS42LS4yLDEtLjQsMS41LS44LjgtLjksMS4xLTEuNWwzLjUsMi4xYy0uNC45LTEsMS43LTEuOCwyLjMtLjguNi0xLjgsMS4xLTIuOCwxLjVzLTIuMS41LTMuMi41LTIuNi0uMy0zLjctLjhjLTEuMS0uNi0yLjEtMS4zLTIuOS0yLjItLjgtLjktMS41LTItMS45LTMuMXMtLjctMi4zLS43LTMuNWgtLjJaIi8+CiAgICA8cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTc0LjgsMTJ2LTMuOGg0LjJ2My44aC00LjJaTTE3NC44LDI3LjN2LTEzLjhoNC4ydjEzLjhzLTQuMiwwLTQuMiwwWiIvPgogICAgPHBhdGggY2xhc3M9InN0MCIgZD0iTTE5MC4zLDI2LjZjLS40LjItLjguMy0xLjIuNS0uNS4yLS45LjMtMS40LjQtLjUsMC0xLC4xLTEuNS4xcy0xLjMtLjEtMS45LS4zLTEtLjYtMS40LTEuMi0uNS0xLjItLjUtMi4xdi03LjFoLTEuOHYtMy4yaDEuOHYtNC40aDQuMnY0LjRoMi44djMuMmgtMi44djUuNmMwLC41LjEuOC4zLDFzLjUuMy45LjMuNiwwLDEtLjJjLjMtLjEuNi0uMi45LS4zbC44LDMuM2gtLjJaIi8+CiAgICA8cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTkxLjQsMjkuNGMuNCwwLC43LjIsMSwuMmguOGMuNCwwLC42LDAsLjktLjJzLjQtLjQuNi0uOGMuMi0uNC4zLS44LjUtMS40bC01LjItMTMuN2g0LjNsMy4yLDkuNCwyLjctOS40aDMuOWwtNS4zLDE1LjljLS4yLjctLjYsMS40LTEuMSwycy0xLjEsMS0xLjksMS40Yy0uNy4zLTEuNS41LTIuNC41aC0xLjFjLS40LDAtLjctLjItMS4xLS4zdi0zLjZoLjJaIi8+CiAgPC9nPgo8L3N2Zz4=" alt="The Blue City">
+    </div>
+
+    <div class="credit-sep"></div>
+
+    <div class="credit-item">
+      <span class="rot">Powered by</span>
+      <a href="https://pok.tech/" target="_blank" rel="noopener"><img class="pok" src="https://the-blue-city.github.io/content/pok-logo-branco-fundotransparente.svg" alt="POK"></a>
+    </div>
+
+    <div class="credit-sep"></div>
+
+    <div class="credit-item">
+      <a href="https://www.gov.br/cultura/pt-br" target="_blank" rel="noopener"><img src="https://the-blue-city.github.io/content/logo-minc.png" alt="Ministério da Cultura"></a>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <span>Contato: <a href="mailto:contato@thebluecity.app">contato@thebluecity.app</a></span>
+    <span>© 2026 The Blue City · Missão Cidade Azul. Todos os direitos reservados.</span>
+  </div>
+</footer>
+
+<script>
+  // ===== Menu mobile =====
+  const links = document.getElementById('topnavLinks');
+  const menuToggle = document.getElementById('menuToggle');
+  function toggleMenu() {
+    links.classList.toggle('open');
+    menuToggle.classList.toggle('open');
+  }
+  menuToggle.addEventListener('click', toggleMenu);
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    menuToggle.classList.remove('open');
+  }));
+
+  // ===== Scrollspy =====
+  const sections = document.querySelectorAll('.section');
+  const navLinks = document.querySelectorAll('.topnav-link');
+  const byId = id => document.querySelector(`.topnav-link[href="#${id}"]`);
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        const link = byId(entry.target.id);
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+
+  sections.forEach(s => observer.observe(s));
+
+  // ===== Mapa de escolas =====
+  let mapEscolasInit = false;
+  function initMapEscolas() {
+    if (mapEscolasInit || typeof L === 'undefined') return;
+    mapEscolasInit = true;
+    const me = L.map('map-escolas', { zoomControl: true, scrollWheelZoom: false }).setView([-10.230, -48.318], 12);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap contributors', maxZoom: 19 }).addTo(me);
+    const schools = [
+      { lat: -10.1992652, lng: -48.3123871, name: 'IFTO – Campus Palmas', note: '✓ Aderiu · Plano Diretor Sul', pending: false },
+      { lat: -10.1800446, lng: -48.3627952, name: 'UFT – Campus Palmas', note: '✓ Aderiu · Plano Diretor Norte', pending: false },
+      { lat: -10.2776290, lng: -48.3350335, name: 'ULBRA – Campus Palmas', note: '⏳ Pendente · Plano Diretor Sul', pending: true }
+    ];
+    schools.forEach(s => {
+      const color = s.pending ? '#d9a441' : '#5fb670';
+      const label = s.pending ? '⏳' : '★';
+      const icon = L.divIcon({ className: '', html: '<div style="width:38px;height:38px;border-radius:50%;background:' + color + ';border:3px solid white;box-shadow:0 2px 8px rgba(0,0,0,0.25);display:flex;align-items:center;justify-content:center;font-size:16px;color:white;">' + label + '</div>', iconSize: [38, 38], iconAnchor: [19, 19] });
+      L.marker([s.lat, s.lng], { icon }).addTo(me).bindPopup(`<b style="font-family:Montserrat,sans-serif;color:#1a2e3b;">${s.name}</b><br><small style="color:#6b7f95;">${s.note}</small>`);
+    });
+    const sotreqIcon = L.divIcon({ className: '', html: '<div style="width:28px;height:28px;border-radius:50%;background:#f2b705;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#1a2e3b;font-family:Montserrat,sans-serif;">S</div>', iconSize: [28, 28], iconAnchor: [14, 14] });
+    L.marker([-10.2308063, -48.3105964], { icon: sotreqIcon }).addTo(me).bindPopup('<b style="font-family:Montserrat,sans-serif;">Sotreq Palmas</b>');
+    setTimeout(() => me.invalidateSize(), 250);
+  }
+  const mapObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) initMapEscolas(); });
+  }, { threshold: 0.1 });
+  const mapEl = document.getElementById('map-escolas');
+  if (mapEl) mapObserver.observe(mapEl);
+</script>
+</body>
+</html>
