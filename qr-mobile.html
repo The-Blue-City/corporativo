@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Missão Cidade Azul — Acesso via QR</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue:   #2858a0;
+    --green:  #5fb670;
+    --teal:   #468182;
+    --purple: #7c5cbf;
+    --gold:   #d9a520;
+    --ink:    #1a2e3b;
+    --muted:  #6b7f95;
+    --bg:     #f4f8fc;
+    --border: #e0e8f0;
+    --card:   #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: #dde6ee;
+    color: var(--ink);
+  }
+  a { text-decoration: none; color: inherit; }
+
+  .stage {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 16px;
+  }
+
+  .phone {
+    width: 375px;
+    max-width: 100%;
+    background: var(--bg);
+    border-radius: 38px;
+    box-shadow: 0 30px 60px -20px rgba(20,50,80,0.35), 0 0 0 10px #fff;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--border);
+  }
+
+  .notch {
+    position: absolute;
+    top: 10px; left: 50%; transform: translateX(-50%);
+    width: 120px; height: 22px;
+    background: #eef2f6;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    z-index: 10;
+  }
+
+  /* ===== top banner, light — matches topbar/section-head treatment ===== */
+  .top {
+    padding: 46px 22px 30px;
+    text-align: center;
+    background: #ffffff;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brand-row {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    margin-bottom: 18px;
+  }
+  .brand-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
+  .brand-name {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--blue);
+  }
+
+  .top h1 {
+    font-size: 22px; font-weight: 800; line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+  .top h1 em {
+    font-style: normal;
+    background: linear-gradient(90deg, var(--blue) 0%, var(--green) 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
+  .top p {
+    font-size: 13.5px; line-height: 1.6; color: #000000;
+    max-width: 30ch; margin: 0 auto;
+  }
+
+  /* ===== preview card, styled like .mission ===== */
+  .content { padding: 22px 20px 26px; position: relative; z-index: 3; }
+
+  .mission {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 10px 26px rgba(20,50,80,0.14);
+    margin-bottom: 20px;
+  }
+
+  .mission-thumb {
+    position: relative;
+    height: 140px;
+    background: linear-gradient(135deg, #2f7a45, #6ab86f);
+  }
+  .mission-thumb svg { display: block; }
+
+  .ovl {
+    position: absolute; top: 12px;
+    font-size: 10px; font-weight: 700;
+    padding: 4px 11px; border-radius: 20px;
+  }
+  .ovl-left { left: 12px; background: rgba(255,255,255,0.92); color: var(--ink); }
+  .ovl-right { right: 12px; background: rgba(255,255,255,0.92); color: var(--ink); }
+
+  .mission-body { padding: 16px 18px 18px; }
+  .pill-tema {
+    display: inline-block;
+    font-size: 10.5px; font-weight: 700; color: #2a7a3a;
+    background: #d4f0d9; border-radius: 20px; padding: 3px 11px; margin-bottom: 10px;
+  }
+  .mission-title { font-size: 15px; font-weight: 700; color: var(--ink); line-height: 1.35; margin-bottom: 6px; }
+  .mission-desc { font-size: 12.5px; line-height: 1.55; color: #000000; }
+
+  /* ===== status line ===== */
+  .status-line {
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 16px;
+  }
+  .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 0 4px rgba(217,165,32,0.16);
+  }
+  .status-line span { font-size: 12px; color: #000000; font-weight: 400; }
+  .status-line b { color: #000000; font-weight: 700; }
+
+  /* ===== form, styled to match site inputs/buttons ===== */
+  .field { margin-bottom: 12px; }
+  .field label {
+    display: block; font-size: 11.5px; font-weight: 600;
+    letter-spacing: 0.02em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 6px;
+  }
+  .field input {
+    width: 100%; padding: 12px 14px;
+    border-radius: 8px; border: 1px solid var(--border);
+    background: #fff; font-family: 'Montserrat', sans-serif;
+    font-size: 14px; color: var(--ink);
+  }
+  .field input::placeholder { color: #9fb0be; }
+  .field input:focus { outline: 2px solid var(--blue); outline-offset: 1px; border-color: var(--blue); }
+
+  .btn {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif; font-size: 14.5px; font-weight: 700;
+    padding: 13px 22px; border-radius: 8px; border: none; cursor: pointer;
+    background: var(--blue); color: #fff;
+    box-shadow: 0 10px 20px -10px rgba(40,88,160,0.6);
+    transition: transform .15s, box-shadow .15s;
+    margin-top: 4px;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn:focus-visible { outline: 3px solid var(--green); outline-offset: 3px; }
+
+  .fine-print {
+    margin-top: 12px; font-size: 11px; line-height: 1.5;
+    color: #000000; text-align: center;
+  }
+
+  .divider { height: 1px; background: var(--border); margin: 20px 0 16px; }
+
+  .alt-path {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 12px; color: var(--muted); line-height: 1.5;
+  }
+  .alt-path svg { flex-shrink: 0; margin-top: 2px; }
+  .alt-path b { color: var(--ink); }
+</style>
+</head>
+<body>
+
+<div class="stage">
+  <div class="phone">
+    <div class="notch"></div>
+
+    <div class="top">
+      <div class="brand-row">
+        <span class="brand-dot"></span>
+        <span class="brand-name">Missão Cidade Azul</span>
+      </div>
+      <h1>Essa jornada continua no <em>computador</em></h1>
+      <p>Esse jogo foi feito para tela grande. Deixa seu nome e e-mail que a gente te manda o link agora.</p>
+    </div>
+
+    <div class="content">
+
+      <div class="mission">
+        <div class="mission-thumb">
+          <img src="https://the-blue-city.github.io/content/cover-jogo.png" alt="Missão Termômetro Zero" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <div class="mission-body">
+          <span class="pill-tema">Meio ambiente</span>
+          <div class="mission-title">Missão Termômetro Zero</div>
+          <div class="mission-desc">Explore, investigue pistas e proponha ações para reduzir o aquecimento da cidade.</div>
+        </div>
+      </div>
+
+      <div class="status-line">
+        <span class="dot"></span>
+        <span><b>QR reconhecido</b> jogo disponível só para computador</span>
+      </div>
+
+      <form>
+        <div class="field">
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" name="nome" placeholder="Como podemos te chamar?">
+        </div>
+        <div class="field">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com">
+        </div>
+        <button type="submit" class="btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+          Enviar link para meu e-mail
+        </button>
+      </form>
+
+      <p class="fine-print">Usamos seu e-mail só para te enviar o acesso à jornada.</p>
+
+
+  </div>
+</div>
+
+</body>
+</html>
