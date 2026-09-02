@@ -205,6 +205,8 @@
     .hero-headline { font-size:21px; }
     .stats-row { grid-template-columns:1fr !important; }
   }
+  .map-label { background:rgba(255,255,255,0.94); border:1px solid rgba(26,46,59,0.15); border-radius:6px; color:#1a2e3b; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; padding:3px 8px; box-shadow:0 2px 6px rgba(0,0,0,0.15); white-space:nowrap; }
+  .map-label::before { display:none; }
 </style>
 </head>
 <body>
@@ -425,9 +427,9 @@
             <a href="mailto:diem@ifto.edu.br" style="color:#2858a0;">diem@ifto.edu.br</a>
           </div>
           <div>
-            <div class="contato-lbl">André Rincon</div>
+            <div class="contato-lbl">Edmar Vinícius de Carvalho</div>
             <div class="contato-sub">DIEM – Reitoria</div>
-            <a href="tel:+5563999417195" style="color:#468182;">cel: (63) 99941-7195</a>
+            <a href="mailto:edmar.carvalho@ifto.edu.br" style="color:#468182;">edmar.carvalho@ifto.edu.br</a>
           </div>
         </div>
         <a href="sotreq-ifto.html" class="cta-btn" style="background:#468182;font-size:12px;padding:9px 16px;display:inline-flex;font-weight:400;">Ver carta de parceria <span aria-hidden="true">→</span></a>
@@ -1059,10 +1061,12 @@
       const color = s.pending ? '#d9a441' : '#5fb670';
       const label = s.pending ? '⏳' : '★';
       const icon = L.divIcon({ className: '', html: '<div style="width:38px;height:38px;border-radius:50%;background:' + color + ';border:3px solid white;box-shadow:0 2px 8px rgba(0,0,0,0.25);display:flex;align-items:center;justify-content:center;font-size:16px;color:white;">' + label + '</div>', iconSize: [38, 38], iconAnchor: [19, 19] });
-      L.marker([s.lat, s.lng], { icon }).addTo(me).bindPopup(`<b style="font-family:Montserrat,sans-serif;color:#1a2e3b;">${s.name}</b><br><small style="color:#6b7f95;">${s.note}</small>`);
+      L.marker([s.lat, s.lng], { icon }).addTo(me)
+        .bindPopup(`<b style="font-family:Montserrat,sans-serif;color:#1a2e3b;">${s.name}</b><br><small style="color:#6b7f95;">${s.note}</small>`)
+        .bindTooltip(s.name, { permanent: true, direction: 'right', offset: [22, 0], className: 'map-label' });
     });
     const sotreqIcon = L.divIcon({ className: '', html: '<div style="width:28px;height:28px;border-radius:50%;background:#f2b705;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#1a2e3b;font-family:Montserrat,sans-serif;">S</div>', iconSize: [28, 28], iconAnchor: [14, 14] });
-    L.marker([-10.2308063, -48.3105964], { icon: sotreqIcon }).addTo(me).bindPopup('<b style="font-family:Montserrat,sans-serif;">Sotreq Palmas</b>');
+    L.marker([-10.2308063, -48.3105964], { icon: sotreqIcon }).addTo(me).bindPopup('<b style="font-family:Montserrat,sans-serif;">Sotreq Palmas</b>').bindTooltip('Sotreq Palmas', { permanent: true, direction: 'right', offset: [17, 0], className: 'map-label' });
     setTimeout(() => me.invalidateSize(), 250);
   }
   const mapObserver = new IntersectionObserver((entries) => {
