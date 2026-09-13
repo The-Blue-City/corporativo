@@ -111,6 +111,7 @@
   .img-placeholder .ph-icon { font-size:28px; opacity:0.6; }
   .img-placeholder .ph-label { font-size:12px; font-weight:600; letter-spacing:0.5px; }
 
+  .resp-divider { border-left:1px solid rgba(40,88,160,0.14); padding-left:24px; }
   .badge-pill { display:inline-flex; align-items:center; gap:6px; background:white; border:1.5px solid rgba(40,88,160,0.15); color:#1a2e3b; font-size:12px; font-weight:700; padding:4px 14px; border-radius:20px; }
 
   .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
@@ -169,6 +170,7 @@
 
     .grid-3, .grid-2 { grid-template-columns:1fr; }
     .grid-comp-2, .grid-comp-3 { grid-template-columns:1fr !important; }
+    .resp-divider { border-left:none; padding-left:0; }
     .grid-comp-4 { grid-template-columns:1fr 1fr !important; }
     .stats-row { grid-template-columns:1fr 1fr; gap:10px; }
     .feature-card { padding:16px 18px; }
@@ -289,19 +291,168 @@
 
         <div style="margin-top:36px;">
           <div class="content-heading">Cronograma</div>
-          <p style="font-size:13px;color:#000000;margin:10px 0 0;">Conteúdo a definir</p>
+
+          <style>
+          .ct-wrap { margin:6px 0 22px; }
+          .ct-scroll { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+          .ct-inner { min-width:680px; }
+          .ct-months { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; position:relative; }
+          .ct-months::before { content:''; position:absolute; top:25px; left:11%; right:11%; height:2px; background:#e0e8f0; z-index:0; }
+          .ct-m { text-align:center; font-size:13px; font-weight:800; color:#1a2e3b; position:relative; padding-bottom:22px; z-index:1; }
+          .ct-m::after { content:''; position:absolute; top:19px; left:50%; transform:translateX(-50%); width:11px; height:11px; border-radius:50%; background:#1a2e3b; border:2px solid #fff; box-shadow:0 0 0 1.5px #e0e8f0; }
+          .ct-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:4px; }
+          .ct-col { display:flex; flex-direction:column; gap:10px; }
+          .ct-phase { border-radius:7px; padding:6px 10px; text-align:center; font-size:12px; font-weight:800; color:#fff; background:#2858a0; }
+          .ct-card { border:1px solid #e0e8f0; border-radius:10px; padding:10px 11px 11px; background:#fff; box-shadow:0 2px 8px rgba(0,0,0,0.04); text-align:center; }
+          .ct-emoji { font-size:16px; line-height:1; margin-bottom:4px; }
+          .ct-role { font-size:12px; font-weight:800; color:#1a2e3b; line-height:1.3; margin-bottom:2px; }
+          .ct-act { font-size:12px; color:#000; line-height:1.45; }
+          .ct-legend { display:flex; flex-wrap:wrap; gap:18px 28px; justify-content:center; margin-top:18px; padding-top:14px; border-top:1px solid #e8eef4; }
+          .ct-leg { display:flex; align-items:center; gap:7px; font-size:12px; color:#000; }
+          .ct-leg span { font-size:14px; }
+          </style>
+
+          <div class="ct-wrap"><div class="ct-scroll"><div class="ct-inner">
+            <div class="ct-months">
+              <div class="ct-m">SET</div>
+              <div class="ct-m">OUT</div>
+              <div class="ct-m">NOV</div>
+              <div class="ct-m">DEZ</div>
+            </div>
+            <div class="ct-grid">
+              <div class="ct-col">
+                <div class="ct-phase">Articulação<br>Mobilização</div>
+                <div class="ct-card"><div class="ct-emoji">🏫</div><div class="ct-role">Vitor Castro</div><div class="ct-act">Finalizar parcerias institucionais UFT e IFTO</div></div>
+                <div class="ct-card"><div class="ct-emoji">🏫</div><div class="ct-role">Vitor Castro</div><div class="ct-act">Fechar datas de palestras UFT e IFTO</div></div>
+                <div class="ct-card"><div class="ct-emoji">🏫</div><div class="ct-role">Vitor Castro</div><div class="ct-act">Recrutar monitores para divulgação</div></div>
+                <div class="ct-card"><div class="ct-emoji">🏫</div><div class="ct-role">Vitor Castro</div><div class="ct-act">Recrutar fotógrafo para palestras</div></div>
+                <div class="ct-card"><div class="ct-emoji">🎭</div><div class="ct-role">Jairo Faria</div><div class="ct-act">Fechar local de exposição</div></div>
+                <div class="ct-card"><div class="ct-emoji">🎭</div><div class="ct-role">Jairo Faria</div><div class="ct-act">Fechar data de exposição</div></div>
+                <div class="ct-card"><div class="ct-emoji">🎭</div><div class="ct-role">Jairo Faria</div><div class="ct-act">Articulação artistas gráficos</div></div>
+                <div class="ct-card"><div class="ct-emoji">🎭</div><div class="ct-role">Jairo Faria</div><div class="ct-act">Articulação comunidade indígena</div></div>
+                <div class="ct-card"><div class="ct-emoji">📰</div><div class="ct-role">Assessoria de Imprensa</div><div class="ct-act">Articulação de assessor</div></div>
+              </div>
+              <div class="ct-col">
+                <div class="ct-phase">Lançamento do Jogo 05/10<br>Produção da Exposição</div>
+                <div class="ct-card"><div class="ct-emoji">🏫</div><div class="ct-role">Vitor Castro</div><div class="ct-act">Ações de engajamento para atrair jogadores</div></div>
+                <div class="ct-card"><div class="ct-emoji">🏫</div><div class="ct-role">Vitor Castro</div><div class="ct-act">Palestra UFT</div></div>
+                <div class="ct-card"><div class="ct-emoji">🏫</div><div class="ct-role">Vitor Castro</div><div class="ct-act">Palestra IFTO</div></div>
+                <div class="ct-card"><div class="ct-emoji">🎭</div><div class="ct-role">Jairo Faria</div><div class="ct-act">Definição dos artistas gráficos</div></div>
+                <div class="ct-card"><div class="ct-emoji">🎭</div><div class="ct-role">Jairo Faria</div><div class="ct-act">Definição dos artistas indígenas</div></div>
+                <div class="ct-card"><div class="ct-emoji">🎭</div><div class="ct-role">Jairo Faria</div><div class="ct-act">Definição das estruturas</div></div>
+                <div class="ct-card"><div class="ct-emoji">🎭</div><div class="ct-role">Jairo Faria</div><div class="ct-act">Produção da exposição</div></div>
+                <div class="ct-card"><div class="ct-emoji">🎭</div><div class="ct-role">Jairo Faria</div><div class="ct-act">Produção do lançamento</div></div>
+                <div class="ct-card"><div class="ct-emoji">🎭</div><div class="ct-role">Jairo Faria</div><div class="ct-act">Recrutar fotógrafo/videomaker</div></div>
+                <div class="ct-card"><div class="ct-emoji">📰</div><div class="ct-role">Assessoria de Imprensa</div><div class="ct-act">Pré-lançamento da exposição</div></div>
+              </div>
+              <div class="ct-col">
+                <div class="ct-phase">Lançamento da exposição</div>
+                <div class="ct-card"><div class="ct-emoji">🏫</div><div class="ct-role">Vitor Castro</div><div class="ct-act">Ações de engajamento para atrair jogadores e visitantes</div></div>
+                <div class="ct-card"><div class="ct-emoji">🏫</div><div class="ct-role">Vitor Castro</div><div class="ct-act">Entrevistas com visitantes</div></div>
+                <div class="ct-card"><div class="ct-emoji">🎭</div><div class="ct-role">Jairo Faria</div><div class="ct-act">Evento de lançamento</div></div>
+                <div class="ct-card"><div class="ct-emoji">🎭</div><div class="ct-role">Jairo Faria</div><div class="ct-act">Acompanhamento da exposição</div></div>
+                <div class="ct-card"><div class="ct-emoji">🎭</div><div class="ct-role">Jairo Faria</div><div class="ct-act">Registro fotográfico e videográfico</div></div>
+                <div class="ct-card"><div class="ct-emoji">🎭</div><div class="ct-role">Jairo Faria</div><div class="ct-act">Entrevistas com visitantes</div></div>
+                <div class="ct-card"><div class="ct-emoji">📰</div><div class="ct-role">Assessoria de Imprensa</div><div class="ct-act">Lançamento da exposição</div></div>
+              </div>
+              <div class="ct-col">
+                <div class="ct-phase">Pós-produção</div>
+                <div class="ct-card"><div class="ct-emoji">🏫</div><div class="ct-role">Vitor Castro</div><div class="ct-act">Documentação</div></div>
+                <div class="ct-card"><div class="ct-emoji">🎭</div><div class="ct-role">Jairo Faria</div><div class="ct-act">Documentação</div></div>
+                <div class="ct-card"><div class="ct-emoji">🎭</div><div class="ct-role">Jairo Faria</div><div class="ct-act">Desmontagem</div></div>
+                <div class="ct-card"><div class="ct-emoji">📰</div><div class="ct-role">Assessoria de Imprensa</div><div class="ct-act">Cobertura pós-evento</div></div>
+              </div>
+            </div>
+            <div class="ct-legend"><div class="ct-leg"><span>🏫</span>Articulador Educacional</div><div class="ct-leg"><span>🎭</span>Produtor Cultural</div><div class="ct-leg"><span>📰</span>Assessoria de Imprensa</div></div>
+          </div></div></div>
+
+
         </div>
 
         <div style="margin-top:36px;">
           <div class="content-heading">Responsabilidades da equipe</div>
           <div class="grid-comp-2" style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:14px;">
             <div>
-              <h3 style="font-size:15px;font-weight:800;color:#1a2e3b;line-height:1.3;margin:0 0 8px;">Produtor Cultural</h3>
-              <p style="font-size:13px;color:#000000;margin:0;">Conteúdo a definir</p>
+              <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 12px;">
+                <h3 style="font-size:15px;font-weight:800;color:#1a2e3b;line-height:1.3;margin:0;">Produtor Cultural</h3>
+                <span class="badge-pill" style="background:#d4f0d9;border:1.5px solid rgba(95,182,112,0.4);color:#2f8f43;margin-left:auto;">Jairo Faria</span>
+              </div>
+
+              <div style="font-size:13px;font-weight:800;color:#5fb670;margin:0 0 6px;">Setembro <span style="color:#1a2e3b;">- Mobilização</span></div>
+              <ul style="font-size:13px;color:#000000;line-height:1.5;margin:0;padding-left:18px;">
+                <li style="margin-bottom:6px;"><strong>Até 18 de setembro:</strong> fechar local de exposição.</li>
+                <li style="margin-bottom:6px;"><strong>Até 25 de setembro:</strong> definir data da exposição (para novembro, no mínimo 20 dias). A definição da data é essencial para que possamos incluir a informação nos cartazes.</li>
+                <li style="margin-bottom:6px;"><strong>Até 30 de setembro:</strong> articulação com artistas gráficos.</li>
+                <li><strong>Até 30 de setembro:</strong> articulação com comunidade indígena.</li>
+              </ul>
+
+              <div style="font-size:13px;font-weight:800;color:#5fb670;margin:14px 0 6px;">Outubro</div>
+              <ul style="font-size:13px;color:#000000;line-height:1.5;margin:0;padding-left:18px;">
+                <li style="list-style:none;margin-left:-18px;background:#eaf6ec;border:1px solid rgba(95,182,112,0.4);border-left:3px solid #5fb670;border-radius:8px;padding:8px 12px;margin-bottom:10px;"><strong>05 de outubro:</strong> lançamento do jogo na UFT e no IFTO.</li>
+                <li style="margin-bottom:6px;"><strong>Até 09 de outubro:</strong> definição dos artistas gráficos participantes e data de envio das peças.</li>
+                <li style="margin-bottom:6px;"><strong>Até 09 de outubro:</strong> definição dos artistas indígenas participantes e data de envio das peças.</li>
+                <li style="margin-bottom:6px;"><strong>Até 09 de outubro:</strong> definição das estruturas necessárias para a exposição.</li>
+                <li style="margin-bottom:6px;"><strong>De 05 a 23 de outubro:</strong> produção da exposição.</li>
+                <li style="margin-bottom:6px;"><strong>De 26 a 30 de outubro:</strong> produção do lançamento da exposição.</li>
+                <li><strong>De 26 a 30 de outubro:</strong> recrutar fotógrafo/videomaker para lançamento da exposição.</li>
+              </ul>
+
+              <div style="font-size:13px;font-weight:800;color:#5fb670;margin:14px 0 6px;">Novembro</div>
+              <ul style="font-size:13px;color:#000000;line-height:1.5;margin:0;padding-left:18px;">
+                <li style="list-style:none;margin-left:-18px;background:#e8eefb;border:1px solid rgba(40,88,160,0.35);border-left:3px solid #2858a0;border-radius:8px;padding:8px 12px;margin-bottom:10px;"><strong>Data a definir</strong> – lançamento da exposição Termômetro Zero.</li>
+                <li style="margin-bottom:6px;"><strong>Novembro:</strong> evento de lançamento da exposição.</li>
+                <li style="margin-bottom:6px;"><strong>De 01 a 30 de novembro:</strong> acompanhamento da exposição.</li>
+                <li style="margin-bottom:6px;"><strong>De 01 a 30 de novembro:</strong> registro fotográfico e videográfico da exposição.</li>
+                <li><strong>De 01 a 30 de novembro:</strong> entrevistas com visitantes.</li>
+              </ul>
+
+              <div style="font-size:13px;font-weight:800;color:#5fb670;margin:14px 0 6px;">Dezembro</div>
+              <ul style="font-size:13px;color:#000000;line-height:1.5;margin:0;padding-left:18px;">
+                <li style="margin-bottom:6px;">Desmontagem da exposição.</li>
+                <li style="margin-bottom:6px;">Documentação para subir na plataforma (fotos e vídeos).</li>
+                <li>Documentação para subir na plataforma (entrevistas).</li>
+              </ul>
             </div>
-            <div>
-              <h3 style="font-size:15px;font-weight:800;color:#1a2e3b;line-height:1.3;margin:0 0 8px;">Articulador Educacional</h3>
-              <p style="font-size:13px;color:#000000;margin:0;">Conteúdo a definir</p>
+            <div class="resp-divider">
+              <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 12px;">
+                <h3 style="font-size:15px;font-weight:800;color:#1a2e3b;line-height:1.3;margin:0;">Articulador Educacional</h3>
+                <span class="badge-pill" style="background:#d9ebeb;border:1.5px solid rgba(70,129,130,0.35);color:#3c6f70;margin-left:auto;">Vitor Castro</span>
+              </div>
+
+              <div style="font-size:13px;font-weight:800;color:#5fb670;margin:0 0 6px;">Setembro <span style="color:#1a2e3b;">- Articulação</span></div>
+              <ul style="font-size:13px;color:#000000;line-height:1.5;margin:0 0 14px;padding-left:18px;">
+                <li style="margin-bottom:6px;"><strong>Até 18 de setembro:</strong> finalizar parcerias institucionais UFT e IFTO.</li>
+                <li style="margin-bottom:6px;"><strong>Até 18 de setembro:</strong> fechar datas de palestras para a primeira semana de outubro:
+                  <ul style="margin:5px 0 0;padding-left:18px;">
+                    <li style="margin-bottom:3px;">UFT: uma palestra (entre 05 a 09 de outubro).<br>Com participação do Proex/Inovatto.</li>
+                    <li>IFTO: uma palestra (entre 05 a 09 de outubro).<br>Com participação do DIEM.</li>
+                  </ul>
+                </li>
+                <li style="margin-bottom:6px;"><strong>Até 25 de setembro:</strong> imprimir cartazes para lançamento do jogo (cartazes serão enviados pela plataforma). Total 100 cartazes.</li>
+                <li style="margin-bottom:6px;"><strong>Até 25 de setembro:</strong> recrutar fotógrafo para documentação de palestras.</li>
+                <li><strong>Até 30 de setembro:</strong> recrutar monitores para ajudar na divulgação do jogo.</li>
+              </ul>
+
+              <div style="font-size:13px;font-weight:800;color:#5fb670;margin:0 0 6px;">Outubro</div>
+              <ul style="font-size:13px;color:#000000;line-height:1.5;margin:0;padding-left:18px;">
+                <li style="list-style:none;margin-left:-18px;background:#eaf6ec;border:1px solid rgba(95,182,112,0.4);border-left:3px solid #5fb670;border-radius:8px;padding:8px 12px;margin-bottom:10px;"><strong>05 de outubro:</strong> lançamento do jogo na UFT e no IFTO.</li>
+                <li style="margin-bottom:6px;"><strong>De 05 a 31 de outubro:</strong> ações de engajamento nas universidades para atrair jogadores.</li>
+                <li style="margin-bottom:6px;"><strong>Entre 05 e 09 de outubro:</strong> palestra UFT.<br>Com registro fotográfico.</li>
+                <li><strong>Entre 05 e 09 de outubro:</strong> palestra IFTO.<br>Com registro fotográfico.</li>
+              </ul>
+
+              <div style="font-size:13px;font-weight:800;color:#5fb670;margin:14px 0 6px;">Novembro</div>
+              <ul style="font-size:13px;color:#000000;line-height:1.5;margin:0;padding-left:18px;">
+                <li style="list-style:none;margin-left:-18px;background:#e8eefb;border:1px solid rgba(40,88,160,0.35);border-left:3px solid #2858a0;border-radius:8px;padding:8px 12px;margin-bottom:10px;"><strong>Data a definir</strong> – lançamento da exposição Termômetro Zero.</li>
+                <li style="margin-bottom:6px;"><strong>De 01 a 30 de novembro:</strong> ações de engajamento nas universidades para atrair jogadores e visitantes para a exposição.</li>
+                <li><strong>De 01 a 30 de novembro:</strong> entrevistas com visitantes.</li>
+              </ul>
+
+              <div style="font-size:13px;font-weight:800;color:#5fb670;margin:14px 0 6px;">Dezembro</div>
+              <ul style="font-size:13px;color:#000000;line-height:1.5;margin:0;padding-left:18px;">
+                <li style="margin-bottom:6px;">Documentação para subir na plataforma (fotos e vídeos).</li>
+                <li>Documentação para subir na plataforma (entrevistas).</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -445,7 +596,7 @@
             <h3 style="font-size:15px;font-weight:800;color:#1a2e3b;line-height:1.3;margin:0 0 10px;">Intervenções adicionais:</h3>
             <ul style="margin:0;padding-left:18px;font-size:13px;color:#000000;line-height:1.7;">
               <li>1 Estrutura para painel explicativo</li>
-              <li>20 cartazes</li>
+              <li>100 cartazes</li>
             </ul>
           </div>
         </div>
