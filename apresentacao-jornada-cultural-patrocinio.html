@@ -448,12 +448,11 @@
   .cert-grouppill-aluno { color:#2d7a3e; background:var(--green-light); }
   .cert-group-sub { font-size:12.5px; color:var(--muted); font-weight:600; }
   .cert-conheca { margin-top:32px; text-align:center; }
-  .cert-conheca-btn { display:inline-block; max-width:none; white-space:nowrap; background:#5123a4; color:#ffffff; font-size:12.5px; font-weight:500; line-height:1.5; text-decoration:none; text-align:center; padding:10px 20px; border-radius:10px; transition:background .15s ease; }
-  .cert-conheca-btn strong { font-weight:600; }
-  .cert-conheca-btn::after { content:"\2192"; margin-left:8px; font-weight:800; font-size:14px; }
-  .cert-conheca-btn:hover { background:#3f1b82; }
+  .cert-conheca-btn { display:inline-flex; align-items:center; justify-content:center; gap:10px; background:#2858a0; color:#ffffff; font-size:13px; font-weight:700; padding:12px 22px; border-radius:8px; text-decoration:none; transition:all 0.2s; box-shadow:0 2px 10px rgba(40,88,160,0.2); }
+  .cert-conheca-btn::after { content:"\2192"; }
+  .cert-conheca-btn:hover { background:#1a2e3b; transform:translateY(-2px); box-shadow:0 6px 18px rgba(40,88,160,0.28); }
   @media (max-width:900px) { .cert-side-cards { grid-template-columns:1fr; } }
-  @media (max-width:560px) { .cert-two { grid-template-columns:1fr; gap:28px; } .cert-side-cards .benefit-card { min-height:0; } .cert-conheca-btn { white-space:normal; font-size:12px; padding:10px 16px; } }
+  @media (max-width:560px) { .cert-two { grid-template-columns:1fr; gap:28px; } .cert-side-cards .benefit-card { min-height:0; } }
 </style>
 </head>
 <body>
@@ -1101,7 +1100,7 @@
 
       </div>
 
-      <p class="cert-conheca"><a class="cert-conheca-btn" href="https://pok.tech" target="_blank" rel="noopener" data-i18n-html="cert.conheca">Conheça a <strong>plataforma POK</strong> de certificações, credenciais e badges em blockchain</a></p>
+      <p class="cert-conheca"><a class="cert-conheca-btn" href="https://view.pok.tech/c/97249f96-141c-4358-a02f-d134d11433b1" target="_blank" rel="noopener" data-i18n="cert.conheca">Veja o certificado</a></p>
 
   </div>
 </section>
@@ -1712,7 +1711,7 @@
       'cert.a6.h': 'Educação Continuada',
       'cert.a6.p': 'Cada jogo gera uma credencial que se acumula ao longo da jornada, criando uma cadeia de educação continuada através da certificação.',
       'cert.a6.tag': 'Microcredenciais',
-      'cert.conheca': 'Conheça a <strong>plataforma POK</strong> de certificações, credenciais e badges em blockchain',
+      'cert.conheca': 'Veja o certificado',
       'ganhos.legado.h': 'Legado permanente na plataforma',
       'ganhos.legado.p': 'Tudo o que os estudantes produzem fica registrado em galerias públicas na plataforma The Blue City – um acervo vivo que documenta o engajamento, os projetos e a exposição final. A escola continua acessível como parte do programa mesmo após o evento.',
       'ganhos.legado.tag': 'Visibilidade contínua',
@@ -2031,7 +2030,7 @@
       'cert.a6.h': 'Educación Continua',
       'cert.a6.p': 'Cada juego genera una credencial que se acumula a lo largo de la jornada, creando una cadena de educación continua a través de la certificación.',
       'cert.a6.tag': 'Microcredenciais',
-      'cert.conheca': 'Conocé la <strong>plataforma POK</strong> de certificaciones, credenciales y badges en blockchain',
+      'cert.conheca': 'Mirá el certificado',
       'ganhos.legado.h': 'Legado permanente en la plataforma',
       'ganhos.legado.p': 'Todo lo que producen los estudiantes queda registrado en galerías públicas en la plataforma The Blue City – un acervo vivo que documenta el compromiso, los proyectos y la exposición final. La escuela sigue accesible como parte del programa incluso después del evento.',
       'ganhos.legado.tag': 'Visibilidad continua',
@@ -2350,7 +2349,7 @@
       'cert.a6.h': "Continuing Education",
       'cert.a6.p': "Each game generates a credential that accumulates throughout the journey, creating a chain of continuing education through certification.",
       'cert.a6.tag': "Microcredentials",
-      'cert.conheca': "Explore the <strong>POK platform</strong> for blockchain certifications, credentials and badges",
+      'cert.conheca': "See the certificate",
       'ganhos.legado.h': 'Permanent legacy on the platform',
       'ganhos.legado.p': 'Everything students produce is recorded in public galleries on The Blue City platform – a living archive that documents engagement, projects and the final exhibition. The school stays accessible as part of the programme even after the event.',
       'ganhos.legado.tag': 'Continuous visibility',
