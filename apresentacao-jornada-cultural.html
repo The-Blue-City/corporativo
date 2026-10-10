@@ -91,7 +91,7 @@
   .hero-desc { font-size:16px; color:#ffffff; max-width:640px; line-height:1.7; margin-bottom:0; }
 
   /* Hero split layout */
-  .hero-split { display:grid; grid-template-columns:1.15fr 1fr; gap:48px; align-items:center; margin-bottom:56px; }
+  .hero-split { display:grid; grid-template-columns:1.7fr 1fr; gap:48px; align-items:center; margin-bottom:56px; }
   .hero-text { display:flex; flex-direction:column; min-width:0; container-type:inline-size; }
   .hero-map { display:flex; align-items:center; justify-content:center; position:relative; }
   .hero-map svg { width:100%; max-width:520px; height:auto; display:block; }
@@ -454,8 +454,10 @@
   @media (max-width:900px) { .cert-side-cards { grid-template-columns:1fr; } }
   @media (max-width:560px) {
     .cert-two { grid-template-columns:1fr; gap:28px; } .cert-side-cards .benefit-card { min-height:0; } }
+  /* Rótulo da barra superior some antes de apertar o menu */
+  @media (max-width:1160px) { .topbar-brand-sub { display:none; } }
   /* Título do hero sempre em 3 linhas: escala com a largura da coluna e não quebra além dos <br> */
-  .hero .hero-title { max-width:none; white-space:nowrap; font-size:min(46px, 7.5cqw); }
+  .hero .hero-title { max-width:none; white-space:nowrap; font-size:min(58px, 7.5cqw); }
 </style>
 </head>
 <body>
@@ -488,7 +490,7 @@
           <path d="M199.1,33.7c.4,0,.7.2,1,.2h.8c.4,0,.6,0,.9-.2s.4-.4.6-.8c.2-.4.3-.8.5-1.4l-5.2-13.7h4.3l3.2,9.4,2.7-9.4h3.9l-5.3,15.9c-.2.7-.6,1.4-1.1,2s-1.1,1-1.9,1.4c-.7.3-1.5.5-2.4.5h-1.1c-.4,0-.7-.2-1.1-.3v-3.6h.2Z"/>
         </g>
       </svg>
-      <div class="topbar-brand-sub" data-i18n="topbar.sub">Jornada Cultural</div>
+      <div class="topbar-brand-sub" data-i18n="topbar.sub">Jornada Educativa e Cultural</div>
     </div>
     <nav class="topbar-nav" id="topbar-nav">
       <a href="#sobre" data-i18n="nav.sobre">Sobre</a>
@@ -631,8 +633,8 @@
 <section id="jornada" class="section-alt">
   <div class="container">
     <div class="eyebrow" data-i18n="jornada.eyebrow">02 · O Modelo</div>
-    <h2 class="section-title" data-i18n="jornada.title">A Jornada Cultural</h2>
-    <p class="section-lead" data-i18n="jornada.lead">A Jornada Cultural é uma travessia educativa que conecta o aprendizado virtual a ações reais no mundo físico, culminando em exposição cultural.</p>
+    <h2 class="section-title" data-i18n="jornada.title">A Jornada Educativa e Cultural</h2>
+    <p class="section-lead" data-i18n="jornada.lead">A Jornada Educativa e Cultural é uma travessia educativa que conecta o aprendizado virtual a ações reais no mundo físico, culminando em exposição cultural.</p>
 
     <div class="grid-3" style="margin-bottom:32px;">
       <div class="feature-card">
@@ -661,7 +663,7 @@
   <div class="container">
     <div class="eyebrow" data-i18n="fluxo.eyebrow">03 · Como Funciona</div>
     <h2 class="section-title" data-i18n="fluxo.title">Seis etapas, do jogo à rua</h2>
-    <p class="section-lead" data-i18n="fluxo.lead">A Jornada Cultural se desenrola em seis etapas encadeadas – do lançamento do jogo na plataforma à exposição cultural.</p>
+    <p class="section-lead" data-i18n="fluxo.lead">A Jornada Educativa e Cultural se desenrola em seis etapas encadeadas – do lançamento do jogo na plataforma à exposição cultural.</p>
 
     <div class="fluxo-desktop" style="margin-bottom:32px;">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" style="width:100%;height:auto;display:block;font-family:'Montserrat',sans-serif;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,0.04);">
@@ -1454,7 +1456,7 @@
   const I18N = {
     pt: {
       'page.title': 'The Blue City – Jornada Cultural',
-      'topbar.sub': 'Jornada Cultural',
+      'topbar.sub': 'Jornada Educativa e Cultural',
       'nav.sobre': 'Sobre',
       'nav.jornada': 'Jornada',
       'nav.fluxo': 'Fluxo',
@@ -1490,8 +1492,8 @@
       'sobre.box.text': 'A Missão Cidade Azul conecta educação ambiental, gamificação e cultura visual de origem afro-indígena num formato verificável e mensurável – pensado para territórios urbanos reais.',
       // ── JORNADA
       'jornada.eyebrow': '02 · O Modelo',
-      'jornada.title': 'A Jornada Cultural',
-      'jornada.lead': 'A Jornada Cultural é uma travessia educativa que conecta o aprendizado virtual a ações reais no mundo físico, culminando em exposição cultural.',
+      'jornada.title': 'A Jornada Educativa e Cultural',
+      'jornada.lead': 'A Jornada Educativa e Cultural é uma travessia educativa que conecta o aprendizado virtual a ações reais no mundo físico, culminando em exposição cultural.',
       'jornada.f1.h': 'Mundo Virtual',
       'jornada.f1.p': 'Estudantes jogam na plataforma The Blue City, acumulam pontos, conquistam badges e certificações vinculadas a desafios reais de sustentabilidade.',
       'jornada.f2.h': 'Mundo Real',
@@ -1503,7 +1505,7 @@
       // ── FLUXO
       'fluxo.eyebrow': '03 · Como Funciona',
       'fluxo.title': 'Seis etapas, do jogo à rua',
-      'fluxo.lead': 'A Jornada Cultural se desenrola em seis etapas encadeadas – do lançamento do jogo na plataforma à exposição cultural.',
+      'fluxo.lead': 'A Jornada Educativa e Cultural se desenrola em seis etapas encadeadas – do lançamento do jogo na plataforma à exposição cultural.',
       'fluxo.svg.title': 'Como Funciona a Jornada',
       'fluxo.s1.h': 'Jogo lançado',
       'fluxo.s1.s': 'Plataforma The Blue City',
@@ -1773,7 +1775,7 @@
     },
     es: {
       'page.title': 'The Blue City – Jornada Cultural',
-      'topbar.sub': 'Jornada Cultural',
+      'topbar.sub': 'Jornada Educativa y Cultural',
       'nav.sobre': 'Sobre',
       'nav.jornada': 'Jornada',
       'nav.fluxo': 'Flujo',
@@ -1809,8 +1811,8 @@
       'sobre.box.text': 'Misión Ciudad Azul conecta educación ambiental, gamificación y cultura visual de origen afroindígena en un formato verificable y medible – pensado para territorios urbanos reales.',
       // ── JORNADA
       'jornada.eyebrow': '02 · El Modelo',
-      'jornada.title': 'La Jornada Cultural',
-      'jornada.lead': 'La Jornada Cultural es una travesía educativa que conecta el aprendizaje virtual con acciones reales en el mundo físico, culminando en una exposición cultural.',
+      'jornada.title': 'La Jornada Educativa y Cultural',
+      'jornada.lead': 'La Jornada Educativa y Cultural es una travesía educativa que conecta el aprendizaje virtual con acciones reales en el mundo físico, culminando en una exposición cultural.',
       'jornada.f1.h': 'Mundo Virtual',
       'jornada.f1.p': 'Los estudiantes juegan en la plataforma The Blue City, acumulan puntos, conquistan badges y certificaciones vinculadas a desafíos reales de sostenibilidad.',
       'jornada.f2.h': 'Mundo Real',
@@ -1822,7 +1824,7 @@
       // ── FLUXO
       'fluxo.eyebrow': '03 · Cómo Funciona',
       'fluxo.title': 'Seis etapas, del juego a la calle',
-      'fluxo.lead': 'La Jornada Cultural se desarrolla en seis etapas encadenadas – desde el lanzamiento del juego en la plataforma hasta la exposición cultural.',
+      'fluxo.lead': 'La Jornada Educativa y Cultural se desarrolla en seis etapas encadenadas – desde el lanzamiento del juego en la plataforma hasta la exposición cultural.',
       'fluxo.svg.title': 'Cómo Funciona la Jornada',
       'fluxo.s1.h': 'Juego lanzado',
       'fluxo.s1.s': 'Plataforma The Blue City',
@@ -2092,7 +2094,7 @@
     },
     en: {
       'page.title': 'The Blue City – Cultural Journey',
-      'topbar.sub': 'Cultural Journey',
+      'topbar.sub': 'Educational and Cultural Journey',
       'nav.sobre': 'About',
       'nav.jornada': 'Journey',
       'nav.fluxo': 'Flow',
@@ -2128,8 +2130,8 @@
       'sobre.box.text': 'Blue City Mission connects environmental education, gamification and Afro-Indigenous visual culture in a verifiable, measurable format – designed for real urban territories.',
       // ── JORNADA / JOURNEY
       'jornada.eyebrow': '02 · The Model',
-      'jornada.title': 'The Cultural Journey',
-      'jornada.lead': 'The Cultural Journey is an educational crossing that links virtual learning to real-world action, culminating in a cultural exhibition.',
+      'jornada.title': 'The Educational and Cultural Journey',
+      'jornada.lead': 'The Educational and Cultural Journey is an educational crossing that links virtual learning to real-world action, culminating in a cultural exhibition.',
       'jornada.f1.h': 'Virtual World',
       'jornada.f1.p': 'Students play on The Blue City platform, accumulate points and earn badges and certifications tied to real sustainability challenges.',
       'jornada.f2.h': 'Real World',
@@ -2141,7 +2143,7 @@
       // ── FLUXO / FLOW
       'fluxo.eyebrow': '03 · How It Works',
       'fluxo.title': 'Six stages, from game to street',
-      'fluxo.lead': 'The Cultural Journey unfolds across six linked stages – from the game\u2019s launch on the platform to the cultural exhibition.',
+      'fluxo.lead': 'The Educational and Cultural Journey unfolds across six linked stages – from the game\u2019s launch on the platform to the cultural exhibition.',
       'fluxo.svg.title': 'How the Journey Works',
       'fluxo.s1.h': 'Game launched',
       'fluxo.s1.s': 'The Blue City platform',
