@@ -92,7 +92,7 @@
 
   /* Hero split layout */
   .hero-split { display:grid; grid-template-columns:1.15fr 1fr; gap:48px; align-items:center; margin-bottom:56px; }
-  .hero-text { display:flex; flex-direction:column; }
+  .hero-text { display:flex; flex-direction:column; min-width:0; container-type:inline-size; }
   .hero-map { display:flex; align-items:center; justify-content:center; position:relative; }
   .hero-map svg { width:100%; max-width:520px; height:auto; display:block; }
 
@@ -454,6 +454,8 @@
   @media (max-width:900px) { .cert-side-cards { grid-template-columns:1fr; } }
   @media (max-width:560px) {
     .cert-two { grid-template-columns:1fr; gap:28px; } .cert-side-cards .benefit-card { min-height:0; } }
+  /* Título do hero sempre em 3 linhas: escala com a largura da coluna e não quebra além dos <br> */
+  .hero .hero-title { max-width:none; white-space:nowrap; font-size:min(46px, 7.5cqw); }
 </style>
 </head>
 <body>
