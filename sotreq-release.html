@@ -215,6 +215,21 @@
   .carta a.cta-btn, .carta a.cta-btn:hover { color:#ffffff; }
   .release-actions { display:flex; justify-content:flex-start; gap:10px; flex-wrap:wrap; margin-top:36px; }
   @media (max-width:768px) { .carta .release-titulo { font-size:21px; } }
+  /* ====== IMPRESSÃO / PDF ====== */
+  @page { size: A4; margin: 16mm 0 14mm; }
+  @page :first { margin-top: 0; }
+  @media print {
+    body { background:#ffffff; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    .topnav, .release-actions { display:none !important; }
+    .hero { padding:40px 32px 34px; }
+    .section, main .section:nth-of-type(even) { background:#ffffff !important; }
+    .section-body { padding:24px 48px 32px !important; }
+    .carta { box-shadow:none; border:none; padding:0; }
+    .carta .bloco-titulo { break-after:avoid; page-break-after:avoid; }
+    .carta .aspas, .carta .servico, .carta .sobre p { break-inside:avoid; page-break-inside:avoid; }
+    .carta p { orphans:3; widows:3; }
+    .footer { break-inside:avoid; page-break-inside:avoid; }
+  }
 </style>
 </head>
 <body>
@@ -319,8 +334,7 @@
         <p>A Exposição Termômetro Zero reúne obras de artistas locais que interpretam o mesmo tema do jogo: a redução das emissões de gases de efeito estufa. Cada obra oferece um olhar próprio sobre clima, energia e futuro, em diálogo com a comunidade de Palmas.</p>
         <p>A exposição é a etapa em que o jogo virtual encontra o mundo físico e ocupa o espaço da universidade. A visitação vai de 31 de outubro a 30 de novembro, com painéis dos personagens e QR codes que levam ao jogo. Toda a programação é gratuita e acessível a estudantes, pessoas com deficiência e à comunidade do entorno.</p>
         <p>De 19 a 30 de outubro, cartazes e ações de engajamento nas instituições vão convidar os estudantes a jogar e a visitar a exposição. Entre 12 e 15 de novembro, um evento institucional reúne a UFT e a patrocinadora do projeto.</p>
-        <p>O Termômetro Zero une empresa, universidades e comunidade em torno de um mesmo compromisso: arte, cultura e tecnologia pela regeneração do planeta.</p>
-        <div class="aspas"><p>“Energia está no centro do nosso trabalho, e o futuro da energia passa pelas próximas gerações. Apoiar o Termômetro Zero é investir nos jovens de Palmas que vão liderar a transição para uma matriz mais limpa”, diz [nome], [cargo] da Sotreq.</p></div>
+        <p>O Termômetro Zero une empresa, universidades e comunidade em torno de um mesmo compromisso: arte, cultura e tecnologia pela regeneração do planeta. Patrocinadora do projeto, a Sotreq é uma empresa nacional com 85 anos de inovação, mais de 75 filiais em mais de 90% do território brasileiro e atuação em segmentos como Energia, Construção, Mineração e Agronegócio.</p>
 
         <div class="bloco-titulo">Serviço</div>
         <div class="servico">
@@ -335,12 +349,13 @@
         <div class="bloco-titulo">Sobre</div>
         <div class="sobre">
           <p><strong>The Blue City</strong> – Plataforma de tecnologia cultural que une jogos de educação ambiental, projetos culturais incentivados e credenciais verificáveis. É a realizadora da Missão Cidade Azul, jornada gamificada que conecta o mundo virtual ao mundo real.</p>
-          <p><strong>Sotreq</strong> – Revendedora Caterpillar com atuação em diversos estados do Brasil, incluindo o Tocantins, nos setores de construção, mineração, infraestrutura e energia. É a patrocinadora do Termômetro Zero em Palmas.</p>
+          <p><strong>Sotreq</strong> – Com 85 anos de inovação, a Sotreq é uma empresa nacional que fornece soluções para equipamentos novos e seminovos, tecnologia, suporte ao produto especializado, além de solução para locação. É revendedora Oficial Cat com mais de 75 filiais distribuídas em mais de 90% do território nacional. Atende aos segmentos de mercado de Construção, Mineração, Agronegócio, Energia, Florestal, Industrial, Petróleo &amp; Gás, e Marítimo, com uma equipe técnica altamente qualificada.</p>
           <p><strong>POK</strong> – Plataforma de credenciais verificáveis que permite a empresas e instituições de ensino emitir credenciais digitais nos padrões Open Badge 3.0 e W3C Verifiable Credentials. As credenciais são seguras, compartilháveis e verificáveis publicamente, e ajudam os portadores a comprovar competências e a se posicionar ao longo da jornada profissional.</p>
           <p><strong>Contato para imprensa</strong> – <a href="mailto:contato@thebluecity.app">contato@thebluecity.app</a></p>
         </div>
 
         <div class="release-actions">
+          <a class="cta-btn" style="margin-left:0;font-size:11px;padding:8px 14px;gap:6px;" href="https://the-blue-city.github.io/content/Exposicao/sotreq-release.pdf" download="Release-Termometro-Zero-Sotreq.pdf" target="_blank" rel="noopener">⬇ Baixar release em PDF</a>
           <a class="cta-btn" style="margin-left:0;font-size:11px;padding:8px 14px;gap:6px;" href="https://docs.google.com/document/d/1JrUyhCcHHNQp8BBEdGL5Lc7A0-ULmELjIxsVxbyYaBI/edit?usp=sharing" target="_blank" rel="noopener">📄 Ver release no Google Docs</a>
         </div>
 
