@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Missão Futuro – The Blue City</title>
+<!-- Open Graph / WhatsApp / LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Missão Futuro – The Blue City">
+<meta property="og:description" content="Seu dinheiro. Suas escolhas. Nosso futuro. Jornada cultural e educativa gamificada de educação financeira, sustentabilidade e empreendedorismo para jovens brasileiros">
+<meta property="og:image" content="https://the-blue-city.github.io/content/TBC_OGApresentacao.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+<meta property="og:url" content="https://the-blue-city.github.io/corporativo/apresentacao-missao-futuro.html">
+<meta property="og:site_name" content="The Blue City">
+<meta property="og:locale" content="pt_BR">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Missão Futuro – The Blue City">
+<meta name="twitter:description" content="Seu dinheiro. Suas escolhas. Nosso futuro. Jornada cultural e educativa gamificada de educação financeira, sustentabilidade e empreendedorismo para jovens brasileiros">
+<meta name="twitter:image" content="https://the-blue-city.github.io/content/TBC_OGApresentacao.png">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #2858a0;
+    --teal: #468182;
+    --green: #5fb670;
+    --blue-light: #d6e4f7;
+    --teal-light: #d0e8e8;
+    --green-light: #d4f0d9;
+    --dark: #1a2e3b;
+    --text: #000000;
+    --muted: #000000;
+    --bg: #f4f8fc;
+    --bg-alt: #ffffff;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Montserrat',sans-serif; background:var(--bg-alt); color:var(--text); line-height:1.5; }
+
+  /* ── TOPBAR ── */
+  .topbar { position:sticky; top:0; z-index:100; background:rgba(18,30,51,0.96); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid rgba(255,255,255,0.08); }
+  .topbar-inner { position:relative; max-width:1340px; margin:0 auto; padding:14px clamp(20px, 3vw, 44px); display:flex; align-items:center; justify-content:space-between; gap:16px; }
+  .topbar-brand { display:flex; align-items:center; gap:14px; color:white; }
+  .topbar-logo { height:24px; width:auto; display:block; }
+  .topbar-brand-sub { font-size:10px; font-weight:600; color:#ffffff; letter-spacing:0.8px; text-transform:uppercase; padding-left:14px; border-left:1px solid rgba(255,255,255,0.15); white-space:nowrap; }
+  .topbar-nav { display:flex; gap:2px; flex-wrap:nowrap; }
+  .topbar-nav a { font-size:11px; font-weight:600; color:#ffffff; text-decoration:none; padding:6px 7px; border-radius:6px; transition:all 0.2s; letter-spacing:0.2px; white-space:nowrap; }
+  .topbar-nav a:hover { background:rgba(255,255,255,0.08); color:white; }
+  .topbar-nav a.active { color:var(--green); background:rgba(95,182,112,0.12); }
+  .topbar-burger { display:none; width:38px; height:38px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:8px; cursor:pointer; padding:0; flex-direction:column; align-items:center; justify-content:center; gap:5px; transition:all 0.2s; }
+  .topbar-burger:hover { background:rgba(255,255,255,0.08); }
+  .topbar-burger span { display:block; width:18px; height:2px; background:white; border-radius:2px; transition:all 0.25s; }
+  .topbar-burger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+  .topbar-burger.open span:nth-child(2) { opacity:0; }
+  .topbar-burger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+  .lang-switcher { display:flex; gap:2px; padding:3px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:7px; }
+  .lang-btn { font-family:inherit; background:transparent; border:none; color:rgba(255,255,255,0.55); font-size:11px; font-weight:700; letter-spacing:0.5px; padding:5px 9px; border-radius:5px; cursor:pointer; transition:all 0.2s; }
+  .lang-btn:hover { color:white; background:rgba(255,255,255,0.06); }
+  .lang-btn.active { color:var(--dark); background:white; }
+
+  /* ── SECTIONS BASE ── */
+  section { padding:72px clamp(22px, 7vw, 110px); position:relative; }
+  section.tight { padding:56px 40px; }
+  .container { max-width:1180px; margin:0 auto; }
+  .container-narrow { max-width:920px; margin:0 auto; }
+  .section-alt { background:var(--bg); }
+  .section-dark { background:var(--dark); color:white; }
+
+  .eyebrow { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--teal); margin-bottom:18px; display:inline-flex; align-items:center; gap:10px; }
+  .eyebrow::before { content:''; width:24px; height:1.5px; background:var(--teal); }
+  .section-dark .eyebrow { color:var(--green); }
+  .section-dark .eyebrow::before { background:var(--green); }
+
+  h2.section-title { font-size:28px; font-weight:800; color:var(--dark); line-height:1.2; margin-bottom:18px; letter-spacing:-0.3px; }
+  .section-dark h2.section-title { color:white; }
+  .section-lead { font-size:15.5px; color:var(--muted); line-height:1.65; margin-bottom:36px; }
+  .section-dark .section-lead { color:#ffffff; }
+
+  /* ── HERO (capa) ── */
+  .hero { background:linear-gradient(to bottom right,#1d4789 0%,#295b9c 35%,#468182 70%,#7fc596 100%); color:white; padding:120px clamp(22px, 7vw, 110px) 100px; position:relative; overflow:hidden; }
+  .hero::before { content:''; position:absolute; top:0; left:0; right:0; height:5px; background:linear-gradient(90deg,var(--blue),var(--teal),var(--green)); }
+  .hero::after { content:''; position:absolute; bottom:-60px; right:-60px; width:380px; height:380px; border-radius:50%; background:radial-gradient(circle,rgba(255,255,255,0.08) 0%,transparent 70%); pointer-events:none; }
+  .hero-inner { max-width:1180px; margin:0 auto; position:relative; }
+  .hero-eyebrow { font-size:11px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:rgba(255,255,255,0.8); margin-bottom:24px; display:inline-flex; align-items:center; gap:12px; }
+  .hero-eyebrow::before { content:''; width:32px; height:1.5px; background:rgba(255,255,255,0.6); }
+  .hero-brand { font-size:22px; font-weight:800; letter-spacing:0.5px; margin-bottom:28px; }
+  .hero-title { font-size:46px; font-weight:800; line-height:1.1; max-width:600px; margin-bottom:28px; letter-spacing:-1px; }
+  .hero-desc { font-size:16px; color:#ffffff; max-width:640px; line-height:1.7; margin-bottom:0; }
+
+  /* Hero split layout */
+  .hero-split { display:grid; grid-template-columns:1.7fr 1fr; gap:48px; align-items:center; margin-bottom:56px; }
+  .hero-text { display:flex; flex-direction:column; min-width:0; container-type:inline-size; }
+  .hero-map { display:flex; align-items:center; justify-content:center; position:relative; }
+  .hero-map svg { width:100%; max-width:520px; height:auto; display:block; }
+
+  /* Globo – oceano + continentes + pontos pulsando */
+  .globe-ocean path {
+    fill:rgba(255,255,255,0.05);
+    stroke:rgba(255,255,255,0.25);
+    stroke-width:1;
+  }
+  .globe-land path {
+    fill:rgba(255,255,255,0.18);
+    stroke:rgba(255,255,255,0.4);
+    stroke-width:0.5;
+    stroke-linejoin:round;
+    stroke-linecap:round;
+  }
+  .map-points circle { fill:rgba(255,255,255,0.95); }
+  .map-point circle:first-child { filter:drop-shadow(0 0 8px rgba(255,255,255,0.6)); }
+  .map-point-minor circle:first-child { fill:rgba(255,255,255,0.7); filter:drop-shadow(0 0 5px rgba(255,255,255,0.35)); }
+  .map-point-minor .pulse { fill:rgba(255,255,255,0.4); }
+  .map-point .pulse {
+    fill:rgba(255,255,255,0.6);
+    transform-origin:center;
+    transform-box:fill-box;
+    animation:mapPulse 3s ease-out infinite;
+    animation-delay:var(--delay,0s);
+  }
+  @keyframes mapPulse {
+    0%   { transform:scale(1);   opacity:0.7; }
+    70%  { transform:scale(3.5); opacity:0; }
+    100% { transform:scale(3.5); opacity:0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .map-point .pulse { animation:none; opacity:0.3; }
+  }
+  .hero-meta { display:inline-flex; align-items:center; gap:14px; padding:10px 18px; background:rgba(0,0,0,0.18); border:1px solid rgba(255,255,255,0.15); border-radius:24px; font-size:12px; font-weight:600; letter-spacing:0.5px; }
+  .hero-meta-dot { width:8px; height:8px; border-radius:50%; background:var(--green); }
+  .hero-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:0; }
+  .hero-stat-box { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:14px; padding:22px 24px; backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); transition:all 0.25s; }
+  .hero-stat-box:hover { background:rgba(255,255,255,0.12); border-color:rgba(255,255,255,0.25); transform:translateY(-2px); }
+  .hero-stat-value { font-size:38px; font-weight:800; color:white; line-height:1; margin-bottom:8px; }
+  .hero-stat-label { font-size:11px; font-weight:600; color:rgba(255,255,255,0.75); letter-spacing:0.8px; text-transform:uppercase; }
+  .hero-stat-icon { font-size:28px; line-height:1; margin-bottom:14px; }
+  .hero-stat-title { font-size:14px; font-weight:700; color:white; letter-spacing:0.3px; margin-bottom:8px; line-height:1.2; }
+  .hero-stat-desc { font-size:12px; color:#ffffff; line-height:1.55; }
+
+  /* ── CARDS ── */
+  .feature-card { background:white; border-radius:14px; padding:24px 26px; border:1px solid rgba(40,88,160,0.08); box-shadow:0 2px 12px rgba(0,0,0,0.04); transition:transform 0.25s,box-shadow 0.25s; }
+  .feature-card:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(40,88,160,0.1); }
+  .feature-card-header { display:flex; align-items:center; gap:14px; margin-bottom:12px; }
+  .feature-icon { width:42px; height:42px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
+  .fi-blue { background:var(--blue-light); } .fi-teal { background:var(--teal-light); } .fi-green { background:var(--green-light); }
+  .feature-card h3 { font-size:16px; font-weight:800; color:var(--dark); }
+  .feature-card p { font-size:13.5px; color:var(--muted); line-height:1.7; }
+
+  /* ── BENEFIT CARDS (universidade + estudante) ── */
+  .benefit-grid-top { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-bottom:16px; align-items:stretch; }
+  .benefit-grid-bottom { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+  .benefit-card { background:white; border-radius:14px; padding:22px 22px; border:1px solid rgba(40,88,160,0.08); box-shadow:0 2px 12px rgba(0,0,0,0.04); display:flex; flex-direction:column; gap:12px; transition:all 0.25s; border-left:4px solid var(--green); }
+  .benefit-card:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(40,88,160,0.1); }
+  .benefit-card-head { display:flex; align-items:center; gap:12px; }
+  .benefit-icon { width:42px; height:42px; border-radius:10px; background:var(--green-light); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
+  .benefit-card h3 { font-size:15px; font-weight:800; color:var(--dark); line-height:1.25; }
+  .benefit-card p { font-size:12.5px; color:var(--muted); line-height:1.65; }
+  .benefit-tag { font-size:10.5px; font-weight:700; color:var(--blue); background:var(--blue-light); padding:5px 10px; border-radius:6px; align-self:flex-start; letter-spacing:0.3px; }
+  .benefit-grid-bottom .benefit-card { padding:20px 18px; gap:10px; }
+  .benefit-grid-bottom .benefit-icon { width:38px; height:38px; font-size:18px; }
+  .benefit-grid-bottom .benefit-card h3 { font-size:13.5px; }
+  .benefit-grid-bottom .benefit-card p { font-size:12px; line-height:1.6; }
+  .benefit-grid-bottom .benefit-tag { font-size:10px; padding:4px 8px; }
+  .benefit-card.benefit-card-with-image { flex-direction:row; gap:20px; align-items:flex-start; }
+  .benefit-card.benefit-card-with-image .benefit-card-body { order:1; display:flex; flex-direction:column; gap:12px; flex:1; min-width:0; }
+  .benefit-card.benefit-card-with-image .benefit-image-slot { order:2; align-self:flex-start; }
+  .benefit-image-slot { flex-shrink:0; width:200px; height:200px; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+  .benefit-image-slot svg { width:100%; height:100%; display:block; }
+  /* Box 1 — Reconhecimento (azul) */
+  .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(1) { background:var(--blue-light); border:1px solid rgba(40,88,160,0.25); border-left:6px solid var(--blue); }
+  .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(1) .benefit-icon { background:rgba(40,88,160,0.18); }
+  .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(1) .benefit-tag { background:rgba(40,88,160,0.15); color:var(--blue); }
+  /* Box 2 — Estudantes (verde) */
+  .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(2) { background:var(--green-light); border:1px solid rgba(95,182,112,0.3); border-left:6px solid var(--green); }
+  .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(2) .benefit-icon { background:rgba(95,182,112,0.25); }
+  .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(2) .benefit-tag { background:rgba(95,182,112,0.2); color:#2d7a3e; }
+
+  .info-card { background:var(--blue); border-radius:14px; padding:28px 32px; color:white; }
+  .info-card h3 { font-size:17px; font-weight:800; margin-bottom:10px; }
+  .info-card p { font-size:14px; color:#ffffff; line-height:1.7; }
+  .info-card.teal { background:var(--teal); }
+  .info-card.dark { background:var(--dark); }
+
+  /* ── ACTOR CARD ── */
+  .actors-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; align-items:stretch; }
+  .actor-card-wide { grid-column:1 / -1; }
+  .legacy-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; align-items:stretch; }
+  .actor-card { background:white; border-radius:16px; padding:24px 22px; border:1px solid rgba(40,88,160,0.1); box-shadow:0 2px 12px rgba(0,0,0,0.04); display:flex; flex-direction:column; gap:14px; transition:all 0.25s; }
+  .actor-card:hover { box-shadow:0 8px 24px rgba(40,88,160,0.12); transform:translateY(-3px); }
+  .actor-emoji { width:52px; height:52px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:26px; flex-shrink:0; }
+  .actor-body { display:flex; flex-direction:column; flex:1; }
+  .actor-body h3 { font-size:15px; font-weight:800; color:var(--dark); margin-bottom:4px; line-height:1.25; }
+  .actor-role { font-size:10.5px; font-weight:700; color:var(--teal); text-transform:uppercase; letter-spacing:0.8px; margin-bottom:12px; }
+  .actor-body p { font-size:13px; color:var(--muted); line-height:1.65; margin-bottom:14px; flex:1; }
+  .actor-deliv { font-size:11px; color:var(--blue); background:var(--blue-light); padding:8px 12px; border-radius:6px; font-weight:600; display:block; line-height:1.45; }
+  .actor-card.actor-card-dark { background:var(--dark); border:1px solid rgba(255,255,255,0.08); box-shadow:0 4px 18px rgba(0,0,0,0.18); padding:20px 22px; gap:10px; }
+  .actor-card.actor-card-dark:hover { box-shadow:0 10px 28px rgba(0,0,0,0.28); }
+  .actor-card.actor-card-dark .actor-body h3 { color:white; }
+  .actor-card.actor-card-dark .actor-role { color:var(--green); margin-bottom:8px; }
+  .actor-card.actor-card-dark .actor-body p { color:#ffffff; flex:none; margin-bottom:0; }
+  .actor-card-wide .actor-body p { flex:none; margin-bottom:0; }
+  .actor-card-wide .actor-extra-body { margin-top:10px; }
+  .actor-card.actor-card-dark .actor-extra-body { font-size:13px; color:#ffffff; line-height:1.6; margin-top:8px; }
+
+  /* ── FLUXO (desktop / mobile alternados) ── */
+  .fluxo-desktop { display:block; }
+  .fluxo-mobile { display:none; list-style:none; padding:0; margin:0 0 32px; counter-reset:fluxo; }
+  .fluxo-step { display:grid; grid-template-columns:46px 1fr; gap:14px; padding:18px 18px 18px 0; border-bottom:1px solid rgba(40,88,160,0.1); position:relative; }
+  .fluxo-step:last-child { border-bottom:none; }
+  .fluxo-num { width:36px; height:36px; border-radius:50%; background:var(--blue); color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .fluxo-step-bridge .fluxo-num { background:var(--green); }
+  .fluxo-step-final .fluxo-num { background:var(--dark); }
+  .fluxo-body h4 { font-size:14px; font-weight:800; color:var(--dark); margin-bottom:2px; line-height:1.25; }
+  .fluxo-sub { font-size:11px; font-weight:600; color:var(--teal); margin-bottom:6px; }
+  .fluxo-body p { font-size:12.5px; color:var(--muted); line-height:1.6; }
+  .fluxo-flag { display:inline-block; margin-top:8px; font-size:10.5px; font-weight:700; color:#2d7a3e; background:var(--green-light); padding:4px 9px; border-radius:12px; }
+
+  /* ── STATS ROW (apoio) ── */
+  .stats-row { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+  .stat-card { background:white; border-radius:10px; padding:22px 18px; text-align:center; border:1px solid rgba(40,88,160,0.08); box-shadow:0 2px 8px rgba(0,0,0,0.03); }
+  .stat-value { font-size:30px; font-weight:800; color:var(--blue); line-height:1; margin-bottom:8px; }
+  .stat-value.teal { color:var(--teal); }
+  .stat-value.green { color:var(--green); }
+  .stat-label { font-size:11.5px; color:var(--muted); font-weight:500; line-height:1.4; }
+
+  /* ── COTAS (apoio) ── */
+  .cotas-heading { font-size:11px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:var(--teal); margin-bottom:14px; display:flex; align-items:center; gap:10px; }
+  .cotas-heading::after { content:''; flex:1; height:1px; background:rgba(70,129,130,0.2); }
+  .cotas-list { display:flex; flex-direction:column; gap:10px; }
+  .cota-row { display:grid; grid-template-columns:100px 1fr auto; align-items:center; gap:20px; background:white; border-radius:10px; padding:16px 20px; border:1px solid rgba(40,88,160,0.1); box-shadow:0 2px 8px rgba(0,0,0,0.03); }
+  .cota-row-premium { background:var(--dark); border-color:var(--blue); }
+  .cota-tier { font-size:11px; font-weight:800; padding:5px 10px; border-radius:20px; text-align:center; letter-spacing:0.5px; }
+  .cota-bronze { color:#b87333; background:#fff3e8; border:1px solid #f0c898; }
+  .cota-prata { color:#7a7a7a; background:#f5f5f5; border:1px solid #ddd; }
+  .cota-ouro { color:#c8a000; background:#fffbe6; border:1px solid #ffe066; }
+  .cota-safira { color:#0057a8; background:#e8f0fb; border:1px solid #a8c4f0; }
+  .cota-premium { color:#1a2e3b; background:#5fb670; border:1px solid #38a349; }
+  .cota-info .cota-title { font-size:13px; font-weight:700; color:var(--dark); margin-bottom:3px; }
+  .cota-info .cota-desc { font-size:11.5px; color:var(--muted); line-height:1.5; }
+  .cota-row-premium .cota-info .cota-title { color:white; }
+  .cota-row-premium .cota-info .cota-desc { color:#ffffff; }
+  .cota-link { font-size:11px; font-weight:700; color:var(--blue); text-decoration:none; white-space:nowrap; padding:6px 14px; border:1.5px solid rgba(40,88,160,0.2); border-radius:6px; transition:all 0.2s; }
+  .cota-link:hover { background:rgba(40,88,160,0.06); border-color:rgba(40,88,160,0.4); }
+  .cota-row-premium .cota-link { color:var(--green); border-color:rgba(95,182,112,0.4); }
+  .cota-row-premium .cota-link:hover { background:rgba(95,182,112,0.1); border-color:rgba(95,182,112,0.7); }
+  .cota-bonus-title-accent { color:var(--green); font-weight:700; }
+  .cota-bonus { display:flex; align-items:flex-start; gap:12px; background:linear-gradient(135deg,rgba(95,182,112,0.08),rgba(95,182,112,0.03)); border:1px solid rgba(95,182,112,0.3); border-left:3px solid var(--green); border-radius:8px; padding:14px 18px; margin-top:6px; }
+  .cota-bonus-icon { font-size:18px; line-height:1; flex-shrink:0; }
+  .cota-bonus-label { font-size:11px; font-weight:800; color:#38a349; letter-spacing:0.5px; text-transform:uppercase; margin-bottom:4px; }
+  .cota-bonus-text { font-size:12.5px; color:var(--dark); line-height:1.55; }
+
+  /* ── CONFIG CARD ── */
+  .config-card { background:white; border-radius:16px; padding:30px 32px; border:1px solid rgba(40,88,160,0.1); box-shadow:0 2px 12px rgba(0,0,0,0.04); }
+  .config-card-title { font-size:11px; font-weight:700; color:var(--teal); text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; }
+  .config-card h3 { font-size:22px; font-weight:800; color:var(--dark); margin-bottom:14px; }
+  .config-card > p { font-size:14px; color:var(--muted); line-height:1.7; margin-bottom:20px; }
+  .config-examples { display:flex; flex-wrap:wrap; gap:7px; }
+  .config-chip { font-size:11.5px; font-weight:600; padding:6px 13px; border-radius:14px; background:var(--green-light); color:#2d7a3e; }
+
+  /* ── CASE CARD ── */
+  .case-card { background:white; border-radius:16px; overflow:hidden; border:1px solid rgba(40,88,160,0.1); box-shadow:0 2px 12px rgba(0,0,0,0.04); margin-bottom:18px; transition:all 0.25s; }
+  .case-card:hover { box-shadow:0 8px 24px rgba(40,88,160,0.1); transform:translateY(-2px); }
+  .case-card-head { padding:13px 26px; display:flex; align-items:center; gap:16px; }
+  .case-card-head.live { background:var(--blue); color:white; }
+  .case-card-head.next { background:var(--teal); color:white; }
+  .case-card-head.future { background:linear-gradient(135deg,#e8eef5 0%,#dde6f0 100%); color:var(--dark); border-bottom:2px dashed rgba(40,88,160,0.25); }
+  .case-status { display:inline-flex; align-items:center; gap:6px; padding:5px 12px; border-radius:14px; font-size:10.5px; font-weight:700; letter-spacing:0.8px; text-transform:uppercase; }
+  .case-status.live { background:rgba(255,255,255,0.2); color:white; }
+  .case-status.next { background:rgba(255,255,255,0.2); color:white; }
+  .case-status.future { background:rgba(40,88,160,0.1); color:var(--blue); }
+  .case-card-body { padding:20px 26px; }
+  .case-stat { display:flex; flex-direction:column; gap:3px; }
+  .case-stat-value { font-size:16px; font-weight:800; color:var(--dark); }
+  .case-stat-label { font-size:10.5px; color:var(--muted); font-weight:700; letter-spacing:0.5px; text-transform:uppercase; }
+
+  /* ── TEAM CARD ── */
+  .team-card { background:white; border-radius:14px; padding:22px 24px; border:1px solid rgba(40,88,160,0.08); box-shadow:0 2px 10px rgba(0,0,0,0.04); transition:all 0.25s; }
+  .team-card:hover { box-shadow:0 8px 22px rgba(40,88,160,0.1); transform:translateY(-2px); }
+  .team-card h4 { font-size:15px; font-weight:800; color:var(--dark); margin-bottom:4px; }
+  .team-card .team-role { font-size:10.5px; font-weight:700; color:var(--teal); letter-spacing:0.8px; text-transform:uppercase; margin-bottom:10px; }
+  .team-card p { font-size:13px; color:var(--muted); line-height:1.65; }
+
+  /* ── COORDENADORA (destaque) ── */
+  .team-coord { background:white; border-radius:16px; padding:28px 32px; margin-bottom:28px; border:1px solid rgba(40,88,160,0.1); box-shadow:0 2px 12px rgba(0,0,0,0.04); display:grid; grid-template-columns:auto 1fr; gap:24px; align-items:center; }
+  .team-coord h4 { font-size:20px; font-weight:800; color:var(--dark); margin-bottom:6px; line-height:1.2; }
+  .team-coord .team-coord-role { font-size:11px; font-weight:700; color:var(--teal); letter-spacing:0.8px; text-transform:uppercase; margin-bottom:10px; }
+  .team-coord p { font-size:13.5px; color:var(--muted); line-height:1.65; max-width:680px; }
+  .team-coord-icon { width:64px; height:64px; background:var(--blue-light); border:1px solid rgba(40,88,160,0.15); border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:30px; flex-shrink:0; }
+
+  /* ── PILLARS (virtual / físico) ── */
+  .pillar-block { margin-bottom:24px; }
+  .pillar-header { display:flex; align-items:baseline; gap:14px; margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid rgba(40,88,160,0.12); }
+  .pillar-tag { font-size:10px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; padding:4px 10px; border-radius:14px; }
+  .pillar-tag-virtual { color:var(--blue); background:var(--blue-light); }
+  .pillar-tag-fisico { color:#2d7a3e; background:var(--green-light); }
+  .pillar-title { font-size:16px; font-weight:800; color:var(--dark); }
+  .pillar-desc { font-size:12.5px; color:var(--muted); margin-left:auto; }
+
+  /* ── GRIDS ── */
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+  .grid-2-uneven { display:grid; grid-template-columns:1.2fr 1fr; gap:36px; align-items:start; }
+
+  /* ── FOOTER ── */
+  footer { background:var(--dark); color:white; padding:40px clamp(20px, 3vw, 44px) 28px; }
+  .footer-inner { max-width:1340px; margin:0 auto; }
+
+  /* ── CRÉDITOS INSTITUCIONAIS ── */
+  .credits-inner {
+    max-width:1340px; margin:0 auto 28px;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:26px; flex-wrap:wrap;
+  }
+  .credit-item { display:flex; align-items:center; gap:12px; }
+  .credit-item .rot { font-size:10.5px; font-weight:400; letter-spacing:0.8px; text-transform:uppercase; color:#ffffff; white-space:nowrap; }
+  .credit-item img { height:30px; width:auto; display:block; }
+  .credit-item a { display:flex; align-items:center; }
+  .credit-item .rouanet { height:46px; }
+  .credit-item .tbc { height:26px; }
+  .credit-item .pok { height:26px; }
+  .credit-sep { width:1px; height:34px; background:rgba(255,255,255,0.28); }
+  @media (max-width:900px) {
+    .credits-inner { justify-content:center; gap:18px; }
+    .credit-sep { display:none; }
+  }
+
+  .footer-top { display:grid; grid-template-columns:1fr; gap:48px; margin-bottom:40px; }
+  .footer-brand { font-size:18px; font-weight:800; color:white; margin-bottom:10px; }
+  .footer-tagline { font-size:13px; line-height:1.7; color:#ffffff; max-width:340px; }
+  .footer-contact { display:inline-block; margin-top:12px; font-size:13px; font-weight:600; color:#7fb8e8; text-decoration:none; border-bottom:1px solid rgba(127,184,232,0.3); padding-bottom:1px; transition:color 0.2s; }
+  .footer-contact:hover { color:#a8cdf0; border-bottom-color:rgba(168,205,240,0.6); }
+  .footer-col-title { font-size:11px; font-weight:700; color:var(--green); letter-spacing:1.2px; text-transform:uppercase; margin-bottom:14px; }
+  .footer-col p { font-size:13px; line-height:1.7; color:rgba(255,255,255,0.65); }
+  .footer-bottom {
+    max-width:1340px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:16px; flex-wrap:wrap;
+    font-size:12px; color:rgba(255,255,255,0.85);
+    border-top:1px solid rgba(255,255,255,0.18); padding-top:20px;
+  }
+  .footer-bottom a { color:#ffffff; font-weight:600; text-decoration:none; }
+  .footer-bottom a:hover { text-decoration:underline; }
+
+  /* ── BACK TO TOP ── */
+  .to-top { position:fixed; bottom:24px; right:24px; width:44px; height:44px; border-radius:50%; background:var(--blue); color:white; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 4px 16px rgba(40,88,160,0.3); border:none; font-size:18px; transition:all 0.2s; opacity:0; pointer-events:none; z-index:90; }
+  .to-top.show { opacity:1; pointer-events:auto; }
+  .to-top:hover { background:var(--dark); transform:translateY(-2px); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    section { padding:56px 32px; }
+    .hero { padding:96px 32px 80px; }
+    .hero-title { font-size:46px; }
+    .hero-split { grid-template-columns:1fr; gap:36px; margin-bottom:40px; }
+    .hero-map svg { max-width:360px; margin:0 auto; }
+    .hero-stats { grid-template-columns:repeat(2,1fr); gap:14px; }
+    .hero-stat-value { font-size:32px; }
+    .grid-3 { grid-template-columns:1fr 1fr; }
+    .grid-4 { grid-template-columns:1fr 1fr; }
+    .actors-grid { grid-template-columns:1fr 1fr; gap:14px; }
+    .legacy-grid { grid-template-columns:1fr; gap:16px; }
+    .grid-2-uneven { grid-template-columns:1fr; gap:32px; }
+    .benefit-grid-top { grid-template-columns:1fr; gap:14px; }
+    .benefit-grid-bottom { grid-template-columns:repeat(2,1fr); }
+    .benefit-image-slot { width:180px; height:180px; }
+    .topbar-inner { padding:14px 32px; }
+    .footer-top { grid-template-columns:1fr 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    section { padding:44px 24px; }
+    .hero { padding:72px 24px 60px; }
+    .hero-brand { font-size:18px; }
+    .hero-title { font-size:32px; line-height:1.15; }
+    .hero-desc { font-size:15px; }
+    .hero-split { gap:28px; margin-bottom:32px; }
+    .hero-map svg { max-width:280px; }
+    .hero-stats { grid-template-columns:1fr 1fr; gap:12px; }
+    .hero-stat-box { padding:16px 18px; }
+    .hero-stat-value { font-size:26px; }
+    .hero-stat-icon { font-size:24px; margin-bottom:10px; }
+    .hero-stat-title { font-size:13px; margin-bottom:6px; }
+    .hero-stat-desc { font-size:11.5px; line-height:1.45; }
+    h2.section-title { font-size:24px; }
+    .section-lead { font-size:14px; margin-bottom:32px; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns:1fr; gap:16px; }
+    .benefit-grid-top, .benefit-grid-bottom { grid-template-columns:1fr; gap:14px; }
+    .benefit-grid-top { margin-bottom:14px; }
+    .benefit-card.benefit-card-with-image { flex-direction:column; align-items:stretch; gap:14px; }
+    .benefit-image-slot { width:100%; height:220px; }
+    .actor-card { padding:20px 22px; }
+    .actor-emoji { width:48px; height:48px; font-size:24px; }
+    .actors-grid { grid-template-columns:1fr; gap:14px; }
+    .case-card-head { padding:20px 22px; gap:14px; flex-wrap:wrap; }
+    .case-card-body { padding:22px; }
+    .config-card { padding:24px; }
+    .config-card h3 { font-size:19px; }
+    .topbar-inner { padding:12px 20px; gap:12px; }
+    .topbar-brand-sub { display:none; }
+    .topbar-burger { display:flex; }
+    .lang-switcher { padding:2px; }
+    .lang-btn { padding:4px 7px; font-size:10px; }
+    .topbar-nav { display:none; position:absolute; top:100%; left:0; right:0; flex-direction:column; flex-wrap:wrap; align-items:stretch; gap:0; padding:8px; background:rgba(18,30,51,0.98); border-top:1px solid rgba(255,255,255,0.08); border-bottom:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); }
+    .topbar-nav.open { display:flex; }
+    .topbar-nav a { font-size:14px; padding:12px 16px; border-radius:6px; }
+    .footer-top { grid-template-columns:1fr; gap:32px; }
+    .footer-bottom { flex-direction:column; align-items:flex-start; }
+    .stats-row { grid-template-columns:1fr; gap:10px; }
+    .stat-card { padding:16px 14px; }
+    .stat-value { font-size:24px; }
+    .cota-row { grid-template-columns:1fr; gap:10px; padding:14px 16px; }
+    .cota-tier { justify-self:start; }
+    .cota-link { justify-self:start; }
+    .team-coord { grid-template-columns:1fr; gap:14px; padding:22px 24px; text-align:left; }
+    .team-coord-icon { width:52px; height:52px; font-size:24px; }
+    .team-coord h4 { font-size:18px; }
+    .pillar-header { flex-direction:column; align-items:flex-start; gap:6px; }
+    .pillar-desc { margin-left:0; }
+    .fluxo-desktop { display:none; }
+    .fluxo-mobile { display:block; }
+  }
+
+  @media print {
+    .topbar, .to-top { display:none; }
+    section { padding:32px 24px; page-break-inside:avoid; }
+    .hero { padding:48px 24px; }
+    .feature-card, .actor-card, .team-card, .case-card, .config-card { box-shadow:none; border:1px solid #ddd; break-inside:avoid; }
+  }
+  /* ===== Certificado POK ===== */
+  .cert-two { display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:start; }
+  .cert-side { display:flex; flex-direction:column; gap:14px; }
+  .cert-side-cards { display:grid; grid-template-columns:1fr 1fr; gap:14px; align-items:stretch; }
+  .cert-side-cards .benefit-card { min-height:240px; padding:20px 18px; gap:10px; background:var(--bg); }
+  .cert-side-cards .benefit-tag { margin-top:auto; font-size:10px; padding:4px 8px; }
+  .cert-side-cards .benefit-icon { width:38px; height:38px; font-size:18px; }
+  .cert-side-cards .benefit-card h3 { font-size:13.5px; }
+  .cert-side-cards .benefit-card p { font-size:12px; line-height:1.6; }
+  .cert-side-cards .cert-card-escola { border-left-color:var(--blue); }
+  .cert-side-cards .cert-card-escola .benefit-icon { background:var(--blue-light); }
+  .cert-side-cards .cert-card-escola .benefit-tag { color:var(--blue); background:var(--blue-light); }
+  .cert-side-cards .cert-card-aluno { border-left-color:var(--green); }
+  .cert-side-cards .cert-card-aluno .benefit-icon { background:var(--green-light); }
+  .cert-side-cards .cert-card-aluno .benefit-tag { color:#2d7a3e; background:var(--green-light); }
+  .cert-group-head { display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin:0; }
+  .cert-grouppill { font-size:11px; font-weight:800; letter-spacing:0.5px; text-transform:uppercase; padding:6px 14px; border-radius:20px; display:inline-flex; align-items:center; gap:7px; }
+  .cert-grouppill-escola { color:var(--blue); background:var(--blue-light); }
+  .cert-grouppill-aluno { color:#2d7a3e; background:var(--green-light); }
+  .cert-group-sub { font-size:12.5px; color:var(--muted); font-weight:600; }
+  .cert-conheca { margin-top:32px; text-align:center; }
+  .cert-conheca-btn { display:inline-flex; align-items:center; justify-content:center; gap:10px; background:#2858a0; color:#ffffff; font-size:13px; font-weight:700; padding:12px 22px; border-radius:8px; text-decoration:none; transition:all 0.2s; box-shadow:0 2px 10px rgba(40,88,160,0.2); }
+  .cert-conheca-btn::after { content:"\2192"; }
+  .hero-cta { display:inline-flex; align-self:flex-start; align-items:center; gap:10px; margin-top:32px; background:linear-gradient(180deg,#f6e7a6 0%,#e2c062 55%,#c9a033 100%); color:#3d2c05; border:1px solid #a87e1e; font-size:14px; font-weight:700; padding:14px 26px; border-radius:8px; text-decoration:none; transition:all 0.2s; box-shadow:0 4px 16px rgba(120,85,10,0.35), inset 0 1px 0 rgba(255,255,255,0.5); }
+  .hero-cta::after { content:"\2192"; }
+  .hero-cta:hover { background:linear-gradient(180deg,#f9edb9 0%,#e8c96f 55%,#d4ab3c 100%); transform:translateY(-2px); box-shadow:0 8px 22px rgba(120,85,10,0.45), inset 0 1px 0 rgba(255,255,255,0.6); }
+  .map-cta { display:flex; align-items:center; gap:24px; margin-top:28px; padding:28px 32px; border-radius:16px; text-decoration:none; color:#ffffff; background:linear-gradient(to bottom right,#1d4789 0%,#295b9c 35%,#468182 70%,#7fc596 100%); box-shadow:0 4px 18px rgba(40,88,160,0.18); transition:all 0.25s; }
+  .map-cta:hover { transform:translateY(-3px); box-shadow:0 10px 28px rgba(40,88,160,0.28); }
+  .map-cta-icon { width:56px; height:56px; border-radius:14px; background:rgba(255,255,255,0.18); display:flex; align-items:center; justify-content:center; font-size:28px; flex-shrink:0; }
+  .map-cta-text { flex:1; min-width:0; }
+  .map-cta-label { font-size:10.5px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:#ffffff; margin-bottom:6px; }
+  .map-cta-text h3 { font-size:19px; font-weight:800; line-height:1.25; margin-bottom:6px; }
+  .map-cta .map-cta-text p { font-size:13.5px; line-height:1.6; color:#ffffff; }
+  .map-cta-btn { display:inline-flex; align-items:center; gap:10px; flex-shrink:0; background:linear-gradient(180deg,#f6e7a6 0%,#e2c062 55%,#c9a033 100%); color:#3d2c05; border:1px solid #a87e1e; font-size:14px; font-weight:700; padding:13px 24px; border-radius:8px; box-shadow:0 4px 16px rgba(120,85,10,0.35), inset 0 1px 0 rgba(255,255,255,0.5); white-space:nowrap; }
+  .map-cta-btn::after { content:"\2192"; }
+  .map-cta.map-cta-light { background:#ffffff; color:var(--dark); border:1px solid rgba(40,88,160,0.12); box-shadow:0 2px 12px rgba(0,0,0,0.05); margin-top:14px; }
+  .map-cta.map-cta-light:hover { box-shadow:0 10px 28px rgba(40,88,160,0.14); }
+  .map-cta.map-cta-light .map-cta-icon { background:var(--blue-light); }
+  .map-cta.map-cta-light .map-cta-label { color:var(--teal); }
+  .map-cta.map-cta-light .map-cta-text h3 { color:var(--dark); }
+  .map-cta.map-cta-light .map-cta-text p { color:var(--text); }
+  @media (max-width:720px) { .map-cta { flex-direction:column; align-items:flex-start; gap:16px; padding:24px 22px; } }
+  .cert-conheca-btn:hover { background:#1a2e3b; transform:translateY(-2px); box-shadow:0 6px 18px rgba(40,88,160,0.28); }
+  @media (max-width:900px) { .cert-side-cards { grid-template-columns:1fr; } }
+  @media (max-width:560px) {
+    .cert-two { grid-template-columns:1fr; gap:28px; } .cert-side-cards .benefit-card { min-height:0; } }
+  /* Rótulo da barra superior some antes de apertar o menu */
+  @media (max-width:1160px) { .topbar-brand-sub { display:none; } }
+  /* Título do hero sempre em 3 linhas: escala com a largura da coluna e não quebra além dos <br> */
+  .hero .hero-title { max-width:none; white-space:nowrap; font-size:min(58px, 7.5cqw); }
+
+  /* ── Missão Futuro ── */
+  .pillar-tag-bronze { color:#8a4b14; background:#fbe6d2; }
+  .pillar-tag-prata { color:#3d4650; background:#e6e9ec; }
+  .pillar-tag-ouro { color:#7a5510; background:#fbedb5; }
+  .team-card.mission-bronze { background:#fdf1e6; border-color:#efd3b8; }
+  .team-card.mission-prata { background:#f2f4f6; border-color:#dce1e6; }
+  .team-card.mission-ouro { background:#fdf6dc; border-color:#eedc98; }
+  .sub-title { font-size:22px; font-weight:800; color:var(--dark); margin:48px 0 10px; line-height:1.25; }
+  .block-note { font-size:14px; color:var(--text); line-height:1.7; max-width:820px; }
+  .statement { font-size:20px; font-weight:800; color:var(--dark); line-height:1.4; padding:26px 30px; background:white; border-radius:14px; border-left:4px solid var(--green); box-shadow:0 2px 12px rgba(0,0,0,0.04); }
+  #jogo .feature-card p { font-size:13px; }
+  @media (max-width:720px) { .sub-title { font-size:19px; margin-top:36px; } .statement { font-size:17px; padding:20px 22px; } }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════ TOPBAR ════════════════════ -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-brand">
+      <svg class="topbar-logo" viewBox="0 0 218.4 45.6" xmlns="http://www.w3.org/2000/svg" aria-label="The Blue City">
+        <defs>
+          <linearGradient id="tbc-grad" x1="48.8" y1="25.7" x2="211.8" y2="25.7" gradientTransform="translate(0 48) scale(1 -1)" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#006188"/>
+            <stop offset="1" stop-color="#95cfa0"/>
+          </linearGradient>
+        </defs>
+        <circle cx="26.1" cy="22.7" r="18.4" fill="#001522"/>
+        <rect x="15.5" y="17.5" width="20.8" height="3.2" fill="#fff"/>
+        <path fill="#0c9ed9" d="M35,23l-.2.2c-1.3,1.1-2.4,2.1-4.1,2.1s-2.5-.4-4.1-1.3c-2.1-1.1-3.9-1.7-5.6-1.7-2.8,0-4.6,1.6-6,2.9l-.2.2,2,2.4.2-.2c1.3-1.1,2.4-2.1,4.1-2.1s2.5.4,4.1,1.3c2.1,1.1,3.9,1.7,5.6,1.7h0c2.7,0,4.5-1.6,5.9-2.9l.2-.2-2-2.4h0Z"/>
+        <g fill="url(#tbc-grad)">
+          <path d="M64.5,16.8h-5.7v14.9h-4.3v-14.9h-5.7v-3.8h15.7v3.8Z"/>
+          <path d="M79.1,31.6h-4.2v-7.6c0-.9-.2-1.5-.6-1.9s-.9-.6-1.4-.6-.7,0-1.1.3c-.4.2-.8.5-1.1.8-.3.4-.6.8-.7,1.2v7.8h-4.2V12.5h4.2v7.9c.5-.8,1.2-1.5,2-1.9s1.8-.6,2.8-.6,1.7.2,2.2.5c.6.3,1,.7,1.3,1.2s.5,1,.6,1.7c0,.6.2,1.2.2,1.8v8.7-.2Z"/>
+          <path d="M87.9,31.9c-1.2,0-2.2-.2-3.1-.6s-1.7-.9-2.3-1.5c-.6-.6-1.1-1.4-1.5-2.2-.3-.8-.5-1.7-.5-2.6,0-1.3.3-2.5.9-3.6s1.4-1.9,2.5-2.6,2.4-1,4-1,2.9.3,4,1,1.9,1.5,2.5,2.6.9,2.2.9,3.5,0,.5,0,.7v.6h-10.2c0,.6.2,1.1.5,1.5s.7.7,1.1.9c.5.2.9.3,1.4.3s1.2-.1,1.8-.4c.6-.3.9-.7,1.1-1.2l3.6,1c-.4.7-.8,1.3-1.5,1.9-.6.5-1.4,1-2.2,1.3-.9.3-1.8.5-2.9.5h-.1ZM84.9,23.5h6c0-.6-.2-1-.5-1.5-.3-.4-.6-.7-1.1-1s-.9-.3-1.5-.3-1,.1-1.4.3c-.4.2-.8.5-1.1.9-.3.4-.4.9-.5,1.5h0Z"/>
+          <path d="M118,26.8c0,1.1-.3,2-.8,2.7-.6.7-1.3,1.2-2.3,1.6s-2,.5-3.2.5h-9.1V13h10.4c.9,0,1.6.2,2.3.7.6.5,1.1,1.1,1.5,1.8.3.7.5,1.5.5,2.3s-.2,1.7-.7,2.5c-.4.8-1.1,1.4-2,1.8,1.1.3,1.9.9,2.5,1.7.6.8.9,1.8.9,3.1h0ZM106.9,16.7v3.9h4.2c.3,0,.6,0,.9-.2.3-.1.5-.4.7-.6.2-.3.2-.6.2-1.1s0-.8-.2-1.1c0-.3-.3-.5-.6-.6-.2-.1-.5-.2-.9-.2h-4.4.1ZM113.7,26c0-.4,0-.7-.2-1.1-.2-.3-.4-.6-.6-.7s-.6-.3-.9-.3h-4.9v4.1h4.8c.4,0,.7,0,1-.3.3-.2.5-.4.7-.7.2-.3.2-.6.2-1h0Z"/>
+          <path d="M119.7,12.5h4.2v14.3c0,.6,0,1,.3,1.2.2.2.5.4.9.4s.5,0,.8-.1c.3,0,.5-.2.7-.3l.6,3.2c-.5.2-1.1.4-1.8.6-.7.2-1.3.2-1.9.2-1.2,0-2.1-.3-2.8-1-.6-.6-1-1.6-1-2.7v-15.7h0Z"/>
+          <path d="M127.9,26.8v-8.8h4.2v7.8c0,.8.2,1.4.5,1.9.3.4.8.7,1.4.7s.8,0,1.1-.2c.4-.1.7-.3,1-.6s.6-.7.9-1.1v-8.4h4.2v9c0,.4,0,.7.2.9.1.2.4.3.7.3v3.5c-.4,0-.7.1-1,.2s-.5,0-.8,0c-.7,0-1.3-.1-1.8-.4-.4-.3-.7-.7-.8-1.3v-.8c-.7.9-1.5,1.6-2.4,2s-2,.6-3.2.6-2.5-.4-3.2-1.3-1.1-2.2-1.1-3.8v-.2Z"/>
+          <path d="M150.6,31.9c-1.2,0-2.2-.2-3.1-.6-.9-.4-1.7-.9-2.3-1.5s-1.1-1.4-1.5-2.2c-.3-.8-.5-1.7-.5-2.6,0-1.3.3-2.5.9-3.6.6-1.1,1.4-1.9,2.5-2.6s2.4-1,4-1,2.9.3,4,1c1.1.6,1.9,1.5,2.5,2.6s.9,2.2.9,3.5,0,.5,0,.7v.6h-10.2c0,.6.2,1.1.5,1.5s.7.7,1.1.9c.5.2.9.3,1.4.3s1.2-.1,1.8-.4.9-.7,1.1-1.2l3.6,1c-.4.7-.8,1.3-1.5,1.9-.6.5-1.4,1-2.2,1.3-.9.3-1.8.5-2.9.5h-.1ZM147.5,23.5h6c0-.6-.2-1-.5-1.5-.3-.4-.6-.7-1.1-1-.4-.2-.9-.3-1.5-.3s-1,.1-1.4.3c-.4.2-.8.5-1.1.9s-.4.9-.5,1.5h.1Z"/>
+          <path d="M164.2,22.1c0-1.1.2-2.2.6-3.3.4-1.1,1-2.1,1.8-3s1.8-1.6,3-2.2c1.2-.5,2.5-.8,3.9-.8s3.3.4,4.6,1.1,2.3,1.7,2.9,2.9l-3.3,2.3c-.3-.7-.6-1.2-1.1-1.6s-1-.6-1.5-.8c-.6-.1-1.1-.2-1.6-.2-.8,0-1.5.2-2.1.5s-1.1.8-1.5,1.3-.7,1.1-.9,1.8c-.2.7-.3,1.3-.3,2s.1,1.5.4,2.2c.2.7.6,1.3,1,1.8s.9.9,1.6,1.2c.6.3,1.3.5,2,.5s1.1,0,1.6-.2,1-.4,1.5-.8.8-.9,1.1-1.5l3.5,2.1c-.4.9-1,1.7-1.8,2.3-.8.6-1.8,1.1-2.8,1.5s-2.1.5-3.2.5-2.6-.3-3.7-.8c-1.1-.6-2.1-1.3-2.9-2.2-.8-.9-1.5-2-1.9-3.1s-.7-2.3-.7-3.5h-.2Z"/>
+          <path d="M182.5,16.3v-3.8h4.2v3.8h-4.2ZM182.5,31.6v-13.8h4.2v13.8s-4.2,0-4.2,0Z"/>
+          <path d="M198,30.9c-.4.2-.8.3-1.2.5-.5.2-.9.3-1.4.4-.5,0-1,.1-1.5.1s-1.3-.1-1.9-.3-1-.6-1.4-1.2-.5-1.2-.5-2.1v-7.1h-1.8v-3.2h1.8v-4.4h4.2v4.4h2.8v3.2h-2.8v5.6c0,.5.1.8.3,1s.5.3.9.3.6,0,1-.2c.3-.1.6-.2.9-.3l.8,3.3h-.2Z"/>
+          <path d="M199.1,33.7c.4,0,.7.2,1,.2h.8c.4,0,.6,0,.9-.2s.4-.4.6-.8c.2-.4.3-.8.5-1.4l-5.2-13.7h4.3l3.2,9.4,2.7-9.4h3.9l-5.3,15.9c-.2.7-.6,1.4-1.1,2s-1.1,1-1.9,1.4c-.7.3-1.5.5-2.4.5h-1.1c-.4,0-.7-.2-1.1-.3v-3.6h.2Z"/>
+        </g>
+      </svg>
+      <div class="topbar-brand-sub">Missão Futuro · Jornada Cultural e Educativa</div>
+    </div>
+    <nav class="topbar-nav" id="topbar-nav">
+      <a href="#sobre">Sobre</a>
+      <a href="#jogo">Jogo</a>
+      <a href="#fluxo">Fluxo</a>
+      <a href="#atores">Atores</a>
+      <a href="#ganhos">Ganhos</a>
+      <a href="#certificado">Credencial</a>
+      <a href="#picpay">PicPay</a>
+      <a href="#impacto">Impacto</a>
+      <a href="#casos">Plataforma</a>
+      <a href="#equipe">Equipe</a>
+    </nav>
+    <button class="topbar-burger" id="topbar-burger" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</div>
+
+<!-- ════════════════════ HERO ════════════════════ -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-split">
+      <div class="hero-text">
+        <h1 class="hero-title">Seu dinheiro.<br>Suas escolhas.<br>Nosso futuro.</h1>
+        <p class="hero-desc">Missão Futuro é uma jornada cultural e educativa gamificada de educação financeira, sustentabilidade e empreendedorismo para jovens brasileiros – jogo digital, oficinas presenciais e um festival cultural produzido pelos próprios jovens, numa edição nacional com o PicPay.</p>
+        <a class="hero-cta" href="https://brasil.thebluecity.app" target="_blank" rel="noopener">Conheça a plataforma</a>
+      </div>
+      <div class="hero-map">
+        <svg viewBox="0 0 1911.1 1854.6" xmlns="http://www.w3.org/2000/svg" aria-label="Globo terrestre com pontos representando cidades brasileiras">
+          <g class="globe-ocean">
+            <path d="M1853.3,772.6c-45.5-270.7-210.5-518.4-463-650.5-22.5-11.8-45.7-22.7-69.5-32.5-6.6-2.7-13.2-5.4-19.8-7.9-2.2-.8-4.4-1.6-6.5-2.4-4.5-1.7-8.9-3.4-13.4-5-2.6-.9-5.2-1.8-7.8-2.7-4.1-1.4-8.2-2.9-12.2-4.2-2.8-.9-5.5-1.8-8.3-2.7-4-1.3-7.9-2.6-11.9-3.8-2.8-.9-5.7-1.7-8.5-2.6-3.9-1.2-7.9-2.3-11.8-3.5-2.8-.8-5.7-1.6-8.5-2.4-4-1.1-8-2.2-11.9-3.2-2.8-.7-5.6-1.5-8.5-2.2-4.1-1-8.1-2-12.2-3-2.7-.6-5.5-1.3-8.2-1.9-4.2-1-8.4-1.9-12.6-2.8-2.6-.6-5.2-1.1-7.8-1.6-4.5-.9-8.9-1.8-13.4-2.6-2.4-.4-4.7-.9-7.1-1.3-5-.9-9.9-1.7-14.9-2.5-1.9-.3-3.8-.6-5.7-.9-6.2-1-12.3-1.9-18.5-2.7-.7,0-1.4-.2-2.1-.3-14.2-1.9-28.3-3.5-42.5-4.7h-1c-6.6-.6-13.2-1.1-19.9-1.5-1.2,0-2.4-.1-3.6-.2-5.8-.4-11.5-.7-17.3-.9-1.5,0-3-.1-4.6-.2-5.5-.2-11-.4-16.4-.5h-4.9c-5.4,0-10.8-.1-16.2-.1h-4.9c-5.4,0-10.8.1-16.3.2-1.5,0-3.1,0-4.6.1-5.6.2-11.2.4-16.7.6-1.4,0-2.7.1-4.1.2-5.9.3-11.8.6-17.6,1-1,0-2,.1-3.1.2-6.4.5-12.8,1-19.3,1.6-.5,0-.9,0-1.4.1-27.5,2.6-54.9,6.3-82,11.2-21.6,3.9-43.1,8.6-64.4,14.1-.2,0-.4,0-.6.2-6.6,1.7-13.1,3.4-19.7,5.2-.4,0-.8.2-1.1.3-6.4,1.8-12.8,3.6-19.2,5.6-.4,0-.8.2-1.2.4-6.4,2-12.8,4-19.2,6.1-.3,0-.6.2-.8.3-3.3,1.1-6.5,2.1-9.8,3.3-3.3,1.1-6.7,2.3-10,3.5h0c-45.6,16.1-90,35.6-132.6,58.6-126.7,68.2-238.3,166.2-322.3,291.3-44.4,66.1-79.6,138.1-105,213.5-4.8,14.2-9.2,28.6-13.3,43.1-20.1,70.9-31.6,144.3-33.9,218,0,4,0,8-.2,12h0v.2c0,6.8,0,13.7,0,20.5v.6c0,6.8.3,13.5.5,20.3v.8c.3,6.7.6,13.3,1.1,20v1.1c.4,6.5,1,13.1,1.6,19.6,0,.5,0,.9,0,1.4.6,6.4,1.3,12.8,2.1,19.2,0,.6.2,1.2.2,1.8.8,6.3,1.6,12.5,2.5,18.7,0,.7.2,1.5.3,2.2.9,6.1,1.9,12.1,3,18.2.2.9.3,1.8.5,2.8,1.1,5.9,2.2,11.7,3.3,17.6.2,1.1.5,2.2.7,3.3,1.2,5.6,2.4,11.3,3.7,16.9.3,1.3.6,2.6.9,4,1.3,5.4,2.6,10.8,4,16.2.4,1.6.8,3.1,1.2,4.7,1.4,5.1,2.7,10.3,4.2,15.4.5,1.8,1.1,3.6,1.6,5.5,1.4,4.8,2.8,9.6,4.3,14.4.7,2.2,1.4,4.3,2.1,6.5,1.4,4.5,2.9,8.9,4.4,13.4.9,2.6,1.8,5.1,2.7,7.7,1.4,4,2.8,8,4.2,12,1.2,3.3,2.5,6.6,3.7,9.8,1.2,3.2,2.4,6.5,3.7,9.7,2.6,6.5,5.2,13,7.9,19.4h0c2.7,6.3,5.4,12.6,8.2,18.8,0,0,0,.2,0,.2,2.8,6.2,5.7,12.4,8.6,18.5,0,0,0,.2.2.3,2.9,6.1,5.9,12.2,9,18.2,0,.2.2.3.3.5,3,6,6.2,11.9,9.4,17.9.1.2.2.4.3.6,3.2,5.9,6.4,11.7,9.7,17.5.2.3.3.5.5.8,3.3,5.7,6.6,11.4,10,17.1.2.3.4.7.6,1,3.4,5.6,6.8,11.2,10.3,16.7.2.4.5.8.7,1.2,3.4,5.5,7,10.9,10.5,16.3.3.4.6.9.9,1.3,3.5,5.3,7.1,10.6,10.8,15.9.4.5.7,1,1.1,1.5,3.6,5.2,7.3,10.3,11,15.5.4.6.8,1.1,1.2,1.7,3.7,5,7.4,10.1,11.2,15,.5.6,1,1.2,1.4,1.9,3.7,4.9,7.5,9.8,11.3,14.6.5.7,1.1,1.4,1.6,2,3.8,4.7,7.6,9.5,11.5,14.1.6.7,1.2,1.5,1.9,2.2,3.8,4.6,7.7,9.2,11.6,13.7.7.8,1.4,1.6,2.1,2.4,3.9,4.4,7.8,8.9,11.7,13.2.8.9,1.6,1.7,2.3,2.6,3.9,4.3,7.8,8.6,11.8,12.8.9.9,1.7,1.8,2.6,2.7,3.9,4.1,7.9,8.2,11.9,12.3,1,1,1.9,1.9,2.9,2.9,3.9,4,7.9,7.9,11.9,11.9s2.1,2,3.2,3c4,3.8,7.9,7.6,12,11.4,1.1,1.1,2.3,2.1,3.4,3.2,4,3.7,8,7.3,12,10.9,1.2,1.1,2.5,2.2,3.7,3.3l12,10.5c1.3,1.1,2.7,2.3,4,3.4,4,3.4,7.9,6.7,12,10,1.4,1.2,2.9,2.3,4.3,3.5,4,3.2,7.9,6.4,11.9,9.6,1.5,1.2,3.1,2.4,4.7,3.6,3.9,3.1,7.9,6.1,11.9,9.1,1.7,1.2,3.3,2.5,5,3.7,3.9,2.9,7.9,5.8,11.8,8.7,1.8,1.3,3.5,2.5,5.3,3.8,3.9,2.8,7.8,5.5,11.8,8.3,1.9,1.3,3.8,2.6,5.7,3.8,3.9,2.6,7.8,5.3,11.7,7.8,2,1.3,4,2.6,6,3.8,3.9,2.5,7.7,5,11.6,7.4,2.1,1.3,4.2,2.6,6.3,3.9,3.8,2.4,7.7,4.7,11.5,7,2.2,1.3,4.4,2.6,6.6,3.9,3.8,2.2,7.6,4.4,11.4,6.6,2.3,1.3,4.6,2.6,7,3.9,3.8,2.1,7.5,4.2,11.3,6.2,2.4,1.3,4.9,2.6,7.3,3.8,3.7,2,7.4,3.9,11.2,5.8,2.5,1.3,5.1,2.5,7.6,3.8,3.7,1.8,7.3,3.7,11,5.4,2.6,1.3,5.3,2.5,7.9,3.7,3.6,1.7,7.3,3.4,10.9,5.1,2.7,1.2,5.5,2.4,8.2,3.6,3.6,1.6,7.2,3.2,10.8,4.7,2.8,1.2,5.7,2.4,8.5,3.5,3.6,1.5,7.1,3,10.7,4.4,2.9,1.2,5.9,2.3,8.8,3.4,3.5,1.4,7,2.7,10.5,4.1,0,0,.2,0,.3,0,2.9,1.1,5.9,2.1,8.8,3.2,3.5,1.2,6.9,2.5,10.4,3.7,3.1,1.1,6.3,2.1,9.4,3.1,3.4,1.1,6.8,2.3,10.2,3.4,3.2,1,6.5,2,9.7,3,3.4,1,6.7,2.1,10.1,3.1,3.3,1,6.6,1.9,10,2.8,3.3.9,6.7,1.9,10,2.8.3,0,.5,0,.8.2,3.2.8,6.3,1.6,9.5,2.4,3.3.8,6.5,1.7,9.8,2.5,3.5.8,7.1,1.6,10.6,2.4,3.2.7,6.4,1.5,9.6,2.2,3.7.8,7.4,1.5,11,2.2,3.1.6,6.2,1.3,9.3,1.9,3.9.7,7.7,1.4,11.6,2,2.9.5,5.9,1.1,8.8,1.5,4.1.7,8.2,1.2,12.3,1.8,2.7.4,5.5.8,8.2,1.2,4.6.6,9.1,1.1,13.7,1.7,2.3.3,4.6.6,6.9.8,6.9.7,13.8,1.4,20.6,2,370.2,30.2,751.8-155.1,913.5-497.8,79.9-169.5,100.8-354.7,71.3-530.4l.3-.5Z"/>
+          </g>
+          <g class="globe-land">
+            <path d="M923,111.9c-6.7,1.9-12.8,6.3-19.7,6.1-8-.2-14.2-6.4-20.8-10.9-3.8-2.5-7.8-4.5-12-6.2-11.7-4.7-24.6-6.7-36.8-10.1-16.6-4.7-34-14-39-30.5-2.1-6.9-1.7-14.3-1.8-21.6,0-1.5,0-3-.2-4.5h0c-21.6,3.9-43.1,8.6-64.4,14.1-.2,0-.4,0-.6.2-6.6,1.7-13.1,3.4-19.7,5.2-.4,0-.8.2-1.1.3-6.4,1.8-12.8,3.6-19.2,5.6-.4,0-.8.2-1.2.4-6.4,2-12.8,4-19.2,6.1-.3,0-.6.2-.8.3-3.3,1.1-6.5,2.1-9.8,3.3h0c0,0,0,.2-.2.3-11.4,23.9-36.1,44-31.5,69.5,0,.3,0,.6,0,.8,4.2,20.5,27,32.2,47.8,33.2,20.9,1,41.4-5.5,62.2-7.2,5.6-.5,11.5-.5,16.5,2.1,9.1,4.7,12.1,16.1,13.5,26.2,1.3,9.3,2.1,18.7,2.5,28,1,25.4-1.4,50.9-7.4,75.5-4.4,18.2-9.2,40.9,4.2,53.2.5.5,1,1,1.6,1.4,3.1,2.4,6.5,3.9,10.1,4.8,14.5,3.8,32.6-1.3,46.2,6.2,4.8,2.6,8.9,6.8,14.1,8.4,16.6,5,28.3-17.7,26.5-35s-9.3-35.8-1-51c8.8-16.1,29.9-19.2,46.5-26.9,10.4-4.8,19.4-11.9,26.9-20.4,13.5-15.2,22.7-35,27.8-55,4.2-16.2,6.2-33.8-.3-49.2-6.5-15.4-23.8-27.2-39.8-22.6h0Z"/>
+            <path d="M856.9,1155.5c-21.8-14.8-51.8.5-77.6-5.1-41.1-9-56.6-66.1-97.3-76.8-27.8-7.3-59.6,9.8-84.8-3.9-10.3-5.6-18-15.9-29.1-19.7-32.3-11.2-56.2,36.2-90.1,40.6-4.4-23.9-8.7-47.9-13.1-71.8-20.7,12.4-37.7,31-48.2,52.8-5-15.2-10.1-30.5-15.1-45.7-6.7,16.3-32.7.8-35.1-16.7-2.3-17.5,2.7-38.4-10.2-50.4-15.2-14.2-39.6-2-56.3,10.3-11.1-33-22.1-66-33.2-99-2.6-7.7-5.2-15.5-5.6-23.6-1.1-20.6,11.6-39.1,23.8-55.7,15.7-21.5,36.8-45.5,63.2-42.1,2.3.3,4.5.8,6.7,1.4,16.4,4.8,31.1,18,48.2,16.2,25.2-2.7,34.7-33.6,39.5-58.5s18.5-55.5,43.7-53.5c24.7,2,39.6,36,64.2,33.3,25.3-2.8,28.6-38.3,24.1-63.4-4.5-25.1-3.1-60.2,22-64.9,20.2-3.8,35.6,17.7,43.1,36.9s15.8,42.1,35.8,47.2c34.6-12,45.7-58.9,31.8-92.8-13.9-33.9-44.7-57.4-74.1-79.3-14.3-10.7-30.7-21.9-48.4-19.5-12.2,1.6-24.1,9.7-35.9,6.3-7.7-2.3-13.4-9-21-11.6-16.1-5.3-31.2,9.9-40.2,24.2-14.9,23.5-26.2,49.3-33.6,76.1-39.1,2.6-82.4-16.2-96.1-52.9-1.8-4.9-2.8-9.9-3.1-15.1-1.7-28.9,18.9-59.6,45.9-63.8,4.5-.7,9.1-.7,13.9.2,7.8,1.4,15.5,4.9,23.4,3.9,9.7-1.2,17.2-8.8,23.8-15.9,21.1-22.5,42.2-45.1,63.4-67.6,9.6-10.2,19.2-20.5,28.8-30.7,8.5,3.6,14.4,10.6,17.8,18.9,6.9,17,2.8,39.4-13.4,49,0,27.6,35.6,43.6,61.9,35,24.9-8.1,65.1-44.4,70.6-71.4.8-3.9,1.2-7.3,1.4-10.4,1.7-31.9-29.8-19.6-54.9-30.1-16.1-6.8-30.9-21.2-44.6-39.2-18.9-24.7-36-56.1-52.2-83.9-9.1-15.5-17.9-29.9-26.6-41.2-126.7,68.2-238.3,166.2-322.3,291.3-44.4,66.1-79.6,138.1-105,213.5-4.8,14.2-9.2,28.6-13.3,43.1,10,25.7,2.4,57.3,3.4,86.1,1.3,34.4,17.1,67.9,42.2,91.5,6.1,5.7,12.6,10.8,19.7,15.2,6.5-21.3,13-42.7,19.5-64,25.2,36.9,28.2,85.2,51.6,123.4,8.8,14.4,20.1,26.6,32.6,37.5,41.3,35.9,97.4,58.1,133.1,100.7,16.8,20,28.8,46.8,21.9,72-3.5,12.8-11.5,23.8-16.3,36.2-.3.7-.5,1.4-.7,2.2-9.5,26.8-2.7,58.9,17.2,79.3,18.3,18.9,46.1,28.2,59.9,50.6,10.5,17,10.7,38.2,16.1,57.5,10.2,36.6,38.9,66,57.5,98.9,7.9,14.1,14,28.7,16,44.9,2.6,21.1-2.3,42.3-2.4,63.5,0,21.2,6.4,44.7,24.6,55.6,12.2,7.3,27.4,7.5,40.2,13.5,22.1,10.3,31.8,33.9,35.6,58.9,1.5,10.1,2.1,20.5,2,30.3v17.8c2.9,1.1,5.9,2.1,8.8,3.2,3.5,1.2,6.9,2.5,10.4,3.7,3.1,1.1,6.3,2.1,9.4,3.1,3.4,1.1,6.8,2.3,10.2,3.4,3.2,1,6.5,2,9.7,3,3.4,1,6.7,2.1,10.1,3.1,3.3,1,6.6,1.9,10,2.8,3.3.9,6.7,1.9,10,2.8.3,0,.5,0,.8.2,6.5-16.1,10.6-32.5,9.9-48-.6-13.2-4.8-25.7-14-36.6-8.1-9.5-19.4-16.3-25.9-27-8.6-14.2-7.2-32-5.4-48.5,3.1-28.7,7.5-59.5,17.8-86.4,9.5-24.9,23.9-46.4,46.9-59.8,20.5-11.9,46.6-16.4,60.6-35.5,17.3-23.6,6.9-53.3-.3-83.3-4-16.6-7-33.4-3.7-49.2,5.7-27.6,29.2-47.3,45.3-70.5s22.4-60-.9-75.8v-.3Z"/>
+            <path d="M1390.3,122.2c-7.2,7.6-13.7,15.4-19.5,23.2-26.6,36-36.1,72.6-4.5,97.6,17.7,14,44.1,16.5,57.1,34.9,13.1,18.4,3.3,48.3-18.1,55.5-.6.2-1.2.3-1.8.5-21,5.6-45.4-11.9-46-33.9,0-3.8.4-7.7.9-11.6,1.2-8.8,2.8-17.6-1.4-25.2-6.9-12.6-22.7-12.4-37.4-7.9-5.2,1.6-10.3,3.6-14.8,5.9-28.4,14.1-57.7,29.2-77.1,54.3-19.4,25.1-25.9,63.2-6.2,88,20.1,25.4,64.4,25.3,84.5-.1-9.9,17.1-19.6,39.5-7.5,55,7.5,9.7,20.6,12.4,31.9,17.2,11.3,4.8,22.7,15.5,19.6,27.3-3,11.4-18.1,15.4-29.2,11.5-11.1-3.8-19.6-12.7-28.9-19.9-4.6-3.6-9.6-6.7-14.8-9.4-19.2-9.9-41.7-13.4-62-6.4-25.7,8.8-45,36.8-39.5,63.4,5.6,26.6,39.4,44.6,62.8,30.7-12.6,23.6-18.4,50.8-16.5,77.5,19.3-5.8,39.2-11.6,59.2-9.2,20,2.3,40.2,15,44.9,34.6,4.1-13.1,10.5-25.5,18.7-36.6,7.2-9.6,15.7-18.1,25.4-25.2-3.2,22.1,19.7,41.6,42.1,41.6s42.4-14.2,57.4-30.8c-.7,34.4,42.2,61.3,72.9,45.6,2.2,9.1,4.5,18.1,6.7,27.2-20.1,15.1-48.3,2.5-70.4-9.6-22-12-52.1-22.3-69.8-4.5-17.6,17.7-7.3,47.5,3.9,69.8-15.8-4.9-32.3-7.1-48.8-7-46.4.2-92.8,19.3-124.6,53.2-26.3,28.1-51.1,69.1-89.4,65.6-14.2-1.3-27.1-9.1-41.1-11.9-43.2-8.6-84.5,44.8-65.2,84.4,32.6,67,154.6,32.1,192.3,96.4,18.4,31.4,6.3,70.9-3.5,106-2.1,7.4-3.9,15.1-5.3,22.9-5.2,29.4-3.9,60.5,17.4,79.8,15.8,14.4,39.5,18.5,53.7,34.4,26,29.1,5.8,74.5,7.4,113.5,0,3.5.5,6.9,1,10.3,3.9,27.7,18.2,53.4,28.7,79.7,11.8,29.5,18.6,64.8,1.6,91.6,14.9,7.2,31.6-5.2,42.2-17.8,45.3-53.7,64.9-128.3,120.1-171.8,44.2-34.9,108.8-47.6,135.7-97.1,31.8-58.6-7.3-138,26.7-195.3,13.1-22.1,35.3-37.2,50.6-57.9,15.3-20.6,21.6-52.9,2.5-70-14.1-12.7-35.3-11.3-54.2-13.2-18.9-1.8-41.1-12.2-41.5-31.1-.8-37.9,78.4-35.1,76.8-73-.3-7.9-4.7-15-9-21.7-12.3-19.3-24.5-38.6-36.8-57.8,31.8,3.3,61.7,22.5,77.8,50.1,4.1,7,8.2,15.3,16,17.7,6.7,2.1,13.8-.9,20.1-4,9.8-4.8,19.4-10,28.9-15.4,21.1-12.1,41.4-25.9,60.5-41-45.5-270.7-210.5-518.4-463-650.5h-.2Z"/>
+            <path d="M666.4,1757.9c-3.5-1.2-6.9-2.5-10.4-3.7,3.5,1.2,6.9,2.5,10.4,3.7Z"/>
+            <path d="M705.9,1770.5c-3.4-1-6.8-2.1-10.1-3.1,3.4,1,6.7,2.1,10.1,3.1Z"/>
+            <path d="M686.1,1764.4c-3.4-1.1-6.8-2.3-10.2-3.4,3.4,1.1,6.8,2.3,10.2,3.4Z"/>
+            <path d="M725.9,1776.1c-3.3-.9-6.7-1.9-10-2.8,3.3.9,6.7,1.9,10,2.8Z"/>
+            <path d="M687.6,59.6c6.4-1.9,12.8-3.8,19.2-5.6-6.4,1.8-12.8,3.6-19.2,5.6Z"/>
+            <path d="M666.4,66.3c-3.3,1.1-6.5,2.1-9.8,3.3h0c3.3-1.1,6.6-2.3,9.9-3.4h-.1Z"/>
+            <path d="M667.2,66c6.4-2.1,12.8-4.1,19.2-6.1-6.4,2-12.8,4-19.2,6.1Z"/>
+            <path d="M792.7,34.3c-21.6,3.9-43.1,8.6-64.4,14.1,21.3-5.4,42.8-10.1,64.4-14h0Z"/>
+            <path d="M708,53.7c6.5-1.8,13.1-3.6,19.7-5.2-6.6,1.7-13.1,3.4-19.7,5.2Z"/>
+            <path d="M765.9,352.7c3.1,2.4,6.5,3.9,10.1,4.8-3.8-2.2-7.7-4.2-11.7-6.2.5.5,1,1,1.6,1.4h0Z"/>
+          </g>
+          <g class="map-points">
+            <g class="map-point" style="--delay:0.0s"><circle cx="525" cy="1094" r="10"/><circle class="pulse" cx="525" cy="1094" r="10"/></g>
+            <g class="map-point" style="--delay:0.8s"><circle cx="453" cy="1199" r="10"/><circle class="pulse" cx="453" cy="1199" r="10"/></g>
+            <g class="map-point" style="--delay:1.4s"><circle cx="621" cy="1141" r="10"/><circle class="pulse" cx="621" cy="1141" r="10"/></g>
+            <g class="map-point" style="--delay:2.6s"><circle cx="704" cy="1103" r="10"/><circle class="pulse" cx="704" cy="1103" r="10"/></g>
+            <g class="map-point" style="--delay:2.0s"><circle cx="668" cy="1199" r="10"/><circle class="pulse" cx="668" cy="1199" r="10"/></g>
+            <g class="map-point" style="--delay:0.4s"><circle cx="776" cy="1165" r="10"/><circle class="pulse" cx="776" cy="1165" r="10"/></g>
+            <g class="map-point" style="--delay:1.8s"><circle cx="848" cy="1218" r="10"/><circle class="pulse" cx="848" cy="1218" r="10"/></g>
+            <g class="map-point" style="--delay:3.0s"><circle cx="788" cy="1325" r="10"/><circle class="pulse" cx="788" cy="1325" r="10"/></g>
+            <g class="map-point" style="--delay:1.2s"><circle cx="525" cy="1278" r="10"/><circle class="pulse" cx="525" cy="1278" r="10"/></g>
+            <g class="map-point" style="--delay:2.4s"><circle cx="621" cy="1218" r="10"/><circle class="pulse" cx="621" cy="1218" r="10"/></g>
+            <g class="map-point" style="--delay:0.6s"><circle cx="621" cy="1325" r="10"/><circle class="pulse" cx="621" cy="1325" r="10"/></g>
+            <g class="map-point" style="--delay:1.6s"><circle cx="752" cy="1385" r="10"/><circle class="pulse" cx="752" cy="1385" r="10"/></g>
+            <g class="map-point" style="--delay:2.2s"><circle cx="680" cy="1433" r="10"/><circle class="pulse" cx="680" cy="1433" r="10"/></g>
+            <g class="map-point" style="--delay:0.2s"><circle cx="616" cy="1469" r="10"/><circle class="pulse" cx="616" cy="1469" r="10"/></g>
+            <g class="map-point" style="--delay:2.8s"><circle cx="580" cy="1509" r="10"/><circle class="pulse" cx="580" cy="1509" r="10"/></g>
+            <g class="map-point map-point-minor" style="--delay:1.1s"><circle cx="301" cy="766" r="9"/><circle class="pulse" cx="301" cy="766" r="9"/></g>
+            <g class="map-point map-point-minor" style="--delay:0.3s"><circle cx="310" cy="668" r="9"/><circle class="pulse" cx="310" cy="668" r="9"/></g>
+            <g class="map-point map-point-minor" style="--delay:2.5s"><circle cx="480" cy="480" r="9"/><circle class="pulse" cx="480" cy="480" r="9"/></g>
+            <g class="map-point map-point-minor" style="--delay:1.9s"><circle cx="1225" cy="602" r="9"/><circle class="pulse" cx="1225" cy="602" r="9"/></g>
+            <g class="map-point map-point-minor" style="--delay:0.7s"><circle cx="1385" cy="430" r="9"/><circle class="pulse" cx="1385" cy="430" r="9"/></g>
+            <g class="map-point map-point-minor" style="--delay:2.9s"><circle cx="1075" cy="907" r="9"/><circle class="pulse" cx="1075" cy="907" r="9"/></g>
+            <g class="map-point map-point-minor" style="--delay:1.5s"><circle cx="1237" cy="1118" r="9"/><circle class="pulse" cx="1237" cy="1118" r="9"/></g>
+            <g class="map-point map-point-minor" style="--delay:0.5s"><circle cx="1282" cy="1263" r="9"/><circle class="pulse" cx="1282" cy="1263" r="9"/></g>
+            <g class="map-point map-point-minor" style="--delay:2.3s"><circle cx="1361" cy="955" r="9"/><circle class="pulse" cx="1361" cy="955" r="9"/></g>
+            <g class="map-point map-point-minor" style="--delay:1.3s"><circle cx="1528" cy="764" r="9"/><circle class="pulse" cx="1528" cy="764" r="9"/></g>
+            <g class="map-point map-point-minor" style="--delay:2.7s"><circle cx="1624" cy="1290" r="9"/><circle class="pulse" cx="1624" cy="1290" r="9"/></g>
+          </g>
+        </svg>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat-box">
+        <div class="hero-stat-icon">🎮</div>
+        <div class="hero-stat-title">Jogo digital</div>
+        <div class="hero-stat-desc">Oito missões em Nova Aurora, jogadas direto no navegador do celular</div>
+      </div>
+      <div class="hero-stat-box">
+        <div class="hero-stat-icon">🎓</div>
+        <div class="hero-stat-title">Credenciais verificáveis</div>
+        <div class="hero-stat-desc">Bronze, Prata e Ouro em blockchain, compartilháveis no LinkedIn</div>
+      </div>
+      <div class="hero-stat-box">
+        <div class="hero-stat-icon">🎪</div>
+        <div class="hero-stat-title">Festival do Futuro</div>
+        <div class="hero-stat-desc">Evento cultural produzido pelos jovens com artistas e empreendedores locais</div>
+      </div>
+      <div class="hero-stat-box">
+        <div class="hero-stat-icon">📊</div>
+        <div class="hero-stat-title">Impacto mensurável</div>
+        <div class="hero-stat-desc">Painel com os indicadores da edição em tempo real</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ════════════════════ 01 · SOBRE ════════════════════ -->
+<section id="sobre">
+  <div class="container">
+    <div class="eyebrow">01 · O Projeto</div>
+    <h2 class="section-title">Missão Futuro</h2>
+    <p class="section-lead">Uma jornada cultural e educativa gamificada que une educação financeira, sustentabilidade e empreendedorismo – e certifica cada etapa com credenciais verificáveis que o jovem leva para o LinkedIn.</p>
+
+    <div class="grid-3" style="margin-bottom:32px;">
+      <div class="feature-card">
+        <div class="feature-card-header"><div class="feature-icon fi-blue">🌎</div><h3>Dinheiro e natureza</h3></div>
+        <p>Dinheiro e natureza são recursos finitos, e os dois pedem a mesma competência: decidir bem com o que se tem. A jornada ensina orçamento, consumo, crédito e empreendedorismo junto com o cuidado com água, energia e resíduos.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card-header"><div class="feature-icon fi-teal">🌆</div><h3>Nova Aurora</h3></div>
+        <p>O jogador vive essas decisões em Nova Aurora, uma cidade fictícia que ele ajuda a transformar. Cada escolha tem um custo financeiro, um efeito ambiental e uma consequência para a comunidade – e o jogo mostra os três ao mesmo tempo.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card-header"><div class="feature-icon fi-green">🌱</div><h3>Prosperidade como equilíbrio</h3></div>
+        <p>Em Missão Futuro, a prosperidade é medida em autonomia, oportunidades e equilíbrio. O objetivo é formar jovens que decidem melhor sobre o próprio dinheiro e entendem seu papel numa economia inclusiva e sustentável.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ 02 · JORNADA ════════════════════ -->
+<section id="jornada" class="section-alt">
+  <div class="container">
+    <div class="eyebrow">02 · O Modelo</div>
+    <h2 class="section-title">A Jornada Cultural e Educativa</h2>
+    <p class="section-lead">A jornada começa no celular e ganha corpo em encontros presenciais nas instituições parceiras. É esse percurso, do digital ao analógico, que faz de Missão Futuro um projeto cultural.</p>
+
+    <div class="grid-3" style="margin-bottom:32px;">
+      <div class="feature-card">
+        <div class="feature-card-header"><div class="feature-icon fi-teal">🎮</div><h3>Mundo Digital</h3></div>
+        <p>Os jovens jogam Nova Aurora na plataforma The Blue City, cumprem as oito missões da jornada e conquistam uma credencial verificável a cada nível concluído.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card-header"><div class="feature-icon fi-green">🌍</div><h3>Mundo Analógico</h3></div>
+        <p>Oficinas com mentoria de especialistas e voluntários do PicPay, o Festival do Futuro produzido pelos jovens e a mostra dos projetos que eles propõem para o próprio território.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card-header"><div class="feature-icon fi-blue">🤝</div><h3>Impacto Coletivo</h3></div>
+        <p>Jovens, instituições, artistas, empreendedores e comunidade convergem numa experiência com impacto mensurável no território – registrada e verificável na plataforma.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ 03 · O JOGO ════════════════════ -->
+<section id="jogo">
+  <div class="container">
+    <div class="eyebrow">03 · O Jogo</div>
+    <h2 class="section-title">A experiência do jogo</h2>
+    <p class="section-lead">O jogador assume o papel de um jovem no começo da vida adulta em Nova Aurora. Recebe uma renda fictícia, enfrenta imprevistos e toma decisões individuais e coletivas – e a cidade muda visualmente conforme as escolhas da turma.</p>
+
+    <div class="pillar-block">
+      <div class="pillar-header">
+        <span class="pillar-tag pillar-tag-virtual">Indicadores</span>
+        <div class="pillar-title">Cada decisão move quatro indicadores</div>
+        <div class="pillar-desc">Vence quem equilibra os quatro</div>
+      </div>
+      <div class="grid-4" style="margin-bottom:14px;">
+        <div class="feature-card">
+          <div class="feature-card-header"><div class="feature-icon fi-blue">💰</div><h3>Saúde financeira</h3></div>
+          <p>Capacidade de planejar, administrar o dinheiro e construir objetivos.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header"><div class="feature-icon fi-green">♻️</div><h3>Sustentabilidade</h3></div>
+          <p>Uso consciente de água, energia e materiais, e redução de resíduos.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header"><div class="feature-icon fi-teal">🤝</div><h3>Bem-estar coletivo</h3></div>
+          <p>Efeito das decisões do jogador sobre a comunidade de Nova Aurora.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-header"><div class="feature-icon fi-blue">🚀</div><h3>Oportunidades</h3></div>
+          <p>Renda, empreendedorismo, estudo e desenvolvimento pessoal.</p>
+        </div>
+      </div>
+      <p class="block-note">Um jogador que só acumula dinheiro vê a cidade e as oportunidades encolherem – e aprende com isso.</p>
+    </div>
+
+    <h3 class="sub-title">As oito missões</h3>
+    <p class="block-note" style="margin-bottom:22px;">As missões seguem o modelo de três níveis da plataforma: o jogador aprende com a própria vida, age sobre a comunidade e, no fim, transforma o seu território. Cada nível concluído gera uma credencial verificável.</p>
+
+    <div class="pillar-block">
+      <div class="pillar-header">
+        <span class="pillar-tag pillar-tag-bronze">Bronze</span>
+        <div class="pillar-title">Aprender</div>
+        <div class="pillar-desc">a própria vida financeira</div>
+      </div>
+      <div class="grid-3" style="margin-bottom:8px;">
+        <div class="team-card mission-bronze">
+          <h4>Meu Dinheiro, Minhas Escolhas</h4>
+          <div class="team-role">Missão 01 · Orçamento pessoal e planejamento</div>
+          <p>Montar um plano mensal possível com a primeira renda, entre despesas, família, estudo, lazer e reserva.</p>
+        </div>
+        <div class="team-card mission-bronze">
+          <h4>Consumo Inteligente, Planeta Saudável</h4>
+          <div class="team-role">Missão 02 · Consumo consciente e economia circular</div>
+          <p>Reduzir gastos e resíduos de uma família comparando comprar, consertar, reutilizar e compartilhar.</p>
+        </div>
+        <div class="team-card mission-bronze">
+          <h4>A Conta da Água e da Energia</h4>
+          <div class="team-role">Missão 03 · Economia doméstica e recursos naturais</div>
+          <p>Ler as contas de uma casa, achar desperdícios e calcular em quanto tempo uma melhoria se paga.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pillar-block">
+      <div class="pillar-header">
+        <span class="pillar-tag pillar-tag-prata">Prata</span>
+        <div class="pillar-title">Agir</div>
+        <div class="pillar-desc">sobre a comunidade</div>
+      </div>
+      <div class="grid-3" style="margin-bottom:8px;">
+        <div class="team-card mission-prata">
+          <h4>Empreender para Transformar</h4>
+          <div class="team-role">Missão 04 · Negócios com impacto</div>
+          <p>Abrir e manter um pequeno negócio – brechó, horta, reparos, cozinha, cultura – com caixa no azul.</p>
+        </div>
+        <div class="team-card mission-prata">
+          <h4>Crédito: Ajuda ou Armadilha?</h4>
+          <div class="team-role">Missão 05 · Juros, endividamento e segurança digital</div>
+          <p>Escolher entre poupar, parcelar ou financiar e reconhecer golpes, apostas e promessas de dinheiro fácil. É a missão que mais conversa com o dia a dia do PicPay: Pix, parcelamento, golpes digitais e proteção de dados aparecem em situações práticas, com linguagem neutra em relação a marcas.</p>
+        </div>
+        <div class="team-card mission-prata">
+          <h4>O Dinheiro da Cidade</h4>
+          <div class="team-role">Missão 06 · Cidadania e orçamento público</div>
+          <p>Dividir em conselho comunitário um orçamento limitado entre saúde, educação, cultura, saneamento e ambiente.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pillar-block">
+      <div class="pillar-header">
+        <span class="pillar-tag pillar-tag-ouro">Ouro</span>
+        <div class="pillar-title">Transformar</div>
+        <div class="pillar-desc">o próprio território</div>
+      </div>
+      <div class="grid-2" style="margin-bottom:8px;">
+        <div class="team-card mission-ouro">
+          <h4>O Festival do Futuro</h4>
+          <div class="team-role">Missão 07 · Economia criativa e gestão de eventos</div>
+          <p>Planejar em equipe um festival cultural viável, acessível e de baixo resíduo – que ganha versão presencial na jornada.</p>
+        </div>
+        <div class="team-card mission-ouro">
+          <h4>O Futuro Está em Suas Mãos</h4>
+          <div class="team-role">Missão 08 · Projeto de vida e território</div>
+          <p>Propor uma solução real para o próprio território, com simulação financeira e impacto previsto.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ 04 · FLUXO ════════════════════ -->
+<section id="fluxo" class="section-alt">
+  <div class="container">
+    <div class="eyebrow">04 · Como Funciona</div>
+    <h2 class="section-title">Seis etapas, do jogo ao festival</h2>
+    <p class="section-lead">A Jornada Cultural e Educativa se desenrola em seis etapas encadeadas – do lançamento do jogo na plataforma ao Festival do Futuro.</p>
+
+    <div class="fluxo-desktop" style="margin-bottom:32px;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" style="width:100%;height:auto;display:block;font-family:'Montserrat',sans-serif;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,0.04);">
+        <defs>
+          <marker id="arr-b" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L8,3 z" fill="#2858a0"/>
+          </marker>
+          <marker id="arr-t" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L8,3 z" fill="#468182"/>
+          </marker>
+        </defs>
+        <rect width="960" height="560" fill="#ffffff" rx="16"/>
+        <text x="480" y="42" text-anchor="middle" font-size="18" font-weight="700" fill="#1a2e3b">Como Funciona a Jornada</text>
+        <line x1="340" y1="52" x2="620" y2="52" stroke="#5fb670" stroke-width="2" stroke-linecap="round"/>
+        <rect x="30" y="72" width="260" height="130" rx="10" fill="#f4f8fc" stroke="#2858a0" stroke-width="1.5"/>
+        <rect x="30" y="72" width="260" height="5" rx="5" fill="#2858a0"/>
+        <circle cx="62" cy="104" r="17" fill="#2858a0"/>
+        <text x="62" y="109" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">01</text>
+        <text x="90" y="100" font-size="12" font-weight="700" fill="#2858a0">Jogo Lançado</text>
+        <text x="90" y="116" font-size="10" font-weight="600" fill="#468182">picpay.thebluecity.app</text>
+        <line x1="46" y1="130" x2="276" y2="130" stroke="#e0e8f0" stroke-width="1"/>
+        <text x="46" y="148" font-size="9.5" fill="#000000">Nova Aurora publicado com as</text>
+        <text x="46" y="163" font-size="9.5" fill="#000000">oito missões, direto no</text>
+        <text x="46" y="178" font-size="9.5" fill="#000000">navegador do celular</text>
+        <line x1="294" y1="137" x2="336" y2="137" stroke="#2858a0" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-b)"/>
+        <rect x="340" y="72" width="260" height="130" rx="10" fill="#f4f8fc" stroke="#2858a0" stroke-width="1.5"/>
+        <rect x="340" y="72" width="260" height="5" rx="5" fill="#2858a0"/>
+        <circle cx="372" cy="104" r="17" fill="#2858a0"/>
+        <text x="372" y="109" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">02</text>
+        <text x="400" y="100" font-size="12" font-weight="700" fill="#2858a0">Jovens Jogam</text>
+        <text x="400" y="116" font-size="10" font-weight="600" fill="#468182">Durante o período da jornada</text>
+        <line x1="356" y1="130" x2="586" y2="130" stroke="#e0e8f0" stroke-width="1"/>
+        <text x="356" y="148" font-size="9.5" fill="#000000">Instituições parceiras engajam</text>
+        <text x="356" y="163" font-size="9.5" fill="#000000">estudantes e professores na</text>
+        <text x="356" y="178" font-size="9.5" fill="#000000">plataforma The Blue City</text>
+        <line x1="604" y1="137" x2="646" y2="137" stroke="#2858a0" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-b)"/>
+        <rect x="650" y="72" width="280" height="130" rx="10" fill="#f4f8fc" stroke="#2858a0" stroke-width="1.5"/>
+        <rect x="650" y="72" width="280" height="5" rx="5" fill="#2858a0"/>
+        <circle cx="682" cy="104" r="17" fill="#2858a0"/>
+        <text x="682" y="109" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">03</text>
+        <text x="710" y="100" font-size="12" font-weight="700" fill="#2858a0">Credenciais</text>
+        <text x="710" y="116" font-size="10" font-weight="600" fill="#468182">Bronze, Prata e Ouro em blockchain</text>
+        <line x1="666" y1="130" x2="916" y2="130" stroke="#e0e8f0" stroke-width="1"/>
+        <text x="666" y="148" font-size="9.5" fill="#000000">Credencial verificável a cada nível,</text>
+        <text x="666" y="163" font-size="9.5" fill="#000000">compartilhável no LinkedIn,</text>
+        <text x="666" y="178" font-size="9.5" fill="#000000">vinculada ao PicPay</text>
+        <line x1="790" y1="206" x2="790" y2="248" stroke="#468182" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-t)"/>
+        <rect x="430" y="256" width="500" height="140" rx="10" fill="#eaf4ea" stroke="#5fb670" stroke-width="2"/>
+        <rect x="430" y="256" width="500" height="5" rx="5" fill="#5fb670"/>
+        <circle cx="464" cy="290" r="17" fill="#5fb670"/>
+        <text x="464" y="295" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">04</text>
+        <text x="492" y="286" font-size="12" font-weight="700" fill="#38a349">Oficinas e Projetos de Território</text>
+        <text x="492" y="302" font-size="10" font-weight="600" fill="#468182">Encontros presenciais nas instituições parceiras</text>
+        <line x1="446" y1="314" x2="916" y2="314" stroke="#c8e6c9" stroke-width="1"/>
+        <text x="446" y="332" font-size="9.5" fill="#000000">Oficinas com mentoria de especialistas e de voluntários do PicPay</text>
+        <text x="446" y="347" font-size="9.5" fill="#000000">Missão 8: cada jovem propõe uma solução real para o próprio território,</text>
+        <text x="446" y="362" font-size="9.5" fill="#000000">com simulação financeira e impacto previsto</text>
+        <text x="446" y="380" font-size="9" font-weight="700" fill="#5fb670">★  Ponto de conexão: digital → analógico</text>
+        <line x1="426" y1="326" x2="384" y2="326" stroke="#468182" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-t)"/>
+        <rect x="30" y="256" width="350" height="140" rx="10" fill="#f4f8fc" stroke="#468182" stroke-width="1.5"/>
+        <rect x="30" y="256" width="350" height="5" rx="5" fill="#468182"/>
+        <circle cx="62" cy="290" r="17" fill="#468182"/>
+        <text x="62" y="295" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">05</text>
+        <text x="90" y="286" font-size="12" font-weight="700" fill="#468182">Jovens Produzem</text>
+        <text x="90" y="302" font-size="10" font-weight="600" fill="#468182">Com artistas e empreendedores locais</text>
+        <line x1="46" y1="314" x2="366" y2="314" stroke="#e0e8f0" stroke-width="1"/>
+        <text x="46" y="332" font-size="9.5" fill="#000000">O festival planejado na Missão 7 ganha</text>
+        <text x="46" y="347" font-size="9.5" fill="#000000">versão presencial, e os projetos da</text>
+        <text x="46" y="362" font-size="9.5" fill="#000000">Missão 8 viram vídeos, imagens e simulações</text>
+        <line x1="205" y1="400" x2="205" y2="432" stroke="#468182" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-t)"/>
+        <rect x="30" y="440" width="900" height="100" rx="10" fill="#1a2e3b" stroke="#2858a0" stroke-width="1.5"/>
+        <rect x="30" y="440" width="900" height="5" rx="5" fill="#2858a0"/>
+        <circle cx="70" cy="476" r="19" fill="#5fb670"/>
+        <text x="70" y="481" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">06</text>
+        <text x="102" y="471" font-size="13" font-weight="700" fill="#ffffff">Festival do Futuro e Mostra de Projetos</text>
+        <text x="102" y="489" font-size="10" font-weight="600" fill="#5fb670">Cultura + educação financeira + sustentabilidade num evento cultural</text>
+        <line x1="46" y1="500" x2="914" y2="500" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+        <text x="46" y="518" font-size="9" fill="#ffffff">Aberto à comunidade · projetos dos jovens apresentados ao público e ao PicPay</text>
+        <circle cx="898" cy="470" r="5" fill="#5fb670" opacity="0.5"/>
+        <circle cx="882" cy="470" r="3.5" fill="#5fb670" opacity="0.3"/>
+        <circle cx="869" cy="470" r="2" fill="#5fb670" opacity="0.15"/>
+      </svg>
+    </div>
+
+    <ol class="fluxo-mobile">
+      <li class="fluxo-step">
+        <div class="fluxo-num">01</div>
+        <div class="fluxo-body">
+          <h4>Jogo lançado</h4>
+          <div class="fluxo-sub">picpay.thebluecity.app</div>
+          <p>Nova Aurora é publicado com as oito missões da jornada, direto no navegador do celular.</p>
+        </div>
+      </li>
+      <li class="fluxo-step">
+        <div class="fluxo-num">02</div>
+        <div class="fluxo-body">
+          <h4>Jovens jogam</h4>
+          <div class="fluxo-sub">Durante o período da jornada</div>
+          <p>Instituições parceiras engajam estudantes e professores na plataforma The Blue City.</p>
+        </div>
+      </li>
+      <li class="fluxo-step">
+        <div class="fluxo-num">03</div>
+        <div class="fluxo-body">
+          <h4>Credenciais</h4>
+          <div class="fluxo-sub">Bronze, Prata e Ouro em blockchain</div>
+          <p>Credencial verificável a cada nível, compartilhável no LinkedIn e vinculada ao PicPay.</p>
+        </div>
+      </li>
+      <li class="fluxo-step fluxo-step-bridge">
+        <div class="fluxo-num">04</div>
+        <div class="fluxo-body">
+          <h4>Oficinas e projetos de território</h4>
+          <div class="fluxo-sub">Encontros presenciais nas instituições parceiras</div>
+          <p>Oficinas com mentoria de especialistas e de voluntários do PicPay. Na Missão 8, cada jovem propõe uma solução real para o próprio território, com simulação financeira e impacto previsto.</p>
+          <span class="fluxo-flag">★ Ponto de conexão: digital → analógico</span>
+        </div>
+      </li>
+      <li class="fluxo-step">
+        <div class="fluxo-num">05</div>
+        <div class="fluxo-body">
+          <h4>Jovens produzem</h4>
+          <div class="fluxo-sub">Com artistas e empreendedores locais</div>
+          <p>O festival planejado na Missão 7 ganha versão presencial, e os projetos da Missão 8 viram vídeos, imagens e simulações financeiras.</p>
+        </div>
+      </li>
+      <li class="fluxo-step fluxo-step-final">
+        <div class="fluxo-num">06</div>
+        <div class="fluxo-body">
+          <h4>Festival do Futuro e mostra de projetos</h4>
+          <div class="fluxo-sub">Cultura + educação financeira + sustentabilidade</div>
+          <p>Aberto à comunidade, com os projetos dos jovens apresentados ao público e ao PicPay.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ════════════════════ 05 · ATORES ════════════════════ -->
+<section id="atores">
+  <div class="container">
+    <div class="eyebrow">05 · Quem participa</div>
+    <h2 class="section-title">Os atores envolvidos</h2>
+    <p class="section-lead">Missão Futuro reúne sete atores em torno da mesma jornada – cada um com seu papel, sua entrega e sua contrapartida. É essa convergência que dá ao projeto força de programa cultural.</p>
+
+    <div class="actors-grid">
+
+      <div class="actor-card">
+        <div class="actor-emoji" style="background:var(--blue-light);">🏛️</div>
+        <div class="actor-body">
+          <h3>Instituições parceiras</h3>
+          <div class="actor-role">Território da jornada</div>
+          <p>Instituições de ensino superior e técnico, com prioridade para a rede pública, e organizações sociais abrem suas portas para a jornada. O jogo é uma atividade extracurricular, jogada no celular em casa ou em horário livre, e as oficinas acontecem na própria instituição.</p>
+          <span class="actor-deliv">Recebe: reconhecimento como instituição parceira · selo institucional na plataforma · oficinas e festival abertos à sua comunidade</span>
+        </div>
+      </div>
+
+      <div class="actor-card">
+        <div class="actor-emoji" style="background:var(--teal-light);">🎓</div>
+        <div class="actor-body">
+          <h3>Jovens</h3>
+          <div class="actor-role">Protagonistas</div>
+          <p>Jovens de 18 a 24 anos jogam, cumprem as oito missões e apresentam projetos para o próprio território. Cada nível concluído gera uma credencial verificável em blockchain – uma competência comprovada que o jovem mostra no LinkedIn e no currículo.</p>
+          <span class="actor-deliv">Recebe: credenciais Bronze, Prata e Ouro · certificado de conclusão · projeto apresentado ao público</span>
+        </div>
+      </div>
+
+      <div class="actor-card">
+        <div class="actor-emoji" style="background:var(--teal-light);">🤝</div>
+        <div class="actor-body">
+          <h3>Articulador Educacional</h3>
+          <div class="actor-role">Ponte com as instituições</div>
+          <p>Faz a articulação com as instituições parceiras – apresenta o projeto à direção e à coordenação pedagógica e é responsável por envolver os jovens na jornada, mobilizando a adesão ao jogo e às oficinas.</p>
+          <span class="actor-deliv">Recebe: contratação remunerada · formação no método · rede educacional ampliada</span>
+        </div>
+      </div>
+
+      <div class="actor-card">
+        <div class="actor-emoji" style="background:var(--green-light);">💬</div>
+        <div class="actor-body">
+          <h3>Mentores e voluntários</h3>
+          <div class="actor-role">Especialistas e colaboradores do PicPay</div>
+          <p>Especialistas e colaboradores do PicPay conduzem mentorias nas oficinas presenciais e acompanham os jovens na construção dos projetos de território.</p>
+          <span class="actor-deliv">Recebe: voluntariado com propósito · contato direto com os jovens · presença no festival</span>
+        </div>
+      </div>
+
+      <div class="actor-card">
+        <div class="actor-emoji" style="background:var(--blue-light);">🎬</div>
+        <div class="actor-body">
+          <h3>Produtor Cultural</h3>
+          <div class="actor-role">Articulador da produção</div>
+          <p>Conecta o projeto aos artistas e empreendedores do território e coordena oficinas, fornecedores e logística do Festival do Futuro e da mostra de projetos.</p>
+          <span class="actor-deliv">Recebe: contratação remunerada · formação no método · rede cultural ampliada</span>
+        </div>
+      </div>
+
+      <div class="actor-card">
+        <div class="actor-emoji" style="background:var(--green-light);">🎨</div>
+        <div class="actor-body">
+          <h3>Artistas e empreendedores locais</h3>
+          <div class="actor-role">Parceiros do festival</div>
+          <p>Artistas e empreendedores da própria cidade participam do Festival do Futuro ao lado dos jovens e abrem o evento à comunidade – moradores, famílias, professores, transeuntes.</p>
+          <span class="actor-deliv">Recebe: participação remunerada · visibilidade no festival · acervo permanente online</span>
+        </div>
+      </div>
+
+      <div class="actor-card actor-card-wide">
+        <div class="actor-emoji" style="background:var(--green-light);">💚</div>
+        <div class="actor-body">
+          <h3>PicPay</h3>
+          <div class="actor-role">Patrocinador estratégico</div>
+          <p>O PicPay viabiliza a edição nacional via Lei Rouanet e tem sua marca presente na plataforma – picpay.thebluecity.app –, nas credenciais, nos materiais de comunicação e no Festival do Futuro. O conteúdo pedagógico fica sob responsabilidade da equipe do projeto, e a participação dos jovens é sempre gratuita.</p>
+          <p class="actor-extra-body">Toda interação – adesão da instituição, jogadas dos jovens, credenciais, oficinas, projetos e festival – passa por um mesmo ambiente digital, que documenta tudo de forma pública e acessível. É esse registro contínuo que dá ao PicPay a prestação de contas, ao jovem as credenciais verificáveis, e à comunidade o legado permanente.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ 06 · PARA A INSTITUIÇÃO, PARA O JOVEM ════════════════════ -->
+<section id="ganhos" class="section-alt">
+  <div class="container">
+    <div class="eyebrow">06 · Para a instituição, para o jovem</div>
+    <h2 class="section-title">O que a jornada entrega a quem participa</h2>
+    <p class="section-lead">A cada edição, instituições e jovens recebem entregas concretas – reconhecimento institucional para a instituição parceira e credenciais verificáveis em blockchain para o jovem – além de oficinas, um festival cultural aberto e legado permanente na plataforma.</p>
+
+    <div class="benefit-grid-top">
+
+      <div class="benefit-card benefit-card-with-image">
+        <div class="benefit-card-body">
+          <div class="benefit-card-head">
+            <div class="benefit-icon">🏛️</div>
+            <h3>Reconhecimento como instituição parceira</h3>
+          </div>
+          <p>O nome da instituição fica registrado como parceira da jornada – na plataforma, nos materiais públicos do projeto, na cobertura de imprensa e nos créditos do Festival do Futuro.</p>
+          <span class="benefit-tag">Selo institucional permanente</span>
+        </div>
+        <div class="benefit-image-slot">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" role="img" aria-label="Selo de Instituição Parceira – Missão Futuro">
+            <title>Selo de Instituição Parceira</title>
+            <defs>
+              <path id="seloTopArc" d="M 75,250 A 175,175 0 0 1 425,250" fill="none"/>
+              <path id="seloBottomArc" d="M 65,250 A 185,185 0 0 0 435,250" fill="none"/>
+            </defs>
+            <circle cx="250" cy="250" r="240" fill="#1a2e3b"/>
+            <circle cx="250" cy="250" r="232" fill="none" stroke="#5fb670" stroke-width="1.5" stroke-dasharray="2 6"/>
+            <circle cx="250" cy="250" r="222" fill="none" stroke="#2858a0" stroke-width="2.5"/>
+            <circle cx="250" cy="250" r="214" fill="none" stroke="#468182" stroke-width="0.6" opacity="0.5"/>
+            <g fill="#5fb670">
+              <circle cx="250" cy="40" r="3.5"/>
+              <circle cx="250" cy="460" r="3.5"/>
+              <circle cx="40" cy="250" r="3.5"/>
+              <circle cx="460" cy="250" r="3.5"/>
+            </g>
+            <text font-family="Montserrat, sans-serif" font-size="19" font-weight="700" fill="#5fb670" letter-spacing="6">
+              <textPath href="#seloTopArc" startOffset="50%" text-anchor="middle">INSTITUIÇÃO PARCEIRA</textPath>
+            </text>
+            <text font-family="Montserrat, sans-serif" font-size="11" font-weight="600" fill="#468182" letter-spacing="3.5">
+              <textPath href="#seloBottomArc" startOffset="50%" text-anchor="middle">VERIFICADO EM BLOCKCHAIN</textPath>
+            </text>
+            <line x1="200" y1="190" x2="300" y2="190" stroke="#468182" stroke-width="0.8"/>
+            <text x="250" y="240" font-family="Montserrat, sans-serif" font-size="36" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="-0.3">MISSÃO</text>
+            <text x="250" y="284" font-family="Montserrat, sans-serif" font-size="40" font-weight="800" fill="#5fb670" text-anchor="middle" letter-spacing="-0.3">FUTURO</text>
+            <line x1="195" y1="310" x2="305" y2="310" stroke="#468182" stroke-width="0.8"/>
+            <text x="250" y="358" font-family="Montserrat, sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="2.5">THE BLUE CITY</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="benefit-card benefit-card-with-image">
+        <div class="benefit-card-body">
+          <div class="benefit-card-head">
+            <div class="benefit-icon">🎓</div>
+            <h3>Jovens com credenciais verificáveis</h3>
+          </div>
+          <p>Cada nível concluído gera uma credencial – Bronze, Prata e Ouro – e a jornada completa gera um certificado de conclusão. Uma competência comprovada que o jovem mostra no LinkedIn, em currículos e processos seletivos.</p>
+          <span class="benefit-tag">Educação financeira + trajetória profissional</span>
+        </div>
+        <div class="benefit-image-slot">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 30 600 600" role="img" aria-label="Credencial do Jovem – Missão Futuro: Nível Ouro">
+            <title>Credencial do Jovem – Nível Ouro</title>
+            <polygon points="300,30 568,180 568,480 300,630 32,480 32,180" fill="#f5d976"/>
+            <polygon points="300,55 546,193 546,467 300,605 54,467 54,193" fill="none" stroke="#b8801f" stroke-width="2.5"/>
+            <polygon points="300,80 524,206 524,454 300,580 76,454 76,206" fill="none" stroke="#b8801f" stroke-width="0.8" stroke-dasharray="3 5" opacity="0.55"/>
+            <g fill="#b8801f">
+              <circle cx="300" cy="30" r="5"/>
+              <circle cx="568" cy="180" r="5"/>
+              <circle cx="568" cy="480" r="5"/>
+              <circle cx="300" cy="630" r="5"/>
+              <circle cx="32" cy="480" r="5"/>
+              <circle cx="32" cy="180" r="5"/>
+            </g>
+            <text x="300" y="165" font-family="Montserrat, sans-serif" font-size="15" font-weight="700" fill="#7a5510" text-anchor="middle" letter-spacing="6">NÍVEL OURO</text>
+            <line x1="240" y1="185" x2="360" y2="185" stroke="#b8801f" stroke-width="1"/>
+            <text x="300" y="285" font-family="Montserrat, sans-serif" font-size="46" font-weight="800" fill="#1a2e3b" text-anchor="middle" letter-spacing="-0.3">MISSÃO</text>
+            <text x="300" y="342" font-family="Montserrat, sans-serif" font-size="50" font-weight="800" fill="#2d7a3e" text-anchor="middle" letter-spacing="-0.3">FUTURO</text>
+            <text x="300" y="380" font-family="Montserrat, sans-serif" font-size="12" font-weight="700" fill="#7a5510" text-anchor="middle" letter-spacing="3">TRANSFORMAR</text>
+            <line x1="220" y1="405" x2="380" y2="405" stroke="#b8801f" stroke-width="1"/>
+            <text x="300" y="448" font-family="Montserrat, sans-serif" font-size="11" font-weight="700" fill="#7a5510" text-anchor="middle" letter-spacing="3.5">VERIFICADO EM BLOCKCHAIN</text>
+            <text x="300" y="483" font-family="Montserrat, sans-serif" font-size="11" font-weight="700" fill="#1a2e3b" text-anchor="middle" letter-spacing="2.8">THE BLUE CITY</text>
+          </svg>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="benefit-grid-bottom">
+
+      <div class="benefit-card">
+        <div class="benefit-card-head">
+          <div class="benefit-icon">🎪</div>
+          <h3>Festival do Futuro aberto à comunidade</h3>
+        </div>
+        <p>O festival é gratuito e aberto a toda a comunidade – jovens, famílias, professores, vizinhança. É um evento cultural de verdade, produzido pelos próprios jovens com artistas e empreendedores locais.</p>
+        <span class="benefit-tag">Cultura + economia criativa</span>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-card-head">
+          <div class="benefit-icon">📚</div>
+          <h3>Competências para a vida adulta</h3>
+        </div>
+        <p>A jornada trabalha orçamento, consumo consciente, crédito, segurança digital, empreendedorismo e cidadania – competências centrais do século XXI e alinhadas aos referenciais ESG. Soma-se ao currículo da instituição.</p>
+        <span class="benefit-tag">Atividade extracurricular</span>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-card-head">
+          <div class="benefit-icon">🌱</div>
+          <h3>Legado permanente na plataforma</h3>
+        </div>
+        <p>Tudo o que os jovens produzem fica registrado em galerias públicas na plataforma The Blue City – um acervo vivo que documenta o engajamento, os projetos e o festival. A instituição segue visível como parte do programa após a jornada.</p>
+        <span class="benefit-tag">Visibilidade contínua</span>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-card-head">
+          <div class="benefit-icon">💸</div>
+          <h3>100% gratuito · zero custo operacional</h3>
+        </div>
+        <p>A instituição não paga pelo projeto, não contrata equipe e não capta recursos – toda a produção da jornada é viabilizada externamente. A instituição entra como parceira do território.</p>
+        <span class="benefit-tag">Sem ônus pedagógico ou financeiro</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ CREDENCIAL POK ════════════════════ -->
+<section id="certificado">
+  <div class="container">
+    <div class="eyebrow">Credencial POK · Proof of Knowledge</div>
+    <h2 class="section-title">A credencial dá competência ao jovem</h2>
+    <p class="section-lead">O engajamento da jornada nasce da credencial. A cada nível concluído, o jovem recebe uma credencial digital verificável emitida com a tecnologia da POK, no padrão Open Badge 3.0 e registrada em blockchain – a mesma tecnologia usada por mais de 1.200 instituições de ensino, empresas e governos em mais de 19 países.</p>
+
+      <div class="cert-two">
+
+        <div class="cert-side">
+          <div class="cert-group-head">
+            <span class="cert-grouppill cert-grouppill-escola">🏛️ Para a instituição</span>
+            <span class="cert-group-sub">Por que oferecer aos jovens</span>
+          </div>
+          <div class="cert-side-cards">
+            <div class="benefit-card cert-card-escola">
+              <div class="benefit-card-head"><div class="benefit-icon">🚀</div><h3>Tecnologia de ponta sem custo</h3></div>
+              <p>A instituição oferece a mesma infraestrutura de certificação usada por mais de 1.200 instituições de ensino, empresas e governos – sem contratar nem pagar nada.</p>
+              <span class="benefit-tag">Zero custo</span>
+            </div>
+            <div class="benefit-card cert-card-escola">
+              <div class="benefit-card-head"><div class="benefit-icon">🛡️</div><h3>Conformidade e segurança certificadas</h3></div>
+              <p>Credenciais no padrão W3C Verifiable Credentials e European Learning Model (Europass), com segurança certificada ISO 27001 e SOC 2.</p>
+              <span class="benefit-tag">Conformidade e segurança</span>
+            </div>
+            <div class="benefit-card cert-card-escola">
+              <div class="benefit-card-head"><div class="benefit-icon">⭐</div><h3>Diferenciação institucional real</h3></div>
+              <p>Entrega ao jovem uma credencial verificável, reforçando o posicionamento em inovação e empregabilidade.</p>
+              <span class="benefit-tag">Inovação e empregabilidade</span>
+            </div>
+            <div class="benefit-card cert-card-escola">
+              <div class="benefit-card-head"><div class="benefit-icon">🌐</div><h3>Reconhecimento em rede</h3></div>
+              <p>A credencial circula numa rede global aceita por universidades, empresas e instituições parceiras.</p>
+              <span class="benefit-tag">Rede global</span>
+            </div>
+            <div class="benefit-card cert-card-escola">
+              <div class="benefit-card-head"><div class="benefit-icon">📊</div><h3>Dados de impacto</h3></div>
+              <p>A emissão e o engajamento ficam registrados na plataforma, permitindo acompanhar os resultados da jornada.</p>
+              <span class="benefit-tag">Métricas na plataforma</span>
+            </div>
+            <div class="benefit-card cert-card-escola">
+              <div class="benefit-card-head"><div class="benefit-icon">📣</div><h3>Marketing institucional orgânico</h3></div>
+              <p>Cada jovem que compartilha a credencial leva o nome da instituição para o LinkedIn, redes e processos seletivos – gerando visibilidade espontânea e contínua.</p>
+              <span class="benefit-tag">Alcance espontâneo</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cert-side">
+          <div class="cert-group-head">
+            <span class="cert-grouppill cert-grouppill-aluno">🎓 Para o jovem</span>
+            <span class="cert-group-sub">Por que vale a pena obter a credencial</span>
+          </div>
+          <div class="cert-side-cards">
+            <div class="benefit-card cert-card-aluno">
+              <div class="benefit-card-head"><div class="benefit-icon">🪪</div><h3>É do jovem, para sempre</h3></div>
+              <p>Credencial NFT em blockchain pública, que pode ser guardada numa carteira digital própria. Não expira e segue válida independentemente da instituição.</p>
+              <span class="benefit-tag">Propriedade do jovem</span>
+            </div>
+            <div class="benefit-card cert-card-aluno">
+              <div class="benefit-card-head"><div class="benefit-icon">🔒</div><h3>Impossível de falsificar</h3></div>
+              <p>Registrada em blockchain, a credencial é selada e não pode ser editada – ao contrário de um certificado em papel ou PDF.</p>
+              <span class="benefit-tag">Segurança em blockchain</span>
+            </div>
+            <div class="benefit-card cert-card-aluno">
+              <div class="benefit-card-head"><div class="benefit-icon">✅</div><h3>Verificável por qualquer pessoa</h3></div>
+              <p>Recrutadores, universidades e empresas confirmam a autenticidade por link único ou QR code.</p>
+              <span class="benefit-tag">Verificação instantânea</span>
+            </div>
+            <div class="benefit-card cert-card-aluno">
+              <div class="benefit-card-head"><div class="benefit-icon">🌍</div><h3>Reconhecida internacionalmente</h3></div>
+              <p>Padrão Open Badges 3.0 (1EdTech): interoperável e lido por universidades, plataformas e empregadores em mais de 19 países.</p>
+              <span class="benefit-tag">Open Badges 3.0</span>
+            </div>
+            <div class="benefit-card cert-card-aluno">
+              <div class="benefit-card-head"><div class="benefit-icon">🔗</div><h3>Fácil compartilhamento no LinkedIn</h3></div>
+              <p>Conta como competência comprovada em currículos, processos seletivos e no perfil profissional do jovem.</p>
+              <span class="benefit-tag">Currículo e LinkedIn</span>
+            </div>
+            <div class="benefit-card cert-card-aluno">
+              <div class="benefit-card-head"><div class="benefit-icon">🧩</div><h3>Bronze, Prata e Ouro</h3></div>
+              <p>Cada nível concluído gera uma credencial, e a jornada completa gera um certificado de conclusão – uma cadeia de educação continuada através da certificação.</p>
+              <span class="benefit-tag">Microcredenciais</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="cert-conheca"><a class="cert-conheca-btn" href="https://view.pok.tech/c/1c6ecd6d-6760-4f5a-a690-e1e8d4c255e4" target="_blank" rel="noopener">Conheça a credencial</a></p>
+
+  </div>
+</section>
+
+<!-- ════════════════════ 07 · PICPAY ════════════════════ -->
+<section id="picpay" class="section-alt">
+  <div class="container">
+    <div class="eyebrow">07 · PicPay</div>
+    <h2 class="section-title">Por que faz sentido para o PicPay</h2>
+    <p class="section-lead">O PicPay já aposta em jogo e educação financeira para falar com jovens. Missão Futuro leva essa aposta para fora do app – para instituições de ensino e territórios onde a marca ainda tem espaço para crescer.</p>
+
+    <div class="grid-3" style="margin-bottom:24px;">
+      <div class="benefit-card">
+        <div class="benefit-card-head"><div class="benefit-icon">🎮</div><h3>Mesma linguagem</h3></div>
+        <p>O PicPay já usa gamificação com o público jovem – o Cofrinho Defense, o mapa no Fortnite e a jornada gamificada de crédito com Mastercard e Flourish Fi. Missão Futuro amplia esse caminho com um jogo educativo completo, com certificação.</p>
+        <span class="benefit-tag">Gamificação</span>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-card-head"><div class="benefit-icon">📺</div><h3>Mesma causa</h3></div>
+        <p>As webséries com a B3 tratam de orçamento, consumo consciente e planejamento – os mesmos temas das Missões 1, 2 e 5, agora vividos na prática.</p>
+        <span class="benefit-tag">Educação financeira</span>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-card-head"><div class="benefit-icon">🎯</div><h3>Mesmo propósito</h3></div>
+        <p>Simplificar a vida financeira das pessoas. Missão Futuro prepara os jovens para essa vida antes da primeira conta.</p>
+        <span class="benefit-tag">Propósito da marca</span>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-card-head"><div class="benefit-icon">🤲</div><h3>Inclusão e empreendedorismo</h3></div>
+        <p>O jogo leva crédito, Pix, segurança digital e pequenos negócios a jovens de territórios em situação de vulnerabilidade social.</p>
+        <span class="benefit-tag">Inclusão financeira</span>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-card-head"><div class="benefit-icon">🌿</div><h3>Sustentabilidade</h3></div>
+        <p>Une educação financeira e agenda ambiental – um território novo para a marca.</p>
+        <span class="benefit-tag">Agenda ambiental</span>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-card-head"><div class="benefit-icon">📈</div><h3>Prova de resultado</h3></div>
+        <p>Cada jovem formado sai com uma credencial verificável – um dado auditável para o relatório de impacto do PicPay.</p>
+        <span class="benefit-tag">Relatório de impacto</span>
+      </div>
+    </div>
+
+    <p class="statement">O PicPay facilita a vida financeira das pessoas. Missão Futuro prepara os jovens para ela.</p>
+  </div>
+</section>
+
+<!-- ════════════════════ 08 · PARA QUEM ════════════════════ -->
+<section id="publico">
+  <div class="container">
+    <div class="eyebrow">08 · Para quem</div>
+    <h2 class="section-title">Jovens no começo da vida adulta</h2>
+    <p class="section-lead">Missão Futuro é para jovens que têm menos oportunidades de aprender sobre dinheiro e sustentabilidade. A participação é gratuita, e o jovem joga com recursos fictícios.</p>
+
+    <div class="grid-2" style="margin-bottom:24px;">
+
+      <div class="config-card">
+        <div class="config-card-title">Público</div>
+        <h3>🎯 Quem joga</h3>
+        <p>Jovens de 18 a 24 anos, estudantes de instituições de ensino superior e técnico, com prioridade para a rede pública, jovens em início de carreira e moradores de territórios em situação de vulnerabilidade social.</p>
+        <div class="config-examples">
+          <span class="config-chip">18 a 24 anos</span>
+          <span class="config-chip">Ensino superior e técnico</span>
+          <span class="config-chip">Rede pública</span>
+          <span class="config-chip">Início de carreira</span>
+          <span class="config-chip">Territórios vulneráveis</span>
+        </div>
+        <div style="margin-top:18px;padding:14px 16px;background:var(--bg);border-radius:8px;border-left:3px solid var(--blue);">
+          <div style="font-size:11px;font-weight:700;color:var(--blue);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.6px;">Mobilização dirigida</div>
+          <div style="font-size:12.5px;color:var(--muted);line-height:1.6;">O projeto prevê ações de mobilização dirigidas a mulheres, jovens negros, pessoas LGBTQIAPN+ e outros grupos que enfrentam mais barreiras de acesso à educação financeira e às oportunidades econômicas.</div>
+        </div>
+      </div>
+
+      <div class="config-card">
+        <div class="config-card-title">Território</div>
+        <h3>📍 Onde a jornada acontece</h3>
+        <p>O porte da edição – número de jovens, territórios e instituições parceiras – é definido em conjunto com o PicPay.</p>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="padding:11px 14px;background:var(--bg);border-radius:8px;border-left:3px solid var(--teal);">
+            <div style="font-size:12.5px;font-weight:700;color:var(--dark);margin-bottom:2px;">Critério 1 · Instituições parceiras</div>
+            <div style="font-size:11.5px;color:var(--muted);line-height:1.5;">Instituições de ensino superior e técnico, com prioridade para a rede pública, e organizações sociais que recebem as oficinas.</div>
+          </div>
+          <div style="padding:11px 14px;background:var(--bg);border-radius:8px;border-left:3px solid var(--teal);">
+            <div style="font-size:12.5px;font-weight:700;color:var(--dark);margin-bottom:2px;">Critério 2 · Territórios</div>
+            <div style="font-size:11.5px;color:var(--muted);line-height:1.5;">Territórios escolhidos com o PicPay, com foco em áreas em situação de vulnerabilidade social.</div>
+          </div>
+          <div style="padding:11px 14px;background:var(--bg);border-radius:8px;border-left:3px solid var(--teal);">
+            <div style="font-size:12.5px;font-weight:700;color:var(--dark);margin-bottom:2px;">Critério 3 · Acesso</div>
+            <div style="font-size:11.5px;color:var(--muted);line-height:1.5;">Jogo no navegador do celular e participação gratuita em toda a jornada – do jogo ao festival.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ 09 · IMPACTO ════════════════════ -->
+<section id="impacto" class="section-alt">
+  <div class="container">
+    <div class="eyebrow">09 · Impacto</div>
+    <h2 class="section-title">Impacto e como medimos</h2>
+    <p class="section-lead">Os resultados esperados são mais autonomia econômica, prevenção do endividamento, geração de renda e protagonismo juvenil nos territórios. A plataforma registra cada jogada, e as metas de cada indicador são definidas com o PicPay conforme o porte da edição.</p>
+
+    <div class="legacy-grid">
+    <div style="background:white;border-radius:16px;border:1px solid rgba(40,88,160,0.1);box-shadow:0 2px 12px rgba(0,0,0,0.04);overflow:hidden;display:flex;flex-direction:column;">
+      <div style="background:var(--blue);padding:22px 24px;display:flex;align-items:center;gap:14px;">
+        <div style="width:44px;height:44px;background:rgba(255,255,255,0.18);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:21px;flex-shrink:0;">📊</div>
+        <div>
+          <div style="font-size:15px;font-weight:800;color:white;margin-bottom:3px;line-height:1.25;">Painel do PicPay</div>
+          <div style="font-size:11.5px;color:#ffffff;line-height:1.4;">Indicadores da edição em tempo real</div>
+        </div>
+      </div>
+      <div style="padding:22px 24px;display:flex;flex-direction:column;flex:1;">
+        <p style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:16px;flex:1;">O PicPay acompanha a jornada de ponta a ponta num painel próprio – do cadastro do jovem à credencial compartilhada –, com os dados organizados por território e instituição.</p>
+        <div style="padding:13px 16px;background:var(--bg);border-radius:10px;border-left:3px solid var(--blue);">
+          <div style="font-size:10.5px;font-weight:700;color:var(--blue);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.5px;">O que o painel registra</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6;">Jovens cadastrados e ativos · Missões e níveis concluídos · Evolução nos quatro indicadores do jogo · Credenciais emitidas e compartilhadas no LinkedIn · Participantes de oficinas e do festival · Projetos de território</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:white;border-radius:16px;border:1px solid rgba(40,88,160,0.1);box-shadow:0 2px 12px rgba(0,0,0,0.04);overflow:hidden;display:flex;flex-direction:column;">
+      <div style="background:var(--teal);padding:22px 24px;display:flex;align-items:center;gap:14px;">
+        <div style="width:44px;height:44px;background:rgba(255,255,255,0.18);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:21px;flex-shrink:0;">🗂️</div>
+        <div>
+          <div style="font-size:15px;font-weight:800;color:white;margin-bottom:3px;line-height:1.25;">Galeria de Projetos</div>
+          <div style="font-size:11.5px;color:#ffffff;line-height:1.4;">Projetos de território · Missão 8</div>
+        </div>
+      </div>
+      <div style="padding:22px 24px;display:flex;flex-direction:column;flex:1;">
+        <p style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:16px;flex:1;">Repositório público das propostas que os jovens apresentam na Missão 8 – vídeos, imagens e simulações financeiras de soluções reais para o próprio território.</p>
+        <div style="padding:13px 16px;background:var(--bg);border-radius:10px;border-left:3px solid var(--teal);">
+          <div style="font-size:10.5px;font-weight:700;color:var(--teal);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.5px;">Mostra de projetos</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6;">As propostas viram produções digitais apresentadas ao público e ao PicPay – e podem seguir adiante depois do jogo.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:white;border-radius:16px;border:1px solid rgba(40,88,160,0.1);box-shadow:0 2px 12px rgba(0,0,0,0.04);overflow:hidden;display:flex;flex-direction:column;">
+      <div style="background:#38a349;padding:22px 24px;display:flex;align-items:center;gap:14px;">
+        <div style="width:44px;height:44px;background:rgba(255,255,255,0.18);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:21px;flex-shrink:0;">🎪</div>
+        <div>
+          <div style="font-size:15px;font-weight:800;color:white;margin-bottom:3px;line-height:1.25;">Galeria de Eventos</div>
+          <div style="font-size:11.5px;color:#ffffff;line-height:1.4;">Festival do Futuro e oficinas</div>
+        </div>
+      </div>
+      <div style="padding:22px 24px;display:flex;flex-direction:column;flex:1;">
+        <p style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:16px;flex:1;">Documenta o Festival do Futuro e as oficinas – fotos e registros do evento produzido pelos jovens com artistas e empreendedores locais, e da mentoria nas instituições.</p>
+        <div style="padding:13px 16px;background:var(--bg);border-radius:10px;border-left:3px solid #38a349;">
+          <div style="font-size:10.5px;font-weight:700;color:#38a349;margin-bottom:5px;text-transform:uppercase;letter-spacing:0.5px;">Legado permanente</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6;">A galeria é permanente na plataforma – o festival continua acessível online após o evento presencial.</div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ 10 · PLATAFORMA ════════════════════ -->
+<section id="casos">
+  <div class="container">
+    <div class="eyebrow">10 · No território</div>
+    <h2 class="section-title">Uma plataforma que já está no ar</h2>
+    <p class="section-lead">Missão Futuro usa a mesma plataforma e a mesma metodologia da Missão Cidade Azul, projeto da Lei Rouanet em execução com patrocínio da Sotreq Cat e da Valgroup. A plataforma The Blue City foi lançada em outubro de 2026, roda em nuvem (AWS) e funciona direto no navegador do celular. Cada patrocinador recebe seu próprio endereço – no caso, picpay.thebluecity.app.</p>
+
+    <div class="case-card">
+      <div class="case-card-head live">
+        <div style="width:46px;height:46px;background:rgba(255,255,255,0.18);border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">🌳</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+            <div style="font-size:15px;font-weight:800;color:white;">Termômetro Zero · Palmas, TO · 2026</div>
+            <span class="case-status live">● Em produção</span>
+          </div>
+        </div>
+      </div>
+      <div class="case-card-body">
+        <p style="font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:14px;">Primeira realização da Missão Cidade Azul, com patrocínio da Sotreq e em parceria com a UFT e o IFTO. O jogo trata da <strong style="color:var(--dark);">Redução de Emissões de Gases de Efeito Estufa</strong>, e a exposição foi inaugurada em 31 de outubro de 2026.</p>
+
+        <div class="grid-4" style="margin-bottom:0;">
+          <div class="case-stat">
+            <div class="case-stat-value" style="color:var(--blue);">Palmas</div>
+            <div class="case-stat-label">Cidade</div>
+          </div>
+          <div class="case-stat">
+            <div class="case-stat-value" style="color:var(--teal);">Sotreq</div>
+            <div class="case-stat-label">Patrocinador</div>
+          </div>
+          <div class="case-stat">
+            <div class="case-stat-value" style="color:var(--green);">Redução de Gases</div>
+            <div class="case-stat-label">Tema-eixo</div>
+          </div>
+          <div class="case-stat">
+            <div class="case-stat-value" style="color:var(--dark);">Mar-Dez</div>
+            <div class="case-stat-label">2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-card-head live">
+        <div style="width:46px;height:46px;background:rgba(255,255,255,0.18);border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">🌳</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+            <div style="font-size:15px;font-weight:800;color:white;">Manaus, AM · 2027</div>
+            <span class="case-status live">● Captado</span>
+          </div>
+        </div>
+      </div>
+      <div class="case-card-body">
+        <p style="font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:14px;">Nova edição da Missão Cidade Azul, já patrocinada pela Valgroup – grupo brasileiro de embalagens e reciclagem. O tema-eixo é a <strong style="color:var(--dark);">Economia Circular</strong>, área em que a Valgroup é referência.</p>
+
+        <div class="grid-4" style="margin-bottom:0;">
+          <div class="case-stat">
+            <div class="case-stat-value" style="color:var(--blue);">Manaus</div>
+            <div class="case-stat-label">Cidade</div>
+          </div>
+          <div class="case-stat">
+            <div class="case-stat-value" style="color:var(--teal);">Valgroup</div>
+            <div class="case-stat-label">Patrocinador</div>
+          </div>
+          <div class="case-stat">
+            <div class="case-stat-value" style="color:var(--green);">Economia Circular</div>
+            <div class="case-stat-label">Tema-eixo</div>
+          </div>
+          <div class="case-stat">
+            <div class="case-stat-value" style="color:var(--dark);">Mar-Ago</div>
+            <div class="case-stat-label">2027</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════ 11 · EQUIPE ════════════════════ -->
+<section id="equipe" class="section-alt">
+  <div class="container">
+    <div class="eyebrow">11 · Estrutura</div>
+    <h2 class="section-title">A equipe por trás</h2>
+    <p class="section-lead">A jornada é conduzida por uma equipe estruturada em dois pilares articulados – a dimensão virtual, que constrói o jogo, e a dimensão física, que ativa o território. Tudo sob a coordenação central do projeto, responsável também pelo conteúdo pedagógico.</p>
+
+    <div class="team-coord">
+      <div class="team-coord-icon">🧭</div>
+      <div>
+        <h4>Coordenadora do Projeto</h4>
+        <div class="team-coord-role">Articulação geral · virtual + físico</div>
+        <p>Coordena toda a jornada de ponta a ponta – articula os dois pilares da equipe e garante o encaixe entre produção do jogo, ação no território e relacionamento com o PicPay.</p>
+      </div>
+    </div>
+
+    <div class="pillar-block">
+      <div class="pillar-header">
+        <span class="pillar-tag pillar-tag-virtual">Virtual</span>
+        <div class="pillar-title">Construção do jogo</div>
+        <div class="pillar-desc">do conceito de Nova Aurora à build jogável na plataforma</div>
+      </div>
+
+      <div class="grid-3" style="margin-bottom:8px;">
+
+        <div class="team-card">
+          <h4>Pesquisadora Cultural</h4>
+          <div class="team-role">Pesquisa de personagens e cenários</div>
+          <p>Conduz a pesquisa das referências culturais e visuais que orientam os personagens e a cidade de Nova Aurora – aproximando o jogo da realidade dos jovens brasileiros.</p>
+        </div>
+
+        <div class="team-card">
+          <h4>Ilustrador / Modelador 3D</h4>
+          <div class="team-role">Ilustração dos personagens</div>
+          <p>Recebe o dossiê da pesquisadora e dá vida visual a Nova Aurora e seus personagens – da ilustração de referência ao modelo 3D low-poly pronto para Unity. Trabalha em duas fases: concept art (aprovado antes de avançar) e modelagem 3D.</p>
+        </div>
+
+        <div class="team-card">
+          <h4>Game Designer</h4>
+          <div class="team-role">Desenvolvimento do jogo</div>
+          <p>Recebe o Game Design Document e os personagens 3D, e desenvolve o jogo completo em Unity – entregando uma build WebGL integrada e funcional em picpay.thebluecity.app. Sua entrega é o jogo que os jovens acessam.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="pillar-block">
+      <div class="pillar-header">
+        <span class="pillar-tag pillar-tag-fisico">Físico</span>
+        <div class="pillar-title">Ativação no território</div>
+        <div class="pillar-desc">da chegada à instituição ao Festival do Futuro</div>
+      </div>
+
+      <div class="grid-3" style="margin-bottom:8px;">
+
+        <div class="team-card">
+          <h4>Articuladora Educacional</h4>
+          <div class="team-role">Ponte com as instituições</div>
+          <p>Faz a articulação com as instituições parceiras – apresenta o projeto à direção e à coordenação pedagógica e é responsável por envolver os jovens na jornada, mobilizando a adesão ao jogo e às oficinas.</p>
+        </div>
+
+        <div class="team-card">
+          <h4>Produtor Cultural</h4>
+          <div class="team-role">Gestão da jornada</div>
+          <p>Figura central da implementação territorial. Articula, executa e consolida todas as etapas – das oficinas ao Festival do Futuro e à mostra de projetos. Opera diretamente o Painel do Produtor Cultural na plataforma.</p>
+        </div>
+
+        <div class="team-card">
+          <h4>Assessoria de Imprensa</h4>
+          <div class="team-role">Cobertura nos territórios</div>
+          <p>Articula a cobertura e a divulgação da jornada na imprensa dos territórios onde o festival acontece – garantindo visibilidade ao PicPay e ressonância pública à experiência cultural.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ FOOTER ════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="credits-inner">
+
+      <div class="credit-item">
+        <img class="rouanet" src="https://the-blue-city.github.io/content/logo-rouanet-positivo.png" alt="Lei Rouanet">
+      </div>
+
+      <div class="credit-sep"></div>
+
+      <div class="credit-item">
+        <span class="rot">Realização</span>
+        <img class="tbc" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAyMDQuMSAzNi44Ij4KICA8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMzAuNi4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogMi4xLjQgQnVpbGQgMTA5KSAgLS0+CiAgPGRlZnM+CiAgICA8c3R5bGU+CiAgICAgIC5zdDAgewogICAgICAgIGZpbGw6ICNmZmY7CiAgICAgIH0KCiAgICAgIC5zdDEgewogICAgICAgIGZpbGw6ICMwMDE1MjI7CiAgICAgIH0KCiAgICAgIC5zdDIgewogICAgICAgIGZpbGw6ICMwYzllZDk7CiAgICAgIH0KICAgIDwvc3R5bGU+CiAgPC9kZWZzPgogIDxnPgogICAgPGNpcmNsZSBjbGFzcz0ic3QxIiBjeD0iMTguNCIgY3k9IjE4LjQiIHI9IjE4LjQiLz4KICAgIDxnPgogICAgICA8cmVjdCBjbGFzcz0ic3QwIiB4PSI3LjgiIHk9IjEzLjIiIHdpZHRoPSIyMC44IiBoZWlnaHQ9IjMuMiIvPgogICAgICA8cGF0aCBjbGFzcz0ic3QyIiBkPSJNMjcuMywxOC43bC0uMi4yYy0xLjMsMS4xLTIuNCwyLjEtNC4xLDIuMXMtMi41LS40LTQuMS0xLjNjLTIuMS0xLjEtMy45LTEuNy01LjYtMS43LTIuOCwwLTQuNiwxLjYtNiwyLjlsLS4yLjIsMiwyLjQuMi0uMmMxLjMtMS4xLDIuNC0yLjEsNC4xLTIuMXMyLjUuNCw0LjEsMS4zYzIuMSwxLjEsMy45LDEuNyw1LjYsMS43aDBjMi43LDAsNC41LTEuNiw1LjktMi45bC4yLS4yLTItMi40aDBaIi8+CiAgICA8L2c+CiAgPC9nPgogIDxnPgogICAgPHBhdGggY2xhc3M9InN0MCIgZD0iTTU2LjgsMTIuNWgtNS43djE0LjloLTQuM3YtMTQuOWgtNS43di0zLjhoMTUuN3YzLjhaIi8+CiAgICA8cGF0aCBjbGFzcz0ic3QwIiBkPSJNNzEuNCwyNy4zaC00LjJ2LTcuNmMwLS45LS4yLTEuNS0uNi0xLjlzLS45LS42LTEuNC0uNi0uNywwLTEuMS4zYy0uNC4yLS44LjUtMS4xLjgtLjMuNC0uNi44LS43LDEuMnY3LjhoLTQuMlY4LjJoNC4ydjcuOWMuNS0uOCwxLjItMS41LDItMS45czEuOC0uNiwyLjgtLjYsMS43LjIsMi4yLjVjLjYuMywxLC43LDEuMywxLjJzLjUsMSwuNiwxLjdjMCwuNi4yLDEuMi4yLDEuOHY4LjdzMC0uMiwwLS4yWiIvPgogICAgPHBhdGggY2xhc3M9InN0MCIgZD0iTTgwLjIsMjcuNmMtMS4yLDAtMi4yLS4yLTMuMS0uNnMtMS43LS45LTIuMy0xLjVjLS42LS42LTEuMS0xLjQtMS41LTIuMi0uMy0uOC0uNS0xLjctLjUtMi42LDAtMS4zLjMtMi41LjktMy42czEuNC0xLjksMi41LTIuNiwyLjQtMSw0LTEsMi45LjMsNCwxLDEuOSwxLjUsMi41LDIuNi45LDIuMi45LDMuNSwwLC41LDAsLjd2LjZoLTEwLjJjMCwuNi4yLDEuMS41LDEuNXMuNy43LDEuMS45Yy41LjIuOS4zLDEuNC4zczEuMi0uMSwxLjgtLjRjLjYtLjMuOS0uNywxLjEtMS4ybDMuNiwxYy0uNC43LS44LDEuMy0xLjUsMS45LS42LjUtMS40LDEtMi4yLDEuMy0uOS4zLTEuOC41LTIuOS41aC0uMVpNNzcuMiwxOS4yaDZjMC0uNi0uMi0xLS41LTEuNS0uMy0uNC0uNi0uNy0xLjEtMXMtLjktLjMtMS41LS4zLTEsLjEtMS40LjNjLS40LjItLjguNS0xLjEuOS0uMy40LS40LjktLjUsMS41aDBaIi8+CiAgICA8cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTEwLjMsMjIuNWMwLDEuMS0uMywyLS44LDIuNy0uNi43LTEuMywxLjItMi4zLDEuNnMtMiwuNS0zLjIuNWgtOS4xVjguN2gxMC40Yy45LDAsMS42LjIsMi4zLjcuNi41LDEuMSwxLjEsMS41LDEuOC4zLjcuNSwxLjUuNSwyLjNzLS4yLDEuNy0uNywyLjVjLS40LjgtMS4xLDEuNC0yLDEuOCwxLjEuMywxLjkuOSwyLjUsMS43LjYuOC45LDEuOC45LDMuMWgwWk05OS4yLDEyLjR2My45aDQuMmMuMywwLC42LDAsLjktLjIuMy0uMS41LS40LjctLjYuMi0uMy4yLS42LjItMS4xczAtLjgtLjItMS4xYzAtLjMtLjMtLjUtLjYtLjYtLjItLjEtLjUtLjItLjktLjJoLTQuNC4xWk0xMDYsMjEuN2MwLS40LDAtLjctLjItMS4xLS4yLS4zLS40LS42LS42LS43cy0uNi0uMy0uOS0uM2gtNC45djQuMWg0LjhjLjQsMCwuNywwLDEtLjMuMy0uMi41LS40LjctLjcuMi0uMy4yLS42LjItMWgwWiIvPgogICAgPHBhdGggY2xhc3M9InN0MCIgZD0iTTExMiw4LjJoNC4ydjE0LjNjMCwuNiwwLDEsLjMsMS4yLjIuMi41LjQuOS40cy41LDAsLjgtLjFjLjMsMCwuNS0uMi43LS4zbC42LDMuMmMtLjUuMi0xLjEuNC0xLjguNi0uNy4yLTEuMy4yLTEuOS4yLTEuMiwwLTIuMS0uMy0yLjgtMS0uNi0uNi0xLTEuNi0xLTIuN3YtMTUuN2gwWiIvPgogICAgPHBhdGggY2xhc3M9InN0MCIgZD0iTTEyMC4yLDIyLjV2LTguOGg0LjJ2Ny44YzAsLjguMiwxLjQuNSwxLjkuMy40LjguNywxLjQuN3MuOCwwLDEuMS0uMmMuNC0uMS43LS4zLDEtLjZzLjYtLjcuOS0xLjF2LTguNGg0LjJ2OWMwLC40LDAsLjcuMi45LjEuMi40LjMuNy4zdjMuNWMtLjQsMC0uNy4xLTEsLjJzLS41LDAtLjgsMGMtLjcsMC0xLjMtLjEtMS44LS40LS40LS4zLS43LS43LS44LTEuM3YtLjhjLS43LjktMS41LDEuNi0yLjQsMnMtMiwuNi0zLjIuNi0yLjUtLjQtMy4yLTEuMy0xLjEtMi4yLTEuMS0zLjh2LS4yaC4xWiIvPgogICAgPHBhdGggY2xhc3M9InN0MCIgZD0iTTE0Mi45LDI3LjZjLTEuMiwwLTIuMi0uMi0zLjEtLjYtLjktLjQtMS43LS45LTIuMy0xLjVzLTEuMS0xLjQtMS41LTIuMmMtLjMtLjgtLjUtMS43LS41LTIuNiwwLTEuMy4zLTIuNS45LTMuNi42LTEuMSwxLjQtMS45LDIuNS0yLjZzMi40LTEsNC0xLDIuOS4zLDQsMWMxLjEuNiwxLjksMS41LDIuNSwyLjZzLjksMi4yLjksMy41LDAsLjUsMCwuN3YuNmgtMTAuMmMwLC42LjIsMS4xLjUsMS41cy43LjcsMS4xLjljLjUuMi45LjMsMS40LjNzMS4yLS4xLDEuOC0uNC45LS43LDEuMS0xLjJsMy42LDFjLS40LjctLjgsMS4zLTEuNSwxLjktLjYuNS0xLjQsMS0yLjIsMS4zLS45LjMtMS44LjUtMi45LjVoLS4xWk0xMzkuOCwxOS4yaDZjMC0uNi0uMi0xLS41LTEuNS0uMy0uNC0uNi0uNy0xLjEtMS0uNC0uMi0uOS0uMy0xLjUtLjNzLTEsLjEtMS40LjNjLS40LjItLjguNS0xLjEuOXMtLjQuOS0uNSwxLjVoLjFaIi8+CiAgICA8cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTU2LjUsMTcuOGMwLTEuMS4yLTIuMi42LTMuMy40LTEuMSwxLTIuMSwxLjgtM3MxLjgtMS42LDMtMi4yYzEuMi0uNSwyLjUtLjgsMy45LS44czMuMy40LDQuNiwxLjEsMi4zLDEuNywyLjksMi45bC0zLjMsMi4zYy0uMy0uNy0uNi0xLjItMS4xLTEuNnMtMS0uNi0xLjUtLjhjLS42LS4xLTEuMS0uMi0xLjYtLjItLjgsMC0xLjUuMi0yLjEuNXMtMS4xLjgtMS41LDEuMy0uNywxLjEtLjksMS44Yy0uMi43LS4zLDEuMy0uMywycy4xLDEuNS40LDIuMmMuMi43LjYsMS4zLDEsMS44cy45LjksMS42LDEuMmMuNi4zLDEuMy41LDIsLjVzMS4xLDAsMS42LS4yLDEtLjQsMS41LS44LjgtLjksMS4xLTEuNWwzLjUsMi4xYy0uNC45LTEsMS43LTEuOCwyLjMtLjguNi0xLjgsMS4xLTIuOCwxLjVzLTIuMS41LTMuMi41LTIuNi0uMy0zLjctLjhjLTEuMS0uNi0yLjEtMS4zLTIuOS0yLjItLjgtLjktMS41LTItMS45LTMuMXMtLjctMi4zLS43LTMuNWgtLjJaIi8+CiAgICA8cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTc0LjgsMTJ2LTMuOGg0LjJ2My44aC00LjJaTTE3NC44LDI3LjN2LTEzLjhoNC4ydjEzLjhzLTQuMiwwLTQuMiwwWiIvPgogICAgPHBhdGggY2xhc3M9InN0MCIgZD0iTTE5MC4zLDI2LjZjLS40LjItLjguMy0xLjIuNS0uNS4yLS45LjMtMS40LjQtLjUsMC0xLC4xLTEuNS4xcy0xLjMtLjEtMS45LS4zLTEtLjYtMS40LTEuMi0uNS0xLjItLjUtMi4xdi03LjFoLTEuOHYtMy4yaDEuOHYtNC40aDQuMnY0LjRoMi44djMuMmgtMi44djUuNmMwLC41LjEuOC4zLDFzLjUuMy45LjMuNiwwLDEtLjJjLjMtLjEuNi0uMi45LS4zbC44LDMuM2gtLjJaIi8+CiAgICA8cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTkxLjQsMjkuNGMuNCwwLC43LjIsMSwuMmguOGMuNCwwLC42LDAsLjktLjJzLjQtLjQuNi0uOGMuMi0uNC4zLS44LjUtMS40bC01LjItMTMuN2g0LjNsMy4yLDkuNCwyLjctOS40aDMuOWwtNS4zLDE1LjljLS4yLjctLjYsMS40LTEuMSwycy0xLjEsMS0xLjksMS40Yy0uNy4zLTEuNS41LTIuNC41aC0xLjFjLS40LDAtLjctLjItMS4xLS4zdi0zLjZoLjJaIi8+CiAgPC9nPgo8L3N2Zz4=" alt="The Blue City">
+      </div>
+
+      <div class="credit-sep"></div>
+
+      <div class="credit-item">
+        <span class="rot">Powered by</span>
+        <a href="https://pok.tech/" target="_blank" rel="noopener"><img class="pok" src="https://the-blue-city.github.io/content/pok-logo-branco-fundotransparente.svg" alt="POK"></a>
+      </div>
+
+      <div class="credit-sep"></div>
+
+      <div class="credit-item">
+        <a href="https://www.gov.br/cultura/pt-br" target="_blank" rel="noopener"><img src="https://the-blue-city.github.io/content/logo-minc.png" alt="Ministério da Cultura"></a>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div>Contato: <a href="mailto:hello@thebluecity.app">hello@thebluecity.app</a></div>
+      <div>© The Blue City · Missão Futuro</div>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Voltar ao topo">↑</button>
+
+<script>
+  const toTop = document.getElementById('toTop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 600) toTop.classList.add('show');
+    else toTop.classList.remove('show');
+  });
+  toTop.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+
+  const navLinks = document.querySelectorAll('.topbar-nav a');
+  const sections = Array.from(navLinks).map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+
+  function setActive() {
+    const scrollY = window.scrollY + 120;
+    let activeIndex = 0;
+    sections.forEach((s, i) => {
+      if (s.offsetTop <= scrollY) activeIndex = i;
+    });
+    navLinks.forEach((l, i) => {
+      l.classList.toggle('active', i === activeIndex);
+    });
+  }
+  window.addEventListener('scroll', setActive);
+  setActive();
+
+  // Menu hambúrguer (mobile)
+  const burger = document.getElementById('topbar-burger');
+  const nav = document.getElementById('topbar-nav');
+  if (burger && nav) {
+    burger.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      burger.classList.toggle('open', open);
+      burger.setAttribute('aria-expanded', open);
+    });
+    // fechar ao clicar num link
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      nav.classList.remove('open');
+      burger.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    }));
+  }
+</script>
+</body>
+</html>
