@@ -24,16 +24,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --blue: #2858a0;
-    --teal: #468182;
-    --green: #5fb670;
-    --blue-light: #d6e4f7;
-    --teal-light: #d0e8e8;
-    --green-light: #d4f0d9;
-    --dark: #1a2e3b;
+    --blue: #1e7a46;
+    --teal: #2f6b55;
+    --green: #7cc576;
+    --blue-light: #d7eedd;
+    --teal-light: #d6ebe2;
+    --green-light: #e6f5d8;
+    --dark: #173225;
     --text: #000000;
     --muted: #000000;
-    --bg: #f4f8fc;
+    --bg: #f3f9f4;
     --bg-alt: #ffffff;
   }
   * { margin:0; padding:0; box-sizing:border-box; }
@@ -41,7 +41,7 @@
   body { font-family:'Montserrat',sans-serif; background:var(--bg-alt); color:var(--text); line-height:1.5; }
 
   /* ── TOPBAR ── */
-  .topbar { position:sticky; top:0; z-index:100; background:rgba(18,30,51,0.96); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid rgba(255,255,255,0.08); }
+  .topbar { position:sticky; top:0; z-index:100; background:rgba(23,50,37,0.96); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid rgba(255,255,255,0.08); }
   .topbar-inner { position:relative; max-width:1340px; margin:0 auto; padding:14px clamp(20px, 3vw, 44px); display:flex; align-items:center; justify-content:space-between; gap:16px; }
   .topbar-brand { display:flex; align-items:center; gap:14px; color:white; }
   .topbar-logo { height:24px; width:auto; display:block; }
@@ -49,7 +49,7 @@
   .topbar-nav { display:flex; gap:2px; flex-wrap:nowrap; }
   .topbar-nav a { font-size:11px; font-weight:600; color:#ffffff; text-decoration:none; padding:6px 7px; border-radius:6px; transition:all 0.2s; letter-spacing:0.2px; white-space:nowrap; }
   .topbar-nav a:hover { background:rgba(255,255,255,0.08); color:white; }
-  .topbar-nav a.active { color:var(--green); background:rgba(95,182,112,0.12); }
+  .topbar-nav a.active { color:var(--green); background:rgba(124,197,118,0.12); }
   .topbar-burger { display:none; width:38px; height:38px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:8px; cursor:pointer; padding:0; flex-direction:column; align-items:center; justify-content:center; gap:5px; transition:all 0.2s; }
   .topbar-burger:hover { background:rgba(255,255,255,0.08); }
   .topbar-burger span { display:block; width:18px; height:2px; background:white; border-radius:2px; transition:all 0.25s; }
@@ -80,7 +80,7 @@
   .section-dark .section-lead { color:#ffffff; }
 
   /* ── HERO (capa) ── */
-  .hero { background:linear-gradient(to bottom right,#1d4789 0%,#295b9c 35%,#468182 70%,#7fc596 100%); color:white; padding:120px clamp(22px, 7vw, 110px) 100px; position:relative; overflow:hidden; }
+  .hero { background:linear-gradient(to bottom right,#183a30 0%,#27523f 25%,#427c58 50%,#5ca670 75%,#6bbd7e 100%); color:white; padding:120px clamp(22px, 7vw, 110px) 100px; position:relative; overflow:hidden; }
   .hero::before { content:''; position:absolute; top:0; left:0; right:0; height:5px; background:linear-gradient(90deg,var(--blue),var(--teal),var(--green)); }
   .hero::after { content:''; position:absolute; bottom:-60px; right:-60px; width:380px; height:380px; border-radius:50%; background:radial-gradient(circle,rgba(255,255,255,0.08) 0%,transparent 70%); pointer-events:none; }
   .hero-inner { max-width:1180px; margin:0 auto; position:relative; }
@@ -140,8 +140,8 @@
   .hero-stat-desc { font-size:12px; color:#ffffff; line-height:1.55; }
 
   /* ── CARDS ── */
-  .feature-card { background:white; border-radius:14px; padding:24px 26px; border:1px solid rgba(40,88,160,0.08); box-shadow:0 2px 12px rgba(0,0,0,0.04); transition:transform 0.25s,box-shadow 0.25s; }
-  .feature-card:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(40,88,160,0.1); }
+  .feature-card { background:white; border-radius:14px; padding:24px 26px; border:1px solid rgba(30,122,70,0.08); box-shadow:0 2px 12px rgba(0,0,0,0.04); transition:transform 0.25s,box-shadow 0.25s; }
+  .feature-card:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(30,122,70,0.1); }
   .feature-card-header { display:flex; align-items:center; gap:14px; margin-bottom:12px; }
   .feature-icon { width:42px; height:42px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
   .fi-blue { background:var(--blue-light); } .fi-teal { background:var(--teal-light); } .fi-green { background:var(--green-light); }
@@ -151,8 +151,8 @@
   /* ── BENEFIT CARDS (universidade + estudante) ── */
   .benefit-grid-top { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-bottom:16px; align-items:stretch; }
   .benefit-grid-bottom { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
-  .benefit-card { background:white; border-radius:14px; padding:22px 22px; border:1px solid rgba(40,88,160,0.08); box-shadow:0 2px 12px rgba(0,0,0,0.04); display:flex; flex-direction:column; gap:12px; transition:all 0.25s; border-left:4px solid var(--green); }
-  .benefit-card:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(40,88,160,0.1); }
+  .benefit-card { background:white; border-radius:14px; padding:22px 22px; border:1px solid rgba(30,122,70,0.08); box-shadow:0 2px 12px rgba(0,0,0,0.04); display:flex; flex-direction:column; gap:12px; transition:all 0.25s; border-left:4px solid var(--green); }
+  .benefit-card:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(30,122,70,0.1); }
   .benefit-card-head { display:flex; align-items:center; gap:12px; }
   .benefit-icon { width:42px; height:42px; border-radius:10px; background:var(--green-light); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
   .benefit-card h3 { font-size:15px; font-weight:800; color:var(--dark); line-height:1.25; }
@@ -169,13 +169,13 @@
   .benefit-image-slot { flex-shrink:0; width:200px; height:200px; display:flex; align-items:center; justify-content:center; overflow:hidden; }
   .benefit-image-slot svg { width:100%; height:100%; display:block; }
   /* Box 1 — Reconhecimento (azul) */
-  .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(1) { background:var(--blue-light); border:1px solid rgba(40,88,160,0.25); border-left:6px solid var(--blue); }
-  .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(1) .benefit-icon { background:rgba(40,88,160,0.18); }
-  .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(1) .benefit-tag { background:rgba(40,88,160,0.15); color:var(--blue); }
+  .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(1) { background:var(--blue-light); border:1px solid rgba(30,122,70,0.25); border-left:6px solid var(--blue); }
+  .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(1) .benefit-icon { background:rgba(30,122,70,0.18); }
+  .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(1) .benefit-tag { background:rgba(30,122,70,0.15); color:var(--blue); }
   /* Box 2 — Estudantes (verde) */
-  .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(2) { background:var(--green-light); border:1px solid rgba(95,182,112,0.3); border-left:6px solid var(--green); }
-  .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(2) .benefit-icon { background:rgba(95,182,112,0.25); }
-  .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(2) .benefit-tag { background:rgba(95,182,112,0.2); color:#2d7a3e; }
+  .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(2) { background:var(--green-light); border:1px solid rgba(124,197,118,0.3); border-left:6px solid var(--green); }
+  .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(2) .benefit-icon { background:rgba(124,197,118,0.25); }
+  .benefit-grid-top .benefit-card.benefit-card-with-image:nth-child(2) .benefit-tag { background:rgba(124,197,118,0.2); color:#1f6b35; }
 
   .info-card { background:var(--blue); border-radius:14px; padding:28px 32px; color:white; }
   .info-card h3 { font-size:17px; font-weight:800; margin-bottom:10px; }
@@ -187,8 +187,8 @@
   .actors-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; align-items:stretch; }
   .actor-card-wide { grid-column:1 / -1; }
   .legacy-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; align-items:stretch; }
-  .actor-card { background:white; border-radius:16px; padding:24px 22px; border:1px solid rgba(40,88,160,0.1); box-shadow:0 2px 12px rgba(0,0,0,0.04); display:flex; flex-direction:column; gap:14px; transition:all 0.25s; }
-  .actor-card:hover { box-shadow:0 8px 24px rgba(40,88,160,0.12); transform:translateY(-3px); }
+  .actor-card { background:white; border-radius:16px; padding:24px 22px; border:1px solid rgba(30,122,70,0.1); box-shadow:0 2px 12px rgba(0,0,0,0.04); display:flex; flex-direction:column; gap:14px; transition:all 0.25s; }
+  .actor-card:hover { box-shadow:0 8px 24px rgba(30,122,70,0.12); transform:translateY(-3px); }
   .actor-emoji { width:52px; height:52px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:26px; flex-shrink:0; }
   .actor-body { display:flex; flex-direction:column; flex:1; }
   .actor-body h3 { font-size:15px; font-weight:800; color:var(--dark); margin-bottom:4px; line-height:1.25; }
@@ -207,7 +207,7 @@
   /* ── FLUXO (desktop / mobile alternados) ── */
   .fluxo-desktop { display:block; }
   .fluxo-mobile { display:none; list-style:none; padding:0; margin:0 0 32px; counter-reset:fluxo; }
-  .fluxo-step { display:grid; grid-template-columns:46px 1fr; gap:14px; padding:18px 18px 18px 0; border-bottom:1px solid rgba(40,88,160,0.1); position:relative; }
+  .fluxo-step { display:grid; grid-template-columns:46px 1fr; gap:14px; padding:18px 18px 18px 0; border-bottom:1px solid rgba(30,122,70,0.1); position:relative; }
   .fluxo-step:last-child { border-bottom:none; }
   .fluxo-num { width:36px; height:36px; border-radius:50%; background:var(--blue); color:white; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
   .fluxo-step-bridge .fluxo-num { background:var(--green); }
@@ -215,11 +215,11 @@
   .fluxo-body h4 { font-size:14px; font-weight:800; color:var(--dark); margin-bottom:2px; line-height:1.25; }
   .fluxo-sub { font-size:11px; font-weight:600; color:var(--teal); margin-bottom:6px; }
   .fluxo-body p { font-size:12.5px; color:var(--muted); line-height:1.6; }
-  .fluxo-flag { display:inline-block; margin-top:8px; font-size:10.5px; font-weight:700; color:#2d7a3e; background:var(--green-light); padding:4px 9px; border-radius:12px; }
+  .fluxo-flag { display:inline-block; margin-top:8px; font-size:10.5px; font-weight:700; color:#1f6b35; background:var(--green-light); padding:4px 9px; border-radius:12px; }
 
   /* ── STATS ROW (apoio) ── */
   .stats-row { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
-  .stat-card { background:white; border-radius:10px; padding:22px 18px; text-align:center; border:1px solid rgba(40,88,160,0.08); box-shadow:0 2px 8px rgba(0,0,0,0.03); }
+  .stat-card { background:white; border-radius:10px; padding:22px 18px; text-align:center; border:1px solid rgba(30,122,70,0.08); box-shadow:0 2px 8px rgba(0,0,0,0.03); }
   .stat-value { font-size:30px; font-weight:800; color:var(--blue); line-height:1; margin-bottom:8px; }
   .stat-value.teal { color:var(--teal); }
   .stat-value.green { color:var(--green); }
@@ -227,74 +227,74 @@
 
   /* ── COTAS (apoio) ── */
   .cotas-heading { font-size:11px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:var(--teal); margin-bottom:14px; display:flex; align-items:center; gap:10px; }
-  .cotas-heading::after { content:''; flex:1; height:1px; background:rgba(70,129,130,0.2); }
+  .cotas-heading::after { content:''; flex:1; height:1px; background:rgba(47,107,85,0.2); }
   .cotas-list { display:flex; flex-direction:column; gap:10px; }
-  .cota-row { display:grid; grid-template-columns:100px 1fr auto; align-items:center; gap:20px; background:white; border-radius:10px; padding:16px 20px; border:1px solid rgba(40,88,160,0.1); box-shadow:0 2px 8px rgba(0,0,0,0.03); }
+  .cota-row { display:grid; grid-template-columns:100px 1fr auto; align-items:center; gap:20px; background:white; border-radius:10px; padding:16px 20px; border:1px solid rgba(30,122,70,0.1); box-shadow:0 2px 8px rgba(0,0,0,0.03); }
   .cota-row-premium { background:var(--dark); border-color:var(--blue); }
   .cota-tier { font-size:11px; font-weight:800; padding:5px 10px; border-radius:20px; text-align:center; letter-spacing:0.5px; }
   .cota-bronze { color:#b87333; background:#fff3e8; border:1px solid #f0c898; }
   .cota-prata { color:#7a7a7a; background:#f5f5f5; border:1px solid #ddd; }
   .cota-ouro { color:#c8a000; background:#fffbe6; border:1px solid #ffe066; }
-  .cota-safira { color:#0057a8; background:#e8f0fb; border:1px solid #a8c4f0; }
-  .cota-premium { color:#1a2e3b; background:#5fb670; border:1px solid #38a349; }
+  .cota-safira { color:#0057a8; background:#eaf6ee; border:1px solid #a8c4f0; }
+  .cota-premium { color:#173225; background:#7cc576; border:1px solid #3f9a52; }
   .cota-info .cota-title { font-size:13px; font-weight:700; color:var(--dark); margin-bottom:3px; }
   .cota-info .cota-desc { font-size:11.5px; color:var(--muted); line-height:1.5; }
   .cota-row-premium .cota-info .cota-title { color:white; }
   .cota-row-premium .cota-info .cota-desc { color:#ffffff; }
-  .cota-link { font-size:11px; font-weight:700; color:var(--blue); text-decoration:none; white-space:nowrap; padding:6px 14px; border:1.5px solid rgba(40,88,160,0.2); border-radius:6px; transition:all 0.2s; }
-  .cota-link:hover { background:rgba(40,88,160,0.06); border-color:rgba(40,88,160,0.4); }
-  .cota-row-premium .cota-link { color:var(--green); border-color:rgba(95,182,112,0.4); }
-  .cota-row-premium .cota-link:hover { background:rgba(95,182,112,0.1); border-color:rgba(95,182,112,0.7); }
+  .cota-link { font-size:11px; font-weight:700; color:var(--blue); text-decoration:none; white-space:nowrap; padding:6px 14px; border:1.5px solid rgba(30,122,70,0.2); border-radius:6px; transition:all 0.2s; }
+  .cota-link:hover { background:rgba(30,122,70,0.06); border-color:rgba(30,122,70,0.4); }
+  .cota-row-premium .cota-link { color:var(--green); border-color:rgba(124,197,118,0.4); }
+  .cota-row-premium .cota-link:hover { background:rgba(124,197,118,0.1); border-color:rgba(124,197,118,0.7); }
   .cota-bonus-title-accent { color:var(--green); font-weight:700; }
-  .cota-bonus { display:flex; align-items:flex-start; gap:12px; background:linear-gradient(135deg,rgba(95,182,112,0.08),rgba(95,182,112,0.03)); border:1px solid rgba(95,182,112,0.3); border-left:3px solid var(--green); border-radius:8px; padding:14px 18px; margin-top:6px; }
+  .cota-bonus { display:flex; align-items:flex-start; gap:12px; background:linear-gradient(135deg,rgba(124,197,118,0.08),rgba(124,197,118,0.03)); border:1px solid rgba(124,197,118,0.3); border-left:3px solid var(--green); border-radius:8px; padding:14px 18px; margin-top:6px; }
   .cota-bonus-icon { font-size:18px; line-height:1; flex-shrink:0; }
-  .cota-bonus-label { font-size:11px; font-weight:800; color:#38a349; letter-spacing:0.5px; text-transform:uppercase; margin-bottom:4px; }
+  .cota-bonus-label { font-size:11px; font-weight:800; color:#3f9a52; letter-spacing:0.5px; text-transform:uppercase; margin-bottom:4px; }
   .cota-bonus-text { font-size:12.5px; color:var(--dark); line-height:1.55; }
 
   /* ── CONFIG CARD ── */
-  .config-card { background:white; border-radius:16px; padding:30px 32px; border:1px solid rgba(40,88,160,0.1); box-shadow:0 2px 12px rgba(0,0,0,0.04); }
+  .config-card { background:white; border-radius:16px; padding:30px 32px; border:1px solid rgba(30,122,70,0.1); box-shadow:0 2px 12px rgba(0,0,0,0.04); }
   .config-card-title { font-size:11px; font-weight:700; color:var(--teal); text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; }
   .config-card h3 { font-size:22px; font-weight:800; color:var(--dark); margin-bottom:14px; }
   .config-card > p { font-size:14px; color:var(--muted); line-height:1.7; margin-bottom:20px; }
   .config-examples { display:flex; flex-wrap:wrap; gap:7px; }
-  .config-chip { font-size:11.5px; font-weight:600; padding:6px 13px; border-radius:14px; background:var(--green-light); color:#2d7a3e; }
+  .config-chip { font-size:11.5px; font-weight:600; padding:6px 13px; border-radius:14px; background:var(--green-light); color:#1f6b35; }
 
   /* ── CASE CARD ── */
-  .case-card { background:white; border-radius:16px; overflow:hidden; border:1px solid rgba(40,88,160,0.1); box-shadow:0 2px 12px rgba(0,0,0,0.04); margin-bottom:18px; transition:all 0.25s; }
-  .case-card:hover { box-shadow:0 8px 24px rgba(40,88,160,0.1); transform:translateY(-2px); }
+  .case-card { background:white; border-radius:16px; overflow:hidden; border:1px solid rgba(30,122,70,0.1); box-shadow:0 2px 12px rgba(0,0,0,0.04); margin-bottom:18px; transition:all 0.25s; }
+  .case-card:hover { box-shadow:0 8px 24px rgba(30,122,70,0.1); transform:translateY(-2px); }
   .case-card-head { padding:13px 26px; display:flex; align-items:center; gap:16px; }
   .case-card-head.live { background:var(--blue); color:white; }
   .case-card-head.next { background:var(--teal); color:white; }
-  .case-card-head.future { background:linear-gradient(135deg,#e8eef5 0%,#dde6f0 100%); color:var(--dark); border-bottom:2px dashed rgba(40,88,160,0.25); }
+  .case-card-head.future { background:linear-gradient(135deg,#ebf5ee 0%,#d9eadf 100%); color:var(--dark); border-bottom:2px dashed rgba(30,122,70,0.25); }
   .case-status { display:inline-flex; align-items:center; gap:6px; padding:5px 12px; border-radius:14px; font-size:10.5px; font-weight:700; letter-spacing:0.8px; text-transform:uppercase; }
   .case-status.live { background:rgba(255,255,255,0.2); color:white; }
   .case-status.next { background:rgba(255,255,255,0.2); color:white; }
-  .case-status.future { background:rgba(40,88,160,0.1); color:var(--blue); }
+  .case-status.future { background:rgba(30,122,70,0.1); color:var(--blue); }
   .case-card-body { padding:20px 26px; }
   .case-stat { display:flex; flex-direction:column; gap:3px; }
   .case-stat-value { font-size:16px; font-weight:800; color:var(--dark); }
   .case-stat-label { font-size:10.5px; color:var(--muted); font-weight:700; letter-spacing:0.5px; text-transform:uppercase; }
 
   /* ── TEAM CARD ── */
-  .team-card { background:white; border-radius:14px; padding:22px 24px; border:1px solid rgba(40,88,160,0.08); box-shadow:0 2px 10px rgba(0,0,0,0.04); transition:all 0.25s; }
-  .team-card:hover { box-shadow:0 8px 22px rgba(40,88,160,0.1); transform:translateY(-2px); }
+  .team-card { background:white; border-radius:14px; padding:22px 24px; border:1px solid rgba(30,122,70,0.08); box-shadow:0 2px 10px rgba(0,0,0,0.04); transition:all 0.25s; }
+  .team-card:hover { box-shadow:0 8px 22px rgba(30,122,70,0.1); transform:translateY(-2px); }
   .team-card h4 { font-size:15px; font-weight:800; color:var(--dark); margin-bottom:4px; }
   .team-card .team-role { font-size:10.5px; font-weight:700; color:var(--teal); letter-spacing:0.8px; text-transform:uppercase; margin-bottom:10px; }
   .team-card p { font-size:13px; color:var(--muted); line-height:1.65; }
 
   /* ── COORDENADORA (destaque) ── */
-  .team-coord { background:white; border-radius:16px; padding:28px 32px; margin-bottom:28px; border:1px solid rgba(40,88,160,0.1); box-shadow:0 2px 12px rgba(0,0,0,0.04); display:grid; grid-template-columns:auto 1fr; gap:24px; align-items:center; }
+  .team-coord { background:white; border-radius:16px; padding:28px 32px; margin-bottom:28px; border:1px solid rgba(30,122,70,0.1); box-shadow:0 2px 12px rgba(0,0,0,0.04); display:grid; grid-template-columns:auto 1fr; gap:24px; align-items:center; }
   .team-coord h4 { font-size:20px; font-weight:800; color:var(--dark); margin-bottom:6px; line-height:1.2; }
   .team-coord .team-coord-role { font-size:11px; font-weight:700; color:var(--teal); letter-spacing:0.8px; text-transform:uppercase; margin-bottom:10px; }
   .team-coord p { font-size:13.5px; color:var(--muted); line-height:1.65; max-width:680px; }
-  .team-coord-icon { width:64px; height:64px; background:var(--blue-light); border:1px solid rgba(40,88,160,0.15); border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:30px; flex-shrink:0; }
+  .team-coord-icon { width:64px; height:64px; background:var(--blue-light); border:1px solid rgba(30,122,70,0.15); border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:30px; flex-shrink:0; }
 
   /* ── PILLARS (virtual / físico) ── */
   .pillar-block { margin-bottom:24px; }
-  .pillar-header { display:flex; align-items:baseline; gap:14px; margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid rgba(40,88,160,0.12); }
+  .pillar-header { display:flex; align-items:baseline; gap:14px; margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid rgba(30,122,70,0.12); }
   .pillar-tag { font-size:10px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; padding:4px 10px; border-radius:14px; }
   .pillar-tag-virtual { color:var(--blue); background:var(--blue-light); }
-  .pillar-tag-fisico { color:#2d7a3e; background:var(--green-light); }
+  .pillar-tag-fisico { color:#1f6b35; background:var(--green-light); }
   .pillar-title { font-size:16px; font-weight:800; color:var(--dark); }
   .pillar-desc { font-size:12.5px; color:var(--muted); margin-left:auto; }
 
@@ -330,8 +330,8 @@
   .footer-top { display:grid; grid-template-columns:1fr; gap:48px; margin-bottom:40px; }
   .footer-brand { font-size:18px; font-weight:800; color:white; margin-bottom:10px; }
   .footer-tagline { font-size:13px; line-height:1.7; color:#ffffff; max-width:340px; }
-  .footer-contact { display:inline-block; margin-top:12px; font-size:13px; font-weight:600; color:#7fb8e8; text-decoration:none; border-bottom:1px solid rgba(127,184,232,0.3); padding-bottom:1px; transition:color 0.2s; }
-  .footer-contact:hover { color:#a8cdf0; border-bottom-color:rgba(168,205,240,0.6); }
+  .footer-contact { display:inline-block; margin-top:12px; font-size:13px; font-weight:600; color:#9fd8a8; text-decoration:none; border-bottom:1px solid rgba(159,216,168,0.3); padding-bottom:1px; transition:color 0.2s; }
+  .footer-contact:hover { color:#c3e8c8; border-bottom-color:rgba(195,232,200,0.6); }
   .footer-col-title { font-size:11px; font-weight:700; color:var(--green); letter-spacing:1.2px; text-transform:uppercase; margin-bottom:14px; }
   .footer-col p { font-size:13px; line-height:1.7; color:rgba(255,255,255,0.65); }
   .footer-bottom {
@@ -345,7 +345,7 @@
   .footer-bottom a:hover { text-decoration:underline; }
 
   /* ── BACK TO TOP ── */
-  .to-top { position:fixed; bottom:24px; right:24px; width:44px; height:44px; border-radius:50%; background:var(--blue); color:white; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 4px 16px rgba(40,88,160,0.3); border:none; font-size:18px; transition:all 0.2s; opacity:0; pointer-events:none; z-index:90; }
+  .to-top { position:fixed; bottom:24px; right:24px; width:44px; height:44px; border-radius:50%; background:var(--blue); color:white; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 4px 16px rgba(30,122,70,0.3); border:none; font-size:18px; transition:all 0.2s; opacity:0; pointer-events:none; z-index:90; }
   .to-top.show { opacity:1; pointer-events:auto; }
   .to-top:hover { background:var(--dark); transform:translateY(-2px); }
 
@@ -403,7 +403,7 @@
     .topbar-burger { display:flex; }
     .lang-switcher { padding:2px; }
     .lang-btn { padding:4px 7px; font-size:10px; }
-    .topbar-nav { display:none; position:absolute; top:100%; left:0; right:0; flex-direction:column; flex-wrap:wrap; align-items:stretch; gap:0; padding:8px; background:rgba(18,30,51,0.98); border-top:1px solid rgba(255,255,255,0.08); border-bottom:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); }
+    .topbar-nav { display:none; position:absolute; top:100%; left:0; right:0; flex-direction:column; flex-wrap:wrap; align-items:stretch; gap:0; padding:8px; background:rgba(23,50,37,0.98); border-top:1px solid rgba(255,255,255,0.08); border-bottom:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); }
     .topbar-nav.open { display:flex; }
     .topbar-nav a { font-size:14px; padding:12px 16px; border-radius:6px; }
     .footer-top { grid-template-columns:1fr; gap:32px; }
@@ -443,20 +443,20 @@
   .cert-side-cards .cert-card-escola .benefit-tag { color:var(--blue); background:var(--blue-light); }
   .cert-side-cards .cert-card-aluno { border-left-color:var(--green); }
   .cert-side-cards .cert-card-aluno .benefit-icon { background:var(--green-light); }
-  .cert-side-cards .cert-card-aluno .benefit-tag { color:#2d7a3e; background:var(--green-light); }
+  .cert-side-cards .cert-card-aluno .benefit-tag { color:#1f6b35; background:var(--green-light); }
   .cert-group-head { display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin:0; }
   .cert-grouppill { font-size:11px; font-weight:800; letter-spacing:0.5px; text-transform:uppercase; padding:6px 14px; border-radius:20px; display:inline-flex; align-items:center; gap:7px; }
   .cert-grouppill-escola { color:var(--blue); background:var(--blue-light); }
-  .cert-grouppill-aluno { color:#2d7a3e; background:var(--green-light); }
+  .cert-grouppill-aluno { color:#1f6b35; background:var(--green-light); }
   .cert-group-sub { font-size:12.5px; color:var(--muted); font-weight:600; }
   .cert-conheca { margin-top:32px; text-align:center; }
-  .cert-conheca-btn { display:inline-flex; align-items:center; justify-content:center; gap:10px; background:#2858a0; color:#ffffff; font-size:13px; font-weight:700; padding:12px 22px; border-radius:8px; text-decoration:none; transition:all 0.2s; box-shadow:0 2px 10px rgba(40,88,160,0.2); }
+  .cert-conheca-btn { display:inline-flex; align-items:center; justify-content:center; gap:10px; background:#1e7a46; color:#ffffff; font-size:13px; font-weight:700; padding:12px 22px; border-radius:8px; text-decoration:none; transition:all 0.2s; box-shadow:0 2px 10px rgba(30,122,70,0.2); }
   .cert-conheca-btn::after { content:"\2192"; }
   .hero-cta { display:inline-flex; align-self:flex-start; align-items:center; gap:10px; margin-top:32px; background:linear-gradient(180deg,#f6e7a6 0%,#e2c062 55%,#c9a033 100%); color:#3d2c05; border:1px solid #a87e1e; font-size:14px; font-weight:700; padding:14px 26px; border-radius:8px; text-decoration:none; transition:all 0.2s; box-shadow:0 4px 16px rgba(120,85,10,0.35), inset 0 1px 0 rgba(255,255,255,0.5); }
   .hero-cta::after { content:"\2192"; }
   .hero-cta:hover { background:linear-gradient(180deg,#f9edb9 0%,#e8c96f 55%,#d4ab3c 100%); transform:translateY(-2px); box-shadow:0 8px 22px rgba(120,85,10,0.45), inset 0 1px 0 rgba(255,255,255,0.6); }
-  .map-cta { display:flex; align-items:center; gap:24px; margin-top:28px; padding:28px 32px; border-radius:16px; text-decoration:none; color:#ffffff; background:linear-gradient(to bottom right,#1d4789 0%,#295b9c 35%,#468182 70%,#7fc596 100%); box-shadow:0 4px 18px rgba(40,88,160,0.18); transition:all 0.25s; }
-  .map-cta:hover { transform:translateY(-3px); box-shadow:0 10px 28px rgba(40,88,160,0.28); }
+  .map-cta { display:flex; align-items:center; gap:24px; margin-top:28px; padding:28px 32px; border-radius:16px; text-decoration:none; color:#ffffff; background:linear-gradient(to bottom right,#183a30 0%,#27523f 25%,#427c58 50%,#5ca670 75%,#6bbd7e 100%); box-shadow:0 4px 18px rgba(30,122,70,0.18); transition:all 0.25s; }
+  .map-cta:hover { transform:translateY(-3px); box-shadow:0 10px 28px rgba(30,122,70,0.28); }
   .map-cta-icon { width:56px; height:56px; border-radius:14px; background:rgba(255,255,255,0.18); display:flex; align-items:center; justify-content:center; font-size:28px; flex-shrink:0; }
   .map-cta-text { flex:1; min-width:0; }
   .map-cta-label { font-size:10.5px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:#ffffff; margin-bottom:6px; }
@@ -464,14 +464,14 @@
   .map-cta .map-cta-text p { font-size:13.5px; line-height:1.6; color:#ffffff; }
   .map-cta-btn { display:inline-flex; align-items:center; gap:10px; flex-shrink:0; background:linear-gradient(180deg,#f6e7a6 0%,#e2c062 55%,#c9a033 100%); color:#3d2c05; border:1px solid #a87e1e; font-size:14px; font-weight:700; padding:13px 24px; border-radius:8px; box-shadow:0 4px 16px rgba(120,85,10,0.35), inset 0 1px 0 rgba(255,255,255,0.5); white-space:nowrap; }
   .map-cta-btn::after { content:"\2192"; }
-  .map-cta.map-cta-light { background:#ffffff; color:var(--dark); border:1px solid rgba(40,88,160,0.12); box-shadow:0 2px 12px rgba(0,0,0,0.05); margin-top:14px; }
-  .map-cta.map-cta-light:hover { box-shadow:0 10px 28px rgba(40,88,160,0.14); }
+  .map-cta.map-cta-light { background:#ffffff; color:var(--dark); border:1px solid rgba(30,122,70,0.12); box-shadow:0 2px 12px rgba(0,0,0,0.05); margin-top:14px; }
+  .map-cta.map-cta-light:hover { box-shadow:0 10px 28px rgba(30,122,70,0.14); }
   .map-cta.map-cta-light .map-cta-icon { background:var(--blue-light); }
   .map-cta.map-cta-light .map-cta-label { color:var(--teal); }
   .map-cta.map-cta-light .map-cta-text h3 { color:var(--dark); }
   .map-cta.map-cta-light .map-cta-text p { color:var(--text); }
   @media (max-width:720px) { .map-cta { flex-direction:column; align-items:flex-start; gap:16px; padding:24px 22px; } }
-  .cert-conheca-btn:hover { background:#1a2e3b; transform:translateY(-2px); box-shadow:0 6px 18px rgba(40,88,160,0.28); }
+  .cert-conheca-btn:hover { background:#173225; transform:translateY(-2px); box-shadow:0 6px 18px rgba(30,122,70,0.28); }
   @media (max-width:900px) { .cert-side-cards { grid-template-columns:1fr; } }
   @media (max-width:560px) {
     .cert-two { grid-template-columns:1fr; gap:28px; } .cert-side-cards .benefit-card { min-height:0; } }
@@ -549,7 +549,7 @@
   <div class="hero-inner">
     <div class="hero-split">
       <div class="hero-text">
-        <h1 class="hero-title">Seu dinheiro.<br>Suas escolhas.<br>Nosso futuro.</h1>
+        <h1 class="hero-title">Seu dinheiro.<br>Suas escolhas.<br>Nosso futuro</h1>
         <p class="hero-desc">Missão Futuro é uma jornada cultural e educativa gamificada de educação financeira, sustentabilidade e empreendedorismo para jovens brasileiros – jogo digital, oficinas presenciais e um festival cultural produzido pelos próprios jovens, numa edição nacional com o PicPay.</p>
         <a class="hero-cta" href="https://brasil.thebluecity.app" target="_blank" rel="noopener">Conheça a plataforma</a>
       </div>
@@ -797,82 +797,82 @@
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" style="width:100%;height:auto;display:block;font-family:'Montserrat',sans-serif;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,0.04);">
         <defs>
           <marker id="arr-b" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-            <path d="M0,0 L0,6 L8,3 z" fill="#2858a0"/>
+            <path d="M0,0 L0,6 L8,3 z" fill="#1e7a46"/>
           </marker>
           <marker id="arr-t" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-            <path d="M0,0 L0,6 L8,3 z" fill="#468182"/>
+            <path d="M0,0 L0,6 L8,3 z" fill="#2f6b55"/>
           </marker>
         </defs>
         <rect width="960" height="560" fill="#ffffff" rx="16"/>
-        <text x="480" y="42" text-anchor="middle" font-size="18" font-weight="700" fill="#1a2e3b">Como Funciona a Jornada</text>
-        <line x1="340" y1="52" x2="620" y2="52" stroke="#5fb670" stroke-width="2" stroke-linecap="round"/>
-        <rect x="30" y="72" width="260" height="130" rx="10" fill="#f4f8fc" stroke="#2858a0" stroke-width="1.5"/>
-        <rect x="30" y="72" width="260" height="5" rx="5" fill="#2858a0"/>
-        <circle cx="62" cy="104" r="17" fill="#2858a0"/>
+        <text x="480" y="42" text-anchor="middle" font-size="18" font-weight="700" fill="#173225">Como Funciona a Jornada</text>
+        <line x1="340" y1="52" x2="620" y2="52" stroke="#7cc576" stroke-width="2" stroke-linecap="round"/>
+        <rect x="30" y="72" width="260" height="130" rx="10" fill="#f3f9f4" stroke="#1e7a46" stroke-width="1.5"/>
+        <rect x="30" y="72" width="260" height="5" rx="5" fill="#1e7a46"/>
+        <circle cx="62" cy="104" r="17" fill="#1e7a46"/>
         <text x="62" y="109" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">01</text>
-        <text x="90" y="100" font-size="12" font-weight="700" fill="#2858a0">Jogo Lançado</text>
-        <text x="90" y="116" font-size="10" font-weight="600" fill="#468182">picpay.thebluecity.app</text>
-        <line x1="46" y1="130" x2="276" y2="130" stroke="#e0e8f0" stroke-width="1"/>
+        <text x="90" y="100" font-size="12" font-weight="700" fill="#1e7a46">Jogo Lançado</text>
+        <text x="90" y="116" font-size="10" font-weight="600" fill="#2f6b55">picpay.thebluecity.app</text>
+        <line x1="46" y1="130" x2="276" y2="130" stroke="#dcebdf" stroke-width="1"/>
         <text x="46" y="148" font-size="9.5" fill="#000000">Nova Aurora publicado com as</text>
         <text x="46" y="163" font-size="9.5" fill="#000000">oito missões, direto no</text>
         <text x="46" y="178" font-size="9.5" fill="#000000">navegador do celular</text>
-        <line x1="294" y1="137" x2="336" y2="137" stroke="#2858a0" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-b)"/>
-        <rect x="340" y="72" width="260" height="130" rx="10" fill="#f4f8fc" stroke="#2858a0" stroke-width="1.5"/>
-        <rect x="340" y="72" width="260" height="5" rx="5" fill="#2858a0"/>
-        <circle cx="372" cy="104" r="17" fill="#2858a0"/>
+        <line x1="294" y1="137" x2="336" y2="137" stroke="#1e7a46" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-b)"/>
+        <rect x="340" y="72" width="260" height="130" rx="10" fill="#f3f9f4" stroke="#1e7a46" stroke-width="1.5"/>
+        <rect x="340" y="72" width="260" height="5" rx="5" fill="#1e7a46"/>
+        <circle cx="372" cy="104" r="17" fill="#1e7a46"/>
         <text x="372" y="109" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">02</text>
-        <text x="400" y="100" font-size="12" font-weight="700" fill="#2858a0">Jovens Jogam</text>
-        <text x="400" y="116" font-size="10" font-weight="600" fill="#468182">Durante o período da jornada</text>
-        <line x1="356" y1="130" x2="586" y2="130" stroke="#e0e8f0" stroke-width="1"/>
+        <text x="400" y="100" font-size="12" font-weight="700" fill="#1e7a46">Jovens Jogam</text>
+        <text x="400" y="116" font-size="10" font-weight="600" fill="#2f6b55">Durante o período da jornada</text>
+        <line x1="356" y1="130" x2="586" y2="130" stroke="#dcebdf" stroke-width="1"/>
         <text x="356" y="148" font-size="9.5" fill="#000000">Instituições parceiras engajam</text>
         <text x="356" y="163" font-size="9.5" fill="#000000">estudantes e professores na</text>
         <text x="356" y="178" font-size="9.5" fill="#000000">plataforma The Blue City</text>
-        <line x1="604" y1="137" x2="646" y2="137" stroke="#2858a0" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-b)"/>
-        <rect x="650" y="72" width="280" height="130" rx="10" fill="#f4f8fc" stroke="#2858a0" stroke-width="1.5"/>
-        <rect x="650" y="72" width="280" height="5" rx="5" fill="#2858a0"/>
-        <circle cx="682" cy="104" r="17" fill="#2858a0"/>
+        <line x1="604" y1="137" x2="646" y2="137" stroke="#1e7a46" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-b)"/>
+        <rect x="650" y="72" width="280" height="130" rx="10" fill="#f3f9f4" stroke="#1e7a46" stroke-width="1.5"/>
+        <rect x="650" y="72" width="280" height="5" rx="5" fill="#1e7a46"/>
+        <circle cx="682" cy="104" r="17" fill="#1e7a46"/>
         <text x="682" y="109" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">03</text>
-        <text x="710" y="100" font-size="12" font-weight="700" fill="#2858a0">Credenciais</text>
-        <text x="710" y="116" font-size="10" font-weight="600" fill="#468182">Bronze, Prata e Ouro em blockchain</text>
-        <line x1="666" y1="130" x2="916" y2="130" stroke="#e0e8f0" stroke-width="1"/>
+        <text x="710" y="100" font-size="12" font-weight="700" fill="#1e7a46">Credenciais</text>
+        <text x="710" y="116" font-size="10" font-weight="600" fill="#2f6b55">Bronze, Prata e Ouro em blockchain</text>
+        <line x1="666" y1="130" x2="916" y2="130" stroke="#dcebdf" stroke-width="1"/>
         <text x="666" y="148" font-size="9.5" fill="#000000">Credencial verificável a cada nível,</text>
         <text x="666" y="163" font-size="9.5" fill="#000000">compartilhável no LinkedIn,</text>
         <text x="666" y="178" font-size="9.5" fill="#000000">vinculada ao PicPay</text>
-        <line x1="790" y1="206" x2="790" y2="248" stroke="#468182" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-t)"/>
-        <rect x="430" y="256" width="500" height="140" rx="10" fill="#eaf4ea" stroke="#5fb670" stroke-width="2"/>
-        <rect x="430" y="256" width="500" height="5" rx="5" fill="#5fb670"/>
-        <circle cx="464" cy="290" r="17" fill="#5fb670"/>
+        <line x1="790" y1="206" x2="790" y2="248" stroke="#2f6b55" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-t)"/>
+        <rect x="430" y="256" width="500" height="140" rx="10" fill="#eef8e8" stroke="#7cc576" stroke-width="2"/>
+        <rect x="430" y="256" width="500" height="5" rx="5" fill="#7cc576"/>
+        <circle cx="464" cy="290" r="17" fill="#7cc576"/>
         <text x="464" y="295" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">04</text>
-        <text x="492" y="286" font-size="12" font-weight="700" fill="#38a349">Oficinas e Projetos de Território</text>
-        <text x="492" y="302" font-size="10" font-weight="600" fill="#468182">Encontros presenciais nas instituições parceiras</text>
-        <line x1="446" y1="314" x2="916" y2="314" stroke="#c8e6c9" stroke-width="1"/>
+        <text x="492" y="286" font-size="12" font-weight="700" fill="#3f9a52">Oficinas e Projetos de Território</text>
+        <text x="492" y="302" font-size="10" font-weight="600" fill="#2f6b55">Encontros presenciais nas instituições parceiras</text>
+        <line x1="446" y1="314" x2="916" y2="314" stroke="#cde9c4" stroke-width="1"/>
         <text x="446" y="332" font-size="9.5" fill="#000000">Oficinas com mentoria de especialistas e de voluntários do PicPay</text>
         <text x="446" y="347" font-size="9.5" fill="#000000">Missão 8: cada jovem propõe uma solução real para o próprio território,</text>
         <text x="446" y="362" font-size="9.5" fill="#000000">com simulação financeira e impacto previsto</text>
-        <text x="446" y="380" font-size="9" font-weight="700" fill="#5fb670">★  Ponto de conexão: digital → analógico</text>
-        <line x1="426" y1="326" x2="384" y2="326" stroke="#468182" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-t)"/>
-        <rect x="30" y="256" width="350" height="140" rx="10" fill="#f4f8fc" stroke="#468182" stroke-width="1.5"/>
-        <rect x="30" y="256" width="350" height="5" rx="5" fill="#468182"/>
-        <circle cx="62" cy="290" r="17" fill="#468182"/>
+        <text x="446" y="380" font-size="9" font-weight="700" fill="#2f7d45">★  Ponto de conexão: digital → analógico</text>
+        <line x1="426" y1="326" x2="384" y2="326" stroke="#2f6b55" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-t)"/>
+        <rect x="30" y="256" width="350" height="140" rx="10" fill="#f3f9f4" stroke="#2f6b55" stroke-width="1.5"/>
+        <rect x="30" y="256" width="350" height="5" rx="5" fill="#2f6b55"/>
+        <circle cx="62" cy="290" r="17" fill="#2f6b55"/>
         <text x="62" y="295" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">05</text>
-        <text x="90" y="286" font-size="12" font-weight="700" fill="#468182">Jovens Produzem</text>
-        <text x="90" y="302" font-size="10" font-weight="600" fill="#468182">Com artistas e empreendedores locais</text>
-        <line x1="46" y1="314" x2="366" y2="314" stroke="#e0e8f0" stroke-width="1"/>
+        <text x="90" y="286" font-size="12" font-weight="700" fill="#2f6b55">Jovens Produzem</text>
+        <text x="90" y="302" font-size="10" font-weight="600" fill="#2f6b55">Com artistas e empreendedores locais</text>
+        <line x1="46" y1="314" x2="366" y2="314" stroke="#dcebdf" stroke-width="1"/>
         <text x="46" y="332" font-size="9.5" fill="#000000">O festival planejado na Missão 7 ganha</text>
         <text x="46" y="347" font-size="9.5" fill="#000000">versão presencial, e os projetos da</text>
         <text x="46" y="362" font-size="9.5" fill="#000000">Missão 8 viram vídeos, imagens e simulações</text>
-        <line x1="205" y1="400" x2="205" y2="432" stroke="#468182" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-t)"/>
-        <rect x="30" y="440" width="900" height="100" rx="10" fill="#1a2e3b" stroke="#2858a0" stroke-width="1.5"/>
-        <rect x="30" y="440" width="900" height="5" rx="5" fill="#2858a0"/>
-        <circle cx="70" cy="476" r="19" fill="#5fb670"/>
+        <line x1="205" y1="400" x2="205" y2="432" stroke="#2f6b55" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-t)"/>
+        <rect x="30" y="440" width="900" height="100" rx="10" fill="#173225" stroke="#1e7a46" stroke-width="1.5"/>
+        <rect x="30" y="440" width="900" height="5" rx="5" fill="#1e7a46"/>
+        <circle cx="70" cy="476" r="19" fill="#7cc576"/>
         <text x="70" y="481" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">06</text>
         <text x="102" y="471" font-size="13" font-weight="700" fill="#ffffff">Festival do Futuro e Mostra de Projetos</text>
-        <text x="102" y="489" font-size="10" font-weight="600" fill="#5fb670">Cultura + educação financeira + sustentabilidade num evento cultural</text>
+        <text x="102" y="489" font-size="10" font-weight="600" fill="#7cc576">Cultura + educação financeira + sustentabilidade num evento cultural</text>
         <line x1="46" y1="500" x2="914" y2="500" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
         <text x="46" y="518" font-size="9" fill="#ffffff">Aberto à comunidade · projetos dos jovens apresentados ao público e ao PicPay</text>
-        <circle cx="898" cy="470" r="5" fill="#5fb670" opacity="0.5"/>
-        <circle cx="882" cy="470" r="3.5" fill="#5fb670" opacity="0.3"/>
-        <circle cx="869" cy="470" r="2" fill="#5fb670" opacity="0.15"/>
+        <circle cx="898" cy="470" r="5" fill="#7cc576" opacity="0.5"/>
+        <circle cx="882" cy="470" r="3.5" fill="#7cc576" opacity="0.3"/>
+        <circle cx="869" cy="470" r="2" fill="#7cc576" opacity="0.15"/>
       </svg>
     </div>
 
@@ -1038,26 +1038,26 @@
               <path id="seloTopArc" d="M 75,250 A 175,175 0 0 1 425,250" fill="none"/>
               <path id="seloBottomArc" d="M 65,250 A 185,185 0 0 0 435,250" fill="none"/>
             </defs>
-            <circle cx="250" cy="250" r="240" fill="#1a2e3b"/>
-            <circle cx="250" cy="250" r="232" fill="none" stroke="#5fb670" stroke-width="1.5" stroke-dasharray="2 6"/>
-            <circle cx="250" cy="250" r="222" fill="none" stroke="#2858a0" stroke-width="2.5"/>
-            <circle cx="250" cy="250" r="214" fill="none" stroke="#468182" stroke-width="0.6" opacity="0.5"/>
-            <g fill="#5fb670">
+            <circle cx="250" cy="250" r="240" fill="#173225"/>
+            <circle cx="250" cy="250" r="232" fill="none" stroke="#7cc576" stroke-width="1.5" stroke-dasharray="2 6"/>
+            <circle cx="250" cy="250" r="222" fill="none" stroke="#1e7a46" stroke-width="2.5"/>
+            <circle cx="250" cy="250" r="214" fill="none" stroke="#2f6b55" stroke-width="0.6" opacity="0.5"/>
+            <g fill="#7cc576">
               <circle cx="250" cy="40" r="3.5"/>
               <circle cx="250" cy="460" r="3.5"/>
               <circle cx="40" cy="250" r="3.5"/>
               <circle cx="460" cy="250" r="3.5"/>
             </g>
-            <text font-family="Montserrat, sans-serif" font-size="19" font-weight="700" fill="#5fb670" letter-spacing="6">
+            <text font-family="Montserrat, sans-serif" font-size="19" font-weight="700" fill="#7cc576" letter-spacing="6">
               <textPath href="#seloTopArc" startOffset="50%" text-anchor="middle">INSTITUIÇÃO PARCEIRA</textPath>
             </text>
-            <text font-family="Montserrat, sans-serif" font-size="11" font-weight="600" fill="#468182" letter-spacing="3.5">
+            <text font-family="Montserrat, sans-serif" font-size="11" font-weight="600" fill="#2f6b55" letter-spacing="3.5">
               <textPath href="#seloBottomArc" startOffset="50%" text-anchor="middle">VERIFICADO EM BLOCKCHAIN</textPath>
             </text>
-            <line x1="200" y1="190" x2="300" y2="190" stroke="#468182" stroke-width="0.8"/>
+            <line x1="200" y1="190" x2="300" y2="190" stroke="#2f6b55" stroke-width="0.8"/>
             <text x="250" y="240" font-family="Montserrat, sans-serif" font-size="36" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="-0.3">MISSÃO</text>
-            <text x="250" y="284" font-family="Montserrat, sans-serif" font-size="40" font-weight="800" fill="#5fb670" text-anchor="middle" letter-spacing="-0.3">FUTURO</text>
-            <line x1="195" y1="310" x2="305" y2="310" stroke="#468182" stroke-width="0.8"/>
+            <text x="250" y="284" font-family="Montserrat, sans-serif" font-size="40" font-weight="800" fill="#7cc576" text-anchor="middle" letter-spacing="-0.3">FUTURO</text>
+            <line x1="195" y1="310" x2="305" y2="310" stroke="#2f6b55" stroke-width="0.8"/>
             <text x="250" y="358" font-family="Montserrat, sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="2.5">THE BLUE CITY</text>
           </svg>
         </div>
@@ -1088,12 +1088,12 @@
             </g>
             <text x="300" y="165" font-family="Montserrat, sans-serif" font-size="15" font-weight="700" fill="#7a5510" text-anchor="middle" letter-spacing="6">NÍVEL OURO</text>
             <line x1="240" y1="185" x2="360" y2="185" stroke="#b8801f" stroke-width="1"/>
-            <text x="300" y="285" font-family="Montserrat, sans-serif" font-size="46" font-weight="800" fill="#1a2e3b" text-anchor="middle" letter-spacing="-0.3">MISSÃO</text>
-            <text x="300" y="342" font-family="Montserrat, sans-serif" font-size="50" font-weight="800" fill="#2d7a3e" text-anchor="middle" letter-spacing="-0.3">FUTURO</text>
+            <text x="300" y="285" font-family="Montserrat, sans-serif" font-size="46" font-weight="800" fill="#173225" text-anchor="middle" letter-spacing="-0.3">MISSÃO</text>
+            <text x="300" y="342" font-family="Montserrat, sans-serif" font-size="50" font-weight="800" fill="#1f6b35" text-anchor="middle" letter-spacing="-0.3">FUTURO</text>
             <text x="300" y="380" font-family="Montserrat, sans-serif" font-size="12" font-weight="700" fill="#7a5510" text-anchor="middle" letter-spacing="3">TRANSFORMAR</text>
             <line x1="220" y1="405" x2="380" y2="405" stroke="#b8801f" stroke-width="1"/>
             <text x="300" y="448" font-family="Montserrat, sans-serif" font-size="11" font-weight="700" fill="#7a5510" text-anchor="middle" letter-spacing="3.5">VERIFICADO EM BLOCKCHAIN</text>
-            <text x="300" y="483" font-family="Montserrat, sans-serif" font-size="11" font-weight="700" fill="#1a2e3b" text-anchor="middle" letter-spacing="2.8">THE BLUE CITY</text>
+            <text x="300" y="483" font-family="Montserrat, sans-serif" font-size="11" font-weight="700" fill="#173225" text-anchor="middle" letter-spacing="2.8">THE BLUE CITY</text>
           </svg>
         </div>
       </div>
@@ -1338,7 +1338,7 @@
     <p class="section-lead">Os resultados esperados são mais autonomia econômica, prevenção do endividamento, geração de renda e protagonismo juvenil nos territórios. A plataforma registra cada jogada, e as metas de cada indicador são definidas com o PicPay conforme o porte da edição.</p>
 
     <div class="legacy-grid">
-    <div style="background:white;border-radius:16px;border:1px solid rgba(40,88,160,0.1);box-shadow:0 2px 12px rgba(0,0,0,0.04);overflow:hidden;display:flex;flex-direction:column;">
+    <div style="background:white;border-radius:16px;border:1px solid rgba(30,122,70,0.1);box-shadow:0 2px 12px rgba(0,0,0,0.04);overflow:hidden;display:flex;flex-direction:column;">
       <div style="background:var(--blue);padding:22px 24px;display:flex;align-items:center;gap:14px;">
         <div style="width:44px;height:44px;background:rgba(255,255,255,0.18);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:21px;flex-shrink:0;">📊</div>
         <div>
@@ -1355,7 +1355,7 @@
       </div>
     </div>
 
-    <div style="background:white;border-radius:16px;border:1px solid rgba(40,88,160,0.1);box-shadow:0 2px 12px rgba(0,0,0,0.04);overflow:hidden;display:flex;flex-direction:column;">
+    <div style="background:white;border-radius:16px;border:1px solid rgba(30,122,70,0.1);box-shadow:0 2px 12px rgba(0,0,0,0.04);overflow:hidden;display:flex;flex-direction:column;">
       <div style="background:var(--teal);padding:22px 24px;display:flex;align-items:center;gap:14px;">
         <div style="width:44px;height:44px;background:rgba(255,255,255,0.18);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:21px;flex-shrink:0;">🗂️</div>
         <div>
@@ -1372,8 +1372,8 @@
       </div>
     </div>
 
-    <div style="background:white;border-radius:16px;border:1px solid rgba(40,88,160,0.1);box-shadow:0 2px 12px rgba(0,0,0,0.04);overflow:hidden;display:flex;flex-direction:column;">
-      <div style="background:#38a349;padding:22px 24px;display:flex;align-items:center;gap:14px;">
+    <div style="background:white;border-radius:16px;border:1px solid rgba(30,122,70,0.1);box-shadow:0 2px 12px rgba(0,0,0,0.04);overflow:hidden;display:flex;flex-direction:column;">
+      <div style="background:#3f9a52;padding:22px 24px;display:flex;align-items:center;gap:14px;">
         <div style="width:44px;height:44px;background:rgba(255,255,255,0.18);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:21px;flex-shrink:0;">🎪</div>
         <div>
           <div style="font-size:15px;font-weight:800;color:white;margin-bottom:3px;line-height:1.25;">Galeria de Eventos</div>
@@ -1382,8 +1382,8 @@
       </div>
       <div style="padding:22px 24px;display:flex;flex-direction:column;flex:1;">
         <p style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:16px;flex:1;">Documenta o Festival do Futuro e as oficinas – fotos e registros do evento produzido pelos jovens com artistas e empreendedores locais, e da mentoria nas instituições.</p>
-        <div style="padding:13px 16px;background:var(--bg);border-radius:10px;border-left:3px solid #38a349;">
-          <div style="font-size:10.5px;font-weight:700;color:#38a349;margin-bottom:5px;text-transform:uppercase;letter-spacing:0.5px;">Legado permanente</div>
+        <div style="padding:13px 16px;background:var(--bg);border-radius:10px;border-left:3px solid #3f9a52;">
+          <div style="font-size:10.5px;font-weight:700;color:#3f9a52;margin-bottom:5px;text-transform:uppercase;letter-spacing:0.5px;">Legado permanente</div>
           <div style="font-size:12px;color:var(--muted);line-height:1.6;">A galeria é permanente na plataforma – o festival continua acessível online após o evento presencial.</div>
         </div>
       </div>
@@ -1422,7 +1422,7 @@
             <div class="case-stat-label">Patrocinador</div>
           </div>
           <div class="case-stat">
-            <div class="case-stat-value" style="color:var(--green);">Redução de Gases</div>
+            <div class="case-stat-value" style="color:#3f9a52;">Redução de Gases</div>
             <div class="case-stat-label">Tema-eixo</div>
           </div>
           <div class="case-stat">
@@ -1456,7 +1456,7 @@
             <div class="case-stat-label">Patrocinador</div>
           </div>
           <div class="case-stat">
-            <div class="case-stat-value" style="color:var(--green);">Economia Circular</div>
+            <div class="case-stat-value" style="color:#3f9a52;">Economia Circular</div>
             <div class="case-stat-label">Tema-eixo</div>
           </div>
           <div class="case-stat">
