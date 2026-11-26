@@ -275,6 +275,41 @@
   .case-stat-value { font-size:16px; font-weight:800; color:var(--dark); }
   .case-stat-label { font-size:10.5px; color:var(--muted); font-weight:700; letter-spacing:0.5px; text-transform:uppercase; }
 
+  /* ── CRONOGRAMA ── */
+  .crono { border-radius:16px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); padding:10px 22px 6px; }
+  .crono-row { display:grid; grid-template-columns:270px repeat(12,1fr); column-gap:4px; align-items:center; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.08); }
+  .crono-row:last-child { border-bottom:none; }
+  .crono-head { padding:8px 0 10px; }
+  .crono-month { font-size:10.5px; font-weight:700; letter-spacing:0.8px; text-transform:uppercase; color:rgba(255,255,255,0.6); text-align:center; padding:6px 0; border-radius:6px; }
+  .crono-month.hl { color:#3d2c05; background:linear-gradient(180deg,#f6e7a6 0%,#e2c062 55%,#c9a033 100%); }
+  .crono-label { padding-right:18px; }
+  .crono-title { font-size:13px; font-weight:800; color:#ffffff; line-height:1.3; margin-bottom:3px; }
+  .crono-desc { font-size:11.5px; color:#ffffff; line-height:1.5; }
+  .crono-bar { height:32px; border-radius:8px; display:flex; align-items:center; padding:0 12px; font-size:11px; font-weight:800; color:var(--dark); white-space:nowrap; overflow:hidden; }
+  .cb-pre { background:#9fd8a8; }
+  .cb-art { background:#d6ebe2; }
+  .cb-jogo { background:#7cc576; }
+  .cb-ofi { background:#b9e0a4; }
+  .cb-proj { background:#cfe9bd; }
+  .cb-prod { background:#e9dc95; }
+  .cb-fest { background:linear-gradient(180deg,#f6e7a6 0%,#e2c062 55%,#c9a033 100%); color:#3d2c05; box-shadow:0 4px 14px rgba(201,160,51,0.35); }
+  .cb-leg { background:rgba(255,255,255,0.18); color:#ffffff; }
+  .crono-row-fest .crono-title { color:#f0d65c; }
+  .cb-fest { justify-content:center; padding:0 6px; }
+  .cb-long { display:none; }
+  .crono-note { font-size:12.5px; color:rgba(255,255,255,0.75); line-height:1.6; margin-top:18px; }
+  @media (max-width:900px) { .crono-row { grid-template-columns:200px repeat(12,1fr); } }
+  @media (max-width:768px) {
+    .crono { padding:6px 18px; }
+    .crono-head { display:none; }
+    .crono-row { grid-template-columns:1fr; row-gap:8px; }
+    .crono-label { padding-right:0; }
+    .crono-bar { grid-column:1 !important; justify-self:start; height:26px; font-size:10.5px; }
+    .cb-fest { padding:0 12px; }
+    .cb-short { display:none; }
+    .cb-long { display:inline; }
+  }
+
   /* ── TEAM CARD ── */
   .team-card { background:white; border-radius:14px; padding:22px 24px; border:1px solid rgba(30,122,70,0.08); box-shadow:0 2px 10px rgba(0,0,0,0.04); transition:all 0.25s; }
   .team-card:hover { box-shadow:0 8px 22px rgba(30,122,70,0.1); transform:translateY(-2px); }
@@ -531,6 +566,7 @@
       <a href="#sobre">Sobre</a>
       <a href="#jogo">Jogo</a>
       <a href="#fluxo">Fluxo</a>
+      <a href="#cronograma">Cronograma</a>
       <a href="#atores">Atores</a>
       <a href="#ganhos">Ganhos</a>
       <a href="#certificado">Credencial</a>
@@ -819,7 +855,7 @@
         <circle cx="372" cy="104" r="17" fill="#1e7a46"/>
         <text x="372" y="109" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">02</text>
         <text x="400" y="100" font-size="12" font-weight="700" fill="#1e7a46">Jovens Jogam</text>
-        <text x="400" y="116" font-size="10" font-weight="600" fill="#2f6b55">Durante o período da jornada</text>
+        <text x="400" y="116" font-size="10" font-weight="600" fill="#2f6b55">De abril a novembro</text>
         <line x1="356" y1="130" x2="586" y2="130" stroke="#dcebdf" stroke-width="1"/>
         <text x="356" y="148" font-size="9.5" fill="#000000">Instituições parceiras engajam</text>
         <text x="356" y="163" font-size="9.5" fill="#000000">estudantes e professores na</text>
@@ -886,7 +922,7 @@
         <div class="fluxo-num">02</div>
         <div class="fluxo-body">
           <h4>Jovens jogam</h4>
-          <div class="fluxo-sub">Durante o período da jornada</div>
+          <div class="fluxo-sub">De abril a novembro</div>
           <p>Instituições parceiras engajam estudantes e professores na plataforma The Blue City.</p>
         </div>
       </li>
@@ -927,10 +963,94 @@
   </div>
 </section>
 
-<!-- ════════════════════ 05 · ATORES ════════════════════ -->
+<!-- ════════════════════ 05 · CRONOGRAMA ════════════════════ -->
+<section id="cronograma" class="section-dark">
+  <div class="container">
+    <div class="eyebrow">05 · Cronograma</div>
+    <h2 class="section-title">Um ano de jornada</h2>
+    <p class="section-lead">Sugestão de cronograma anual: os três primeiros meses são de pré-produção do jogo e articulação das instituições parceiras, o jogo fica no ar de abril a novembro e o Festival do Futuro acontece em setembro.</p>
+
+    <div class="crono">
+        <div class="crono-row crono-head">
+          <div></div>
+          <div class="crono-month">Jan</div>
+          <div class="crono-month">Fev</div>
+          <div class="crono-month">Mar</div>
+          <div class="crono-month">Abr</div>
+          <div class="crono-month">Mai</div>
+          <div class="crono-month">Jun</div>
+          <div class="crono-month">Jul</div>
+          <div class="crono-month">Ago</div>
+          <div class="crono-month hl">Set</div>
+          <div class="crono-month">Out</div>
+          <div class="crono-month">Nov</div>
+          <div class="crono-month">Dez</div>
+        </div>
+        <div class="crono-row">
+          <div class="crono-label">
+            <div class="crono-title">Pré-produção do jogo</div>
+            <div class="crono-desc">Pesquisa cultural, concept art, modelagem 3D e desenvolvimento em Unity até a build no ar</div>
+          </div>
+          <div class="crono-bar cb-pre" style="grid-column:2 / 5;">Jan – Mar</div>
+        </div>
+        <div class="crono-row">
+          <div class="crono-label">
+            <div class="crono-title">Articulação das instituições parceiras</div>
+            <div class="crono-desc">Apresentação às universidades e institutos, adesão das instituições e definição dos territórios com o PicPay</div>
+          </div>
+          <div class="crono-bar cb-art" style="grid-column:2 / 5;">Jan – Mar</div>
+        </div>
+        <div class="crono-row">
+          <div class="crono-label">
+            <div class="crono-title">Lançamento e jogo</div>
+            <div class="crono-desc">Jogo no ar em picpay.thebluecity.app; os jovens cumprem os desafios e conquistam as credenciais, inclusive depois do festival</div>
+          </div>
+          <div class="crono-bar cb-jogo" style="grid-column:5 / 13;">Abr – Nov</div>
+        </div>
+        <div class="crono-row">
+          <div class="crono-label">
+            <div class="crono-title">Oficinas presenciais</div>
+            <div class="crono-desc">Mentoria de especialistas e voluntários do PicPay nas instituições parceiras</div>
+          </div>
+          <div class="crono-bar cb-ofi" style="grid-column:5 / 13;">Abr – Nov</div>
+        </div>
+        <div class="crono-row">
+          <div class="crono-label">
+            <div class="crono-title">Projetos de território</div>
+            <div class="crono-desc">Sempre que um jogador termina a jornada, a plataforma abre para a proposta dele, com simulação financeira e impacto previsto</div>
+          </div>
+          <div class="crono-bar cb-proj" style="grid-column:5 / 13;">Abr – Nov · ao fim de cada jornada</div>
+        </div>
+        <div class="crono-row">
+          <div class="crono-label">
+            <div class="crono-title">Produção do festival</div>
+            <div class="crono-desc">Jovens, produtor cultural, artistas e empreendedores locais preparam o festival e a mostra</div>
+          </div>
+          <div class="crono-bar cb-prod" style="grid-column:7 / 10;">Jun – Ago</div>
+        </div>
+        <div class="crono-row crono-row-fest">
+          <div class="crono-label">
+            <div class="crono-title">Festival do Futuro e mostra de projetos</div>
+            <div class="crono-desc">O evento aberto à comunidade, com os projetos dos jovens apresentados ao público e ao PicPay</div>
+          </div>
+          <div class="crono-bar cb-fest" style="grid-column:10 / 11;"><span class="cb-short">Set</span><span class="cb-long">Setembro</span></div>
+        </div>
+        <div class="crono-row">
+          <div class="crono-label">
+            <div class="crono-title">Legado e prestação de contas</div>
+            <div class="crono-desc">Galerias permanentes na plataforma, painel consolidado e relatório de impacto da edição</div>
+          </div>
+          <div class="crono-bar cb-leg" style="grid-column:13 / 14; justify-content:center; padding:0 6px;">Dez</div>
+        </div>
+    </div>
+    <p class="crono-note">As datas finais são definidas com o PicPay e as instituições parceiras, conforme o porte da edição e o calendário acadêmico.</p>
+  </div>
+</section>
+
+<!-- ════════════════════ 06 · ATORES ════════════════════ -->
 <section id="atores">
   <div class="container">
-    <div class="eyebrow">05 · Quem participa</div>
+    <div class="eyebrow">06 · Quem participa</div>
     <h2 class="section-title">Os atores envolvidos</h2>
     <p class="section-lead">Missão Futuro reúne sete atores em torno da mesma jornada – cada um com seu papel, sua entrega e sua contrapartida. É essa convergência que dá ao projeto força de programa cultural.</p>
 
@@ -1010,10 +1130,10 @@
   </div>
 </section>
 
-<!-- ════════════════════ 06 · PARA A INSTITUIÇÃO, PARA O JOVEM ════════════════════ -->
+<!-- ════════════════════ 07 · PARA A INSTITUIÇÃO, PARA O JOVEM ════════════════════ -->
 <section id="ganhos" class="section-alt">
   <div class="container">
-    <div class="eyebrow">06 · Para a instituição, para o jovem</div>
+    <div class="eyebrow">07 · Para a instituição, para o jovem</div>
     <h2 class="section-title">O que a jornada entrega a quem participa</h2>
     <p class="section-lead">A cada edição, instituições e jovens recebem entregas concretas – reconhecimento institucional para a instituição parceira e credenciais verificáveis em blockchain para o jovem – além de oficinas, um festival cultural aberto e legado permanente na plataforma.</p>
 
@@ -1233,10 +1353,10 @@
   </div>
 </section>
 
-<!-- ════════════════════ 07 · PICPAY ════════════════════ -->
+<!-- ════════════════════ 08 · PICPAY ════════════════════ -->
 <section id="picpay" class="section-alt">
   <div class="container">
-    <div class="eyebrow">07 · PicPay</div>
+    <div class="eyebrow">08 · PicPay</div>
     <h2 class="section-title">Por que faz sentido para o PicPay</h2>
     <p class="section-lead">O PicPay já aposta em jogo e educação financeira para falar com jovens. Missão Futuro leva essa aposta para fora do app – para instituições de ensino e territórios onde a marca ainda tem espaço para crescer.</p>
 
@@ -1277,10 +1397,10 @@
   </div>
 </section>
 
-<!-- ════════════════════ 08 · PARA QUEM ════════════════════ -->
+<!-- ════════════════════ 09 · PARA QUEM ════════════════════ -->
 <section id="publico">
   <div class="container">
-    <div class="eyebrow">08 · Para quem</div>
+    <div class="eyebrow">09 · Para quem</div>
     <h2 class="section-title">Jovens no começo da vida adulta</h2>
     <p class="section-lead">Missão Futuro é para jovens que têm menos oportunidades de aprender sobre dinheiro e sustentabilidade. A participação é gratuita, e o jovem joga com recursos fictícios.</p>
 
@@ -1327,10 +1447,10 @@
   </div>
 </section>
 
-<!-- ════════════════════ 09 · IMPACTO ════════════════════ -->
+<!-- ════════════════════ 10 · IMPACTO ════════════════════ -->
 <section id="impacto" class="section-alt">
   <div class="container">
-    <div class="eyebrow">09 · Impacto</div>
+    <div class="eyebrow">10 · Impacto</div>
     <h2 class="section-title">Impacto e como medimos</h2>
     <p class="section-lead">Os resultados esperados são mais autonomia econômica, prevenção do endividamento, geração de renda e protagonismo juvenil nos territórios. A plataforma registra cada jogada, e as metas de cada indicador são definidas com o PicPay conforme o porte da edição.</p>
 
@@ -1389,10 +1509,10 @@
   </div>
 </section>
 
-<!-- ════════════════════ 10 · PLATAFORMA ════════════════════ -->
+<!-- ════════════════════ 11 · PLATAFORMA ════════════════════ -->
 <section id="casos">
   <div class="container">
-    <div class="eyebrow">10 · No território</div>
+    <div class="eyebrow">11 · No território</div>
     <h2 class="section-title">Uma plataforma que já está no ar</h2>
     <p class="section-lead">Missão Futuro usa a mesma plataforma e a mesma metodologia da Missão Cidade Azul, projeto da Lei Rouanet em execução com patrocínio da Sotreq Cat e da Valgroup. A plataforma The Blue City foi lançada em outubro de 2026, roda em nuvem (AWS) e funciona direto no navegador do celular. Cada patrocinador recebe seu próprio endereço – no caso, picpay.thebluecity.app.</p>
 
@@ -1467,10 +1587,10 @@
   </div>
 </section>
 
-<!-- ════════════════════ 11 · EQUIPE ════════════════════ -->
+<!-- ════════════════════ 12 · EQUIPE ════════════════════ -->
 <section id="equipe" class="section-alt">
   <div class="container">
-    <div class="eyebrow">11 · Estrutura</div>
+    <div class="eyebrow">12 · Estrutura</div>
     <h2 class="section-title">A equipe por trás</h2>
     <p class="section-lead">A jornada é conduzida por uma equipe estruturada em dois pilares articulados – a dimensão virtual, que constrói o jogo, e a dimensão física, que ativa o território. Tudo sob a coordenação central do projeto, responsável também pelo conteúdo pedagógico.</p>
 
